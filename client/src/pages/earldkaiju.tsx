@@ -99,12 +99,7 @@ export default function EarldKaiju() {
     }
   }, [socialMediaData, socialMediaLoading]);
 
-  // Debug logging
-  useEffect(() => {
-    console.log('Social media data:', socialMediaData);
-    console.log('Instagram posts:', instagramPosts);
-    console.log('YouTube posts:', youtubePosts);
-  }, [socialMediaData, instagramPosts, youtubePosts]);
+
 
   return (
     <div className="pt-16">
@@ -322,12 +317,7 @@ export default function EarldKaiju() {
               </div>
             ) : (
               <>
-                {/* Debug info */}
-                <div className="text-center mb-8 p-4 bg-white/5 rounded-lg">
-                  <p className="text-sm text-gray-400">
-                    Debug: Found {socialMediaPosts.length} total posts, {youtubePosts.length} YouTube videos, {instagramPosts.length} Instagram posts
-                  </p>
-                </div>
+
 
                 {/* Instagram Content */}
                 {instagramPosts.length > 0 && (
@@ -346,8 +336,14 @@ export default function EarldKaiju() {
                                 />
                                 {post.mediaType === 'video' && (
                                   <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-black/50 rounded-full p-3">
-                                      <i className="fas fa-play text-white text-xl"></i>
+                                    <div className="bg-black/70 rounded-full p-4 shadow-lg">
+                                      <svg 
+                                        className="w-6 h-6 text-white ml-1" 
+                                        fill="currentColor" 
+                                        viewBox="0 0 24 24"
+                                      >
+                                        <path d="M8 5v14l11-7z"/>
+                                      </svg>
                                     </div>
                                   </div>
                                 )}
@@ -393,8 +389,14 @@ export default function EarldKaiju() {
                                 </div>
                               )}
                               <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="bg-red-600/80 rounded-full p-3">
-                                  <i className="fas fa-play text-white text-xl"></i>
+                                <div className="bg-red-600/90 rounded-full p-4 shadow-lg">
+                                  <svg 
+                                    className="w-8 h-8 text-white ml-1" 
+                                    fill="currentColor" 
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M8 5v14l11-7z"/>
+                                  </svg>
                                 </div>
                               </div>
                             </div>
@@ -413,10 +415,26 @@ export default function EarldKaiju() {
                   </div>
                 )}
 
+                {/* Instagram Status */}
+                {instagramPosts.length === 0 && (
+                  <div className="mb-8 text-center p-6 bg-yellow-900/20 rounded-lg border border-yellow-600/30">
+                    <svg className="w-12 h-12 text-yellow-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.65-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                    </svg>
+                    <h3 className="text-yellow-500 font-semibold mb-2">Instagram Posts Coming Soon</h3>
+                    <p className="text-gray-300 text-sm">
+                      Threads API integration is configured but needs proper authentication. 
+                      Your Instagram content from @ultrajiujitsu will appear here automatically once the API connection is established.
+                    </p>
+                  </div>
+                )}
+
                 {/* No content state */}
                 {instagramPosts.length === 0 && youtubePosts.length === 0 && (
                   <div className="text-center py-12">
-                    <i className="fas fa-camera text-4xl text-gray-500 mb-4 block"></i>
+                    <svg className="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                    </svg>
                     <p className="text-gray-400 mb-4">No content available yet</p>
                     <p className="text-gray-500 text-sm">Content will appear automatically when API keys are configured</p>
                   </div>
