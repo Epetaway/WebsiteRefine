@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -60,6 +60,22 @@ export default function EarldKaiju() {
     setIsSubmitting(true);
     bookingMutation.mutate(data);
   };
+
+  // Load Instagram embed script
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://www.instagram.com/embed.js';
+    script.async = true;
+    document.body.appendChild(script);
+    
+    return () => {
+      // Cleanup script on unmount
+      const existingScript = document.querySelector('script[src="https://www.instagram.com/embed.js"]');
+      if (existingScript) {
+        document.body.removeChild(existingScript);
+      }
+    };
+  }, []);
 
   return (
     <div className="pt-16">
@@ -265,9 +281,94 @@ export default function EarldKaiju() {
             </div>
           </div>
 
-          {/* Social Media */}
+          {/* Instagram Gallery */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-social">Follow Earl the Kaiju</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-gallery">Training Gallery</h2>
+            <p className="text-center text-gray-300 mb-8">See recent training sessions, techniques, and student progress</p>
+            
+            {/* Instagram Embeds Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
+              {/* Instagram Post Embeds - Replace with actual post URLs */}
+              <div className="bg-white/5 backdrop-blur rounded-xl p-4 border border-white/10">
+                <blockquote 
+                  className="instagram-media" 
+                  data-instgrm-captioned 
+                  data-instgrm-permalink="https://www.instagram.com/p/SAMPLE1/" 
+                  data-instgrm-version="14"
+                  style={{
+                    background: '#FFF',
+                    border: '0',
+                    borderRadius: '3px',
+                    boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
+                    margin: '1px',
+                    maxWidth: '100%',
+                    minWidth: '326px',
+                    padding: '0',
+                    width: '99.375%'
+                  }}
+                >
+                  <div className="text-center p-8 text-gray-400">
+                    <i className="fab fa-instagram text-4xl mb-4 block"></i>
+                    <p>Instagram post will appear here</p>
+                    <p className="text-sm">Visit @ultrajiujitsu to see latest content</p>
+                  </div>
+                </blockquote>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur rounded-xl p-4 border border-white/10">
+                <blockquote 
+                  className="instagram-media" 
+                  data-instgrm-captioned 
+                  data-instgrm-permalink="https://www.instagram.com/p/SAMPLE2/" 
+                  data-instgrm-version="14"
+                  style={{
+                    background: '#FFF',
+                    border: '0',
+                    borderRadius: '3px',
+                    boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
+                    margin: '1px',
+                    maxWidth: '100%',
+                    minWidth: '326px',
+                    padding: '0',
+                    width: '99.375%'
+                  }}
+                >
+                  <div className="text-center p-8 text-gray-400">
+                    <i className="fab fa-instagram text-4xl mb-4 block"></i>
+                    <p>Instagram post will appear here</p>
+                    <p className="text-sm">Visit @ultrajiujitsu to see latest content</p>
+                  </div>
+                </blockquote>
+              </div>
+              
+              <div className="bg-white/5 backdrop-blur rounded-xl p-4 border border-white/10">
+                <blockquote 
+                  className="instagram-media" 
+                  data-instgrm-captioned 
+                  data-instgrm-permalink="https://www.instagram.com/p/SAMPLE3/" 
+                  data-instgrm-version="14"
+                  style={{
+                    background: '#FFF',
+                    border: '0',
+                    borderRadius: '3px',
+                    boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
+                    margin: '1px',
+                    maxWidth: '100%',
+                    minWidth: '326px',
+                    padding: '0',
+                    width: '99.375%'
+                  }}
+                >
+                  <div className="text-center p-8 text-gray-400">
+                    <i className="fab fa-instagram text-4xl mb-4 block"></i>
+                    <p>Instagram post will appear here</p>
+                    <p className="text-sm">Visit @ultrajiujitsu to see latest content</p>
+                  </div>
+                </blockquote>
+              </div>
+            </div>
+            
+            {/* Social Media Links */}
             <div className="flex justify-center gap-8">
               <a 
                 href="https://www.instagram.com/ultrajiujitsu/" 
