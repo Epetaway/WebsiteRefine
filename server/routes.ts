@@ -5,6 +5,97 @@ import { insertContactSchema, insertBjjBookingSchema, insertSocialMediaPostSchem
 import { z } from "zod";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // OAuth Routes for Threads API
+  app.get("/api/auth/threads/connect", (req, res) => {
+    const clientId = process.env.THREADS_APP_ID;
+    const redirectUri = `${req.protocol}://${req.get('host')}/api/auth/threads/callback`;
+    
+    if (!clientId) {
+      return res.status(500).json({ error: 'Threads App ID not configured' });
+    }
+
+    const authUrl = `https://threads.net/oauth/authorize?` +
+      `client_id=${clientId}&` +
+      `redirect_uri=${encodeURIComponent(redirectUri)}&` +
+      `scope=threads_basic&` +
+      `response_type=code`;
+
+    res.redirect(authUrl);
+  });
+
+  app.get("/api/auth/threads/callback", async (req, res) => {
+    const { code, error } = req.query;
+    
+    if (error) {
+      return res.redirect('/EarldKaiju?error=access_denied');
+    }
+
+    if (!code) {
+      return res.redirect('/EarldKaiju?error=no_code');
+    }
+
+    try {
+      const clientId = process.env.THREADS_APP_ID;
+      const clientSecret = process.env.THREADS_APP_SECRET;
+      const redirectUri = `${req.protocol}://${req.get('host')}/api/auth/threads/callback`;
+
+      // Exchange code for short-lived token
+      const tokenResponse = await fetch('https://graph.threads.net/oauth/access_token', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+          client_id: clientId!,
+          client_secret: clientSecret!,
+          grant_type: 'authorization_code',
+          redirect_uri: redirectUri,
+          code: code as string,
+        }),
+      });
+
+      const tokenData = await tokenResponse.json();
+      
+      if (!tokenResponse.ok) {
+        console.error('Token exchange error:', tokenData);
+        return res.redirect('/EarldKaiju?error=token_exchange_failed');
+      }
+
+      // Exchange for long-lived token (60 days)
+      const longLivedResponse = await fetch(`https://graph.threads.net/access_token?` +
+        `grant_type=th_exchange_token&` +
+        `client_secret=${clientSecret}&` +
+        `access_token=${tokenData.access_token}`
+      );
+
+      const longLivedData = await longLivedResponse.json();
+
+      if (!longLivedResponse.ok) {
+        console.error('Long-lived token error:', longLivedData);
+        return res.redirect('/EarldKaiju?error=long_token_failed');
+      }
+
+      // Store the long-lived token (in a real app, you'd save this securely)
+      process.env.THREADS_ACCESS_TOKEN = longLivedData.access_token;
+      process.env.THREADS_USER_ID = tokenData.user_id;
+
+      console.log('Threads OAuth successful! Token expires in:', longLivedData.expires_in, 'seconds');
+      
+      res.redirect('/EarldKaiju?success=instagram_connected');
+    } catch (error) {
+      console.error('OAuth callback error:', error);
+      res.redirect('/EarldKaiju?error=oauth_failed');
+    }
+  });
+
+  app.get("/api/auth/threads/status", (req, res) => {
+    const hasToken = !!process.env.THREADS_ACCESS_TOKEN;
+    res.json({ 
+      connected: hasToken,
+      user_id: process.env.THREADS_USER_ID || null
+    });
+  });
+
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
     try {
@@ -53,29 +144,24 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/social-media/fetch-instagram", async (req, res) => {
     try {
       // Try Threads API first, fallback to Instagram Basic Display API
-      const threadsAppId = process.env.THREADS_APP_ID;
-      const threadsAppSecret = process.env.THREADS_APP_SECRET;
+      const threadsAccessToken = process.env.THREADS_ACCESS_TOKEN;
       const instagramAccessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
 
-      if (!threadsAppId && !threadsAppSecret && !instagramAccessToken) {
+      if (!threadsAccessToken && !instagramAccessToken) {
         return res.status(400).json({ 
-          message: "No Instagram/Threads credentials configured. Please set either THREADS_APP_ID + THREADS_APP_SECRET or INSTAGRAM_ACCESS_TOKEN." 
+          message: "Instagram access token required. Please connect your Instagram account using the OAuth flow." 
         });
       }
 
       let response;
       let apiType = '';
 
-      // Try Threads API first if credentials are available
-      if (threadsAppId && threadsAppSecret) {
+      // Try Threads API first if access token is available  
+      if (threadsAccessToken) {
         try {
-          // For Threads API, we need to use the app-scoped access token directly
-          // The format is: APP_ID|APP_SECRET
-          const appAccessToken = `${threadsAppId}|${threadsAppSecret}`;
-          
-          // Fetch Threads posts using Graph API
+          // Fetch Threads posts using Graph API with proper access token
           response = await fetch(
-            `https://graph.threads.net/v1.0/me/threads?fields=id,media_type,media_url,thumbnail_url,text,permalink,timestamp&access_token=${appAccessToken}`
+            `https://graph.threads.net/v1.0/me/threads?fields=id,media_type,media_url,thumbnail_url,text,permalink,timestamp&access_token=${threadsAccessToken}`
           );
           apiType = 'threads';
           
