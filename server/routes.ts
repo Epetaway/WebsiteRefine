@@ -81,7 +81,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           
           console.log('Threads API response status:', response.status);
         } catch (error) {
-          console.log("Threads API failed:", error.message);
+          console.log("Threads API failed:", error instanceof Error ? error.message : String(error));
         }
       }
 

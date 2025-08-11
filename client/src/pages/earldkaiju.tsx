@@ -96,6 +96,13 @@ export default function EarldKaiju() {
     fetchYoutubeMutation.mutate();
   }, []);
 
+  // Debug logging
+  useEffect(() => {
+    console.log('Social media data:', socialMediaData);
+    console.log('Instagram posts:', instagramPosts);
+    console.log('YouTube posts:', youtubePosts);
+  }, [socialMediaData, instagramPosts, youtubePosts]);
+
   return (
     <div className="pt-16">
       {/* Hero Section with Banner */}
