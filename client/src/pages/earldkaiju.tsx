@@ -12,6 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import kaijuBanner from "@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png";
 
 export default function EarldKaiju() {
   const { toast } = useToast();
@@ -66,16 +67,17 @@ export default function EarldKaiju() {
       <section className="relative py-20 bg-black text-white overflow-hidden">
         {/* Background Image */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-60"
+          className="absolute inset-0 opacity-70"
           style={{
-            backgroundImage: `url('@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png')`,
-            backgroundSize: 'cover',
+            backgroundImage: `url(${kaijuBanner})`,
+            backgroundSize: 'contain',
+            backgroundRepeat: 'no-repeat',
             backgroundPosition: 'center',
           }}
         />
         
         {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
         
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -114,6 +116,12 @@ export default function EarldKaiju() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* Rest of Content */}
+      <section className="bg-gray-900 text-white py-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Why Train With Me */}
           <div className="mb-20">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-why-train">Why Train With Earl the Kaiju</h2>
@@ -541,43 +549,43 @@ export default function EarldKaiju() {
             </div>
           </div>
         </div>
-        
-        {/* Schema.org JSON-LD for BJJ Service */}
-        <script 
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Service",
-              "name": "Private Brazilian Jiu-Jitsu Lessons",
-              "description": "One-on-one and small-group BJJ training for adults and kids in Morris County, NJ",
-              "provider": {
-                "@type": "Person",
-                "name": "Earl Hickson Jr.",
-                "alternateName": "Earl the Kaiju"
-              },
-              "areaServed": {
-                "@type": "Place",
-                "name": "Morris County, NJ"
-              },
-              "offers": [
-                {
-                  "@type": "Offer",
-                  "name": "Adult Trial Session",
-                  "price": "80",
-                  "priceCurrency": "USD"
-                },
-                {
-                  "@type": "Offer", 
-                  "name": "Kids Trial Session",
-                  "price": "70",
-                  "priceCurrency": "USD"
-                }
-              ]
-            })
-          }}
-        />
       </section>
+
+      {/* Schema.org JSON-LD for BJJ Service */}
+      <script 
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Private Brazilian Jiu-Jitsu Lessons",
+            "description": "One-on-one and small-group BJJ training for adults and kids in Morris County, NJ",
+            "provider": {
+              "@type": "Person",
+              "name": "Earl Hickson Jr.",
+              "alternateName": "Earl the Kaiju"
+            },
+            "areaServed": {
+              "@type": "Place",
+              "name": "Morris County, NJ"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Adult Trial Session",
+                "price": "80",
+                "priceCurrency": "USD"
+              },
+              {
+                "@type": "Offer", 
+                "name": "Kids Trial Session",
+                "price": "70",
+                "priceCurrency": "USD"
+              }
+            ]
+          })
+        }}
+      />
     </div>
   );
 }
