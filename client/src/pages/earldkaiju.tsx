@@ -62,26 +62,39 @@ export default function EarldKaiju() {
 
   return (
     <div className="pt-16">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-[#1B7339] text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Hero Section with Banner */}
+      <section className="relative py-20 bg-black text-white overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-60"
+          style={{
+            backgroundImage: `url('@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png')`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40" />
+        
+        <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#1B7339] text-white border border-[#1B7339] text-sm font-medium mb-6">
+            <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#39FF14]/20 backdrop-blur-sm text-[#39FF14] border border-[#39FF14]/30 text-sm font-medium mb-6 shadow-lg shadow-[#39FF14]/20">
               <i className="fas fa-fist-raised mr-2"></i>
               IBJJF Black Belt • Competitor • Coach
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6" data-testid="hero-title">
-              Earl the Kaiju
-              <span className="block gradient-text">Private Brazilian Jiu-Jitsu Lessons</span>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6 drop-shadow-2xl" data-testid="hero-title">
+              <span className="text-[#39FF14] drop-shadow-[0_0_30px_#39FF14]">Earl the Kaiju</span>
+              <span className="block text-white mt-2">Private Brazilian Jiu-Jitsu Lessons</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto" data-testid="hero-description">
+            <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto drop-shadow-lg" data-testid="hero-description">
               One-on-one and small-group training for adults and kids in Morris County, NJ. Build real skills, safely and fast.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button 
                 size="lg" 
-                className="bg-[#1B7339] hover:bg-[#1B7339]/80"
+                className="bg-[#39FF14] hover:bg-[#39FF14]/80 text-black font-bold shadow-lg shadow-[#39FF14]/30 hover:shadow-[#39FF14]/50 transition-all"
                 onClick={() => document.getElementById('booking')?.scrollIntoView({ behavior: 'smooth' })}
                 data-testid="button-book-lesson"
               >
@@ -91,7 +104,7 @@ export default function EarldKaiju() {
               <Button 
                 variant="outline" 
                 size="lg"
-                className="bg-white/10 backdrop-blur border-white/20 hover:bg-white/20 text-white"
+                className="bg-black/50 backdrop-blur border-[#39FF14]/50 hover:bg-[#39FF14]/10 text-white hover:border-[#39FF14] transition-all"
                 onClick={() => document.getElementById('kids-program')?.scrollIntoView({ behavior: 'smooth' })}
                 data-testid="button-kids-program"
               >
@@ -103,35 +116,35 @@ export default function EarldKaiju() {
 
           {/* Why Train With Me */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12" data-testid="section-title-why-train">Why Train With Earl the Kaiju</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-why-train">Why Train With Earl the Kaiju</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-medal text-white text-2xl"></i>
+                <div className="w-16 h-16 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#39FF14]/50 hover:shadow-[#39FF14]/70 transition-all">
+                  <i className="fas fa-medal text-black text-2xl"></i>
                 </div>
                 <h3 className="text-lg font-bold mb-2" data-testid="feature-black-belt">IBJJF Black Belt</h3>
                 <p className="text-gray-300 text-sm">Active competitor and experienced coach with proven results</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-heart text-white text-2xl"></i>
+                <div className="w-16 h-16 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#39FF14]/50 hover:shadow-[#39FF14]/70 transition-all">
+                  <i className="fas fa-heart text-black text-2xl"></i>
                 </div>
                 <h3 className="text-lg font-bold mb-2" data-testid="feature-beginner-friendly">Beginner-Friendly</h3>
                 <p className="text-gray-300 text-sm">Technical, safety-first approach perfect for new practitioners</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-target text-white text-2xl"></i>
+                <div className="w-16 h-16 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#39FF14]/50 hover:shadow-[#39FF14]/70 transition-all">
+                  <i className="fas fa-target text-black text-2xl"></i>
                 </div>
                 <h3 className="text-lg font-bold mb-2" data-testid="feature-customized">Customized Plans</h3>
                 <p className="text-gray-300 text-sm">Tailored training for self-defense, fitness, or competition goals</p>
               </div>
               
               <div className="text-center">
-                <div className="w-16 h-16 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-users text-white text-2xl"></i>
+                <div className="w-16 h-16 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#39FF14]/50 hover:shadow-[#39FF14]/70 transition-all">
+                  <i className="fas fa-users text-black text-2xl"></i>
                 </div>
                 <h3 className="text-lg font-bold mb-2" data-testid="feature-family">Family Options</h3>
                 <p className="text-gray-300 text-sm">Parent-and-kid sessions that are engaging and fun</p>
@@ -141,28 +154,28 @@ export default function EarldKaiju() {
 
           {/* Programs */}
           <div id="programs" className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12" data-testid="section-title-programs">Training Programs</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-programs">Training Programs</h2>
             <div className="grid lg:grid-cols-2 gap-8">
               {/* Adults Program */}
               <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
                 <h3 className="text-2xl font-bold mb-4" data-testid="program-adults-title">Adults (60-90 min)</h3>
                 <div className="space-y-4 mb-6">
                   <div className="flex items-start">
-                    <i className="fas fa-check-circle text-[#1B7339] mt-1 mr-3"></i>
+                    <i className="fas fa-check-circle text-[#39FF14] mt-1 mr-3"></i>
                     <div>
                       <h4 className="font-semibold" data-testid="adult-foundations">Foundations</h4>
                       <p className="text-gray-300 text-sm">Posture, frames, escapes, guard retention fundamentals</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <i className="fas fa-check-circle text-[#1B7339] mt-1 mr-3"></i>
+                    <i className="fas fa-check-circle text-[#39FF14] mt-1 mr-3"></i>
                     <div>
                       <h4 className="font-semibold" data-testid="adult-self-defense">Self-Defense</h4>
                       <p className="text-gray-300 text-sm">Clinch work, trips/throws, control to disengage safely</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <i className="fas fa-check-circle text-[#1B7339] mt-1 mr-3"></i>
+                    <i className="fas fa-check-circle text-[#39FF14] mt-1 mr-3"></i>
                     <div>
                       <h4 className="font-semibold" data-testid="adult-conditioning">Conditioning</h4>
                       <p className="text-gray-300 text-sm">Movement patterns, drilling, safe intensity building</p>
@@ -194,21 +207,21 @@ export default function EarldKaiju() {
                 <h3 className="text-2xl font-bold mb-4" data-testid="program-kids-title">Kids (45-60 min)</h3>
                 <div className="space-y-4 mb-6">
                   <div className="flex items-start">
-                    <i className="fas fa-check-circle text-[#1B7339] mt-1 mr-3"></i>
+                    <i className="fas fa-check-circle text-[#39FF14] mt-1 mr-3"></i>
                     <div>
                       <h4 className="font-semibold" data-testid="kids-play-based">Play-Based Learning</h4>
                       <p className="text-gray-300 text-sm">Games for balance, grip strength, and body awareness</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <i className="fas fa-check-circle text-[#1B7339] mt-1 mr-3"></i>
+                    <i className="fas fa-check-circle text-[#39FF14] mt-1 mr-3"></i>
                     <div>
                       <h4 className="font-semibold" data-testid="kids-anti-bullying">Anti-Bullying</h4>
                       <p className="text-gray-300 text-sm">Verbal boundaries → defensive grips → safe holds</p>
                     </div>
                   </div>
                   <div className="flex items-start">
-                    <i className="fas fa-check-circle text-[#1B7339] mt-1 mr-3"></i>
+                    <i className="fas fa-check-circle text-[#39FF14] mt-1 mr-3"></i>
                     <div>
                       <h4 className="font-semibold" data-testid="kids-parent-me">Parent-and-Me</h4>
                       <p className="text-gray-300 text-sm">Special sessions available for family bonding</p>
@@ -239,28 +252,28 @@ export default function EarldKaiju() {
 
           {/* How It Works */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12" data-testid="section-title-how-it-works">How It Works</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-how-it-works">How It Works</h2>
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                <div className="w-12 h-12 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold text-black shadow-lg shadow-[#39FF14]/50">1</div>
                 <h3 className="text-lg font-bold mb-2" data-testid="step-1-title">Quick Intake</h3>
                 <p className="text-gray-300 text-sm">Discuss goals, any injuries, and preferred schedule</p>
               </div>
               
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                <div className="w-12 h-12 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold text-black shadow-lg shadow-[#39FF14]/50">2</div>
                 <h3 className="text-lg font-bold mb-2" data-testid="step-2-title">Personalized Plan</h3>
                 <p className="text-gray-300 text-sm">Custom 2-6 week roadmap based on your objectives</p>
               </div>
               
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                <div className="w-12 h-12 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold text-black shadow-lg shadow-[#39FF14]/50">3</div>
                 <h3 className="text-lg font-bold mb-2" data-testid="step-3-title">Measurable Progress</h3>
                 <p className="text-gray-300 text-sm">Track technique list and confidence markers</p>
               </div>
               
               <div className="text-center">
-                <div className="w-12 h-12 bg-[#1B7339] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                <div className="w-12 h-12 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold text-black shadow-lg shadow-[#39FF14]/50">4</div>
                 <h3 className="text-lg font-bold mb-2" data-testid="step-4-title">Ongoing Support</h3>
                 <p className="text-gray-300 text-sm">Continued guidance and skill development</p>
               </div>
@@ -269,7 +282,7 @@ export default function EarldKaiju() {
 
           {/* FAQ */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12" data-testid="section-title-faq">Frequently Asked Questions</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-faq">Frequently Asked Questions</h2>
             <div className="max-w-3xl mx-auto">
               <Accordion type="single" collapsible className="space-y-4">
                 <AccordionItem value="experience" className="bg-white/10 backdrop-blur rounded-xl border border-white/20 px-6">
@@ -313,31 +326,31 @@ export default function EarldKaiju() {
 
           {/* Instagram Integration */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12" data-testid="section-title-instagram">Follow the Journey</h2>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-instagram">Follow the Journey</h2>
             <div className="text-center mb-8">
               <p className="text-gray-300 mb-6">See recent training sessions, techniques, and student progress on Instagram</p>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
-                <div className="aspect-square bg-gradient-to-br from-[#1B7339] to-[#25A14A] rounded-xl flex items-center justify-center">
+                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center">
                   <i className="fas fa-play text-white text-2xl"></i>
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-[#1B7339] to-[#25A14A] rounded-xl flex items-center justify-center">
+                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center">
                   <i className="fas fa-image text-white text-2xl"></i>
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center">
                   <i className="fas fa-video text-white text-2xl"></i>
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-yellow-500 to-red-500 rounded-xl flex items-center justify-center md:block hidden">
+                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center md:block hidden">
                   <i className="fas fa-image text-white text-2xl"></i>
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-[#1B7339] to-[#25A14A] rounded-xl flex items-center justify-center md:block hidden">
+                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center md:block hidden">
                   <i className="fas fa-play text-white text-2xl"></i>
                 </div>
-                <div className="aspect-square bg-gradient-to-br from-[#1B7339] to-[#25A14A] rounded-xl flex items-center justify-center md:block hidden">
+                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center md:block hidden">
                   <i className="fas fa-image text-white text-2xl"></i>
                 </div>
               </div>
               
-              <Button asChild className="bg-gradient-to-r from-[#1B7339] to-[#25A14A] hover:opacity-90" data-testid="button-instagram">
+              <Button asChild className="bg-gradient-to-r from-[#39FF14] to-[#00FF00] hover:opacity-90" data-testid="button-instagram">
                 <a href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-instagram mr-2"></i>
                   Watch More on Instagram
@@ -349,7 +362,7 @@ export default function EarldKaiju() {
           {/* Booking Form */}
           <div id="booking" className="max-w-2xl mx-auto">
             <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
-              <h2 className="text-2xl font-bold text-center mb-8" data-testid="booking-form-title">Book Your First Session</h2>
+              <h2 className="text-2xl font-bold text-center mb-8 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="booking-form-title">Book Your First Session</h2>
               
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -504,7 +517,7 @@ export default function EarldKaiju() {
                   <Button 
                     type="submit" 
                     disabled={isSubmitting || bookingMutation.isPending}
-                    className="w-full py-4 bg-[#1B7339] text-white hover:bg-[#1B7339]/80 disabled:opacity-50"
+                    className="w-full py-4 bg-[#39FF14] text-white hover:bg-[#39FF14]/80 disabled:opacity-50"
                     data-testid="button-submit-booking"
                   >
                     {isSubmitting || bookingMutation.isPending ? (
