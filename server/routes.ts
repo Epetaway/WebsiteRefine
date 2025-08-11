@@ -140,91 +140,91 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Fetch Instagram/Threads posts automatically
+  // Fetch Instagram posts using public scraping
   app.post("/api/social-media/fetch-instagram", async (req, res) => {
     try {
-      // Try Threads API first, fallback to Instagram Basic Display API
-      const threadsAccessToken = process.env.THREADS_ACCESS_TOKEN;
-      const instagramAccessToken = process.env.INSTAGRAM_ACCESS_TOKEN;
-
-      if (!threadsAccessToken && !instagramAccessToken) {
-        return res.status(400).json({ 
-          message: "Instagram access token required. Please connect your Instagram account using the OAuth flow." 
-        });
-      }
-
-      let response;
-      let apiType = '';
-
-      // Try Threads API first if access token is available  
-      if (threadsAccessToken) {
+      // Use Python scraper for public Instagram posts
+      const { spawn } = require('child_process');
+      const path = require('path');
+      
+      const username = 'earld.kaiju'; // Your Instagram username
+      const limit = 7; // Number of posts to fetch
+      
+      const scriptPath = path.join(process.cwd(), 'scripts', 'instagram_scraper.py');
+      const pythonProcess = spawn('python3', [scriptPath, username, limit.toString()]);
+      
+      let output = '';
+      let errorOutput = '';
+      
+      pythonProcess.stdout.on('data', (data) => {
+        output += data.toString();
+      });
+      
+      pythonProcess.stderr.on('data', (data) => {
+        errorOutput += data.toString();
+      });
+      
+      pythonProcess.on('close', async (code) => {
         try {
-          // Fetch Threads posts using Graph API with proper access token
-          response = await fetch(
-            `https://graph.threads.net/v1.0/me/threads?fields=id,media_type,media_url,thumbnail_url,text,permalink,timestamp&access_token=${threadsAccessToken}`
-          );
-          apiType = 'threads';
+          if (code !== 0) {
+            console.error('Instagram scraper error:', errorOutput);
+            return res.status(500).json({ 
+              message: `Instagram scraper failed with code ${code}: ${errorOutput}` 
+            });
+          }
           
-          console.log('Threads API response status:', response.status);
-        } catch (error) {
-          console.log("Threads API failed:", error instanceof Error ? error.message : String(error));
-        }
-      }
-
-      // Fallback to Instagram Basic Display API
-      if (!response || !response.ok) {
-        if (!instagramAccessToken) {
-          return res.status(400).json({ 
-            message: "Instagram access token not configured. Please set INSTAGRAM_ACCESS_TOKEN environment variable." 
+          const result = JSON.parse(output);
+          
+          if (!result.success) {
+            return res.status(400).json({ 
+              message: `Instagram scraping failed: ${result.error}` 
+            });
+          }
+          
+          const posts = [];
+          
+          for (const item of result.posts || []) {
+            try {
+              // Check if post already exists
+              const existingPosts = await storage.getSocialMediaPosts('instagram');
+              const exists = existingPosts.some(p => p.postId === item.postId);
+              
+              if (!exists) {
+                const post = await storage.createSocialMediaPost({
+                  platform: 'instagram',
+                  postId: item.postId,
+                  mediaType: item.mediaType,
+                  mediaUrl: item.mediaUrl,
+                  thumbnailUrl: item.thumbnailUrl,
+                  caption: item.caption,
+                  permalink: item.permalink,
+                  timestamp: new Date(item.timestamp)
+                });
+                posts.push(post);
+              }
+            } catch (error) {
+              console.error(`Error processing Instagram post ${item.postId}:`, error);
+            }
+          }
+          
+          res.json({ 
+            message: `Successfully fetched ${posts.length} new Instagram posts from @${username}`,
+            posts: posts,
+            profile: result.profile
+          });
+          
+        } catch (parseError) {
+          console.error('Error parsing scraper output:', parseError);
+          console.error('Raw output:', output);
+          res.status(500).json({ 
+            message: "Failed to parse Instagram scraper output" 
           });
         }
-
-        response = await fetch(
-          `https://graph.instagram.com/me/media?fields=id,media_type,media_url,thumbnail_url,caption,permalink,timestamp&access_token=${instagramAccessToken}`
-        );
-        apiType = 'instagram';
-      }
-      
-      if (!response.ok) {
-        throw new Error(`${apiType} API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      const posts = [];
-
-      for (const item of data.data || []) {
-        try {
-          // Check if post already exists
-          const existingPosts = await storage.getSocialMediaPosts('instagram');
-          const exists = existingPosts.some(p => p.postId === item.id);
-          
-          if (!exists) {
-            const post = await storage.createSocialMediaPost({
-              platform: 'instagram',
-              postId: item.id,
-              mediaType: item.media_type?.toLowerCase() || 'image',
-              mediaUrl: item.media_url,
-              thumbnailUrl: item.thumbnail_url,
-              caption: item.caption || item.text || '',
-              permalink: item.permalink,
-              timestamp: new Date(item.timestamp)
-            });
-            posts.push(post);
-          }
-        } catch (error) {
-          console.error(`Error processing ${apiType} post ${item.id}:`, error);
-        }
-      }
-
-      res.json({ 
-        message: `Successfully fetched ${posts.length} new ${apiType} posts`,
-        newPosts: posts.length,
-        posts,
-        apiUsed: apiType
       });
+      
     } catch (error) {
-      console.error("Instagram/Threads fetch error:", error);
-      res.status(500).json({ message: "Failed to fetch Instagram/Threads posts" });
+      console.error("Instagram scraping error:", error);
+      res.status(500).json({ message: "Failed to fetch Instagram posts" });
     }
   });
 
