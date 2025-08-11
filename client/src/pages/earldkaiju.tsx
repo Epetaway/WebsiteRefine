@@ -65,6 +65,20 @@ export default function EarldKaiju() {
     <div className="pt-16">
       {/* Hero Section with Banner */}
       <section className="relative py-20 bg-black text-white overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `url(${kaijuBanner})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        />
+        
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/60" />
+        
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#39FF14]/20 backdrop-blur-sm text-[#39FF14] border border-[#39FF14]/30 text-sm font-medium mb-6 shadow-lg shadow-[#39FF14]/20">
