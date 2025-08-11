@@ -85,10 +85,8 @@ export default function EarldKaiju() {
               <i className="fas fa-fist-raised mr-2"></i>
               IBJJF Black Belt • Competitor • Coach
             </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6 drop-shadow-2xl" data-testid="hero-title">
-              <span className="text-[#39FF14] drop-shadow-[0_0_30px_#39FF14]">Earl the Kaiju</span>
-              <span className="block text-white mt-2">Private Brazilian Jiu-Jitsu Lessons</span>
-            </h1>
+            {/* Space for centered kaiju logo */}
+            <div className="h-32 lg:h-48 mb-6"></div>
             <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto drop-shadow-lg" data-testid="hero-description">
               One-on-one and small-group training for adults and kids in Morris County, NJ. Build real skills, safely and fast.
             </p>
