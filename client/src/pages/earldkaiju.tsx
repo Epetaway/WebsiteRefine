@@ -73,7 +73,7 @@ export default function EarldKaiju() {
 
   // Auto-fetch Instagram posts on load
   const fetchInstagramMutation = useMutation({
-    mutationFn: () => apiRequest('/api/social-media/fetch-instagram', 'POST', {}),
+    mutationFn: () => apiRequest('POST', '/api/social-media/fetch-instagram', {}),
     onSuccess: () => {
       // Refetch social media posts after successful Instagram fetch
       queryClient.invalidateQueries({ queryKey: ['/api/social-media'] });
@@ -82,7 +82,7 @@ export default function EarldKaiju() {
 
   // Auto-fetch YouTube posts on load
   const fetchYoutubeMutation = useMutation({
-    mutationFn: () => apiRequest('/api/social-media/fetch-youtube', 'POST', {}),
+    mutationFn: () => apiRequest('POST', '/api/social-media/fetch-youtube', {}),
     onSuccess: () => {
       // Refetch social media posts after successful YouTube fetch
       queryClient.invalidateQueries({ queryKey: ['/api/social-media'] });
