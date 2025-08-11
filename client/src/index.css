@@ -64,6 +64,13 @@
   --green-100: hsl(141, 84%, 93%);
   --green-500: hsl(142, 71%, 45%);
   --green-600: hsl(142, 76%, 36%);
+  
+  /* Earl the Kaiju Brand Colors */
+  --kaiju-primary: hsl(140, 62%, 27%); /* #1B7339 */
+  --kaiju-primary-light: hsl(140, 62%, 35%);
+  --kaiju-primary-dark: hsl(140, 62%, 20%);
+  --kaiju-accent: hsl(140, 62%, 90%);
+  --kaiju-text: hsl(140, 62%, 15%);
 }
 
 .dark {
