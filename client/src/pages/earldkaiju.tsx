@@ -151,7 +151,7 @@ export default function EarldKaiju() {
               
               <div className="text-center">
                 <div className="w-16 h-16 bg-[#39FF14] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg shadow-[#39FF14]/50 hover:shadow-[#39FF14]/70 transition-all">
-                  <i className="fas fa-target text-black text-2xl"></i>
+                  <i className="fas fa-bullseye text-black text-2xl"></i>
                 </div>
                 <h3 className="text-lg font-bold mb-2" data-testid="feature-customized">Customized Plans</h3>
                 <p className="text-gray-300 text-sm">Tailored training for self-defense, fitness, or competition goals</p>
@@ -265,6 +265,40 @@ export default function EarldKaiju() {
             </div>
           </div>
 
+          {/* Social Media */}
+          <div className="mb-20">
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-social">Follow Earl the Kaiju</h2>
+            <div className="flex justify-center gap-8">
+              <a 
+                href="https://www.instagram.com/ultrajiujitsu/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all group"
+                data-testid="link-instagram"
+              >
+                <i className="fab fa-instagram text-3xl text-[#39FF14] group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h3 className="font-bold text-lg">Instagram</h3>
+                  <p className="text-gray-300 text-sm">@ultrajiujitsu</p>
+                </div>
+              </a>
+              
+              <a 
+                href="https://www.youtube.com/@earldkaiju" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex items-center gap-3 bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all group"
+                data-testid="link-youtube"
+              >
+                <i className="fab fa-youtube text-3xl text-[#39FF14] group-hover:scale-110 transition-transform"></i>
+                <div>
+                  <h3 className="font-bold text-lg">YouTube</h3>
+                  <p className="text-gray-300 text-sm">@earldkaiju</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
           {/* How It Works */}
           <div className="mb-20">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-how-it-works">How It Works</h2>
@@ -339,40 +373,7 @@ export default function EarldKaiju() {
             </div>
           </div>
 
-          {/* Instagram Integration */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-instagram">Follow the Journey</h2>
-            <div className="text-center mb-8">
-              <p className="text-gray-300 mb-6">See recent training sessions, techniques, and student progress on Instagram</p>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
-                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center">
-                  <i className="fas fa-play text-white text-2xl"></i>
-                </div>
-                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center">
-                  <i className="fas fa-image text-white text-2xl"></i>
-                </div>
-                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center">
-                  <i className="fas fa-video text-white text-2xl"></i>
-                </div>
-                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center md:block hidden">
-                  <i className="fas fa-image text-white text-2xl"></i>
-                </div>
-                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center md:block hidden">
-                  <i className="fas fa-play text-white text-2xl"></i>
-                </div>
-                <div className="aspect-square bg-gradient-to-br from-[#39FF14] to-[#00FF00] rounded-xl flex items-center justify-center md:block hidden">
-                  <i className="fas fa-image text-white text-2xl"></i>
-                </div>
-              </div>
-              
-              <Button asChild className="bg-gradient-to-r from-[#39FF14] to-[#00FF00] hover:opacity-90" data-testid="button-instagram">
-                <a href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-instagram mr-2"></i>
-                  Watch More on Instagram
-                </a>
-              </Button>
-            </div>
-          </div>
+
 
           {/* Booking Form */}
           <div id="booking" className="max-w-2xl mx-auto">
