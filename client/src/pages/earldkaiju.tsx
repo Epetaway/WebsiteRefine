@@ -65,28 +65,23 @@ export default function EarldKaiju() {
     <div className="pt-16">
       {/* Hero Section with Banner */}
       <section className="relative py-20 bg-black text-white overflow-hidden">
-        {/* Background Image */}
-        <div 
-          className="absolute inset-0 opacity-70"
-          style={{
-            backgroundImage: `url(${kaijuBanner})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-          }}
-        />
-        
-        {/* Dark overlay for better text readability */}
-        <div className="absolute inset-0 bg-black/60" />
-        
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#39FF14]/20 backdrop-blur-sm text-[#39FF14] border border-[#39FF14]/30 text-sm font-medium mb-6 shadow-lg shadow-[#39FF14]/20">
               <i className="fas fa-fist-raised mr-2"></i>
               IBJJF Black Belt • Competitor • Coach
             </div>
-            {/* Space for centered kaiju logo */}
-            <div className="h-32 lg:h-48 mb-6"></div>
+            
+            {/* Kaiju Logo Image */}
+            <div className="flex justify-center mb-8">
+              <img 
+                src={kaijuBanner} 
+                alt="Earl the Kaiju Logo" 
+                className="w-64 h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
+                data-testid="kaiju-logo"
+              />
+            </div>
+            
             <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto drop-shadow-lg" data-testid="hero-description">
               One-on-one and small-group training for adults and kids in Morris County, NJ. Build real skills, safely and fast.
             </p>
