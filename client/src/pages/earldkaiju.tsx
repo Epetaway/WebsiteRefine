@@ -319,6 +319,13 @@ export default function EarldKaiju() {
               </div>
             ) : (
               <>
+                {/* Debug info */}
+                <div className="text-center mb-8 p-4 bg-white/5 rounded-lg">
+                  <p className="text-sm text-gray-400">
+                    Debug: Found {socialMediaPosts.length} total posts, {youtubePosts.length} YouTube videos, {instagramPosts.length} Instagram posts
+                  </p>
+                </div>
+
                 {/* Instagram Content */}
                 {instagramPosts.length > 0 && (
                   <div className="mb-12">
