@@ -89,12 +89,15 @@ export default function EarldKaiju() {
     },
   });
 
-  // Automatically fetch content when the component loads
+  // Automatically fetch content when the component loads and when data is empty
   useEffect(() => {
-    // Trigger automatic content fetching
-    fetchInstagramMutation.mutate();
-    fetchYoutubeMutation.mutate();
-  }, []);
+    // Only fetch if we don't have data yet
+    if (!socialMediaLoading && socialMediaPosts.length === 0) {
+      console.log('No posts found, triggering fetch...');
+      fetchInstagramMutation.mutate();
+      fetchYoutubeMutation.mutate();
+    }
+  }, [socialMediaData, socialMediaLoading]);
 
   // Debug logging
   useEffect(() => {
