@@ -144,13 +144,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post("/api/social-media/fetch-instagram", async (req, res) => {
     try {
       // Use Python scraper for public Instagram posts
-      const { spawn } = require('child_process');
-      const path = require('path');
+      const { spawn } = await import('child_process');
+      const path = await import('path');
       
       const username = 'earld.kaiju'; // Your Instagram username
       const limit = 7; // Number of posts to fetch
       
-      const scriptPath = path.join(process.cwd(), 'scripts', 'instagram_scraper.py');
+      // Try simple scraper first, fallback to instaloader if needed
+      const scriptPath = path.default.join(process.cwd(), 'scripts', 'simple_instagram_scraper.py');
       const pythonProcess = spawn('python3', [scriptPath, username, limit.toString()]);
       
       let output = '';

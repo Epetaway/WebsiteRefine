@@ -16,14 +16,19 @@ def scrape_instagram_posts(username, limit=10):
     Returns list of post data in format compatible with our database
     """
     try:
-        # Create instaloader instance
+        # Create instaloader instance with minimal settings to avoid detection
         L = instaloader.Instaloader(
             download_video_thumbnails=False,
             download_geotags=False,
             download_comments=False,
             save_metadata=False,
             compress_json=False,
+            quiet=True,  # Reduce output
         )
+        
+        # Add some delay to avoid rate limiting
+        import time
+        time.sleep(2)
         
         # Get profile
         profile = instaloader.Profile.from_username(L.context, username)
