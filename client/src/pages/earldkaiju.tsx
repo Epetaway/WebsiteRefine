@@ -307,10 +307,110 @@ export default function EarldKaiju() {
             </div>
           </div>
 
-          {/* Auto-Updating Gallery */}
+          {/* UFC Fight Card Style Accomplishments Section */}
+          <section className="mb-20">
+            <div className="bg-gradient-to-r from-black via-red-900/20 to-black rounded-2xl p-8 border border-red-500/30 shadow-2xl">
+              {/* Fight Card Header */}
+              <div className="text-center mb-8">
+                <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                  Featured Fighter
+                </div>
+                <h1 className="text-5xl font-bold text-white mb-2">EARL D HICKSON JR</h1>
+                <div className="text-xl text-red-400 font-semibold mb-4">Brazilian Jiu-Jitsu Black Belt</div>
+                <div className="text-gray-300 text-sm uppercase tracking-wide">AMA Fight Club • Parsippany, NJ</div>
+              </div>
+
+              {/* Fighter Stats Grid */}
+              <div className="grid md:grid-cols-2 gap-8 mb-8">
+                {/* Left Side - Bio */}
+                <div className="space-y-6">
+                  <div className="bg-black/60 rounded-xl p-6 border border-red-500/20">
+                    <h3 className="text-red-400 font-bold text-lg mb-4 uppercase tracking-wide">Fighter Profile</h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      Earl Hickson Jr. is a Brazilian Jiu-Jitsu black belt under AMA Fight Club, recognized for his technical precision, relentless pressure, and competitive success across multiple major organizations. Beginning his BJJ journey over a decade ago, Earl progressed through the ranks with consistent dedication, earning medals at the IBJJF, NAGA, Grappling Industries, and other prestigious tournaments in both gi and no-gi divisions.
+                    </p>
+                    <p className="text-gray-300 leading-relaxed mt-4">
+                      Known for his ability to adapt to any opponent—whether in ultra-heavyweight or absolute categories—he has stood on the podium at international events including the IBJJF New York Open, Boston Summer Open, and NAGA World Championships. Now as a black belt, Earl continues to compete, mentor, and inspire students, blending the discipline of high-level competition with a passion for teaching.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Right Side - Fight Record */}
+                <div className="space-y-6">
+                  <div className="bg-black/60 rounded-xl p-6 border border-red-500/20">
+                    <h3 className="text-red-400 font-bold text-lg mb-4 uppercase tracking-wide">Competition Record</h3>
+                    
+                    {/* Medal Stats */}
+                    <div className="grid grid-cols-3 gap-4 mb-6">
+                      <div className="text-center p-4 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                        <div className="text-3xl font-bold text-yellow-500">
+                          {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length}
+                        </div>
+                        <div className="text-xs text-gray-300 uppercase tracking-wide">Gold</div>
+                      </div>
+                      <div className="text-center p-4 bg-gray-300/20 rounded-lg border border-gray-300/30">
+                        <div className="text-3xl font-bold text-gray-300">
+                          {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Silver").length}
+                        </div>
+                        <div className="text-xs text-gray-300 uppercase tracking-wide">Silver</div>
+                      </div>
+                      <div className="text-center p-4 bg-orange-600/20 rounded-lg border border-orange-600/30">
+                        <div className="text-3xl font-bold text-orange-600">
+                          {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Bronze").length}
+                        </div>
+                        <div className="text-xs text-gray-300 uppercase tracking-wide">Bronze</div>
+                      </div>
+                    </div>
+
+                    {/* Recent Victories */}
+                    <div className="space-y-3">
+                      <h4 className="text-white font-semibold mb-3 uppercase tracking-wide text-sm">Recent Results</h4>
+                      {bjjAccomplishments.tournament_history.slice(0, 4).map((tournament: any, index: number) => (
+                        <div key={index} className="flex items-center justify-between p-3 bg-black/40 rounded-lg border border-gray-700/50">
+                          <div className="flex-1">
+                            <p className="text-white text-sm font-medium">{tournament.event.replace(/NAGA|IBJJF/g, '').trim()}</p>
+                            <p className="text-gray-400 text-xs uppercase tracking-wide">{tournament.date}</p>
+                          </div>
+                          <div className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wide ${
+                            tournament.placement === 'Gold' ? 'bg-yellow-500 text-black' :
+                            tournament.placement === 'Silver' ? 'bg-gray-300 text-black' :
+                            tournament.placement === 'Bronze' ? 'bg-orange-600 text-white' :
+                            'bg-gray-600 text-white'
+                          }`}>
+                            {tournament.placement}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Stats Bar */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-red-500/20">
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">{bjjAccomplishments.tournament_history.length}</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Tournaments</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">10+</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Years Training</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">Black</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Belt Rank</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-2xl font-bold text-white">Ultra Heavy</div>
+                  <div className="text-xs text-gray-400 uppercase tracking-wide">Division</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Latest Videos */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-gallery">Training Gallery</h2>
-            <p className="text-center text-gray-300 mb-8">Latest training sessions, techniques, and content automatically updated from @earld.kaiju and @earldkaiju</p>
+            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-gallery">Latest Videos</h2>
             
             {socialMediaLoading ? (
               <div className="text-center py-12">
@@ -319,57 +419,6 @@ export default function EarldKaiju() {
               </div>
             ) : (
               <>
-
-
-                {/* Instagram Content */}
-                {instagramPosts.length > 0 && (
-                  <div className="mb-12">
-                    <h3 className="text-2xl font-bold text-center mb-8 text-white">Instagram Posts</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                      {instagramPosts.slice(0, 6).map((post: SocialMediaPost) => (
-                        <div key={post.id} className="bg-white/5 backdrop-blur rounded-xl overflow-hidden border border-white/10 hover:border-[#39FF14]/30 transition-all group">
-                          <a href={post.permalink} target="_blank" rel="noopener noreferrer" className="block">
-                            {post.thumbnailUrl || post.mediaUrl ? (
-                              <div className="aspect-square bg-black/20 relative overflow-hidden">
-                                <img 
-                                  src={post.thumbnailUrl || post.mediaUrl} 
-                                  alt="Instagram post" 
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                />
-                                {post.mediaType === 'video' && (
-                                  <div className="absolute inset-0 flex items-center justify-center">
-                                    <div className="bg-black/70 rounded-full p-4 shadow-lg">
-                                      <svg 
-                                        className="w-6 h-6 text-white ml-1" 
-                                        fill="currentColor" 
-                                        viewBox="0 0 24 24"
-                                      >
-                                        <path d="M8 5v14l11-7z"/>
-                                      </svg>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            ) : (
-                              <div className="aspect-square bg-gradient-to-br from-[#39FF14]/20 to-black/40 flex items-center justify-center">
-                                <i className="fab fa-instagram text-[#39FF14] text-4xl"></i>
-                              </div>
-                            )}
-                            <div className="p-4">
-                              <p className="text-gray-300 text-sm line-clamp-3">
-                                {post.caption || 'Check out this post on Instagram'}
-                              </p>
-                              <p className="text-[#39FF14] text-xs mt-2">
-                                {new Date(post.timestamp).toLocaleDateString()}
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
                 {/* YouTube Content */}
                 {youtubePosts.length > 0 && (
                   <div className="mb-8">
