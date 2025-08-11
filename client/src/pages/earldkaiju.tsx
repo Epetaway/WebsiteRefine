@@ -308,7 +308,7 @@ export default function EarldKaiju() {
           {/* Auto-Updating Gallery */}
           <div className="mb-20">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-gallery">Training Gallery</h2>
-            <p className="text-center text-gray-300 mb-8">Latest training sessions, techniques, and content automatically updated from Instagram and YouTube</p>
+            <p className="text-center text-gray-300 mb-8">Latest training sessions, techniques, and content automatically updated from @earld.kaiju and @earldkaiju</p>
             
             {socialMediaLoading ? (
               <div className="text-center py-12">
@@ -424,7 +424,7 @@ export default function EarldKaiju() {
                     <h3 className="text-yellow-500 font-semibold mb-2">Instagram Posts Coming Soon</h3>
                     <p className="text-gray-300 text-sm">
                       Threads API integration is configured but needs proper authentication. 
-                      Your Instagram content from @ultrajiujitsu will appear here automatically once the API connection is established.
+                      Your Instagram content from @earld.kaiju will appear here automatically once the API connection is established.
                     </p>
                   </div>
                 )}

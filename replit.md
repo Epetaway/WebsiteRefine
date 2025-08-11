@@ -1,6 +1,6 @@
 # Overview
 
-This is a professional portfolio website for Earl Hickson Jr., a Senior Front-End Developer based in Parsippany, New Jersey. The application showcases case studies, blog posts, professional experience, and provides contact functionality. It also features a unique section for Brazilian Jiu-Jitsu lesson bookings, reflecting Earl's expertise as a BJJ black belt. The site is built with modern web technologies and follows accessibility standards (WCAG).
+This is a professional portfolio website for Earl Hickson Jr., a Senior Front-End Developer based in Parsippany, New Jersey. The application showcases case studies, blog posts, professional experience, and provides contact functionality. It also features a unique section for Brazilian Jiu-Jitsu lesson bookings at /EarldKaiju, reflecting Earl's expertise as a BJJ black belt. The site includes automatic content fetching from social media (@earld.kaiju Instagram and @earldkaiju YouTube) and is built with modern web technologies following accessibility standards (WCAG).
 
 # User Preferences
 
@@ -24,10 +24,12 @@ Preferred communication style: Simple, everyday language.
 - **API Design**: RESTful endpoints for contact forms and BJJ booking submissions
 
 ## Data Storage Solutions
-- **Primary Database**: PostgreSQL with three main tables:
+- **Primary Database**: PostgreSQL with four main tables:
   - Users table for authentication (currently unused but available)
   - Contacts table for general contact form submissions
   - BJJ bookings table for lesson booking requests
+  - Social media posts table for automatic content from Instagram and YouTube
+- **In-Memory Storage**: Used for development with automatic content fetching and caching
 - **Schema Management**: Drizzle Kit for database migrations and schema changes
 - **Validation**: Zod schemas shared between client and server for consistent data validation
 
@@ -67,10 +69,19 @@ Preferred communication style: Simple, everyday language.
 - **React Query**: Server state management and caching
 
 ## External APIs and Services
-- **SendGrid**: Email service integration (configured but implementation details not shown)
+- **SendGrid**: Email service integration for contact forms and notifications
 - **Google Analytics**: Website analytics tracking with GDPR considerations
+- **YouTube Data API v3**: Automatic content fetching from @earldkaiju channel
+- **Threads API**: Instagram content integration for @earld.kaiju (configured, requires authentication)
 - **Font Services**: Google Fonts for typography (Inter and JetBrains Mono)
-- **Font Awesome**: Icon library for UI elements
+- **Custom SVG Icons**: Modern icon system with proper play buttons and social media indicators
+
+## Automatic Content System (Added August 2025)
+- **YouTube Integration**: Fully functional, automatically fetches latest 7 videos every 5 minutes
+- **Instagram Integration**: Configured with Threads API, awaiting proper authentication
+- **Auto-refresh**: Content updates automatically without manual intervention
+- **Responsive Gallery**: Beautiful grid layout with hover effects and proper play buttons
+- **Error Handling**: Graceful fallbacks and status messages for each platform
 
 ## Hosting and Deployment
 - **Replit**: Development and hosting platform with specific plugins and configurations
