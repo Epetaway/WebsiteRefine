@@ -416,39 +416,120 @@ export default function EarldKaiju() {
                   </div>
                 )}
 
-                {/* Instagram Integration Options */}
-                {instagramPosts.length === 0 && (
-                  <div className="mb-8 text-center p-6 bg-purple-900/20 rounded-lg border border-purple-600/30">
-                    <svg className="w-12 h-12 text-purple-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                {/* Social Media CTAs */}
+                <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                  <a 
+                    href="https://instagram.com/earld.kaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.65-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
                     </svg>
-                    <h3 className="text-purple-500 font-semibold mb-2">Instagram Content Options</h3>
-                    <p className="text-gray-300 text-sm mb-4">
-                      Instagram has strong anti-scraping measures. Here are your options for automatic content:
+                    Follow on Instagram
+                  </a>
+                  <a 
+                    href={`https://youtube.com/@earldkaiju`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-lg hover:from-red-600 hover:to-red-700 transition-all duration-200 transform hover:scale-105"
+                  >
+                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                    Subscribe on YouTube
+                  </a>
+                </div>
+
+                {/* Accolades Section */}
+                <section className="mt-16">
+                  <div className="text-center mb-8">
+                    <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      Competition Record
+                    </h2>
+                    <p className="text-gray-400 max-w-2xl mx-auto">
+                      Brazilian Jiu-Jitsu competition results and achievements tracked from major tournaments.
                     </p>
-                    <div className="text-left space-y-2 text-sm">
-                      <div className="text-green-400">✓ Commercial API Service ($29-49/month) - Most reliable</div>
-                      <div className="text-yellow-400">⚡ Manual Content Upload - Full control</div>
-                      <div className="text-blue-400">🔗 Link to Instagram Profile - Simple redirect</div>
-                    </div>
-                    <div className="mt-4">
-                      <a 
-                        href="https://instagram.com/earld.kaiju" 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-200"
+                  </div>
+
+                  {/* Accolades will be populated here */}
+                  <div className="mb-8 text-center p-6 bg-yellow-900/20 rounded-lg border border-yellow-600/30">
+                    <svg className="w-12 h-12 text-yellow-500 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <h3 className="text-yellow-500 font-semibold mb-2">Competition Tracking</h3>
+                    <p className="text-gray-300 text-sm">
+                      Setting up automatic tracking of competition results from SmoothComp and IBJJF for Earl D Hickson Jr.
+                      Results will appear here once configured.
+                    </p>
+                  </div>
+                </section>
+
+
+
+                {/* YouTube Videos Grid */}
+                {youtubePosts.length > 0 && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                    {youtubePosts.map((post, index) => (
+                      <div 
+                        key={post.postId} 
+                        className={`group ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
                       >
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.65-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
-                        </svg>
-                        Visit @earld.kaiju on Instagram
-                      </a>
-                    </div>
+                        <a 
+                          href={post.permalink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="block bg-gradient-to-br from-black/60 to-black/80 rounded-xl overflow-hidden border border-purple-600/30 hover:border-[#39FF14]/60 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/30 transform hover:scale-[1.03] hover:-translate-y-2"
+                        >
+                          <div className={`relative ${index === 0 ? 'aspect-[16/10]' : 'aspect-video'} bg-black/60 overflow-hidden`}>
+                            <img 
+                              src={post.thumbnailUrl} 
+                              alt={post.caption || 'YouTube video thumbnail'}
+                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                              loading="lazy"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-all duration-300">
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="bg-red-600/90 hover:bg-red-500 backdrop-blur-sm rounded-full p-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                                  <svg 
+                                    className="w-8 h-8 text-white ml-1" 
+                                    fill="currentColor" 
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <path d="M8 5v14l11-7z"/>
+                                  </svg>
+                                </div>
+                              </div>
+                              <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs">
+                                Video
+                              </div>
+                            </div>
+                          </div>
+                          <div className="p-6">
+                            <p className={`text-gray-300 ${index === 0 ? 'text-lg' : 'text-sm'} line-clamp-3 mb-3`}>
+                              {post.caption || 'Watch this video on YouTube'}
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <p className="text-[#39FF14] text-xs font-semibold">
+                                {new Date(post.timestamp).toLocaleDateString()}
+                              </p>
+                              <div className="flex items-center gap-2 text-gray-400 text-xs">
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                </svg>
+                                YouTube
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    ))}
                   </div>
                 )}
 
                 {/* No content state */}
-                {instagramPosts.length === 0 && youtubePosts.length === 0 && (
+                {youtubePosts.length === 0 && (
                   <div className="text-center py-12">
                     <svg className="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
