@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { insertBjjBookingSchema, type InsertBjjBooking } from "@shared/schema";
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+import { insertBjjBookingSchema, type InsertBjjBooking, type SocialMediaPost } from "@shared/schema";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
@@ -61,20 +61,39 @@ export default function EarldKaiju() {
     bookingMutation.mutate(data);
   };
 
-  // Load Instagram embed script
+  // Fetch social media posts automatically
+  const { data: socialMediaData, isLoading: socialMediaLoading } = useQuery({
+    queryKey: ['/api/social-media'],
+    refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
+  });
+
+  const socialMediaPosts = socialMediaData?.posts || [];
+  const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
+  const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
+
+  // Auto-fetch Instagram posts on load
+  const fetchInstagramMutation = useMutation({
+    mutationFn: () => apiRequest('/api/social-media/fetch-instagram', 'POST', {}),
+    onSuccess: () => {
+      // Refetch social media posts after successful Instagram fetch
+      queryClient.invalidateQueries({ queryKey: ['/api/social-media'] });
+    },
+  });
+
+  // Auto-fetch YouTube posts on load
+  const fetchYoutubeMutation = useMutation({
+    mutationFn: () => apiRequest('/api/social-media/fetch-youtube', 'POST', {}),
+    onSuccess: () => {
+      // Refetch social media posts after successful YouTube fetch
+      queryClient.invalidateQueries({ queryKey: ['/api/social-media'] });
+    },
+  });
+
+  // Automatically fetch content when the component loads
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://www.instagram.com/embed.js';
-    script.async = true;
-    document.body.appendChild(script);
-    
-    return () => {
-      // Cleanup script on unmount
-      const existingScript = document.querySelector('script[src="https://www.instagram.com/embed.js"]');
-      if (existingScript) {
-        document.body.removeChild(existingScript);
-      }
-    };
+    // Trigger automatic content fetching
+    fetchInstagramMutation.mutate();
+    fetchYoutubeMutation.mutate();
   }, []);
 
   return (
@@ -281,92 +300,112 @@ export default function EarldKaiju() {
             </div>
           </div>
 
-          {/* Instagram Gallery */}
+          {/* Auto-Updating Gallery */}
           <div className="mb-20">
             <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-gallery">Training Gallery</h2>
-            <p className="text-center text-gray-300 mb-8">See recent training sessions, techniques, and student progress</p>
+            <p className="text-center text-gray-300 mb-8">Latest training sessions, techniques, and content automatically updated from Instagram and YouTube</p>
             
-            {/* Instagram Embeds Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-8">
-              {/* Instagram Post Embeds - Replace with actual post URLs */}
-              <div className="bg-white/5 backdrop-blur rounded-xl p-4 border border-white/10">
-                <blockquote 
-                  className="instagram-media" 
-                  data-instgrm-captioned 
-                  data-instgrm-permalink="https://www.instagram.com/p/SAMPLE1/" 
-                  data-instgrm-version="14"
-                  style={{
-                    background: '#FFF',
-                    border: '0',
-                    borderRadius: '3px',
-                    boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-                    margin: '1px',
-                    maxWidth: '100%',
-                    minWidth: '326px',
-                    padding: '0',
-                    width: '99.375%'
-                  }}
-                >
-                  <div className="text-center p-8 text-gray-400">
-                    <i className="fab fa-instagram text-4xl mb-4 block"></i>
-                    <p>Instagram post will appear here</p>
-                    <p className="text-sm">Visit @ultrajiujitsu to see latest content</p>
-                  </div>
-                </blockquote>
+            {socialMediaLoading ? (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-[#39FF14] mb-4"></div>
+                <p className="text-gray-300">Loading latest content...</p>
               </div>
-              
-              <div className="bg-white/5 backdrop-blur rounded-xl p-4 border border-white/10">
-                <blockquote 
-                  className="instagram-media" 
-                  data-instgrm-captioned 
-                  data-instgrm-permalink="https://www.instagram.com/p/SAMPLE2/" 
-                  data-instgrm-version="14"
-                  style={{
-                    background: '#FFF',
-                    border: '0',
-                    borderRadius: '3px',
-                    boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-                    margin: '1px',
-                    maxWidth: '100%',
-                    minWidth: '326px',
-                    padding: '0',
-                    width: '99.375%'
-                  }}
-                >
-                  <div className="text-center p-8 text-gray-400">
-                    <i className="fab fa-instagram text-4xl mb-4 block"></i>
-                    <p>Instagram post will appear here</p>
-                    <p className="text-sm">Visit @ultrajiujitsu to see latest content</p>
+            ) : (
+              <>
+                {/* Instagram Content */}
+                {instagramPosts.length > 0 && (
+                  <div className="mb-12">
+                    <h3 className="text-2xl font-bold text-center mb-8 text-white">Instagram Posts</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                      {instagramPosts.slice(0, 6).map((post: SocialMediaPost) => (
+                        <div key={post.id} className="bg-white/5 backdrop-blur rounded-xl overflow-hidden border border-white/10 hover:border-[#39FF14]/30 transition-all group">
+                          <a href={post.permalink} target="_blank" rel="noopener noreferrer" className="block">
+                            {post.thumbnailUrl || post.mediaUrl ? (
+                              <div className="aspect-square bg-black/20 relative overflow-hidden">
+                                <img 
+                                  src={post.thumbnailUrl || post.mediaUrl} 
+                                  alt="Instagram post" 
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                />
+                                {post.mediaType === 'video' && (
+                                  <div className="absolute inset-0 flex items-center justify-center">
+                                    <div className="bg-black/50 rounded-full p-3">
+                                      <i className="fas fa-play text-white text-xl"></i>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            ) : (
+                              <div className="aspect-square bg-gradient-to-br from-[#39FF14]/20 to-black/40 flex items-center justify-center">
+                                <i className="fab fa-instagram text-[#39FF14] text-4xl"></i>
+                              </div>
+                            )}
+                            <div className="p-4">
+                              <p className="text-gray-300 text-sm line-clamp-3">
+                                {post.caption || 'Check out this post on Instagram'}
+                              </p>
+                              <p className="text-[#39FF14] text-xs mt-2">
+                                {new Date(post.timestamp).toLocaleDateString()}
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </blockquote>
-              </div>
-              
-              <div className="bg-white/5 backdrop-blur rounded-xl p-4 border border-white/10">
-                <blockquote 
-                  className="instagram-media" 
-                  data-instgrm-captioned 
-                  data-instgrm-permalink="https://www.instagram.com/p/SAMPLE3/" 
-                  data-instgrm-version="14"
-                  style={{
-                    background: '#FFF',
-                    border: '0',
-                    borderRadius: '3px',
-                    boxShadow: '0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)',
-                    margin: '1px',
-                    maxWidth: '100%',
-                    minWidth: '326px',
-                    padding: '0',
-                    width: '99.375%'
-                  }}
-                >
-                  <div className="text-center p-8 text-gray-400">
-                    <i className="fab fa-instagram text-4xl mb-4 block"></i>
-                    <p>Instagram post will appear here</p>
-                    <p className="text-sm">Visit @ultrajiujitsu to see latest content</p>
+                )}
+
+                {/* YouTube Content */}
+                {youtubePosts.length > 0 && (
+                  <div className="mb-8">
+                    <h3 className="text-2xl font-bold text-center mb-8 text-white">YouTube Videos</h3>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+                      {youtubePosts.slice(0, 6).map((post: SocialMediaPost) => (
+                        <div key={post.id} className="bg-white/5 backdrop-blur rounded-xl overflow-hidden border border-white/10 hover:border-[#39FF14]/30 transition-all group">
+                          <a href={post.permalink} target="_blank" rel="noopener noreferrer" className="block">
+                            <div className="aspect-video bg-black/20 relative overflow-hidden">
+                              {post.thumbnailUrl ? (
+                                <img 
+                                  src={post.thumbnailUrl} 
+                                  alt="YouTube video thumbnail" 
+                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
+                                />
+                              ) : (
+                                <div className="w-full h-full bg-gradient-to-br from-red-600/20 to-black/40 flex items-center justify-center">
+                                  <i className="fab fa-youtube text-red-500 text-4xl"></i>
+                                </div>
+                              )}
+                              <div className="absolute inset-0 flex items-center justify-center">
+                                <div className="bg-red-600/80 rounded-full p-3">
+                                  <i className="fas fa-play text-white text-xl"></i>
+                                </div>
+                              </div>
+                            </div>
+                            <div className="p-4">
+                              <p className="text-gray-300 text-sm line-clamp-2">
+                                {post.caption || 'Watch this video on YouTube'}
+                              </p>
+                              <p className="text-[#39FF14] text-xs mt-2">
+                                {new Date(post.timestamp).toLocaleDateString()}
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </blockquote>
-              </div>
-            </div>
+                )}
+
+                {/* No content state */}
+                {instagramPosts.length === 0 && youtubePosts.length === 0 && (
+                  <div className="text-center py-12">
+                    <i className="fas fa-camera text-4xl text-gray-500 mb-4 block"></i>
+                    <p className="text-gray-400 mb-4">No content available yet</p>
+                    <p className="text-gray-500 text-sm">Content will appear automatically when API keys are configured</p>
+                  </div>
+                )}
+              </>
+            )}
             
             {/* Social Media Links */}
             <div className="flex justify-center gap-8">
