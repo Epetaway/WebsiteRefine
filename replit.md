@@ -72,13 +72,13 @@ Preferred communication style: Simple, everyday language.
 - **SendGrid**: Email service integration for contact forms and notifications
 - **Google Analytics**: Website analytics tracking with GDPR considerations
 - **YouTube Data API v3**: Automatic content fetching from @earldkaiju channel
-- **Threads API**: Instagram content integration for @earld.kaiju (configured, requires authentication)
+- **Threads API**: Instagram content integration for @earld.kaiju (App ID/Secret configured, requires OAuth access token)
 - **Font Services**: Google Fonts for typography (Inter and JetBrains Mono)
 - **Custom SVG Icons**: Modern icon system with proper play buttons and social media indicators
 
 ## Automatic Content System (Added August 2025)
 - **YouTube Integration**: Fully functional, automatically fetches latest 7 videos every 5 minutes
-- **Instagram Integration**: Configured with Threads API, awaiting proper authentication
+- **Instagram Integration**: Threads API App ID/Secret configured, needs OAuth flow to get access token
 - **Auto-refresh**: Content updates automatically without manual intervention
 - **Responsive Gallery**: Beautiful grid layout with hover effects and proper play buttons
 - **Error Handling**: Graceful fallbacks and status messages for each platform
