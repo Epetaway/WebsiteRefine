@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { OAuthConnect } from "@/components/oauth-connect";
 import kaijuBanner from "@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png";
+import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
 export default function EarldKaiju() {
   const { toast } = useToast();
@@ -420,71 +421,221 @@ export default function EarldKaiju() {
 
 
 
-                {/* YouTube Videos Grid */}
+                {/* YouTube Videos Section */}
                 {youtubePosts.length > 0 && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-                    {youtubePosts.map((post, index) => (
-                      <div 
-                        key={post.postId} 
-                        className={`group ${index === 0 ? 'md:col-span-2 lg:col-span-2' : ''}`}
-                      >
-                        <a 
-                          href={post.permalink} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="block bg-gradient-to-br from-black/60 to-black/80 rounded-xl overflow-hidden border border-purple-600/30 hover:border-[#39FF14]/60 transition-all duration-500 hover:shadow-2xl hover:shadow-purple-500/30 transform hover:scale-[1.03] hover:-translate-y-2"
+                  <div className="mb-16">
+                    <div className="text-center mb-8">
+                      <h2 className="text-3xl font-bold mb-4 bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">
+                        Latest BJJ Content
+                      </h2>
+                      <p className="text-gray-400 mb-6">Check out my latest Brazilian Jiu-Jitsu techniques and training videos</p>
+                      
+                      {/* Like, Comment, Subscribe CTA */}
+                      <div className="flex items-center justify-center gap-6 mb-8 text-sm text-gray-300">
+                        <div className="flex items-center gap-2">
+                          <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6"/>
+                            <path d="M16 10.5l-6-4.5v9"/>
+                          </svg>
+                          <span>Like</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M9 22a1 1 0 01-1-1v-3H4a2 2 0 01-2-2V4a2 2 0 012-2h16a2 2 0 012 2v12a2 2 0 01-2 2h-6.1l-3.7 3.71c-.2.19-.45.29-.7.29H9z"/>
+                          </svg>
+                          <span>Comment</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <svg className="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                          </svg>
+                          <span>Subscribe</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Show only 4 most recent videos */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                      {youtubePosts.slice(0, 4).map((post, index) => (
+                        <div 
+                          key={post.postId} 
+                          className="group"
                         >
-                          <div className={`relative ${index === 0 ? 'aspect-[16/10]' : 'aspect-video'} bg-black/60 overflow-hidden`}>
-                            <img 
-                              src={post.thumbnailUrl} 
-                              alt={post.caption || 'YouTube video thumbnail'}
-                              className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                              loading="lazy"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-all duration-300">
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="bg-red-600/90 hover:bg-red-500 backdrop-blur-sm rounded-full p-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
-                                  <svg 
-                                    className="w-8 h-8 text-white ml-1" 
-                                    fill="currentColor" 
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M8 5v14l11-7z"/>
-                                  </svg>
+                          <a 
+                            href={post.permalink} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="block bg-gradient-to-br from-black/60 to-black/80 rounded-xl overflow-hidden border border-purple-600/30 hover:border-[#39FF14]/60 transition-all duration-500 hover:shadow-2xl hover:shadow-red-500/30 transform hover:scale-[1.03] hover:-translate-y-2"
+                          >
+                            <div className="relative aspect-video bg-black/60 overflow-hidden">
+                              <img 
+                                src={post.thumbnailUrl} 
+                                alt={post.caption || 'YouTube video thumbnail'}
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                loading="lazy"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent group-hover:from-black/40 transition-all duration-300">
+                                <div className="absolute inset-0 flex items-center justify-center">
+                                  <div className="bg-red-600/90 hover:bg-red-500 backdrop-blur-sm rounded-full p-4 group-hover:scale-110 transition-all duration-300 shadow-lg">
+                                    <svg 
+                                      className="w-8 h-8 text-white ml-1" 
+                                      fill="currentColor" 
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path d="M8 5v14l11-7z"/>
+                                    </svg>
+                                  </div>
+                                </div>
+                                <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs">
+                                  Video
                                 </div>
                               </div>
-                              <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-sm px-2 py-1 rounded text-white text-xs">
-                                Video
-                              </div>
                             </div>
-                          </div>
-                          <div className="p-6">
-                            <p className={`text-gray-300 ${index === 0 ? 'text-lg' : 'text-sm'} line-clamp-3 mb-3`}>
-                              {post.caption || 'Watch this video on YouTube'}
-                            </p>
-                            <div className="flex items-center justify-between">
-                              <p className="text-[#39FF14] text-xs font-semibold">
-                                {new Date(post.timestamp).toLocaleDateString()}
+                            <div className="p-6">
+                              <p className="text-gray-300 text-sm line-clamp-3 mb-3">
+                                {post.caption || 'Watch this video on YouTube'}
                               </p>
-                              <div className="flex items-center gap-2 text-gray-400 text-xs">
-                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                                </svg>
-                                YouTube
+                              <div className="flex items-center justify-between">
+                                <p className="text-[#39FF14] text-xs font-semibold">
+                                  {new Date(post.timestamp).toLocaleDateString()}
+                                </p>
+                                <div className="flex items-center gap-2 text-gray-400 text-xs">
+                                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                                  </svg>
+                                  YouTube
+                                </div>
                               </div>
                             </div>
-                          </div>
-                        </a>
-                      </div>
-                    ))}
+                          </a>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* See More CTA Button */}
+                    <div className="text-center">
+                      <a 
+                        href="https://youtube.com/@earldkaiju" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-red-600 to-red-700 text-white rounded-xl hover:from-red-700 hover:to-red-800 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-red-500/30"
+                      >
+                        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                        <span className="font-semibold">Watch More on YouTube</span>
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 )}
+
+                {/* BJJ Accomplishments Section */}
+                <section className="mb-16">
+                  <div className="text-center mb-12">
+                    <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                      About Earl D Hickson Jr
+                    </h2>
+                    <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                      Black belt competitor with extensive tournament experience across NAGA, IBJJF, and regional competitions
+                    </p>
+                  </div>
+
+                  {/* Training Background */}
+                  <div className="grid md:grid-cols-2 gap-8 mb-12">
+                    <div className="bg-gradient-to-br from-black/60 to-black/80 rounded-xl p-8 border border-purple-600/30">
+                      <h3 className="text-2xl font-bold mb-6 text-[#39FF14]">Training Background</h3>
+                      {bjjAccomplishments.profile.schools.map((school, index) => (
+                        <div key={index} className="mb-6 last:mb-0">
+                          <div className="flex items-start gap-4">
+                            <div className="w-3 h-3 bg-[#39FF14] rounded-full mt-2 flex-shrink-0"></div>
+                            <div>
+                              <h4 className="text-lg font-semibold text-white">{school.name}</h4>
+                              <p className="text-gray-400 text-sm mb-2">{school.location} • {school.period}</p>
+                              <p className="text-gray-300 text-sm mb-2">{school.role}</p>
+                              <ul className="text-gray-400 text-sm space-y-1">
+                                {school.achievements.map((achievement, i) => (
+                                  <li key={i} className="flex items-center gap-2">
+                                    <svg className="w-4 h-4 text-[#39FF14]" fill="currentColor" viewBox="0 0 20 20">
+                                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+                                    </svg>
+                                    {achievement}
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Competition Stats */}
+                    <div className="bg-gradient-to-br from-black/60 to-black/80 rounded-xl p-8 border border-purple-600/30">
+                      <h3 className="text-2xl font-bold mb-6 text-[#39FF14]">Competition Record</h3>
+                      
+                      {/* Medal Count */}
+                      <div className="grid grid-cols-3 gap-4 mb-6">
+                        <div className="text-center p-4 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
+                          <div className="text-2xl font-bold text-yellow-500">
+                            {bjjAccomplishments.tournament_history.filter(t => t.placement === "Gold").length}
+                          </div>
+                          <div className="text-sm text-gray-300">Gold</div>
+                        </div>
+                        <div className="text-center p-4 bg-gray-300/20 rounded-lg border border-gray-300/30">
+                          <div className="text-2xl font-bold text-gray-300">
+                            {bjjAccomplishments.tournament_history.filter(t => t.placement === "Silver").length}
+                          </div>
+                          <div className="text-sm text-gray-300">Silver</div>
+                        </div>
+                        <div className="text-center p-4 bg-orange-600/20 rounded-lg border border-orange-600/30">
+                          <div className="text-2xl font-bold text-orange-600">
+                            {bjjAccomplishments.tournament_history.filter(t => t.placement === "Bronze").length}
+                          </div>
+                          <div className="text-sm text-gray-300">Bronze</div>
+                        </div>
+                      </div>
+
+                      {/* Recent Achievements */}
+                      <div className="space-y-4">
+                        <h4 className="text-lg font-semibold text-white mb-4">Recent Highlights</h4>
+                        {bjjAccomplishments.tournament_history.slice(0, 3).map((tournament, index) => (
+                          <div key={index} className="flex items-center gap-4 p-3 bg-black/40 rounded-lg">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold ${
+                              tournament.placement === 'Gold' ? 'bg-yellow-500 text-black' :
+                              tournament.placement === 'Silver' ? 'bg-gray-300 text-black' :
+                              tournament.placement === 'Bronze' ? 'bg-orange-600 text-white' :
+                              'bg-gray-600 text-white'
+                            }`}>
+                              {tournament.placement === 'Gold' ? '🥇' : 
+                               tournament.placement === 'Silver' ? '🥈' : 
+                               tournament.placement === 'Bronze' ? '🥉' : '🏆'}
+                            </div>
+                            <div className="flex-1">
+                              <p className="text-white text-sm font-medium">{tournament.event}</p>
+                              <p className="text-gray-400 text-xs">{tournament.date}</p>
+                            </div>
+                            <div className={`px-2 py-1 rounded text-xs font-medium ${
+                              tournament.placement === 'Gold' ? 'bg-yellow-500/20 text-yellow-500' :
+                              tournament.placement === 'Silver' ? 'bg-gray-300/20 text-gray-300' :
+                              tournament.placement === 'Bronze' ? 'bg-orange-600/20 text-orange-600' :
+                              'bg-gray-600/20 text-gray-400'
+                            }`}>
+                              {tournament.placement}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </section>
 
                 {/* No content state */}
                 {youtubePosts.length === 0 && (
                   <div className="text-center py-12">
                     <svg className="w-16 h-16 text-gray-500 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                     </svg>
                     <p className="text-gray-400 mb-4">No content available yet</p>
                     <p className="text-gray-500 text-sm">Content will appear automatically when API keys are configured</p>
