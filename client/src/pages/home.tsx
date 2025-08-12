@@ -4,6 +4,7 @@ import WinTile from "@/components/ui/win-tile";
 import TechBadge from "@/components/ui/tech-badge";
 import BlogCard from "@/components/ui/blog-card";
 import { blogPosts } from "@/data/blog-posts";
+import profileImage from "@/images/me.png";
 
 export default function Home() {
   const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 2);
@@ -62,7 +63,7 @@ export default function Home() {
             {/* Profile Image */}
             <div className="relative animate-float">
               <img 
-                src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" 
+                src={profileImage} 
                 alt="Earl Hickson Jr. - Professional headshot of a Front-End Engineer" 
                 className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
                 data-testid="hero-image"

@@ -1,4 +1,5 @@
 import { workExperience } from "@/data/experience";
+import aboutImage from "@/images/justMe.png";
 
 export default function About() {
   const skills = [
@@ -76,10 +77,10 @@ export default function About() {
               
               <div className="mb-6">
                 <img 
-                  src="https://www.ehicksonjr.com/_next/static/media/MeBjj_2.6bf53e95.jpg" 
-                  alt="Earl Hickson Jr. in Brazilian Jiu-Jitsu training gear demonstrating technique" 
+                  src={aboutImage} 
+                  alt="Earl Hickson Jr. at a professional event, showcasing his personal and professional development" 
                   className="w-full rounded-xl mb-4"
-                  data-testid="bjj-image"
+                  data-testid="about-image"
                 />
               </div>
 
@@ -132,28 +133,25 @@ export default function About() {
             </div>
           </div>
 
-          {/* Personal Images */}
+          {/* Personal Values */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8" data-testid="section-title-personal">Personal</h2>
-            <div className="grid md:grid-cols-3 gap-6">
-              <img 
-                src="https://www.ehicksonjr.com/_next/static/media/us.21fce331.jpeg" 
-                alt="Earl Hickson Jr. with family"
-                className="w-full rounded-xl"
-                data-testid="image-family"
-              />
-              <img 
-                src="https://www.ehicksonjr.com/_next/static/media/BjjClass.2d33ac4d.jpg" 
-                alt="Brazilian Jiu-Jitsu class training session"
-                className="w-full rounded-xl"
-                data-testid="image-bjj-class"
-              />
-              <img 
-                src="https://www.ehicksonjr.com/_next/static/media/justMe.03e56064.png" 
-                alt="Earl Hickson Jr. professional portrait"
-                className="w-full rounded-xl"
-                data-testid="image-professional"
-              />
+            <h2 className="text-3xl font-bold mb-8" data-testid="section-title-personal">Personal Values</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center p-6 bg-gray-50 rounded-xl">
+                <i className="fas fa-family text-primary-500 text-3xl mb-4"></i>
+                <h3 className="font-semibold mb-2">Family First</h3>
+                <p className="text-sm text-gray-600">Father and husband who brings the same dedication to family life as to professional projects</p>
+              </div>
+              <div className="text-center p-6 bg-gray-50 rounded-xl">
+                <i className="fas fa-fist-raised text-primary-500 text-3xl mb-4"></i>
+                <h3 className="font-semibold mb-2">Martial Arts</h3>
+                <p className="text-sm text-gray-600">BJJ black belt teaching discipline, patience, and continuous improvement</p>
+              </div>
+              <div className="text-center p-6 bg-gray-50 rounded-xl">
+                <i className="fas fa-code text-primary-500 text-3xl mb-4"></i>
+                <h3 className="font-semibold mb-2">Engineering</h3>
+                <p className="text-sm text-gray-600">Creating accessible, performant web experiences that make a real difference</p>
+              </div>
             </div>
           </div>
 

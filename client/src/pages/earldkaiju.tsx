@@ -13,8 +13,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { OAuthConnect } from "@/components/oauth-connect";
-import kaijuBanner from "@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png";
-import earlBjjPhoto from "@assets/Screenshot_20250811-184848_1754963908044.png";
+import kaijuBanner from "@/images/kaiju-banner.png";
+import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
 export default function EarldKaiju() {
@@ -72,7 +72,7 @@ export default function EarldKaiju() {
     refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
   });
 
-  const socialMediaPosts = socialMediaData?.posts || [];
+  const socialMediaPosts: SocialMediaPost[] = socialMediaData?.posts || [];
   const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
   const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
 
@@ -498,7 +498,7 @@ export default function EarldKaiju() {
 
                     {/* Show only 4 most recent videos */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                      {youtubePosts.slice(0, 4).map((post, index) => (
+                      {youtubePosts.slice(0, 4).map((post: SocialMediaPost, index: number) => (
                         <div 
                           key={post.postId} 
                           className="group"
@@ -801,11 +801,14 @@ export default function EarldKaiju() {
                         <FormLabel className="text-white">Goals & Experience</FormLabel>
                         <FormControl>
                           <Textarea 
-                            {...field}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="Tell me about your goals, any previous experience, injuries, or questions..."
                             rows={4}
                             data-testid="textarea-goals"
+                            value={field.value || ''}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            name={field.name}
                           />
                         </FormControl>
                         <FormMessage />
@@ -821,10 +824,13 @@ export default function EarldKaiju() {
                         <FormLabel className="text-white">Preferred Times</FormLabel>
                         <FormControl>
                           <Input 
-                            {...field}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="e.g., Weekday evenings, Saturday mornings"
                             data-testid="input-availability"
+                            value={field.value || ''}
+                            onChange={field.onChange}
+                            onBlur={field.onBlur}
+                            name={field.name}
                           />
                         </FormControl>
                         <FormMessage />
