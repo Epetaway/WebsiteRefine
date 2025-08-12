@@ -1,0 +1,33 @@
+3s
+Run npm run build
+
+> tailwindui-template@0.1.0 build
+> next build
+
+- warn Invalid next.config.js options detected: 
+- warn     The value at .experimental has an unexpected property, images, which is not in the list of allowed properties (appDocumentPreloading, adjustFontFallbacks, adjustFontFallbacksWithSizeAdjust, allowedRevalidateHeaderKeys, amp, clientRouterFilter, clientRouterFilterRedirects, clientRouterFilterAllowedRate, cpus, memoryBasedWorkersCount, craCompat, disableOptimizedLoading, disablePostcssPresetEnv, esmExternals, appDir, serverActions, extensionAlias, externalDir, externalMiddlewareRewritesResolve, fallbackNodePolyfills, fetchCacheKeyPrefix, forceSwcTransforms, fullySpecified, gzipSize, incrementalCacheHandlerPath, isrFlushToDisk, isrMemoryCacheSize, largePageDataBytes, legacyBrowsers, manualClientBasePath, middlewarePrefetch, newNextLinkBehavior, nextScriptWorkers, optimizeCss, optimisticClientCache, outputFileTracingRoot, outputFileTracingExcludes, outputFileTracingIgnores, outputFileTracingIncludes, pageEnv, proxyTimeout, serverComponentsExternalPackages, scrollRestoration, sharedPool, sri, strictNextHead, swcFileReading, swcMinify, swcPlugins, swcTraceProfiling, urlImports, workerThreads, webVitalsAttribution, mdxRs, typedRoutes, webpackBuildWorker, turbo, instrumentationHook, turbotrace, logging).
+- warn See more info here: https://nextjs.org/docs/messages/invalid-next-config
+- warn You have enabled experimental feature (images) in next.config.js.
+- warn Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+- info Linting and checking validity of types...
+
+Failed to compile.
+
+./src/pages/earldkaiju.jsx
+74:45  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+74:51  Error: `"` can be escaped with `&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`.  react/no-unescaped-entities
+119:30  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+123:29  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+152:74  Error: `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.  react/no-unescaped-entities
+
+./src/pages/jiujitsu.jsx
+23:9  Warning: Custom fonts not added in `pages/_document.js` will only load for a single page. This is discouraged. See: https://nextjs.org/docs/messages/no-page-custom-font  @next/next/no-page-custom-font
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/basic-features/eslint#disabling-rules
+Error: Process completed with exit code 1.

@@ -1,0 +1,102 @@
+You’ve got **two separate issues**:
+
+---
+
+## 1) Invalid `next.config.js` — `experimental.images`
+
+That warning means you’re setting `experimental.images`, which isn’t a valid key anymore. Move any image settings under the **top-level `images`** key (or just remove that block).
+
+**Fix:**
+
+```js
+// next.config.js (CommonJS)
+const withMDX = require('@next/mdx')({ extension: /\.mdx?$/ });
+
+module.exports = withMDX({
+  // ✅ put image config here, not under experimental
+  images: {
+    // example options (adjust/remove if you don’t use them)
+    domains: ['images.example.com'],
+    // remotePatterns: [{ protocol: 'https', hostname: '...' }],
+  },
+
+  // enable .md/.mdx pages
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+
+  // remove this if you had it:
+  // experimental: { images: { ... } }
+});
+```
+
+If you use ESM:
+
+```js
+// next.config.mjs (ESM)
+import createMDX from '@next/mdx';
+
+const withMDX = createMDX({ extension: /\.mdx?$/ });
+
+export default withMDX({
+  images: { domains: ['images.example.com'] },
+  pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
+});
+```
+
+---
+
+## 2) MDX files aren’t being compiled
+
+The error:
+
+```
+You may need an appropriate loader to handle this file type (.mdx)
+```
+
+means Next isn’t set up to process MDX. Add the MDX plugin and extensions.
+
+**Install (dev deps):**
+
+```bash
+npm i -D @next/mdx @mdx-js/loader
+# If you use MDX components, also:
+npm i @mdx-js/react
+# Optional, but common:
+npm i -D remark-gfm rehype-slug
+```
+
+**Ensure page extensions include MD/MDX** (shown in the config above).
+
+If you want global MDX components (optional), wire up a provider:
+
+```jsx
+// src/pages/_app.jsx
+import { MDXProvider } from '@mdx-js/react';
+
+const components = {
+  // map MDX tags to React components if you need to
+  // h1: (props) => <h1 className="..." {...props} />,
+};
+
+export default function App({ Component, pageProps }) {
+  return (
+    <MDXProvider components={components}>
+      <Component {...pageProps} />
+    </MDXProvider>
+  );
+}
+```
+
+---
+
+## Quick checklist
+
+1. **Remove** `experimental.images` from `next.config.*`.
+2. **Add** MDX support via `@next/mdx` and set `pageExtensions: ['md', 'mdx', ...]`.
+3. **Install** MDX packages (`@next/mdx`, `@mdx-js/loader`, optionally `@mdx-js/react`).
+4. Re-run:
+
+   ```bash
+   rm -rf .next && npm run build
+   ```
+
+That should resolve both the warnings and the webpack “no loader for .mdx” build failure. If it still fails, paste your exact `next.config.*` and package versions and I’ll tweak the config to match.

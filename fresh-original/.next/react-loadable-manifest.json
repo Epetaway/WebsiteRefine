@@ -1,0 +1,20 @@
+{
+  "index.jsx -> @/components/LetsConnect": {
+    "id": "index.jsx -> @/components/LetsConnect",
+    "files": [
+      "static/chunks/src_components_LetsConnect_jsx.js"
+    ]
+  },
+  "index.jsx -> @/components/Resume": {
+    "id": "index.jsx -> @/components/Resume",
+    "files": [
+      "static/chunks/src_components_Resume_jsx.js"
+    ]
+  },
+  "index.jsx -> @/components/TreehouseSkills": {
+    "id": "index.jsx -> @/components/TreehouseSkills",
+    "files": [
+      "static/chunks/src_components_TreehouseSkills_jsx.js"
+    ]
+  }
+}
