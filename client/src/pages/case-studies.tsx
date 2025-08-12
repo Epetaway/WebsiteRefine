@@ -94,7 +94,7 @@ export default function CaseStudies() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a 
-              href="mailto:hello@ehicksonjr.com" 
+              href="mailto:e@ehicksonjr.com" 
               className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
               data-testid="button-contact"
             >
@@ -102,7 +102,7 @@ export default function CaseStudies() {
               Start a Conversation
             </a>
             <a 
-              href="/api/resume" 
+              href="/Earl_Hickson_Resume_2025.pdf" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"

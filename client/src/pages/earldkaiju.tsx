@@ -65,7 +65,59 @@ export default function EarldKaiju() {
     bookingMutation.mutate(data);
   };
 
-  // Fetch social media posts automatically
+  // Sample YouTube videos for static demo
+  const sampleYouTubeVideos: SocialMediaPost[] = [
+    {
+      id: 1,
+      platform: "youtube",
+      postId: "sample1",
+      mediaType: "video",
+      mediaUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      thumbnailUrl: "/images/project-shape1.png",
+      caption: "Basic Guard Retention - Fundamental BJJ Concepts",
+      permalink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      timestamp: new Date('2024-08-01'),
+      createdAt: new Date()
+    },
+    {
+      id: 2, 
+      platform: "youtube",
+      postId: "sample2",
+      mediaType: "video",
+      mediaUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      thumbnailUrl: "/images/project-shape2.png",
+      caption: "Escape From Side Control - Step by Step Breakdown",
+      permalink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      timestamp: new Date('2024-07-28'),
+      createdAt: new Date()
+    },
+    {
+      id: 3,
+      platform: "youtube", 
+      postId: "sample3",
+      mediaType: "video",
+      mediaUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      thumbnailUrl: "/images/project-shape3.png",
+      caption: "Closed Guard Attacks - Triangle Setup Fundamentals",
+      permalink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      timestamp: new Date('2024-07-25'),
+      createdAt: new Date()
+    },
+    {
+      id: 4,
+      platform: "youtube",
+      postId: "sample4", 
+      mediaType: "video",
+      mediaUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      thumbnailUrl: "/images/LetsConnect.png",
+      caption: "BJJ for Self Defense - Practical Applications",
+      permalink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      timestamp: new Date('2024-07-20'),
+      createdAt: new Date()
+    }
+  ];
+
+  // Fetch social media posts automatically  
   const { data: socialMediaData, isLoading: socialMediaLoading } = useQuery({
     queryKey: ['/api/social-media'],
     refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
@@ -74,7 +126,7 @@ export default function EarldKaiju() {
 
   const socialMediaPosts: SocialMediaPost[] = (socialMediaData as any)?.posts || [];
   const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
-  const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
+  const youtubePosts = socialMediaData ? socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube') : sampleYouTubeVideos;
 
   // Disable API calls for static export
   // Auto-fetch Instagram posts on load

@@ -40,7 +40,7 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" data-testid="button-resume">
-                  <a href="/api/resume" target="_blank" rel="noopener noreferrer">
+                  <a href="/Earl_Hickson_Resume_2025.pdf" target="_blank" rel="noopener noreferrer">
                     <i className="fas fa-download mr-2"></i>
                     Download Resume (PDF)
                   </a>
@@ -205,7 +205,7 @@ export default function Home() {
               </Button>
               
               <Button asChild variant="outline" size="lg" data-testid="button-github">
-                <a href="https://github.com/Epetaway" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/ehicksonjr" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-github mr-3"></i>
                   GitHub
                 </a>
