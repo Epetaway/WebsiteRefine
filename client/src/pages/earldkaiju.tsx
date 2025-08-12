@@ -14,12 +14,14 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { OAuthConnect } from "@/components/oauth-connect";
 import kaijuBanner from "@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png";
+import earlBjjPhoto from "@assets/Screenshot_20250811-184848_1754963908044.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
 export default function EarldKaiju() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const form = useForm<InsertBjjBooking>({
     resolver: zodResolver(insertBjjBookingSchema),
@@ -40,6 +42,7 @@ export default function EarldKaiju() {
       return response.json();
     },
     onSuccess: () => {
+      setIsSubmitted(true);
       toast({
         title: "Booking Request Submitted!",
         description: "I'll text and email you within 24 hours to confirm your session details.",
@@ -325,18 +328,15 @@ export default function EarldKaiju() {
 
               {/* Responsive Fighter Layout */}
               <div className="grid md:grid-cols-2 gap-8 mb-8 relative z-10">
-                {/* Left Side - Fighter Image Placeholder (Desktop) / Top (Mobile) */}
+                {/* Left Side - Fighter Image (Desktop) / Top (Mobile) */}
                 <div className="order-1 md:order-1">
-                  <div className="bg-gradient-to-br from-[#39FF14]/20 to-purple-900/30 rounded-xl p-8 border border-[#39FF14]/30 h-full flex items-center justify-center min-h-[400px]">
-                    {/* Placeholder for fighter image */}
-                    <div className="text-center">
-                      <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-[#39FF14]/30 to-purple-500/30 rounded-full flex items-center justify-center">
-                        <svg className="w-16 h-16 text-[#39FF14]" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                        </svg>
-                      </div>
-                      <p className="text-gray-400 text-sm">Full Body Fighter Photo</p>
-                      <p className="text-gray-500 text-xs mt-1">(Image placeholder)</p>
+                  <div className="bg-gradient-to-br from-[#39FF14]/20 to-purple-900/30 rounded-xl p-4 border border-[#39FF14]/30 h-full flex items-center justify-center min-h-[400px]">
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <img 
+                        src={earlBjjPhoto} 
+                        alt="Earl Hickson Jr. in Brazilian Jiu-Jitsu gi holding a child, showcasing the family-friendly training environment" 
+                        className="max-w-full max-h-[450px] w-auto h-auto object-contain rounded-lg shadow-2xl shadow-[#39FF14]/20"
+                      />
                     </div>
                   </div>
                 </div>
@@ -694,7 +694,26 @@ export default function EarldKaiju() {
             <div className="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
               <h2 className="text-2xl font-bold text-center mb-8 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="booking-form-title">Book Your First Session</h2>
               
-              <Form {...form}>
+              {isSubmitted ? (
+                <div className="text-center py-12" data-testid="booking-success">
+                  <div className="w-20 h-20 bg-[#39FF14]/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <svg className="w-10 h-10 text-[#39FF14]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#39FF14] mb-4">Thank You!</h3>
+                  <p className="text-white mb-2 text-lg">Your booking request has been submitted successfully.</p>
+                  <p className="text-gray-300 mb-6">I'll contact you within 24 hours to confirm your session details and answer any questions.</p>
+                  <Button 
+                    onClick={() => setIsSubmitted(false)}
+                    className="bg-[#39FF14] hover:bg-[#39FF14]/90 text-black font-semibold px-8 py-2"
+                    data-testid="button-book-another"
+                  >
+                    Book Another Session
+                  </Button>
+                </div>
+              ) : (
+                <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-4">
                     <FormField
@@ -867,7 +886,8 @@ export default function EarldKaiju() {
                     I'll text and email you within 24 hours to confirm your session details.
                   </p>
                 </form>
-              </Form>
+                </Form>
+              )}
             </div>
           </div>
         </div>
