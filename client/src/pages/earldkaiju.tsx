@@ -71,7 +71,7 @@ export default function EarldKaiju() {
     refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
   });
 
-  const socialMediaPosts = socialMediaData?.posts || [];
+  const socialMediaPosts = (socialMediaData as { posts: SocialMediaPost[] })?.posts || [];
   const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
   const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
 
@@ -491,7 +491,7 @@ export default function EarldKaiju() {
 
                     {/* Show only 4 most recent videos */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                      {youtubePosts.slice(0, 4).map((post, index) => (
+                      {youtubePosts.slice(0, 4).map((post: SocialMediaPost, index: number) => (
                         <div 
                           key={post.postId} 
                           className="group"
@@ -795,6 +795,7 @@ export default function EarldKaiju() {
                         <FormControl>
                           <Textarea 
                             {...field}
+                            value={field.value || ''}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="Tell me about your goals, any previous experience, injuries, or questions..."
                             rows={4}
@@ -815,6 +816,7 @@ export default function EarldKaiju() {
                         <FormControl>
                           <Input 
                             {...field}
+                            value={field.value || ''}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="e.g., Weekday evenings, Saturday mornings"
                             data-testid="input-availability"

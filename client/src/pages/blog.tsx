@@ -20,10 +20,10 @@ export default function Blog() {
   return (
     <div className="pt-16">
       {/* Header */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-blue-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Latest Writings</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-testid="page-title">Latest Writings</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Insights on front-end development, Brazilian Jiu-Jitsu, and the intersection of technical mastery and personal growth
             </p>
@@ -47,9 +47,9 @@ export default function Blog() {
       </section>
 
       {/* Featured Posts */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-8" data-testid="section-title-featured">Featured Posts</h2>
+          <h2 className="text-2xl font-bold mb-8 gradient-text" data-testid="section-title-featured">Featured Posts</h2>
           <div className="grid md:grid-cols-2 gap-8">
             {filteredPosts
               .filter(post => post.featured)

@@ -8,10 +8,10 @@ export default function CaseStudies() {
   return (
     <div className="pt-16">
       {/* Header */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-blue-50 via-white to-purple-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Front-End Case Studies</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 gradient-text" data-testid="page-title">Front-End Case Studies</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Real projects, measurable results, production code. Here's how I solve complex front-end challenges 
               with modern frameworks, accessibility standards, and performance optimization.
@@ -22,7 +22,7 @@ export default function CaseStudies() {
 
       {/* Featured Project */}
       {featuredProject && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <CaseStudyCard project={featuredProject} featured={true} />
           </div>
@@ -43,13 +43,13 @@ export default function CaseStudies() {
             <h2 className="text-2xl font-bold mb-8" data-testid="section-title-additional">Additional Projects</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {otherProjects.slice(2).map((project) => (
-                <div key={project.id} className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
-                  <h4 className="font-bold mb-2" data-testid={`project-title-${project.id}`}>{project.title}</h4>
+                <div key={project.id} className="bg-gradient-to-br from-white to-blue-50/50 rounded-xl p-6 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300 border border-blue-100/50">
+                  <h4 className="font-bold mb-2 text-gray-900" data-testid={`project-title-${project.id}`}>{project.title}</h4>
                   <p className="text-sm text-gray-600 mb-4" data-testid={`project-description-${project.id}`}>
                     {project.description}
                   </p>
                   <div className="flex justify-between items-center">
-                    <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded" data-testid={`project-stack-${project.id}`}>
+                    <span className="text-xs bg-primary-100 text-primary-700 px-2 py-1 rounded-full font-medium" data-testid={`project-stack-${project.id}`}>
                       {project.stack[0]}
                     </span>
                     <div className="flex gap-2">

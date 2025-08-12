@@ -2,11 +2,13 @@ import { Link } from "wouter";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-white py-16">
+    <footer className="bg-gradient-to-br from-gray-900 via-blue-900/20 to-purple-900/20 text-white py-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-4 gradient-text">Earl Hickson Jr.</h3>
+            <h3 className="text-xl font-bold mb-4">
+              <span className="gradient-text">Earl Hickson Jr.</span>
+            </h3>
             <p className="text-gray-300 mb-4">
               Senior Front-End Engineer specializing in React, JavaScript, UI/UX, and expanding into full-stack development. Based in Parsippany, New Jersey.
             </p>
@@ -15,7 +17,7 @@ export default function Footer() {
                 href="https://linkedin.com/in/earl-hickson-jr" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
+                className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-500 hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 hover:scale-110"
                 data-testid="link-linkedin"
               >
                 <i className="fab fa-linkedin"></i>
@@ -24,7 +26,7 @@ export default function Footer() {
                 href="https://github.com/Epetaway" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
+                className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 hover:shadow-lg hover:shadow-gray-500/50 transition-all duration-300 hover:scale-110"
                 data-testid="link-github"
               >
                 <i className="fab fa-github"></i>
@@ -33,7 +35,7 @@ export default function Footer() {
                 href="https://www.instagram.com/earld.kaiju/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity"
+                className="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300 hover:scale-110"
                 data-testid="link-instagram"
               >
                 <i className="fab fa-instagram"></i>
