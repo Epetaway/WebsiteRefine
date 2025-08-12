@@ -27,7 +27,8 @@ const ArticleLayoutComponent = ({
   previousPathname,
   bgImg,
   authorImg,
-  authorName
+  authorName,
+  content
 }) => {
   const router = useRouter()
 
@@ -72,12 +73,11 @@ const ArticleLayoutComponent = ({
             <h2 className="text-4xl font-semibold text-gray-100 leading-tight">{meta.title}</h2>
             <div className="flex mt-3">
             <Image
-  src="/some/path.jpg"
-  alt="Blog post"
-  width={600} // replace with actual width
-  height={400} // replace with actual height
-  className="rounded-md"
-  priority // optional: for LCP optimization if image is above-the-fold
+  src={authorImagePath}
+  alt="Author"
+  width={60}
+  height={60}
+  className="rounded-full"
 />
               <div className="ml-4 text-gray-200">
                 <p>Earl the Kaiju</p>
@@ -91,7 +91,10 @@ const ArticleLayoutComponent = ({
           <div className="xl:relative">
             <div className="mx-auto max-w-2xl">
               <article>
-                <Prose className="mt-3">{children}</Prose>
+                <Prose className="mt-3">
+                  {content && <div dangerouslySetInnerHTML={{ __html: content.replace(/\n/g, '<br>') }} />}
+                  {children}
+                </Prose>
               </article>
             </div>
           </div>

@@ -7,13 +7,7 @@ export const meta = {
   description: 'This blog post is designed to inspire those taking up Brazilian Jiu-Jitsu (BJJ) as a hobby who crave growth and challenge. We delve into ways to optimize your environment, set personal goals, and how to foster your physical and mental strength, transforming BJJ from a hobby to a pathway of self-discovery and the pursuit of excellence.',
 }
 
-export default function Article(props) {
-  return (
-    <ArticleLayout meta={meta} {...props} bgImg="Embrace.png" />
-  )
-}
-
----
+const articleContent = `
 
 If you've been contemplating starting Brazilian Jiu-Jitsu (BJJ) as a hobby, yet you're the type who seeks challenges, craves growth, and never settles for being simply 'strong' or 'talented', then you're in the right place. BJJ is a journey that goes beyond the physical prowess—it's about exploring your inner strength, leveraging your environment, and pushing the boundaries of your capabilities.
 
@@ -47,4 +41,11 @@ In the pursuit of personal excellence, don't forget to inspire others. Share you
 
 Lastly, take care of your physical and mental health. Nutrition, rest, and recovery are as crucial as your training. Nurture your mind by staying positive, practicing mindfulness, and cultivating a growth mindset.
 
-In conclusion, make your BJJ journey more than just a hobby—make it a path of self-discovery and relentless pursuit of excellence. In this journey, you're not striving to become a world champ; you're striving to be a champ of your world, setting a benchmark for yourself each day. Embrace this opportunity to grow with others, to learn from your environment, and to make the best out of every situation. Keep grinding, and remember, the journey is more important than the destination!
+In conclusion, make your BJJ journey more than just a hobby—make it a path of self-discovery and relentless pursuit of excellence. In this journey, you&rsquo;re not striving to become a world champ; you&rsquo;re striving to be a champ of your world, setting a benchmark for yourself each day. Embrace this opportunity to grow with others, to learn from your environment, and to make the best out of every situation. Keep grinding, and remember, the journey is more important than the destination!
+`;
+
+export default function Article(props) {
+  return (
+    <ArticleLayout meta={meta} {...props} bgImg="Embrace.png" content={articleContent} />
+  )
+}

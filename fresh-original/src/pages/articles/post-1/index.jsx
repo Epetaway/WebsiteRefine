@@ -1,4 +1,5 @@
 import ArticleLayout from '../../../components/BlogPost.jsx';
+
 export const meta = {
   author: 'Earl Hickson',
   date: '2023-05-24',
@@ -7,14 +8,7 @@ export const meta = {
     'Navigating the pitfalls of complacency and ego in Jiu-Jitsu, and tips on how to foster a mindset geared towards improvement.',
 }
 
-export default function Article(props) {
-  return (
-    <ArticleLayout meta={meta} {...props} bgImg="Struggles.png" />
-  )
-}
-
-
----
+const articleContent = `
 
 # The Struggles of Training Jiu-Jitsu: Overcoming Complacency and Ego
 
@@ -43,4 +37,11 @@ So, how can we combat complacency and ego in Jiu-Jitsu training? Here are a few 
 - **Value the basics**: While it's exciting to try flashy new moves, never underestimate the power of solid basics. Ensure your training focuses on mastering fundamental techniques.
 
 Remember, Jiu-Jitsu is a lifelong journey of self-improvement, both on and off the mats. Keep training, keep learning, and most importantly, enjoy the journey.
+`;
+
+export default function Article(props) {
+  return (
+    <ArticleLayout meta={meta} {...props} bgImg="Struggles.png" content={articleContent} />
+  )
+}
 
