@@ -453,9 +453,8 @@ export default function EarldKaiju() {
             </div>
           </section>
 
-          {/* Latest Videos */}
+          {/* Videos */}
           <div className="mb-20">
-            <h2 className="text-3xl font-bold text-center mb-12 text-[#39FF14] drop-shadow-[0_0_20px_#39FF14]" data-testid="section-title-gallery">Latest Videos</h2>
             
             {socialMediaLoading ? (
               <div className="text-center py-12">

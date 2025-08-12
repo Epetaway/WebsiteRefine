@@ -4,6 +4,8 @@ import { storage } from "./storage";
 import { insertContactSchema, insertBjjBookingSchema, insertSocialMediaPostSchema } from "@shared/schema";
 import { z } from "zod";
 import sgMail from '@sendgrid/mail';
+import path from 'path';
+import fs from 'fs';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Initialize SendGrid
@@ -349,11 +351,20 @@ Please follow up within 24 hours.
 
   // Resume download endpoint
   app.get("/api/resume", (req, res) => {
-    // In production, this would serve the actual PDF file
-    res.json({ 
-      message: "Resume download would be implemented here",
-      downloadUrl: "/assets/earl-hickson-jr-resume.pdf"
-    });
+    // For now, redirect to download the DOCX version since it's already available
+    // In production, this should be converted to PDF
+    const resumePath = path.join(process.cwd(), 'attached_assets', 'Earl_Hickson_Resume_2025_Optimized_1754964295675.docx');
+    
+    if (fs.existsSync(resumePath)) {
+      res.setHeader('Content-Disposition', 'attachment; filename="Earl_Hickson_Resume_2025.docx"');
+      res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document');
+      res.sendFile(resumePath);
+    } else {
+      res.status(404).json({ 
+        error: "Resume file not found",
+        message: "Please contact e@ehicksonjr.com for the latest resume"
+      });
+    }
   });
 
   const httpServer = createServer(app);

@@ -8,11 +8,11 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-xl font-bold mb-4 gradient-text">Earl Hickson Jr.</h3>
             <p className="text-gray-300 mb-4">
-              Senior Front-End Developer specializing in Angular, React, accessibility, and design systems. Based in Parsippany, New Jersey.
+              Senior Front-End Developer specializing in React, JavaScript, UI/UX, and expanding into full-stack development. Based in Parsippany, New Jersey.
             </p>
             <div className="flex space-x-4">
               <a 
-                href="https://www.linkedin.com/in/earl-hickson-jr/" 
+                href="https://linkedin.com/in/earl-hickson-jr" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors"
@@ -21,7 +21,7 @@ export default function Footer() {
                 <i className="fab fa-linkedin"></i>
               </a>
               <a 
-                href="https://github.com/ehicksonjr" 
+                href="https://github.com/Epetaway" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"
@@ -57,11 +57,11 @@ export default function Footer() {
               <li data-testid="text-location">Parsippany, NJ</li>
               <li>
                 <a 
-                  href="mailto:hello@ehicksonjr.com" 
+                  href="mailto:e@ehicksonjr.com" 
                   className="hover:text-white transition-colors"
                   data-testid="link-email"
                 >
-                  hello@ehicksonjr.com
+                  e@ehicksonjr.com
                 </a>
               </li>
               <li>

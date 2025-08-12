@@ -22,12 +22,13 @@ export default function Home() {
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight mb-6">
                 <span className="gradient-text" data-testid="hero-title-primary">Senior Front-End Developer</span>
                 <span className="block text-gray-900" data-testid="hero-title-secondary">
-                  Angular • React • WCAG • Design Systems • API Integration
+                  React • JavaScript • UI/UX • Expanding into Full-Stack
                 </span>
               </h1>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
-                Crafting accessible, high-performance web applications with modern frameworks. 
-                Based in Parsippany, New Jersey, with expertise in design systems and user experience optimization.
+                Versatile Front-End Developer with 6+ years creating responsive, accessible, high-performing web applications. 
+                Proven track record: +37% lead conversions, +25% organic traffic, +75% live stream engagement.
+                Based in Parsippany, New Jersey.
               </p>
               
               {/* CTAs */}
@@ -48,12 +49,12 @@ export default function Home() {
 
               {/* Tech Stack Badges */}
               <div className="flex flex-wrap gap-2">
-                <TechBadge name="Angular 18" color="red" />
                 <TechBadge name="React" color="blue" />
-                <TechBadge name="TypeScript" color="blue" />
-                <TechBadge name="Tailwind CSS" color="cyan" />
-                <TechBadge name="RxJS" color="purple" />
-                <TechBadge name="Jest" color="green" />
+                <TechBadge name="JavaScript ES6+" color="yellow" />
+                <TechBadge name="HTML5/CSS3" color="orange" />
+                <TechBadge name="Bootstrap 5" color="purple" />
+                <TechBadge name="Node.js" color="green" />
+                <TechBadge name="MongoDB" color="green" />
                 <TechBadge name="WCAG 2.1" color="orange" />
               </div>
             </div>
@@ -189,18 +190,27 @@ export default function Home() {
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
             <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-contact">
-              <a href="mailto:hello@ehicksonjr.com">
+              <a href="mailto:e@ehicksonjr.com">
                 <i className="fas fa-envelope mr-3"></i>
                 Get In Touch
               </a>
             </Button>
             
-            <Button asChild variant="outline" size="lg" data-testid="button-linkedin">
-              <a href="https://www.linkedin.com/in/earl-hickson-jr/" target="_blank" rel="noopener noreferrer">
-                <i className="fab fa-linkedin mr-3"></i>
-                LinkedIn Profile
-              </a>
-            </Button>
+            <div className="flex gap-4">
+              <Button asChild variant="outline" size="lg" data-testid="button-linkedin">
+                <a href="https://linkedin.com/in/earl-hickson-jr" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-linkedin mr-3"></i>
+                  LinkedIn
+                </a>
+              </Button>
+              
+              <Button asChild variant="outline" size="lg" data-testid="button-github">
+                <a href="https://github.com/Epetaway" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-github mr-3"></i>
+                  GitHub
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
