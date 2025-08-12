@@ -19,12 +19,12 @@ export default function Home() {
                 <i className="fas fa-code mr-2"></i>
                 Available for Senior Front-End Engineering Roles
               </div>
-              <h1 className="text-3xl lg:text-5xl font-bold leading-tight mb-6">
+              <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-6">
                 <span className="gradient-text" data-testid="hero-title-primary">Senior Front-End Engineer</span>
-                <span className="block text-gray-900" data-testid="hero-title-secondary">
-                  React • JavaScript • UI/UX • Expanding into Full-Stack
-                </span>
               </h1>
+              <h3 className="text-xl lg:text-2xl text-gray-900 mb-6" data-testid="hero-title-secondary">
+                React • JavaScript • UI/UX • Expanding into Full-Stack
+              </h3>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
                 Versatile Front-End Engineer with 6+ years creating responsive, accessible, high-performing web applications. 
                 Proven track record: +37% lead conversions, +25% organic traffic, +75% live stream engagement.
