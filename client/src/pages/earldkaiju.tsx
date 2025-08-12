@@ -471,57 +471,6 @@ export default function EarldKaiju() {
               </div>
             ) : (
               <>
-                {/* YouTube Content */}
-                {youtubePosts.length > 0 && (
-                  <div className="mb-8">
-                    <h3 className="text-2xl font-bold text-center mb-8 text-white">YouTube Videos</h3>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-                      {youtubePosts.slice(0, 6).map((post: SocialMediaPost) => (
-                        <div key={post.id} className="bg-white/5 backdrop-blur rounded-xl overflow-hidden border border-white/10 hover:border-[#39FF14]/30 transition-all group">
-                          <a href={post.permalink} target="_blank" rel="noopener noreferrer" className="block">
-                            <div className="aspect-video bg-black/20 relative overflow-hidden">
-                              {post.thumbnailUrl ? (
-                                <img 
-                                  src={post.thumbnailUrl} 
-                                  alt="YouTube video thumbnail" 
-                                  className="w-full h-full object-cover group-hover:scale-105 transition-transform"
-                                />
-                              ) : (
-                                <div className="w-full h-full bg-gradient-to-br from-red-600/20 to-black/40 flex items-center justify-center">
-                                  <i className="fab fa-youtube text-red-500 text-4xl"></i>
-                                </div>
-                              )}
-                              <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="bg-red-600/90 rounded-full p-4 shadow-lg">
-                                  <svg 
-                                    className="w-8 h-8 text-white ml-1" 
-                                    fill="currentColor" 
-                                    viewBox="0 0 24 24"
-                                  >
-                                    <path d="M8 5v14l11-7z"/>
-                                  </svg>
-                                </div>
-                              </div>
-                            </div>
-                            <div className="p-4">
-                              <p className="text-gray-300 text-sm line-clamp-2">
-                                {post.caption || 'Watch this video on YouTube'}
-                              </p>
-                              <p className="text-[#39FF14] text-xs mt-2">
-                                {new Date(post.timestamp).toLocaleDateString()}
-                              </p>
-                            </div>
-                          </a>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-
-
-
-
                 {/* YouTube Videos Section */}
                 {youtubePosts.length > 0 && (
                   <div className="mb-16">
