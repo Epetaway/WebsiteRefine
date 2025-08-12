@@ -28,11 +28,25 @@ jobs:
           node-version: '18'
           cache: 'npm'
 
-      - name: Generate package-lock.json
-        run: node scripts/create-package-lock.js
-
-      - name: Install dependencies
-        run: npm ci
+      - name: Generate package-lock.json and install dependencies
+        run: |
+          # Create minimal package-lock.json for GitHub Actions compatibility
+          cat > package-lock.json << 'EOF'
+          {
+            "name": "rest-express",
+            "version": "1.0.0",
+            "lockfileVersion": 3,
+            "requires": true,
+            "packages": {
+              "": {
+                "name": "rest-express",
+                "version": "1.0.0",
+                "license": "MIT"
+              }
+            }
+          }
+          EOF
+          npm install
 
       - name: Build client for static deployment
         run: |
