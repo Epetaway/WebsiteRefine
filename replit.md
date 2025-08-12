@@ -12,6 +12,8 @@ Preferred communication style: Simple, everyday language.
 - **Deployment Optimization**: Clean project structure with proper .gitignore, documentation, and environment templates
 - **Performance Monitoring**: Lighthouse CI integration for automated performance audits
 - **Security**: Automated vulnerability scanning and secret detection in CI pipeline
+- **Netlify Configuration**: Added serverless functions support for free deployment with custom domain (ehicksonjr.com)
+- **Multi-Platform Deployment**: Configured for Netlify (free), Vercel, and Railway deployment options
 
 # System Architecture
 
@@ -92,7 +94,11 @@ Preferred communication style: Simple, everyday language.
 
 ## Hosting and Deployment
 - **Replit**: Development and hosting platform with specific plugins and configurations
+- **Netlify**: Primary production deployment with serverless functions (free tier with custom domain support)
+- **Vercel**: Alternative deployment option with Node.js serverless configuration
+- **Railway**: Full-stack deployment option for traditional Express hosting
 - **Static Assets**: Served through Express with proper caching headers
+- **Custom Domain**: Configured for ehicksonjr.com with free SSL certificate
 
 ## Third-Party Libraries
 - **React Hook Form**: Form state management and validation
