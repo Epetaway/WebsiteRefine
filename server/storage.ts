@@ -1,176 +1,111 @@
-import { drizzle } from 'drizzle-orm/neon-serverless';
-import { neon } from '@neondatabase/serverless';
-import { eq, desc } from 'drizzle-orm';
-import {
-  users,
-  contacts,
-  bjjBookings,
-  socialPosts,
-  type User,
-  type InsertUser,
-  type Contact,
-  type InsertContact,
-  type BjjBooking,
-  type InsertBjjBooking,
-  type SocialPost,
-  type InsertSocialPost,
-} from '../shared/schema.js';
+import { type User, type InsertUser, type Contact, type InsertContact, type BjjBooking, type InsertBjjBooking, type SocialMediaPost, type InsertSocialMediaPost } from "@shared/schema";
+import { randomUUID } from "crypto";
 
 export interface IStorage {
-  // Users
+  getUser(id: string): Promise<User | undefined>;
+  getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
-  getUserByEmail(email: string): Promise<User | null>;
-  
-  // Contacts
   createContact(contact: InsertContact): Promise<Contact>;
-  getContacts(): Promise<Contact[]>;
-  
-  // BJJ Bookings
   createBjjBooking(booking: InsertBjjBooking): Promise<BjjBooking>;
+  getContacts(): Promise<Contact[]>;
   getBjjBookings(): Promise<BjjBooking[]>;
-  
-  // Social Posts
-  createSocialPost(post: InsertSocialPost): Promise<SocialPost>;
-  getSocialPosts(platform?: string): Promise<SocialPost[]>;
-  getSocialPostByPostId(postId: string): Promise<SocialPost | null>;
+  createSocialMediaPost(post: InsertSocialMediaPost): Promise<SocialMediaPost>;
+  getSocialMediaPosts(platform?: string): Promise<SocialMediaPost[]>;
+  updateSocialMediaPost(postId: string, post: Partial<SocialMediaPost>): Promise<SocialMediaPost | undefined>;
 }
 
-// In-memory storage for development
 export class MemStorage implements IStorage {
-  private users: User[] = [];
-  private contacts: Contact[] = [];
-  private bjjBookings: BjjBooking[] = [];
-  private socialPosts: SocialPost[] = [];
-  private nextId = 1;
-
-  async createUser(user: InsertUser): Promise<User> {
-    const newUser: User = {
-      ...user,
-      id: this.nextId++,
-      createdAt: new Date(),
-    };
-    this.users.push(newUser);
-    return newUser;
-  }
-
-  async getUserByEmail(email: string): Promise<User | null> {
-    return this.users.find(u => u.email === email) || null;
-  }
-
-  async createContact(contact: InsertContact): Promise<Contact> {
-    const newContact: Contact = {
-      ...contact,
-      id: this.nextId++,
-      createdAt: new Date(),
-    };
-    this.contacts.push(newContact);
-    return newContact;
-  }
-
-  async getContacts(): Promise<Contact[]> {
-    return [...this.contacts];
-  }
-
-  async createBjjBooking(booking: InsertBjjBooking): Promise<BjjBooking> {
-    const newBooking: BjjBooking = {
-      ...booking,
-      id: this.nextId++,
-      createdAt: new Date(),
-      message: booking.message || null,
-    };
-    this.bjjBookings.push(newBooking);
-    return newBooking;
-  }
-
-  async getBjjBookings(): Promise<BjjBooking[]> {
-    return [...this.bjjBookings];
-  }
-
-  async createSocialPost(post: InsertSocialPost): Promise<SocialPost> {
-    const newPost: SocialPost = {
-      ...post,
-      id: this.nextId++,
-      fetchedAt: new Date(),
-      description: post.description || null,
-      thumbnailUrl: post.thumbnailUrl || null,
-    };
-    this.socialPosts.push(newPost);
-    return newPost;
-  }
-
-  async getSocialPosts(platform?: string): Promise<SocialPost[]> {
-    if (platform) {
-      return this.socialPosts.filter(p => p.platform === platform);
-    }
-    return [...this.socialPosts];
-  }
-
-  async getSocialPostByPostId(postId: string): Promise<SocialPost | null> {
-    return this.socialPosts.find(p => p.postId === postId) || null;
-  }
-}
-
-// PostgreSQL storage for production
-export class PostgresStorage implements IStorage {
-  private db: ReturnType<typeof drizzle>;
+  private users: Map<string, User>;
+  private contacts: Map<string, Contact>;
+  private bjjBookings: Map<string, BjjBooking>;
+  private socialMediaPosts: Map<number, SocialMediaPost>;
+  private postIdCounter: number;
 
   constructor() {
-    const sql = neon(process.env.DATABASE_URL!);
-    this.db = drizzle(sql);
+    this.users = new Map();
+    this.contacts = new Map();
+    this.bjjBookings = new Map();
+    this.socialMediaPosts = new Map();
+    this.postIdCounter = 1;
   }
 
-  async createUser(user: InsertUser): Promise<User> {
-    const [result] = await this.db.insert(users).values(user).returning();
-    return result;
+  async getUser(id: string): Promise<User | undefined> {
+    return this.users.get(id);
   }
 
-  async getUserByEmail(email: string): Promise<User | null> {
-    const [result] = await this.db.select().from(users).where(eq(users.email, email));
-    return result || null;
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    return Array.from(this.users.values()).find(
+      (user) => user.username === username,
+    );
   }
 
-  async createContact(contact: InsertContact): Promise<Contact> {
-    const [result] = await this.db.insert(contacts).values(contact).returning();
-    return result;
+  async createUser(insertUser: InsertUser): Promise<User> {
+    const id = randomUUID();
+    const user: User = { ...insertUser, id };
+    this.users.set(id, user);
+    return user;
+  }
+
+  async createContact(insertContact: InsertContact): Promise<Contact> {
+    const id = randomUUID();
+    const contact: Contact = { 
+      ...insertContact, 
+      id, 
+      createdAt: new Date() 
+    };
+    this.contacts.set(id, contact);
+    return contact;
+  }
+
+  async createBjjBooking(insertBooking: InsertBjjBooking): Promise<BjjBooking> {
+    const id = randomUUID();
+    const booking: BjjBooking = { 
+      ...insertBooking, 
+      id, 
+      createdAt: new Date() 
+    };
+    this.bjjBookings.set(id, booking);
+    return booking;
   }
 
   async getContacts(): Promise<Contact[]> {
-    return await this.db.select().from(contacts).orderBy(desc(contacts.createdAt));
-  }
-
-  async createBjjBooking(booking: InsertBjjBooking): Promise<BjjBooking> {
-    const [result] = await this.db.insert(bjjBookings).values(booking).returning();
-    return result;
+    return Array.from(this.contacts.values());
   }
 
   async getBjjBookings(): Promise<BjjBooking[]> {
-    return await this.db.select().from(bjjBookings).orderBy(desc(bjjBookings.createdAt));
+    return Array.from(this.bjjBookings.values());
   }
 
-  async createSocialPost(post: InsertSocialPost): Promise<SocialPost> {
-    const [result] = await this.db.insert(socialPosts).values(post).returning();
-    return result;
+  async createSocialMediaPost(insertPost: InsertSocialMediaPost): Promise<SocialMediaPost> {
+    const id = this.postIdCounter++;
+    const post: SocialMediaPost = { 
+      ...insertPost, 
+      id, 
+      createdAt: new Date() 
+    };
+    this.socialMediaPosts.set(id, post);
+    return post;
   }
 
-  async getSocialPosts(platform?: string): Promise<SocialPost[]> {
+  async getSocialMediaPosts(platform?: string): Promise<SocialMediaPost[]> {
+    const posts = Array.from(this.socialMediaPosts.values());
     if (platform) {
-      return await this.db.select().from(socialPosts)
-        .where(eq(socialPosts.platform, platform))
-        .orderBy(desc(socialPosts.publishedAt));
+      return posts.filter(post => post.platform === platform);
     }
-    return await this.db.select().from(socialPosts).orderBy(desc(socialPosts.publishedAt));
+    return posts.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime());
   }
 
-  async getSocialPostByPostId(postId: string): Promise<SocialPost | null> {
-    const [result] = await this.db.select().from(socialPosts).where(eq(socialPosts.postId, postId));
-    return result || null;
+  async updateSocialMediaPost(postId: string, updates: Partial<SocialMediaPost>): Promise<SocialMediaPost | undefined> {
+    const posts = Array.from(this.socialMediaPosts.entries());
+    const postEntry = posts.find(([_, post]) => post.postId === postId);
+    if (postEntry) {
+      const [id, post] = postEntry;
+      const updatedPost = { ...post, ...updates };
+      this.socialMediaPosts.set(id, updatedPost);
+      return updatedPost;
+    }
+    return undefined;
   }
 }
 
-// Storage factory
-export function createStorage(): IStorage {
-  if (process.env.NODE_ENV === 'production' && process.env.DATABASE_URL) {
-    return new PostgresStorage();
-  }
-  return new MemStorage();
-}
+export const storage = new MemStorage();
