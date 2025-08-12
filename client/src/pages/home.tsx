@@ -62,7 +62,7 @@ export default function Home() {
             {/* Profile Image */}
             <div className="relative animate-float">
               <img 
-                src="/images/meAnimated.png" 
+                src="/images/earl-professional.png" 
                 alt="Earl Hickson Jr. - Professional headshot of a Front-End Engineer" 
                 className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
                 data-testid="hero-image"
