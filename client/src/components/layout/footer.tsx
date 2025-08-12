@@ -8,7 +8,7 @@ export default function Footer() {
           <div className="md:col-span-2">
             <h3 className="text-xl font-bold mb-4 gradient-text">Earl Hickson Jr.</h3>
             <p className="text-gray-300 mb-4">
-              Senior Front-End Developer specializing in React, JavaScript, UI/UX, and expanding into full-stack development. Based in Parsippany, New Jersey.
+              Senior Front-End Engineer specializing in React, JavaScript, UI/UX, and expanding into full-stack development. Based in Parsippany, New Jersey.
             </p>
             <div className="flex space-x-4">
               <a 

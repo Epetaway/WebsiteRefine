@@ -50,7 +50,7 @@ export const projects: Project[] = [
   {
     id: "portfolio-website",
     title: "Portfolio Website – Full-Stack Implementation",
-    description: "Modern developer portfolio showcasing responsive design, performance optimization, and personal branding.",
+    description: "Modern engineering portfolio showcasing responsive design, performance optimization, and personal branding.",
     problem: "Create a memorable portfolio that balances technical depth with visual appeal and loads fast on all devices.",
     solution: "Next.js 14 with dynamic metadata, Tailwind for design systems, OG image generation, and comprehensive SEO optimization.",
     result: "95+ Lighthouse score, sub-1s load time, improved conversion rate for project inquiries.",

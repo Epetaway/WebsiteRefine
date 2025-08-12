@@ -38,7 +38,7 @@ This is where I learned that technique beats strength, just like clean code beat
 
 Teaching others made me sharper. I learned to give clear feedback, protect learning time, and create calm in chaos.
 
-As a brown belt, I started coaching others, which directly translated to mentoring junior developers. Breaking down complex techniques for beginners taught me how to explain technical concepts clearly and create psychological safety for learning.
+As a brown belt, I started coaching others, which directly translated to mentoring junior engineers. Breaking down complex techniques for beginners taught me how to explain technical concepts clearly and create psychological safety for learning.
 
 ## Black: Quiet Confidence
 
@@ -55,7 +55,7 @@ Every principle I learned on the mat has made me a better engineer:
 - **Continuous learning**: Every roll teaches something new, just like every code review or project retrospective
 - **Ego management**: Being willing to tap out (admit when you're wrong) prevents bigger problems
 
-The journey from white to black belt mirrors the progression from junior to senior developer. It's not about raw talent—it's about showing up consistently, learning from failures, and developing the judgment to know when to push and when to yield.
+The journey from white to black belt mirrors the progression from junior to senior engineer. It's not about raw talent—it's about showing up consistently, learning from failures, and developing the judgment to know when to push and when to yield.
 
 ---
 

@@ -12,7 +12,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "self-employment",
     company: "Self-Employment",
-    position: "Freelance Developer & Designer",
+    position: "Freelance Engineer & Designer",
     duration: "2023 - Present",
     description: "Full-stack development projects with focus on React, Next.js, and design systems",
     technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
@@ -20,7 +20,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "wealth-creation",
     company: "Wealth Creation Innovation",
-    position: "Senior Front-End Developer (Contract)",
+    position: "Senior Front-End Engineer (Contract)",
     duration: "2022 - 2023",
     description: "Led front-end development for financial technology platform",
     technologies: ["Angular", "TypeScript", "RxJS", "Material Design"]
@@ -28,7 +28,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "asembia",
     company: "Asembia",
-    position: "Frontend Developer",
+    position: "Frontend Engineer",
     duration: "2021 - 2022",
     description: "Developed healthcare technology solutions with emphasis on accessibility",
     technologies: ["React", "JavaScript", "SCSS", "Jest"]
@@ -44,7 +44,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "prosek",
     company: "Prosek Partners",
-    position: "Freelance Front-End Web Developer",
+    position: "Freelance Front-End Web Engineer",
     duration: "2019 - 2020",
     description: "Financial services website development and maintenance",
     technologies: ["WordPress", "PHP", "JavaScript", "CSS"]
@@ -52,7 +52,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "seide",
     company: "William R Seide Agency",
-    position: "Frontend Developer",
+    position: "Frontend Engineer",
     duration: "2018 - 2019",
     description: "Insurance industry web development and digital marketing solutions",
     technologies: ["HTML", "CSS", "JavaScript", "jQuery"]
@@ -68,7 +68,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "merck",
     company: "Merck",
-    position: "Freelance Web Developer",
+    position: "Freelance Web Engineer",
     duration: "2016 - 2017",
     description: "Pharmaceutical industry web development projects",
     technologies: ["HTML", "CSS", "JavaScript", "CMS"]
@@ -76,7 +76,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "novocent",
     company: "Novocent",
-    position: "Frontend Web Developer",
+    position: "Frontend Web Engineer",
     duration: "2015 - 2016",
     description: "Healthcare technology frontend development",
     technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"]
@@ -84,7 +84,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "verizon",
     company: "Verizon Wireless",
-    position: "Front-End Developer",
+    position: "Front-End Engineer",
     duration: "2014 - 2015",
     description: "Telecommunications industry web development",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
@@ -92,7 +92,7 @@ export const workExperience: WorkExperience[] = [
   {
     id: "second-melody",
     company: "Second Melody",
-    position: "Web Developer",
+    position: "Web Engineer",
     duration: "2013 - 2014",
     description: "Music industry web development and e-commerce solutions",
     technologies: ["HTML", "CSS", "JavaScript", "E-commerce"]

@@ -22,7 +22,7 @@ export default function About() {
     },
     {
       title: "Teaching & Mentorship",
-      description: "Coaching others on the mat improved my ability to break down complex concepts, give clear feedback, and support junior developers' growth."
+      description: "Coaching others on the mat improved my ability to break down complex concepts, give clear feedback, and support junior engineers' growth."
     }
   ];
 
@@ -34,7 +34,7 @@ export default function About() {
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">About Earl</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Developer, designer, Brazilian Jiu-Jitsu black belt, and lifelong learner based in Parsippany, New Jersey
+              Engineer, designer, Brazilian Jiu-Jitsu black belt, and lifelong learner based in Parsippany, New Jersey
             </p>
           </div>
         </div>
@@ -47,7 +47,7 @@ export default function About() {
             <div>
               <h2 className="text-3xl font-bold mb-6" data-testid="section-title-technical">Technical Background</h2>
               <p className="text-gray-700 mb-6" data-testid="bio-technical">
-                I'm a Front-End Developer and Graphic Designer with a Bachelor of Arts in Graphic Design from Kean University and a Tech Degree in Front-End Web Development from Team Treehouse. I specialize in creating user-friendly, accessible web experiences that balance technical excellence with compelling design.
+                I'm a Front-End Engineer and Graphic Designer with a Bachelor of Arts in Graphic Design from Kean University and a Tech Degree in Front-End Web Development from Team Treehouse. I specialize in creating user-friendly, accessible web experiences that balance technical excellence with compelling design.
               </p>
               
               <h3 className="text-xl font-semibold mb-4">Skills Matrix</h3>

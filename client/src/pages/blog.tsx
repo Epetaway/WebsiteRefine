@@ -95,7 +95,7 @@ export default function Blog() {
             
             <div className="bg-white rounded-xl p-6">
               <h3 className="font-semibold mb-2" data-testid="dev-note-wcag">WCAG Quick Wins</h3>
-              <p className="text-sm text-gray-600 mb-3">Low-effort, high-impact accessibility improvements every developer should implement.</p>
+              <p className="text-sm text-gray-600 mb-3">Low-effort, high-impact accessibility improvements every engineer should implement.</p>
               <span className="text-xs text-gray-500">Coming Soon</span>
             </div>
             
