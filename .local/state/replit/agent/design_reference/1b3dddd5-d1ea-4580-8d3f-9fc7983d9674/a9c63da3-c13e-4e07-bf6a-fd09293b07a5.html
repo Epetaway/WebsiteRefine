@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earl Hickson Jr. - Front-End Developer & BJJ Black Belt</title>
+    <meta name="description" content="Front-End Developer specializing in React, Next.js, and modern web development. BJJ Black Belt offering private lessons. Based in Parsippany, NJ.">
+    
+    <!-- SEO Meta Tags -->
+    <meta property="og:title" content="Earl Hickson Jr. - Front-End Developer & BJJ Black Belt">
+    <meta property="og:description" content="Experienced developer creating engaging digital experiences. Also teaching Brazilian Jiu-Jitsu in New Jersey.">
+    <meta property="og:image" content="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg">
+    <meta property="og:url" content="https://www.ehicksonjr.com">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'Consolas', 'monospace']
+                    },
+                    colors: {
+                        'primary': {
+                            50: '#f8fafc',
+                            500: '#3b82f6',
+                            900: '#0f172a'
+                        },
+                        'accent': {
+                            500: '#10b981'
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.6s ease-out',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-10px)' }
+                        }
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-primary-50 text-slate-900 font-sans">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-sm border-b border-slate-200 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <img src="https://www.ehicksonjr.com/_next/static/media/MyLogo.e002916b.svg" alt="Earl Hickson Jr. Logo" class="h-8 w-8">
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-slate-700 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                        <a href="#about" class="text-slate-700 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                        <a href="#projects" class="text-slate-700 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                        <a href="#experience" class="text-slate-700 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors">Experience</a>
+                        <a href="#blog" class="text-slate-700 hover:text-primary-500 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+                        <a href="/EarldKaiju" class="bg-primary-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary-600 transition-colors">BJJ Lessons</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-slate-700 hover:text-primary-500 focus:outline-none">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-16 bg-gradient-to-br from-primary-50 to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-fade-in-up">
+                    <h1 class="text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                        Crafting Engaging
+                        <span class="text-primary-500 block">Digital Experiences</span>
+                    </h1>
+                    <p class="text-xl text-slate-600 mb-8 leading-relaxed">
+                        Front-End Developer & BJJ Black Belt combining technical precision with martial arts discipline to create exceptional web applications.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#projects" class="bg-primary-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-600 transition-colors text-center">
+                            View My Work
+                        </a>
+                        <a href="#contact" class="border-2 border-slate-300 text-slate-700 px-8 py-4 rounded-lg font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors text-center">
+                            Get In Touch
+                        </a>
+                    </div>
+                    
+                    <!-- Code Snippet Display -->
+                    <div class="mt-12 bg-slate-900 rounded-xl p-6 font-mono text-sm">
+                        <div class="flex items-center gap-2 mb-4">
+                            <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                            <span class="text-slate-400 ml-4">portfolio.js</span>
+                        </div>
+                        <div class="text-green-400">
+                            <span class="text-blue-400">const</span> developer = {<br>
+                            &nbsp;&nbsp;<span class="text-yellow-400">name</span>: <span class="text-green-300">"Earl Hickson Jr."</span>,<br>
+                            &nbsp;&nbsp;<span class="text-yellow-400">stack</span>: [<span class="text-green-300">"React"</span>, <span class="text-green-300">"Next.js"</span>, <span class="text-green-300">"TypeScript"</span>],<br>
+                            &nbsp;&nbsp;<span class="text-yellow-400">passion</span>: <span class="text-green-300">"Creating digital experiences"</span>,<br>
+                            &nbsp;&nbsp;<span class="text-yellow-400">martialArt</span>: <span class="text-green-300">"Brazilian Jiu-Jitsu"</span><br>
+                            };
+                        </div>
+                    </div>
+                </div>
+                <div class="relative animate-fade-in-up">
+                    <!-- Professional photo of Earl -->
+                    <div class="relative">
+                        <img src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" alt="Earl Hickson Jr. Professional Photo" class="rounded-2xl shadow-2xl w-full max-w-md mx-auto animate-float">
+                        <div class="absolute -bottom-6 -right-6 bg-white rounded-full p-4 shadow-lg">
+                            <i class="fas fa-code text-3xl text-primary-500"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section Enhanced -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">About Me</h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Where technical precision meets martial arts discipline
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">The Developer & The Martial Artist</h3>
+                    <p class="text-slate-600 mb-6 leading-relaxed">
+                        I'm Earl Hickson Jr., a Front-End Developer and Brazilian Jiu-Jitsu Black Belt based in Parsippany, New Jersey. My unique perspective combines the precision of code with the discipline of martial arts, creating a foundation for exceptional problem-solving and continuous learning.
+                    </p>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Since 2015, Brazilian Jiu-Jitsu has taught me patience, persistence, and the power of incremental improvement—qualities that directly translate to writing clean, efficient code and building user-centered applications.
+                    </p>
+                    
+                    <!-- Skills Grid -->
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">Development</h4>
+                            <p class="text-sm text-slate-600">React, Next.js, TypeScript, Tailwind CSS</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">Design</h4>
+                            <p class="text-sm text-slate-600">UI/UX, Adobe Creative Suite, Figma</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">Martial Arts</h4>
+                            <p class="text-sm text-slate-600">BJJ Black Belt, Instructor, Competition</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-slate-900 mb-2">Philosophy</h4>
+                            <p class="text-sm text-slate-600">Continuous learning, discipline, growth</p>
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/earl-hickson-jr/" class="flex items-center gap-2 text-primary-500 hover:text-primary-600 transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                            <span class="font-medium">LinkedIn</span>
+                        </a>
+                        <a href="https://www.instagram.com/earld.kaiju/" class="flex items-center gap-2 text-primary-500 hover:text-primary-600 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                            <span class="font-medium">Instagram</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <!-- Professional and BJJ photos -->
+                    <img src="https://www.ehicksonjr.com/_next/static/media/BjjClass.2d33ac4d.jpg" alt="Earl teaching BJJ class" class="rounded-xl shadow-lg w-full h-48 object-cover">
+                    <img src="https://www.ehicksonjr.com/_next/static/media/MeBjj_2.6bf53e95.jpg" alt="Earl in BJJ training" class="rounded-xl shadow-lg w-full h-48 object-cover">
+                    <img src="https://www.ehicksonjr.com/_next/static/media/us.21fce331.jpeg" alt="Earl with family" class="rounded-xl shadow-lg w-full h-48 object-cover col-span-2">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enhanced Projects Section -->
+    <section id="projects" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Real-world applications showcasing modern web development techniques and problem-solving approaches
+                </p>
+            </div>
+
+            <!-- Project Filters -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button class="filter-btn active bg-primary-500 text-white px-6 py-2 rounded-full font-medium" data-filter="all">All Projects</button>
+                <button class="filter-btn bg-white text-slate-700 px-6 py-2 rounded-full font-medium border hover:border-primary-500" data-filter="react">React</button>
+                <button class="filter-btn bg-white text-slate-700 px-6 py-2 rounded-full font-medium border hover:border-primary-500" data-filter="javascript">JavaScript</button>
+                <button class="filter-btn bg-white text-slate-700 px-6 py-2 rounded-full font-medium border hover:border-primary-500" data-filter="design">Design</button>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Portfolio Website Case Study -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="react">
+                    <div class="aspect-video bg-gradient-to-br from-blue-500 to-purple-600 p-8 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <i class="fas fa-globe text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Portfolio Website</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Next.js Developer Portfolio</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                            Modern portfolio site built with Next.js 14, featuring dynamic metadata, OG image generation, and responsive design. Implemented custom components and SEO optimization.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Next.js</span>
+                            <span class="bg-cyan-100 text-cyan-800 px-2 py-1 rounded text-xs">Tailwind</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">TypeScript</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-4 mb-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">95%</div>
+                                <div class="text-xs text-slate-500">Performance</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">100%</div>
+                                <div class="text-xs text-slate-500">Accessibility</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">98%</div>
+                                <div class="text-xs text-slate-500">SEO Score</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-primary-500 text-white px-4 py-2 rounded text-sm font-medium text-center hover:bg-primary-600 transition-colors">View Live</a>
+                            <a href="#" class="flex-1 border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-medium text-center hover:border-primary-500 transition-colors">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MTG Proxy Generator -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="javascript">
+                    <div class="aspect-video bg-gradient-to-br from-purple-500 to-pink-600 p-8 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <i class="fas fa-magic text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">MTG Tool</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">MTG Proxy Generator</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                            Interactive card generation tool with dynamic DOM manipulation, custom form validation, and real-time preview functionality. Handles complex user interactions and data processing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Vanilla JS</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">DOM API</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Canvas</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">500+</div>
+                                <div class="text-xs text-slate-500">Cards Generated</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Zero</div>
+                                <div class="text-xs text-slate-500">Dependencies</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-primary-500 text-white px-4 py-2 rounded text-sm font-medium text-center hover:bg-primary-600 transition-colors">Live Demo</a>
+                            <a href="#" class="flex-1 border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-medium text-center hover:border-primary-500 transition-colors">Code</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Employee Directory -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="javascript">
+                    <div class="aspect-video bg-gradient-to-br from-green-500 to-teal-600 p-8 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <i class="fas fa-users text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Directory App</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Interactive Employee Directory</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                            Multi-API integration project featuring search, filter, and modal functionality. Demonstrates asynchronous JavaScript and responsive data visualization techniques.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">REST API</span>
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Async/Await</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">4</div>
+                                <div class="text-xs text-slate-500">APIs Integrated</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Real-time</div>
+                                <div class="text-xs text-slate-500">Search & Filter</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-primary-500 text-white px-4 py-2 rounded text-sm font-medium text-center hover:bg-primary-600 transition-colors">View Demo</a>
+                            <a href="#" class="flex-1 border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-medium text-center hover:border-primary-500 transition-colors">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- React Todo App -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="react">
+                    <div class="aspect-video bg-gradient-to-br from-red-500 to-orange-600 p-8 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <i class="fas fa-tasks text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Todo App</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">React Task Manager</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                            Modern React application showcasing hooks, component composition, and state management. Features local storage persistence and intuitive user interactions.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">React</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Hooks</span>
+                            <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Local Storage</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Clean</div>
+                                <div class="text-xs text-slate-500">Architecture</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Persistent</div>
+                                <div class="text-xs text-slate-500">Data Storage</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-primary-500 text-white px-4 py-2 rounded text-sm font-medium text-center hover:bg-primary-600 transition-colors">Live App</a>
+                            <a href="#" class="flex-1 border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-medium text-center hover:border-primary-500 transition-colors">Source</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Design Portfolio Pieces -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="design">
+                    <div class="aspect-video bg-gradient-to-br from-indigo-500 to-purple-600 p-8 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <i class="fas fa-palette text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Brand Design</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Brand Identity Suite</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                            Complete visual identity system including logo design, color palettes, typography, and brand guidelines. Created cohesive brand experiences across multiple touchpoints.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-pink-100 text-pink-800 px-2 py-1 rounded text-xs">Adobe CC</span>
+                            <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">Branding</span>
+                            <span class="bg-indigo-100 text-indigo-800 px-2 py-1 rounded text-xs">UI/UX</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">10+</div>
+                                <div class="text-xs text-slate-500">Brand Projects</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Complete</div>
+                                <div class="text-xs text-slate-500">Style Systems</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-primary-500 text-white px-4 py-2 rounded text-sm font-medium text-center hover:bg-primary-600 transition-colors">View Work</a>
+                            <a href="#" class="flex-1 border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-medium text-center hover:border-primary-500 transition-colors">Behance</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Game Show App -->
+                <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow" data-category="javascript">
+                    <div class="aspect-video bg-gradient-to-br from-yellow-500 to-red-600 p-8 flex items-center justify-center">
+                        <div class="text-white text-center">
+                            <i class="fas fa-gamepad text-4xl mb-4"></i>
+                            <h4 class="text-xl font-bold">Game App</h4>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Interactive Word Game</h3>
+                        <p class="text-slate-600 mb-4 text-sm leading-relaxed">
+                            Browser-based word guessing game with dynamic UI, game logic implementation, and progressive difficulty. Demonstrates event handling and state management patterns.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">Vanilla JS</span>
+                            <span class="bg-red-100 text-red-800 px-2 py-1 rounded text-xs">Game Logic</span>
+                            <span class="bg-orange-100 text-orange-800 px-2 py-1 rounded text-xs">Animations</span>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4 mb-4 text-center">
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Interactive</div>
+                                <div class="text-xs text-slate-500">Gameplay</div>
+                            </div>
+                            <div>
+                                <div class="text-lg font-bold text-primary-500">Responsive</div>
+                                <div class="text-xs text-slate-500">Design</div>
+                            </div>
+                        </div>
+                        <div class="flex gap-3">
+                            <a href="#" class="flex-1 bg-primary-500 text-white px-4 py-2 rounded text-sm font-medium text-center hover:bg-primary-600 transition-colors">Play Game</a>
+                            <a href="#" class="flex-1 border border-slate-300 text-slate-700 px-4 py-2 rounded text-sm font-medium text-center hover:border-primary-500 transition-colors">Code</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Professional Experience</h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    A decade of experience building modern web applications for diverse industries
+                </p>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line -->
+                <div class="absolute left-8 md:left-1/2 transform md:-translate-x-px h-full w-0.5 bg-slate-300"></div>
+
+                <!-- Experience Items -->
+                <div class="space-y-12">
+                    <!-- Current Role -->
+                    <div class="relative flex items-center">
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-primary-500 border-4 border-white rounded-full shadow"></div>
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-slate-50 p-6 rounded-xl shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://www.ehicksonjr.com/_next/static/media/MyLogo.e002916b.svg" alt="Earl Hickson Jr. Logo" class="w-10 h-10">
+                                    <div>
+                                        <h3 class="text-lg font-bold text-slate-900">Freelance Developer & Designer</h3>
+                                        <p class="text-primary-500 font-medium">Self-Employment</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-600 text-sm mb-3">
+                                    Leading end-to-end web development projects, specializing in React/Next.js applications with modern UI/UX design. Collaborating with clients to deliver scalable digital solutions.
+                                </p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">React</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Next.js</span>
+                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">TypeScript</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <p class="text-slate-500 font-medium">2023 - Present</p>
+                        </div>
+                    </div>
+
+                    <!-- Previous Roles -->
+                    <div class="relative flex items-center md:flex-row-reverse">
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-400 border-4 border-white rounded-full shadow"></div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <div class="bg-slate-50 p-6 rounded-xl shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <div class="w-10 h-10 bg-primary-500 rounded flex items-center justify-center">
+                                        <i class="fas fa-chart-line text-white"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold text-slate-900">Senior Front-End Developer</h3>
+                                        <p class="text-primary-500 font-medium">Wealth Creation Innovation</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-600 text-sm mb-3">
+                                    Contract role developing high-performance financial applications with React and modern JavaScript frameworks. Improved user experience and application performance significantly.
+                                </p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">React</span>
+                                    <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-xs">JavaScript</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Performance</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pr-8 md:text-right">
+                            <p class="text-slate-500 font-medium">2022 - 2023</p>
+                        </div>
+                    </div>
+
+                    <!-- BroadcastMed -->
+                    <div class="relative flex items-center">
+                        <div class="hidden md:flex absolute left-1/2 transform -translate-x-1/2 w-4 h-4 bg-slate-400 border-4 border-white rounded-full shadow"></div>
+                        <div class="md:w-1/2 md:pr-8">
+                            <div class="bg-slate-50 p-6 rounded-xl shadow-sm">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://www.ehicksonjr.com/_next/static/media/BCM_logo.7ae80d0f.svg" alt="BroadcastMed" class="w-10 h-10">
+                                    <div>
+                                        <h3 class="text-lg font-bold text-slate-900">Lead Designer and Developer</h3>
+                                        <p class="text-primary-500 font-medium">BroadcastMed</p>
+                                    </div>
+                                </div>
+                                <p class="text-slate-600 text-sm mb-3">
+                                    Led design and development of medical education platforms, managing cross-functional teams and delivering user-centered solutions for healthcare professionals.
+                                </p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded text-xs">Leadership</span>
+                                    <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded text-xs">UI/UX</span>
+                                    <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-xs">Healthcare</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:w-1/2 md:pl-8">
+                            <p class="text-slate-500 font-medium">2020 - 2022</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-12">
+                <a href="https://www.linkedin.com/in/earl-hickson-jr/" class="inline-flex items-center gap-2 bg-primary-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-600 transition-colors">
+                    <i class="fab fa-linkedin"></i>
+                    View Full Resume
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Latest Writings</h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Insights on web development, Brazilian Jiu-Jitsu, and the intersection of technology and martial arts
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- New Blog Post: Black Belt Journey -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <!-- BJJ black belt ceremony or training photo -->
+                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Brazilian Jiu-Jitsu black belt ceremony" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-primary-100 text-primary-800 px-2 py-1 rounded text-xs font-medium">NEW</span>
+                            <span class="text-slate-500 text-sm">December 15, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">
+                            The Path to Black Belt: 9 Years of Growth, Failure, and Perseverance
+                        </h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">
+                            Reflecting on my journey from white belt to black belt in Brazilian Jiu-Jitsu, the lessons learned, and how the principles of martial arts shaped my approach to software development and life.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" alt="Earl Hickson Jr." class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-slate-700 font-medium">Earl the Kaiju</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 font-medium text-sm">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- New Blog Post: BJJ and Development -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <!-- Developer working with BJJ gi nearby -->
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="Developer workspace with coding setup" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="bg-accent-100 text-accent-800 px-2 py-1 rounded text-xs font-medium">NEW</span>
+                            <span class="text-slate-500 text-sm">December 10, 2024</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">
+                            How Brazilian Jiu-Jitsu Made Me a Better Developer
+                        </h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">
+                            Discover the surprising parallels between rolling on the mats and writing clean code. From debugging to problem-solving, martial arts principles that translate directly to software development.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" alt="Earl Hickson Jr." class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-slate-700 font-medium">Earl the Kaiju</span>
+                            </div>
+                            <a href="#" class="text-primary-500 hover:text-primary-600 font-medium text-sm">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Existing Blog Post -->
+                <article class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <img src="https://images.unsplash.com/photo-1555597673-b21d5c935865?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400" alt="BJJ training on mats" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-slate-500 text-sm">May 30, 2023</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">
+                            Embrace the Grind: Maximizing Your Potential in Jiu-Jitsu as a Hobby
+                        </h3>
+                        <p class="text-slate-600 mb-4 leading-relaxed">
+                            This blog post is designed to inspire those taking up Brazilian Jiu-Jitsu (BJJ) as a hobby who crave growth and challenge. We delve into ways to optimize your environment, set personal goals...
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-2">
+                                <img src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" alt="Earl Hickson Jr." class="w-8 h-8 rounded-full">
+                                <span class="text-sm text-slate-700 font-medium">Earl the Kaiju</span>
+                            </div>
+                            <a href="https://www.ehicksonjr.com/articles/post-2/" class="text-primary-500 hover:text-primary-600 font-medium text-sm">Read More →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- EarldKaiju BJJ Lessons Preview Section -->
+    <section class="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-fist-raised text-3xl text-primary-500"></i>
+                        <h2 class="text-4xl font-bold">EarldKaiju BJJ</h2>
+                    </div>
+                    <p class="text-xl text-slate-300 mb-6 leading-relaxed">
+                        Private Brazilian Jiu-Jitsu instruction for adults and kids in Parsippany, NJ. 
+                        Learn from a passionate Black Belt with 9 years of experience.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                            <div class="text-2xl font-bold text-primary-500 mb-1">9 Years</div>
+                            <div class="text-slate-400 text-sm">BJJ Experience</div>
+                        </div>
+                        <div class="bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+                            <div class="text-2xl font-bold text-primary-500 mb-1">Black Belt</div>
+                            <div class="text-slate-400 text-sm">Certified Instructor</div>
+                        </div>
+                    </div>
+                    <a href="/EarldKaiju" class="inline-flex items-center gap-2 bg-primary-500 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-600 transition-colors text-lg">
+                        <i class="fas fa-calendar-alt"></i>
+                        Book Your Lesson
+                    </a>
+                </div>
+                <div class="relative">
+                    <!-- BJJ instructor demonstration photo -->
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" alt="BJJ instructor teaching technique" class="rounded-xl shadow-2xl w-full">
+                    <div class="absolute -bottom-4 -right-4 bg-primary-500 text-white p-4 rounded-lg shadow-lg">
+                        <div class="text-center">
+                            <div class="text-lg font-bold">Private Lessons</div>
+                            <div class="text-sm opacity-90">Adults & Kids</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-slate-900 mb-4">Let's Connect</h2>
+                <p class="text-xl text-slate-600 max-w-3xl mx-auto">
+                    Ready to bring your project to life? Let's discuss how we can work together.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-slate-900 mb-6">Get In Touch</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary-500 text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-slate-900">Email</div>
+                                <div class="text-slate-600">earl@ehicksonjr.com</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-primary-500 text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-slate-900">Location</div>
+                                <div class="text-slate-600">Parsippany, New Jersey</div>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+                                <i class="fas fa-clock text-primary-500 text-lg"></i>
+                            </div>
+                            <div>
+                                <div class="font-medium text-slate-900">Response Time</div>
+                                <div class="text-slate-600">Usually within 24 hours</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <h4 class="font-semibold text-slate-900 mb-4">Follow My Journey</h4>
+                        <div class="flex gap-4">
+                            <a href="https://www.linkedin.com/in/earl-hickson-jr/" class="w-12 h-12 bg-blue-600 text-white rounded-lg flex items-center justify-center hover:bg-blue-700 transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://www.instagram.com/earld.kaiju/" class="w-12 h-12 bg-pink-600 text-white rounded-lg flex items-center justify-center hover:bg-pink-700 transition-colors">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://www.youtube.com/@earldkaiju" class="w-12 h-12 bg-red-600 text-white rounded-lg flex items-center justify-center hover:bg-red-700 transition-colors">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="space-y-6" data-mock="true">
+                    <!-- @FUNCTIONALITY: Contact form should integrate with email service -->
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Name</label>
+                        <input type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Email</label>
+                        <input type="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="your@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Project Type</label>
+                        <select class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
+                            <option>Web Development</option>
+                            <option>UI/UX Design</option>
+                            <option>Full-Stack Project</option>
+                            <option>Consultation</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-slate-700 mb-2">Message</label>
+                        <textarea rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-primary-500 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-600 transition-colors">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <img src="https://www.ehicksonjr.com/_next/static/media/MyLogo.e002916b.svg" alt="Earl Hickson Jr." class="w-8 h-8">
+                        <span class="text-xl font-bold text-white">Earl Hickson Jr.</span>
+                    </div>
+                    <p class="text-slate-400 mb-6 max-w-md">
+                        Front-End Developer and BJJ Black Belt creating exceptional digital experiences with discipline and precision.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.linkedin.com/in/earl-hickson-jr/" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://www.instagram.com/earld.kaiju/" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="https://www.youtube.com/@earldkaiju" class="text-slate-400 hover:text-white transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">Web Development</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">UI/UX Design</a></li>
+                        <li><a href="#" class="text-slate-400 hover:text-white transition-colors">React Applications</a></li>
+                        <li><a href="/EarldKaiju" class="text-slate-400 hover:text-white transition-colors">BJJ Lessons</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#projects" class="text-slate-400 hover:text-white transition-colors">Projects</a></li>
+                        <li><a href="#about" class="text-slate-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#blog" class="text-slate-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#contact" class="text-slate-400 hover:text-white transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 pt-8 mt-8 text-center text-sm text-slate-400">
+                <p>&copy; 2024 Earl Hickson Jr. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Project filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('active', 'bg-primary-500', 'text-white');
+                    btn.classList.add('bg-white', 'text-slate-700', 'border');
+                });
+                button.classList.add('active', 'bg-primary-500', 'text-white');
+                button.classList.remove('bg-white', 'text-slate-700', 'border');
+
+                const filterValue = button.dataset.filter;
+
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filterValue === 'all' || card.dataset.category === filterValue) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // TODO: Implement form submission logic
+                alert('Thank you for your message! I\'ll get back to you soon.');
+            });
+        }
+
+        // Add loading animation for skills
+        const skillElements = document.querySelectorAll('[data-skill]');
+        if (skillElements.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in-up');
+                    }
+                });
+            });
+
+            skillElements.forEach(el => observer.observe(el));
+        }
+
+        // Mobile menu toggle (placeholder)
+        const mobileMenuButton = document.querySelector('.md\\:hidden button');
+        if (mobileMenuButton) {
+            mobileMenuButton.addEventListener('click', () => {
+                // TODO: Implement mobile menu toggle
+                console.log('Mobile menu toggle clicked');
+            });
+        }
+    </script>
+</body>
+</html>

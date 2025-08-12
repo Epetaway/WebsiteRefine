@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Earl Hickson Jr. - Senior Front-End Developer | Angular • React • WCAG • Design Systems</title>
+    <meta name="description" content="Senior Front-End Developer specializing in Angular, React, accessibility, and design systems. Based in Parsippany, NJ. Available for senior development roles.">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Earl Hickson Jr. - Senior Front-End Developer">
+    <meta property="og:description" content="Senior Front-End Developer specializing in Angular, React, accessibility, and design systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ehicksonjr.com">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Earl Hickson Jr.",
+      "jobTitle": "Senior Front-End Developer",
+      "description": "Front-End Developer specializing in Angular, React, accessibility, and design systems",
+      "url": "https://www.ehicksonjr.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/earl-hickson-jr/",
+        "https://github.com/ehicksonjr",
+        "https://www.instagram.com/earld.kaiju/"
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Parsippany",
+        "addressRegion": "NJ",
+        "addressCountry": "US"
+      }
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+    <script>
+    tailwind.config = {
+        theme: {
+            extend: {
+                fontFamily: {
+                    'sans': ['Inter', 'system-ui', 'sans-serif'],
+                    'mono': ['JetBrains Mono', 'Courier New', 'monospace']
+                },
+                colors: {
+                    primary: {
+                        50: '#eff6ff',
+                        500: '#0070f3',
+                        600: '#0056d6',
+                        900: '#0c1222'
+                    },
+                    purple: {
+                        500: '#7c3aed',
+                        600: '#6d28d9'
+                    }
+                },
+                animation: {
+                    'fade-in': 'fadeIn 0.5s ease-in-out',
+                    'slide-up': 'slideUp 0.6s ease-out',
+                    'float': 'float 3s ease-in-out infinite'
+                }
+            }
+        }
+    }
+    </script>
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #0070f3 0%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-gray-50 text-gray-900 antialiased">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50" x-data="{ mobileMenuOpen: false }">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#home" class="text-xl font-bold gradient-text">Earl Hickson Jr.</a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="text-gray-700 hover:text-primary-500 transition-colors duration-200">Home</a>
+                        <a href="#case-studies" class="text-gray-700 hover:text-primary-500 transition-colors duration-200">Case Studies</a>
+                        <a href="#about" class="text-gray-700 hover:text-primary-500 transition-colors duration-200">About</a>
+                        <a href="#blog" class="text-gray-700 hover:text-primary-500 transition-colors duration-200">Blog</a>
+                        <a href="#earldkaiju" class="text-gray-700 hover:text-primary-500 transition-colors duration-200">BJJ Lessons</a>
+                        <a href="#resume" class="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors duration-200">Resume</a>
+                    </div>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button @click="mobileMenuOpen = !mobileMenuOpen" class="text-gray-700 hover:text-gray-900">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div x-show="mobileMenuOpen" x-transition class="md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="block px-3 py-2 text-gray-700 hover:text-primary-500">Home</a>
+                <a href="#case-studies" class="block px-3 py-2 text-gray-700 hover:text-primary-500">Case Studies</a>
+                <a href="#about" class="block px-3 py-2 text-gray-700 hover:text-primary-500">About</a>
+                <a href="#blog" class="block px-3 py-2 text-gray-700 hover:text-primary-500">Blog</a>
+                <a href="#earldkaiju" class="block px-3 py-2 text-gray-700 hover:text-primary-500">BJJ Lessons</a>
+                <a href="#resume" class="block px-3 py-2 bg-primary-500 text-white rounded-lg mx-3">Resume</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen flex items-center">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-slide-up">
+                    <div class="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-6">
+                        <i class="fas fa-code mr-2"></i>
+                        Available for Senior Front-End Roles
+                    </div>
+                    <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">
+                        <span class="gradient-text">Senior Front-End Developer</span>
+                        <span class="block text-gray-900">Angular • React • WCAG • Design Systems • API Integration</span>
+                    </h1>
+                    <p class="text-xl text-gray-600 mb-8 leading-relaxed">
+                        Crafting accessible, high-performance web applications with modern frameworks. 
+                        Based in Parsippany, New Jersey, with expertise in design systems and user experience optimization.
+                    </p>
+                    
+                    <!-- CTAs -->
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <a href="#case-studies" class="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transform hover:scale-105 transition-all duration-200">
+                            <i class="fas fa-rocket mr-2"></i>
+                            View Front-End Case Studies
+                        </a>
+                        <a href="#resume" class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-all duration-200">
+                            <i class="fas fa-download mr-2"></i>
+                            Download Resume (PDF)
+                        </a>
+                    </div>
+
+                    <!-- Tech Stack Badges -->
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-red-100 text-red-700 rounded-full text-sm font-medium">Angular 18</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">React</span>
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">TypeScript</span>
+                        <span class="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-sm font-medium">Tailwind CSS</span>
+                        <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-sm font-medium">RxJS</span>
+                        <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-sm font-medium">Jest</span>
+                        <span class="px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium">WCAG 2.1</span>
+                    </div>
+                </div>
+
+                <!-- Profile Image -->
+                <div class="relative animate-float">
+                    <!-- Professional headshot from the existing site -->
+                    <img src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" 
+                         alt="Earl Hickson Jr. - Professional headshot of a Front-End Developer" 
+                         class="w-full max-w-md mx-auto rounded-3xl shadow-2xl">
+                    <div class="absolute -top-4 -right-4 w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-white text-2xl animate-bounce">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Win Tiles Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Proven Results</h2>
+                <p class="text-xl text-gray-600">Recent wins and measurable impact across projects</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Win Tile 1: Performance -->
+                <div class="bg-gradient-to-br from-green-50 to-emerald-50 p-8 rounded-2xl border border-green-200 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-tachometer-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Performance Optimization</h3>
+                    <div class="mb-4">
+                        <div class="text-3xl font-bold text-green-600 mb-1">44% ↓</div>
+                        <div class="text-sm text-gray-600">Time to Interactive</div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Employee Directory: Normalized API adapters, suspense-friendly fetch patterns, and skeleton states reduced TTI from 2.1s to 1.2s
+                    </p>
+                    <div class="mt-4 text-xs text-gray-500">
+                        Stack: Next.js • React • TypeScript
+                    </div>
+                </div>
+
+                <!-- Win Tile 2: Accessibility -->
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 p-8 rounded-2xl border border-blue-200 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-universal-access text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">WCAG Compliance</h3>
+                    <div class="mb-4">
+                        <div class="text-3xl font-bold text-blue-600 mb-1">AA Level</div>
+                        <div class="text-sm text-gray-600">Accessibility Score</div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Implemented comprehensive a11y patterns: focus management, ARIA labels, keyboard navigation, and color contrast improvements
+                    </p>
+                    <div class="mt-4 text-xs text-gray-500">
+                        Tools: axe-core • WAVE • VoiceOver
+                    </div>
+                </div>
+
+                <!-- Win Tile 3: Bundle Size -->
+                <div class="bg-gradient-to-br from-purple-50 to-violet-50 p-8 rounded-2xl border border-purple-200 hover:shadow-lg transition-shadow duration-300">
+                    <div class="w-12 h-12 bg-purple-500 rounded-xl flex items-center justify-center mb-6">
+                        <i class="fas fa-compress-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Bundle Optimization</h3>
+                    <div class="mb-4">
+                        <div class="text-3xl font-bold text-purple-600 mb-1">73% ↓</div>
+                        <div class="text-sm text-gray-600">Bundle Size Reduction</div>
+                    </div>
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        Code splitting, tree shaking, and dynamic imports reduced initial bundle from 1.2MB to 320KB across portfolio projects
+                    </p>
+                    <div class="mt-4 text-xs text-gray-500">
+                        Tools: Webpack • Vite • Bundle Analyzer
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Services & Expertise</h2>
+                <p class="text-xl text-gray-600">What I bring to your engineering team</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <i class="fas fa-cogs text-primary-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">UI Engineering</h3>
+                    <p class="text-sm text-gray-600">Component libraries, design tokens, responsive systems</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <i class="fas fa-cubes text-primary-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Design Systems</h3>
+                    <p class="text-sm text-gray-600">Scalable component architectures, documentation, governance</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <i class="fas fa-universal-access text-primary-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Accessibility</h3>
+                    <p class="text-sm text-gray-600">WCAG compliance, screen reader support, inclusive design</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
+                    <i class="fas fa-rocket text-primary-500 text-2xl mb-4"></i>
+                    <h3 class="font-bold mb-2">Performance</h3>
+                    <p class="text-sm text-gray-600">Core Web Vitals, bundle optimization, caching strategies</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section id="case-studies" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Front-End Case Studies</h2>
+                <p class="text-xl text-gray-600">Real projects, measurable results, production code</p>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Case Study 1: Employee Directory (Anchor Project) -->
+                <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 lg:p-12">
+                    <div class="grid lg:grid-cols-5 gap-8">
+                        <div class="lg:col-span-3">
+                            <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-sm font-medium mb-4">
+                                <i class="fas fa-star mr-2"></i>
+                                Featured Project
+                            </div>
+                            <h3 class="text-2xl lg:text-3xl font-bold mb-4">Employee Directory – Multi-API Aggregation</h3>
+                            <p class="text-lg text-gray-600 mb-6">Transforming API chaos into a streamlined, accessible directory experience.</p>
+                            
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-red-100 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
+                                        <i class="fas fa-exclamation-triangle text-red-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-1">Problem</h4>
+                                        <p class="text-gray-600 text-sm">Multiple API sources (Twitter, IMDB, Wikipedia) with inconsistent schemas, slow sequential fetches (2.1s TTI), and confusing search UI causing user frustration.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
+                                        <i class="fas fa-cog text-blue-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-1">Solution</h4>
+                                        <p class="text-gray-600 text-sm">Built normalized data adapters, implemented React Suspense patterns, added skeleton loading states, and comprehensive keyboard navigation with proper ARIA labels.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mt-1 mr-3 flex-shrink-0">
+                                        <i class="fas fa-chart-line text-green-600 text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-semibold text-gray-900 mb-1">Result</h4>
+                                        <p class="text-gray-600 text-sm">44% faster TTI (2.1s → 1.2s), inline error handling, 2× faster profile discovery, and WCAG AA compliance achieved.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-wrap gap-2 mb-6">
+                                <div class="flex gap-4">
+                                    <a href="#" data-mock="true" class="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600">
+                                        <i class="fas fa-external-link-alt mr-2"></i>
+                                        Live Demo
+                                    </a>
+                                    <a href="#" data-mock="true" class="inline-flex items-center text-gray-600 font-semibold hover:text-gray-800">
+                                        <i class="fab fa-github mr-2"></i>
+                                        View Code
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Spec Sheet -->
+                        <div class="lg:col-span-2">
+                            <div class="bg-white rounded-2xl p-6 shadow-sm">
+                                <h4 class="font-bold text-gray-900 mb-4">Technical Specification</h4>
+                                <div class="space-y-3 text-sm">
+                                    <div>
+                                        <span class="text-gray-500">Framework:</span>
+                                        <span class="text-gray-900 ml-2">Next.js 14, React 18</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">Styling:</span>
+                                        <span class="text-gray-900 ml-2">Tailwind CSS, CSS Modules</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">APIs:</span>
+                                        <span class="text-gray-900 ml-2">Twitter, IMDB, Wikipedia</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">Testing:</span>
+                                        <span class="text-gray-900 ml-2">Jest, React Testing Library</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">Accessibility:</span>
+                                        <span class="text-gray-900 ml-2">WCAG 2.1 AA, ARIA, Focus Management</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-gray-500">Performance:</span>
+                                        <span class="text-gray-900 ml-2">Lighthouse 93, Core Web Vitals</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-6 pt-4 border-t border-gray-100">
+                                    <h5 class="font-semibold text-gray-900 mb-2">Key Features</h5>
+                                    <ul class="text-xs text-gray-600 space-y-1">
+                                        <li>• Concurrent API fetching</li>
+                                        <li>• Real-time search with debouncing</li>
+                                        <li>• Skeleton loading states</li>
+                                        <li>• Error boundaries & fallbacks</li>
+                                        <li>• Keyboard navigation</li>
+                                        <li>• Mobile-first responsive</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 2: Portfolio Website -->
+                <div class="grid lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-sm font-medium mb-4">
+                            <i class="fas fa-palette mr-2"></i>
+                            Design + Development
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold mb-3">Portfolio Website – Full-Stack Implementation</h3>
+                        <p class="text-gray-600 mb-4">Modern developer portfolio showcasing responsive design, performance optimization, and personal branding.</p>
+                        
+                        <div class="space-y-3 mb-6 text-sm">
+                            <div><strong>Challenge:</strong> Create a memorable portfolio that balances technical depth with visual appeal and loads fast on all devices.</div>
+                            <div><strong>Approach:</strong> Next.js 14 with dynamic metadata, Tailwind for design systems, OG image generation, and comprehensive SEO optimization.</div>
+                            <div><strong>Impact:</strong> 95+ Lighthouse score, sub-1s load time, improved conversion rate for project inquiries.</div>
+                        </div>
+
+                        <div class="flex gap-4 mb-4">
+                            <a href="#" data-mock="true" class="text-primary-500 font-medium hover:text-primary-600">Live Site</a>
+                            <a href="#" data-mock="true" class="text-gray-600 font-medium hover:text-gray-800">Repository</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-100 rounded-2xl p-6">
+                        <div class="text-sm text-gray-600 mb-4">Tech Stack</div>
+                        <div class="space-y-2">
+                            <div class="flex justify-between">
+                                <span class="text-sm">Next.js 14</span>
+                                <span class="text-xs text-gray-500">Framework</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Tailwind CSS</span>
+                                <span class="text-xs text-gray-500">Styling</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Framer Motion</span>
+                                <span class="text-xs text-gray-500">Animation</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-sm">Vercel</span>
+                                <span class="text-xs text-gray-500">Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study 3: MTG Proxy Generator -->
+                <div class="grid lg:grid-cols-3 gap-8 items-center">
+                    <div class="lg:col-span-2">
+                        <div class="inline-flex items-center px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-sm font-medium mb-4">
+                            <i class="fas fa-magic mr-2"></i>
+                            Vanilla JavaScript
+                        </div>
+                        <h3 class="text-xl lg:text-2xl font-bold mb-3">MTG Proxy Generator – DOM Manipulation Showcase</h3>
+                        <p class="text-gray-600 mb-4">Interactive card generation tool demonstrating vanilla JavaScript proficiency and dynamic content rendering.</p>
+                        
+                        <div class="space-y-3 mb-6 text-sm">
+                            <div><strong>Technical Focus:</strong> Pure JavaScript DOM manipulation, form validation, image processing, and local storage implementation.</div>
+                            <div><strong>Features:</strong> Real-time preview, custom card templates, export functionality, and user preference persistence.</div>
+                            <div><strong>Learning:</strong> Reinforced fundamentals of event handling, data structures, and performance optimization without frameworks.</div>
+                        </div>
+
+                        <div class="flex gap-4 mb-4">
+                            <a href="#" data-mock="true" class="text-primary-500 font-medium hover:text-primary-600">Live Tool</a>
+                            <a href="#" data-mock="true" class="text-gray-600 font-medium hover:text-gray-800">Source Code</a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-100 rounded-2xl p-6">
+                        <div class="text-sm text-gray-600 mb-4">Highlights</div>
+                        <div class="space-y-2 text-sm">
+                            <div>• Event delegation patterns</div>
+                            <div>• Canvas API integration</div>
+                            <div>• LocalStorage persistence</div>
+                            <div>• Form validation logic</div>
+                            <div>• Responsive CSS Grid</div>
+                            <div>• Performance profiling</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Projects Grid -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                        <h4 class="font-bold mb-2">Todo List App</h4>
+                        <p class="text-sm text-gray-600 mb-4">React hooks, state management, local persistence with clean UI implementation.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">React</span>
+                            <div class="flex gap-2">
+                                <a href="#" data-mock="true" class="text-primary-500 text-sm">Demo</a>
+                                <a href="#" data-mock="true" class="text-gray-500 text-sm">Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                        <h4 class="font-bold mb-2">Movie Rating App</h4>
+                        <p class="text-sm text-gray-600 mb-4">Vanilla JavaScript for Marvel movie ratings with form handling and user interactions.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">JavaScript</span>
+                            <div class="flex gap-2">
+                                <a href="#" data-mock="true" class="text-primary-500 text-sm">Demo</a>
+                                <a href="#" data-mock="true" class="text-gray-500 text-sm">Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                        <h4 class="font-bold mb-2">Game Show App</h4>
+                        <p class="text-sm text-gray-600 mb-4">Browser-based "Wheel of Success" word guessing game with dynamic UI rendering.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Vanilla JS</span>
+                            <div class="flex gap-2">
+                                <a href="#" data-mock="true" class="text-primary-500 text-sm">Demo</a>
+                                <a href="#" data-mock="true" class="text-gray-500 text-sm">Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">About Earl</h2>
+                <p class="text-xl text-gray-600">Developer, designer, Brazilian Jiu-Jitsu black belt</p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">Technical Background</h3>
+                    <p class="text-gray-700 mb-6">
+                        I'm a Front-End Developer and Graphic Designer based in Parsippany, New Jersey, with a Bachelor of Arts in Graphic Design from Kean University and a Tech Degree in Front-End Web Development from Team Treehouse. I specialize in creating user-friendly, accessible web experiences that balance technical excellence with compelling design.
+                    </p>
+                    
+                    <h4 class="text-lg font-semibold mb-4">Skills Matrix</h4>
+                    <div class="space-y-3 mb-8">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">JavaScript/TypeScript</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Expert</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">React/Angular</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Expert</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">WCAG/Accessibility</span>
+                            <span class="text-xs bg-green-100 text-green-700 px-2 py-1 rounded">Expert</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">Node.js/Express</span>
+                            <span class="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded">Proficient</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm font-medium">GraphQL</span>
+                            <span class="text-xs bg-yellow-100 text-yellow-700 px-2 py-1 rounded">Familiar</span>
+                        </div>
+                    </div>
+
+                    <h4 class="text-lg font-semibold mb-4">Development Workflow</h4>
+                    <div class="text-sm text-gray-600 space-y-2">
+                        <div>• Tickets → Feature branches → Pull requests → Code reviews</div>
+                        <div>• Test-driven development with Jest and Cypress</div>
+                        <div>• CI/CD pipelines with GitHub Actions and Vercel</div>
+                        <div>• Design collaboration with Figma and Storybook</div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-bold mb-6">The BJJ Connection</h3>
+                    
+                    <!-- BJJ journey from existing content -->
+                    <div class="mb-6">
+                        <!-- Professional photo showcasing BJJ -->
+                        <img src="https://www.ehicksonjr.com/_next/static/media/MeBjj_2.6bf53e95.jpg" 
+                             alt="Earl Hickson Jr. in Brazilian Jiu-Jitsu training gear demonstrating technique" 
+                             class="w-full rounded-xl mb-4">
+                    </div>
+
+                    <p class="text-gray-700 mb-6">
+                        My journey into Brazilian Jiu-Jitsu began in 2015 and has profoundly shaped both my personal development and professional approach. Earning my black belt is the most meaningful milestone of my life outside becoming a father.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-primary-500 pl-4">
+                            <h5 class="font-semibold text-gray-900">Calm Under Pressure</h5>
+                            <p class="text-sm text-gray-600">BJJ teaches you to breathe and think clearly in stressful situations—the same mindset I apply when debugging critical production issues or handling tight deadlines.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-primary-500 pl-4">
+                            <h5 class="font-semibold text-gray-900">Iterative Improvement</h5>
+                            <p class="text-sm text-gray-600">Every roll is a chance to refine technique. Similarly, every code review and sprint retrospective is an opportunity to enhance our development process.</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-primary-500 pl-4">
+                            <h5 class="font-semibold text-gray-900">Teaching & Mentorship</h5>
+                            <p class="text-sm text-gray-600">Coaching others on the mat improved my ability to break down complex concepts, give clear feedback, and support junior developers' growth.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Timeline -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold mb-8">Professional Experience</h3>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4 p-4 bg-white rounded-lg">
+                        <div class="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-laptop-code text-white"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold">Freelance Developer & Designer</h4>
+                            <p class="text-sm text-gray-600">Self-Employment • Current</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-center space-x-4 p-4 bg-white rounded-lg">
+                        <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-chart-line text-gray-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold">Senior Front-End Developer (Contract)</h4>
+                            <p class="text-sm text-gray-600">Wealth Creation Innovation</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center space-x-4 p-4 bg-white rounded-lg">
+                        <div class="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center">
+                            <i class="fas fa-code text-gray-600"></i>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold">Frontend Developer</h4>
+                            <p class="text-sm text-gray-600">Asembia</p>
+                        </div>
+                    </div>
+
+                    <div class="text-center">
+                        <a href="https://www.linkedin.com/in/earl-hickson-jr/" target="_blank" rel="noopener noreferrer" 
+                           class="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600">
+                            <i class="fab fa-linkedin mr-2"></i>
+                            View Full Resume on LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="text-center">
+                <h3 class="text-xl font-bold mb-6">Let's Connect</h3>
+                <div class="flex justify-center space-x-6">
+                    <a href="https://www.linkedin.com/in/earl-hickson-jr/" target="_blank" rel="noopener noreferrer"
+                       class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com/ehicksonjr" target="_blank" rel="noopener noreferrer"
+                       class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer"
+                       class="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white hover:opacity-90 transition-opacity">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">Latest Writings</h2>
+                <p class="text-xl text-gray-600">Insights on development and Brazilian Jiu-Jitsu</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                <!-- Featured New Post 1 -->
+                <article class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-6 border border-blue-200">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-medium mb-4">
+                        <i class="fas fa-star mr-1"></i>
+                        NEW POST
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <a href="#" data-mock="true" class="hover:text-blue-600 transition-colors">
+                            From White to Black: How Jiu-Jitsu Rewired My Life and Career
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Earning my black belt is the most meaningful milestone of my life outside becoming a father. Here's what changed between white, blue, purple, brown, and black—and why these lessons shape how I write code, lead projects, and show up for people.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">January 15, 2024</span>
+                        <a href="#" data-mock="true" class="text-blue-600 font-medium text-sm hover:text-blue-700">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Featured New Post 2 -->
+                <article class="bg-gradient-to-br from-purple-50 to-violet-50 rounded-2xl p-6 border border-purple-200">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-purple-100 text-purple-700 text-xs font-medium mb-4">
+                        <i class="fas fa-star mr-1"></i>
+                        NEW POST
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">
+                        <a href="#" data-mock="true" class="hover:text-purple-600 transition-colors">
+                            Five BJJ Habits That Make Me a Better Front-End Engineer
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        From breathing under pressure to drilling fundamentals, Brazilian Jiu-Jitsu has taught me invaluable lessons that directly translate to better code, cleaner architecture, and more effective teamwork.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">January 10, 2024</span>
+                        <a href="#" data-mock="true" class="text-purple-600 font-medium text-sm hover:text-purple-700">Read More →</a>
+                    </div>
+                </article>
+
+                <!-- Existing Post 1 -->
+                <article class="bg-gray-50 rounded-2xl p-6">
+                    <h3 class="text-lg font-bold mb-3">
+                        <a href="https://www.ehicksonjr.com/articles/post-2/" class="hover:text-primary-500 transition-colors">
+                            Embrace the Grind: Maximizing Your Potential in Jiu-Jitsu as a Hobby
+                        </a>
+                    </h3>
+                    <p class="text-gray-600 mb-4 text-sm">
+                        Designed to inspire those taking up Brazilian Jiu-Jitsu as a hobby who crave growth and challenge. We explore ways to optimize your environment and set personal goals.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs text-gray-500">May 30, 2023</span>
+                        <a href="https://www.ehicksonjr.com/articles/post-2/" class="text-primary-500 font-medium text-sm hover:text-primary-600">Read More →</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Dev Notes Section -->
+            <div class="bg-gray-50 rounded-2xl p-8">
+                <div class="text-center mb-8">
+                    <h3 class="text-2xl font-bold mb-2">Dev Notes</h3>
+                    <p class="text-gray-600">Technical writeups and development insights</p>
+                </div>
+                
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-xl p-4">
+                        <h4 class="font-semibold mb-2">Angular 18 Signals in Production</h4>
+                        <p class="text-sm text-gray-600 mb-3">Real-world experiences migrating from RxJS to Angular Signals for state management.</p>
+                        <span class="text-xs text-gray-500">Coming Soon</span>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-4">
+                        <h4 class="font-semibold mb-2">WCAG Quick Wins</h4>
+                        <p class="text-sm text-gray-600 mb-3">Low-effort, high-impact accessibility improvements every developer should implement.</p>
+                        <span class="text-xs text-gray-500">Coming Soon</span>
+                    </div>
+                    
+                    <div class="bg-white rounded-xl p-4">
+                        <h4 class="font-semibold mb-2">Tailwind Theming Strategy</h4>
+                        <p class="text-sm text-gray-600 mb-3">Building maintainable design systems with Tailwind CSS custom properties.</p>
+                        <span class="text-xs text-gray-500">Coming Soon</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earl the Kaiju - BJJ Private Lessons Landing Page -->
+    <section id="earldkaiju" class="py-20 bg-gradient-to-br from-gray-900 via-gray-800 to-purple-900 text-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Hero Section -->
+            <div class="text-center mb-16">
+                <div class="inline-flex items-center px-4 py-2 rounded-full bg-purple-500/20 text-purple-300 text-sm font-medium mb-6">
+                    <i class="fas fa-fist-raised mr-2"></i>
+                    IBJJF Black Belt • Competitor • Coach
+                </div>
+                <h1 class="text-4xl lg:text-6xl font-bold mb-6">
+                    Earl the Kaiju
+                    <span class="block gradient-text">Private Brazilian Jiu-Jitsu Lessons</span>
+                </h1>
+                <p class="text-xl lg:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
+                    One-on-one and small-group training for adults and kids in Morris County, NJ. Build real skills, safely and fast.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#booking" class="inline-flex items-center justify-center px-8 py-4 bg-purple-500 text-white rounded-xl font-semibold hover:bg-purple-600 transform hover:scale-105 transition-all duration-200">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        Book a Lesson
+                    </a>
+                    <a href="#kids-program" class="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all duration-200">
+                        <i class="fas fa-child mr-2"></i>
+                        See Kids Program
+                    </a>
+                </div>
+            </div>
+
+            <!-- Why Train With Me -->
+            <div class="mb-20">
+                <h2 class="text-3xl font-bold text-center mb-12">Why Train With Earl the Kaiju</h2>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-medal text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">IBJJF Black Belt</h3>
+                        <p class="text-gray-300 text-sm">Active competitor and experienced coach with proven results</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-heart text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Beginner-Friendly</h3>
+                        <p class="text-gray-300 text-sm">Technical, safety-first approach perfect for new practitioners</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-target text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Customized Plans</h3>
+                        <p class="text-gray-300 text-sm">Tailored training for self-defense, fitness, or competition goals</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-users text-white text-2xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Family Options</h3>
+                        <p class="text-gray-300 text-sm">Parent-and-kid sessions that are engaging and fun</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Programs -->
+            <div id="programs" class="mb-20">
+                <h2 class="text-3xl font-bold text-center mb-12">Training Programs</h2>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <!-- Adults Program -->
+                    <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-2xl font-bold mb-4">Adults (60-90 min)</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Foundations</h4>
+                                    <p class="text-gray-300 text-sm">Posture, frames, escapes, guard retention fundamentals</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Self-Defense</h4>
+                                    <p class="text-gray-300 text-sm">Clinch work, trips/throws, control to disengage safely</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Conditioning</h4>
+                                    <p class="text-gray-300 text-sm">Movement patterns, drilling, safe intensity building</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pricing for Adults -->
+                        <div class="bg-black/20 rounded-xl p-4">
+                            <h4 class="font-semibold mb-3">Investment</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Trial Session</span>
+                                    <span class="font-semibold">$80</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Starter Pack (4 sessions)</span>
+                                    <span class="font-semibold">$300</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Progress Pack (8 sessions)</span>
+                                    <span class="font-semibold">$560</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Kids Program -->
+                    <div id="kids-program" class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                        <h3 class="text-2xl font-bold mb-4">Kids (45-60 min)</h3>
+                        <div class="space-y-4 mb-6">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Play-Based Learning</h4>
+                                    <p class="text-gray-300 text-sm">Games for balance, grip strength, and body awareness</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Anti-Bullying</h4>
+                                    <p class="text-gray-300 text-sm">Verbal boundaries → defensive grips → safe holds</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-purple-400 mt-1 mr-3"></i>
+                                <div>
+                                    <h4 class="font-semibold">Parent-and-Me</h4>
+                                    <p class="text-gray-300 text-sm">Special sessions available for family bonding</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pricing for Kids -->
+                        <div class="bg-black/20 rounded-xl p-4">
+                            <h4 class="font-semibold mb-3">Investment</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between">
+                                    <span>Trial Session</span>
+                                    <span class="font-semibold">$70</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Small Group (2-4 kids)</span>
+                                    <span class="font-semibold">From $40/person</span>
+                                </div>
+                                <div class="flex justify-between">
+                                    <span>Parent-and-Me</span>
+                                    <span class="font-semibold">$90/session</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="mb-20">
+                <h2 class="text-3xl font-bold text-center mb-12">How It Works</h2>
+                <div class="grid md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                        <h3 class="text-lg font-bold mb-2">Quick Intake</h3>
+                        <p class="text-gray-300 text-sm">Discuss goals, any injuries, and preferred schedule</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                        <h3 class="text-lg font-bold mb-2">Personalized Plan</h3>
+                        <p class="text-gray-300 text-sm">Custom 2-6 week roadmap based on your objectives</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                        <h3 class="text-lg font-bold mb-2">Measurable Progress</h3>
+                        <p class="text-gray-300 text-sm">Track technique list and confidence markers</p>
+                    </div>
+                    
+                    <div class="text-center">
+                        <div class="w-12 h-12 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">4</div>
+                        <h3 class="text-lg font-bold mb-2">Ongoing Support</h3>
+                        <p class="text-gray-300 text-sm">Continued guidance and skill development</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="mb-20" x-data="{ openFaq: null }">
+                <h2 class="text-3xl font-bold text-center mb-12">Frequently Asked Questions</h2>
+                <div class="max-w-3xl mx-auto space-y-4">
+                    <div class="bg-white/10 backdrop-blur rounded-xl border border-white/20">
+                        <button @click="openFaq = openFaq === 1 ? null : 1" class="w-full p-6 text-left flex justify-between items-center">
+                            <h3 class="text-lg font-semibold">Do I need experience to start?</h3>
+                            <i class="fas fa-chevron-down transform transition-transform" :class="openFaq === 1 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div x-show="openFaq === 1" x-transition class="px-6 pb-6">
+                            <p class="text-gray-300">No experience necessary! Most of my clients start from zero. I specialize in teaching beginners with a patient, technical approach that prioritizes safety and understanding.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur rounded-xl border border-white/20">
+                        <button @click="openFaq = openFaq === 2 ? null : 2" class="w-full p-6 text-left flex justify-between items-center">
+                            <h3 class="text-lg font-semibold">Gi or No-Gi training?</h3>
+                            <i class="fas fa-chevron-down transform transition-transform" :class="openFaq === 2 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div x-show="openFaq === 2" x-transition class="px-6 pb-6">
+                            <p class="text-gray-300">Either! I'll advise based on your goals. Gi training emphasizes grips and patience, while No-Gi focuses on movement and athleticism. We can do both or focus on your preference.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur rounded-xl border border-white/20">
+                        <button @click="openFaq = openFaq === 3 ? null : 3" class="w-full p-6 text-left flex justify-between items-center">
+                            <h3 class="text-lg font-semibold">Where do we train?</h3>
+                            <i class="fas fa-chevron-down transform transition-transform" :class="openFaq === 3 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div x-show="openFaq === 3" x-transition class="px-6 pb-6">
+                            <p class="text-gray-300">Local mats and gym facilities in Morris County, or I can come to your location (travel fee may apply). I'll help coordinate the best training space for your needs.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white/10 backdrop-blur rounded-xl border border-white/20">
+                        <button @click="openFaq = openFaq === 4 ? null : 4" class="w-full p-6 text-left flex justify-between items-center">
+                            <h3 class="text-lg font-semibold">What should I bring?</h3>
+                            <i class="fas fa-chevron-down transform transition-transform" :class="openFaq === 4 ? 'rotate-180' : ''"></i>
+                        </button>
+                        <div x-show="openFaq === 4" x-transition class="px-6 pb-6">
+                            <p class="text-gray-300">Just bring water and comfortable athletic clothes. I can provide a loaner gi if needed. I'll give you a full equipment list after our initial consultation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Integration -->
+            <div class="mb-20">
+                <h2 class="text-3xl font-bold text-center mb-12">Follow the Journey</h2>
+                <div class="text-center mb-8">
+                    <p class="text-gray-300 mb-6">See recent training sessions, techniques, and student progress on Instagram</p>
+                    <!-- @FUNCTIONALITY: Instagram feed integration would go here -->
+                    <!-- TODO: Implement Instagram API or embed widgets -->
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-8">
+                        <!-- Placeholder Instagram posts -->
+                        <div class="aspect-square bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-play text-white text-2xl"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-image text-white text-2xl"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-green-500 to-blue-500 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-video text-white text-2xl"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-yellow-500 to-red-500 rounded-xl flex items-center justify-center md:block hidden">
+                            <i class="fas fa-image text-white text-2xl"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-pink-500 to-purple-500 rounded-xl flex items-center justify-center md:block hidden">
+                            <i class="fas fa-play text-white text-2xl"></i>
+                        </div>
+                        <div class="aspect-square bg-gradient-to-br from-indigo-500 to-purple-500 rounded-xl flex items-center justify-center md:block hidden">
+                            <i class="fas fa-image text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl font-semibold hover:opacity-90 transition-opacity">
+                        <i class="fab fa-instagram mr-2"></i>
+                        Watch More on Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- Booking Form -->
+            <div id="booking" class="max-w-2xl mx-auto">
+                <div class="bg-white/10 backdrop-blur rounded-2xl p-8 border border-white/20">
+                    <h2 class="text-2xl font-bold text-center mb-8">Book Your First Session</h2>
+                    
+                    <form class="space-y-6" data-mock="true" data-implementation="Integrate with booking system like Calendly or custom backend">
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium mb-2">Full Name *</label>
+                                <input type="text" id="name" name="name" required 
+                                       class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                       placeholder="Your name">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium mb-2">Email *</label>
+                                <input type="email" id="email" name="email" required 
+                                       class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                       placeholder="your.email@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="phone" class="block text-sm font-medium mb-2">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required 
+                                   class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                   placeholder="(555) 123-4567">
+                        </div>
+                        
+                        <div>
+                            <label for="program" class="block text-sm font-medium mb-2">Interested Program</label>
+                            <select id="program" name="program" 
+                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                                <option value="">Select a program</option>
+                                <option value="adult-trial">Adult Trial Session ($80)</option>
+                                <option value="adult-starter">Adult Starter Pack ($300)</option>
+                                <option value="kids-trial">Kids Trial Session ($70)</option>
+                                <option value="parent-child">Parent-and-Me Session ($90)</option>
+                                <option value="small-group">Small Group Training</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="goals" class="block text-sm font-medium mb-2">Goals & Experience</label>
+                            <textarea id="goals" name="goals" rows="4" 
+                                      class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                      placeholder="Tell me about your goals, any previous experience, injuries, or questions..."></textarea>
+                        </div>
+                        
+                        <div>
+                            <label for="availability" class="block text-sm font-medium mb-2">Preferred Times</label>
+                            <input type="text" id="availability" name="availability" 
+                                   class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
+                                   placeholder="e.g., Weekday evenings, Saturday mornings">
+                        </div>
+                        
+                        <!-- SMS Consent (Required) -->
+                        <div class="flex items-start space-x-3">
+                            <input type="checkbox" id="sms-consent" name="sms_consent" required 
+                                   class="w-5 h-5 mt-1 bg-white/20 border border-white/30 rounded text-purple-500 focus:ring-purple-500">
+                            <label for="sms-consent" class="text-sm text-gray-300 leading-relaxed">
+                                I agree to receive text messages about scheduling and training updates. Text messaging originator opt-in data will not be shared with third parties. Reply STOP to opt out.*
+                            </label>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full py-4 bg-purple-500 text-white rounded-xl font-semibold hover:bg-purple-600 transform hover:scale-[1.02] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900">
+                            <i class="fas fa-paper-plane mr-2"></i>
+                            Request Session
+                        </button>
+                        
+                        <p class="text-center text-sm text-gray-400">
+                            I'll text and email you within 24 hours to confirm your session details.
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Schema.org JSON-LD for BJJ Service -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          "name": "Private Brazilian Jiu-Jitsu Lessons",
+          "description": "One-on-one and small-group BJJ training for adults and kids in Morris County, NJ",
+          "provider": {
+            "@type": "Person",
+            "name": "Earl Hickson Jr.",
+            "alternateName": "Earl the Kaiju"
+          },
+          "areaServed": {
+            "@type": "Place",
+            "name": "Morris County, NJ"
+          },
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Adult Trial Session",
+              "price": "80",
+              "priceCurrency": "USD"
+            },
+            {
+              "@type": "Offer", 
+              "name": "Kids Trial Session",
+              "price": "70",
+              "priceCurrency": "USD"
+            }
+          ]
+        }
+        </script>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl lg:text-4xl font-bold mb-8">Ready to Work Together?</h2>
+            <p class="text-xl text-gray-600 mb-12 max-w-2xl mx-auto">
+                Download my resume or connect with me directly to discuss how I can contribute to your development team.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <a href="#" data-mock="true" data-implementation="Link to actual resume PDF" 
+                   class="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transform hover:scale-105 transition-all duration-200">
+                    <i class="fas fa-download mr-3"></i>
+                    Download Resume (PDF)
+                </a>
+                
+                <a href="mailto:hello@ehicksonjr.com" 
+                   class="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-all duration-200">
+                    <i class="fas fa-envelope mr-3"></i>
+                    Send Message
+                </a>
+                
+                <a href="https://www.linkedin.com/in/earl-hickson-jr/" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center justify-center px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 transform hover:scale-105 transition-all duration-200">
+                    <i class="fab fa-linkedin mr-3"></i>
+                    LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-16">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <h3 class="text-xl font-bold mb-4 gradient-text">Earl Hickson Jr.</h3>
+                    <p class="text-gray-300 mb-4">
+                        Senior Front-End Developer specializing in Angular, React, accessibility, and design systems. Based in Parsippany, New Jersey.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="https://www.linkedin.com/in/earl-hickson-jr/" target="_blank" rel="noopener noreferrer"
+                           class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center hover:bg-blue-700 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/ehicksonjr" target="_blank" rel="noopener noreferrer"
+                           class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer"
+                           class="w-10 h-10 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center hover:opacity-90 transition-opacity">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#case-studies" class="hover:text-white transition-colors">Case Studies</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+                        <li><a href="#blog" class="hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="#earldkaiju" class="hover:text-white transition-colors">BJJ Lessons</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>Parsippany, NJ</li>
+                        <li><a href="mailto:hello@ehicksonjr.com" class="hover:text-white transition-colors">hello@ehicksonjr.com</a></li>
+                        <li><a href="#resume" class="hover:text-white transition-colors">Download Resume</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 mt-12 text-center text-gray-400">
+                <p>&copy; 2024 Earl Hickson Jr. All rights reserved. Built with passion and precision.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" 
+            class="fixed bottom-8 right-8 w-12 h-12 bg-primary-500 text-white rounded-full shadow-lg opacity-0 pointer-events-none transition-all duration-300 hover:bg-primary-600 focus:outline-none focus:ring-2 focus:ring-primary-500"
+            onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+            aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // Scroll to top button visibility
+        (function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                } else {
+                    scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                }
+            });
+        })();
+
+        // Smooth scrolling for navigation links
+        (function() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        })();
+
+        // Form submission handler (mock)
+        (function() {
+            const form = document.querySelector('form[data-mock="true"]');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // TODO: Implement actual form submission logic
+                    alert('Form submission functionality would be implemented here. Thank you for your interest!');
+                });
+            }
+        })();
+
+        // Add animation on scroll
+        (function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-fade-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        })();
+    </script>
+</body>
+</html>
