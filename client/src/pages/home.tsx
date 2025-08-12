@@ -27,7 +27,7 @@ export default function Home() {
               </h3>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
                 Versatile Front-End Engineer with 6+ years creating responsive, accessible, high-performing web applications. 
-                Proven track record of delivering measurable results and performance improvements.
+                Proven track record: +37% lead conversions, +25% organic traffic, +75% live stream engagement.
                 Based in Parsippany, New Jersey.
               </p>
               
@@ -40,7 +40,7 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" data-testid="button-resume">
-                  <a href="/Earl_Hickson_Resume_2025.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/api/resume" target="_blank" rel="noopener noreferrer">
                     <i className="fas fa-download mr-2"></i>
                     Download Resume (PDF)
                   </a>
@@ -62,7 +62,7 @@ export default function Home() {
             {/* Profile Image */}
             <div className="relative animate-float">
               <img 
-                src="/images/earl-professional.png" 
+                src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" 
                 alt="Earl Hickson Jr. - Professional headshot of a Front-End Engineer" 
                 className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
                 data-testid="hero-image"
@@ -205,7 +205,7 @@ export default function Home() {
               </Button>
               
               <Button asChild variant="outline" size="lg" data-testid="button-github">
-                <a href="https://github.com/ehicksonjr" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Epetaway" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-github mr-3"></i>
                   GitHub
                 </a>

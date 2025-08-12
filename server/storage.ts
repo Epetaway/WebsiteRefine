@@ -49,13 +49,8 @@ export class MemStorage implements IStorage {
   async createContact(insertContact: InsertContact): Promise<Contact> {
     const id = randomUUID();
     const contact: Contact = { 
-      id,
-      name: insertContact.name,
-      email: insertContact.email,
-      type: insertContact.type ?? 'general',
-      phone: insertContact.phone ?? null,
-      message: insertContact.message ?? null,
-      smsConsent: insertContact.smsConsent ?? null,
+      ...insertContact, 
+      id, 
       createdAt: new Date() 
     };
     this.contacts.set(id, contact);
@@ -65,14 +60,8 @@ export class MemStorage implements IStorage {
   async createBjjBooking(insertBooking: InsertBjjBooking): Promise<BjjBooking> {
     const id = randomUUID();
     const booking: BjjBooking = { 
-      id,
-      name: insertBooking.name,
-      email: insertBooking.email,
-      phone: insertBooking.phone,
-      smsConsent: insertBooking.smsConsent,
-      program: insertBooking.program,
-      goals: insertBooking.goals ?? null,
-      availability: insertBooking.availability ?? null,
+      ...insertBooking, 
+      id, 
       createdAt: new Date() 
     };
     this.bjjBookings.set(id, booking);
@@ -90,15 +79,8 @@ export class MemStorage implements IStorage {
   async createSocialMediaPost(insertPost: InsertSocialMediaPost): Promise<SocialMediaPost> {
     const id = this.postIdCounter++;
     const post: SocialMediaPost = { 
-      id,
-      platform: insertPost.platform,
-      postId: insertPost.postId,
-      mediaType: insertPost.mediaType,
-      permalink: insertPost.permalink,
-      timestamp: insertPost.timestamp,
-      caption: insertPost.caption ?? null,
-      mediaUrl: insertPost.mediaUrl ?? null,
-      thumbnailUrl: insertPost.thumbnailUrl ?? null,
+      ...insertPost, 
+      id, 
       createdAt: new Date() 
     };
     this.socialMediaPosts.set(id, post);

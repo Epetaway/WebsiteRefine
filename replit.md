@@ -53,50 +53,42 @@ Preferred communication style: Simple, everyday language.
 # External Dependencies
 
 ## Database Services
-- **PostgreSQL**: Production database with Drizzle ORM for type-safe operations
-- **Drizzle Kit**: Database migrations and schema management
+- **Neon Database**: Serverless PostgreSQL hosting
+- **Drizzle ORM**: Type-safe database operations and migrations
 
 ## UI and Styling
-- **Tailwind CSS**: Utility-first CSS framework with custom design tokens
+- **Tailwind CSS**: Utility-first CSS framework
 - **shadcn/ui**: React component library built on Radix UI primitives
-- **Radix UI**: Unstyled, accessible UI primitives for dialogs, forms, navigation
-- **Lucide React**: Comprehensive icon library for UI elements
+- **Radix UI**: Unstyled, accessible UI primitives
+- **Lucide React**: Icon library for consistent iconography
 
 ## Development Tools
-- **Vite**: Modern build tool with hot module replacement
-- **TypeScript**: Full-stack type safety across client, server, and shared modules
-- **TanStack React Query**: Server state management with automatic caching and background updates
-- **React Hook Form**: Form validation with Zod schema integration
+- **Vite**: Build tool and development server
+- **TypeScript**: Static type checking
+- **ESBuild**: Fast JavaScript bundler for production server builds
+- **React Query**: Server state management and caching
 
 ## External APIs and Services
-- **SendGrid**: Transactional email service for contact forms and BJJ booking notifications
-- **YouTube Data API v3**: Automatic video content fetching from @earldkaiju channel (7 videos, 5-minute refresh)
-- **Threads API**: Instagram content integration for @earld.kaiju (App ID/Secret configured, OAuth pending)
-- **Google Analytics**: Website analytics with GDPR-compliant tracking
-- **Google Fonts**: Inter and JetBrains Mono typography
+- **SendGrid**: Email service integration for contact forms and notifications
+- **Google Analytics**: Website analytics tracking with GDPR considerations
+- **YouTube Data API v3**: Automatic content fetching from @earldkaiju channel
+- **Threads API**: Instagram content integration for @earld.kaiju (App ID/Secret configured, requires OAuth access token)
+- **Font Services**: Google Fonts for typography (Inter and JetBrains Mono)
+- **Custom SVG Icons**: Modern icon system with proper play buttons and social media indicators
 
-## Production Features (Updated August 2025)
-- **Automatic Content System**: YouTube integration fully operational, Instagram configured pending OAuth
-- **Contact & Booking Forms**: Production-ready with email notifications and database persistence
-- **Resume Download**: DOCX file serving with proper headers and caching
-- **Social Media Gallery**: Responsive grid layout with hover effects and proper accessibility
-- **Scroll-to-Top**: Automatic page scroll behavior on route navigation
-- **SEO Optimization**: Complete meta tags, Open Graph, and semantic HTML structure
+## Automatic Content System (Added August 2025)
+- **YouTube Integration**: Fully functional, automatically fetches latest 7 videos every 5 minutes
+- **Instagram Integration**: Threads API App ID/Secret configured, needs OAuth flow to get access token
+- **Auto-refresh**: Content updates automatically without manual intervention
+- **Responsive Gallery**: Beautiful grid layout with hover effects and proper play buttons
+- **Error Handling**: Graceful fallbacks and status messages for each platform
 
-## Deployment & Hosting
-- **Replit Deployments**: Primary hosting platform with automatic GitHub integration
-- **GitHub Integration**: Version control with deployment pipeline
-- **Environment Management**: Secure secrets handling for API keys and database credentials
-- **Static Asset Optimization**: Express server with caching headers and compression
+## Hosting and Deployment
+- **Replit**: Development and hosting platform with specific plugins and configurations
+- **Static Assets**: Served through Express with proper caching headers
 
-## Architecture Updates (August 2025)
-- **Next.js Pages Router**: Successfully converted to pure Next.js 13 with Pages Router (matching working GitHub repository)
-- **Static Export Ready**: Configured for GitHub Pages deployment with MDX support
-- **Terminology Standardization**: Complete migration from "developer" to "engineer" throughout  
-- **Pure Next.js Structure**: Eliminated hybrid React/Vite + Express setup, now uses standard src/ directory
-- **Component Architecture**: Created reusable Card, Container components following GitHub structure
-- **Image Integration**: Professional headshot integrated with Next.js Image optimization
-- **TypeScript Support**: Full TypeScript configuration with proper path aliases (@/ imports)
-- **MDX Configuration**: Remark and Rehype plugins for article/blog functionality
-- **GitHub Pages Ready**: Matches working earldkaiju repository structure for reliable deployment
-- **SEO Integration**: Next-seo configured for proper meta tags and social sharing
+## Third-Party Libraries
+- **React Hook Form**: Form state management and validation
+- **Zod**: Runtime type validation and schema definition
+- **date-fns**: Date manipulation and formatting utilities
+- **clsx & Tailwind Merge**: Utility for conditional CSS class names

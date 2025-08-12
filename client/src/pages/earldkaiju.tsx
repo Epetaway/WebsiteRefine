@@ -13,7 +13,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { OAuthConnect } from "@/components/oauth-connect";
-// Image imports removed for GitHub deployment compatibility
+import kaijuBanner from "@assets/ChatGPT Image Aug 11, 2025, 03_10_18 PM_1754939460671.png";
+import earlBjjPhoto from "@assets/Screenshot_20250811-184848_1754963908044.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
 export default function EarldKaiju() {
@@ -69,10 +70,9 @@ export default function EarldKaiju() {
   const { data: socialMediaData, isLoading: socialMediaLoading } = useQuery({
     queryKey: ['/api/social-media'],
     refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
-    enabled: true, // Enable for real API integration
   });
 
-  const socialMediaPosts: SocialMediaPost[] = (socialMediaData as any)?.posts || [];
+  const socialMediaPosts = socialMediaData?.posts || [];
   const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
   const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
 
@@ -94,23 +94,15 @@ export default function EarldKaiju() {
     },
   });
 
-  // Fetch content on component mount
+  // Automatically fetch content when the component loads and when data is empty
   useEffect(() => {
-    // Fetch YouTube videos
-    fetchYoutubeMutation.mutate();
-    
-    // Fetch Instagram posts 
-    fetchInstagramMutation.mutate();
-  }, []);
-
-  // Disabled for static export
-  // useEffect(() => {
-  //   if (!socialMediaLoading && socialMediaPosts.length === 0) {
-  //     console.log('No posts found, triggering fetch...');
-  //     fetchInstagramMutation.mutate();
-  //     fetchYoutubeMutation.mutate();
-  //   }
-  // }, [socialMediaData, socialMediaLoading]);
+    // Only fetch if we don't have data yet
+    if (!socialMediaLoading && socialMediaPosts.length === 0) {
+      console.log('No posts found, triggering fetch...');
+      fetchInstagramMutation.mutate();
+      fetchYoutubeMutation.mutate();
+    }
+  }, [socialMediaData, socialMediaLoading]);
 
 
 
@@ -118,8 +110,16 @@ export default function EarldKaiju() {
     <div className="pt-16">
       {/* Hero Section with Banner */}
       <section className="relative py-20 bg-black text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-20 bg-gradient-to-br from-[#39FF14]/20 via-transparent to-[#39FF14]/10" />
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `url(${kaijuBanner})`,
+            backgroundSize: 'cover',
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'center',
+          }}
+        />
         
         {/* Dark overlay for better text readability */}
         <div className="absolute inset-0 bg-black/60" />
@@ -131,15 +131,14 @@ export default function EarldKaiju() {
               IBJJF Black Belt • Competitor • Coach
             </div>
             
-            {/* Kaiju Logo */}
+            {/* Kaiju Logo Image */}
             <div className="flex justify-center mb-8">
-              <div className="w-64 h-64 lg:w-80 lg:h-80 rounded-full overflow-hidden border-4 border-[#39FF14]/30 shadow-2xl shadow-[#39FF14]/50" data-testid="kaiju-logo">
-                <img 
-                  src="/images/kaiju-logo.png" 
-                  alt="Earl The Kaiju - BJJ Black Belt Logo" 
-                  className="w-full h-full object-contain bg-black"
-                />
-              </div>
+              <img 
+                src={kaijuBanner} 
+                alt="Earl the Kaiju Logo" 
+                className="w-64 h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
+                data-testid="kaiju-logo"
+              />
             </div>
             
             <p className="text-xl lg:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto drop-shadow-lg" data-testid="hero-description">
@@ -327,21 +326,11 @@ export default function EarldKaiju() {
                 <div className="order-1 md:order-1">
                   <div className="bg-white/5 rounded-xl p-4 border border-[#39FF14]/20 h-full flex items-center justify-center min-h-[400px]">
                     <div className="relative w-full h-full flex items-center justify-center">
-                      <div className="w-full max-w-sm aspect-square rounded-xl overflow-hidden border-2 border-[#39FF14]/30">
-                        <img 
-                          src="/images/earl-fighter.png" 
-                          alt="Earl 'The Kaiju' Hickson - BJJ Black Belt with his son" 
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      {/* Small Kaiju logo badge */}
-                      <div className="absolute -bottom-2 -right-2 w-16 h-16 rounded-full overflow-hidden border-4 border-[#39FF14] shadow-xl bg-black">
-                        <img 
-                          src="/images/kaiju-logo.png" 
-                          alt="Kaiju Logo Badge" 
-                          className="w-full h-full object-contain"
-                        />
-                      </div>
+                      <img 
+                        src={earlBjjPhoto} 
+                        alt="Earl Hickson Jr. in Brazilian Jiu-Jitsu gi holding a child, showcasing the family-friendly training environment" 
+                        className="max-w-full max-h-[450px] w-auto h-auto object-contain rounded-lg shadow-lg"
+                      />
                     </div>
                   </div>
                 </div>
@@ -509,7 +498,7 @@ export default function EarldKaiju() {
 
                     {/* Show only 4 most recent videos */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                      {youtubePosts.slice(0, 4).map((post: SocialMediaPost, index: number) => (
+                      {youtubePosts.slice(0, 4).map((post, index) => (
                         <div 
                           key={post.postId} 
                           className="group"
@@ -522,8 +511,8 @@ export default function EarldKaiju() {
                           >
                             <div className="relative aspect-video bg-black/60 overflow-hidden">
                               <img 
-                                src={post.thumbnailUrl ?? ''} 
-                                alt={post.caption ?? 'YouTube video thumbnail'}
+                                src={post.thumbnailUrl} 
+                                alt={post.caption || 'YouTube video thumbnail'}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 loading="lazy"
                               />
@@ -813,7 +802,6 @@ export default function EarldKaiju() {
                         <FormControl>
                           <Textarea 
                             {...field}
-                            value={field.value ?? ''}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="Tell me about your goals, any previous experience, injuries, or questions..."
                             rows={4}
@@ -834,7 +822,6 @@ export default function EarldKaiju() {
                         <FormControl>
                           <Input 
                             {...field}
-                            value={field.value ?? ''}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="e.g., Weekday evenings, Saturday mornings"
                             data-testid="input-availability"

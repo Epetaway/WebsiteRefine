@@ -75,13 +75,12 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-6" data-testid="section-title-bjj">The BJJ Connection</h2>
               
               <div className="mb-6">
-                <div className="w-full bg-gradient-to-br from-red-900 to-black rounded-xl mb-4 aspect-video flex items-center justify-center">
-                  <div className="text-center text-white">
-                    <i className="fas fa-user-ninja text-6xl mb-3 text-red-500"></i>
-                    <p className="text-lg font-semibold">Earl "The Kaiju" Hickson</p>
-                    <p className="text-sm opacity-80">Brazilian Jiu-Jitsu Black Belt</p>
-                  </div>
-                </div>
+                <img 
+                  src="https://www.ehicksonjr.com/_next/static/media/MeBjj_2.6bf53e95.jpg" 
+                  alt="Earl Hickson Jr. in Brazilian Jiu-Jitsu training gear demonstrating technique" 
+                  className="w-full rounded-xl mb-4"
+                  data-testid="bjj-image"
+                />
               </div>
 
               <p className="text-gray-700 mb-6" data-testid="bio-bjj">
@@ -105,16 +104,8 @@ export default function About() {
             <div className="space-y-6">
               {workExperience.slice(0, 5).map((job, index) => (
                 <div key={job.id} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center border border-gray-200">
-                    {job.logo ? (
-                      <img 
-                        src={job.logo} 
-                        alt={`${job.company} logo`}
-                        className="w-8 h-8 object-contain"
-                      />
-                    ) : (
-                      <i className="fas fa-laptop-code text-primary-500"></i>
-                    )}
+                  <div className="w-12 h-12 bg-primary-500 rounded-lg flex items-center justify-center">
+                    <i className="fas fa-laptop-code text-white"></i>
                   </div>
                   <div className="flex-1">
                     <h3 className="font-semibold" data-testid={`job-title-${index}`}>{job.position}</h3>
@@ -145,27 +136,24 @@ export default function About() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8" data-testid="section-title-personal">Personal</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl aspect-square flex items-center justify-center">
-                <div className="text-center text-blue-700">
-                  <i className="fas fa-users text-4xl mb-3"></i>
-                  <p className="font-semibold">Family</p>
-                  <p className="text-sm opacity-80">Father & Husband</p>
-                </div>
-              </div>
-              <div className="w-full bg-gradient-to-br from-red-100 to-red-200 rounded-xl aspect-square flex items-center justify-center">
-                <div className="text-center text-red-700">
-                  <i className="fas fa-fist-raised text-4xl mb-3"></i>
-                  <p className="font-semibold">BJJ Training</p>
-                  <p className="text-sm opacity-80">Black Belt Coach</p>
-                </div>
-              </div>
-              <div className="w-full bg-gradient-to-br from-green-100 to-green-200 rounded-xl aspect-square flex items-center justify-center">
-                <div className="text-center text-green-700">
-                  <i className="fas fa-laptop-code text-4xl mb-3"></i>
-                  <p className="font-semibold">Engineering</p>
-                  <p className="text-sm opacity-80">Front-End Expert</p>
-                </div>
-              </div>
+              <img 
+                src="https://www.ehicksonjr.com/_next/static/media/us.21fce331.jpeg" 
+                alt="Earl Hickson Jr. with family"
+                className="w-full rounded-xl"
+                data-testid="image-family"
+              />
+              <img 
+                src="https://www.ehicksonjr.com/_next/static/media/BjjClass.2d33ac4d.jpg" 
+                alt="Brazilian Jiu-Jitsu class training session"
+                className="w-full rounded-xl"
+                data-testid="image-bjj-class"
+              />
+              <img 
+                src="https://www.ehicksonjr.com/_next/static/media/justMe.03e56064.png" 
+                alt="Earl Hickson Jr. professional portrait"
+                className="w-full rounded-xl"
+                data-testid="image-professional"
+              />
             </div>
           </div>
 

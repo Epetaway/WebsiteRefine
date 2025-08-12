@@ -21,7 +21,7 @@ export default function Footer() {
                 <i className="fab fa-linkedin"></i>
               </a>
               <a 
-                href="https://github.com/ehicksonjr" 
+                href="https://github.com/Epetaway" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-gray-600 transition-colors"

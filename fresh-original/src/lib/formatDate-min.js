@@ -1,1 +1,0 @@
-export function formatDate(t){return new Date(`${t}T00:00:00Z`).toLocaleDateString("en-US",{day:"numeric",month:"long",year:"numeric",timeZone:"UTC"})}export function formatMonthYear(t){const e=new Date(`${t}T00:00:00Z`);return e.toLocaleString("default",{month:"long"})+" "+e.toLocaleString("default",{year:"numeric"})}
