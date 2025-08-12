@@ -34,6 +34,8 @@ tar -xzf earl-portfolio-nextjs-complete.tar.gz
    ```bash
    npm install
    ```
+   
+   **Important**: Use `npm install` (not `npm ci`) for the first setup. The package-lock.json is excluded to avoid version conflicts between different systems.
 
 2. **Environment Variables**:
    Add these to your `.env` file or Replit Secrets:
@@ -78,5 +80,12 @@ tar -xzf earl-portfolio-nextjs-complete.tar.gz
 ✅ Your authentic images integrated throughout
 ✅ Next.js build successful and ready for deployment
 ✅ Professional "Front-End Engineer" terminology throughout
+✅ Package dependency conflicts resolved for clean local setup
+
+## Fixes Applied
+
+- Removed package-lock.json to prevent version conflicts between systems
+- Updated dependencies to latest compatible versions
+- Verified npm install works properly for fresh setup
 
 The project is complete and ready for deployment to GitHub Pages or any hosting platform.
