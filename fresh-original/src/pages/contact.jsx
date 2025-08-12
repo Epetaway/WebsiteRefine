@@ -135,7 +135,7 @@ export default function Contact() {
               <div>
                 <h4 className="font-semibold text-zinc-700 dark:text-zinc-300 mb-2">Budget & Timeline</h4>
                 <p className="text-sm">
-                  Sharing your budget range and deadline helps ensure we're aligned on project expectations 
+                  Sharing your budget range and deadline helps ensure we&rsquo;re aligned on project expectations 
                   and can deliver the best possible results within your constraints.
                 </p>
               </div>
