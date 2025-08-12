@@ -27,7 +27,7 @@ export default function Home() {
               </h3>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
                 Versatile Front-End Engineer with 6+ years creating responsive, accessible, high-performing web applications. 
-                Proven track record: +37% lead conversions, +25% organic traffic, +75% live stream engagement.
+                Proven track record of delivering measurable results and performance improvements.
                 Based in Parsippany, New Jersey.
               </p>
               
