@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/layout/header'
 import Footer from '@/components/layout/footer'
@@ -7,6 +7,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { TooltipProvider } from '@/components/ui/tooltip'
 
 const inter = Inter({ subsets: ['latin'] })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Earl Hickson Jr. - Senior Front-End Engineer',
@@ -37,7 +38,7 @@ export default function RootLayout({
       <head>
         <link 
           rel="stylesheet" 
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
         />
       </head>
       <body className={inter.className}>
