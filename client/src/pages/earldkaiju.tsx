@@ -72,7 +72,7 @@ export default function EarldKaiju() {
     refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
   });
 
-  const socialMediaPosts: SocialMediaPost[] = socialMediaData?.posts || [];
+  const socialMediaPosts: SocialMediaPost[] = (socialMediaData as { posts: SocialMediaPost[] })?.posts || [];
   const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
   const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
 
@@ -511,7 +511,7 @@ export default function EarldKaiju() {
                           >
                             <div className="relative aspect-video bg-black/60 overflow-hidden">
                               <img 
-                                src={post.thumbnailUrl} 
+                                src={post.thumbnailUrl || ''} 
                                 alt={post.caption || 'YouTube video thumbnail'}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 loading="lazy"
