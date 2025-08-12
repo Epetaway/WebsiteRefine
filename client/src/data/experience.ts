@@ -31,6 +31,7 @@ export const workExperience: WorkExperience[] = [
     position: "Frontend Engineer",
     duration: "2021 - 2022",
     description: "Developed healthcare technology solutions with emphasis on accessibility",
+    logo: "/images/asembia.png",
     technologies: ["React", "JavaScript", "SCSS", "Jest"]
   },
   {
@@ -39,6 +40,7 @@ export const workExperience: WorkExperience[] = [
     position: "Lead Designer and Developer",
     duration: "2020 - 2021",
     description: "Led design and development of medical education platform",
+    logo: "/images/broadcastmed.png",
     technologies: ["Vue.js", "Node.js", "Adobe Creative Suite"]
   },
   {
@@ -47,6 +49,7 @@ export const workExperience: WorkExperience[] = [
     position: "Freelance Front-End Web Engineer",
     duration: "2019 - 2020",
     description: "Financial services website development and maintenance",
+    logo: "/images/prosek.png",
     technologies: ["WordPress", "PHP", "JavaScript", "CSS"]
   },
   {
@@ -63,6 +66,7 @@ export const workExperience: WorkExperience[] = [
     position: "Email Marketing Specialist",
     duration: "2017 - 2018",
     description: "Email campaign development and automation for major brands",
+    logo: "/images/Merkle.png",
     technologies: ["HTML", "CSS", "Email Templates", "Marketing Automation"]
   },
   {
@@ -71,6 +75,7 @@ export const workExperience: WorkExperience[] = [
     position: "Freelance Web Engineer",
     duration: "2016 - 2017",
     description: "Pharmaceutical industry web development projects",
+    logo: "/images/Merck_Logo.svg",
     technologies: ["HTML", "CSS", "JavaScript", "CMS"]
   },
   {
@@ -87,6 +92,7 @@ export const workExperience: WorkExperience[] = [
     position: "Front-End Engineer",
     duration: "2014 - 2015",
     description: "Telecommunications industry web development",
+    logo: "/images/verizon.png",
     technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
   },
   {
