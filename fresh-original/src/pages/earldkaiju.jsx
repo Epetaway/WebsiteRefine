@@ -22,16 +22,22 @@ export default function EarldKaiju() {
     // For now, we'll simulate a successful submission
     
     try {
-      // Replace with your form service endpoint
-      const response = await fetch('https://formspree.io/f/your-bjj-form-id', {
+      // Formspree endpoint for BJJ bookings
+      const response = await fetch('https://formspree.io/f/xdknqgka', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          ...formData,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          experience: formData.experience,
+          goals: formData.goals,
+          availability: formData.availability,
           subject: 'BJJ Private Lesson Booking Request',
           _replyto: formData.email,
+          _subject: 'New BJJ Private Lesson Request',
         }),
       });
 
