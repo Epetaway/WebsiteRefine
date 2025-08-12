@@ -77,7 +77,7 @@ export default function EarldKaiju() {
           {/* Header Section */}
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl mb-6">
-              Private BJJ Lessons with Earl "Kaiju" Hickson Jr.
+              Private BJJ Lessons with Earl &ldquo;Kaiju&rdquo; Hickson Jr.
             </h1>
             <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8">
               BJJ Black Belt • NAGA Competitor • Personalized Training
@@ -122,7 +122,7 @@ export default function EarldKaiju() {
                 </p>
                 <p>
                   My approach focuses on fundamental techniques, strategic thinking, and building confidence on the mats. 
-                  Whether you're a complete beginner or looking to refine advanced techniques, each session is tailored 
+                  Whether you&rsquo;re a complete beginner or looking to refine advanced techniques, each session is tailored 
                   to your specific goals and learning style.
                 </p>
                 
@@ -155,7 +155,7 @@ export default function EarldKaiju() {
                     Request Submitted Successfully!
                   </h3>
                   <p className="text-green-700 dark:text-green-300">
-                    Thank you for your interest in private BJJ lessons. I'll review your request and get back to you 
+                    Thank you for your interest in private BJJ lessons. I&rsquo;ll review your request and get back to you 
                     within 24 hours to discuss scheduling and next steps.
                   </p>
                   <Button 

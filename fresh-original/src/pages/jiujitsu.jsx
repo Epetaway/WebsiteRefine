@@ -20,10 +20,7 @@ export default function JiuJitsuPage() {
           name="description"
           content="Explore Earl the Kaiju’s Brazilian Jiu-Jitsu journey, accolades, and availability for private training."
         />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap"
-          rel="stylesheet"
-        />
+
       </Head>
 
       <JumbotronCarousel className="mt-25" />
