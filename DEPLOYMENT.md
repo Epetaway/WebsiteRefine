@@ -8,7 +8,8 @@
 Add these to your Netlify dashboard → Site settings → Environment variables:
 
 ```
-DATABASE_URL=postgresql://neondb_owner:
+DATABASE_URL=
+SENDGRID_API_KEY=
 YOUTUBE_API_KEY=
 YOUTUBE_CHANNEL_ID=
 THREADS_APP_ID=

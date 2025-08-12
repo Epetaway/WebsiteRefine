@@ -63,3 +63,4 @@ jspm_packages/
 .replit
 uv.lock
 attached_assets/
+DEPLOYMENT.md
