@@ -95,3 +95,6 @@ Preferred communication style: Simple, everyday language.
 - **Form Validation**: Zod schemas shared between client and server for consistency
 - **Error Handling**: Comprehensive error states and user feedback systems
 - **Performance**: Optimized bundle size and loading times for production deployment
+- **Build System Fix**: Converted problematic MDX files to JSX components, eliminating webpack loader issues
+- **GitHub Pages Ready**: Simplified next.config.mjs for static export without MDX dependencies
+- **Form Integration**: Working Formspree endpoints for contact and BJJ booking forms
