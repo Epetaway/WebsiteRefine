@@ -5,8 +5,9 @@
 ### 1. Repository Setup
 1. Extract the zip file to your local machine
 2. Open terminal/command prompt in the extracted folder
-3. Initialize git repository:
+3. Generate package-lock.json and initialize git repository:
    ```bash
+   node scripts/create-package-lock.js
    git init
    git add .
    git commit -m "Initial commit - Earl Hickson Jr. Portfolio"
