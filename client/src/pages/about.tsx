@@ -75,10 +75,11 @@ export default function About() {
               <h2 className="text-3xl font-bold mb-6" data-testid="section-title-bjj">The BJJ Connection</h2>
               
               <div className="mb-6">
-                <div className="w-full bg-gray-200 rounded-xl mb-4 aspect-video flex items-center justify-center">
-                  <div className="text-center text-gray-500">
-                    <i className="fas fa-user-ninja text-4xl mb-2"></i>
-                    <p className="text-sm">BJJ Training Photo</p>
+                <div className="w-full bg-gradient-to-br from-red-900 to-black rounded-xl mb-4 aspect-video flex items-center justify-center">
+                  <div className="text-center text-white">
+                    <i className="fas fa-user-ninja text-6xl mb-3 text-red-500"></i>
+                    <p className="text-lg font-semibold">Earl "The Kaiju" Hickson</p>
+                    <p className="text-sm opacity-80">Brazilian Jiu-Jitsu Black Belt</p>
                   </div>
                 </div>
               </div>
@@ -144,22 +145,25 @@ export default function About() {
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8" data-testid="section-title-personal">Personal</h2>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="w-full bg-gray-200 rounded-xl aspect-square flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <i className="fas fa-users text-3xl mb-2"></i>
-                  <p className="text-sm">Family Photo</p>
+              <div className="w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl aspect-square flex items-center justify-center">
+                <div className="text-center text-blue-700">
+                  <i className="fas fa-users text-4xl mb-3"></i>
+                  <p className="font-semibold">Family</p>
+                  <p className="text-sm opacity-80">Father & Husband</p>
                 </div>
               </div>
-              <div className="w-full bg-gray-200 rounded-xl aspect-square flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <i className="fas fa-fist-raised text-3xl mb-2"></i>
-                  <p className="text-sm">BJJ Class</p>
+              <div className="w-full bg-gradient-to-br from-red-100 to-red-200 rounded-xl aspect-square flex items-center justify-center">
+                <div className="text-center text-red-700">
+                  <i className="fas fa-fist-raised text-4xl mb-3"></i>
+                  <p className="font-semibold">BJJ Training</p>
+                  <p className="text-sm opacity-80">Black Belt Coach</p>
                 </div>
               </div>
-              <div className="w-full bg-gray-200 rounded-xl aspect-square flex items-center justify-center">
-                <div className="text-center text-gray-500">
-                  <i className="fas fa-user-tie text-3xl mb-2"></i>
-                  <p className="text-sm">Professional Portrait</p>
+              <div className="w-full bg-gradient-to-br from-green-100 to-green-200 rounded-xl aspect-square flex items-center justify-center">
+                <div className="text-center text-green-700">
+                  <i className="fas fa-laptop-code text-4xl mb-3"></i>
+                  <p className="font-semibold">Engineering</p>
+                  <p className="text-sm opacity-80">Front-End Expert</p>
                 </div>
               </div>
             </div>
