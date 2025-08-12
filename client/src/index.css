@@ -132,6 +132,21 @@
     background-color: hsl(var(--background));
     color: hsl(var(--foreground));
     scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+  
+  /* Ensure proper styling loads even without JS */
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    z-index: -1;
   }
 
   html {
