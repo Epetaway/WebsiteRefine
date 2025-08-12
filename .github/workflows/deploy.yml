@@ -24,7 +24,7 @@ jobs:
       run: npm install
 
     - name: Build client
-      run: vite build --outDir client/dist
+      run: npx vite build --outDir client/dist
       env:
         VITE_STATIC_DEPLOYMENT: true
 

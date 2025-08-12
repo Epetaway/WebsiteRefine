@@ -23,9 +23,15 @@ This package contains Earl Hickson Jr.'s complete portfolio with:
 
 2. **Configure GitHub Pages**:
    - Repository Settings → Pages
-   - Source: "Deploy from a branch" 
-   - Branch: "main"
+   - Source: "GitHub Actions" 
+   - The workflow will automatically build and deploy
    - Your site: `https://yourusername.github.io/portfolio`
+
+3. **Manual Build (if needed)**:
+   ```bash
+   npm install
+   npx vite build --outDir client/dist
+   ```
 
 ### For Full-Stack Hosting (Recommended)
 **Best platforms**: Replit Deployments, Vercel, or Netlify
