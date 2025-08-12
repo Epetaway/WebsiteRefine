@@ -13,7 +13,7 @@ const withMDX = nextMDX({
 });
 
 const nextConfig = withMDX({
-  output: 'export', // you set it here yourself
+  output: 'export',
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
   reactStrictMode: true,
   trailingSlash: true,

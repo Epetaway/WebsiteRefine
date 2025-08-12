@@ -7,7 +7,11 @@ export const meta = {
     'Navigating the pitfalls of complacency and ego in Jiu-Jitsu, and tips on how to foster a mindset geared towards improvement.',
 }
 
-export default (props) => <ArticleLayout meta={meta} {...props} bgImg="Struggles.png" />
+export default function Article(props) {
+  return (
+    <ArticleLayout meta={meta} {...props} bgImg="Struggles.png" />
+  )
+}
 
 
 ---
