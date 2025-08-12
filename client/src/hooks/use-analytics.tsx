@@ -8,6 +8,10 @@ export const useAnalytics = () => {
   
   useEffect(() => {
     if (location !== prevLocationRef.current) {
+      // Scroll to top on route change
+      window.scrollTo(0, 0);
+      
+      // Track page view
       trackPageView(location);
       prevLocationRef.current = location;
     }
