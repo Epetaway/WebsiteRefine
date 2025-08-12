@@ -1,10 +1,10 @@
-# Earl Hickson Jr. Portfolio - Next.js Complete Project
+# Earl Hickson Jr. Portfolio - Pure Next.js Project
 
-This is your complete Next.js portfolio project with all the real content and functionality you approved.
+This is your complete Next.js portfolio project converted to match your working GitHub repository structure.
 
 ## Download
 
-The complete project is available as: `earl-portfolio-nextjs-complete.tar.gz`
+The complete project is available as: `earl-portfolio-nextjs-pure.tar.gz`
 
 To extract after download:
 ```bash
@@ -28,6 +28,15 @@ tar -xzf earl-portfolio-nextjs-complete.tar.gz
 - **Forms**: Zod validation with React Hook Form
 - **Real Data**: No placeholder content - everything is authentic
 
+## What Changed
+
+✅ **Pure Next.js Structure**: Converted from hybrid React/Vite + Express to standard Next.js Pages Router  
+✅ **GitHub Repository Match**: Now matches the working earldkaiju repository structure exactly  
+✅ **Proper src/ Directory**: All code moved to src/ folder with correct path aliases  
+✅ **Components Created**: TreehouseSkills, Resume, LetsConnect components implemented  
+✅ **Professional Image**: Your headshot integrated with Next.js Image optimization  
+✅ **MDX Support**: Remark and Rehype plugins configured for blog/article functionality  
+
 ## Quick Start
 
 1. **Install Dependencies**:
@@ -35,9 +44,16 @@ tar -xzf earl-portfolio-nextjs-complete.tar.gz
    npm install
    ```
    
-   **Important**: Use `npm install` (not `npm ci`) for the first setup. The package-lock.json is excluded to avoid version conflicts between different systems.
+   **Important**: This is now a pure Next.js project. No Express server needed.
 
-2. **Environment Variables**:
+2. **Run Development Server**:
+   ```bash
+   npm run dev
+   ```
+   
+   Your site will be available at http://localhost:3000
+
+3. **Environment Variables**:
    Add these to your `.env` file or Replit Secrets:
    ```
    DATABASE_URL=your_database_url
@@ -46,11 +62,6 @@ tar -xzf earl-portfolio-nextjs-complete.tar.gz
    YOUTUBE_CHANNEL_ID=your_channel_id
    THREADS_APP_ID=your_threads_app_id
    THREADS_APP_SECRET=your_threads_secret
-   ```
-
-3. **Development**:
-   ```bash
-   npm run dev
    ```
 
 4. **Build for Production**:
@@ -66,11 +77,15 @@ tar -xzf earl-portfolio-nextjs-complete.tar.gz
 
 ## Key Files
 
-- `client/src/pages/home.tsx` - Homepage with your professional headshot
-- `client/src/pages/earldkaiju.tsx` - BJJ page with your fighter image and Kaiju logo
-- `client/src/pages/about.tsx` - About page with work experience
-- `server/routes.ts` - API endpoints for forms and social media
-- `public/images/` - Your images (earl-professional.png, earl-fighter.png, kaiju-logo.png)
+- `src/pages/index.jsx` - Homepage with your professional headshot and skills/resume components
+- `src/components/TreehouseSkills.jsx` - Skills showcase component
+- `src/components/Resume.jsx` - Resume download component  
+- `src/components/LetsConnect.jsx` - Social media links component
+- `src/styles/tailwind.css` - Tailwind CSS with custom design tokens
+- `src/data/siteMeta.js` - Site metadata and social links
+- `public/images/earl-professional.png` - Your professional headshot image
+- `next.config.mjs` - Next.js configuration with MDX support and static export
+- `jsconfig.json` - Path aliases configuration (@/ imports)
 
 ## Current Status
 

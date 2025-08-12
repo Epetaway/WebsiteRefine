@@ -90,13 +90,13 @@ Preferred communication style: Simple, everyday language.
 - **Static Asset Optimization**: Express server with caching headers and compression
 
 ## Architecture Updates (August 2025)
-- **Next.js Conversion Complete**: Successfully migrated from React/Vite to Next.js 14 with App Router
-- **Static Export Ready**: Configured for GitHub Pages deployment with proper SSR handling
-- **Terminology Standardization**: Complete migration from "developer" to "engineer" throughout
-- **Database Integration**: PostgreSQL production database with proper migrations (adapted for Next.js)
-- **Form Validation**: Zod schemas shared between client and server for consistency
-- **Error Handling**: Comprehensive error states and user feedback systems
-- **Performance**: Optimized bundle size and loading times for production deployment
-- **TypeScript Resolution**: All compilation errors resolved for Next.js build process
-- **GitHub Pages Ready**: Next.js static export with official GitHub Actions workflow
-- **Form Integration**: Working contact and BJJ booking forms (API routes disabled for static export)
+- **Next.js Pages Router**: Successfully converted to pure Next.js 13 with Pages Router (matching working GitHub repository)
+- **Static Export Ready**: Configured for GitHub Pages deployment with MDX support
+- **Terminology Standardization**: Complete migration from "developer" to "engineer" throughout  
+- **Pure Next.js Structure**: Eliminated hybrid React/Vite + Express setup, now uses standard src/ directory
+- **Component Architecture**: Created reusable Card, Container components following GitHub structure
+- **Image Integration**: Professional headshot integrated with Next.js Image optimization
+- **TypeScript Support**: Full TypeScript configuration with proper path aliases (@/ imports)
+- **MDX Configuration**: Remark and Rehype plugins for article/blog functionality
+- **GitHub Pages Ready**: Matches working earldkaiju repository structure for reliable deployment
+- **SEO Integration**: Next-seo configured for proper meta tags and social sharing
