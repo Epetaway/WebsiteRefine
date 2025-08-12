@@ -310,18 +310,12 @@ export default function EarldKaiju() {
             </div>
           </div>
 
-          {/* Kaiju Fighter Profile Section */}
+          {/* Fighter Profile Section */}
           <section className="mb-20">
-            <div className="bg-gradient-to-br from-black/90 via-purple-900/20 to-black/90 rounded-2xl p-8 border border-[#39FF14]/30 shadow-2xl overflow-hidden relative">
-              {/* Kaiju-themed background effects */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#39FF14]/5 to-transparent opacity-50"></div>
-              
+            <div className="bg-black/80 rounded-2xl p-8 border border-[#39FF14]/20 shadow-xl overflow-hidden relative">
               {/* Section Header */}
               <div className="text-center mb-8 relative z-10">
-                <div className="inline-block bg-gradient-to-r from-[#39FF14] to-purple-500 text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
-                  The Kaiju Sensei
-                </div>
-                <h1 className="text-5xl font-bold text-white mb-2 drop-shadow-[0_0_20px_#39FF14]">EARL D HICKSON JR</h1>
+                <h1 className="text-4xl font-bold text-white mb-2">EARL D HICKSON JR</h1>
                 <div className="text-xl text-[#39FF14] font-semibold mb-2">Brazilian Jiu-Jitsu Black Belt</div>
                 <div className="text-gray-300 text-sm">AMA Fight Club • Parsippany, NJ</div>
               </div>
@@ -330,73 +324,72 @@ export default function EarldKaiju() {
               <div className="grid md:grid-cols-2 gap-8 mb-8 relative z-10">
                 {/* Left Side - Fighter Image (Desktop) / Top (Mobile) */}
                 <div className="order-1 md:order-1">
-                  <div className="bg-gradient-to-br from-[#39FF14]/20 to-purple-900/30 rounded-xl p-4 border border-[#39FF14]/30 h-full flex items-center justify-center min-h-[400px]">
+                  <div className="bg-white/5 rounded-xl p-4 border border-[#39FF14]/20 h-full flex items-center justify-center min-h-[400px]">
                     <div className="relative w-full h-full flex items-center justify-center">
                       <img 
                         src={earlBjjPhoto} 
                         alt="Earl Hickson Jr. in Brazilian Jiu-Jitsu gi holding a child, showcasing the family-friendly training environment" 
-                        className="max-w-full max-h-[450px] w-auto h-auto object-contain rounded-lg shadow-2xl shadow-[#39FF14]/20"
+                        className="max-w-full max-h-[450px] w-auto h-auto object-contain rounded-lg shadow-lg"
                       />
                     </div>
                   </div>
                 </div>
 
-                {/* Right Side - Fighter Info and Stats (Desktop) / Bottom (Mobile) */}
+                {/* Right Side - Skills & Profile (Desktop) / Bottom (Mobile) */}
                 <div className="order-2 md:order-2 space-y-6">
-                  {/* Fighter Bio - Shortened */}
-                  <div className="bg-black/60 rounded-xl p-6 border border-[#39FF14]/20">
-                    <h3 className="text-[#39FF14] font-bold text-lg mb-4 uppercase tracking-wide">Fighter Profile</h3>
+                  {/* Profile Bio */}
+                  <div className="bg-white/5 rounded-xl p-6 border border-[#39FF14]/20">
+                    <h3 className="text-white font-bold text-lg mb-4">About Earl</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      Earl Hickson Jr. is a Brazilian Jiu-Jitsu black belt under AMA Fight Club, known for his technical precision and competitive dominance. With over a decade of experience, he's earned medals at major tournaments including IBJJF, NAGA, and Grappling Industries events.
+                      Brazilian Jiu-Jitsu black belt under AMA Fight Club, known for technical precision and competitive success. With over a decade of experience, Earl has earned medals at major tournaments including IBJJF, NAGA, and Grappling Industries events.
                     </p>
                     <p className="text-gray-300 leading-relaxed mt-4">
-                      As "The Kaiju," Earl brings monster-level intensity to both competition and coaching, adapting to any opponent in ultra-heavyweight and absolute divisions.
+                      Specializing in both gi and no-gi training, Earl brings high-level competition experience to personalized coaching for all skill levels.
                     </p>
                   </div>
 
-                  {/* Power Level Stats - Kaiju Style */}
-                  <div className="bg-black/60 rounded-xl p-6 border border-[#39FF14]/20">
-                    <h3 className="text-[#39FF14] font-bold text-lg mb-4 uppercase tracking-wide">Power Level Analysis</h3>
+                  {/* Skills & Expertise */}
+                  <div className="bg-white/5 rounded-xl p-6 border border-[#39FF14]/20">
+                    <h3 className="text-white font-bold text-lg mb-4">Skills & Expertise</h3>
                     
-                    {/* Power Bars */}
                     <div className="space-y-4">
                       <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-white">Technique Mastery</span>
-                          <span className="text-[#39FF14]">95%</span>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="text-gray-200">Technique Mastery</span>
+                          <span className="text-[#39FF14] font-medium">95%</span>
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-3">
-                          <div className="bg-gradient-to-r from-[#39FF14] to-green-400 h-3 rounded-full" style={{width: '95%'}}></div>
-                        </div>
-                      </div>
-                      
-                      <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-white">Pressure Level</span>
-                          <span className="text-purple-400">88%</span>
-                        </div>
-                        <div className="w-full bg-gray-700 rounded-full h-3">
-                          <div className="bg-gradient-to-r from-purple-500 to-pink-400 h-3 rounded-full" style={{width: '88%'}}></div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div className="bg-[#39FF14] h-2 rounded-full" style={{width: '95%'}}></div>
                         </div>
                       </div>
                       
                       <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-white">Adaptability</span>
-                          <span className="text-yellow-400">92%</span>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="text-gray-200">Competition Experience</span>
+                          <span className="text-[#39FF14] font-medium">88%</span>
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-3">
-                          <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-3 rounded-full" style={{width: '92%'}}></div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div className="bg-[#39FF14] h-2 rounded-full" style={{width: '88%'}}></div>
                         </div>
                       </div>
                       
                       <div>
-                        <div className="flex justify-between text-sm mb-1">
-                          <span className="text-white">Teaching Power</span>
-                          <span className="text-blue-400">90%</span>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="text-gray-200">Teaching Ability</span>
+                          <span className="text-[#39FF14] font-medium">92%</span>
                         </div>
-                        <div className="w-full bg-gray-700 rounded-full h-3">
-                          <div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-3 rounded-full" style={{width: '90%'}}></div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div className="bg-[#39FF14] h-2 rounded-full" style={{width: '92%'}}></div>
+                        </div>
+                      </div>
+                      
+                      <div>
+                        <div className="flex justify-between text-sm mb-2">
+                          <span className="text-gray-200">Adaptability</span>
+                          <span className="text-[#39FF14] font-medium">90%</span>
+                        </div>
+                        <div className="w-full bg-gray-700/50 rounded-full h-2">
+                          <div className="bg-[#39FF14] h-2 rounded-full" style={{width: '90%'}}></div>
                         </div>
                       </div>
                     </div>
@@ -406,32 +399,32 @@ export default function EarldKaiju() {
 
               {/* Competition Stats Grid */}
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 relative z-10">
-                <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 rounded-lg p-4 border border-yellow-500/30 text-center">
+                <div className="bg-white/5 rounded-lg p-4 border border-yellow-500/20 text-center">
                   <div className="text-3xl font-bold text-yellow-500 mb-1">
                     {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length}
                   </div>
                   <div className="text-xs text-gray-300 uppercase tracking-wide">Gold Medals</div>
                 </div>
-                <div className="bg-gradient-to-br from-gray-300/20 to-gray-400/10 rounded-lg p-4 border border-gray-300/30 text-center">
+                <div className="bg-white/5 rounded-lg p-4 border border-gray-300/20 text-center">
                   <div className="text-3xl font-bold text-gray-300 mb-1">
                     {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Silver").length}
                   </div>
                   <div className="text-xs text-gray-300 uppercase tracking-wide">Silver Medals</div>
                 </div>
-                <div className="bg-gradient-to-br from-orange-600/20 to-orange-700/10 rounded-lg p-4 border border-orange-600/30 text-center">
+                <div className="bg-white/5 rounded-lg p-4 border border-orange-600/20 text-center">
                   <div className="text-3xl font-bold text-orange-600 mb-1">
                     {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Bronze").length}
                   </div>
                   <div className="text-xs text-gray-300 uppercase tracking-wide">Bronze Medals</div>
                 </div>
-                <div className="bg-gradient-to-br from-[#39FF14]/20 to-green-500/10 rounded-lg p-4 border border-[#39FF14]/30 text-center">
+                <div className="bg-white/5 rounded-lg p-4 border border-[#39FF14]/20 text-center">
                   <div className="text-3xl font-bold text-[#39FF14] mb-1">10+</div>
-                  <div className="text-xs text-gray-300 uppercase tracking-wide">Years Dominant</div>
+                  <div className="text-xs text-gray-300 uppercase tracking-wide">Years Experience</div>
                 </div>
               </div>
 
               {/* Recent Tournament Results */}
-              <div className="bg-black/40 rounded-xl p-6 border border-purple-500/20 relative z-10">
+              <div className="bg-white/5 rounded-xl p-6 border border-[#39FF14]/20 relative z-10">
                 <h4 className="text-white font-bold mb-4 uppercase tracking-wide text-sm flex items-center">
                   <svg className="w-5 h-5 text-[#39FF14] mr-2" fill="currentColor" viewBox="0 0 24 24">
                     <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
