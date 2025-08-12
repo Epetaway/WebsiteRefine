@@ -210,11 +210,11 @@ export default function CaseStudies() {
         <div className="mt-16 text-center">
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900/20 dark:to-indigo-900/20 rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-zinc-800 dark:text-zinc-100 mb-4">
-              Let's Build Something Great Together
+              Let&rsquo;s Build Something Great Together
             </h3>
             <p className="text-lg text-zinc-600 dark:text-zinc-400 mb-6 max-w-2xl mx-auto">
               Ready to optimize your front-end performance, improve accessibility, or tackle complex engineering challenges? 
-              I'd love to discuss how we can achieve measurable results for your project.
+              I&rsquo;d love to discuss how we can achieve measurable results for your project.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 

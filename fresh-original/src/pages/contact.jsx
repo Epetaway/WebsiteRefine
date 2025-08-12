@@ -31,11 +31,11 @@ export default function Contact() {
           {/* Header Section */}
           <div className="text-center mb-16">
             <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl mb-6">
-              Let's Build Something Great Together
+              Let&rsquo;s Build Something Great Together
             </h1>
             <p className="text-xl text-zinc-600 dark:text-zinc-400 mb-8 max-w-3xl mx-auto">
               Ready to optimize your front-end performance, improve accessibility, or tackle complex engineering challenges? 
-              I'd love to discuss how we can achieve measurable results for your project.
+              I&rsquo;d love to discuss how we can achieve measurable results for your project.
             </p>
           </div>
 

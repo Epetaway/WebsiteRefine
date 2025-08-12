@@ -126,7 +126,7 @@ export default function EarldKaiju() {
                   to your specific goals and learning style.
                 </p>
                 
-                <h3>What You'll Learn:</h3>
+                <h3>What You&rsquo;ll Learn:</h3>
                 <ul>
                   <li>Fundamental positions and escapes</li>
                   <li>Submission techniques and setups</li>

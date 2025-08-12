@@ -7,10 +7,10 @@ export default function LetsConnect() {
     <div className="rounded-2xl p-6 bg-white dark:bg-zinc-900 flex flex-col gap-4 h-full shadow-md border border-zinc-200 dark:border-zinc-700">
       <h2 className="flex items-center text-xl font-bold text-zinc-900 dark:text-zinc-100">
         <FaEnvelope className="mr-2 text-teal-500" />
-        Let's Connect
+        Let&rsquo;s Connect
       </h2>
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
-        Ready to discuss your next front-end project? Let's connect and build something great together.
+        Ready to discuss your next front-end project? Let&rsquo;s connect and build something great together.
       </p>
       <div className="space-y-3 mt-4">
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
