@@ -127,6 +127,7 @@ The project is configured for deployment on various platforms:
 1. Connect your GitHub repository to Replit
 2. Set environment variables in Replit Secrets
 3. Deploy directly from the Replit interface
+4. Configure custom domain to point to ehicksonjr.com
 
 ### Other Platforms
 - Ensure Node.js 18+ support

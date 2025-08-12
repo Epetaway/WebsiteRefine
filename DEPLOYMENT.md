@@ -47,7 +47,19 @@ VITE_GA_MEASUREMENT_ID=G-your_measurement_id
 ### Step 4: Deploy
 
 1. Click the "Deploy" button in Replit
-2. Your site will be available at `your-repl-name.your-username.replit.app`
+2. Your site will initially be available at `your-repl-name.your-username.replit.app`
+
+### Step 5: Custom Domain Setup (ehicksonjr.com)
+
+1. In your Replit deployment dashboard, go to the "Domains" section
+2. Click "Add Custom Domain"
+3. Enter `ehicksonjr.com` as your domain
+4. Replit will provide DNS configuration instructions
+5. Update your domain's DNS settings with your registrar:
+   - Add CNAME record pointing to the provided Replit URL
+   - Or add A records to the provided IP addresses
+6. Wait for DNS propagation (usually 5-60 minutes)
+7. Your site will be live at `https://ehicksonjr.com`
 
 ## Environment Variables Guide
 
