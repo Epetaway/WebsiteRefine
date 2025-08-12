@@ -1,0 +1,1 @@
+module.exports={singleQuote:!0,semi:!1,plugins:[require("prettier-plugin-tailwindcss")]};
