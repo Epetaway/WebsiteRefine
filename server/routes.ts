@@ -3,8 +3,13 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertContactSchema, insertBjjBookingSchema, insertSocialMediaPostSchema } from "@shared/schema";
 import { z } from "zod";
+import sgMail from '@sendgrid/mail';
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Initialize SendGrid
+  if (process.env.SENDGRID_API_KEY) {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  }
   // OAuth Routes for Threads API
   app.get("/api/auth/threads/connect", (req, res) => {
     const clientId = process.env.THREADS_APP_ID;
@@ -117,6 +122,60 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertBjjBookingSchema.parse(req.body);
       const booking = await storage.createBjjBooking(validatedData);
+      
+      // Send email notification if SendGrid is configured
+      if (process.env.SENDGRID_API_KEY) {
+        try {
+          const msg = {
+            to: 'e@ehicksonjr.com',
+            from: 'e@ehicksonjr.com', // Must be verified sender in SendGrid
+            subject: `New BJJ Lesson Booking Request from ${validatedData.name}`,
+            text: `
+New BJJ lesson booking request received:
+
+Name: ${validatedData.name}
+Email: ${validatedData.email}
+Phone: ${validatedData.phone}
+Program: ${validatedData.program || 'Not specified'}
+Goals: ${validatedData.goals || 'Not specified'}
+Availability: ${validatedData.availability || 'Not specified'}
+SMS Consent: ${validatedData.smsConsent ? 'Yes' : 'No'}
+
+Please follow up within 24 hours.
+            `,
+            html: `
+<h2>New BJJ Lesson Booking Request</h2>
+<p><strong>A new student is interested in training!</strong></p>
+
+<h3>Contact Information:</h3>
+<ul>
+  <li><strong>Name:</strong> ${validatedData.name}</li>
+  <li><strong>Email:</strong> ${validatedData.email}</li>
+  <li><strong>Phone:</strong> ${validatedData.phone}</li>
+</ul>
+
+<h3>Training Details:</h3>
+<ul>
+  <li><strong>Program:</strong> ${validatedData.program || 'Not specified'}</li>
+  <li><strong>Goals:</strong> ${validatedData.goals || 'Not specified'}</li>
+  <li><strong>Availability:</strong> ${validatedData.availability || 'Not specified'}</li>
+  <li><strong>SMS Consent:</strong> ${validatedData.smsConsent ? 'Yes' : 'No'}</li>
+</ul>
+
+<p><em>Please follow up within 24 hours.</em></p>
+            `
+          };
+          
+          await sgMail.send(msg);
+          console.log('Booking notification email sent successfully');
+        } catch (emailError) {
+          console.error('Failed to send booking notification email:', emailError);
+          // Don't fail the booking if email fails
+        }
+      } else {
+        console.warn('SendGrid API key not configured - booking notification email not sent');
+      }
+      
       res.json({ message: "BJJ lesson booking submitted successfully", id: booking.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
