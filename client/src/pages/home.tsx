@@ -61,13 +61,16 @@ export default function Home() {
 
             {/* Profile Image */}
             <div className="relative animate-float">
-              <img 
-                src="https://www.ehicksonjr.com/_next/static/media/me.edd8b1e7.jpeg" 
-                alt="Earl Hickson Jr. - Professional headshot of a Front-End Engineer" 
-                className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
-                data-testid="hero-image"
-              />
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-white text-2xl animate-bounce">
+              <div className="w-full max-w-md mx-auto h-96 bg-gradient-to-br from-primary-100 via-blue-50 to-purple-50 rounded-3xl shadow-2xl flex items-center justify-center border-4 border-white/50">
+                <div className="text-center">
+                  <div className="w-32 h-32 bg-primary-500 rounded-full flex items-center justify-center text-white text-4xl mb-4 mx-auto shadow-lg">
+                    <i className="fas fa-user-tie"></i>
+                  </div>
+                  <h3 className="text-2xl font-bold text-gray-800 mb-2">Earl Hickson Jr.</h3>
+                  <p className="text-gray-600 font-medium">Senior Front-End Engineer</p>
+                </div>
+              </div>
+              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-white text-2xl animate-bounce shadow-lg">
                 <i className="fas fa-laptop-code"></i>
               </div>
             </div>
