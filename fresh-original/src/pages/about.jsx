@@ -121,7 +121,7 @@ export default function About() {
             When I&apos;m not coding or designing, you can find me on the Jiu-Jitsu mat, channeling my inner kaiju, or spending quality time with my family. I&apos;m passionate about creating digital experiences that not only look great but also provide meaningful user interactions.
           </p>
           <p>
-            If you&apos;re seeking a web developer who combines technical proficiency with a unique perspective and a commitment to excellence, let&apos;s connect and create something extraordinary together.
+            If you&apos;re seeking a web engineer who combines technical proficiency with a unique perspective and a commitment to excellence, let&apos;s connect and create something extraordinary together.
           </p>
         </div>
          </div>

@@ -75,7 +75,7 @@ export default function Home({ articles = [] }) {
             <div className="prose mt-6 text-lg text-zinc-600 dark:prose-invert dark:text-zinc-400 space-y-5">
               <p>
                 Versatile Front-End Engineer with 6+ years creating responsive, accessible, high-performing web applications. 
-                Proven track record: +37% lead conversions, +25% organic traffic, +75% live stream engagement.
+                Proven track record of delivering measurable results and performance improvements.
                 Based in Parsippany, New Jersey.
               </p>
               <p>

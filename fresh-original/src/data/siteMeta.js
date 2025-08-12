@@ -11,7 +11,7 @@ import logoVerizon from '@/images/logos/verizonLogo.png'
 
 const siteMeta = {
     title: "Earl H.",
-    description: "Front-End Developer based in Parsippany, New Jersey. With a passion for creating intuitive and responsive web interfaces, Earl combines technical expertise with creative problem-solving to deliver impactful digital solutions.Earl Hickson Jr., also known as Earl the Kaiju, is a skilled graphic artist, proficient front-end developer, and passionate Jiu-Jitsu competitor and instructor.",
+    description: "Front-End Engineer based in Parsippany, New Jersey. With a passion for creating intuitive and responsive web interfaces, Earl combines technical expertise with creative problem-solving to deliver impactful digital solutions.Earl Hickson Jr., also known as Earl the Kaiju, is a skilled graphic artist, proficient front-end engineer, and passionate Jiu-Jitsu competitor and instructor.",
     copyright: "Earl Hickson Jr., ",
     author: {
         name: "Earl Hickson Jr.",
@@ -123,7 +123,7 @@ export const projects = [
   {
     name: 'GitHub Portfolio Website',
     description:
-      "A fully responsive, developer-focused portfolio site built with Next.js 14, Tailwind CSS, and dynamic metadata for SEO. Features include a light/dark mode toggle, project filtering, OG image generation, custom components, and modular content structure. Built to showcase modern front-end skills, reusable design systems, and personal branding.",
+      "A fully responsive, engineer-focused portfolio site built with Next.js 14, Tailwind CSS, and dynamic metadata for SEO. Features include a light/dark mode toggle, project filtering, OG image generation, custom components, and modular content structure. Built to showcase modern front-end skills, reusable design systems, and personal branding.",
     link: { href: 'https://github.com/epetaway/earldkaiju', label: 'Next.js, Tailwind CSS' },
   },
   {
