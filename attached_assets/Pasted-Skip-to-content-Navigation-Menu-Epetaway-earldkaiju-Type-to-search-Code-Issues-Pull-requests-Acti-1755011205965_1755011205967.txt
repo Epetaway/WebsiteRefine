@@ -1,0 +1,75 @@
+Skip to content
+Navigation Menu
+Epetaway
+earldkaiju
+
+Type / to search
+Code
+Issues
+Pull requests
+Actions
+Projects
+Wiki
+Security
+Insights
+Settings
+Deploy Portfolio
+Site revision #18
+Jobs
+Run details
+deploy
+failed now in 37s
+Search logs
+4s
+7s
+Run actions/checkout@v4
+Syncing repository: Epetaway/earldkaiju
+Getting Git version info
+Temporarily overriding HOME='/home/runner/work/_temp/7d891348-11eb-49d5-ac2c-f8885baa848b' before making global git config changes
+Adding repository directory to the temporary git global config as a safe directory
+/usr/bin/git config --global --add safe.directory /home/runner/work/earldkaiju/earldkaiju
+Deleting the contents of '/home/runner/work/earldkaiju/earldkaiju'
+Initializing the repository
+Disabling automatic garbage collection
+Setting up auth
+Fetching the repository
+  /usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +30b4514afa9b4264c577352c285afbbbe6797f8a:refs/remotes/origin/main
+  From https://github.com/Epetaway/earldkaiju
+   * [new ref]         30b4514afa9b4264c577352c285afbbbe6797f8a -> origin/main
+Determining the checkout info
+/usr/bin/git sparse-checkout disable
+/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Checking out the ref
+  /usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+  Switched to a new branch 'main'
+  branch 'main' set up to track 'origin/main'.
+/usr/bin/git log -1 --format=%H
+30b4514afa9b4264c577352c285afbbbe6797f8a
+3s
+Run actions/setup-node@v4
+  
+Found in cache @ /opt/hostedtoolcache/node/18.20.8/x64
+Environment details
+/opt/hostedtoolcache/node/18.20.8/x64/bin/npm config get cache
+/home/runner/.npm
+npm cache is not found
+18s
+1s
+Run npx vite build
+  
+vite v5.4.19 building for production...
+✓ 0 modules transformed.
+x Build failed in 10ms
+error during build:
+Could not resolve entry module "index.html".
+    at getRollupError (file:///home/runner/work/earldkaiju/earldkaiju/node_modules/rollup/dist/es/shared/parseAst.js:401:41)
+    at error (file:///home/runner/work/earldkaiju/earldkaiju/node_modules/rollup/dist/es/shared/parseAst.js:397:42)
+    at ModuleLoader.loadEntryModule (file:///home/runner/work/earldkaiju/earldkaiju/node_modules/rollup/dist/es/shared/node-entry.js:21511:20)
+    at async Promise.all (index 0)
+Error: Process completed with exit code 1.
+0s
+0s
+0s
+0s
+0s
+0s
