@@ -69,12 +69,14 @@ export default function EarldKaiju() {
   const { data: socialMediaData, isLoading: socialMediaLoading } = useQuery({
     queryKey: ['/api/social-media'],
     refetchInterval: 5 * 60 * 1000, // Refetch every 5 minutes
+    enabled: false, // Disable for static export
   });
 
-  const socialMediaPosts = socialMediaData?.posts || [];
+  const socialMediaPosts: SocialMediaPost[] = (socialMediaData as any)?.posts || [];
   const instagramPosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'instagram');
   const youtubePosts = socialMediaPosts.filter((post: SocialMediaPost) => post.platform === 'youtube');
 
+  // Disable API calls for static export
   // Auto-fetch Instagram posts on load
   const fetchInstagramMutation = useMutation({
     mutationFn: () => apiRequest('POST', '/api/social-media/fetch-instagram', {}),
@@ -93,15 +95,14 @@ export default function EarldKaiju() {
     },
   });
 
-  // Automatically fetch content when the component loads and when data is empty
-  useEffect(() => {
-    // Only fetch if we don't have data yet
-    if (!socialMediaLoading && socialMediaPosts.length === 0) {
-      console.log('No posts found, triggering fetch...');
-      fetchInstagramMutation.mutate();
-      fetchYoutubeMutation.mutate();
-    }
-  }, [socialMediaData, socialMediaLoading]);
+  // Disabled for static export
+  // useEffect(() => {
+  //   if (!socialMediaLoading && socialMediaPosts.length === 0) {
+  //     console.log('No posts found, triggering fetch...');
+  //     fetchInstagramMutation.mutate();
+  //     fetchYoutubeMutation.mutate();
+  //   }
+  // }, [socialMediaData, socialMediaLoading]);
 
 
 
@@ -491,7 +492,7 @@ export default function EarldKaiju() {
 
                     {/* Show only 4 most recent videos */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                      {youtubePosts.slice(0, 4).map((post, index) => (
+                      {youtubePosts.slice(0, 4).map((post: SocialMediaPost, index: number) => (
                         <div 
                           key={post.postId} 
                           className="group"
@@ -504,8 +505,8 @@ export default function EarldKaiju() {
                           >
                             <div className="relative aspect-video bg-black/60 overflow-hidden">
                               <img 
-                                src={post.thumbnailUrl} 
-                                alt={post.caption || 'YouTube video thumbnail'}
+                                src={post.thumbnailUrl ?? ''} 
+                                alt={post.caption ?? 'YouTube video thumbnail'}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 loading="lazy"
                               />
@@ -795,6 +796,7 @@ export default function EarldKaiju() {
                         <FormControl>
                           <Textarea 
                             {...field}
+                            value={field.value ?? ''}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="Tell me about your goals, any previous experience, injuries, or questions..."
                             rows={4}
@@ -815,6 +817,7 @@ export default function EarldKaiju() {
                         <FormControl>
                           <Input 
                             {...field}
+                            value={field.value ?? ''}
                             className="bg-white/20 border-white/30 text-white placeholder-gray-300"
                             placeholder="e.g., Weekday evenings, Saturday mornings"
                             data-testid="input-availability"

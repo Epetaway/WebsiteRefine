@@ -90,11 +90,13 @@ Preferred communication style: Simple, everyday language.
 - **Static Asset Optimization**: Express server with caching headers and compression
 
 ## Architecture Updates (August 2025)
+- **Next.js Conversion Complete**: Successfully migrated from React/Vite to Next.js 14 with App Router
+- **Static Export Ready**: Configured for GitHub Pages deployment with proper SSR handling
 - **Terminology Standardization**: Complete migration from "developer" to "engineer" throughout
-- **Database Integration**: PostgreSQL production database with proper migrations
+- **Database Integration**: PostgreSQL production database with proper migrations (adapted for Next.js)
 - **Form Validation**: Zod schemas shared between client and server for consistency
 - **Error Handling**: Comprehensive error states and user feedback systems
 - **Performance**: Optimized bundle size and loading times for production deployment
-- **Build System Fix**: Converted problematic MDX files to JSX components, eliminating webpack loader issues
-- **GitHub Pages Ready**: Simplified next.config.mjs for static export without MDX dependencies
-- **Form Integration**: Working Formspree endpoints for contact and BJJ booking forms
+- **TypeScript Resolution**: All compilation errors resolved for Next.js build process
+- **GitHub Pages Ready**: Next.js static export with official GitHub Actions workflow
+- **Form Integration**: Working contact and BJJ booking forms (API routes disabled for static export)
