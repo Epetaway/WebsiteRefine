@@ -307,102 +307,154 @@ export default function EarldKaiju() {
             </div>
           </div>
 
-          {/* UFC Fight Card Style Accomplishments Section */}
+          {/* Kaiju Fighter Profile Section */}
           <section className="mb-20">
-            <div className="bg-gradient-to-r from-black via-red-900/20 to-black rounded-2xl p-8 border border-red-500/30 shadow-2xl">
-              {/* Fight Card Header */}
-              <div className="text-center mb-8">
-                <div className="inline-block bg-red-600 text-white px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
-                  Featured Fighter
+            <div className="bg-gradient-to-br from-black/90 via-purple-900/20 to-black/90 rounded-2xl p-8 border border-[#39FF14]/30 shadow-2xl overflow-hidden relative">
+              {/* Kaiju-themed background effects */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#39FF14]/5 to-transparent opacity-50"></div>
+              
+              {/* Section Header */}
+              <div className="text-center mb-8 relative z-10">
+                <div className="inline-block bg-gradient-to-r from-[#39FF14] to-purple-500 text-black px-6 py-2 rounded-full text-sm font-bold uppercase tracking-wider mb-4">
+                  The Kaiju Sensei
                 </div>
-                <h1 className="text-5xl font-bold text-white mb-2">EARL D HICKSON JR</h1>
-                <div className="text-xl text-red-400 font-semibold mb-4">Brazilian Jiu-Jitsu Black Belt</div>
-                <div className="text-gray-300 text-sm uppercase tracking-wide">AMA Fight Club • Parsippany, NJ</div>
+                <h1 className="text-5xl font-bold text-white mb-2 drop-shadow-[0_0_20px_#39FF14]">EARL D HICKSON JR</h1>
+                <div className="text-xl text-[#39FF14] font-semibold mb-2">Brazilian Jiu-Jitsu Black Belt</div>
+                <div className="text-gray-300 text-sm">AMA Fight Club • Parsippany, NJ</div>
               </div>
 
-              {/* Fighter Stats Grid */}
-              <div className="grid md:grid-cols-2 gap-8 mb-8">
-                {/* Left Side - Bio */}
-                <div className="space-y-6">
-                  <div className="bg-black/60 rounded-xl p-6 border border-red-500/20">
-                    <h3 className="text-red-400 font-bold text-lg mb-4 uppercase tracking-wide">Fighter Profile</h3>
+              {/* Responsive Fighter Layout */}
+              <div className="grid md:grid-cols-2 gap-8 mb-8 relative z-10">
+                {/* Left Side - Fighter Image Placeholder (Desktop) / Top (Mobile) */}
+                <div className="order-1 md:order-1">
+                  <div className="bg-gradient-to-br from-[#39FF14]/20 to-purple-900/30 rounded-xl p-8 border border-[#39FF14]/30 h-full flex items-center justify-center min-h-[400px]">
+                    {/* Placeholder for fighter image */}
+                    <div className="text-center">
+                      <div className="w-32 h-32 mx-auto mb-4 bg-gradient-to-br from-[#39FF14]/30 to-purple-500/30 rounded-full flex items-center justify-center">
+                        <svg className="w-16 h-16 text-[#39FF14]" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                      </div>
+                      <p className="text-gray-400 text-sm">Full Body Fighter Photo</p>
+                      <p className="text-gray-500 text-xs mt-1">(Image placeholder)</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Side - Fighter Info and Stats (Desktop) / Bottom (Mobile) */}
+                <div className="order-2 md:order-2 space-y-6">
+                  {/* Fighter Bio - Shortened */}
+                  <div className="bg-black/60 rounded-xl p-6 border border-[#39FF14]/20">
+                    <h3 className="text-[#39FF14] font-bold text-lg mb-4 uppercase tracking-wide">Fighter Profile</h3>
                     <p className="text-gray-300 leading-relaxed">
-                      Earl Hickson Jr. is a Brazilian Jiu-Jitsu black belt under AMA Fight Club, recognized for his technical precision, relentless pressure, and competitive success across multiple major organizations. Beginning his BJJ journey over a decade ago, Earl progressed through the ranks with consistent dedication, earning medals at the IBJJF, NAGA, Grappling Industries, and other prestigious tournaments in both gi and no-gi divisions.
+                      Earl Hickson Jr. is a Brazilian Jiu-Jitsu black belt under AMA Fight Club, known for his technical precision and competitive dominance. With over a decade of experience, he's earned medals at major tournaments including IBJJF, NAGA, and Grappling Industries events.
                     </p>
                     <p className="text-gray-300 leading-relaxed mt-4">
-                      Known for his ability to adapt to any opponent—whether in ultra-heavyweight or absolute categories—he has stood on the podium at international events including the IBJJF New York Open, Boston Summer Open, and NAGA World Championships. Now as a black belt, Earl continues to compete, mentor, and inspire students, blending the discipline of high-level competition with a passion for teaching.
+                      As "The Kaiju," Earl brings monster-level intensity to both competition and coaching, adapting to any opponent in ultra-heavyweight and absolute divisions.
                     </p>
                   </div>
-                </div>
 
-                {/* Right Side - Fight Record */}
-                <div className="space-y-6">
-                  <div className="bg-black/60 rounded-xl p-6 border border-red-500/20">
-                    <h3 className="text-red-400 font-bold text-lg mb-4 uppercase tracking-wide">Competition Record</h3>
+                  {/* Power Level Stats - Kaiju Style */}
+                  <div className="bg-black/60 rounded-xl p-6 border border-[#39FF14]/20">
+                    <h3 className="text-[#39FF14] font-bold text-lg mb-4 uppercase tracking-wide">Power Level Analysis</h3>
                     
-                    {/* Medal Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center p-4 bg-yellow-500/20 rounded-lg border border-yellow-500/30">
-                        <div className="text-3xl font-bold text-yellow-500">
-                          {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length}
+                    {/* Power Bars */}
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-white">Technique Mastery</span>
+                          <span className="text-[#39FF14]">95%</span>
                         </div>
-                        <div className="text-xs text-gray-300 uppercase tracking-wide">Gold</div>
+                        <div className="w-full bg-gray-700 rounded-full h-3">
+                          <div className="bg-gradient-to-r from-[#39FF14] to-green-400 h-3 rounded-full" style={{width: '95%'}}></div>
+                        </div>
                       </div>
-                      <div className="text-center p-4 bg-gray-300/20 rounded-lg border border-gray-300/30">
-                        <div className="text-3xl font-bold text-gray-300">
-                          {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Silver").length}
+                      
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-white">Pressure Level</span>
+                          <span className="text-purple-400">88%</span>
                         </div>
-                        <div className="text-xs text-gray-300 uppercase tracking-wide">Silver</div>
+                        <div className="w-full bg-gray-700 rounded-full h-3">
+                          <div className="bg-gradient-to-r from-purple-500 to-pink-400 h-3 rounded-full" style={{width: '88%'}}></div>
+                        </div>
                       </div>
-                      <div className="text-center p-4 bg-orange-600/20 rounded-lg border border-orange-600/30">
-                        <div className="text-3xl font-bold text-orange-600">
-                          {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Bronze").length}
+                      
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-white">Adaptability</span>
+                          <span className="text-yellow-400">92%</span>
                         </div>
-                        <div className="text-xs text-gray-300 uppercase tracking-wide">Bronze</div>
+                        <div className="w-full bg-gray-700 rounded-full h-3">
+                          <div className="bg-gradient-to-r from-yellow-400 to-orange-400 h-3 rounded-full" style={{width: '92%'}}></div>
+                        </div>
                       </div>
-                    </div>
-
-                    {/* Recent Victories */}
-                    <div className="space-y-3">
-                      <h4 className="text-white font-semibold mb-3 uppercase tracking-wide text-sm">Recent Results</h4>
-                      {bjjAccomplishments.tournament_history.slice(0, 4).map((tournament: any, index: number) => (
-                        <div key={index} className="flex items-center justify-between p-3 bg-black/40 rounded-lg border border-gray-700/50">
-                          <div className="flex-1">
-                            <p className="text-white text-sm font-medium">{tournament.event.replace(/NAGA|IBJJF/g, '').trim()}</p>
-                            <p className="text-gray-400 text-xs uppercase tracking-wide">{tournament.date}</p>
-                          </div>
-                          <div className={`px-3 py-1 rounded text-xs font-bold uppercase tracking-wide ${
-                            tournament.placement === 'Gold' ? 'bg-yellow-500 text-black' :
-                            tournament.placement === 'Silver' ? 'bg-gray-300 text-black' :
-                            tournament.placement === 'Bronze' ? 'bg-orange-600 text-white' :
-                            'bg-gray-600 text-white'
-                          }`}>
-                            {tournament.placement}
-                          </div>
+                      
+                      <div>
+                        <div className="flex justify-between text-sm mb-1">
+                          <span className="text-white">Teaching Power</span>
+                          <span className="text-blue-400">90%</span>
                         </div>
-                      ))}
+                        <div className="w-full bg-gray-700 rounded-full h-3">
+                          <div className="bg-gradient-to-r from-blue-400 to-cyan-400 h-3 rounded-full" style={{width: '90%'}}></div>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Bottom Stats Bar */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-red-500/20">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">{bjjAccomplishments.tournament_history.length}</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Tournaments</div>
+              {/* Competition Stats Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6 relative z-10">
+                <div className="bg-gradient-to-br from-yellow-500/20 to-yellow-600/10 rounded-lg p-4 border border-yellow-500/30 text-center">
+                  <div className="text-3xl font-bold text-yellow-500 mb-1">
+                    {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length}
+                  </div>
+                  <div className="text-xs text-gray-300 uppercase tracking-wide">Gold Medals</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">10+</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Years Training</div>
+                <div className="bg-gradient-to-br from-gray-300/20 to-gray-400/10 rounded-lg p-4 border border-gray-300/30 text-center">
+                  <div className="text-3xl font-bold text-gray-300 mb-1">
+                    {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Silver").length}
+                  </div>
+                  <div className="text-xs text-gray-300 uppercase tracking-wide">Silver Medals</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">Black</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Belt Rank</div>
+                <div className="bg-gradient-to-br from-orange-600/20 to-orange-700/10 rounded-lg p-4 border border-orange-600/30 text-center">
+                  <div className="text-3xl font-bold text-orange-600 mb-1">
+                    {bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Bronze").length}
+                  </div>
+                  <div className="text-xs text-gray-300 uppercase tracking-wide">Bronze Medals</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-white">Ultra Heavy</div>
-                  <div className="text-xs text-gray-400 uppercase tracking-wide">Division</div>
+                <div className="bg-gradient-to-br from-[#39FF14]/20 to-green-500/10 rounded-lg p-4 border border-[#39FF14]/30 text-center">
+                  <div className="text-3xl font-bold text-[#39FF14] mb-1">10+</div>
+                  <div className="text-xs text-gray-300 uppercase tracking-wide">Years Dominant</div>
+                </div>
+              </div>
+
+              {/* Recent Tournament Results */}
+              <div className="bg-black/40 rounded-xl p-6 border border-purple-500/20 relative z-10">
+                <h4 className="text-white font-bold mb-4 uppercase tracking-wide text-sm flex items-center">
+                  <svg className="w-5 h-5 text-[#39FF14] mr-2" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                  </svg>
+                  Recent Victories
+                </h4>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {bjjAccomplishments.tournament_history.slice(0, 4).map((tournament: any, index: number) => (
+                    <div key={index} className="flex items-center justify-between p-3 bg-gradient-to-r from-black/60 to-purple-900/20 rounded-lg border border-gray-700/50">
+                      <div className="flex-1">
+                        <p className="text-white text-sm font-medium">{tournament.event.replace(/NAGA|IBJJF/g, '').trim()}</p>
+                        <p className="text-gray-400 text-xs">{tournament.date}</p>
+                      </div>
+                      <div className={`px-3 py-1 rounded-full text-xs font-bold ${
+                        tournament.placement === 'Gold' ? 'bg-yellow-500 text-black' :
+                        tournament.placement === 'Silver' ? 'bg-gray-300 text-black' :
+                        tournament.placement === 'Bronze' ? 'bg-orange-600 text-white' :
+                        'bg-gray-600 text-white'
+                      }`}>
+                        {tournament.placement}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
