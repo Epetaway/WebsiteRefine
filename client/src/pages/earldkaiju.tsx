@@ -595,34 +595,20 @@ export default function EarldKaiju() {
               </>
             )}
             
-            {/* Social Media Links */}
-            <div className="flex justify-center gap-8">
+            {/* Instagram CTA */}
+            <div className="text-center">
               <a 
-                href="https://www.instagram.com/ultrajiujitsu/" 
+                href="https://www.instagram.com/earld.kaiju/" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all group"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white rounded-xl hover:from-pink-700 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-lg hover:shadow-pink-500/30"
                 data-testid="link-instagram"
               >
-                <i className="fab fa-instagram text-3xl text-[#39FF14] group-hover:scale-110 transition-transform"></i>
-                <div>
-                  <h3 className="font-bold text-lg">Instagram</h3>
-                  <p className="text-gray-300 text-sm">@ultrajiujitsu</p>
-                </div>
-              </a>
-              
-              <a 
-                href="https://www.youtube.com/@earldkaiju" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 bg-white/10 backdrop-blur rounded-xl p-6 border border-white/20 hover:bg-white/20 transition-all group"
-                data-testid="link-youtube"
-              >
-                <i className="fab fa-youtube text-3xl text-[#39FF14] group-hover:scale-110 transition-transform"></i>
-                <div>
-                  <h3 className="font-bold text-lg">YouTube</h3>
-                  <p className="text-gray-300 text-sm">@earldkaiju</p>
-                </div>
+                <i className="fab fa-instagram text-2xl"></i>
+                <span className="font-semibold">Follow on Instagram</span>
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                </svg>
               </a>
             </div>
           </div>
