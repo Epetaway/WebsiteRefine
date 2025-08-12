@@ -1,6 +1,20 @@
 # Deployment Guide
 
-## Quick Deploy to GitHub + Replit
+## GitHub Pages Deployment (Static)
+
+**Important**: GitHub Pages only serves static files. Your portfolio currently has a full-stack backend (forms, database, email). See `GITHUB_PAGES_DEPLOYMENT.md` for detailed GitHub Pages setup.
+
+**Quick GitHub Pages Setup**:
+1. Push to GitHub repository
+2. Go to repository Settings → Pages → Deploy from branch: main
+3. Add custom domain: `ehicksonjr.com`
+4. Configure DNS: CNAME record pointing to `yourusername.github.io`
+
+**Note**: Forms will need external service (Formspree) for GitHub Pages.
+
+---
+
+## Full-Stack Deploy to GitHub + Replit (Recommended)
 
 ### Step 1: Push to GitHub
 
