@@ -1,35 +1,44 @@
-# Deploy to GitHub Pages from Replit
+# GitHub Repository Setup Guide
 
-## Step 1: Connect to GitHub (in Replit)
-1. Click the **Version Control** tab (left sidebar)
-2. Click **Connect to GitHub**  
-3. Create new repository: `earldkaiju` or similar name
-4. Click **Create Repository**
+## Current Situation
+Your domain https://www.ehicksonjr.com/ is pointing to a Next.js website, but we built a React/Vite portfolio.
 
-## Step 2: Push Your Code
-1. In Version Control tab, click **Commit & Push**
-2. Add commit message: "Initial portfolio deployment"
-3. Click **Commit & Push to main**
+## Steps to Identify Current Repository
 
-## Step 3: Enable GitHub Pages
-1. Go to your GitHub repository
-2. Click **Settings** tab
-3. Scroll to **Pages** section
-4. Source: **GitHub Actions**
-5. Your site will deploy automatically
+### Method 1: Check GitHub Pages Settings
+1. Go to your GitHub account settings
+2. Look for repositories with Pages enabled
+3. Check which one has the custom domain "ehicksonjr.com"
 
-## What's Included
-✅ Fixed GitHub Actions workflow (no more permission errors)
+### Method 2: Check Your DNS Provider
+1. Go to your domain registrar (GoDaddy, Namecheap, etc.)
+2. Check DNS settings for ehicksonjr.com
+3. Look for CNAME record pointing to `username.github.io`
+
+### Method 3: Common Repository Names
+Check if you have repositories named:
+- `ehicksonjr.github.io`
+- `portfolio`
+- `website`
+- `ehicksonjr.com`
+
+## Once You Find the Repository
+1. **Replace Method**: Replace all files in that repository with our React/Vite code
+2. **New Repository Method**: Create new repository and update DNS
+
+## Repository Should Contain
+- All files from this Replit project
+- Especially the fixed `.github/workflows/deploy.yml`
+- The `dist/public/` build output structure
+
+## Deployment Verification
+After pushing code, check:
+- GitHub Actions tab for successful builds
+- GitHub Pages settings show correct source
+- Domain still points to the repository
+
+Your new portfolio will then show:
 ✅ Earl the Kaiju BJJ booking page
-✅ Professional Front-End Engineer branding
+✅ Professional "Front-End Engineer" branding
 ✅ Working contact forms
-✅ Build-tested deployment
-
-## Your Live Site
-After setup, your portfolio will be live at:
-`https://yourusername.github.io/earldkaiju`
-
-## Custom Domain (Optional)
-To use ehicksonjr.com:
-1. Add CNAME file with your domain
-2. Configure DNS settings with your domain provider
+✅ Modern React/TypeScript architecture
