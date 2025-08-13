@@ -138,7 +138,7 @@ export default function About() {
             <h2 className="text-3xl font-bold mb-8" data-testid="section-title-personal">Personal Values</h2>
             <div className="grid md:grid-cols-3 gap-8">
               <div className="text-center p-6 bg-gray-50 rounded-xl">
-                <i className="fas fa-family text-primary-500 text-3xl mb-4"></i>
+                <i className="fas fa-heart text-primary-500 text-3xl mb-4"></i>
                 <h3 className="font-semibold mb-2">Family First</h3>
                 <p className="text-sm text-gray-600">Father and husband who brings the same dedication to family life as to professional projects</p>
               </div>
