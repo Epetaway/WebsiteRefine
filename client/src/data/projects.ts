@@ -42,11 +42,31 @@ export const projects: Project[] = [
       { label: "Accessibility", value: "WCAG AA", improvement: "100% compliant" }
     ],
     links: {
-      demo: "https://employee-directory.ehicksonjr.com",
       repo: "https://github.com/ehicksonjr/employee-directory"
     },
     category: 'featured'
   },
+  {
+  id: "resume-craft",
+  title: "ResumeCraft – AI-Powered Resume Builder",
+  description: "Full-stack web application that helps users create tailored resumes using AI prompts and parsing tools.",
+  problem: "Enable users to quickly generate professional, targeted resumes without manual formatting or writing from scratch.",
+  solution: "Implemented AI-driven text generation, resume parsing, and a user-friendly front-end for editing and exporting resumes.",
+  result: "Streamlined resume creation process, allowing job seekers to produce high-quality resumes in minutes with minimal effort.",
+  stack: ["React", "TypeScript", "Node.js", "Express", "Tailwind CSS", "OpenAI API"],
+  features: [
+    "AI-generated resume content",
+    "Resume parsing and section management",
+    "Customizable templates",
+    "PDF and DOCX export",
+    "Responsive mobile-first design"
+  ],
+  links: {
+    demo: "https://epetaway.github.io/ResumeCraft-ghpages",
+    repo: "https://github.com/Epetaway/ResumeCraft-ghpages"
+  },
+  category: "development"
+},
   {
     id: "portfolio-website",
     title: "Portfolio Website – Full-Stack Implementation",
@@ -86,29 +106,8 @@ export const projects: Project[] = [
       "Performance profiling"
     ],
     links: {
-      demo: "https://mtg-proxy.ehicksonjr.com",
+      demo: "https://epetaway.github.io/mtg-proxy-generator/",
       repo: "https://github.com/ehicksonjr/mtg-proxy-generator"
-    },
-    category: 'development'
-  },
-  {
-    id: "todo-list-app",
-    title: "Todo List App",
-    description: "React hooks, state management, local persistence with clean UI implementation.",
-    problem: "Create a task management solution that demonstrates modern React patterns and state management.",
-    solution: "React hooks for state management, localStorage for persistence, and clean component architecture.",
-    result: "Demonstrates mastery of React fundamentals and modern development patterns.",
-    stack: ["React", "JavaScript", "CSS3"],
-    features: [
-      "React hooks pattern",
-      "Local state management", 
-      "Data persistence",
-      "Component composition",
-      "Responsive design"
-    ],
-    links: {
-      demo: "https://todo.ehicksonjr.com",
-      repo: "https://github.com/ehicksonjr/react-todo"
     },
     category: 'development'
   },
@@ -128,7 +127,6 @@ export const projects: Project[] = [
       "Responsive layout"
     ],
     links: {
-      demo: "https://movie-rating.ehicksonjr.com",
       repo: "https://github.com/ehicksonjr/movie-rating-app"
     },
     category: 'development'
@@ -149,7 +147,7 @@ export const projects: Project[] = [
       "Logic flow control"
     ],
     links: {
-      demo: "https://wheel-of-success.ehicksonjr.com",
+      demo: "https://epetaway.github.io/WHEEL-OF-SUCCESS/",
       repo: "https://github.com/ehicksonjr/game-show-app"
     },
     category: 'development'

@@ -6,7 +6,7 @@ export default function CaseStudies() {
   const otherProjects = projects.filter(p => p.category !== 'featured');
 
   // Flip to false when you’re ready to reveal the page
-  const isUnderConstruction = true;
+  const isUnderConstruction = false;
 
   return (
     <div className="pt-16">
