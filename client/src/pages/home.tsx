@@ -27,9 +27,7 @@ export default function Home() {
                 React • JavaScript • UI/UX • Expanding into Full-Stack
               </h3>
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
-                Versatile Front-End Engineer with 6+ years creating responsive, accessible, high-performing web applications. 
-                Proven track record: +37% lead conversions, +25% organic traffic, +75% live stream engagement.
-                Based in Parsippany, New Jersey.
+                Dynamic Front-End Engineer with 6+ years crafting responsive, accessible, and high-performance web applications. Skilled at transforming complex ideas into intuitive, visually engaging user experiences. Based in Parsippany, NJ, with a track record of elevating brand presence, streamlining workflows, and delivering solutions that resonate with users.
               </p>
               
               {/* CTAs */}

@@ -1,5 +1,5 @@
 import { workExperience } from "@/data/experience";
-import aboutImage from "@/images/justMe.png";
+import aboutImage from "@/images/BLKBELT.png";
 
 export default function About() {
   const skills = [

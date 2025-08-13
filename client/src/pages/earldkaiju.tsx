@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { OAuthConnect } from "@/components/oauth-connect";
 import kaijuBanner from "@/images/kaiju-banner.png";
+import kaijuLogo from "@/images/kaiju-logo.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
@@ -134,7 +135,7 @@ export default function EarldKaiju() {
             {/* Kaiju Logo Image */}
             <div className="flex justify-center mb-8">
               <img 
-                src={kaijuBanner} 
+                src={kaijuLogo} 
                 alt="Earl the Kaiju Logo" 
                 className="w-64 h-64 lg:w-80 lg:h-80 object-contain drop-shadow-2xl"
                 data-testid="kaiju-logo"
