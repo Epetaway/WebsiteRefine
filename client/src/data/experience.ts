@@ -10,36 +10,36 @@ export interface WorkExperience {
 
 export const workExperience: WorkExperience[] = [
   {
-    id: "self-employment",
-    company: "Self-Employment",
-    position: "Freelance Engineer & Designer",
-    duration: "2023 - Present",
-    description: "Full-stack development projects with focus on React, Next.js, and design systems",
-    technologies: ["React", "Next.js", "TypeScript", "Tailwind CSS"]
+    id: "freelance-current",
+    company: "Self-Employed",
+    position: "Freelance Front-End Developer",
+    duration: "Mar 2018 – Present",
+    description: "Delivered 20+ websites and applications for clients. Boosted conversion rates by 28% through UI/UX optimization and mobile-first design",
+    technologies: ["React", "JavaScript", "Node.js", "MongoDB", "Bootstrap"]
   },
   {
-    id: "wealth-creation",
-    company: "Wealth Creation Innovation",
-    position: "Senior Front-End Engineer (Contract)",
-    duration: "2022 - 2023",
-    description: "Led front-end development for financial technology platform",
-    technologies: ["Angular", "TypeScript", "RxJS", "Material Design"]
+    id: "ama-fight-club",
+    company: "AMA Fight Club",
+    position: "Front-End Consultant",
+    duration: "Jan 2025 – Present",
+    description: "Rebuilt site with Bootstrap 5.3 + SCSS, boosting page speed 55% and Lighthouse mobile score from 63 → 97. Integrated Zen Planner API, increasing free trial sign-ups by 37%",
+    technologies: ["Bootstrap", "SCSS", "API Integration", "Performance Optimization"]
   },
   {
     id: "asembia",
     company: "Asembia",
-    position: "Frontend Engineer",
-    duration: "2021 - 2022",
-    description: "Developed healthcare technology solutions with emphasis on accessibility",
-    technologies: ["React", "JavaScript", "SCSS", "Jest"]
+    position: "Front-End Developer (Contract)",
+    duration: "Dec 2023 – Oct 2024",
+    description: "Built modular Razor view components with SCSS and Bootstrap 5 in .NET environment. Created monthly RAG dashboard, improving provider performance tracking by 30%",
+    technologies: ["Razor", "SCSS", "Bootstrap", ".NET", "Dashboard Development"]
   },
   {
-    id: "broadcastmed",
-    company: "BroadcastMed",
-    position: "Lead Designer and Developer",
-    duration: "2020 - 2021",
-    description: "Led design and development of medical education platform",
-    technologies: ["Vue.js", "Node.js", "Adobe Creative Suite"]
+    id: "renewal-andersen",
+    company: "Renewal by Andersen-Affiliated Facility",
+    position: "Warehouse Manager",
+    duration: "Mar 2020 – Mar 2021",
+    description: "Supervised 10+ staff, coordinated 25+ daily deliveries. Reduced dispatch errors by 35% through process improvements",
+    technologies: ["Process Management", "Team Leadership", "Logistics Coordination"]
   },
   {
     id: "prosek",

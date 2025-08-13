@@ -18,6 +18,7 @@ Preferred communication style: Simple, everyday language.
 - **YouTube API Integration**: All 7 BJJ competition videos successfully fetched and displaying on /EarldKaiju page
 - **Production Fixes**: Fixed Netlify serverless function ES module issues and missing family icon in about page
 - **Custom Domain**: ehicksonjr.com fully configured with SSL certificate and working APIs
+- **Resume Download**: Added functional resume download feature with 2025 updated resume and corrected GitHub profile link
 
 # System Architecture
 

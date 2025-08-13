@@ -124,5 +124,15 @@ app.post('/api/bjj-booking', (req, res) => {
   res.json({ message: 'BJJ booking received successfully' });
 });
 
+// Serve static assets (resume download)
+app.get('/assets/*', (req, res) => {
+  const filePath = req.params[0];
+  if (filePath === 'Earl_Hickson_Resume_2025.docx') {
+    res.redirect('https://github.com/ehicksonjr/portfolio/raw/main/client/public/assets/Earl_Hickson_Resume_2025.docx');
+  } else {
+    res.status(404).json({ message: 'File not found' });
+  }
+});
+
 // Export the handler
 module.exports.handler = serverless(app);

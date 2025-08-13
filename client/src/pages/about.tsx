@@ -118,17 +118,28 @@ export default function About() {
                 </div>
               ))}
               
-              <div className="text-center">
-                <a 
-                  href="https://www.linkedin.com/in/earl-hickson-jr/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600"
-                  data-testid="link-linkedin-full"
-                >
-                  <i className="fab fa-linkedin mr-2"></i>
-                  View Full Resume on LinkedIn
-                </a>
+              <div className="text-center space-y-3">
+                <div>
+                  <a 
+                    href="/assets/Earl_Hickson_Resume_2025.docx"
+                    download="Earl_Hickson_Resume_2025.docx"
+                    className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600 mr-6"
+                    data-testid="download-resume"
+                  >
+                    <i className="fas fa-download mr-2"></i>
+                    Download Resume
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/earl-hickson-jr/" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600"
+                    data-testid="link-linkedin-full"
+                  >
+                    <i className="fab fa-linkedin mr-2"></i>
+                    View on LinkedIn
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -169,7 +180,7 @@ export default function About() {
                 <i className="fab fa-linkedin text-xl"></i>
               </a>
               <a 
-                href="https://github.com/ehicksonjr" 
+                href="https://github.com/Epetaway" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-colors"
