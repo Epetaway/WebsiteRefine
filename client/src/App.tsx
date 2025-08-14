@@ -1,4 +1,5 @@
-import { Switch, Route } from "wouter";
+import { Router as WouterRouter, Switch, Route } from "wouter";
+import { useHashLocation } from "wouter/use-hash-location";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -13,36 +14,44 @@ import Home from "@/pages/home";
 import CaseStudies from "@/pages/case-studies";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
+import BlogPost from "@/pages/blog-post"; // <-- blog detail
 import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
 import NotFound from "@/pages/not-found";
 
-function Router() {
+function AppRouter() {
   useAnalytics();
-  
+
+  // Use hash-based routing so deep links work on GitHub Pages
+  const [location, setLocation] = useHashLocation();
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <main className="flex-1">
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/case-studies" component={CaseStudies} />
-          <Route path="/about" component={About} />
-          <Route path="/blog" component={Blog} />
-          <Route path="/earldkaiju" component={EarldKaiju} />
-          <Route path="/articles/:slug" component={Article} />
-          <Route component={NotFound} />
-        </Switch>
-      </main>
-      <Footer />
-    </div>
+    <WouterRouter hook={() => [location, setLocation]}>
+      <div className="min-h-screen flex flex-col">
+        <Header />
+        <main className="flex-1">
+          <Switch>
+            <Route path="/" component={Home} />
+            <Route path="/case-studies" component={CaseStudies} />
+            <Route path="/about" component={About} />
+            <Route path="/blog" component={Blog} />
+            <Route path="/blog/:slug" component={BlogPost} /> {/* <-- new */}
+            <Route path="/earldkaiju" component={EarldKaiju} />
+            <Route path="/articles/:slug" component={Article} />
+            {/* Fallback */}
+            <Route component={NotFound} />
+          </Switch>
+        </main>
+        <Footer />
+      </div>
+    </WouterRouter>
   );
 }
 
 function App() {
   useEffect(() => {
     if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
-      console.warn('Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID');
+      console.warn("Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID");
     } else {
       initGA();
     }
@@ -51,7 +60,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Router />
+        <AppRouter />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

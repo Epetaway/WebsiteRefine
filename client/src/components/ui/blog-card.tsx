@@ -1,3 +1,4 @@
+import { Link } from "wouter";
 import type { BlogPost } from "@/data/blog-posts";
 
 export default function BlogCard({
@@ -27,7 +28,7 @@ export default function BlogCard({
       data-testid={`blog-card-${post.id}`}
     >
       {/* Media */}
-      <a href={href} className="block relative">
+      <Link href={href} className="block relative" aria-label={`Open ${post.title}`}>
         <div className="relative aspect-[16/9] overflow-hidden">
           <img
             src={coverSrc}
@@ -53,7 +54,7 @@ export default function BlogCard({
             </h3>
           </div>
         </div>
-      </a>
+      </Link>
 
       {/* Body */}
       <div className="p-4 sm:p-5">
@@ -68,7 +69,7 @@ export default function BlogCard({
             })}
           </time>
 
-          <a
+          <Link
             href={href}
             className="inline-flex items-center gap-1 font-semibold text-primary-600 hover:text-primary-700"
             aria-label={`Read ${post.title}`}
@@ -90,7 +91,7 @@ export default function BlogCard({
                 strokeLinejoin="round"
               />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </article>
