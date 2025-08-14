@@ -1,16 +1,18 @@
 import { Link } from "wouter";
 import type { BlogPost } from "@/data/blog-posts";
 
+type Variant = "minimal" | "default";
+
 export default function BlogCard({
   post,
-  featured = false,
+  variant = "minimal",
 }: {
   post: BlogPost;
-  featured?: boolean;
+  variant?: Variant;
 }) {
   const href = `/blog/${post.slug}`;
 
-  // Build an asset URL that respects GitHub Pages base path (Vite)
+  // Respect Vite BASE_URL so images work on GitHub Pages
   const base =
     (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
       ? (import.meta as any).env.BASE_URL
@@ -19,61 +21,68 @@ export default function BlogCard({
   const isHttp = /^https?:\/\//i.test(raw);
   const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
 
+  const isMinimal = variant === "minimal";
+
   return (
     <article
       className={[
-        "group relative overflow-hidden rounded-2xl border border-gray-200 bg-white",
-        featured ? "md:col-span-2" : "",
+        "group relative overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow",
+        "hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
       ].join(" ")}
       data-testid={`blog-card-${post.id}`}
     >
-      {/* Media */}
-      <Link href={href} className="block relative" aria-label={`Open ${post.title}`}>
-        <div className="relative aspect-[16/9] overflow-hidden">
+      <Link
+        href={href}
+        className="block outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        aria-label={`Open ${post.title}`}
+      >
+        {/* Image */}
+        <div className="relative aspect-[4/3] overflow-hidden">
           <img
             src={coverSrc}
             alt={post.title}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+            className="h-full w-full object-cover transition-transform duration-500 motion-reduce:duration-0 group-hover:scale-[1.03]"
             loading="lazy"
           />
-          {/* Gradient overlay for readability */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-
-          {/* Headline overlay (bottom-left) */}
-          <div className="absolute inset-x-0 bottom-0 p-4 sm:p-5">
-            <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-gray-900 shadow">
-                {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
-              </span>
-              <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 text-xs font-medium text-white">
-                {post.readTime} min read
-              </span>
-            </div>
-            <h3 className="text-white drop-shadow-md text-xl sm:text-2xl font-bold leading-snug">
-              {post.title}
-            </h3>
-          </div>
+          {/* subtle top fade for readability */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
         </div>
-      </Link>
 
-      {/* Body */}
-      <div className="p-4 sm:p-5">
-        <p className="text-sm text-gray-600 line-clamp-3">{post.excerpt}</p>
+        {/* Content */}
+        <div className="p-4">
+          <div className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-wide">
+            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">
+              {post.category}
+            </span>
+            <span className="text-gray-400">•</span>
+            <time className="text-gray-500" dateTime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+              })}
+            </time>
+            <span className="text-gray-400">•</span>
+            <span className="text-gray-500">{post.readTime} min</span>
+          </div>
 
-        <div className="mt-4 flex items-center justify-between text-xs text-gray-500">
-          <time dateTime={post.publishedAt}>
-            {new Date(post.publishedAt).toLocaleDateString(undefined, {
-              year: "numeric",
-              month: "short",
-              day: "2-digit",
-            })}
-          </time>
-
-          <Link
-            href={href}
-            className="inline-flex items-center gap-1 font-semibold text-primary-600 hover:text-primary-700"
-            aria-label={`Read ${post.title}`}
+          {/* Headline with gradient text (no custom brand colors) */}
+          <h3
+            className={[
+              "font-semibold leading-snug line-clamp-2 transition-colors",
+              "bg-gradient-to-r from-emerald-400 via-emerald-300 to-amber-300 bg-clip-text text-transparent",
+              "text-base md:text-lg",
+            ].join(" ")}
           >
+            {post.title}
+          </h3>
+
+          {/* optional excerpt (kept subtle) */}
+          <p className="mt-2 line-clamp-2 text-sm text-gray-600">
+            {post.excerpt}
+          </p>
+
+          <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-gray-900">
             Read more
             <svg
               width="16"
@@ -91,9 +100,9 @@ export default function BlogCard({
                 strokeLinejoin="round"
               />
             </svg>
-          </Link>
+          </div>
         </div>
-      </div>
+      </Link>
     </article>
   );
 }

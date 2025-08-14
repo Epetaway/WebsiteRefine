@@ -14,15 +14,13 @@ import Home from "@/pages/home";
 import CaseStudies from "@/pages/case-studies";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
-import BlogPost from "@/pages/blog-post"; // <-- blog detail
+import BlogPost from "@/pages/blog-post";
 import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
 import NotFound from "@/pages/not-found";
 
 function AppRouter() {
   useAnalytics();
-
-  // Use hash-based routing so deep links work on GitHub Pages
   const [location, setLocation] = useHashLocation();
 
   return (
@@ -35,10 +33,9 @@ function AppRouter() {
             <Route path="/case-studies" component={CaseStudies} />
             <Route path="/about" component={About} />
             <Route path="/blog" component={Blog} />
-            <Route path="/blog/:slug" component={BlogPost} /> {/* <-- new */}
+            <Route path="/blog/:slug" component={BlogPost} />
             <Route path="/earldkaiju" component={EarldKaiju} />
             <Route path="/articles/:slug" component={Article} />
-            {/* Fallback */}
             <Route component={NotFound} />
           </Switch>
         </main>
@@ -48,7 +45,7 @@ function AppRouter() {
   );
 }
 
-function App() {
+export default function App() {
   useEffect(() => {
     if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
       console.warn("Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID");
@@ -66,5 +63,3 @@ function App() {
     </QueryClientProvider>
   );
 }
-
-export default App;

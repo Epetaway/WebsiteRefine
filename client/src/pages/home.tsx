@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import LatestInsightsSection from "@/components/ui/latest-insights";
 import WinTile from "@/components/ui/win-tile";
 import TechBadge from "@/components/ui/tech-badge";
 import BlogCard from "@/components/ui/blog-card";
@@ -156,29 +157,8 @@ export default function Home() {
       </section>
 
       {/* Featured Blog Posts */}
-      <section className="py-16 bg-white">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="flex items-end justify-between mb-6">
-      <h2 className="text-2xl font-bold">Latest Insights</h2>
-      <a href="/#/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">View all</a>
-    </div>
+       <LatestInsightsSection />
 
-    {/* 1 col (mobile) → 2 col (md) → 4 col (lg) */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      {blogPosts
-        .slice() // don’t mutate original
-        .sort((a, b) => {
-          const ta = Date.parse(a.publishedAt || "");
-          const tb = Date.parse(b.publishedAt || "");
-          return (Number.isFinite(tb) ? tb : 0) - (Number.isFinite(ta) ? ta : 0);
-        })
-        .slice(0, 4) // show only latest 4
-        .map((post) => (
-          <BlogCard key={post.id} post={post} variant="compact" />
-        ))}
-    </div>
-  </div>
-</section>
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-50">
