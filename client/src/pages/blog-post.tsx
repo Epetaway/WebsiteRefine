@@ -46,6 +46,7 @@ export default function BlogPost() {
     );
   }
 
+  // Image url respecting BASE_URL (GitHub Pages)
   const base =
     (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
       ? (import.meta as any).env.BASE_URL
@@ -55,46 +56,61 @@ export default function BlogPost() {
   const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
 
   return (
-    <article className="pt-16">
-      {/* Hero */}
-      <section className="relative bg-white">
-        <div className="relative aspect-[16/9] overflow-hidden">
-          <img src={coverSrc} alt={post.title} className="h-full w-full object-cover" loading="lazy" />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-          <div className="absolute bottom-0 left-0 p-4 sm:p-6">
-            <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center rounded-full bg-white/90 px-2.5 py-1 text-xs font-semibold text-gray-900 shadow">
-                {post.category.charAt(0).toUpperCase() + post.category.slice(1)}
-              </span>
-              <span className="inline-flex items-center rounded-full bg-black/50 px-2.5 py-1 text-xs font-medium text-white">
-                {post.readTime} min read
-              </span>
-            </div>
-            {/* “display-3” feel */}
-            <h1 className="text-white drop-shadow-md text-5xl lg:text-6xl font-extrabold leading-tight">
-              {post.title}
-            </h1>
+    <article className="bg-white">
+      {/* Top hero — clean, minimal, like Superchat industries pages */}
+      <section className="pt-20 pb-10">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          {/* Eyebrow / breadcrumb-lite */}
+          <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-gray-500">
+            <Link href="/blog" className="hover:text-gray-700">Blog</Link>
+            <span>•</span>
+            <span className="capitalize">{post.category}</span>
+            <span>•</span>
+            <time dateTime={post.publishedAt}>
+              {new Date(post.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" })}
+            </time>
+            <span>•</span>
+            <span>{post.readTime} min read</span>
+          </div>
+
+          {/* Big gradient headline on white */}
+          <h1
+            className={[
+              "bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-200 bg-clip-text text-transparent",
+              "text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight",
+            ].join(" ")}
+          >
+            {post.title}
+          </h1>
+
+          {/* Optional intro (use excerpt for a crisp subhead) */}
+          {post.excerpt && (
+            <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl">
+              {post.excerpt}
+            </p>
+          )}
+        </div>
+      </section>
+
+      {/* Image card — rounded, subtle border, no heavy overlay */}
+      <section className="pb-12">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-2xl border border-gray-200">
+            <img
+              src={coverSrc}
+              alt={post.title}
+              className="h-auto w-full object-cover"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
 
-      <section className="py-10 bg-white">
+      {/* Content — comfy width, clean prose */}
+      <section className="pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-          <div className="text-xs text-gray-500 mb-6">
-            <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" })}
-            </time>
-            {post.updatedAt && (
-              <>
-                {" • Updated "}
-                <time dateTime={post.updatedAt}>
-                  {new Date(post.updatedAt).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" })}
-                </time>
-              </>
-            )}
-          </div>
           <div
-            className="prose prose-slate max-w-none"
+            className="prose prose-slate max-w-none prose-h2:mt-10 prose-h2:mb-4 prose-h3:mt-8 prose-h3:mb-3"
             dangerouslySetInnerHTML={{ __html: renderBasicMarkdown(post.content) }}
           />
         </div>

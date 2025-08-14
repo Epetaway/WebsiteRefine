@@ -21,8 +21,6 @@ export default function BlogCard({
   const isHttp = /^https?:\/\//i.test(raw);
   const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
 
-  const isMinimal = variant === "minimal";
-
   return (
     <article
       className={[
@@ -66,21 +64,18 @@ export default function BlogCard({
             <span className="text-gray-500">{post.readTime} min</span>
           </div>
 
-          {/* Headline with gradient text (no custom brand colors) */}
+          {/* SINGLE green gradient headline */}
           <h3
             className={[
               "font-semibold leading-snug line-clamp-2 transition-colors",
-              "bg-gradient-to-r from-emerald-400 via-emerald-300 to-amber-300 bg-clip-text text-transparent",
+              "bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-200 bg-clip-text text-transparent",
               "text-base md:text-lg",
             ].join(" ")}
           >
             {post.title}
           </h3>
 
-          {/* optional excerpt (kept subtle) */}
-          <p className="mt-2 line-clamp-2 text-sm text-gray-600">
-            {post.excerpt}
-          </p>
+          <p className="mt-2 line-clamp-2 text-sm text-gray-600">{post.excerpt}</p>
 
           <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-gray-900">
             Read more
