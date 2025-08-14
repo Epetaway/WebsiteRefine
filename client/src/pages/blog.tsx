@@ -1,16 +1,15 @@
+
 import { useMemo, useState } from "react";
 import { blogPosts, type BlogPost } from "@/data/blog-posts";
 import BlogCard from "@/components/ui/blog-card";
 import { Button } from "@/components/ui/button";
 
 export default function Blog() {
-  // Use the updated BlogPost category type
   const [filter, setFilter] = useState<"all" | BlogPost["category"]>("all");
 
-  // Keep the page hidden while under construction; flip to false when ready
+  // Flip to false to show the page live
   const underConstruction = false;
 
-  // Build category chips from the new data shape
   const categories = useMemo(() => {
     const by = <T extends BlogPost["category"]>(key: T, label: string) => ({
       key,
@@ -100,7 +99,6 @@ export default function Blog() {
             All Posts
           </h2>
 
-        {/* Non-featured grid */}
           {nonFeatured.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {nonFeatured.map((post) => (
@@ -114,52 +112,6 @@ export default function Blog() {
               </p>
             </div>
           )}
-        </div>
-      </section>
-
-      {/* Dev Notes Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4" data-testid="section-title-dev-notes">
-              Dev Notes
-            </h2>
-            <p className="text-xl text-gray-600">
-              Technical writeups and development insights coming soon
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-semibold mb-2" data-testid="dev-note-angular">
-                Angular 18 Signals in Production
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Real-world experiences migrating from RxJS to Angular Signals for state management.
-              </p>
-              <span className="text-xs text-gray-500">Coming Soon</span>
-            </div>
-
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-semibold mb-2" data-testid="dev-note-wcag">
-                WCAG Quick Wins
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Low-effort, high-impact accessibility improvements every engineer should implement.
-              </p>
-              <span className="text-xs text-gray-500">Coming Soon</span>
-            </div>
-
-            <div className="bg-white rounded-xl p-6">
-              <h3 className="font-semibold mb-2" data-testid="dev-note-tailwind">
-                Tailwind Theming Strategy
-              </h3>
-              <p className="text-sm text-gray-600 mb-3">
-                Building maintainable design systems with Tailwind CSS custom properties.
-              </p>
-              <span className="text-xs text-gray-500">Coming Soon</span>
-            </div>
-          </div>
         </div>
       </section>
     </div>

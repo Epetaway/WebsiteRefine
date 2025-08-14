@@ -42,7 +42,7 @@ export const projects: Project[] = [
       { label: "Accessibility", value: "WCAG AA", improvement: "100% compliant" }
     ],
     links: {
-      repo: "https://github.com/ehicksonjr/employee-directory"
+      repo: "https://github.com/Epetaway/employee-directory"
     },
     category: 'featured'
   },
@@ -85,7 +85,7 @@ export const projects: Project[] = [
     ],
     links: {
       demo: "https://www.ehicksonjr.com",
-      repo: "https://github.com/ehicksonjr/portfolio"
+      repo: "https://github.com/Epetaway/portfolio"
     },
     category: 'development'
   },
@@ -107,7 +107,7 @@ export const projects: Project[] = [
     ],
     links: {
       demo: "https://epetaway.github.io/mtg-proxy-generator/",
-      repo: "https://github.com/ehicksonjr/mtg-proxy-generator"
+      repo: "https://github.com/Epetaway/mtg-proxy-generator"
     },
     category: 'development'
   },
@@ -127,7 +127,7 @@ export const projects: Project[] = [
       "Responsive layout"
     ],
     links: {
-      repo: "https://github.com/ehicksonjr/movie-rating-app"
+      repo: "https://github.com/Epetaway/movie-rating-app"
     },
     category: 'development'
   },
@@ -148,7 +148,7 @@ export const projects: Project[] = [
     ],
     links: {
       demo: "https://epetaway.github.io/WHEEL-OF-SUCCESS/",
-      repo: "https://github.com/ehicksonjr/game-show-app"
+      repo: "https://github.com/Epetaway/game-show-app"
     },
     category: 'development'
   }
