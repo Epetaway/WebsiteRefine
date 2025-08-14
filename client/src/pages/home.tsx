@@ -156,28 +156,29 @@ export default function Home() {
       </section>
 
       {/* Featured Blog Posts */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" data-testid="section-title-blog">Latest Insights</h2>
-            <p className="text-xl text-gray-600">From the intersection of development and Brazilian Jiu-Jitsu</p>
-          </div>
+      <section className="py-16 bg-white">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="flex items-end justify-between mb-6">
+      <h2 className="text-2xl font-bold">Latest Insights</h2>
+      <a href="/#/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">View all</a>
+    </div>
 
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            {featuredPosts.map((post) => (
-              <BlogCard key={post.id} post={post} featured={true} />
-            ))}
-          </div>
-
-          <div className="text-center">
-            <Button asChild variant="outline" data-testid="button-view-all-posts">
-              <Link href="/blog">
-                View All Posts
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+    {/* 1 col (mobile) → 2 col (md) → 4 col (lg) */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {blogPosts
+        .slice() // don’t mutate original
+        .sort((a, b) => {
+          const ta = Date.parse(a.publishedAt || "");
+          const tb = Date.parse(b.publishedAt || "");
+          return (Number.isFinite(tb) ? tb : 0) - (Number.isFinite(ta) ? ta : 0);
+        })
+        .slice(0, 4) // show only latest 4
+        .map((post) => (
+          <BlogCard key={post.id} post={post} variant="compact" />
+        ))}
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-50">

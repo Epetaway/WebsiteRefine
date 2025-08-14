@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link, useRoute } from "wouter";
 import { blogPosts } from "@/data/blog-posts";
 
 // lightweight markdown → html
@@ -50,7 +50,10 @@ function renderBasicMarkdown(md: string): string {
 }
 
 export default function BlogPost() {
-  const { slug } = useParams<{ slug: string }>();
+  // Read :slug from the URL using Wouter
+  const [, params] = useRoute<{ slug: string }>("/blog/:slug");
+  const slug = params?.slug;
+
   const post = useMemo(() => blogPosts.find((p) => p.slug === slug), [slug]);
 
   if (!post) {
@@ -58,7 +61,7 @@ export default function BlogPost() {
       <div className="min-h-screen grid place-items-center p-8 text-center">
         <div>
           <h1 className="text-2xl font-bold mb-2">Post not found</h1>
-          <Link to="/blog" className="inline-flex items-center rounded-xl border px-4 py-2 font-semibold hover:bg-gray-50">
+          <Link href="/blog" className="inline-flex items-center rounded-xl border px-4 py-2 font-semibold hover:bg-gray-50">
             Back to Blog
           </Link>
         </div>
