@@ -1,4 +1,4 @@
-import { Link } from "wouter";
+import { Link } from "react-router-dom";
 import type { BlogPost } from "@/data/blog-posts";
 
 type Variant = "minimal" | "default";
@@ -12,7 +12,7 @@ export default function BlogCard({
 }) {
   const href = `/blog/${post.slug}`;
 
-  // Respect Vite BASE_URL so images work on GitHub Pages
+  // Respect Vite BASE_URL for GitHub Pages
   const base =
     (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
       ? (import.meta as any).env.BASE_URL
@@ -30,7 +30,7 @@ export default function BlogCard({
       data-testid={`blog-card-${post.id}`}
     >
       <Link
-        href={href}
+        to={href}
         className="block outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         aria-label={`Open ${post.title}`}
       >
@@ -42,7 +42,7 @@ export default function BlogCard({
             className="h-full w-full object-cover transition-transform duration-500 motion-reduce:duration-0 group-hover:scale-[1.03]"
             loading="lazy"
           />
-          {/* subtle top fade for readability */}
+          {/* subtle top fade */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
         </div>
 
@@ -67,7 +67,7 @@ export default function BlogCard({
           {/* SINGLE green gradient headline */}
           <h3
             className={[
-              "font-semibold leading-snug line-clamp-2 transition-colors",
+              "font-semibold leading-snug line-clamp-2",
               "bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-200 bg-clip-text text-transparent",
               "text-base md:text-lg",
             ].join(" ")}

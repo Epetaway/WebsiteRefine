@@ -2,7 +2,6 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { blogPosts } from "@/data/blog-posts";
 import BlogCard from "@/components/ui/blog-card";
 
-// safe date parse
 const asTime = (iso?: string) => {
   const t = iso ? Date.parse(iso) : NaN;
   return Number.isFinite(t) ? t : 0;
@@ -17,7 +16,6 @@ export default function LatestInsightsSection() {
   const hasSlider = posts.length >= 5;
 
   if (!hasSlider) {
-    // fallback: 1 / 2 / 4 grid, up to 4 posts
     return (
       <section aria-labelledby="latest-insights-heading" className="py-16 bg-white">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -25,7 +23,7 @@ export default function LatestInsightsSection() {
             <h2 id="latest-insights-heading" className="text-2xl font-bold">
               Latest Insights
             </h2>
-            <a href="#/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
+            <a href="/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
               View all
             </a>
           </div>
@@ -51,7 +49,6 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
-
     const calc = () => {
       const w = el.clientWidth;
       const pv = w >= 1024 ? 4 : w >= 768 ? 2 : 1;
@@ -59,7 +56,6 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
       const idx = Math.round(el.scrollLeft / el.clientWidth);
       setActive(idx);
     };
-
     const ro = new ResizeObserver(calc);
     ro.observe(el);
     calc();
@@ -91,39 +87,28 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
           <h2 id="latest-insights-heading" className="text-2xl font-bold">
             Latest Insights
           </h2>
-          <a href="#/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
+          <a href="/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
             View all
           </a>
         </div>
 
         <div className="relative">
-          {/* edge fades */}
           <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
 
-          {/* Track */}
           <div
             ref={trackRef}
             onScroll={onScroll}
-            className="
-              flex gap-6 overflow-x-auto scroll-smooth
-              snap-x snap-mandatory
-              [-ms-overflow-style:none] [scrollbar-width:none]
-              pb-1
-            "
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] pb-1"
             style={{ scrollbarWidth: "none" } as any}
           >
             {posts.map((post) => (
-              <div
-                key={post.id}
-                className="snap-start shrink-0 w-[100%] md:w-[50%] lg:w-[25%]"
-              >
+              <div key={post.id} className="snap-start shrink-0 w-[100%] md:w-[50%] lg:w-[25%]">
                 <BlogCard post={post} variant="minimal" />
               </div>
             ))}
           </div>
 
-          {/* Controls */}
           <div className="mt-6 flex items-center justify-between">
             <div className="flex items-center gap-2">
               {Array.from({ length: totalPages }).map((_, i) => (
@@ -134,6 +119,7 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
                     const el = trackRef.current;
                     if (!el) return;
                     el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
+                    setActive(i);
                   }}
                   className={[
                     "h-2 w-2 rounded-full transition-colors",

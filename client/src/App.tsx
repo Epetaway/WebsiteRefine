@@ -1,5 +1,4 @@
-import { Router as WouterRouter, Switch, Route } from "wouter";
-import { useHashLocation } from "wouter/use-hash-location";
+import { Routes, Route } from "react-router-dom";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -19,29 +18,26 @@ import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
 import NotFound from "@/pages/not-found";
 
-function AppRouter() {
+function AppShell() {
   useAnalytics();
-  const [location, setLocation] = useHashLocation();
 
   return (
-    <WouterRouter hook={() => [location, setLocation]}>
-      <div className="min-h-screen flex flex-col">
-        <Header />
-        <main className="flex-1">
-          <Switch>
-            <Route path="/" component={Home} />
-            <Route path="/case-studies" component={CaseStudies} />
-            <Route path="/about" component={About} />
-            <Route path="/blog" component={Blog} />
-            <Route path="/blog/:slug" component={BlogPost} />
-            <Route path="/earldkaiju" component={EarldKaiju} />
-            <Route path="/articles/:slug" component={Article} />
-            <Route component={NotFound} />
-          </Switch>
-        </main>
-        <Footer />
-      </div>
-    </WouterRouter>
+    <div className="min-h-screen flex flex-col">
+      <Header />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/earldkaiju" element={<EarldKaiju />} />
+          <Route path="/articles/:slug" element={<Article />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
@@ -57,7 +53,7 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <AppRouter />
+        <AppShell />
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>

@@ -2,28 +2,54 @@ import { useMemo } from "react";
 import { Link, useRoute } from "wouter";
 import { blogPosts } from "@/data/blog-posts";
 
-// minimal markdown → html
+// minimal markdown → html with internal-link fix for hash routing
 function renderBasicMarkdown(md: string): string {
   let html = md.trim();
+
+  // code fences
   html = html.replace(/```([\s\S]*?)```/g, (_m, code) => {
     const esc = code.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" } as any)[c]!);
     return `<pre class="overflow-auto rounded-lg border px-3 py-2 bg-gray-50"><code>${esc}</code></pre>`;
   });
+
+  // headings
   html = html
     .replace(/^### (.*)$/gm, "<h3>$1</h3>")
     .replace(/^## (.*)$/gm, "<h2>$1</h2>")
     .replace(/^# (.*)$/gm, "<h1>$1</h1>");
+
+  // bold/italic
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
-  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a class="text-primary-600 underline" href="$2">$1</a>');
+
+  // links (convert internal /blog/... links to hash routing #/blog/...)
+  html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, url) => {
+    const u = String(url);
+    const safeUrl = u.startsWith("/blog/") ? `#${u}` : u;
+    return `<a class="text-primary-600 underline" href="${safeUrl}">${text}</a>`;
+  });
+
+  // unordered lists
   html = html.replace(/(?:^|\n)(?:- .*(?:\n|$))+?/g, (block) => {
-    const items = block.trim().split("\n").map((l) => l.replace(/^- /, "").trim()).filter(Boolean).map((t) => `<li>${t}</li>`).join("");
+    const items = block
+      .trim()
+      .split("\n")
+      .map((l) => l.replace(/^- /, "").trim())
+      .filter(Boolean)
+      .map((t) => `<li>${t}</li>`)
+      .join("");
     return `<ul class="list-disc pl-6 my-3">${items}</ul>`;
   });
-  html = html.split(/\n{2,}/).map((para) =>
-    /^(<h\d|<ul|<pre|<blockquote|<img|<p|<hr)/.test(para.trim())
-      ? para
-      : `<p>${para.replace(/\n/g, "<br/>")}</p>`
-  ).join("\n");
+
+  // paragraphs
+  html = html
+    .split(/\n{2,}/)
+    .map((para) =>
+      /^(<h\d|<ul|<pre|<blockquote|<img|<p|<hr)/.test(para.trim())
+        ? para
+        : `<p>${para.replace(/\n/g, "<br/>")}</p>`
+    )
+    .join("\n");
+
   return html;
 }
 
@@ -73,7 +99,7 @@ export default function BlogPost() {
             <span>{post.readTime} min read</span>
           </div>
 
-          {/* Big gradient headline on white */}
+          {/* Big green gradient headline on white */}
           <h1
             className={[
               "bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-200 bg-clip-text text-transparent",

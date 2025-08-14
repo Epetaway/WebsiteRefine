@@ -3,9 +3,6 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import runtimeErrorOverlay from "@replit/vite-plugin-runtime-error-modal";
 
-// GitHub Pages base path (project site). Uses '/' locally, '/WebsiteRefine/' on CI.
-const baseForPages = process.env.GITHUB_ACTIONS ? "/WebsiteRefine/" : "/";
-
 export default defineConfig(async ({ mode }) => {
   const plugins = [react(), runtimeErrorOverlay()];
 
@@ -16,7 +13,8 @@ export default defineConfig(async ({ mode }) => {
   }
 
   return {
-    base: baseForPages,
+    // Since we're using a custom domain (ehicksonjr.com), base is always "/"
+    base: "/",
     plugins,
     resolve: {
       alias: {

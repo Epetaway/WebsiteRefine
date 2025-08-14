@@ -24,4 +24,11 @@
     <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>
+  <script>
+  try {
+    const r = sessionStorage.getItem('redirect');
+    if (r) { history.replaceState(null, '', r); sessionStorage.removeItem('redirect'); }
+  } catch {}
+</script>
+
 </html>

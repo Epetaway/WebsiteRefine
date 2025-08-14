@@ -1,0 +1,20 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>Redirecting…</title>
+    <meta http-equiv="refresh" content="0; url=/" />
+    <script>
+      // Preserve path for SPA routing after redirect to index.html
+      sessionStorage.setItem("redirect", location.pathname + location.search + location.hash);
+      window.location.replace("/");
+    </script>
+  </head>
+  <body>
+    <noscript>Please enable JavaScript to view this site.</noscript>
+  </body>
+</html>
