@@ -36,7 +36,7 @@ export default function Blog() {
   const others = featured ? sorted.filter((p) => p.id !== featured.id) : sorted;
 
   return (
-    <div className="pt-16">
+    <div className="">
       {/* Header */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

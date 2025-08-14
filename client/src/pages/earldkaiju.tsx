@@ -108,7 +108,7 @@ export default function EarldKaiju() {
 
 
   return (
-    <div className="pt-16">
+    <div className="">
       {/* Hero Section with Banner */}
       <section className="relative py-20 bg-black text-white overflow-hidden">
         {/* Background Image */}

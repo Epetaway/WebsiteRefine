@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="border-t bg-white">
+    <footer className="bg-gray-900 text-white py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 grid gap-6 md:grid-cols-3">
         <div>
-          <div className="font-extrabold tracking-tight text-lg mb-2">EH<span className="text-gray-400">.</span></div>
+          <div className="font-extrabold tracking-tight text-lg mb-2">Earl Hickson Jr<span className="text-gray-400">.</span></div>
           <p className="text-sm text-gray-600">Senior Front‑End Engineer — Parsippany, New Jersey</p>
         </div>
 

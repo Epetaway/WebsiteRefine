@@ -9,7 +9,7 @@ export default function CaseStudies() {
   const isUnderConstruction = false;
 
   return (
-    <div className="pt-16">
+    <div className="">
       {isUnderConstruction ? (
         <section
           aria-labelledby="uc-title"

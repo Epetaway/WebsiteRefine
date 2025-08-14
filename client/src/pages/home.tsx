@@ -11,7 +11,7 @@ export default function Home() {
   const featuredPosts = blogPosts.filter(post => post.featured).slice(0, 2);
 
   return (
-    <div className="pt-16">
+    <div className="">
       {/* Hero Section */}
       <section className="pt-16 pb-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen flex items-center">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -28,8 +28,8 @@ export default function Header() {
     <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="font-extrabold tracking-tight text-lg">
-          EH<span className="text-gray-400">.</span>
+        <Link to="/" className="font-extrabold tracking-tight gradient-text text-lg">
+          Earl Hickson Jr<span className="text-gray-400">.</span>
         </Link>
 
         {/* Desktop nav */}

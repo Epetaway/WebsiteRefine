@@ -68,12 +68,13 @@ export default function BlogCard({
           <h3
             className={[
               "font-semibold leading-snug line-clamp-2",
-              "bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-200 bg-clip-text text-transparent",
+              "gradient-text",
               "text-base md:text-lg",
             ].join(" ")}
           >
             {post.title}
           </h3>
+
 
           <p className="mt-2 line-clamp-2 text-sm text-gray-600">{post.excerpt}</p>
 
