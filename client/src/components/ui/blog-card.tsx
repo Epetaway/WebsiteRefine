@@ -1,6 +1,3 @@
-"use client";
-
-import Link from "next/link";
 import type { BlogPost } from "@/data/blog-posts";
 
 export default function BlogCard({
@@ -12,7 +9,7 @@ export default function BlogCard({
 }) {
   const href = `/blog/${post.slug}`;
 
-  // Build an asset URL that respects GitHub Pages base path
+  // Build an asset URL that respects GitHub Pages base path (Vite)
   const base =
     (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
       ? (import.meta as any).env.BASE_URL
@@ -30,7 +27,7 @@ export default function BlogCard({
       data-testid={`blog-card-${post.id}`}
     >
       {/* Media */}
-      <Link href={href} className="block relative">
+      <a href={href} className="block relative">
         <div className="relative aspect-[16/9] overflow-hidden">
           <img
             src={coverSrc}
@@ -56,7 +53,7 @@ export default function BlogCard({
             </h3>
           </div>
         </div>
-      </Link>
+      </a>
 
       {/* Body */}
       <div className="p-4 sm:p-5">
@@ -71,7 +68,7 @@ export default function BlogCard({
             })}
           </time>
 
-          <Link
+          <a
             href={href}
             className="inline-flex items-center gap-1 font-semibold text-primary-600 hover:text-primary-700"
             aria-label={`Read ${post.title}`}
@@ -93,7 +90,7 @@ export default function BlogCard({
                 strokeLinejoin="round"
               />
             </svg>
-          </Link>
+          </a>
         </div>
       </div>
     </article>
