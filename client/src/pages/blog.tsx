@@ -1,49 +1,47 @@
 
+
 import { useMemo, useState } from "react";
 import { blogPosts, type BlogPost } from "@/data/blog-posts";
 import BlogCard from "@/components/ui/blog-card";
 import { Button } from "@/components/ui/button";
 
+// Safe date parser (avoids NaN)
+const asTime = (iso?: string) => {
+  const t = iso ? Date.parse(iso) : NaN;
+  return Number.isFinite(t) ? t : 0;
+};
+
 export default function Blog() {
   const [filter, setFilter] = useState<"all" | BlogPost["category"]>("all");
 
-  // Flip to false to show the page live
-  const underConstruction = false;
-
+  // Build category chips from ALL posts (not filtered)
   const categories = useMemo(() => {
-    const by = <T extends BlogPost["category"]>(key: T, label: string) => ({
-      key,
-      label,
-      count: blogPosts.filter((p) => p.category === key).length,
-    });
+    const count = (key: BlogPost["category"]) => blogPosts.filter(p => p.category === key).length;
     return [
       { key: "all" as const, label: "All Posts", count: blogPosts.length },
-      by("bjj", "Brazilian Jiu-Jitsu"),
-      by("development", "Development"),
-      by("general", "General"),
+      { key: "bjj" as const, label: "Brazilian Jiu-Jitsu", count: count("bjj") },
+      { key: "development" as const, label: "Development", count: count("development") },
+      { key: "general" as const, label: "General", count: count("general") },
     ];
   }, []);
 
+  // Apply category filter first
   const filteredPosts = useMemo(() => {
-    return filter === "all"
-      ? blogPosts
-      : blogPosts.filter((post) => post.category === filter);
+    if (filter === "all") return blogPosts.slice();
+    return blogPosts.filter(p => p.category === filter);
   }, [filter]);
 
-  const featuredPosts = filteredPosts.filter((p) => p.featured);
-  const nonFeatured = filteredPosts.filter((p) => !p.featured);
+  // Sort filtered posts by publishedAt DESC (most recent first)
+  const sortedFiltered = useMemo(() => {
+    return filteredPosts.slice().sort((a, b) => asTime(b.publishedAt) - asTime(a.publishedAt));
+  }, [filteredPosts]);
 
-  if (underConstruction) {
-    return (
-      <div className="pt-32 pb-32 flex flex-col items-center justify-center text-center bg-gray-50 min-h-screen">
-        <h1 className="text-5xl font-bold mb-4 text-primary-600">🚧 Under Construction</h1>
-        <p className="text-lg text-gray-600 max-w-xl">
-          Our blog section is currently being built. Fresh insights on development, Brazilian Jiu-Jitsu,
-          and more will be available here soon — stay tuned!
-        </p>
-      </div>
-    );
-  }
+  // The featured post is ALWAYS the most recent in the current view
+  const featuredPost = sortedFiltered[0];
+  const nonFeatured = useMemo(
+    () => (featuredPost ? sortedFiltered.filter(p => p.id !== featuredPost.id) : sortedFiltered),
+    [sortedFiltered, featuredPost]
+  );
 
   return (
     <div className="pt-16">
@@ -76,23 +74,21 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Featured Posts */}
-      {featuredPosts.length > 0 && (
+      {/* Featured Post (most recent in the current filter) */}
+      {featuredPost && (
         <section className="py-16 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-bold mb-8" data-testid="section-title-featured">
-              Featured Posts
+              Featured Post
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {featuredPosts.map((post) => (
-                <BlogCard key={post.id} post={post} featured />
-              ))}
+            <div className="grid gap-8 md:grid-cols-2">
+              <BlogCard key={featuredPost.id} post={featuredPost} featured />
             </div>
           </div>
         </section>
       )}
 
-      {/* All Posts */}
+      {/* All Posts (rest of the list after removing the featured) */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-8" data-testid="section-title-all">
