@@ -1,95 +1,101 @@
 import { useState } from "react";
-import { Link, useLocation } from "wouter";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Link, NavLink, useLocation } from "react-router-dom";
+
+const nav = [
+  { to: "/", label: "Home" },
+  { to: "/case-studies", label: "Case Studies" },
+  { to: "/about", label: "About" },
+  { to: "/blog", label: "Blog" },
+  { to: "/earldkaiju", label: "BJJ Lessons" },
+];
 
 export default function Header() {
-  const [location] = useLocation();
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-  const navigation = [
-    { name: "Home", href: "/" },
-    { name: "Case Studies", href: "/case-studies" },
-    { name: "About", href: "/about" },
-    { name: "Blog", href: "/blog" },
-    { name: "BJJ Lessons", href: "/earldkaiju" },
-  ];
+  const isActive = (path: string) =>
+    location.pathname === path ||
+    (path !== "/" && location.pathname.startsWith(path));
+
+  const linkBase =
+    "inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold transition-colors";
+  const active =
+    "text-white bg-gray-900";
+  const idle =
+    "text-gray-700 hover:text-gray-900 hover:bg-gray-100";
 
   return (
-    <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-gray-200 z-50">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-xl font-bold gradient-text" data-testid="logo-link">
-              Earl Hickson Jr.
-            </Link>
-          </div>
-          
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className={`text-gray-700 hover:text-primary-500 transition-colors duration-200 ${
-                    location === item.href ? "text-primary-500 font-medium" : ""
-                  }`}
-                  data-testid={`nav-${item.name.toLowerCase().replace(" ", "-")}`}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <Button 
-                asChild 
-                className="bg-primary-500 text-white hover:bg-primary-600"
-                data-testid="button-resume"
-              >
-                <a href="/api/resume" target="_blank" rel="noopener noreferrer">
-                  Resume
-                </a>
-              </Button>
-            </div>
-          </div>
+    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        {/* Logo */}
+        <Link to="/" className="font-extrabold tracking-tight text-lg">
+          EH<span className="text-gray-400">.</span>
+        </Link>
 
-          {/* Mobile menu button */}
-          <div className="md:hidden">
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-              <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" data-testid="button-mobile-menu">
-                  <i className="fas fa-bars text-xl"></i>
-                </Button>
-              </SheetTrigger>
-              <SheetContent side="right" className="w-[300px]">
-                <div className="flex flex-col space-y-4 mt-8">
-                  {navigation.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className={`text-lg px-3 py-2 text-gray-700 hover:text-primary-500 transition-colors ${
-                        location === item.href ? "text-primary-500 font-medium" : ""
-                      }`}
-                      onClick={() => setIsOpen(false)}
-                      data-testid={`mobile-nav-${item.name.toLowerCase().replace(" ", "-")}`}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                  <Button 
-                    asChild 
-                    className="bg-primary-500 text-white hover:bg-primary-600 mx-3"
-                    data-testid="button-mobile-resume"
-                  >
-                    <a href="/api/resume" target="_blank" rel="noopener noreferrer">
-                      Resume
-                    </a>
-                  </Button>
-                </div>
-              </SheetContent>
-            </Sheet>
+        {/* Desktop nav */}
+        <nav className="hidden md:flex items-center gap-2">
+          {nav.map((item) => (
+            <NavLink
+              key={item.to}
+              to={item.to}
+              className={({ isActive: rrActive }) =>
+                [
+                  linkBase,
+                  rrActive || isActive(item.to) ? active : idle,
+                ].join(" ")
+              }
+            >
+              {item.label}
+            </NavLink>
+          ))}
+          {/* Contact (mail link can stay <a> since it’s external) */}
+          <a
+            href="mailto:e@ehicksonjr.com?subject=Engineering%20Opportunity"
+            className="ml-2 inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold bg-primary-500 text-white hover:bg-primary-600"
+          >
+            Contact
+          </a>
+        </nav>
+
+        {/* Mobile hamburger */}
+        <button
+          className="md:hidden inline-flex items-center justify-center rounded-lg border px-3 py-2 text-sm"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-controls="mobile-nav"
+          aria-label="Toggle Navigation"
+        >
+          {open ? "Close" : "Menu"}
+        </button>
+      </div>
+
+      {/* Mobile menu */}
+      {open && (
+        <div id="mobile-nav" className="md:hidden border-t bg-white">
+          <div className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-2">
+            {nav.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                onClick={() => setOpen(false)}
+                className={[
+                  "rounded-lg px-3 py-2 text-sm font-semibold",
+                  isActive(item.to) ? "bg-gray-900 text-white" : "text-gray-800 hover:bg-gray-100",
+                ].join(" ")}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <a
+              href="mailto:e@ehicksonjr.com?subject=Engineering%20Opportunity"
+              className="rounded-lg px-3 py-2 text-sm font-semibold bg-primary-500 text-white hover:bg-primary-600"
+              onClick={() => setOpen(false)}
+            >
+              Contact
+            </a>
           </div>
         </div>
-      </div>
-    </nav>
+      )}
+    </header>
   );
 }

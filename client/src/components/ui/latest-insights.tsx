@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import { blogPosts } from "@/data/blog-posts";
 import BlogCard from "@/components/ui/blog-card";
 
@@ -23,9 +24,9 @@ export default function LatestInsightsSection() {
             <h2 id="latest-insights-heading" className="text-2xl font-bold">
               Latest Insights
             </h2>
-            <a href="/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
+            <Link to="/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
               View all
-            </a>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
@@ -87,9 +88,9 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
           <h2 id="latest-insights-heading" className="text-2xl font-bold">
             Latest Insights
           </h2>
-          <a href="/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
+          <Link to="/blog" className="text-sm font-semibold text-primary-600 hover:text-primary-700">
             View all
-          </a>
+          </Link>
         </div>
 
         <div className="relative">
