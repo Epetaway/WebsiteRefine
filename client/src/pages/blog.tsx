@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button";
 export default function Blog() {
   const [filter, setFilter] = useState<'all' | 'bjj' | 'development' | 'general'>('all');
   
+  // Temporarily disable real posts while under construction
+  const underConstruction = true;
+
   const filteredPosts = filter === 'all' 
     ? blogPosts 
     : blogPosts.filter(post => post.category === filter);
@@ -16,6 +19,18 @@ export default function Blog() {
     { key: 'development', label: 'Development', count: blogPosts.filter(p => p.category === 'development').length },
     { key: 'general', label: 'General', count: blogPosts.filter(p => p.category === 'general').length }
   ];
+
+  if (underConstruction) {
+    return (
+      <div className="pt-32 pb-32 flex flex-col items-center justify-center text-center bg-gray-50 min-h-screen">
+        <h1 className="text-5xl font-bold mb-4 text-primary-600">🚧 Under Construction</h1>
+        <p className="text-lg text-gray-600 max-w-xl">
+          Our blog section is currently being built. Fresh insights on development, Brazilian Jiu-Jitsu, 
+          and more will be available here soon — stay tuned!
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="pt-16">
