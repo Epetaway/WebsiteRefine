@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-10 grid gap-6 md:grid-cols-3">
         <div>
           <div className="font-extrabold tracking-tight text-lg mb-2">Earl Hickson Jr<span className="text-gray-400">.</span></div>
-          <p className="text-sm text-gray-600">Senior Front‑End Engineer — Parsippany, New Jersey</p>
+          <p className="text-sm text-gray-600">Full Stack Developer — Parsippany, New Jersey</p>
         </div>
 
         <nav className="grid gap-2 text-sm">
