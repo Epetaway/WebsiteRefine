@@ -85,6 +85,10 @@ export default {
         },
       },
       fontFamily: {
+        montserrat: ["Montserrat", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"],
+        spartan: ["League Spartan", "sans-serif"],
+        inter: ["Inter", "sans-serif"],
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],

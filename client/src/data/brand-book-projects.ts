@@ -182,7 +182,7 @@ export const brandProjects: BrandProject[] = [
           aspect: "1:1",
         },
         {
-          src: "/images/design/ultra-jitsu/logo-full-body.webp",
+          src: "/images/design/ultra-jitsu/logo-full-body.png",
           alt: "Full‑body panther in gi with BJJ black belt and red bar",
           kind: "logo",
           notes: "mascot / full figure",
@@ -214,6 +214,7 @@ export const brandProjects: BrandProject[] = [
           example: "Train with Power. Train Ultra.",
           weights: [700, 800],
           trackingNote: "tight for display",
+          
         },
         {
           family: "Roboto",
@@ -222,6 +223,7 @@ export const brandProjects: BrandProject[] = [
             "Ultra Jitsu welcomes beginners and competitors with safe, technical training in Parsippany, New Jersey.",
           weights: [400, 500],
           trackingNote: "normal for readability",
+          
         },
       ],
       
@@ -380,6 +382,7 @@ export const brandProjects: BrandProject[] = [
           example: "PULL YOUR LEGACY",
           weights: [700, 800],
           trackingNote: "tight for hero headings",
+          
         },
         {
           family: "Inter",
@@ -387,6 +390,7 @@ export const brandProjects: BrandProject[] = [
           example: "Live trading card openings & auctions with real‑time chat and bids.",
           weights: [400, 500, 600],
           trackingNote: "neutral for UI",
+          
         },
       ],
       
