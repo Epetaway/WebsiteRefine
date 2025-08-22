@@ -168,14 +168,14 @@ export const brandProjects: BrandProject[] = [
         "Primary circular patch for instant recognition; full‑body mascot and dark variant support apparel, signage, and digital contexts.",
       images: [
         {
-          src: "/images/design/ultra-jitsu/logo-circle-primary.webp",
+          src: "/images/design/ultra-jitsu/usage-correct.png",
           alt: "Primary circle logo with panther in gi and text lockup",
           kind: "logo",
           notes: "on light",
           aspect: "1:1",
         },
         {
-          src: "/images/design/ultra-jitsu/logo-circle-dark.webp",
+          src: "/images/design/ultra-jitsu/usage-dark.png",
           alt: "Primary circle logo on black background",
           kind: "logo",
           notes: "on dark",
@@ -228,24 +228,7 @@ export const brandProjects: BrandProject[] = [
     },
 
     usage: {
-      notes: [
-        "Maintain clear space equal to the panther head height around the circular mark.",
-        "Use dark variant on photos or dark environments; avoid busy backgrounds behind small marks.",
-      ],
-      examples: [
-        {
-          src: "/images/design/ultra-jitsu/usage-correct.png",
-          alt: "Correct usage on clean background with proper clear space",
-          kind: "application",
-          aspect: "16:9",
-        },
-        {
-          src: "/images/design/ultra-jitsu/usage-dark.png",
-          alt: "Correct usage of dark variant on black background",
-          kind: "application",
-          aspect: "16:9",
-        },
-      ],
+     
     },
 
     applications: {
@@ -343,7 +326,7 @@ export const brandProjects: BrandProject[] = [
       audience: "TCG collectors, stream viewers, and auction participants",
       personality: ["premium", "modern", "bold", "collectible"],
       cover: {
-        src: "/images/design/legacy-pulls/cover-hero.webp",
+        src: "/images/design/legacy-pulls/cover-hero.png",
         alt: "Legacy Pulls emblem with gold accent over dark UI mockups",
         kind: "application",
         aspect: "16:9",
@@ -410,24 +393,7 @@ export const brandProjects: BrandProject[] = [
     },
 
     usage: {
-      notes: [
-        "Use gold for emphasis only (CTAs, rare pulls, system highlights).",
-        "Keep emblem small in nav; prioritize content (video, cards, bids).",
-      ],
-      examples: [
-        {
-          src: "/images/design/legacy-pulls/usage-nav-smallmark.webp",
-          alt: "Small emblem in app navbar with clear spacing",
-          kind: "application",
-          aspect: "16:9",
-        },
-        {
-          src: "/images/design/legacy-pulls/usage-highlight-rare.webp",
-          alt: "Gold border highlight for rare card in collection grid",
-          kind: "application",
-          aspect: "4:5",
-        },
-      ],
+      
     },
 
     applications: {
