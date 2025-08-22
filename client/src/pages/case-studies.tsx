@@ -204,7 +204,7 @@ export default function CaseStudies() {
                   Design case studies coming soon.
                 </div>
               ) : (
-                <div className="divide-y rounded-2xl border bg-white">
+                <div className="divide-y ">
                   {brandProjects.map((p) => (
                     <div key={p.id} className="py-12 first:pt-8 last:pb-8">
                       <BrandBook project={p as any} />
