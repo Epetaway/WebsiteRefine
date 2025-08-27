@@ -127,8 +127,8 @@ app.post('/api/bjj-booking', (req, res) => {
 // Serve static assets (resume download)
 app.get('/assets/*', (req, res) => {
   const filePath = req.params[0];
-  if (filePath === 'Earl_Hickson_Resume_2025.pdf') {
-    res.redirect('https://github.com/ehicksonjr/portfolio/raw/main/client/public/assets/Earl_Hickson_Resume_2025.pdf');
+  if (filePath === 'Earl_Hickson_-_Front-End__UX_Engineer.pdf') {
+    res.redirect('https://github.com/ehicksonjr/portfolio/raw/main/client/public/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf');
   } else {
     res.status(404).json({ message: 'File not found' });
   }

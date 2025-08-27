@@ -47,7 +47,7 @@ export default function Home() {
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" data-testid="button-resume">
-                  <a href="/assets/Earl_Hickson_Resume_2025.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf" target="_blank" rel="noopener noreferrer">
                     <i className="fas fa-download mr-2"></i>
                     Download Resume (PDF)
                   </a>

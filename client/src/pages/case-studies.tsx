@@ -64,7 +64,7 @@ export default function CaseStudies() {
                 Start a Conversation
               </a>
               <a
-                href="/assets/Earl_Hickson_Resume_2025.pdf"
+                href="/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
@@ -235,7 +235,7 @@ export default function CaseStudies() {
                   Start a Conversation
                 </a>
                 <a
-                  href="/assets/Earl_Hickson_Resume_2025.pdf"
+                  href="/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
