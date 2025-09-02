@@ -1,8 +1,10 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useRoute } from "wouter";
 import { blogPosts } from "@/data/blog-posts";
+import ShareBar from "@/components/ui/share-bar"; // <-- new share component
 
-// minimal markdown → html with internal-link fix for hash routing
+// Minimal markdown → html with internal-link fix (history routing, no #)
+// If content includes /blog/... links, we keep them as-is (no hash).
 function renderBasicMarkdown(md: string): string {
   let html = md.trim();
 
@@ -21,10 +23,10 @@ function renderBasicMarkdown(md: string): string {
   // bold/italic
   html = html.replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
 
-  // links (convert internal /blog/... links to hash routing #/blog/...)
+  // links (keep internal /blog/... links as-is; no hash router)
   html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_m, text, url) => {
     const u = String(url);
-    const safeUrl = u.startsWith("/blog/") ? `#${u}` : u;
+    const safeUrl = u; // history routing — do not add '#'
     return `<a class="text-primary-600 underline" href="${safeUrl}">${text}</a>`;
   });
 
@@ -53,11 +55,70 @@ function renderBasicMarkdown(md: string): string {
   return html;
 }
 
+// Lightweight OG/Twitter meta setter (SPA-friendly)
+function setMetaTags({
+  title,
+  excerpt,
+  cover,
+  url,
+}: {
+  title: string;
+  excerpt: string;
+  cover?: string;
+  url: string;
+}) {
+  const ensure = (name: string, attr: "name" | "property", content: string) => {
+    let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${name}"]`);
+    if (!el) {
+      el = document.createElement("meta");
+      el.setAttribute(attr, name);
+      document.head.appendChild(el);
+    }
+    el.setAttribute("content", content);
+  };
+
+  document.title = title;
+
+  ensure("description", "name", excerpt);
+  ensure("og:title", "property", title);
+  ensure("og:description", "property", excerpt);
+  ensure("og:type", "property", "article");
+  ensure("og:url", "property", url);
+  if (cover) ensure("og:image", "property", cover);
+
+  ensure("twitter:card", "name", cover ? "summary_large_image" : "summary");
+  ensure("twitter:title", "name", title);
+  ensure("twitter:description", "name", excerpt);
+  if (cover) ensure("twitter:image", "name", cover);
+}
+
 export default function BlogPost() {
   const [, params] = useRoute<{ slug: string }>("/blog/:slug");
   const slug = params?.slug;
 
   const post = useMemo(() => blogPosts.find((p) => p.slug === slug), [slug]);
+
+  // Compute cover with BASE_URL (GitHub Pages project-site base)
+  const base =
+    (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
+      ? (import.meta as any).env.BASE_URL
+      : "/";
+  const raw = post?.coverImage || "/images/blog/placeholder.jpg";
+  const isHttp = /^https?:\/\//i.test(raw);
+  const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
+
+  // Set dynamic meta tags for better sharing previews
+  useEffect(() => {
+    if (!post) return;
+    const origin = window.location.origin;
+    const absoluteCover = post.coverImage
+      ? post.coverImage.startsWith("http")
+        ? post.coverImage
+        : `${origin}${post.coverImage.startsWith("/") ? "" : "/"}${post.coverImage}`
+      : undefined;
+    const url = `${origin}/blog/${post.slug}`;
+    setMetaTags({ title: post.title, excerpt: post.excerpt, cover: absoluteCover, url });
+  }, [post]);
 
   if (!post) {
     return (
@@ -72,44 +133,43 @@ export default function BlogPost() {
     );
   }
 
-  // Image url respecting BASE_URL (GitHub Pages)
-  const base =
-    (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
-      ? (import.meta as any).env.BASE_URL
-      : "/";
-  const raw = post.coverImage || "/images/blog/placeholder.jpg";
-  const isHttp = /^https?:\/\//i.test(raw);
-  const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
-
   return (
     <article className="bg-white">
-      {/* Top hero — clean, minimal, like Superchat industries pages */}
+      {/* Top hero — clean, minimal */}
       <section className="pt-20 pb-10">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          {/* Eyebrow / breadcrumb-lite */}
+          {/* Eyebrow */}
           <div className="mb-4 flex flex-wrap items-center gap-2 text-xs text-gray-500">
             <Link href="/blog" className="hover:text-gray-700">Blog</Link>
             <span>•</span>
             <span className="capitalize">{post.category}</span>
             <span>•</span>
             <time dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString(undefined, { year: "numeric", month: "short", day: "2-digit" })}
+              {new Date(post.publishedAt).toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+              })}
             </time>
-            <span>•</span>
-            <span>{post.readTime} min read</span>
+            {post.readTime ? (
+              <>
+                <span>•</span>
+                <span>{post.readTime} min read</span>
+              </>
+            ) : null}
           </div>
 
-          {/* Big green gradient headline on white */}
+          {/* Unified green gradient headline */}
           <h1
             className={[
-              "bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-200 bg-clip-text text-transparent",
+              "gradient-text",
               "text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight",
             ].join(" ")}
           >
             {post.title}
           </h1>
 
-          {/* Optional intro (use excerpt for a crisp subhead) */}
+          {/* Optional intro */}
           {post.excerpt && (
             <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-3xl">
               {post.excerpt}
@@ -118,7 +178,19 @@ export default function BlogPost() {
         </div>
       </section>
 
-      {/* Image card — rounded, subtle border, no heavy overlay */}
+      {/* Share bar — near the top for visibility */}
+      <section className="pb-6">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <ShareBar
+            title={post.title}
+            excerpt={post.excerpt}
+            slug={post.slug}
+            utm={{ source: "site", medium: "blog", campaign: post.slug }}
+          />
+        </div>
+      </section>
+
+      {/* Image card */}
       <section className="pb-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-2xl border border-gray-200">
@@ -132,7 +204,7 @@ export default function BlogPost() {
         </div>
       </section>
 
-      {/* Content — comfy width, clean prose */}
+      {/* Content */}
       <section className="pb-20">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
           <div
