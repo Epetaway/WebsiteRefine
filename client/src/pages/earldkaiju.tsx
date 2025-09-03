@@ -232,7 +232,7 @@ export default function EarldKaiju() {
 
       {/* ===================== BOOKING (right after hero) ===================== */}
       <section id="booking" className="py-10">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl p-6 sm:p-8 bg-white/[0.06] shadow-2xl shadow-black/40">
             <h2 className="text-xl font-bold mb-4" style={{ color: KAijuGreen }}>Request a Session</h2>
 
@@ -373,7 +373,7 @@ export default function EarldKaiju() {
       </section>
 
       {/* ===================== WHAT I OFFER (services + pricing) ===================== */}
-      <section className="py-14">
+      <section id="offer" className="py-14">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-3 gap-6">
             <div className="rounded-2xl p-6 bg-white/[0.06] shadow-xl shadow-black/40">
