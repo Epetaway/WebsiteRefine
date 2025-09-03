@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -13,23 +13,25 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 
-/* Assets */
 import kaijuBanner from "@/images/kaiju-banner.png";
 import kaijuWordmark from "@/images/kaiju-logo.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
-import testimonialBg from "@/images/testimonials-bg.jpg";
 
-/* Brand tokens */
+/* Brand tokens (provided via CSS variables in your theme; these are fallbacks) */
 const KAijuGreen = "var(--kaiju-green, #86d64a)";
 const KAijuGreen20 = "var(--kaiju-green-20, rgba(134,214,74,.2))";
 
+/* ---------------- Testimonials data (your latest list) ---------------- */
+export type Testimonial = {
+  name: string;
+  relationship?: string;
+  text: string;
+  rating?: number; // 1..5
+};
 
-
-type Testimonial = { name: string; relationship: string; text: string; rating: number };
-
-const testimonials: Testimonial[] = [
-    {
+const TESTIMONIALS: Testimonial[] = [
+  {
     name: "Alex Johnson",
     relationship: "Student",
     text:
@@ -80,119 +82,128 @@ const testimonials: Testimonial[] = [
   },
 ];
 
-function StarRow({ rating }: { rating: number }) {
-  return (
-    <div className="flex items-center gap-1" aria-label={`${rating} out of 5 stars`}>
-      {Array.from({ length: 5 }).map((_, i) => (
-        <svg key={i} viewBox="0 0 24 24" className={`w-5 h-5 ${i < rating ? "text-yellow-400" : "text-gray-500"}`} fill="currentColor">
-          <path d="M12 17.27l6.18 3.73-1.64-7.03L21.5 9.24l-7.19-.61L12 2 9.69 8.63 2.5 9.24l4.96 4.73L5.82 21z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
-// Create a fully-typed placeholder that satisfies SocialMediaPost
-function makePlaceholderPost(i: number): SocialMediaPost {
-  return {
-    id: -(i + 1),                // negative to avoid colliding with real ids
-    createdAt: null,             // or new Date() if you prefer
-    platform: "youtube",
-    postId: `placeholder-${i}`,
-    mediaType: "video",
-    mediaUrl: null,
-    thumbnailUrl: null,
-    permalink: "#",
-    caption: "Video coming soon",
-    timestamp: new Date(),       // must be a Date, not a string
-  };
-}
+/* ---------------- Stationary-bg Testimonials Slider (no scroll jump) ---------------- */
+function TestimonialsSection({ title = "What Students Say" }: { title?: string }) {
+  const [index, setIndex] = useState(0);
+  const timerRef = useRef<number | null>(null);
 
-function TestimonialsStationary() {
-  const [idx, setIdx] = useState(0);
-  const pausedRef = useRef(false);
-
+  // autoplay (pause on hover handled by buttons visibility only)
   useEffect(() => {
-    const id = setInterval(() => {
-      if (pausedRef.current) return;
-      setIdx((i) => (i + 1) % testimonials.length);
+    timerRef.current = window.setInterval(() => {
+      setIndex((i) => (i + 1) % TESTIMONIALS.length);
     }, 6000);
-    return () => clearInterval(id);
+    return () => {
+      if (timerRef.current) window.clearInterval(timerRef.current);
+      timerRef.current = null;
+    };
   }, []);
 
   return (
     <section
-      className="relative w-full"
-      style={{
-        backgroundImage: `url(${testimonialBg || kaijuBanner})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundAttachment: "fixed",
-      }}
-      onMouseEnter={() => { pausedRef.current = true; }}
-      onMouseLeave={() => { pausedRef.current = false; }}
-      onTouchStart={() => { pausedRef.current = true; }}
-      onTouchEnd={() => { pausedRef.current = false; }}
+      className="relative w-full text-white"
+      aria-label="Testimonials"
     >
-      <div className="absolute inset-0 bg-black/70" />
-      <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="mx-auto rounded-2xl bg-white/5 backdrop-blur-md p-6 sm:p-10 shadow-2xl">
-          <div className="relative min-h-[220px]">
-            {testimonials.map((t, i) => (
-              <div
-                key={t.name + i}
-                className={`absolute inset-0 transition-opacity duration-500 ${i === idx ? "opacity-100" : "opacity-0 pointer-events-none"}`}
-                aria-hidden={i !== idx}
-              >
-                <div className="flex flex-col items-start">
-                  <StarRow rating={t.rating} />
-                  <p className="mt-4 text-lg md:text-xl text-white/90 leading-relaxed">“{t.text}”</p>
-                  <div className="mt-4 text-sm text-white/70">
-                    <span className="font-semibold" style={{ color: KAijuGreen }}>{t.name}</span>
-                    <span className="mx-2">•</span>
-                    <span>{t.relationship}</span>
+      {/* Stationary background image */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: `url(${kaijuBanner})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          filter: "brightness(0.45)",
+        }}
+        aria-hidden
+      />
+      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-8">{title}</h2>
+
+        {/* Slider viewport */}
+        <div className="relative overflow-hidden rounded-2xl">
+          {/* Track (transform only—no scrollIntoView) */}
+          <div
+            className="flex transition-transform duration-700 ease-out"
+            style={{ transform: `translateX(-${index * 100}%)` }}
+          >
+            {TESTIMONIALS.map((t, i) => (
+              <article key={i} className="min-w-full bg-black/40 p-6 sm:p-10">
+                <p className="text-lg sm:text-xl leading-relaxed">
+                  <span className="block" style={{ color: KAijuGreen }}>“</span>
+                  {t.text}
+                  <span className="block" style={{ color: KAijuGreen }}>”</span>
+                </p>
+                <div className="mt-5 flex items-center gap-3">
+                  <div className="font-semibold">
+                    {t.name}
+                    {t.relationship ? <span className="text-gray-300 font-normal"> — {t.relationship}</span> : null}
                   </div>
+                  {typeof t.rating === "number" && t.rating > 0 && (
+                    <div className="ml-2 flex items-center gap-1" aria-label={`${t.rating} star rating`}>
+                      {Array.from({ length: 5 }).map((_, s) => (
+                        <svg
+                          key={s}
+                          className="w-4 h-4"
+                          viewBox="0 0 20 20"
+                          fill={s < (t.rating || 0) ? "currentColor" : "none"}
+                          stroke="currentColor"
+                          style={{ color: KAijuGreen }}
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M10 15l-5.878 3.09 1.123-6.545L.49 6.91l6.562-.953L10 0l2.949 5.957 6.562.953-4.755 4.635 1.123 6.545z" />
+                        </svg>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
+              </article>
             ))}
           </div>
 
-          {/* controls */}
-          <div className="mt-8 flex items-center justify-between">
-            <div className="flex gap-2">
+          {/* Controls */}
+          {TESTIMONIALS.length > 1 && (
+            <>
               <button
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
-                onClick={() => setIdx((i) => (i - 1 + testimonials.length) % testimonials.length)}
                 aria-label="Previous testimonial"
+                onClick={() => setIndex((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length)}
+                className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-2"
               >
-                ‹
+                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
+                </svg>
               </button>
               <button
-                className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 hover:bg-white/20"
-                onClick={() => setIdx((i) => (i + 1) % testimonials.length)}
                 aria-label="Next testimonial"
+                onClick={() => setIndex((i) => (i + 1) % TESTIMONIALS.length)}
+                className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 rounded-full bg-white/10 hover:bg-white/20 p-2"
               >
-                ›
+                <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                </svg>
               </button>
-            </div>
+            </>
+          )}
 
-            <div className="flex items-center gap-2">
-              {testimonials.map((_, i) => (
+          {/* Dots */}
+          {TESTIMONIALS.length > 1 && (
+            <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-2">
+              {TESTIMONIALS.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setIdx(i)}
-                  aria-label={`Go to testimonial ${i + 1}`}
-                  className={`h-2.5 rounded-full transition-all ${i === idx ? "w-6 bg-white" : "w-2.5 bg-white/40"}`}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={[
+                    "h-2 w-2 rounded-full transition-all",
+                    i === index ? "bg-white w-6" : "bg-white/50 hover:bg-white/70",
+                  ].join(" ")}
+                  onClick={() => setIndex(i)}
                 />
               ))}
             </div>
-          </div>
+          )}
         </div>
       </div>
     </section>
   );
 }
 
-/* =================================== PAGE =================================== */
+/* --------------------------------- Page --------------------------------- */
 export default function EarldKaiju() {
   const { toast } = useToast();
   const queryClient = useQueryClient();
@@ -225,11 +236,22 @@ export default function EarldKaiju() {
   });
 
   const posts: SocialMediaPost[] = (socialMediaData as { posts: SocialMediaPost[] })?.posts || [];
-  const youtubePosts = posts.filter((p) => p.platform === "youtube");
+  const youtubePosts = useMemo(
+    () =>
+      posts
+        .filter((p) => p.platform === "youtube")
+        .slice(0, 4), // always max 4 for layout
+    [posts]
+  );
 
-  const queryClientRefetch = () => queryClient.invalidateQueries({ queryKey: ["/api/social-media"] });
-  const fetchIG = useMutation({ mutationFn: () => apiRequest("POST", "/api/social-media/fetch-instagram", {}), onSuccess: queryClientRefetch });
-  const fetchYT = useMutation({ mutationFn: () => apiRequest("POST", "/api/social-media/fetch-youtube", {}), onSuccess: queryClientRefetch });
+  const fetchIG = useMutation({
+    mutationFn: () => apiRequest("POST", "/api/social-media/fetch-instagram", {}),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/social-media"] }),
+  });
+  const fetchYT = useMutation({
+    mutationFn: () => apiRequest("POST", "/api/social-media/fetch-youtube", {}),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/social-media"] }),
+  });
 
   useEffect(() => {
     if (!socialMediaLoading && posts.length === 0) { fetchIG.mutate(); fetchYT.mutate(); }
@@ -279,7 +301,7 @@ export default function EarldKaiju() {
       <section id="booking" className="py-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl p-6 sm:p-8 bg-white/[0.06] shadow-2xl shadow-black/40">
-            <h2 className="text-xl font-bold mb-4" style={{ color: KAijuGreen }}>Request a Session</h2>
+            <h2 className="text-xl font-bold mb-6" style={{ color: KAijuGreen }}>Request a Session</h2>
 
             {isSubmitted ? (
               <div className="py-6">
@@ -295,9 +317,9 @@ export default function EarldKaiju() {
               </div>
             ) : (
               <Form {...form}>
-                {/* Grid: 1 col (mobile) → 2 cols (md) → 3 cols (lg) */}
-                <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                  {/* ===== Column 1 ===== */}
+                {/* Grid: 1 col (mobile), 2 cols (md), 3 cols (lg) */}
+                <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {/* Column 1 */}
                   <div className="space-y-4">
                     <FormField name="name" control={form.control} render={({ field }) => (
                       <FormItem>
@@ -330,11 +352,11 @@ export default function EarldKaiju() {
                             </SelectTrigger>
                           </FormControl>
                           <SelectContent>
-                            <SelectItem value="adult-private">Private Lessons (1-on-1) — $60/hr</SelectItem>
-                            <SelectItem value="intro-offer">Intro Offer — $50 (one-time)</SelectItem>
-                            <SelectItem value="semi-private">Semi-Private (2–4) — $40/person</SelectItem>
-                            <SelectItem value="parent-me">Parent & Me (4-week) — $200 total</SelectItem>
-                            <SelectItem value="kids-bjj">Kids BJJ — Ask about options</SelectItem>
+                            <SelectItem value="adult-trial">Private (Adult) – Trial $80</SelectItem>
+                            <SelectItem value="adult-pack-4">Private (Adult) – 4 sessions $300</SelectItem>
+                            <SelectItem value="kids-trial">Kids – Trial $70</SelectItem>
+                            <SelectItem value="parent-me">Parent & Me – $90/session</SelectItem>
+                            <SelectItem value="small-group">Semi-Private (2–4) – from $40/person</SelectItem>
                           </SelectContent>
                         </Select>
                         <FormMessage />
@@ -342,7 +364,7 @@ export default function EarldKaiju() {
                     )} />
                   </div>
 
-                  {/* ===== Column 2 ===== */}
+                  {/* Column 2 */}
                   <div className="space-y-4">
                     <FormField
                       control={form.control}
@@ -352,8 +374,8 @@ export default function EarldKaiju() {
                           <FormLabel className="text-white">Goals & Experience</FormLabel>
                           <FormControl className="flex-1">
                             <Textarea
-                              className="bg-white/20 text-white placeholder-gray-300 h-full min-h-[180px]"
-                              placeholder="Tell me about your goals, any previous experience, injuries, or questions..."
+                              className="bg-white/10 focus:bg-white/15 min-h-[180px] h-full"
+                              placeholder="Your goals, prior experience, injuries, and questions…"
                               rows={10}
                               value={field.value ?? ""}
                               onChange={(e) => field.onChange(e.target.value)}
@@ -367,44 +389,46 @@ export default function EarldKaiju() {
                     />
                   </div>
 
-                  {/* ===== Column 3 ===== */}
-                  <div className="space-y-4 md:col-span-2 lg:col-span-1">
-                    <FormField
-                      control={form.control}
-                      name="availability"
-                      render={({ field }) => (
-                        <FormItem>
-                          <FormLabel className="text-white">Preferred Times</FormLabel>
-                          <FormControl>
-                            <Input
-                              className="bg-white/20 text-white placeholder-gray-300"
-                              placeholder="e.g., Weekday evenings, Saturday mornings"
-                              value={field.value ?? ""}
-                              onChange={(e) => field.onChange(e.target.value)}
-                              onBlur={field.onBlur}
-                              name={field.name}
-                            />
-                          </FormControl>
-                          <FormMessage />
-                        </FormItem>
-                      )}
-                    />
+                  {/* Column 3 */}
+                  <div className="flex flex-col">
+                    <div className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="availability"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel className="text-white">Preferred Times</FormLabel>
+                            <FormControl>
+                              <Input
+                                className="bg-white/10 focus:bg-white/15"
+                                placeholder="e.g., Weekday evenings, Saturday mornings"
+                                value={field.value ?? ""}
+                                onChange={(e) => field.onChange(e.target.value)}
+                                onBlur={field.onBlur}
+                                name={field.name}
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
 
-                    <FormField name="smsConsent" control={form.control} render={({ field }) => (
-                      <FormItem className="flex items-start space-x-3">
-                        <FormControl>
-                          <Checkbox checked={!!field.value} onCheckedChange={field.onChange} className="bg-white/10" />
-                        </FormControl>
-                        <FormLabel className="text-sm text-gray-300">
-                          I agree to receive texts about scheduling and training updates. Reply STOP to opt out.
-                        </FormLabel>
-                      </FormItem>
-                    )} />
+                      <FormField name="smsConsent" control={form.control} render={({ field }) => (
+                        <FormItem className="flex items-start space-x-3">
+                          <FormControl>
+                            <Checkbox checked={!!field.value} onCheckedChange={field.onChange} className="bg-white/10" />
+                          </FormControl>
+                          <FormLabel className="text-sm text-gray-300">
+                            I agree to receive texts about scheduling and training updates. Reply STOP to opt out.
+                          </FormLabel>
+                        </FormItem>
+                      )} />
+                    </div>
 
                     <Button
                       type="submit"
                       disabled={isSubmitting || bookingMutation.isPending}
-                      className="w-full text-black"
+                      className="mt-auto w-full text-black"
                       style={{ backgroundColor: KAijuGreen }}
                     >
                       {isSubmitting || bookingMutation.isPending ? "Submitting…" : "Request Session"}
@@ -418,100 +442,68 @@ export default function EarldKaiju() {
       </section>
 
       {/* ===================== WHAT I OFFER (services + pricing) ===================== */}
-            <section id="offer" className="py-14 bg-kaiju-cream">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid lg:grid-cols-3 gap-6">
-      
-      {/* Private Lessons */}
-      <div className="rounded-2xl p-6 flex flex-col bg-white/70 shadow-xl shadow-black/20">
-        <div className="flex-grow">
-          <h3 className="font-bold text-lg text-black">Private Lessons (1-on-1)</h3>
-          <p className="text-gray-700 text-sm mt-2">
-            Tailored, one-on-one coaching designed around your goals—whether self-defense, fitness, or preparing for
-            competition. Every session builds technical foundations, sharpens strategy, and helps you grow with confidence.
-          </p>
-          <div className="mt-4 text-sm space-y-2 text-gray-800">
-            <div className="flex justify-between">
-              <span>Standard Rate</span><span className="font-semibold">$60 / hour</span>
+      <section id="offer" className="py-14 bg-kaiju-cream">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-3 gap-6">
+            {/* Private */}
+            <div className="rounded-2xl p-6 bg-white/70 shadow-xl shadow-black/10 text-black flex flex-col">
+              <h3 className="font-bold text-lg">Private Lessons (1-on-1)</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Tailored coaching that meets you where you are. We focus on posture, frames, escapes, guard retention,
+                and pressure passing — building a safe, effective game for self-defense or competition.
+              </p>
+              <div className="mt-4 text-sm space-y-2">
+                <div className="flex justify-between"><span>Price</span><span className="font-semibold">$60 / hour</span></div>
+                <div className="flex justify-between"><span>Intro Offer</span><span className="font-semibold">$50 (one-time)</span></div>
+              </div>
+              <Button className="mt-auto text-black" style={{ backgroundColor: KAijuGreen }} onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>Book</Button>
             </div>
-            <div className="flex justify-between">
-              <span>Intro Offer</span><span className="font-semibold">$50 (one-time)</span>
+
+            {/* Semi-Private */}
+            <div className="rounded-2xl p-6 bg-white/70 shadow-xl shadow-black/10 text-black flex flex-col">
+              <h3 className="font-bold text-lg">Semi-Private (2–4 people)</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Train with a partner or friends and split the cost. Shared drilling and situational sparring help you
+                pressure test techniques with live resistance and constant coaching feedback.
+              </p>
+              <div className="mt-4 text-sm">
+                <div className="flex justify-between"><span>Price</span><span className="font-semibold">$40 per person</span></div>
+              </div>
+              <Button className="mt-auto text-black" style={{ backgroundColor: KAijuGreen }} onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>Book</Button>
+            </div>
+
+            {/* Parent & Me */}
+            <div className="rounded-2xl p-6 bg-white/70 shadow-xl shadow-black/10 text-black flex flex-col">
+              <h3 className="font-bold text-lg">Parent & Me Package</h3>
+              <p className="text-gray-800 text-sm mt-2">
+                Ages 5–8. A fun 4-week series that builds balance, grips, and confidence while learning safe
+                self-defense basics together. Perfect for bonding and introducing kids to the art.
+              </p>
+              <div className="mt-4 text-sm">
+                <div className="flex justify-between"><span>Price</span><span className="font-semibold">$200 total</span></div>
+              </div>
+              <Button className="mt-auto text-black" style={{ backgroundColor: KAijuGreen }} onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>Book</Button>
             </div>
           </div>
         </div>
-        <Button
-          className="mt-5 text-black"
-          style={{ backgroundColor: "var(--kaiju-green)" }}
-          onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-        >
-          Book
-        </Button>
-      </div>
-
-      {/* Semi-Private Lessons */}
-      <div className="rounded-2xl p-6 flex flex-col bg-white/70 shadow-xl shadow-black/20">
-        <div className="flex-grow">
-          <h3 className="font-bold text-lg text-black">Semi-Private (2–4 people)</h3>
-          <p className="text-gray-700 text-sm mt-2">
-            Train alongside friends or family in a small-group setting where you’ll still get focused attention. 
-            Learn together, motivate each other, and share the experience while keeping costs accessible.
-          </p>
-          <div className="mt-4 text-sm text-gray-800">
-            <div className="flex justify-between">
-              <span>Price</span><span className="font-semibold">$40 per person</span>
-            </div>
-          </div>
-        </div>
-        <Button
-          className="mt-5 text-black"
-          style={{ backgroundColor: "var(--kaiju-green)" }}
-          onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-        >
-          Book
-        </Button>
-      </div>
-
-      {/* Parent & Me Package */}
-      <div className="rounded-2xl p-6 flex flex-col bg-white/70 shadow-xl shadow-black/20">
-        <div className="flex-grow">
-          <h3 className="font-bold text-lg text-black">Parent & Me Package</h3>
-          <p className="text-gray-700 text-sm mt-2">
-            A unique 4-week program where parents and children (ages 5–8) learn together. Strengthen your bond while 
-            introducing your child to the discipline, focus, and fun of Brazilian Jiu-Jitsu in a safe, engaging way.
-          </p>
-          <div className="mt-4 text-sm text-gray-800">
-            <div className="flex justify-between">
-              <span>Package Price</span><span className="font-semibold">$200 total</span>
-            </div>
-          </div>
-        </div>
-        <Button
-          className="mt-5 text-black"
-          style={{ backgroundColor: "var(--kaiju-green)" }}
-          onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-        >
-          Book
-        </Button>
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* ===================== ABOUT + compact record + latest videos ===================== */}
       <section className="py-14">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_.9fr] gap-8 items-start">
+          {/* Copy left */}
           <div>
             <h2 className="text-2xl md:text-3xl font-bold mb-3">About Earl</h2>
             <p className="text-gray-200 leading-relaxed">
               I’m Earl “The Kaiju” Hickson, a Brazilian Jiu-Jitsu Black Belt with over 8 years of teaching experience.
-              I specialize in private and small-group lessons for kids, parents, and adults throughout Parsippany.
-              My training is personalized, flexible, and designed to build confidence, discipline, and real-world
-              self-defense skills in a safe, supportive environment.
+              I specialize in private and small-group lessons for kids, parents, and adults across Parsippany. My training
+              is personalized, flexible, and built around confidence, discipline, and real-world control.
             </p>
             <div className="mt-4">
               <p className="text-gray-300">
-                My game: establish boundaries early, slow the fight, and create advantages using <strong>lapel guard</strong>, <strong>half guard</strong>, <strong>inversions</strong>, <strong>wrestling</strong> and a touch of <strong>judo</strong>—blending unconventional techniques with size/strength to achieve control.
+                My game: establish boundaries early, slow the fight, and create advantages using{" "}
+                <strong>lapel guard</strong>, <strong>half guard</strong>, <strong>inversions</strong>,{" "}
+                <strong>wrestling</strong>, and a touch of <strong>judo</strong>. Big-guy pressure with intelligent grips.
               </p>
               <div className="mt-3 flex flex-wrap gap-2">
                 {["Lapel Guard", "Half Guard", "Inversions", "Wrestling", "Judo", "Pressure Passing"].map((t) => (
@@ -521,72 +513,36 @@ export default function EarldKaiju() {
                 ))}
               </div>
 
-             {/* Latest videos 1×4 mobile, 2×2 desktop */}
-{!socialMediaLoading && (
-  <div className="mt-8">
-    <h3 className="font-semibold mb-3">Latest BJJ Content</h3>
-
-    {(() => {
-      const real = youtubePosts.slice(0, 4);
-      const padded =
-        real.length >= 4
-          ? real
-          : [...real, ...Array.from({ length: 4 - real.length }, (_, i) => makePlaceholderPost(i))];
-
-      return (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {padded.map((p) => (
-            <a
-              key={`${p.platform}-${p.postId}`}
-              href={p.permalink}
-              target={p.permalink === "#" ? "_self" : "_blank"}
-              rel="noopener noreferrer"
-              className="block rounded-xl overflow-hidden bg-white/[0.06] hover:bg-white/[0.1] transition-colors shadow-lg shadow-black/40"
-            >
-              <div className="aspect-video bg-black/50">
-                {p.thumbnailUrl ? (
-                  <img
-                    src={p.thumbnailUrl}
-                    alt={p.caption ?? "YouTube video"}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <div className="w-full h-full grid place-items-center text-sm text-white/60">Video</div>
-                )}
-              </div>
-              <div className="p-3 text-sm text-gray-300 line-clamp-2">
-                {p.caption ?? "Watch on YouTube"}
-              </div>
-            </a>
-          ))}
-        </div>
-      );
-    })()}
-
-    <div className="mt-3 flex gap-3">
-      <a
-        className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-        href="https://youtube.com/@earldkaiju"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        YouTube
-      </a>
-      <a
-        className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors"
-        href="https://www.instagram.com/earld.kaiju/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Instagram
-      </a>
-    </div>
-  </div>
-)}
-
+              {/* Latest videos grid (max 4) */}
+              {!socialMediaLoading && youtubePosts.length > 0 && (
+                <div className="mt-8">
+                  <h3 className="font-semibold mb-3">Latest BJJ Content</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {youtubePosts.map((p) => (
+                      <a
+                        key={p.postId}
+                        href={p.permalink}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block rounded-xl overflow-hidden bg-white/[0.06] hover:bg-white/[0.1] transition-colors shadow-lg shadow-black/40"
+                      >
+                        <div className="aspect-video bg-black/50">
+                          <img src={p.thumbnailUrl || ""} alt={p.caption || "YouTube video"} className="w-full h-full object-cover" />
+                        </div>
+                        <div className="p-3 text-sm text-gray-300 line-clamp-2">{p.caption || "Watch on YouTube"}</div>
+                      </a>
+                    ))}
+                  </div>
+                  <div className="mt-3 flex gap-3">
+                    <a className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors" href="https://youtube.com/@earldkaiju" target="_blank" rel="noopener noreferrer">YouTube</a>
+                    <a className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors" href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer">Instagram</a>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
 
+          {/* Photo + compact record card */}
           <div>
             <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
               <img src={earlBjjPhoto} alt="Earl training BJJ" className="w-full h-auto object-cover" />
@@ -609,8 +565,8 @@ export default function EarldKaiju() {
         </div>
       </section>
 
-      {/* ===================== TESTIMONIALS (stationary bg, text slider) ===================== */}
-      <TestimonialsStationary />
+      {/* ===================== TESTIMONIALS ===================== */}
+      <TestimonialsSection />
 
       {/* ===================== SEO JSON-LD ===================== */}
       <script
@@ -620,13 +576,13 @@ export default function EarldKaiju() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Private Brazilian Jiu-Jitsu Lessons",
-            "description": "One-on-one and small-group BJJ training for adults and kids in Morris County, NJ",
+            "description": "One-on-one and small-group BJJ training for adults and kids in Parsippany, NJ",
             "provider": { "@type": "Person", "name": "Earl Hickson Jr.", "alternateName": "Earl the Kaiju" },
             "areaServed": { "@type": "Place", "name": "Parsippany, NJ" },
             "offers": [
-              { "@type": "Offer", "name": "Private Lessons (1-on-1)", "price": "60", "priceCurrency": "USD" },
+              { "@type": "Offer", "name": "Private BJJ", "price": "60", "priceCurrency": "USD" },
               { "@type": "Offer", "name": "Intro Offer", "price": "50", "priceCurrency": "USD" },
-              { "@type": "Offer", "name": "Semi-Private (2–4 people)", "price": "40", "priceCurrency": "USD" },
+              { "@type": "Offer", "name": "Semi-Private", "price": "40", "priceCurrency": "USD" },
               { "@type": "Offer", "name": "Parent & Me (4-week)", "price": "200", "priceCurrency": "USD" }
             ]
           })
