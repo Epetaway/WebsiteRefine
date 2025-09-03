@@ -18,13 +18,13 @@ import kaijuBanner from "@/images/kaiju-banner.png";
 import kaijuWordmark from "@/images/kaiju-logo.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
+import testimonialBg from "@/images/testimonials-bg.jpg";
 
 /* Brand tokens */
 const KAijuGreen = "var(--kaiju-green, #86d64a)";
 const KAijuGreen20 = "var(--kaiju-green-20, rgba(134,214,74,.2))";
 
-/* ======================== TESTIMONIALS (Stationary BG) ======================== */
-const TESTIMONIAL_BG = "/assets/images/testimonials-bg.jpg";
+
 
 type Testimonial = { name: string; relationship: string; text: string; rating: number };
 
@@ -78,7 +78,7 @@ function TestimonialsStationary() {
     <section
       className="relative w-full"
       style={{
-        backgroundImage: `url(${TESTIMONIAL_BG || kaijuBanner})`,
+        backgroundImage: `url(${testimonialBg || kaijuBanner})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundAttachment: "fixed",
