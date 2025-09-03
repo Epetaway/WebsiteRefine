@@ -373,39 +373,85 @@ export default function EarldKaiju() {
       </section>
 
       {/* ===================== WHAT I OFFER (services + pricing) ===================== */}
-      <section id="offer" className="py-14">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="rounded-2xl p-6 bg-white/[0.06] shadow-xl shadow-black/40">
-              <h3 className="font-bold text-lg">Private Lessons (1-on-1)</h3>
-              <p className="text-gray-300 text-sm mt-2">Tailored coaching focused on your individual goals.</p>
-              <div className="mt-4 text-sm space-y-2">
-                <div className="flex justify-between"><span>Price</span><span className="font-semibold">$60 / hour</span></div>
-                <div className="flex justify-between"><span>Intro Offer</span><span className="font-semibold">$50 (one-time)</span></div>
-              </div>
-              <Button className="mt-5 text-black" style={{ backgroundColor: KAijuGreen }} onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>Book</Button>
+            <section id="offer" className="py-14 bg-kaiju-cream">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid lg:grid-cols-3 gap-6">
+      
+      {/* Private Lessons */}
+      <div className="rounded-2xl p-6 flex flex-col bg-white/70 shadow-xl shadow-black/20">
+        <div className="flex-grow">
+          <h3 className="font-bold text-lg text-black">Private Lessons (1-on-1)</h3>
+          <p className="text-gray-700 text-sm mt-2">
+            Tailored, one-on-one coaching designed around your goals—whether self-defense, fitness, or preparing for
+            competition. Every session builds technical foundations, sharpens strategy, and helps you grow with confidence.
+          </p>
+          <div className="mt-4 text-sm space-y-2 text-gray-800">
+            <div className="flex justify-between">
+              <span>Standard Rate</span><span className="font-semibold">$60 / hour</span>
             </div>
-
-            <div className="rounded-2xl p-6 bg-white/[0.06] shadow-xl shadow-black/40">
-              <h3 className="font-bold text-lg">Semi-Private (2–4 people)</h3>
-              <p className="text-gray-300 text-sm mt-2">Train with a friend and split the cost.</p>
-              <div className="mt-4 text-sm">
-                <div className="flex justify-between"><span>Price</span><span className="font-semibold">$40 per person</span></div>
-              </div>
-              <Button className="mt-5 text-black" style={{ backgroundColor: KAijuGreen }} onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>Book</Button>
-            </div>
-
-            <div className="rounded-2xl p-6 bg-white/[0.06] shadow-xl shadow-black/40">
-              <h3 className="font-bold text-lg">Parent & Me Package</h3>
-              <p className="text-gray-300 text-sm mt-2">Ages 5–8 — 4-week bonding series with your child.</p>
-              <div className="mt-4 text-sm">
-                <div className="flex justify-between"><span>Price</span><span className="font-semibold">$200 total</span></div>
-              </div>
-              <Button className="mt-5 text-black" style={{ backgroundColor: KAijuGreen }} onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}>Book</Button>
+            <div className="flex justify-between">
+              <span>Intro Offer</span><span className="font-semibold">$50 (one-time)</span>
             </div>
           </div>
         </div>
-      </section>
+        <Button
+          className="mt-5 text-black"
+          style={{ backgroundColor: "var(--kaiju-green)" }}
+          onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+        >
+          Book
+        </Button>
+      </div>
+
+      {/* Semi-Private Lessons */}
+      <div className="rounded-2xl p-6 flex flex-col bg-white/70 shadow-xl shadow-black/20">
+        <div className="flex-grow">
+          <h3 className="font-bold text-lg text-black">Semi-Private (2–4 people)</h3>
+          <p className="text-gray-700 text-sm mt-2">
+            Train alongside friends or family in a small-group setting where you’ll still get focused attention. 
+            Learn together, motivate each other, and share the experience while keeping costs accessible.
+          </p>
+          <div className="mt-4 text-sm text-gray-800">
+            <div className="flex justify-between">
+              <span>Price</span><span className="font-semibold">$40 per person</span>
+            </div>
+          </div>
+        </div>
+        <Button
+          className="mt-5 text-black"
+          style={{ backgroundColor: "var(--kaiju-green)" }}
+          onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+        >
+          Book
+        </Button>
+      </div>
+
+      {/* Parent & Me Package */}
+      <div className="rounded-2xl p-6 flex flex-col bg-white/70 shadow-xl shadow-black/20">
+        <div className="flex-grow">
+          <h3 className="font-bold text-lg text-black">Parent & Me Package</h3>
+          <p className="text-gray-700 text-sm mt-2">
+            A unique 4-week program where parents and children (ages 5–8) learn together. Strengthen your bond while 
+            introducing your child to the discipline, focus, and fun of Brazilian Jiu-Jitsu in a safe, engaging way.
+          </p>
+          <div className="mt-4 text-sm text-gray-800">
+            <div className="flex justify-between">
+              <span>Package Price</span><span className="font-semibold">$200 total</span>
+            </div>
+          </div>
+        </div>
+        <Button
+          className="mt-5 text-black"
+          style={{ backgroundColor: "var(--kaiju-green)" }}
+          onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+        >
+          Book
+        </Button>
+      </div>
+
+    </div>
+  </div>
+</section>
 
       {/* ===================== ABOUT + compact record + latest videos ===================== */}
       <section className="py-14">
