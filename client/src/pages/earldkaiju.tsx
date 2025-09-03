@@ -14,11 +14,11 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 
 import kaijuBanner from "@/images/kaiju-banner.png";
-import kaijuWordmark from "@/images/kaiju-logo.png";
+import kaijuWordmark from "@/images/earl-the-kaiju-logo.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
-/* Brand tokens (map these to CSS vars if you like) */
+/* Brand tokens */
 const KAijuGreen = "var(--kaiju-green, #86d64a)";
 const KAijuGreen20 = "var(--kaiju-green-20, rgba(134,214,74,.2))";
 
@@ -33,26 +33,53 @@ const testimonials: TTestimonial[] = [
 
 function TestimonialsCarousel() {
   const trackRef = useRef<HTMLDivElement | null>(null);
+  const indexRef = useRef(0);
 
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    let i = 0, paused = false;
+
+    let paused = false;
+
+    const toSlide = (idx: number) => {
+      if (!track) return;
+      const child = track.children[idx] as HTMLElement | undefined;
+      if (!child) return;
+      // Use precise horizontal scroll on the track only (prevents page scrolling)
+      const left = child.offsetLeft - track.offsetLeft;
+      track.scrollTo({ left, behavior: "smooth" });
+    };
+
     const id = setInterval(() => {
-      if (paused) return;
-      i = (i + 1) % testimonials.length;
-      (track.children[i] as HTMLElement)?.scrollIntoView({ behavior: "smooth", inline: "start" });
+      if (paused || !track) return;
+      indexRef.current = (indexRef.current + 1) % testimonials.length;
+      toSlide(indexRef.current);
     }, 5000);
-    const pause = () => { paused = true; setTimeout(() => (paused = false), 6000); };
+
+    const pause = () => {
+      paused = true;
+      // resume after a short delay
+      const t = setTimeout(() => { paused = false; clearTimeout(t); }, 6000);
+    };
+
     track.addEventListener("wheel", pause, { passive: true });
     track.addEventListener("touchstart", pause, { passive: true });
-    return () => { clearInterval(id); track.removeEventListener("wheel", pause); track.removeEventListener("touchstart", pause); };
+
+    return () => {
+      clearInterval(id);
+      track.removeEventListener("wheel", pause);
+      track.removeEventListener("touchstart", pause);
+    };
   }, []);
 
   return (
     <section className="w-full bg-black py-16">
       <div className="relative">
-        <div ref={trackRef} className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar">
+        <div
+          ref={trackRef}
+          className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth no-scrollbar"
+          style={{ scrollBehavior: "smooth" }}
+        >
           {testimonials.map((t, idx) => (
             <div
               key={idx}
@@ -165,8 +192,8 @@ export default function EarldKaiju() {
 
       {/* ===================== BOOKING (right after hero) ===================== */}
       <section id="booking" className="py-10">
-        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-2xl p-8 bg-white/[0.06] shadow-2xl shadow-black/40">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="rounded-2xl p-6 sm:p-8 bg-white/[0.06] shadow-2xl shadow-black/40">
             <h2 className="text-xl font-bold mb-4" style={{ color: KAijuGreen }}>Request a Session</h2>
 
             {isSubmitted ? (
@@ -183,34 +210,32 @@ export default function EarldKaiju() {
               </div>
             ) : (
               <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <FormField name="name" control={form.control} render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-white">Full Name *</FormLabel>
-                        <FormControl><Input {...field} className="bg-white/10 focus:bg-white/15" placeholder="Your name" /></FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                    <FormField name="email" control={form.control} render={({ field }) => (
-                      <FormItem>
-                        <FormLabel className="text-white">Email *</FormLabel>
-                        <FormControl><Input type="email" {...field} className="bg-white/10 focus:bg-white/15" placeholder="you@email.com" /></FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )} />
-                  </div>
+                {/* Grid = 1 col mobile, 2 cols desktop */}
+                <form onSubmit={form.handleSubmit(onSubmit)} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <FormField name="name" control={form.control} render={({ field }) => (
+                    <FormItem className="md:col-span-1">
+                      <FormLabel className="text-white">Full Name *</FormLabel>
+                      <FormControl><Input {...field} className="bg-white/10 focus:bg-white/15" placeholder="Your name" /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
+                  <FormField name="email" control={form.control} render={({ field }) => (
+                    <FormItem className="md:col-span-1">
+                      <FormLabel className="text-white">Email *</FormLabel>
+                      <FormControl><Input type="email" {...field} className="bg-white/10 focus:bg-white/15" placeholder="you@email.com" /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
 
                   <FormField name="phone" control={form.control} render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="md:col-span-1">
                       <FormLabel className="text-white">Phone *</FormLabel>
                       <FormControl><Input type="tel" {...field} className="bg-white/10 focus:bg-white/15" placeholder="(555) 123-4567" /></FormControl>
                       <FormMessage />
                     </FormItem>
                   )} />
-
                   <FormField name="program" control={form.control} render={({ field }) => (
-                    <FormItem>
+                    <FormItem className="md:col-span-1">
                       <FormLabel className="text-white">Program</FormLabel>
                       <Select onValueChange={field.onChange} defaultValue={field.value}>
                         <FormControl>
@@ -223,7 +248,6 @@ export default function EarldKaiju() {
                           <SelectItem value="intro-offer">Intro Offer — $50 (one-time)</SelectItem>
                           <SelectItem value="semi-private">Semi-Private (2–4) — $40/person</SelectItem>
                           <SelectItem value="parent-me">Parent & Me (4-week) — $200 total</SelectItem>
-                          {/* Keep Kids option available from your earlier ask */}
                           <SelectItem value="kids-bjj">Kids BJJ — Ask about options</SelectItem>
                         </SelectContent>
                       </Select>
@@ -231,12 +255,11 @@ export default function EarldKaiju() {
                     </FormItem>
                   )} />
 
-                  {/* Goals */}
                   <FormField
                     control={form.control}
                     name="goals"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="md:col-span-2">
                         <FormLabel className="text-white">Goals & Experience</FormLabel>
                         <FormControl>
                           <Textarea
@@ -254,12 +277,11 @@ export default function EarldKaiju() {
                     )}
                   />
 
-                  {/* Availability */}
                   <FormField
                     control={form.control}
                     name="availability"
                     render={({ field }) => (
-                      <FormItem>
+                      <FormItem className="md:col-span-2">
                         <FormLabel className="text-white">Preferred Times</FormLabel>
                         <FormControl>
                           <Input
@@ -277,7 +299,7 @@ export default function EarldKaiju() {
                   />
 
                   <FormField name="smsConsent" control={form.control} render={({ field }) => (
-                    <FormItem className="flex items-start space-x-3">
+                    <FormItem className="md:col-span-2 flex items-start space-x-3">
                       <FormControl>
                         <Checkbox checked={!!field.value} onCheckedChange={field.onChange} className="bg-white/10" />
                       </FormControl>
@@ -287,9 +309,16 @@ export default function EarldKaiju() {
                     </FormItem>
                   )} />
 
-                  <Button type="submit" disabled={isSubmitting || bookingMutation.isPending} className="w-full text-black" style={{ backgroundColor: KAijuGreen }}>
-                    {isSubmitting || bookingMutation.isPending ? "Submitting…" : "Request Session"}
-                  </Button>
+                  <div className="md:col-span-2">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting || bookingMutation.isPending}
+                      className="w-full text-black"
+                      style={{ backgroundColor: KAijuGreen }}
+                    >
+                      {isSubmitting || bookingMutation.isPending ? "Submitting…" : "Request Session"}
+                    </Button>
+                  </div>
                 </form>
               </Form>
             )}
