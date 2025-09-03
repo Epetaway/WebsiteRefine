@@ -1,41 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en" class="h-full scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>Earl Hickson Jr. - Senior Front-End Engineer | React • JavaScript • UI/UX • Full-Stack</title>
-    <meta name="description" content="Senior Front-End Engineer specializing in React, JavaScript, UI/UX, and expanding into full-stack development. Based in Parsippany, NJ. Available for senior engineering roles.">
-    
-    <!-- Open Graph -->
-    <meta property="og:title" content="Earl Hickson Jr. - Senior Front-End Engineer">
-    <meta property="og:description" content="Senior Front-End Engineer specializing in React, JavaScript, UI/UX, and expanding into full-stack development.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.ehicksonjr.com">
-    
-    <!-- Preconnect to external resources -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
 
-    <!-- Google Fonts: Montserrat + Roboto + League Spartan + Inter -->
+    <!-- Primary SEO -->
+    <title>Senior Front-End / UI Engineer — Earl Hickson Jr. | React, Angular, TypeScript, Accessibility</title>
+    <meta
+      name="description"
+      content="Senior Front-End / UI Engineer focused on React, Angular, and TypeScript. I ship accessible, high-performance interfaces—cutting TTI by 44% and reducing bundles by 73% across projects."
+    />
+    <link rel="canonical" href="https://ehicksonjr.com/" />
+    <meta name="robots" content="index,follow" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0c0c0c" />
+
+    <!-- Open Graph (defaults; per-route tags can override in app) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Earl Hickson Jr." />
+    <meta property="og:title" content="Senior Front-End / UI Engineer — Earl Hickson Jr." />
+    <meta
+      property="og:description"
+      content="React • Angular • TypeScript • Accessibility • Performance. Case studies with measurable results."
+    />
+    <meta property="og:url" content="https://ehicksonjr.com/" />
+    <meta property="og:image" content="/images/me.png" />
+    <meta property="og:image:alt" content="Earl Hickson Jr. headshot" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Senior Front-End / UI Engineer — Earl Hickson Jr." />
+    <meta
+      name="twitter:description"
+      content="I design and build accessible, fast UIs. Explore case studies and measurable wins."
+    />
+    <meta name="twitter:image" content="/images/me.png" />
+
+    <!-- Icons / PWA bits (optional placeholders; keep if you have these paths) -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts: Inter + League Spartan (site), Montserrat + Roboto (brand book demos) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Roboto:wght@400;500&family=League+Spartan:wght@700;800&family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@700;800&family=Montserrat:wght@700;800&family=Roboto:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
+    <!-- Optional: default LD-JSON (Individual + Offer availability) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Earl Hickson Jr.",
+        "jobTitle": "Senior Front-End / UI Engineer",
+        "url": "https://ehicksonjr.com/",
+        "image": "https://ehicksonjr.com/images/me.png",
+        "sameAs": [
+          "https://www.linkedin.com/in/earl-hickson-jr",
+          "https://github.com/Epetaway"
+        ],
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Independent / Contract"
+        },
+        "knowsAbout": [
+          "React",
+          "Angular",
+          "TypeScript",
+          "Accessibility (WCAG 2.1 AA)",
+          "Performance (Core Web Vitals)"
+        ]
+      }
+    </script>
   </head>
-  <body>
+
+  <body class="h-full bg-white text-gray-900 antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
   </body>
-  <script>
-  try {
-    const r = sessionStorage.getItem('redirect');
-    if (r) { history.replaceState(null, '', r); sessionStorage.removeItem('redirect'); }
-  } catch {}
-</script>
-
 </html>
