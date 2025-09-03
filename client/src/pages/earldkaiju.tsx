@@ -14,7 +14,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Checkbox } from "@/components/ui/checkbox";
 
 import kaijuBanner from "@/images/kaiju-banner.png";
-import kaijuWordmark from "@/images/earl-the-kaiju-logo.png";
+import kaijuWordmark from "@/images/kaiju-logo.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import bjjAccomplishments from "@/data/bjj-accomplishments.json";
 
