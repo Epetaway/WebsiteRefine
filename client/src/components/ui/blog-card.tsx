@@ -7,76 +7,84 @@ export default function BlogCard({
   post,
   variant = "minimal",
 }: {
-  post: BlogPost;
+  post: BlogPost & { takeaway?: string };
   variant?: Variant;
 }) {
   const href = `/blog/${post.slug}`;
 
-  // Respect Vite BASE_URL for GitHub Pages
+  // Respect Vite BASE_URL (e.g., GitHub Pages)
   const base =
     (import.meta as any)?.env?.BASE_URL && typeof (import.meta as any).env.BASE_URL === "string"
       ? (import.meta as any).env.BASE_URL
       : "/";
   const raw = post.coverImage || "/images/blog/placeholder.jpg";
-  const isHttp = /^https?:\/\//i.test(raw);
-  const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
+  const coverSrc = /^https?:\/\//i.test(raw) ? raw : `${base}${raw.replace(/^\/+/, "")}`;
+
+  const dateLabel = new Date(post.publishedAt).toLocaleDateString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
+
+  const isDefault = variant === "default";
 
   return (
     <article
+      role="article"
+      aria-labelledby={`post-${post.id}-title`}
       className={[
-        "group relative overflow-hidden rounded-2xl border border-gray-200 bg-white transition-shadow",
-        "hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
+        "group relative overflow-hidden rounded-2xl bg-white transition-shadow",
+        "ring-1 ring-gray-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
       ].join(" ")}
       data-testid={`blog-card-${post.id}`}
     >
       <Link
         to={href}
         className="block outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
-        aria-label={`Open ${post.title}`}
+        aria-label={`Open blog post: ${post.title}`}
       >
-        {/* Image */}
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className={["relative overflow-hidden", isDefault ? "aspect-[16/9]" : "aspect-[4/3]"].join(" ")}>
           <img
             src={coverSrc}
             alt={post.title}
             className="h-full w-full object-cover transition-transform duration-500 motion-reduce:duration-0 group-hover:scale-[1.03]"
             loading="lazy"
+            decoding="async"
           />
-          {/* subtle top fade */}
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
         </div>
 
-        {/* Content */}
-        <div className="p-4">
-          <div className="mb-2 flex items-center gap-2 text-[11px] uppercase tracking-wide">
-            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">
-              {post.category}
-            </span>
+        <div className={isDefault ? "p-5 sm:p-6" : "p-4"}>
+          <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-wide">
+            <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{post.category}</span>
             <span className="text-gray-400">•</span>
             <time className="text-gray-500" dateTime={post.publishedAt}>
-              {new Date(post.publishedAt).toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "short",
-                day: "2-digit",
-              })}
+              {dateLabel}
             </time>
             <span className="text-gray-400">•</span>
             <span className="text-gray-500">{post.readTime} min</span>
           </div>
 
-          {/* SINGLE green gradient headline */}
           <h3
+            id={`post-${post.id}-title`}
             className={[
-              "font-semibold leading-snug line-clamp-2",
-              "gradient-text",
-              "text-base md:text-lg",
+              "font-semibold leading-snug line-clamp-2 gradient-text",
+              isDefault ? "text-lg md:text-xl" : "text-base md:text-lg",
             ].join(" ")}
           >
             {post.title}
           </h3>
 
+          <p className={["mt-2 text-sm text-gray-600", isDefault ? "line-clamp-3" : "line-clamp-2"].join(" ")}>
+            {post.excerpt}
+          </p>
 
-          <p className="mt-2 line-clamp-2 text-sm text-gray-600">{post.excerpt}</p>
+          {isDefault && post.takeaway ? (
+            <div className="mt-3 text-sm">
+              <span className="font-semibold text-gray-900">Takeaway: </span>
+              <span className="text-gray-700">{post.takeaway}</span>
+            </div>
+          ) : null}
 
           <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-gray-900">
             Read more

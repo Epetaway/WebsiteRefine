@@ -1,5 +1,5 @@
-
 import { useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { blogPosts, type BlogPost } from "@/data/blog-posts";
 import BlogCard from "@/components/ui/blog-card";
 import { Button } from "@/components/ui/button";
@@ -35,9 +35,21 @@ export default function Blog() {
   const featured = sorted[0];
   const others = featured ? sorted.filter((p) => p.id !== featured.id) : sorted;
 
+  const title = "Blog – Front-End, Accessibility, BJJ | Earl Hickson Jr.";
+  const description =
+    "Notes on React, Angular, performance, and accessibility—plus Brazilian Jiu-Jitsu lessons that inform my engineering craft.";
+
   return (
-    <div className="">
-      {/* Header */}
+    <div>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
@@ -63,7 +75,6 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Featured (newest in current filter) */}
       {featured && (
         <section className="py-16 bg-gray-50">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -75,7 +86,6 @@ export default function Blog() {
         </section>
       )}
 
-      {/* All others */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold mb-8" data-testid="section-title-all">All Posts</h2>

@@ -15,176 +15,208 @@ export interface BlogPost {
   relatedPosts?: string[];    // slugs of related posts
 }
 
-
 export const blogPosts: BlogPost[] = [
   {
     id: "why-i-started-jiu-jitsu",
     title: "Why I Started Training Jiu-Jitsu — And How It Changed My Life",
     slug: "why-i-started-training-jiu-jitsu",
-    excerpt: "In 2015, I stepped onto the mats looking for personal growth. Eight years later, I’ve gained more than technique — I’ve rewritten my story, built confidence, and become the man I never had as a role model.",
+    excerpt: "In 2015 I tied my first white belt looking for growth. Years later, I found confidence, boundaries, and a blueprint for becoming the man I needed.",
     content: `
 # Why I Started Training Jiu-Jitsu — And How It Changed My Life
 
-This is **Part 1** of my Jiu-Jitsu journey. It’s the story of how I found the Gentle Art and why it became the foundation for everything that came after — including my black belt.
+I still remember tying my first white belt in **2015**. My friends were sprinting into careers; I felt stuck—behind, unsure, and tired of doubting myself. I stepped on the mats because I needed a new story.
 
-I started training Brazilian Jiu-Jitsu in 2015, right after graduating college.  
-It was supposed to be a new chapter, but I felt completely overwhelmed. My friends seemed confident in their career paths while I felt stuck — behind, uncertain, and lacking belief in myself. I wanted that to change. I needed it to change.
+This is **Part 1** of my Jiu-Jitsu journey. It’s the why behind the work, and how the Gentle Art became the foundation for everything that followed—including becoming a father and earning my black belt.
 
 ## Growing Up Without a Map
-I’m an only child, raised in a family of strong, independent women. While I’m grateful for that upbringing, it also meant I didn’t have healthy male role models to lean on. The sports and activities I was pushed toward often had little to do with my true passions.
-
-Like Wu-Tang, I grew up loving Asian culture — martial arts, anime, giant robots, and philosophical storytelling. My world was shaped by shows like *Ultraman*, *Godzilla*, *Cowboy Bebop*, *Outlaw Star*, *Power Rangers*, *Sailor Moon*, and *Gundam*. They sparked a love for mythology and the human experience. But at home, those interests weren’t shared — they often marked me as the “different one.”
+I’m an only child raised by strong, independent women. I’m grateful for that. It also meant no healthy male role models to mirror. I loved **martial arts, anime, and mecha**—*Ultraman, Godzilla, Cowboy Bebop, Outlaw Star, Power Rangers, Sailor Moon, Gundam*. Those worlds taught me discipline and philosophy long before I had the words for it. At home, those interests made me the “different one.”
 
 ## My First Love: Karate
-The one time I found a sport I truly loved was when I trained in Karate as a kid. I loved the friendships, the discipline, and the wisdom my instructor shared — especially about how the world would perceive me.
+As a kid I found Karate. I loved the discipline, the friendships, and the way my instructor taught me to move through the world—especially as a big Black kid. He taught **accountability without shame**: be intentional, control your presence, protect your peace.
 
-As a big Black kid, I was taught early that my presence could be intimidating whether I meant it to be or not. My instructor’s lessons on accountability weren’t about blame — they were about being intentional, knowing how to protect my peace, and moving through the world with awareness.
-
-But like many kids my size, I was eventually pushed toward football and basketball because “that’s what you’re supposed to do.” I still remember how often people would ask, “What position do you play?” — as if that was the only lane available to me.
+Eventually people nudged me toward football and basketball—“What position do you play?”—as if that was the only lane for someone my size.
 
 ## Searching for Something of My Own
-I’ve always been aware of my size, careful with my strength, and conscious of how others saw me. Raised by women, I didn’t have the typical roughhousing or brotherly rivalries other boys experienced. It was just me.
-
-After college, stepping into adulthood, I decided to do something purely for myself. I wanted the discipline, challenge, and joy of martial arts back in my life. That search led me to Brazilian Jiu-Jitsu.
+After college I wanted a practice that was mine. I wanted the structure and joy of martial arts back, but with room to grow **as a person**, not just as an athlete. That search led me to Brazilian Jiu-Jitsu.
 
 ## Falling in Love with the Gentle Art
-From my first class, I was hooked. Jiu-Jitsu was humbling — an equal playing field where size, strength, and ego could be neutralized by technique and patience. Over the past 8+ years, I’ve learned the “gentle” in Gentle Art isn’t just about physical control.
+From day one BJJ was humbling. Technique and patience could neutralize size and ego. I learned that “gentle” isn’t weak; it’s **precise**—like a faucet. It’s not on/off; it’s the **right pressure, right time**. That became a life lesson, not just a grappling one.
 
-It’s like a faucet — it’s not about turning your strength fully on or off, but about finding the right flow, the right pressure, at the right time. Jiu-Jitsu taught me that same balance applies to life.
-
-## More Than Just Technique
-Training didn’t just make me better at self-defense — it reshaped my boundaries with the world. It made me see where I was letting others define me and where I needed to stand firm.
-
-For years, I avoided connecting with my identity as a Black man because I was warned that being “too Black” could be dangerous. I let people disrespect that part of me for their amusement, and it cost me trust in friendships and in myself.
-
-Through Jiu-Jitsu — and with help from therapy — I learned how to stand in my truth without apology. I learned control, resilience, and self-respect. I became the father and the man I wish I’d had growing up.
+## More Than Technique: Boundaries & Identity
+Training didn’t just sharpen self-defense. It sharpened **boundaries**. For years I softened parts of my identity to be “safer.” Jiu-Jitsu—and therapy—helped me stand in my truth **without apology**. I learned control, resilience, and self-respect. I became the father and man I needed growing up.
 
 ## The Gentle Art of Becoming Yourself
-What started as a search for personal growth became a blueprint for living. Jiu-Jitsu didn’t just teach me how to fight — it taught me how to show up in life with confidence, humility, and purpose.
+What started as a way to get unstuck became a blueprint for living: show up, breathe, focus on position, improve a little every day.
 
-I stepped onto the mats looking for a way forward. I found a way home.
+**If you’ve ever felt behind, find a practice that lets you rebuild on purpose.** For me, that was Jiu-Jitsu.
 
 ---
+
 *Continue the story in [Part 2: From White to Black Belt](/blog/white-to-black-belt-journey-life-career).*
     `,
     publishedAt: "2025-08-14",
-    updatedAt: "2025-08-14",
+    updatedAt: "2025-09-03",
     category: 'bjj',
     featured: true,
     tags: ['Brazilian Jiu-Jitsu', 'Personal Growth', 'Identity', 'Life Lessons'],
-    readTime: 7,
+    readTime: 6,
     coverImage: "/images/blog/why-i-started-jiu-jitsu.png",
-    relatedPosts: ["white-to-black-belt-journey"]
+    coverImageAlt: "Black belt resting on a white gi folded on mats",
+    relatedPosts: ["white-to-black-belt-journey-life-career"]
   },
   {
     id: "white-to-black-belt-journey",
     title: "From White to Black: How Jiu-Jitsu Rewired My Life and Career",
     slug: "white-to-black-belt-journey-life-career",
-    excerpt: "Part 2 of my Jiu-Jitsu journey — each belt brought lessons in patience, control, service, and quiet confidence that now shape the way I code, lead, and live.",
+    excerpt: "Each belt rewired something: consistency, boundaries, service, and maintenance. The same rules now shape how I code, lead, and live.",
     content: `
 # From White to Black: How Jiu-Jitsu Rewired My Life and Career
 
-This is **Part 2** of my Jiu-Jitsu journey. In [Part 1](/blog/why-i-started-training-jiu-jitsu), I shared how I found the Gentle Art. Here’s what happened across the belts — and how each phase rewired how I approach life and my career.
-
-Earning my black belt is the most meaningful milestone of my life outside becoming a father. Each belt wasn’t just a rank — it was a transformation, personally and professionally.
-
-## White → Blue: Learning to Show Up
-Coming from my early days in Karate and my search for personal growth after college, the white belt phase was about consistency. On the mat: survive, learn, and return. At work: tackle unfamiliar stacks, push PRs, ask better questions. Progress was invisible but real.
-
-**Transferable skill:** consistency beats intensity.
-
-## Purple: Boundaries and Control
-Like my Karate instructor taught me years ago, boundaries protect your peace. On the mat: position before submission. In code: architecture over hacks, pace over panic.
-
-**Transferable skill:** system > sprint.
-
-## Brown: Leading by Lifting Others
-Teaching sharpened my skills. Whether helping a white belt escape mount or guiding a junior dev through a refactor, I learned that clear feedback and calm environments grow strong teams.
-
-**Transferable skill:** leadership = clarity + calm.
-
-## Black: Mastery Through Maintenance
-Black belt isn’t magic — it’s years of deliberate practice. Now my job is to make the hard feel simple: in guard, in code, in teams.
-
-**Transferable skill:** mastery is maintenance.
+This is **Part 2**. In [Part 1](/blog/why-i-started-training-jiu-jitsu), I shared why I started. Here’s what each belt taught me—and how those lessons map 1:1 to engineering and leadership.
 
 ---
-*If you haven’t yet, read [Part 1: Why I Started Training Jiu-Jitsu](/blog/why-i-started-training-jiu-jitsu) to see how this journey began.*
+
+## White → Blue: **Show Up > Show Off**
+**On the mat:** Survive, learn the basics, come back tomorrow.  
+**In code:** Ship small PRs, ask better questions, build habits.
+
+> *Anecdote:* Early on, I tracked every round and every lesson in a notes app. That same habit later became my lightweight engineering logs—what I tried, what broke, what worked.
+
+**Transferable:** Consistency beats intensity.
+
+---
+
+## Blue → Purple: **Position Before Submission**
+**On the mat:** Control first, then attack.  
+**In code:** Architecture before features; patterns before premature optimization.
+
+> *Anecdote:* I once paused a release to refactor a brittle CSS architecture. We lost a day, saved a quarter.
+
+**Transferable:** System > sprint.
+
+---
+
+## Purple → Brown: **Lead by Lifting**
+**On the mat:** Teaching tightens your own game.  
+**At work:** Mentoring juniors, writing clear docs, and creating calm during chaos make teams faster.
+
+> *Anecdote:* I paired with a new dev through a gnarly responsive bug. We fixed it and kept the pairing slot weekly. Their ramp-up time halved.
+
+**Transferable:** Leadership = clarity + calm.
+
+---
+
+## Brown → Black: **Mastery Is Maintenance**
+**On the mat:** Black belt isn’t magic—it’s doing the right things longer and cleaner.  
+**In code:** Performance budgets, accessibility checks, test health, CI hygiene.
+
+> *Anecdote:* Our Lighthouse scores didn’t jump from one trick. They climbed because we treated performance like a living bill we pay every sprint.
+
+**Transferable:** Mastery is maintenance.
+
+---
+
+**If you lead teams or code UIs, these belt lessons apply:** protect foundation, invest in people, and treat excellence as a daily practice.
+
+*If you haven’t yet, read [Part 1: Why I Started Training Jiu-Jitsu](/blog/why-i-started-training-jiu-jitsu).*
     `,
     publishedAt: "2024-01-15",
-    updatedAt: "2025-08-14",
+    updatedAt: "2025-09-03",
     category: 'bjj',
     featured: true,
-    tags: ['Brazilian Jiu-Jitsu', 'Career Development', 'Personal Growth', 'Leadership'],
+    tags: ['Brazilian Jiu-Jitsu', 'Career Development', 'Leadership', 'Engineering'],
     readTime: 6,
     coverImage: "/images/blog/white-to-black-belt.png",
-    relatedPosts: ["why-i-started-jiu-jitsu"]
+    coverImageAlt: "Row of jiu-jitsu belts from white to black hanging on a wall",
+    relatedPosts: ["why-i-started-training-jiu-jitsu"]
   },
   {
     id: "bjj-habits-better-engineer",
     title: "5 BJJ Habits That Quiet My Code Chaos",
     slug: "bjj-habits-better-front-end-engineer",
-    excerpt: "Breathing, position, drilling, variety, tap-reset — the habits that keep me safe on the mat keep my front-end work clean, fast, and drama-free.",
+    excerpt: "Breathing, position, drilling, variety, tap-reset—habits that keep me safe on the mat also keep my front-end work clean, fast, and drama-free.",
     content: `
 # 5 BJJ Habits That Quiet My Code Chaos
 
-## 1) Breathe First, Then Pass
+<i class="fa-solid fa-wind"></i> **1) Breathe First, Then Pass**  
 On the mat: settle, frame, slow the heart rate.  
-In code: pause before rushing into a fix.
+In code: pause before rushing a fix; define the problem, list constraints, then act.  
+*Dev moment:* I write a 3-line “what’s broken / why / first experiment” note before touching code.
 
-## 2) Position Before Submission
-Secure control; let opportunities open naturally. In code: set solid patterns before optimizing.
+<i class="fa-solid fa-shield-alt"></i> **2) Position Before Submission**  
+Control beats speed.  
+*Dev moment:* Establish layout/system tokens and accessibility patterns **before** animations or micro-optimizations.
 
-## 3) Drill to Kill
-Reps build reflexes — whether it’s passing guard or writing tests.
+<i class="fa-solid fa-sync-alt"></i> **3) Drill to Kill**  
+Reps build reflexes.  
+*Dev moment:* I keep a sandbox repo for repeatable drills—ARIA patterns, test utils, perf budget checks—so they’re muscle memory on real work.
 
-## 4) Roll With Everyone
-Variety builds adaptability — train with all styles, pair with all disciplines.
+<i class="fa-solid fa-users"></i> **4) Roll With Everyone**  
+Variety builds adaptability.  
+*Dev moment:* Pair with designers, QA, and back-end. Seeing different “styles” prevents brittle solutions.
 
-## 5) Tap, Reset, Improve
-Mistakes are only fatal if you refuse to learn from them.
+<i class="fa-solid fa-undo"></i> **5) Tap, Reset, Improve**  
+Mistakes are data.  
+*Dev moment:* We do 10-minute blameless post-mortems for UI bugs: what happened, what guardrail we’ll add, and a tiny PR that codifies the lesson.
 
 ---
+
 *Want to feel this mindset in action? Book a session: [Earl the Kaiju Private Lessons](/earldkaiju).*
     `,
     publishedAt: "2024-02-01",
-    updatedAt: "2025-08-14",
+    updatedAt: "2025-09-03",
     category: 'bjj',
     featured: false,
-    tags: ['Brazilian Jiu-Jitsu', 'Career Development', 'Engineering', 'Best Practices'],
+    tags: ['Brazilian Jiu-Jitsu', 'Engineering Practices', 'Front-End', 'Mindset'],
     readTime: 4,
-    coverImage: "/images/blog/bjj-habits-better-engineer.png"
+    coverImage: "/images/blog/bjj-habits-better-engineer.png",
+    coverImageAlt: "Close-up of a gi sleeve next to a laptop on a desk",
+    relatedPosts: ["why-i-started-training-jiu-jitsu", "white-to-black-belt-journey-life-career"]
   },
   {
     id: "ai-assisted-calm-developer-flow",
-    title: "Tame the Panic: How I Use AI to Lower Dev Stress",
+    title: "How I Use AI to Beat Developer Stress (Without Losing Focus)",
     slug: "ai-ease-developer-anxiety",
-    excerpt: "AI won’t fix burnout — but used well, it trims cognitive load, keeps me in flow, and frees focus for the real work. Here’s my playbook + research.",
+    excerpt: "AI won’t fix burnout, but it can trim cognitive load so you keep your head when work gets loud. Here’s my personal playbook—plus what the data says.",
     content: `
-# Tame the Panic: How I Use AI to Lower Dev Stress
+# How I Use AI to Beat Developer Stress (Without Losing Focus)
 
-Deadlines, reviews, context-switching — the anxiety stack is real. AI won’t replace skill or judgment, but it **can** reduce cognitive load so you keep your head when work gets loud.
+Deadlines, reviews, context-switching—the anxiety stack is real. AI won’t replace judgment, but it **can** reduce cognitive load so you stay present for the real work.
 
-## What the Research Says
-- GitHub: 87% of Copilot users said it preserved mental effort.  
-- EY/Microsoft: 87% reported reduced mental energy on repetitive tasks.  
-- Stack Overflow 2024: strong adoption, positive sentiment.
+## Where AI Actually Helps Me
+- <i class="fa-solid fa-book-open"></i> **Explainers on demand:** Ask for a plain-English summary of unfamiliar APIs, then verify with docs.  
+- <i class="fa-solid fa-code"></i> **Scaffold & stub:** Generate test skeletons, types, or repetitive glue code so I save energy for tricky logic.  
+- <i class="fa-solid fa-lightbulb"></i> **Option surfacing:** Brainstorm 3–4 implementation paths, then I choose and refine.
 
-## My Rules
-1. Scope small.  
-2. Demand explanations.  
-3. Never skip tests.  
-4. Document the why.
+## Guardrails I Use
+1. <i class="fa-solid fa-compress"></i> **Scope small.** Ask narrow questions and iterate.  
+2. <i class="fa-solid fa-question-circle"></i> **Demand reasons.** “Explain why this approach is safer/faster/clearer.”  
+3. <i class="fa-solid fa-vial"></i> **Never skip tests.** AI can draft, I own correctness.  
+4. <i class="fa-solid fa-file-alt"></i> **Document the why.** I paste the chosen approach + tradeoffs into the PR description.
+
+## A Quick Story
+I had a sprint where perf work, a design change, and a bug regression collided. I used AI to:  
+- draft a performance test harness,  
+- summarize a long design thread into key decisions, and  
+- propose 2 refactor paths with tradeoffs.  
+
+**Net result:** I kept my head, shipped the fix, and wrote a clearer PR because my mental energy wasn’t burned on scaffolding.
+
+## Reality Check
+AI lightens the load; it doesn’t replace **deep focus**. When it’s time to design systems, name things, or make tradeoffs, I slow down and think.
 
 ---
+
 *Want a calmer mind and a stronger body? Try a private session: [Earl the Kaiju Private Lessons](/earldkaiju).*
     `,
     publishedAt: "2025-08-14",
-    updatedAt: "2025-08-14",
+    updatedAt: "2025-09-03",
     category: 'development',
     featured: false,
-    tags: ['AI', 'Developer Anxiety', 'Productivity', 'Mindfulness'],
+    tags: ['AI', 'Developer Productivity', 'Anxiety Management', 'Workflow'],
     readTime: 5,
-    coverImage: "/images/blog/ai-assisted-calm.png"
+    coverImage: "/images/blog/ai-assisted-calm.png",
+    coverImageAlt: "Developer desk with notebook and code editor open at night",
+    relatedPosts: ["bjj-habits-better-front-end-engineer"]
   }
 ];

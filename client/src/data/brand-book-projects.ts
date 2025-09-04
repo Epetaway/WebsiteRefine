@@ -1,8 +1,3 @@
-/**
- * Brand Book Data (TypeScript)
- * Save as: client/src/data/brand-book-projects.ts
- */
-
 export type MediaKind =
   | "logo"
   | "palette"
@@ -165,7 +160,7 @@ export const brandProjects: BrandProject[] = [
 
     logos: {
       rationale:
-        "Primary circular patch for instant recognition; full‑body mascot and dark variant support apparel, signage, and digital contexts.",
+        "Primary circular patch for instant recognition; full-body mascot and dark variant support apparel, signage, and digital contexts.",
       images: [
         {
           src: "/images/design/ultra-jitsu/usage-correct.png",
@@ -183,7 +178,7 @@ export const brandProjects: BrandProject[] = [
         },
         {
           src: "/images/design/ultra-jitsu/logo-full-body.png",
-          alt: "Full‑body panther in gi with BJJ black belt and red bar",
+          alt: "Full-body panther in gi with BJJ black belt and red bar",
           kind: "logo",
           notes: "mascot / full figure",
           aspect: "3:2",
@@ -193,7 +188,7 @@ export const brandProjects: BrandProject[] = [
 
     colors: {
       rationale:
-        "Athletic green signals growth and resilience; black/white/gray provide high‑contrast structure for legibility across merch and web.",
+        "Athletic green signals growth and resilience; black/white/gray provide high-contrast structure for legibility across merch and web.",
       palette: [
         { name: "Ultra Green", hex: "#1C8C5E", rgb: "28,140,94", cmyk: "82,0,33,45", usage: "Primary accent" },
         { name: "Jet Black", hex: "#000000", rgb: "0,0,0", cmyk: "0,0,0,100", usage: "Text / Background" },
@@ -201,12 +196,17 @@ export const brandProjects: BrandProject[] = [
         { name: "Iron Gray", hex: "#4A4A4A", rgb: "74,74,74", cmyk: "0,0,0,71", usage: "Secondary text / UI" },
         { name: "Steel Light", hex: "#C9C9C9", rgb: "201,201,201", cmyk: "0,0,0,21", usage: "Borders / Surfaces" },
       ],
-      
+      paletteImage: {
+        src: "/images/design/ultra-jitsu/palette-swatches.png",
+        alt: "Ultra Jitsu color swatches grid",
+        kind: "palette",
+        aspect: "16:9",
+      },
     },
 
     typography: {
       rationale:
-        "Strong geometric headings signal confidence; body font prioritizes clarity for schedules, offers, and long‑form info.",
+        "Strong geometric headings signal confidence; body font prioritizes clarity for schedules, offers, and long-form info.",
       fonts: [
         {
           family: "Montserrat",
@@ -214,7 +214,6 @@ export const brandProjects: BrandProject[] = [
           example: "Train with Power. Train Ultra.",
           weights: [700, 800],
           trackingNote: "tight for display",
-          
         },
         {
           family: "Roboto",
@@ -223,14 +222,42 @@ export const brandProjects: BrandProject[] = [
             "Ultra Jitsu welcomes beginners and competitors with safe, technical training in Parsippany, New Jersey.",
           weights: [400, 500],
           trackingNote: "normal for readability",
-          
         },
       ],
-      
+      specimenImage: {
+        src: "/images/design/ultra-jitsu/type-specimen.png",
+        alt: "Ultra Jitsu typography specimen with heading and body examples",
+        kind: "typography",
+        aspect: "16:9",
+      },
     },
 
     usage: {
-     
+      notes: [
+        "Maintain clear space around circular mark equal to the height of the red bar.",
+        "Avoid over-texturing behind the logo to preserve clarity.",
+      ],
+      examples: [
+        {
+          src: "/images/design/ultra-jitsu/usage-correct.png",
+          alt: "Correct usage on light backgrounds with ample clear space",
+          kind: "application",
+          aspect: "1:1",
+        },
+        {
+          src: "/images/design/ultra-jitsu/mockup-social-cta.png",
+          alt: "Social post example with correct color/contrast",
+          kind: "application",
+          notes: "IG square",
+          aspect: "1:1",
+        },
+        {
+          src: "/images/design/ultra-jitsu/mockup-gi-rashguard.png",
+          alt: "Gi/rashguard usage example with patch placement",
+          kind: "application",
+          aspect: "3:2",
+        },
+      ],
     },
 
     applications: {
@@ -285,8 +312,8 @@ export const brandProjects: BrandProject[] = [
     principles: {
       bullets: [
         "Bold iconography with clear silhouette",
-        "High‑contrast color pairing for legibility",
-        "WCAG‑aware typography scale",
+        "High-contrast color pairing for legibility",
+        "WCAG-aware typography scale",
         "Edgy textures used sparingly to retain clarity",
       ],
     },
@@ -300,18 +327,18 @@ export const brandProjects: BrandProject[] = [
       ],
     },
     imagery: {
-      styleNotes: "High‑contrast, athletic lighting; gritty but clean backdrops.",
+      styleNotes: "High-contrast, athletic lighting; gritty but clean backdrops.",
     },
     iconography: {
-      notes: "Bold, filled shapes with minimal inner detail for patch‑readability.",
+      notes: "Bold, filled shapes with minimal inner detail for patch-readability.",
     },
     motion: {
-      rules: ["200ms ease‑out for entrances", "Respect reduced motion", "Subtle CTA pulses only"],
+      rules: ["200ms ease-out for entrances", "Respect reduced motion", "Subtle CTA pulses only"],
     },
     voice: {
       adjectives: ["confident", "welcoming", "technical"],
       headlineRules: ["verbs first", "impactful, 3–6 words"],
-      microcopyRules: ["plain, safety‑first, direct benefits"],
+      microcopyRules: ["plain, safety-first, direct benefits"],
     },
   },
 
@@ -323,7 +350,7 @@ export const brandProjects: BrandProject[] = [
     year: "2025",
     overview: {
       summary:
-        "Premium black‑and‑gold identity for a live trading card auction platform, featuring a stacked‑cards emblem and web‑first UI mockups.",
+        "Premium black-and-gold identity for a live trading card auction platform, featuring a stacked-cards emblem and web-first UI mockups.",
       industry: "Trading Cards / Live Commerce",
       audience: "TCG collectors, stream viewers, and auction participants",
       personality: ["premium", "modern", "bold", "collectible"],
@@ -353,7 +380,7 @@ export const brandProjects: BrandProject[] = [
         },
         {
           src: "/images/design/legacy-pulls/logo-emblem-mark.png",
-          alt: "Mark‑only stacked card icon in gold/white",
+          alt: "Mark-only stacked card icon in gold/white",
           kind: "logo",
           notes: "for avatars/favicons",
           aspect: "1:1",
@@ -369,7 +396,12 @@ export const brandProjects: BrandProject[] = [
         { name: "Pure White", hex: "#FFFFFF", rgb: "255,255,255", cmyk: "0,0,0,0", usage: "Content / Contrast" },
         { name: "Metallic Gold", hex: "#D4AF37", rgb: "212,175,55", cmyk: "20,30,90,10", usage: "Accents, CTAs, rare highlights" },
       ],
-     
+      paletteImage: {
+        src: "/images/design/legacy-pulls/palette-swatches.png",
+        alt: "Legacy Pulls gold/black/white palette swatches",
+        kind: "palette",
+        aspect: "16:9",
+      },
     },
 
     typography: {
@@ -382,22 +414,48 @@ export const brandProjects: BrandProject[] = [
           example: "PULL YOUR LEGACY",
           weights: [700, 800],
           trackingNote: "tight for hero headings",
-          
         },
         {
           family: "Inter",
           role: "Body",
-          example: "Live trading card openings & auctions with real‑time chat and bids.",
+          example: "Live trading card openings & auctions with real-time chat and bids.",
           weights: [400, 500, 600],
           trackingNote: "neutral for UI",
-          
         },
       ],
-      
+      specimenImage: {
+        src: "/images/design/legacy-pulls/type-specimen.png",
+        alt: "Legacy Pulls type specimen showing heading and body styles",
+        kind: "typography",
+        aspect: "16:9",
+      },
     },
 
     usage: {
-      
+      notes: [
+        "Gold is for accents and CTAs—avoid long body copy in gold.",
+        "Keep emblem legible at small sizes; prefer mark-only for favicons/avatars.",
+      ],
+      examples: [
+        {
+          src: "/images/design/legacy-pulls/logo-emblem-tagline-dark.png",
+          alt: "Correct usage of emblem on black background with clear space",
+          kind: "application",
+          aspect: "1:1",
+        },
+        {
+          src: "/images/design/legacy-pulls/mockup-mobile-2up.png",
+          alt: "Mobile UI usage example showing live auction and dashboard",
+          kind: "application",
+          aspect: "3:2",
+        },
+        {
+          src: "/images/design/legacy-pulls/cover-hero.png",
+          alt: "Desktop UI banner usage with emblem and gold accents",
+          kind: "application",
+          aspect: "16:9",
+        },
+      ],
     },
 
     applications: {
@@ -414,9 +472,14 @@ export const brandProjects: BrandProject[] = [
           kind: "application",
           aspect: "3:2",
         },
-        
+        {
+          src: "/images/design/legacy-pulls/cover-hero.png",
+          alt: "Desktop hero application with emblem over dark UI",
+          kind: "application",
+          aspect: "16:9",
+        },
       ],
-      notes: "Web‑first artifacts complemented by collector‑culture touchpoints.",
+      notes: "Web-first artifacts complemented by collector-culture touchpoints.",
     },
 
     campaigns: {
@@ -436,7 +499,7 @@ export const brandProjects: BrandProject[] = [
         "Content first: video, bids, chat take priority",
         "Gold as a rarity signal, not a background",
         "Scales cleanly from mobile to desktop",
-        "High contrast for fast‑moving live UX",
+        "High contrast for fast-moving live UX",
       ],
     },
     grid: { columns: 12, gutter: 24, margin: 72 },
@@ -449,13 +512,13 @@ export const brandProjects: BrandProject[] = [
       ],
     },
     imagery: {
-      styleNotes: "Dark UI with crisp highlights; minimal noise; product‑first crops.",
+      styleNotes: "Dark UI with crisp highlights; minimal noise; product-first crops.",
     },
     iconography: {
-      notes: "Rounded‑rect card silhouette; 2px stroke, 24px grid.",
+      notes: "Rounded-rect card silhouette; 2px stroke, 24px grid.",
     },
     motion: {
-      rules: ["180–220ms ease‑out", "Snappy hover for bids", "No parallax in live views"],
+      rules: ["180–220ms ease-out", "Snappy hover for bids", "No parallax in live views"],
     },
     voice: {
       adjectives: ["premium", "clear", "energetic"],

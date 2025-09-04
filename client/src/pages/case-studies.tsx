@@ -1,29 +1,31 @@
-// client/src/pages/case-studies.tsx
-
+import { Helmet } from "react-helmet-async";
 import { projects } from "@/data/projects";
 import CaseStudyCard from "@/components/ui/case-study-card";
-
-// NEW: design/brand-book imports
 import { brandProjects } from "@/data/brand-book-projects";
 import BrandBook from "@/components/design/brand-book";
 
 export default function CaseStudies() {
-  // We’re no longer doing a 'featured' split—show engineering projects normally
   const engineeringProjects = projects ?? [];
-
-  // Flip to false when you’re ready to reveal the UC gate (kept for future use)
   const isUnderConstruction = false;
 
+  const title = "Case Studies – Front-End, UI Systems, Branding | Earl Hickson Jr.";
+  const description =
+    "Engineering case studies in React, Angular, performance, and accessibility, plus interactive brand books and identity systems.";
+
   return (
-    <div className="">
+    <div>
+      <Helmet>
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+
       {isUnderConstruction ? (
-        // --- Under Construction Gate (kept for reuse; currently disabled) ---
-        <section
-          aria-labelledby="uc-title"
-          className="relative isolate bg-gradient-to-b from-primary-50/60 via-white to-white"
-        >
+        <section aria-labelledby="uc-title" className="relative isolate bg-gradient-to-b from-primary-50/60 via-white to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
-            {/* Badge */}
             <div className="mx-auto w-fit mb-6">
               <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/80 px-4 py-1.5 text-sm font-semibold text-primary-700 shadow-sm backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-primary-500 animate-pulse" aria-hidden="true" />
@@ -31,125 +33,60 @@ export default function CaseStudies() {
               </span>
             </div>
 
-            {/* Title & Copy */}
             <div className="text-center">
-              <h1
-                id="uc-title"
-                className="text-4xl lg:text-5xl font-bold tracking-tight mb-4"
-                data-testid="page-title"
-              >
+              <h1 id="uc-title" className="text-4xl lg:text-5xl font-bold tracking-tight mb-4" data-testid="page-title">
                 Coming Soon
               </h1>
               <p className="text-lg lg:text-xl text-gray-600 max-w-2xl mx-auto">
-                I’m polishing up detailed front‑end case studies with production code, accessibility notes,
-                and performance wins. This page will be back shortly.
+                I’m polishing up detailed front-end case studies with production code, accessibility notes, and performance wins.
               </p>
             </div>
 
-            {/* Progress shimmer (subtle) */}
             <div className="mx-auto mt-10 max-w-xl">
               <div className="h-2 w-full overflow-hidden rounded-full bg-gray-100 ring-1 ring-inset ring-gray-200">
                 <div className="h-full w-1/3 animate-[shimmer_1.6s_linear_infinite] rounded-full bg-gradient-to-r from-gray-200 via-gray-300 to-gray-200" />
               </div>
             </div>
-
-            {/* CTAs (match site style) */}
-            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:hello@ehicksonjr.com"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors shadow-sm"
-                data-testid="button-contact"
-              >
-                <i className="fas fa-envelope mr-2" aria-hidden="true" />
-                Start a Conversation
-              </a>
-              <a
-                href="/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
-                data-testid="button-resume"
-              >
-                <i className="fas fa-download mr-2" aria-hidden="true" />
-                Download Resume
-              </a>
-            </div>
-
-            {/* Small note */}
-            <p className="mt-6 text-center text-sm text-gray-500">
-              Want early access to a case study draft? Email me and I’ll share a preview.
-            </p>
           </div>
 
-          {/* Decorative radial glow */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-x-0 -top-24 flex justify-center opacity-50"
-          >
-            <div className="h-48 w-[36rem] rounded-full bg-primary-200 blur-3xl"></div>
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 -top-24 flex justify-center opacity-50">
+            <div className="h-48 w-[36rem] rounded-full bg-primary-200 blur-3xl" />
           </div>
-
-          {/* Keyframes for shimmer (scoped via arbitrary layer) */}
-        
         </section>
       ) : (
         <>
-          {/* Header */}
           <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">
-                  Case Studies
-                </h1>
+                <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Case Studies</h1>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Front‑end engineering work plus a new Design &amp; Branding section
-                  highlighting identity systems, campaigns, and real‑world applications.
+                  Front-end engineering work plus a Design &amp; Branding section with identity systems and real-world applications.
                 </p>
               </div>
             </div>
           </section>
 
-          {/* Engineering Case Studies (no featured block) */}
           <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl font-bold mb-8" data-testid="section-title-engineering">
-                Engineering Case Studies
-              </h2>
+              <h2 className="text-2xl font-bold mb-8" data-testid="section-title-engineering">Engineering Case Studies</h2>
 
-              {/* Primary list (first two items) */}
               <div className="space-y-16">
                 {engineeringProjects.slice(0, 2).map((project) => (
                   <CaseStudyCard key={project.id} project={project} />
                 ))}
               </div>
 
-              {/* Additional Projects Grid */}
               {engineeringProjects.length > 2 && (
                 <div className="mt-16">
-                  <h3 className="text-xl font-bold mb-8" data-testid="section-title-additional">
-                    Additional Projects
-                  </h3>
+                  <h3 className="text-xl font-bold mb-8" data-testid="section-title-additional">Additional Projects</h3>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {engineeringProjects.slice(2).map((project) => (
-                      <div
-                        key={project.id}
-                        className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300"
-                      >
-                        <h4 className="font-bold mb-2" data-testid={`project-title-${project.id}`}>
-                          {project.title}
-                        </h4>
-                        <p
-                          className="text-sm text-gray-600 mb-4"
-                          data-testid={`project-description-${project.id}`}
-                        >
-                          {project.description}
-                        </p>
+                      <div key={project.id} className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
+                        <h4 className="font-bold mb-2" data-testid={`project-title-${project.id}`}>{project.title}</h4>
+                        <p className="text-sm text-gray-600 mb-4" data-testid={`project-description-${project.id}`}>{project.description}</p>
                         <div className="flex justify-between items-center">
                           {project.stack?.[0] ? (
-                            <span
-                              className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded"
-                              data-testid={`project-stack-${project.id}`}
-                            >
+                            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded" data-testid={`project-stack-${project.id}`}>
                               {project.stack[0]}
                             </span>
                           ) : <span />}
@@ -186,25 +123,19 @@ export default function CaseStudies() {
             </div>
           </section>
 
-          {/* Design & Branding section */}
           <section id="design" className="py-20 bg-gray-50 border-t">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="mb-10 text-center">
-                <h2 className="text-3xl md:text-4xl font-extrabold gradient-text">
-                  Design &amp; Branding
-                </h2>
+                <h2 className="text-3xl md:text-4xl font-extrabold gradient-text">Design &amp; Branding</h2>
                 <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
-                  Interactive brand books demonstrating logo systems, color palettes, typography,
-                  usage rules, and real‑world applications (social, ads, print, web).
+                  Interactive brand books: logos, colors, typography, usage rules, and applications across social, ads, print, and web.
                 </p>
               </div>
 
-              {(!brandProjects || brandProjects.length === 0) ? (
-                <div className="rounded-2xl border bg-white p-10 text-center text-gray-500">
-                  Design case studies coming soon.
-                </div>
+              {!brandProjects || brandProjects.length === 0 ? (
+                <div className="rounded-2xl border bg-white p-10 text-center text-gray-500">Design case studies coming soon.</div>
               ) : (
-                <div className="divide-y ">
+                <div className="divide-y">
                   {brandProjects.map((p) => (
                     <div key={p.id} className="py-12 first:pt-8 last:pb-8">
                       <BrandBook project={p as any} />
@@ -215,23 +146,17 @@ export default function CaseStudies() {
             </div>
           </section>
 
-          {/* CTA */}
           <section className="py-20 bg-primary-50">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl font-bold mb-6" data-testid="cta-title">
-                Interested in Working Together?
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                I’m available for front‑end development and design engagements. 
-                Let’s discuss how I can help your team build exceptional user experiences and brand systems.
-              </p>
+              <h2 className="text-3xl font-bold mb-6" data-testid="cta-title">Interested in Working Together?</h2>
+              <p className="text-xl text-gray-600 mb-8">Available for front-end development and design engagements.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="mailto:hello@ehicksonjr.com"
                   className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
                   data-testid="button-contact"
                 >
-                  <i className="fas fa-envelope mr-2" aria-hidden="true"></i>
+                  <i className="fas fa-envelope mr-2" aria-hidden="true" />
                   Start a Conversation
                 </a>
                 <a
@@ -241,7 +166,7 @@ export default function CaseStudies() {
                   className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
                   data-testid="button-resume"
                 >
-                  <i className="fas fa-download mr-2" aria-hidden="true"></i>
+                  <i className="fas fa-download mr-2" aria-hidden="true" />
                   Download Resume
                 </a>
               </div>

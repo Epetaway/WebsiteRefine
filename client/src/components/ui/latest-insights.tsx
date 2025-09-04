@@ -42,7 +42,11 @@ export default function LatestInsightsSection() {
   return <LatestInsightsSlider posts={posts} />;
 }
 
-function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
+function LatestInsightsSlider({
+  posts,
+}: {
+  posts: Array<(typeof blogPosts)[number]>;
+}) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
   const [perView, setPerView] = useState(1);
@@ -50,6 +54,7 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
   useEffect(() => {
     const el = trackRef.current;
     if (!el) return;
+
     const calc = () => {
       const w = el.clientWidth;
       const pv = w >= 1024 ? 4 : w >= 768 ? 2 : 1;
@@ -57,6 +62,7 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
       const idx = Math.round(el.scrollLeft / el.clientWidth);
       setActive(idx);
     };
+
     const ro = new ResizeObserver(calc);
     ro.observe(el);
     calc();
@@ -75,10 +81,22 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
   const scrollByPage = (dir: 1 | -1) => {
     const el = trackRef.current;
     if (!el) return;
-    el.scrollTo({
-      left: Math.max(0, Math.min(el.scrollWidth, el.scrollLeft + dir * el.clientWidth)),
-      behavior: "smooth",
-    });
+    const target = Math.round(el.scrollLeft / el.clientWidth) + dir;
+    const page = Math.max(0, Math.min(totalPages - 1, target));
+    el.scrollTo({ left: page * el.clientWidth, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+  };
+
+  const goToPage = (page: number) => {
+    const el = trackRef.current;
+    if (!el) return;
+    const clamped = Math.max(0, Math.min(totalPages - 1, page));
+    el.scrollTo({ left: clamped * el.clientWidth, behavior: prefersReducedMotion() ? "auto" : "smooth" });
+    setActive(clamped);
+  };
+
+  const onKeyDown: React.KeyboardEventHandler<HTMLDivElement> = (e) => {
+    if (e.key === "ArrowRight") { e.preventDefault(); scrollByPage(1); }
+    if (e.key === "ArrowLeft") { e.preventDefault(); scrollByPage(-1); }
   };
 
   return (
@@ -93,38 +111,47 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
           </Link>
         </div>
 
-        <div className="relative">
+        <div
+          role="region"
+          aria-roledescription="carousel"
+          aria-label="Latest blog posts"
+          aria-live="polite"
+          className="relative"
+        >
           <div className="pointer-events-none absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-white to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-white to-transparent" />
 
           <div
             ref={trackRef}
             onScroll={onScroll}
-            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] pb-1"
+            onKeyDown={onKeyDown}
+            tabIndex={0}
+            aria-label="Slides"
+            className="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-1 outline-none [-ms-overflow-style:none] [scrollbar-width:none]"
             style={{ scrollbarWidth: "none" } as any}
           >
             {posts.map((post) => (
-              <div key={post.id} className="snap-start shrink-0 w-[100%] md:w-[50%] lg:w-[25%]">
+              <div
+                key={post.id}
+                className="snap-start shrink-0 w-[100%] md:w-[50%] lg:w-[25%]"
+                aria-roledescription="slide"
+              >
                 <BlogCard post={post} variant="minimal" />
               </div>
             ))}
           </div>
 
           <div className="mt-6 flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2" aria-label="Slide pagination">
               {Array.from({ length: totalPages }).map((_, i) => (
                 <button
                   key={i}
                   aria-label={`Go to slide ${i + 1}`}
-                  onClick={() => {
-                    const el = trackRef.current;
-                    if (!el) return;
-                    el.scrollTo({ left: i * el.clientWidth, behavior: "smooth" });
-                    setActive(i);
-                  }}
+                  aria-current={i === active ? "true" : undefined}
+                  onClick={() => goToPage(i)}
                   className={[
-                    "h-2 w-2 rounded-full transition-colors",
-                    i === active ? "bg-gray-900" : "bg-gray-300 hover:bg-gray-400",
+                    "h-2 rounded-full transition-all",
+                    i === active ? "bg-gray-900 w-6" : "bg-gray-300 w-2 hover:bg-gray-400",
                   ].join(" ")}
                 />
               ))}
@@ -133,14 +160,16 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
             <div className="flex gap-2">
               <button
                 onClick={() => scrollByPage(-1)}
-                className="inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm font-medium bg-white hover:bg-gray-50"
+                disabled={active <= 0}
+                className="inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm font-medium bg-white hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="Previous"
               >
                 ← Prev
               </button>
               <button
                 onClick={() => scrollByPage(1)}
-                className="inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm font-medium bg-white hover:bg-gray-50"
+                disabled={active >= totalPages - 1}
+                className="inline-flex items-center justify-center rounded-full border px-3 py-2 text-sm font-medium bg-white hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="Next"
               >
                 Next →
@@ -151,4 +180,9 @@ function LatestInsightsSlider({ posts }: { posts: typeof blogPosts }) {
       </div>
     </section>
   );
+}
+
+function prefersReducedMotion() {
+  if (typeof window === "undefined" || typeof window.matchMedia !== "function") return false;
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 }
