@@ -53,7 +53,7 @@ export default function Home() {
                 Delivered portals with ~20% faster responsiveness and +18 Lighthouse score improvements.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+              <div className="flex flex-col sm:flex-row gap-4 mb-12 flex-wrap">
                 <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-case-studies">
                   <Link to="/case-studies">
                     <i className="fas fa-rocket mr-2" />
@@ -67,7 +67,7 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" data-testid="button-resume">
-                  <a href="/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf" target="_blank" rel="noopener noreferrer">
+                  <a href="/assets/Earl_Hickson_Resume_2025.pdf" target="_blank" rel="noopener noreferrer">
                     <i className="fas fa-download mr-2" />
                     Download Resume (PDF)
                   </a>
