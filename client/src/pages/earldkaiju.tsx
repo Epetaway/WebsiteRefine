@@ -278,49 +278,62 @@ export default function EarldKaiju() {
       </section>
 
       {/* SERVICES (cream background handled in CSS) */}
-      <section id="offer" className="py-14 bg-kaiju-cream">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "Private Lessons (1-on-1)",
-                copy: "Tailored coaching focused on self-defense fundamentals, positional awareness, and technique progression. Great for beginners, hobbyists, and competitors.",
-                rows: [
-                  ["Price", "$60 / hour"],
-                  ["Intro Offer", "$50 (one-time)"],
-                ],
-              },
-              {
-                title: "Semi-Private (2–4 people)",
-                copy: "Train with a friend or small group. You’ll share drilling time, get individualized feedback, and split the cost.",
-                rows: [["Price", "$40 per person"]],
-              },
-              {
-                title: "Parent & Me Package",
-                copy: "Ages 5–8. A 4-week bonding series that introduces safety, confidence, and fun movement patterns you can practice together.",
-                rows: [["Price", "$200 total"]],
-              },
-            ].map((card, i) => (
-              <div key={i} className="rounded-2xl p-6 bg-white/[0.06] shadow-xl shadow-black/40 flex flex-col">
-                <h3 className="font-bold text-lg">{card.title}</h3>
-                <p className="text-gray-200 text-sm mt-2">{card.copy}</p>
-                <div className="mt-4 text-sm space-y-2">
-                  {card.rows.map(([k, v]) => (
-                    <div key={k} className="flex justify-between"><span>{k}</span><span className="font-semibold">{v}</span></div>
-                  ))}
-                </div>
-                <Button
-                  className="mt-auto text-black"
-                  style={{ backgroundColor: KAIJU_GREEN }}
-                  onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
-                >
-                  Book
-                </Button>
+<section id="offer" className="py-14">
+  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid lg:grid-cols-3 gap-6">
+      {[
+        {
+          title: "Private Lessons (1-on-1)",
+          copy:
+            "Tailored coaching focused on self-defense fundamentals, positional awareness, and technique progression. Great for beginners, hobbyists, and competitors.",
+          rows: [
+            ["Price", "$60 / hour"],
+            ["Intro Offer", "$50 (one-time)"],
+          ],
+        },
+        {
+          title: "Semi-Private (2–4 people)",
+          copy:
+            "Train with a friend or small group. You’ll share drilling time, get individualized feedback, and split the cost.",
+          rows: [["Price", "$40 per person"]],
+        },
+        {
+          title: "Parent & Me Package",
+          copy:
+            "Ages 5–8. A 4-week bonding series that introduces safety, confidence, and fun movement patterns you can practice together.",
+          rows: [["Price", "$200 total"]],
+        },
+      ].map((card, i) => (
+        <div
+          key={i}
+          className="rounded-2xl p-6 bg-white border border-black/5 shadow-sm flex flex-col"
+        >
+          <h3 className="font-bold text-lg text-slate-900">{card.title}</h3>
+          <p className="text-sm mt-2 text-slate-700">{card.copy}</p>
+
+          <div className="mt-4 text-sm space-y-2">
+            {card.rows.map(([k, v]) => (
+              <div key={k} className="flex justify-between">
+                <span className="text-slate-600">{k}</span>
+                <span className="font-semibold text-slate-900">{v}</span>
               </div>
             ))}
           </div>
+
+          <Button
+            className="mt-auto text-black"
+            style={{ backgroundColor: KAIJU_GREEN }}
+            onClick={() =>
+              document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            Book
+          </Button>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* ABOUT + RECORD + LATEST VIDEOS */}
       <section className="py-14">
@@ -395,7 +408,7 @@ export default function EarldKaiju() {
       </section>
 
       {/* TESTIMONIALS (stationary bg + overlay slider) */}
-      <Testimonials backgroundImage="/images/kaiju-testimonials-bg.jpg" />
+      <Testimonials backgroundImage="/images/testimonials-bg.jpg" />
 
       {/* SEO JSON-LD */}
       <script

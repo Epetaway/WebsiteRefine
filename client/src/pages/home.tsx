@@ -38,7 +38,7 @@ export default function Home() {
                 Open to Full-Time & Contract Opportunities
               </div>
 
-              <h1 className="text-6xl lg:text-8xl font-bold leading-tight mb-6">
+              <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-6">
                 <span className="gradient-text" data-testid="hero-title-primary">
                   Senior Front-End / UI Engineer
                 </span>
