@@ -151,7 +151,7 @@ export const brandProjects: BrandProject[] = [
       audience: "Beginners, families, hobbyists, and competitors in Morris County, NJ",
       personality: ["fierce", "disciplined", "approachable", "modern"],
       cover: {
-        src: "/images/design/ultra-jitsu/cover-hero.webp",
+        src: "/images/design/ultra-jitsu/usage-dark.png",
         alt: "Ultra Jitsu hero: circle logo, full-body panther in gi, and dark variant",
         kind: "application",
         aspect: "16:9",
