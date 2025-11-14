@@ -67,7 +67,7 @@ export default function Home() {
                   </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" data-testid="button-resume">
-                  <a href="/assets/Earl_Hickson_Jr_Resume.docx" target="_blank" rel="noopener noreferrer">
+                  <a href="/assets/" target="_blank" rel="noopener noreferrer">
                     <i className="fas fa-download mr-2" />
                     Download Resume (PDF)
                   </a>

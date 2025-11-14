@@ -186,8 +186,8 @@ export default function About() {
             <div className="mt-8 text-center space-y-3">
               <div>
                 <a
-                  href="/assets/Earl_Hickson_Resume_2025.docx"
-                  download="Earl_Hickson_Resume_2025.docx"
+                  href="/assets/Earl_Hickson_Jr_FrontEnd_Engineer.docx"
+                  download="Earl_Hickson_Jr_FrontEnd_Engineer.docx"
                   className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600 mr-6"
                   data-testid="download-resume"
                 >
