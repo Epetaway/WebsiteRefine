@@ -11,9 +11,9 @@ const SITE = "https://www.ehicksonjr.com";
 
 export default function Home() {
   const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 2);
-  const title = "Senior Front-End / UI Engineer – Earl Hickson Jr.";
+  const title = "Front-End Developer – Earl Hickson Jr.";
   const description =
-    "React & Angular specialist improving performance, accessibility, and UX. Delivered 20% faster responsiveness and +18 Lighthouse gains. Parsippany, NJ.";
+    "Front-End Developer building responsive, accessible, and fast user interfaces with React, Angular, Vue, and TypeScript. 6+ years across healthcare, marketing, and non-profit. Parsippany, NJ.";
 
   return (
     <div>
@@ -40,17 +40,16 @@ export default function Home() {
 
               <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-6">
                 <span className="gradient-text" data-testid="hero-title-primary">
-                  Senior Front-End / UI Engineer
+                  Front-End Developer
                 </span>
               </h1>
 
               <h3 className="text-xl lg:text-2xl text-gray-900 mb-6" data-testid="hero-title-secondary">
-                React • Angular • TypeScript • JavaScript (ES6+) • HTML5 • CSS/SCSS • Accessibility
+                Building responsive, accessible, and fast user interfaces with modern JavaScript frameworks.
               </h3>
 
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
-                Front-End focused developer with 6+ years building responsive, accessible, performance-minded web apps.
-                Delivered portals with ~20% faster responsiveness and +18 Lighthouse score improvements.
+                I build responsive, accessible, and performance-focused web interfaces using React, Angular, Vue, and modern JavaScript. I enjoy turning complex requirements into clean, maintainable UI that feels fast and intuitive for users.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12 flex-wrap">
@@ -90,7 +89,7 @@ export default function Home() {
             <div className="relative animate-float">
               <img
                 src={profileImage}
-                alt="Earl Hickson Jr. – Senior Front-End / UI Engineer"
+                alt="Earl Hickson Jr. – Front-End Developer"
                 className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
                 data-testid="hero-image"
               />
@@ -138,34 +137,34 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <WinTile
-              icon="fas fa-tachometer-alt"
-              title="Performance Optimization"
-              metric="Time to Interactive"
-              improvement="44% ↓"
-              description="Normalized API adapters and skeleton states reduced TTI from 2.1s to 1.2s."
-              stack="Stack: React • TypeScript • Next.js"
-              bgColor="bg-gradient-to-br from-green-50 to-emerald-50"
-              iconColor="bg-green-500"
-              metricColor="text-green-600"
-            />
-            <WinTile
               icon="fas fa-universal-access"
-              title="Accessibility"
-              metric="WCAG Alignment"
-              improvement="AA"
-              description="ARIA roles, keyboard navigation, and contrast improvements to achieve WCAG 2.1 AA."
+              title="Accessibility & UX"
+              metric="+18%"
+              improvement="Lighthouse Score"
+              description="Improved Lighthouse accessibility scores by up to 18 points by auditing pages for WCAG 2.1 issues, fixing semantics, and improving keyboard navigation."
               stack="Tools: axe-core • WAVE • VoiceOver"
               bgColor="bg-gradient-to-br from-blue-50 to-indigo-50"
               iconColor="bg-blue-500"
               metricColor="text-blue-600"
             />
             <WinTile
-              icon="fas fa-compress-alt"
-              title="Bundle Optimization"
-              metric="Initial Bundle"
-              improvement="73% ↓"
-              description="Code splitting and tree shaking brought 1.2MB down to 320KB."
-              stack="Tools: Vite • Webpack • Bundle Analyzer"
+              icon="fas fa-tachometer-alt"
+              title="Performance & Stability"
+              metric="Faster loads"
+              improvement="Mobile Optimized"
+              description="Reduced layout shift and improved mobile performance by optimizing CSS structure, images, and JavaScript bundles across key user flows."
+              stack="Tools: Lighthouse • Web Vitals • DevTools"
+              bgColor="bg-gradient-to-br from-green-50 to-emerald-50"
+              iconColor="bg-green-500"
+              metricColor="text-green-600"
+            />
+            <WinTile
+              icon="fas fa-chart-line"
+              title="Conversion & Engagement"
+              metric="Lower bounce rate"
+              improvement="Higher completions"
+              description="Supported marketing teams with A/B-tested landing pages and UX refinements that reduced bounce rate and increased form completion rates."
+              stack="Tools: Google Analytics • Hotjar • A/B Testing"
               bgColor="bg-gradient-to-br from-purple-50 to-violet-50"
               iconColor="bg-purple-500"
               metricColor="text-purple-600"
@@ -187,22 +186,22 @@ export default function Home() {
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-cogs text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-ui-engineering">UI Engineering</h3>
-              <p className="text-sm text-gray-600">Reusable component libraries, design tokens, responsive systems.</p>
+              <p className="text-sm text-gray-600">Building component-based interfaces in React, Angular, and Vue, with reusable patterns and clean, testable code.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-cubes text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-design-systems">Design Systems</h3>
-              <p className="text-sm text-gray-600">Scalable components, docs, governance, and adoption strategy.</p>
+              <p className="text-sm text-gray-600">Implementing component libraries and design system tokens in code, ensuring consistent typography, spacing, and interaction patterns.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-universal-access text-primary-500 text-2xl mb-4" />
-              <h3 className="font-bold mb-2" data-testid="service-accessibility">Accessibility</h3>
-              <p className="text-sm text-gray-600">WCAG 2.1 AA, screen reader testing, inclusive patterns.</p>
+              <h3 className="font-bold mb-2" data-testid="service-accessibility">Accessibility (WCAG 2.1)</h3>
+              <p className="text-sm text-gray-600">Auditing and fixing UI for keyboard navigation, ARIA labels, color contrast, and semantic markup.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-rocket text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-performance">Performance</h3>
-              <p className="text-sm text-gray-600">Core Web Vitals, bundle optimization, caching strategies.</p>
+              <p className="text-sm text-gray-600">Profiling and improving performance via bundling strategies, lazy loading, image optimization, and reducing layout shift.</p>
             </div>
           </div>
         </div>

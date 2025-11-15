@@ -7,8 +7,12 @@ export default function About() {
     { name: "JavaScript/TypeScript", level: "Expert", color: "bg-green-100 text-green-700" },
     { name: "React/Angular", level: "Expert", color: "bg-green-100 text-green-700" },
     { name: "WCAG/Accessibility", level: "Expert", color: "bg-green-100 text-green-700" },
-    { name: "Design Systems", level: "Expert", color: "bg-green-100 text-green-700" },
+    { name: "Design Systems & UI Patterns", level: "Expert", color: "bg-green-100 text-green-700" },
+    { name: "Vue.js", level: "Proficient", color: "bg-blue-100 text-blue-700" },
     { name: "Node.js/Express", level: "Proficient", color: "bg-blue-100 text-blue-700" },
+    { name: "API Integration", level: "Proficient", color: "bg-blue-100 text-blue-700" },
+    { name: "Performance Optimization", level: "Proficient", color: "bg-blue-100 text-blue-700" },
+    { name: "WordPress (themes & plugins)", level: "Proficient", color: "bg-blue-100 text-blue-700" },
     { name: "GraphQL", level: "Familiar", color: "bg-yellow-100 text-yellow-700" },
     { name: "Python", level: "Familiar", color: "bg-yellow-100 text-yellow-700" },
   ];
@@ -37,16 +41,16 @@ export default function About() {
   return (
     <div className="">
       <Helmet>
-        <title>About — Earl Hickson Jr. | Senior Front-End / UI Engineer</title>
+        <title>About — Earl Hickson Jr. | Front-End Developer</title>
         <meta
           name="description"
-          content="Senior Front-End / UI Engineer in Parsippany, NJ. React, Angular, TypeScript, accessibility and performance. BJJ black belt, mentor, and lifelong learner."
+          content="Front-End Developer in Parsippany, NJ. Building accessible, performance-focused user interfaces with React, Angular, Vue, and TypeScript. BJJ black belt and mentor."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/about" />
         <meta property="og:title" content="About — Earl Hickson Jr." />
         <meta
           property="og:description"
-          content="Senior Front-End / UI Engineer focused on React, Angular, accessibility and performance. BJJ black belt and mentor."
+          content="Front-End Developer focused on React, Angular, accessibility and performance. BJJ black belt and mentor."
         />
         <meta property="og:type" content="profile" />
       </Helmet>
@@ -59,7 +63,7 @@ export default function About() {
               About Earl
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Engineer, designer, Brazilian Jiu-Jitsu black belt, and lifelong learner based in Parsippany, New Jersey
+              Front-End Developer with experience across healthcare, marketing, and non-profit products. I build responsive, accessible, and performance-minded interfaces using React, Angular, Vue, and modern JavaScript.
             </p>
           </div>
         </div>
@@ -74,9 +78,8 @@ export default function About() {
                 Technical Background
               </h2>
               <p className="text-gray-700 mb-6" data-testid="bio-technical">
-                I’m a Senior Front-End / UI Engineer and Graphic Designer with a B.A. in Graphic Design (Kean University)
-                and a Front-End Web Development Tech Degree (Team Treehouse). I build accessible, performance-minded web
-                experiences that balance design craft with engineering rigor.
+                I'm a Front-End Developer and graphic designer by training, with a B.A. in Graphic Design (Kean University)
+                and a Front-End Web Development Tech Degree from Team Treehouse. I focus on combining clean visual design with solid engineering practices to build accessible, maintainable web interfaces.
               </p>
 
               <h3 className="text-xl font-semibold mb-4">Skills Matrix</h3>
@@ -94,11 +97,14 @@ export default function About() {
               </div>
 
               <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
+              </p>
               <div className="text-sm text-gray-600 space-y-2">
                 <div data-testid="workflow-1">• Tickets → Feature branches → Pull requests → Code reviews</div>
-                <div data-testid="workflow-2">• TDD with Jest and Cypress</div>
-                <div data-testid="workflow-3">• CI/CD with GitHub Actions & Vercel</div>
-                <div data-testid="workflow-4">• Design collaboration in Figma & Storybook</div>
+                <div data-testid="workflow-2">• CI/CD with GitHub Actions & Vercel</div>
+                <div data-testid="workflow-3">• Design collaboration in Figma & Storybook</div>
+                <div data-testid="workflow-4">• Analytics & A/B testing to inform UI decisions</div>
               </div>
             </div>
 
