@@ -44,10 +44,6 @@ export default function Home() {
                 </span>
               </h1>
 
-              <h3 className="text-xl lg:text-2xl text-gray-900 mb-6" data-testid="hero-title-secondary">
-                Building responsive, accessible, and fast user interfaces with modern JavaScript frameworks.
-              </h3>
-
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
                 I build responsive, accessible, and performance-focused web interfaces using React, Angular, Vue, and modern JavaScript. I enjoy turning complex requirements into clean, maintainable UI that feels fast and intuitive for users.
               </p>
@@ -72,6 +68,10 @@ export default function Home() {
                   </a>
                 </Button>
               </div>
+
+              <p className="mb-6 text-xs uppercase tracking-wide text-emerald-400">
+                Based in Parsippany, New Jersey
+              </p>
 
               <div className="flex flex-wrap gap-2">
                 <TechBadge name="React" color="blue" />
@@ -100,7 +100,7 @@ export default function Home() {
           </div>
 
           <div className="mt-6 text-sm text-gray-600">
-            Parsippany, NJ •{" "}
+            <span className="text-xs uppercase tracking-wide text-emerald-400">Based in Parsippany, New Jersey</span> •{" "}
             <a className="underline decoration-gray-300 hover:decoration-gray-500" href="mailto:e@ehicksonjr.com">
               e@ehicksonjr.com
             </a>{" "}
@@ -186,22 +186,22 @@ export default function Home() {
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-cogs text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-ui-engineering">UI Engineering</h3>
-              <p className="text-sm text-gray-600">Building component-based interfaces in React, Angular, and Vue, with reusable patterns and clean, testable code.</p>
+              <p className="text-sm text-gray-600">Component-driven UI development in React, Angular, and Vue. I build reusable patterns, keep code readable, and align front-end implementation with design systems.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-cubes text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-design-systems">Design Systems</h3>
-              <p className="text-sm text-gray-600">Implementing component libraries and design system tokens in code, ensuring consistent typography, spacing, and interaction patterns.</p>
+              <p className="text-sm text-gray-600">Implementing design systems in code with consistent typography, spacing, and interaction patterns. I translate Figma libraries into maintainable components.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-universal-access text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-accessibility">Accessibility (WCAG 2.1)</h3>
-              <p className="text-sm text-gray-600">Auditing and fixing UI for keyboard navigation, ARIA labels, color contrast, and semantic markup.</p>
+              <p className="text-sm text-gray-600">Auditing and fixing UI for WCAG 2.1 AA: semantic HTML, ARIA labels, keyboard navigation, focus management, and color contrast.</p>
             </div>
             <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
               <i className="fas fa-rocket text-primary-500 text-2xl mb-4" />
               <h3 className="font-bold mb-2" data-testid="service-performance">Performance</h3>
-              <p className="text-sm text-gray-600">Profiling and improving performance via bundling strategies, lazy loading, image optimization, and reducing layout shift.</p>
+              <p className="text-sm text-gray-600">Profiling and improving performance with techniques like code splitting, lazy loading, image optimization, and reducing cumulative layout shift.</p>
             </div>
           </div>
         </div>

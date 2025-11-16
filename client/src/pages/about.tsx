@@ -63,7 +63,7 @@ export default function About() {
               About Earl
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Front-End Developer with experience across healthcare, marketing, and non-profit products. I build responsive, accessible, and performance-minded interfaces using React, Angular, Vue, and modern JavaScript.
+              I'm a Front-End Developer with experience across healthcare, marketing, and non-profit products. I build responsive, accessible, and performance-minded interfaces using React, Angular, Vue, and modern JavaScript, and I enjoy collaborating with designers and product teams to ship real features that people actually use.
             </p>
           </div>
         </div>
@@ -98,6 +98,8 @@ export default function About() {
 
               <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
               <p className="text-sm text-gray-600 mb-4">
+                I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
+              </p>
                 I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
               </p>
               <div className="text-sm text-gray-600 space-y-2">

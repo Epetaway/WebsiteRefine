@@ -55,7 +55,7 @@ export default function Blog() {
           <div className="text-center mb-16">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Latest Writings</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Insights on front-end development, Brazilian Jiu-Jitsu, and the intersection of technical mastery and personal growth
+              Articles on front-end development, accessibility, performance, and how I think about building UI as a developer.
             </p>
           </div>
 

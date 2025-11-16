@@ -1,6 +1,6 @@
 # Overview
 
-This is a professional portfolio website for Earl Hickson Jr., a Senior Front-End Developer based in Parsippany, New Jersey. The application showcases case studies, blog posts, professional experience, and provides contact functionality. It also features a unique section for Brazilian Jiu-Jitsu lesson bookings at /EarldKaiju, reflecting Earl's expertise as a BJJ black belt. The site includes automatic content fetching from social media (@earld.kaiju Instagram and @earldkaiju YouTube) and is built with modern web technologies following accessibility standards (WCAG).
+This is a professional portfolio website for Earl Hickson Jr., a Front-End Developer based in Parsippany, New Jersey. The application showcases case studies, blog posts, professional experience, and provides contact functionality. It also features a unique section for Brazilian Jiu-Jitsu lesson bookings at /EarldKaiju, reflecting Earl's expertise as a BJJ black belt. The site includes automatic content fetching from social media (@earld.kaiju Instagram and @earldkaiju YouTube) and is built with modern web technologies following accessibility standards (WCAG).
 
 # User Preferences
 

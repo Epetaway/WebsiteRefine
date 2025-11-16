@@ -1,8 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { projects } from "@/data/projects";
 import CaseStudyCard from "@/components/ui/case-study-card";
-import { brandProjects } from "@/data/brand-book-projects";
-import BrandBook from "@/components/design/brand-book";
 
 export default function CaseStudies() {
   const engineeringProjects = projects ?? [];
@@ -60,7 +58,7 @@ export default function CaseStudies() {
               <div className="text-center mb-16">
                 <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Case Studies</h1>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  Front-end engineering work plus a Design &amp; Branding section with identity systems and real-world applications.
+                  A collection of front-end engineering case studies inspired by real-world work across healthcare, marketing, and non-profit products. These examples highlight UI problem-solving, accessibility improvements, performance optimization, and responsive component-driven development.
                 </p>
               </div>
             </div>
@@ -123,36 +121,13 @@ export default function CaseStudies() {
             </div>
           </section>
 
-          <section id="design" className="py-20 bg-gray-50 border-t">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="mb-10 text-center">
-                <h2 className="text-3xl md:text-4xl font-extrabold gradient-text">Design &amp; Branding</h2>
-                <p className="mt-3 text-gray-600 max-w-3xl mx-auto">
-                  Interactive brand books: logos, colors, typography, usage rules, and applications across social, ads, print, and web.
-                </p>
-              </div>
-
-              {!brandProjects || brandProjects.length === 0 ? (
-                <div className="rounded-2xl border bg-white p-10 text-center text-gray-500">Design case studies coming soon.</div>
-              ) : (
-                <div className="divide-y">
-                  {brandProjects.map((p) => (
-                    <div key={p.id} className="py-12 first:pt-8 last:pb-8">
-                      <BrandBook project={p as any} />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </section>
-
           <section className="py-20 bg-primary-50">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
               <h2 className="text-3xl font-bold mb-6" data-testid="cta-title">Interested in Working Together?</h2>
-              <p className="text-xl text-gray-600 mb-8">Available for front-end development and design engagements.</p>
+              <p className="text-xl text-gray-600 mb-8">Available for front-end development and engineering projects.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="mailto:hello@ehicksonjr.com"
+                  href="mailto:e@ehicksonjr.com"
                   className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
                   data-testid="button-contact"
                 >
@@ -160,7 +135,7 @@ export default function CaseStudies() {
                   Start a Conversation
                 </a>
                 <a
-                  href="/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf"
+                  href="/assets/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"

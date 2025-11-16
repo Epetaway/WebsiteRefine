@@ -1,6 +1,6 @@
 # Earl Hickson Jr. - Portfolio Website
 
-Professional Brazilian Jiu-Jitsu coaching platform and portfolio website showcasing Earl's expertise as a Senior Front-End Developer and BJJ Black Belt.
+Professional Brazilian Jiu-Jitsu coaching platform and portfolio website showcasing Earl's expertise as a Front-End Developer and BJJ Black Belt.
 
 ## 🚀 Quick Start
 

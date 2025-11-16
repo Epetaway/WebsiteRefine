@@ -9,7 +9,7 @@ export default function Footer() {
             Earl Hickson Jr<span className="text-gray-500">.</span>
           </div>
           <p className="text-sm">
-            Senior Front-End / UI Engineer — Parsippany, New Jersey
+            Front-End Developer — Parsippany, New Jersey
           </p>
         </div>
 
