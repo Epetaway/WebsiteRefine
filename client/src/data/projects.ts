@@ -151,6 +151,46 @@ export const projects: Project[] = [
   },
 
   {
+    id: "dojonet-martial-arts-platform",
+    slug: "dojonet-martial-arts-platform",
+    title: "DojoNet – Martial Arts Social Platform",
+    role: "Lead Front-End Developer & UI/UX Designer",
+    category: "development",
+    description: "A community-focused React SPA simulating a full-stack social platform experience for martial artists.",
+    summary: "Built a MySpace-meets-Reddit-style social platform prototype using React, Vite, and Tailwind. Architected as a single-page app using HashRouter with local JSON API simulation and modular components. Includes a dashboard feed, journal system, swipe-based partner finder, and event aggregation.",
+    problem: "Martial arts communities lack a dedicated platform that combines social networking, training journals, partner discovery, and event aggregation in one accessible interface.",
+    solution: "Architected a modular React SPA using HashRouter for GitHub Pages compatibility, localStorage persistence, and JSON data simulation. Implemented Tailwind dark-mode design system with swipe-based interactions and accessible UI patterns.",
+    result: "Delivered a production-ready prototype demonstrating full-stack thinking with front-end only tools, showcasing component architecture, state management, and modern UX patterns.",
+    stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "localStorage", "GitHub Pages"],
+    tags: ["React", "TypeScript", "Community Platform", "SPA", "Social Network"],
+    features: [
+      "Modular features: Feed, ProfileCard, Journal, Events, Partner Finder",
+      "Local JSON data simulation + localStorage persistence",
+      "SPA routing with HashRouter (GitHub Pages support)",
+      "Tailwind-powered dark-mode design system",
+      "Swipe-style partner matching UI",
+      "Event cards with static scraper logic",
+      "Offline journaling with text/photo/video",
+      "CSS animation for swipe/interactions",
+      "Accessible UI and semantic HTML",
+      "Journal training, upload videos, and track belts",
+      "Swipe-style partner discovery",
+      "Find open mats, tournaments, and seminars",
+      "Verified school affiliations and user roles",
+      "Parental supervision and youth safety features"
+    ],
+    metrics: [
+      { label: "Architecture", value: "Modular SPA", improvement: "Scalable components" },
+      { label: "UX Pattern", value: "Swipe-based", improvement: "Modern interactions" },
+      { label: "Accessibility", value: "Semantic HTML", improvement: "WCAG patterns" }
+    ],
+    links: {
+      demo: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
+      repo: "https://github.com/epetaway/DojoNet-Prototype-MAX"
+    }
+  },
+
+  {
     id: "resume-craft",
     title: "ResumeCraft – AI-Powered Resume Builder",
     description:
