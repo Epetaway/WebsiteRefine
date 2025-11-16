@@ -9,13 +9,13 @@ export default function Footer() {
             Earl Hickson Jr<span className="text-gray-500">.</span>
           </div>
           <p className="text-sm">
-            Front-End Developer — Parsippany, New Jersey
+            Front-End Developer • React • Angular • TypeScript • Accessible UI Engineering
           </p>
         </div>
 
         <nav className="grid gap-2 text-sm">
-          <Link to="/case-studies" className="hover:text-white transition-colors">
-            Case Studies
+          <Link to="/projects" className="hover:text-white transition-colors">
+            Projects
           </Link>
           <Link to="/about" className="hover:text-white transition-colors">
             About

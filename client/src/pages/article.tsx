@@ -145,8 +145,8 @@ export default function Article() {
                         Get In Touch
                       </a>
                     </Button>
-                    <Button asChild variant="outline" size="lg" data-testid="button-case-studies">
-                      <Link href="/case-studies">
+                    <Button asChild variant="outline" size="lg" data-testid="button-projects">
+                      <Link href="/projects">
                         <i className="fas fa-code mr-2"></i>
                         View Case Studies
                       </Link>

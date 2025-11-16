@@ -11,9 +11,9 @@ const SITE = "https://www.ehicksonjr.com";
 
 export default function Home() {
   const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 2);
-  const title = "Front-End Developer – Earl Hickson Jr.";
+  const title = "Earl Hickson Jr – Front-End Developer | React, Angular, TypeScript";
   const description =
-    "Front-End Developer building responsive, accessible, and fast user interfaces with React, Angular, Vue, and TypeScript. 6+ years across healthcare, marketing, and non-profit. Parsippany, NJ.";
+    "Portfolio of Earl Hickson Jr, a Front-End Developer specializing in accessible, responsive, and component-driven UI development across healthcare, marketing, and non-profit platforms.";
 
   return (
     <div>
@@ -38,28 +38,26 @@ export default function Home() {
                 Open to Full-Time & Contract Opportunities
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-6">
+              <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-4">
                 <span className="gradient-text" data-testid="hero-title-primary">
                   Front-End Developer
                 </span>
               </h1>
+              
+              <p className="text-2xl lg:text-3xl text-gray-700 font-medium mb-6">
+                React • Angular • TypeScript
+              </p>
 
               <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
-                I build responsive, accessible, and performance-focused web interfaces using React, Angular, Vue, and modern JavaScript. I enjoy turning complex requirements into clean, maintainable UI that feels fast and intuitive for users.
+                I build fast, accessible, maintainable frontends. My work focuses on shipping real UI, solving real problems, and keeping complexity low. I've delivered production features across healthcare systems, oncology content platforms, marketing landing pages, and small-business apps.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12 flex-wrap">
-                <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-case-studies">
-                  <Link to="/case-studies">
+                <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-projects">
+                  <Link to="/projects">
                     <i className="fas fa-rocket mr-2" />
-                    View Case Studies
+                    View Projects
                   </Link>
-                </Button>
-                <Button asChild size="lg" className="bg-black text-white hover:bg-gray-900" data-testid="button-contact">
-                  <a href="mailto:e@ehicksonjr.com">
-                    <i className="fas fa-handshake mr-2" />
-                    Let’s Talk
-                  </a>
                 </Button>
                 <Button asChild variant="outline" size="lg" data-testid="button-resume">
                   <a href="/assets/" target="_blank" rel="noopener noreferrer">
@@ -76,13 +74,16 @@ export default function Home() {
               <div className="flex flex-wrap gap-2">
                 <TechBadge name="React" color="blue" />
                 <TechBadge name="Angular" color="red" />
+                <TechBadge name="Vue" color="green" />
                 <TechBadge name="TypeScript" color="blue" />
-                <TechBadge name="Accessibility (WCAG 2.1)" color="orange" />
-                <TechBadge name="Performance" color="green" />
-                <TechBadge name="HTML5" color="orange" />
-                <TechBadge name="CSS/SCSS" color="blue" />
-                <TechBadge name="API Integration" color="green" />
-                <TechBadge name="Git/GitHub" color="black" />
+                <TechBadge name="JavaScript (ES6+)" color="yellow" />
+                <TechBadge name="Next.js" color="black" />
+                <TechBadge name="TailwindCSS" color="blue" />
+                <TechBadge name="Bootstrap" color="purple" />
+                <TechBadge name="Node.js" color="green" />
+                <TechBadge name="REST APIs" color="blue" />
+                <TechBadge name="WCAG 2.1" color="orange" />
+                <TechBadge name="CI/CD" color="gray" />
               </div>
             </div>
 
@@ -137,34 +138,34 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8">
             <WinTile
-              icon="fas fa-universal-access"
-              title="Accessibility & UX"
-              metric="+18%"
-              improvement="Lighthouse Score"
-              description="Improved Lighthouse accessibility scores by up to 18 points by auditing pages for WCAG 2.1 issues, fixing semantics, and improving keyboard navigation."
-              stack="Tools: axe-core • WAVE • VoiceOver"
+              icon="fas fa-bug-slash"
+              title="Healthcare Portals"
+              metric="150+"
+              improvement="UI/UX Issues Resolved"
+              description="Fixed 150+ UI/UX issues resolved in enterprise patient & provider portals (Asembia)"
+              stack="Angular • TypeScript • WCAG 2.1"
               bgColor="bg-gradient-to-br from-blue-50 to-indigo-50"
               iconColor="bg-blue-500"
               metricColor="text-blue-600"
             />
             <WinTile
-              icon="fas fa-tachometer-alt"
-              title="Performance & Stability"
-              metric="Faster loads"
-              improvement="Mobile Optimized"
-              description="Reduced layout shift and improved mobile performance by optimizing CSS structure, images, and JavaScript bundles across key user flows."
-              stack="Tools: Lighthouse • Web Vitals • DevTools"
+              icon="fas fa-chart-line"
+              title="Oncology Platforms"
+              metric="+18%"
+              improvement="Engagement Increase"
+              description="18% engagement increase across oncology microsites & email campaigns (BroadcastMed)"
+              stack="CMS Templates • HTML Email • Analytics"
               bgColor="bg-gradient-to-br from-green-50 to-emerald-50"
               iconColor="bg-green-500"
               metricColor="text-green-600"
             />
             <WinTile
-              icon="fas fa-chart-line"
-              title="Conversion & Engagement"
-              metric="Lower bounce rate"
-              improvement="Higher completions"
-              description="Supported marketing teams with A/B-tested landing pages and UX refinements that reduced bounce rate and increased form completion rates."
-              stack="Tools: Google Analytics • Hotjar • A/B Testing"
+              icon="fas fa-rocket"
+              title="Marketing Systems"
+              metric="+12%"
+              improvement="Conversion Lift"
+              description="12% conversion lift through A/B-tested React/Vue landing pages (Prosek Partners)"
+              stack="React • Vue • A/B Testing"
               bgColor="bg-gradient-to-br from-purple-50 to-violet-50"
               iconColor="bg-purple-500"
               metricColor="text-purple-600"

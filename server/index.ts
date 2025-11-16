@@ -1,7 +1,11 @@
 import express, { type Request, Response, NextFunction } from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -49,7 +53,7 @@ app.use((req, res, next) => {
   });
 
   // Serve static assets (including resume) in all environments
-  app.use('/assets', express.static(path.resolve(import.meta.dirname, '..', 'client', 'public', 'assets')));
+  app.use('/assets', express.static(path.resolve(__dirname, '..', 'client', 'public', 'assets')));
 
   // importantly only setup vite in development and after
   // setting up all the other routes so the catch-all route

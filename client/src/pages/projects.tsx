@@ -78,7 +78,7 @@ export default function Projects() {
                 <div className="flex gap-3">
                   {project.slug && (
                     <a
-                      href={`/case-studies/${project.slug}`}
+                      href={`/projects/${project.slug}`}
                       className="inline-flex items-center text-primary-500 hover:text-primary-600 font-medium text-sm"
                       data-testid={`project-case-study-${project.id}`}
                     >
@@ -203,9 +203,9 @@ export default function Projects() {
               Get In Touch
             </a>
             <a
-              href="/case-studies"
+              href="/projects"
               className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
-              data-testid="button-case-studies"
+              data-testid="button-projects"
             >
               <i className="fas fa-rocket mr-2" aria-hidden="true" />
               View Case Studies

@@ -3,10 +3,9 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 
 const nav = [
   { to: "/", label: "Home" },
-  { to: "/case-studies", label: "Case Studies" },
+  { to: "/projects", label: "Projects" },
   { to: "/about", label: "About" },
   { to: "/blog", label: "Blog" },
-  { to: "/earldkaiju", label: "BJJ Lessons" },
 ];
 
 const KAIJU_GREEN = "var(--kaiju-green, #86d64a)";

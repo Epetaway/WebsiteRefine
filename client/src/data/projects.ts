@@ -25,19 +25,53 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "patient-engagement-portal",
+    slug: "patient-engagement-portal",
+    title: "Patient Engagement Portal – Front-End Demo",
+    role: "Front-End Developer",
+    category: "development",
+    description: "A fully functional patient portal demo built as a single-page application using modern JavaScript patterns. Implements multi-step registration, login/session handling, dashboard components, refill workflows, profile management, and accessibility patterns.",
+    summary: "A fully functional patient portal demo built as a single-page application using modern JavaScript patterns. Implements multi-step registration, login/session handling, dashboard components, refill workflows, profile management, and accessibility patterns.",
+    problem: "Healthcare portals need complex multi-step workflows, session-style authentication, responsive dashboards, and WCAG-compliant interfaces without overengineered frameworks.",
+    solution: "Built a lightweight SPA using ES6+ modules with an MVC-inspired controller/service architecture. Implemented modular components, localStorage-based state, History API routing, and comprehensive WCAG compliance patterns.",
+    result: "Delivered a production-ready demo that demonstrates scalable front-end patterns, accessible form handling, and real-world healthcare UI workflows.",
+    stack: ["JavaScript (ES6+)", "Bootstrap 5", "SPA Architecture", "Form Validation", "Responsive UI", "WCAG 2.1"],
+    tags: ["JavaScript", "Bootstrap", "Accessibility", "Healthcare", "SPA"],
+    features: [
+      "4-step registration wizard with validation + persistent form state",
+      "Session-style login & protected routing system",
+      "Modular dashboard with prescriptions, status cards, and quick actions",
+      "Refill workflow with confirmation and toast notifications",
+      "Profile + consent pages with accessible, WCAG-friendly form elements",
+      "Information request submission & tracking",
+      "Bootstrap-based responsive layout with custom healthcare theme",
+      "SPA routing using History API with hash fallback support",
+      "CI/CD deployment to GitHub Pages"
+    ],
+    metrics: [
+      { label: "Accessibility", value: "WCAG 2.1 AA", improvement: "Compliant" },
+      { label: "Architecture", value: "MVC-inspired", improvement: "Scalable" },
+      { label: "Responsiveness", value: "Mobile-first", improvement: "All devices" }
+    ],
+    links: {
+      demo: "https://epetaway.github.io/patient-portal-demo/#login",
+      repo: "https://github.com/epetaway/patient-portal-demo"
+    }
+  },
+  {
     id: "healthcare-portal-ui-redesign",
-    slug: "healthcare-portal-ui-redesign",
+    slug: "patient-engagement-portal",
     title: "Healthcare Portal UI Redesign",
     role: "Front-End Developer",
-    description: "Modernized a patient-facing healthcare portal using Angular and TypeScript, improving accessibility, UI consistency, and performance across key user flows.",
-    summary: "Modernized a patient-facing healthcare portal using Angular and TypeScript, improving accessibility, UI consistency, and performance across key user flows.",
+    description: "Modernized a patient-facing healthcare portal using modern JavaScript patterns, improving accessibility, UI consistency, and performance across key user flows.",
+    summary: "Modernized a patient-facing healthcare portal using modern JavaScript patterns, improving accessibility, UI consistency, and performance across key user flows.",
     problem: "Inconsistent UI components, accessibility gaps (labels, contrast, keyboard nav), mobile layout issues, and slow initial load times were affecting user experience.",
-    solution: "Built reusable Angular components, implemented WCAG 2.1 improvements, optimized bundle loading, and created responsive layouts with proper semantic HTML and ARIA labels.",
+    solution: "Built reusable components, implemented WCAG 2.1 improvements, optimized bundle loading, and created responsive layouts with proper semantic HTML and ARIA labels.",
     result: "Improved Lighthouse accessibility scores by 18 points, reduced bounce rate by 15%, and created a more maintainable codebase with standardized UI patterns.",
-    stack: ["Angular", "TypeScript", "RxJS", "SCSS", "WCAG 2.1"],
-    tags: ["Angular", "TypeScript", "WCAG", "Performance", "RxJS"],
+    stack: ["JavaScript (ES6+)", "Bootstrap 5", "SPA Architecture", "WCAG 2.1"],
+    tags: ["JavaScript", "Bootstrap", "WCAG", "Performance", "Healthcare"],
     features: [
-      "Reusable Angular components",
+      "Reusable UI components",
       "WCAG 2.1 AA compliance",
       "Responsive layouts",
       "Performance optimization",
@@ -49,8 +83,8 @@ export const projects: Project[] = [
       { label: "Mobile Performance", value: "Optimized", improvement: "Responsive" }
     ],
     links: {
-      demo: "https://healthcare-portal-demo.vercel.app",
-      repo: "https://github.com/your-username/healthcare-portal-ui-angular"
+      demo: "https://epetaway.github.io/patient-portal-demo/#login",
+      repo: "https://github.com/epetaway/patient-portal-demo"
     },
     category: "featured"
   },
@@ -64,8 +98,8 @@ export const projects: Project[] = [
     problem: "Slow page creation process, no reusable components, need for A/B test variations, and lack of analytics insights were hindering marketing team efficiency.",
     solution: "Created a React component library with Hero, CTA, Feature Grid, and Form components. Implemented A/B testing support and structured analytics tracking.",
     result: "Reduced landing page build time by 60%, improved conversion rates through A/B testing, and provided marketing team with self-service page creation tools.",
-    stack: ["React", "JavaScript", "SCSS", "A/B Testing", "Analytics"],
-    tags: ["React", "JavaScript", "A/B Testing", "Analytics"],
+    stack: ["React", "TypeScript", "Tailwind CSS", "Analytics"],
+    tags: ["React", "TypeScript", "Landing Pages", "Marketing"],
     features: [
       "Component library",
       "A/B test variations",
@@ -79,41 +113,12 @@ export const projects: Project[] = [
       { label: "A/B Testing", value: "Enabled", improvement: "Data-driven" }
     ],
     links: {
-      demo: "https://landing-system-demo.vercel.app",
-      repo: "https://github.com/your-username/react-landing-page-system"
+      demo: "/earldkaiju",
+      repo: "https://github.com/Epetaway/WebsiteRefine"
     },
     category: "featured"
   },
-  {
-    id: "wordpress-donation-plugin",
-    slug: "wordpress-donation-plugin",
-    title: "WordPress Donation Plugin",
-    role: "Front-End Developer",
-    description: "Created a custom WordPress plugin for non-profit campaigns, featuring an admin UI for managing goals and a front-end donation progress display.",
-    summary: "Created a custom WordPress plugin for non-profit campaigns, featuring an admin UI for managing goals and a front-end donation progress display.",
-    problem: "No reusable donation UI, non-technical users couldn't manage campaign data, and needed mobile-friendly donation progress displays for various campaigns.",
-    solution: "Built custom post type 'Campaign', created admin meta boxes for goal/current amounts, and developed shortcode for front-end progress bars with clean, modern styling.",
-    result: "Enabled non-technical staff to manage campaigns independently, created consistent donation UI across site, and improved mobile donation experience.",
-    stack: ["WordPress", "PHP", "JavaScript", "SCSS"],
-    tags: ["WordPress", "PHP", "Custom Plugin", "UI"],
-    features: [
-      "Custom post type",
-      "Admin meta boxes",
-      "Front-end shortcode",
-      "Progress visualization",
-      "Mobile-responsive"
-    ],
-    metrics: [
-      { label: "Campaign Management", value: "Self-service", improvement: "Non-technical users" },
-      { label: "Mobile Experience", value: "Optimized", improvement: "Responsive design" },
-      { label: "UI Consistency", value: "Standardized", improvement: "Across campaigns" }
-    ],
-    links: {
-      demo: "https://donation-plugin-demo.vercel.app",
-      repo: "https://github.com/your-username/wp-donation-plugin-demo"
-    },
-    category: "featured"
-  },
+
   {
     id: "vue-react-microsites",
     slug: "vue-react-microsites",
