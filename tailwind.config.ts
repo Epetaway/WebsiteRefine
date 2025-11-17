@@ -9,8 +9,32 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        card: "1rem",
+        pill: "9999px",
       },
       colors: {
+        // New dark theme colors
+        "bg-base": "#050608",
+        "bg-panel": "#0C1013",
+        "bg-alt": "#FDF6EC",
+        
+        // Accent colors
+        "accent-yellow": "#F6B931",
+        "accent-orange": "#F2643D",
+        "accent-teal": "#3DA9A7",
+        "accent-purple": "#7A3FA3",
+        
+        // Text colors
+        "text-primary": "#F3F3F3",
+        "text-secondary": "#A3A3A3",
+        "text-muted": "#7A7A7A",
+        "text-on-accent": "#111111",
+        
+        // Border colors
+        "border-subtle": "#20252A",
+        "border-strong": "#363C42",
+        
+        // Existing shadcn colors
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {
@@ -85,6 +109,8 @@ export default {
         },
       },
       fontFamily: {
+        display: ["Space Grotesk", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
         spartan: ["League Spartan", "sans-serif"],
@@ -92,6 +118,15 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+      },
+      boxShadow: {
+        "soft-card": "0 18px 40px rgba(0,0,0,0.35)",
+      },
+      maxWidth: {
+        content: "1120px",
+      },
+      spacing: {
+        "section-y": "6rem",
       },
       keyframes: {
         "accordion-down": {
