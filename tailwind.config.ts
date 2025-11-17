@@ -13,16 +13,18 @@ export default {
         pill: "9999px",
       },
       colors: {
-        // New dark theme colors
-        "bg-base": "#050608",
-        "bg-panel": "#0C1013",
-        "bg-alt": "#FDF6EC",
+        // New refined color palette
+        "bg-base": "#0F0F0F",        // black
+        "bg-panel": "#1A1A1A",       // charcoal
+        "bg-alt": "#F7F4E9",         // offwhite
         
         // Accent colors
-        "accent-yellow": "#F6B931",
-        "accent-orange": "#F2643D",
-        "accent-teal": "#3DA9A7",
-        "accent-purple": "#7A3FA3",
+        "accent-yellow": "#F6C63F",
+        "accent-yellow-light": "#F4D25B",
+        "accent-teal": "#7DB5A5",
+        "accent-red": "#C73538",
+        "accent-purple": "#7B3DDB",
+        "accent-raspberry": "#D94A66",
         
         // Text colors
         "text-primary": "#F3F3F3",
