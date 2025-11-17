@@ -17,12 +17,13 @@ import BlogPost from "@/pages/blog-post";
 import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
 import NotFound from "@/pages/not-found";
+import ThemeDemo from "@/pages/theme-demo";
 
 function AppShell() {
   useAnalytics();
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-bg-base text-text-primary font-body">
       <Header />
       <main className="flex-1">
         <Routes>
@@ -33,6 +34,7 @@ function AppShell() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/earldkaiju" element={<EarldKaiju />} />
           <Route path="/articles/:slug" element={<Article />} />
+          <Route path="/theme-demo" element={<ThemeDemo />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

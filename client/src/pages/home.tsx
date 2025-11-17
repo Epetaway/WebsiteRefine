@@ -69,7 +69,7 @@ export default function Home() {
                 </Button>
               </div>
 
-              <p className="mb-6 text-xs uppercase tracking-wide text-emerald-400">
+              <p className="mb-6 text-xs uppercase tracking-[0.2em] text-text-muted">
                 Based in Parsippany, New Jersey
               </p>
 
