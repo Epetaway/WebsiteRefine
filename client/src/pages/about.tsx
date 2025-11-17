@@ -100,8 +100,6 @@ export default function About() {
               <p className="text-sm text-gray-600 mb-4">
                 I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
               </p>
-                I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
-              </p>
               <div className="text-sm text-gray-600 space-y-2">
                 <div data-testid="workflow-1">• Tickets → Feature branches → Pull requests → Code reviews</div>
                 <div data-testid="workflow-2">• CI/CD with GitHub Actions & Vercel</div>
