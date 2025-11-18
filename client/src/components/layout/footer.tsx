@@ -2,28 +2,34 @@ import { Link } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-900 text-gray-300 pt-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-3">
+    <footer className="bg-card text-textSecondary pt-16 border-t border-border">
+      <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-3">
         <div>
-          <div className="font-extrabold tracking-tight text-lg mb-2 text-white">
-            Earl Hickson Jr<span className="text-gray-500">.</span>
+          <div className="font-extrabold tracking-tight text-lg mb-2 text-textPrimary">
+            Earl Hickson Jr<span className="text-textSecondary">.</span>
           </div>
           <p className="text-sm">
-            Front-End Developer • React • Angular • TypeScript • Accessible UI Engineering
+            Senior Front-End Engineer • BJJ Black Belt
+          </p>
+          <p className="text-sm mt-2">
+            Parsippany, NJ
           </p>
         </div>
 
         <nav className="grid gap-2 text-sm">
-          <Link to="/projects" className="hover:text-white transition-colors">
-            Projects
+          <Link to="/" className="hover:text-textPrimary transition-colors">
+            Home
           </Link>
-          <Link to="/about" className="hover:text-white transition-colors">
+          <Link to="/about" className="hover:text-textPrimary transition-colors">
             About
           </Link>
-          <Link to="/blog" className="hover:text-white transition-colors">
+          <Link to="/projects" className="hover:text-textPrimary transition-colors">
+            Projects
+          </Link>
+          <Link to="/blog" className="hover:text-textPrimary transition-colors">
             Blog
           </Link>
-          <Link to="/earldkaiju" className="hover:text-white transition-colors">
+          <Link to="/earldkaiju" className="hover:text-textPrimary transition-colors">
             BJJ Lessons
           </Link>
         </nav>
@@ -31,16 +37,16 @@ export default function Footer() {
         <div className="text-sm">
           <a
             href="mailto:e@ehicksonjr.com"
-            className="hover:text-white transition-colors"
+            className="hover:text-textPrimary transition-colors block mb-3"
           >
             e@ehicksonjr.com
           </a>
-          <div className="mt-3 flex gap-4">
+          <div className="flex gap-4">
             <a
               href="https://github.com/Epetaway"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-textPrimary transition-colors"
             >
               GitHub
             </a>
@@ -48,7 +54,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/earlhicksonjr"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-textPrimary transition-colors"
             >
               LinkedIn
             </a>
@@ -56,8 +62,8 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mt-10 py-6 text-center text-xs text-gray-500 border-t border-gray-800">
-        © {new Date().getFullYear()} Earl Hickson Jr.
+      <div className="mt-10 py-6 text-center text-xs border-t border-border">
+        © 2025 Earl Hickson Jr.
       </div>
     </footer>
   );

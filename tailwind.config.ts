@@ -9,8 +9,17 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        card: '16px',
+        pill: '999px',
+      },
+      maxWidth: {
+        content: '1120px',
       },
       colors: {
+        base: 'var(--color-base)',
+        dominant: 'var(--color-dominant)',
+        textPrimary: 'var(--text-primary)',
+        textSecondary: 'var(--text-secondary)',
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {

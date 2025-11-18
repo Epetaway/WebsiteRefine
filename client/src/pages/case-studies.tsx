@@ -25,7 +25,7 @@ export default function CaseStudies() {
         <section aria-labelledby="uc-title" className="relative isolate bg-gradient-to-b from-primary-50/60 via-white to-white">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
             <div className="mx-auto w-fit mb-6">
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary-200 bg-white/80 px-4 py-1.5 text-sm font-semibold text-primary-700 shadow-sm backdrop-blur-sm">
+              <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-1.5 text-sm font-semibold text-dominant backdrop-blur-sm">
                 <span className="h-2 w-2 rounded-full bg-primary-500 animate-pulse" aria-hidden="true" />
                 Case Studies
               </span>
@@ -53,20 +53,20 @@ export default function CaseStudies() {
         </section>
       ) : (
         <>
-          <section className="py-20 bg-white">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="py-20 bg-base">
+            <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Projects</h1>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  A curated selection of front-end projects inspired by real-world work across healthcare applications, oncology content platforms, marketing landing pages, and small business interfaces. Toggle between Developer and Portfolio views for technical or high-level summaries.
+                <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-textPrimary" data-testid="page-title">Projects</h1>
+                <p className="text-xl text-textSecondary max-w-3xl mx-auto">
+                  A curated selection of front-end projects inspired by real-world work across healthcare applications, oncology content platforms, marketing landing pages, and small business interfaces.
                 </p>
               </div>
             </div>
           </section>
 
-          <section className="py-20 bg-white">
-            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl font-bold mb-8" data-testid="section-title-engineering">Featured Projects</h2>
+          <section className="py-20 bg-muted">
+            <div className="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+              <h2 className="text-2xl font-bold mb-8 text-textPrimary" data-testid="section-title-engineering">Featured Projects</h2>
 
               <div className="space-y-16">
                 {engineeringProjects.slice(0, 2).map((project) => (
@@ -76,15 +76,15 @@ export default function CaseStudies() {
 
               {engineeringProjects.length > 2 && (
                 <div className="mt-16">
-                  <h3 className="text-xl font-bold mb-8" data-testid="section-title-additional">Additional Projects</h3>
+                  <h3 className="text-xl font-bold mb-8 text-textPrimary" data-testid="section-title-additional">Additional Projects</h3>
                   <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {engineeringProjects.slice(2).map((project) => (
-                      <div key={project.id} className="bg-gray-50 rounded-xl p-6 hover:shadow-md transition-shadow duration-300">
-                        <h4 className="font-bold mb-2" data-testid={`project-title-${project.id}`}>{project.title}</h4>
-                        <p className="text-sm text-gray-600 mb-4" data-testid={`project-description-${project.id}`}>{project.description}</p>
+                      <div key={project.id} className="bg-card border border-border rounded-card p-6 hover:border-dominant transition-colors duration-300">
+                        <h4 className="font-bold mb-2 text-textPrimary" data-testid={`project-title-${project.id}`}>{project.title}</h4>
+                        <p className="text-sm text-textSecondary mb-4" data-testid={`project-description-${project.id}`}>{project.description}</p>
                         <div className="flex justify-between items-center">
                           {project.stack?.[0] ? (
-                            <span className="text-xs bg-blue-100 text-blue-700 px-2 py-1 rounded" data-testid={`project-stack-${project.id}`}>
+                            <span className="text-xs bg-dominant/20 text-dominant px-2 py-1 rounded" data-testid={`project-stack-${project.id}`}>
                               {project.stack[0]}
                             </span>
                           ) : <span />}
@@ -94,7 +94,7 @@ export default function CaseStudies() {
                                 href={project.links.demo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-primary-500 text-sm hover:text-primary-600"
+                                className="text-dominant text-sm hover:opacity-80"
                                 data-testid={`project-demo-${project.id}`}
                               >
                                 Demo
@@ -105,7 +105,7 @@ export default function CaseStudies() {
                                 href={project.links.repo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-gray-500 text-sm hover:text-gray-700"
+                                className="text-textSecondary text-sm hover:text-textPrimary"
                                 data-testid={`project-repo-${project.id}`}
                               >
                                 Code
@@ -121,27 +121,25 @@ export default function CaseStudies() {
             </div>
           </section>
 
-          <section className="py-20 bg-primary-50">
+          <section className="py-20 bg-base">
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h2 className="text-3xl font-bold mb-6" data-testid="cta-title">Interested in Working Together?</h2>
-              <p className="text-xl text-gray-600 mb-8">Available for front-end development and engineering projects.</p>
+              <h2 className="text-3xl font-bold mb-6 text-textPrimary" data-testid="cta-title">Interested in Working Together?</h2>
+              <p className="text-xl text-textSecondary mb-8">Available for front-end development and engineering projects.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="mailto:e@ehicksonjr.com"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white rounded-card font-semibold hover:opacity-90 transition-opacity"
                   data-testid="button-contact"
                 >
-                  <i className="fas fa-envelope mr-2" aria-hidden="true" />
                   Start a Conversation
                 </a>
                 <a
                   href="/assets/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
+                  className="inline-flex items-center justify-center px-8 py-4 bg-card border-2 border-border rounded-card font-semibold hover:border-dominant hover:text-dominant transition-colors"
                   data-testid="button-resume"
                 >
-                  <i className="fas fa-download mr-2" aria-hidden="true" />
                   Download Resume
                 </a>
               </div>

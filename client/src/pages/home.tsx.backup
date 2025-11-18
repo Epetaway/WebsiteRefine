@@ -123,7 +123,7 @@ export default function Home() {
                   className="block bg-card border border-border rounded-card p-6 hover:border-dominant transition-colors"
                 >
                   <h3 className="font-bold text-lg mb-2 text-textPrimary">{post.title}</h3>
-                  <p className="text-sm text-textSecondary mb-4">{post.excerpt}</p>
+                  <p className="text-sm text-textSecondary mb-4">{post.description}</p>
                   <div className="text-sm text-dominant">Read more →</div>
                 </Link>
               ))
@@ -200,23 +200,33 @@ export default function Home() {
 
       <LatestInsightsSection />
 
-      {/* Collaboration CTA */}
-      <section className="py-20 bg-base">
+      <section className="py-20 bg-primary-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8 text-textPrimary" data-testid="cta-title">Let's Build Something Great</h2>
-          <p className="text-xl text-textSecondary mb-12">Ready to collaborate on your next project?</p>
+          <h2 className="text-3xl lg:text-4xl font-bold mb-8" data-testid="cta-title">Ready to Work Together?</h2>
+          <p className="text-xl text-gray-600 mb-12">Let’s discuss how I can help your team deliver accessible, reliable, and fast user experiences.</p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" className="bg-accent hover:opacity-90 text-white" data-testid="button-contact">
+            <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-contact">
               <a href="mailto:e@ehicksonjr.com">
-                Contact Me
+                <i className="fas fa-envelope mr-3" />
+                Get In Touch
               </a>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-2" data-testid="button-view-projects">
-              <Link to="/projects">
-                View Projects
-              </Link>
-            </Button>
+
+            <div className="flex gap-4">
+              <Button asChild variant="outline" size="lg" data-testid="button-linkedin">
+                <a href="https://linkedin.com/in/earlhicksonjr" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-linkedin mr-3" />
+                  LinkedIn
+                </a>
+              </Button>
+              <Button asChild variant="outline" size="lg" data-testid="button-github">
+                <a href="https://github.com/Epetaway" target="_blank" rel="noopener noreferrer">
+                  <i className="fab fa-github mr-3" />
+                  GitHub
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
