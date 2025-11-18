@@ -9,8 +9,41 @@ export default {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        card: "1rem",
+        pill: "9999px",
       },
       colors: {
+        // Prismora UI Design System - CSS Variable-based
+        base: "var(--color-base)",
+        dominant: "var(--color-dominant)",
+        accent: "var(--color-accent)",
+        textPrimary: "var(--text-primary)",
+        textSecondary: "var(--text-secondary)",
+        
+        // Legacy refined color palette (hardcoded for fallback)
+        "bg-base": "#0F0F0F",        // black
+        "bg-panel": "#1A1A1A",       // charcoal
+        "bg-alt": "#F7F4E9",         // offwhite
+        
+        // Accent colors (legacy)
+        "accent-yellow": "#F6C63F",
+        "accent-yellow-light": "#F4D25B",
+        "accent-teal": "#7DB5A5",
+        "accent-red": "#C73538",
+        "accent-purple": "#7B3DDB",
+        "accent-raspberry": "#D94A66",
+        
+        // Text colors (legacy)
+        "text-primary": "#F3F3F3",
+        "text-secondary": "#A3A3A3",
+        "text-muted": "#7A7A7A",
+        "text-on-accent": "#111111",
+        
+        // Border colors (legacy)
+        "border-subtle": "#20252A",
+        "border-strong": "#363C42",
+        
+        // Existing shadcn colors
         background: "var(--background)",
         foreground: "var(--foreground)",
         card: {
@@ -85,6 +118,8 @@ export default {
         },
       },
       fontFamily: {
+        display: ["Space Grotesk", "system-ui", "sans-serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
         spartan: ["League Spartan", "sans-serif"],
@@ -92,6 +127,17 @@ export default {
         sans: ["var(--font-sans)"],
         serif: ["var(--font-serif)"],
         mono: ["var(--font-mono)"],
+      },
+      boxShadow: {
+        "soft-card": "0 18px 40px rgba(0,0,0,0.35)",
+        card: "0 24px 40px rgba(0,0,0,0.06)",
+        cardHover: "0 32px 80px rgba(0,0,0,0.12)",
+      },
+      maxWidth: {
+        content: "1120px",
+      },
+      spacing: {
+        "section-y": "6rem",
       },
       keyframes: {
         "accordion-down": {

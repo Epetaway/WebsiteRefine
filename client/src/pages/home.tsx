@@ -1,22 +1,46 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import LatestInsightsSection from "@/components/ui/latest-insights";
-import WinTile from "@/components/ui/win-tile";
-import TechBadge from "@/components/ui/tech-badge";
-import { blogPosts } from "@/data/blog-posts";
+import { getFeaturedProjects } from "@/lib/projects";
 import profileImage from "@/images/me.png";
 
 const SITE = "https://www.ehicksonjr.com";
 
+const experiences = [
+  {
+    title: "Front-End Development",
+    years: "6+ Years",
+    description: "React, Angular, Vue, TypeScript with focus on accessibility and performance.",
+    icon: "💻",
+  },
+  {
+    title: "Healthcare & Enterprise",
+    years: "3+ Years",
+    description: "Patient portals, HIPAA compliance, complex multi-step workflows.",
+    icon: "🏥",
+  },
+  {
+    title: "Design Systems",
+    years: "4+ Years",
+    description: "Building and maintaining component libraries and design tokens.",
+    icon: "🎨",
+  },
+  {
+    title: "WCAG 2.1 AA",
+    years: "Certified",
+    description: "Accessible interfaces with semantic HTML, ARIA, and keyboard navigation.",
+    icon: "♿",
+  },
+];
+
 export default function Home() {
-  const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 2);
-  const title = "Earl Hickson Jr – Front-End Developer | React, Angular, TypeScript";
+  const featuredProjects = getFeaturedProjects();
+  const title = "Earl Hickson Jr. – Senior Front-End Engineer";
   const description =
-    "Portfolio of Earl Hickson Jr, a Front-End Developer specializing in accessible, responsive, and component-driven UI development across healthcare, marketing, and non-profit platforms.";
+    "Senior Front-End Engineer building accessible, responsive, and performance-focused web interfaces. 6+ years with React, Angular, Vue, and TypeScript across healthcare, marketing, and enterprise domains. Based in Parsippany, NJ.";
 
   return (
-    <div>
+    <div className="bg-base">
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
@@ -29,212 +53,235 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <section className="pt-16 pb-20 bg-gradient-to-br from-gray-50 via-white to-blue-50 min-h-screen flex items-center">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Top Banner */}
+      <div className="w-full bg-dominant text-white py-2 px-4 text-center">
+        <p className="text-sm">
+          Available for Senior Front-End roles & select freelance projects.
+        </p>
+      </div>
+
+      {/* Hero Section */}
+      <section className="w-full flex justify-center px-4 bg-base">
+        <div className="w-full max-w-content py-24 md:py-32">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
-              <div className="inline-flex items-center px-4 py-2 rounded-full bg-primary-50 text-primary-600 text-sm font-medium mb-6">
-                <i className="fas fa-code mr-2" />
-                Open to Full-Time & Contract Opportunities
+            <div>
+              <div className="inline-flex items-center px-4 py-2 rounded-pill bg-dominant/10 text-dominant text-sm font-medium mb-6 border border-dominant/20">
+                <span className="w-2 h-2 bg-dominant rounded-full mr-2 animate-pulse" />
+                Available for Senior Front-End roles & select freelance projects
               </div>
 
-              <h1 className="text-6xl lg:text-7xl font-bold leading-tight mb-4">
-                <span className="gradient-text" data-testid="hero-title-primary">
-                  Front-End Developer
-                </span>
+              <h1 className="font-display text-5xl md:text-6xl text-textPrimary mb-4 tracking-tight" data-testid="hero-title-primary">
+                Senior Front-End Engineer
               </h1>
               
               <p className="text-2xl lg:text-3xl text-gray-700 font-medium mb-6">
                 React • Angular • TypeScript
               </p>
 
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed" data-testid="hero-description">
-                I build fast, accessible, maintainable frontends. My work focuses on shipping real UI, solving real problems, and keeping complexity low. I've delivered production features across healthcare systems, oncology content platforms, marketing landing pages, and small-business apps.
+              <p className="text-textSecondary mb-2 text-sm">
+                Parsippany, NJ
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-12 flex-wrap">
-                <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-projects">
+              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-bg-panel rounded-card border border-border-subtle">
+                <div>
+                  <div className="text-2xl font-display text-accent mb-1">+37%</div>
+                  <div className="text-xs text-textSecondary">Lead Conversions</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-display text-accent mb-1">+25%</div>
+                  <div className="text-xs text-textSecondary">Organic Traffic</div>
+                </div>
+                <div>
+                  <div className="text-2xl font-display text-accent mb-1">+75%</div>
+                  <div className="text-xs text-textSecondary">Livestream Engagement</div>
+                </div>
+              </div>
+
+              <div className="flex flex-wrap gap-4">
+                <Button asChild size="lg" className="rounded-pill bg-accent text-text-on-accent hover:bg-accent/90" data-testid="button-case-studies">
                   <Link to="/projects">
-                    <i className="fas fa-rocket mr-2" />
-                    View Projects
+                    View Front-End Case Studies
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" data-testid="button-resume">
-                  <a href="/assets/" target="_blank" rel="noopener noreferrer">
-                    <i className="fas fa-download mr-2" />
+                <Button asChild variant="outline" size="lg" className="rounded-pill border-dominant text-dominant hover:bg-dominant hover:text-text-on-accent" data-testid="button-resume">
+                  <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
                     Download Resume (PDF)
                   </a>
                 </Button>
               </div>
-
-              <p className="mb-6 text-xs uppercase tracking-wide text-emerald-400">
-                Based in Parsippany, New Jersey
-              </p>
-
-              <div className="flex flex-wrap gap-2">
-                <TechBadge name="React" color="blue" />
-                <TechBadge name="Angular" color="red" />
-                <TechBadge name="Vue" color="green" />
-                <TechBadge name="TypeScript" color="blue" />
-                <TechBadge name="JavaScript (ES6+)" color="yellow" />
-                <TechBadge name="Next.js" color="black" />
-                <TechBadge name="TailwindCSS" color="blue" />
-                <TechBadge name="Bootstrap" color="purple" />
-                <TechBadge name="Node.js" color="green" />
-                <TechBadge name="REST APIs" color="blue" />
-                <TechBadge name="WCAG 2.1" color="orange" />
-                <TechBadge name="CI/CD" color="gray" />
-              </div>
             </div>
 
-            <div className="relative animate-float">
-              <img
-                src={profileImage}
-                alt="Earl Hickson Jr. – Front-End Developer"
-                className="w-full max-w-md mx-auto rounded-3xl shadow-2xl"
-                data-testid="hero-image"
-              />
-              <div className="absolute -top-4 -right-4 w-24 h-24 bg-primary-500 rounded-full flex items-center justify-center text-white text-2xl animate-bounce">
-                <i className="fas fa-laptop-code" />
+            <div className="flex justify-center lg:justify-end">
+              <div className="bg-bg-panel border border-border-subtle rounded-card p-6 shadow-card max-w-sm w-full">
+                <div className="aspect-square rounded-lg overflow-hidden mb-4">
+                  <img
+                    src={profileImage}
+                    alt="Earl Hickson Jr."
+                    className="w-full h-full object-cover"
+                    data-testid="hero-image"
+                  />
+                </div>
+                <h2 className="font-display text-xl text-textPrimary mb-1">
+                  Earl Hickson Jr.
+                </h2>
+                <p className="text-sm text-dominant mb-3">
+                  Senior Front-End Engineer · BJJ Black Belt
+                </p>
+                <p className="text-sm text-textSecondary">
+                  Building responsive, accessible, and performance-focused web interfaces with modern front-end stacks.
+                </p>
               </div>
             </div>
           </div>
-
-          <div className="mt-6 text-sm text-gray-600">
-            <span className="text-xs uppercase tracking-wide text-emerald-400">Based in Parsippany, New Jersey</span> •{" "}
-            <a className="underline decoration-gray-300 hover:decoration-gray-500" href="mailto:e@ehicksonjr.com">
-              e@ehicksonjr.com
-            </a>{" "}
-            •{" "}
-            <a
-              className="underline decoration-gray-300 hover:decoration-gray-500"
-              href="https://www.linkedin.com/in/earlhicksonjr"
-              target="_blank"
-              rel="noreferrer"
-            >
-              LinkedIn
-            </a>{" "}
-            •{" "}
-            <a
-              className="underline decoration-gray-300 hover:decoration-gray-500"
-              href="https://github.com/Epetaway"
-              target="_blank"
-              rel="noreferrer"
-            >
-              GitHub
-            </a>
-          </div>
         </div>
       </section>
 
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" data-testid="section-title-results">
-              Proven Results
+      {/* Projects Section */}
+      <section className="w-full flex justify-center px-4 bg-base">
+        <div className="w-full max-w-content py-section-y border-b border-border-subtle">
+          <div className="text-center mb-12">
+            <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
+              PORTFOLIO
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-4 tracking-tight">
+              Explore my latest Projects
             </h2>
-            <p className="text-xl text-gray-600">Recent wins and measurable impact across projects</p>
+            <p className="text-lg text-textSecondary max-w-2xl mx-auto">
+              Real-world front-end work with measurable business impact
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <WinTile
-              icon="fas fa-bug-slash"
-              title="Healthcare Portals"
-              metric="150+"
-              improvement="UI/UX Issues Resolved"
-              description="Fixed 150+ UI/UX issues resolved in enterprise patient & provider portals (Asembia)"
-              stack="Angular • TypeScript • WCAG 2.1"
-              bgColor="bg-gradient-to-br from-blue-50 to-indigo-50"
-              iconColor="bg-blue-500"
-              metricColor="text-blue-600"
-            />
-            <WinTile
-              icon="fas fa-chart-line"
-              title="Oncology Platforms"
-              metric="+18%"
-              improvement="Engagement Increase"
-              description="18% engagement increase across oncology microsites & email campaigns (BroadcastMed)"
-              stack="CMS Templates • HTML Email • Analytics"
-              bgColor="bg-gradient-to-br from-green-50 to-emerald-50"
-              iconColor="bg-green-500"
-              metricColor="text-green-600"
-            />
-            <WinTile
-              icon="fas fa-rocket"
-              title="Marketing Systems"
-              metric="+12%"
-              improvement="Conversion Lift"
-              description="12% conversion lift through A/B-tested React/Vue landing pages (Prosek Partners)"
-              stack="React • Vue • A/B Testing"
-              bgColor="bg-gradient-to-br from-purple-50 to-violet-50"
-              iconColor="bg-purple-500"
-              metricColor="text-purple-600"
-            />
+          <div className="grid md:grid-cols-2 gap-8">
+            {featuredProjects.map((project) => (
+              <Link
+                key={project.slug}
+                to={`/projects/${project.slug}`}
+                className="group block bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300 hover:-translate-y-1"
+              >
+                <div className="aspect-video bg-bg-panel rounded-lg mb-4 overflow-hidden">
+                  <img
+                    src={project.thumbnail}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    onError={(e) => {
+                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%231A1A1A' width='400' height='300'/%3E%3C/svg%3E";
+                    }}
+                  />
+                </div>
+                
+                <div className="flex items-start justify-between gap-4 mb-3">
+                  <h3 className="font-display text-xl text-textPrimary group-hover:text-dominant transition-colors">
+                    {project.title}
+                  </h3>
+                  {project.year && (
+                    <span className="text-xs uppercase tracking-wide text-textSecondary whitespace-nowrap">
+                      {project.year}
+                    </span>
+                  )}
+                </div>
+
+                <p className="text-sm text-textSecondary mb-3">
+                  {project.role}
+                </p>
+
+                <p className="text-sm text-accent font-semibold mb-4">
+                  {project.impact}
+                </p>
+
+                {project.description && (
+                  <p className="text-sm text-textSecondary mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+                )}
+
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-block px-3 py-1 text-xs rounded-pill bg-dominant/10 text-dominant border border-dominant/20"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4" data-testid="section-title-services">
-              Services & Expertise
+      {/* Experience Section */}
+      <section className="w-full flex justify-center px-4 bg-bg-panel">
+        <div className="w-full max-w-content py-section-y">
+          <div className="text-center mb-12">
+            <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
+              BACKGROUND
+            </p>
+            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-4 tracking-tight">
+              Experience & Expertise
             </h2>
-            <p className="text-xl text-gray-600">What I bring to your team</p>
+            <p className="text-lg text-textSecondary max-w-2xl mx-auto">
+              Building web interfaces since 2018
+            </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <i className="fas fa-cogs text-primary-500 text-2xl mb-4" />
-              <h3 className="font-bold mb-2" data-testid="service-ui-engineering">UI Engineering</h3>
-              <p className="text-sm text-gray-600">Component-driven UI development in React, Angular, and Vue. I build reusable patterns, keep code readable, and align front-end implementation with design systems.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <i className="fas fa-cubes text-primary-500 text-2xl mb-4" />
-              <h3 className="font-bold mb-2" data-testid="service-design-systems">Design Systems</h3>
-              <p className="text-sm text-gray-600">Implementing design systems in code with consistent typography, spacing, and interaction patterns. I translate Figma libraries into maintainable components.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <i className="fas fa-universal-access text-primary-500 text-2xl mb-4" />
-              <h3 className="font-bold mb-2" data-testid="service-accessibility">Accessibility (WCAG 2.1)</h3>
-              <p className="text-sm text-gray-600">Auditing and fixing UI for WCAG 2.1 AA: semantic HTML, ARIA labels, keyboard navigation, focus management, and color contrast.</p>
-            </div>
-            <div className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <i className="fas fa-rocket text-primary-500 text-2xl mb-4" />
-              <h3 className="font-bold mb-2" data-testid="service-performance">Performance</h3>
-              <p className="text-sm text-gray-600">Profiling and improving performance with techniques like code splitting, lazy loading, image optimization, and reducing cumulative layout shift.</p>
-            </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+            {experiences.map((exp) => (
+              <div
+                key={exp.title}
+                className="bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300"
+              >
+                <div className="text-4xl mb-4">{exp.icon}</div>
+                <h3 className="font-display text-lg text-textPrimary mb-1">
+                  {exp.title}
+                </h3>
+                <p className="text-xs text-accent uppercase tracking-wide mb-3 font-semibold">
+                  {exp.years}
+                </p>
+                <p className="text-sm text-textSecondary">
+                  {exp.description}
+                </p>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
 
-      <LatestInsightsSection />
-
-      <section className="py-20 bg-primary-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold mb-8" data-testid="cta-title">Ready to Work Together?</h2>
-          <p className="text-xl text-gray-600 mb-12">Let’s discuss how I can help your team deliver accessible, reliable, and fast user experiences.</p>
-
-          <div className="flex flex-col sm:flex-row gap-6 justify-center">
-            <Button asChild size="lg" className="bg-primary-500 hover:bg-primary-600" data-testid="button-contact">
-              <a href="mailto:e@ehicksonjr.com">
-                <i className="fas fa-envelope mr-3" />
-                Get In Touch
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg" className="rounded-pill bg-dominant text-text-on-accent hover:bg-dominant/90" data-testid="button-contact">
+              <Link to="/about">
+                Learn more about me
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-pill border-accent text-accent hover:bg-accent hover:text-text-on-accent">
+              <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
+                Download my resume
               </a>
             </Button>
+          </div>
+        </div>
+      </section>
 
-            <div className="flex gap-4">
-              <Button asChild variant="outline" size="lg" data-testid="button-linkedin">
-                <a href="https://linkedin.com/in/earlhicksonjr" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-linkedin mr-3" />
-                  LinkedIn
+      {/* CTA Section */}
+      <section className="w-full flex justify-center px-4 bg-base">
+        <div className="w-full max-w-content py-section-y">
+          <div className="text-center">
+            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-6 tracking-tight">
+              Let's Build Something Great
+            </h2>
+            <p className="text-lg text-textSecondary max-w-2xl mx-auto mb-8">
+              I'm available for full-time senior front-end roles and select freelance projects. 
+              Let's discuss how I can help your team deliver accessible, reliable, and fast user experiences.
+            </p>
+            
+            <div className="flex flex-wrap justify-center gap-4">
+              <Button asChild size="lg" className="rounded-pill bg-accent text-text-on-accent hover:bg-accent/90">
+                <a href="mailto:e@ehicksonjr.com">
+                  Contact Me
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" data-testid="button-github">
-                <a href="https://github.com/Epetaway" target="_blank" rel="noopener noreferrer">
-                  <i className="fab fa-github mr-3" />
-                  GitHub
-                </a>
+              <Button asChild variant="outline" size="lg" className="rounded-pill border-dominant text-dominant hover:bg-dominant hover:text-text-on-accent">
+                <Link to="/projects">
+                  View Case Studies
+                </Link>
               </Button>
             </div>
           </div>

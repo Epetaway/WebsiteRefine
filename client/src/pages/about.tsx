@@ -125,26 +125,15 @@ export default function About() {
                   </p>
                 </div>
 
-                <div className="border-l-4 border-green-500 pl-4">
-                  <h4 className="font-semibold text-gray-900">Oncology Content Platform (BroadcastMed)</h4>
-                  <p className="text-sm text-gray-600">
-                    Built modular CMS templates, responsive UI patterns, and HTML email frameworks used by clinicians. Increased engagement by 18% with clean markup, better readability, and more consistent UI components.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-purple-500 pl-4">
-                  <h4 className="font-semibold text-gray-900">Marketing Landing Systems (Prosek Partners)</h4>
-                  <p className="text-sm text-gray-600">
-                    Created React/Vue landing pages, reusable components, and experiment-driven interfaces. Improved conversion rates by ~12% with focused A/B tests and UX refinement.
-                  </p>
-                </div>
-
-                <div className="border-l-4 border-orange-500 pl-4">
-                  <h4 className="font-semibold text-gray-900">Small Business & Freelance Work (AMA Fight Club)</h4>
-                  <p className="text-sm text-gray-600">
-                    Delivered fast, modern UIs with strong branding, lead-capture optimization, and responsive layouts for fitness & local businesses.
-                  </p>
-                </div>
+              <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
+              <p className="text-sm text-gray-600 mb-4">
+                I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
+              </p>
+              <div className="text-sm text-gray-600 space-y-2">
+                <div data-testid="workflow-1">• Tickets → Feature branches → Pull requests → Code reviews</div>
+                <div data-testid="workflow-2">• CI/CD with GitHub Actions & Vercel</div>
+                <div data-testid="workflow-3">• Design collaboration in Figma & Storybook</div>
+                <div data-testid="workflow-4">• Analytics & A/B testing to inform UI decisions</div>
               </div>
             </div>
 
