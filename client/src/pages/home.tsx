@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
@@ -10,7 +11,7 @@ import profileImage from "@/images/me.png";
 const SITE = "https://www.ehicksonjr.com";
 
 export default function Home() {
-  const featuredPosts = blogPosts.filter((post) => post.featured).slice(0, 2);
+  const featuredPosts = useMemo(() => blogPosts.filter((post) => post.featured).slice(0, 2), []);
   const title = "Earl Hickson Jr – Front-End Developer | React, Angular, TypeScript";
   const description =
     "Portfolio of Earl Hickson Jr, a Front-End Developer specializing in accessible, responsive, and component-driven UI development across healthcare, marketing, and non-profit platforms.";

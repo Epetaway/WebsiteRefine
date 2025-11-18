@@ -1,10 +1,11 @@
+import { useMemo } from "react";
 import { Helmet } from "react-helmet-async";
 import { projects } from "@/data/projects";
 
 export default function Projects() {
   // Separate core professional demos from side projects
-  const professionalProjects = projects.filter(p => p.category === "featured");
-  const sideProjects = projects.filter(p => p.category === "development");
+  const professionalProjects = useMemo(() => projects.filter(p => p.category === "featured"), []);
+  const sideProjects = useMemo(() => projects.filter(p => p.category === "development"), []);
 
   const title = "Projects — Earl Hickson Jr. | Front-End Developer";
   const description = "Front-end development projects showcasing React, Angular, Vue, WordPress, and modern JavaScript. Healthcare portals, landing page systems, and accessibility-focused UI.";

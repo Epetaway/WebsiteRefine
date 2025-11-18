@@ -16,16 +16,20 @@ export interface IStorage {
 
 export class MemStorage implements IStorage {
   private users: Map<string, User>;
+  private usersByUsername: Map<string, User>;
   private contacts: Map<string, Contact>;
   private bjjBookings: Map<string, BjjBooking>;
   private socialMediaPosts: Map<number, SocialMediaPost>;
+  private socialMediaPostsByPostId: Map<string, SocialMediaPost>;
   private postIdCounter: number;
 
   constructor() {
     this.users = new Map();
+    this.usersByUsername = new Map();
     this.contacts = new Map();
     this.bjjBookings = new Map();
     this.socialMediaPosts = new Map();
+    this.socialMediaPostsByPostId = new Map();
     this.postIdCounter = 1;
   }
 
@@ -34,15 +38,14 @@ export class MemStorage implements IStorage {
   }
 
   async getUserByUsername(username: string): Promise<User | undefined> {
-    return Array.from(this.users.values()).find(
-      (user) => user.username === username,
-    );
+    return this.usersByUsername.get(username);
   }
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = randomUUID();
     const user: User = { ...insertUser, id };
     this.users.set(id, user);
+    this.usersByUsername.set(user.username, user);
     return user;
   }
 
@@ -102,6 +105,7 @@ export class MemStorage implements IStorage {
       createdAt: new Date() 
     };
     this.socialMediaPosts.set(id, post);
+    this.socialMediaPostsByPostId.set(post.postId, post);
     return post;
   }
 
@@ -114,12 +118,11 @@ export class MemStorage implements IStorage {
   }
 
   async updateSocialMediaPost(postId: string, updates: Partial<SocialMediaPost>): Promise<SocialMediaPost | undefined> {
-    const posts = Array.from(this.socialMediaPosts.entries());
-    const postEntry = posts.find(([_, post]) => post.postId === postId);
-    if (postEntry) {
-      const [id, post] = postEntry;
+    const post = this.socialMediaPostsByPostId.get(postId);
+    if (post) {
       const updatedPost = { ...post, ...updates };
-      this.socialMediaPosts.set(id, updatedPost);
+      this.socialMediaPosts.set(post.id, updatedPost);
+      this.socialMediaPostsByPostId.set(postId, updatedPost);
       return updatedPost;
     }
     return undefined;
