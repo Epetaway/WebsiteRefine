@@ -29,6 +29,8 @@ function AppShell() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/projects" element={<CaseStudies />} />
+          <Route path="/projects/:slug" element={<CaseStudies />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
