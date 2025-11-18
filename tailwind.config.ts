@@ -13,12 +13,19 @@ export default {
         pill: "9999px",
       },
       colors: {
-        // New refined color palette
+        // Prismora UI Design System - CSS Variable-based
+        base: "var(--color-base)",
+        dominant: "var(--color-dominant)",
+        accent: "var(--color-accent)",
+        textPrimary: "var(--text-primary)",
+        textSecondary: "var(--text-secondary)",
+        
+        // Legacy refined color palette (hardcoded for fallback)
         "bg-base": "#0F0F0F",        // black
         "bg-panel": "#1A1A1A",       // charcoal
         "bg-alt": "#F7F4E9",         // offwhite
         
-        // Accent colors
+        // Accent colors (legacy)
         "accent-yellow": "#F6C63F",
         "accent-yellow-light": "#F4D25B",
         "accent-teal": "#7DB5A5",
@@ -26,13 +33,13 @@ export default {
         "accent-purple": "#7B3DDB",
         "accent-raspberry": "#D94A66",
         
-        // Text colors
+        // Text colors (legacy)
         "text-primary": "#F3F3F3",
         "text-secondary": "#A3A3A3",
         "text-muted": "#7A7A7A",
         "text-on-accent": "#111111",
         
-        // Border colors
+        // Border colors (legacy)
         "border-subtle": "#20252A",
         "border-strong": "#363C42",
         
@@ -123,6 +130,8 @@ export default {
       },
       boxShadow: {
         "soft-card": "0 18px 40px rgba(0,0,0,0.35)",
+        card: "0 24px 40px rgba(0,0,0,0.06)",
+        cardHover: "0 32px 80px rgba(0,0,0,0.12)",
       },
       maxWidth: {
         content: "1120px",
