@@ -4,13 +4,13 @@
 @tailwind utilities;
 
 :root {
-  /* 60/30/10 Color System - Light Mode */
+  /* Prismora Color System - Light Mode */
   --color-base: #FFFFFF;
-  --color-dominant: #7BBF9A; /* Soft Teal */
-  --color-accent: #B02244;   /* Red-Magenta */
+  --color-dominant: #1d6fff; /* Prismora Blue */
+  --color-accent: #1d6fff;   /* Prismora Blue Accent */
   
   --text-primary: #111111;
-  --text-secondary: #3D3D3D;
+  --text-secondary: #6B7280;
   
   /* Legacy shadcn/ui variables for compatibility */
   --background: hsl(0, 0%, 100%);
@@ -19,20 +19,20 @@
   --card-foreground: hsl(210, 25%, 7.8431%);
   --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(210, 25%, 7.8431%);
-  --primary: #7BBF9A;
+  --primary: #1d6fff;
   --primary-foreground: hsl(0, 0%, 100%);
   --secondary: hsl(210, 25%, 7.8431%);
   --secondary-foreground: hsl(0, 0%, 100%);
-  --muted: hsl(240, 1.9608%, 90%);
+  --muted: hsl(0, 0%, 98%);
   --muted-foreground: hsl(210, 25%, 7.8431%);
-  --accent: #B02244;
+  --accent: #1d6fff;
   --accent-foreground: hsl(0, 0%, 100%);
   --destructive: hsl(356.3033, 90.5579%, 54.3137%);
   --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(201.4286, 30.4348%, 90.9804%);
-  --input: hsl(200, 23.0769%, 97.4510%);
-  --ring: #7BBF9A;
-  --chart-1: #7BBF9A;
+  --border: hsl(0, 0%, 90%);
+  --input: hsl(0, 0%, 97%);
+  --ring: #1d6fff;
+  --chart-1: #1d6fff;
   --chart-2: hsl(159.7826, 100%, 36.0784%);
   --chart-3: hsl(42.0290, 92.8251%, 56.2745%);
   --chart-4: hsl(147.1429, 78.5047%, 41.9608%);
@@ -144,16 +144,15 @@ section#offer{
 
 @layer utilities {
   .gradient-text {
-  background: linear-gradient(
-    135deg,
-    hsl(142, 76%, 36%) 0%,   /* Deep Emerald */
-    hsl(152, 66%, 55%) 100%  /* Lighter Minty Green */
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
+    background: linear-gradient(
+      135deg,
+      #1d6fff 0%,
+      #4d8fff 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
 
   .animate-fade-in {
     animation: fadeIn 0.5s ease-in-out;
@@ -165,6 +164,29 @@ section#offer{
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
+  }
+
+  /* Prismora hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 24px rgba(29, 102, 255, 0.15);
+  }
+
+  .button-lift {
+    transition: all 0.2s ease;
+  }
+
+  .button-lift:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 8px 16px rgba(29, 102, 255, 0.2);
+  }
+
+  .button-lift:active {
+    transform: translateY(0) scale(0.98);
   }
 }
 
