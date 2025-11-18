@@ -42,7 +42,7 @@ export default function Home() {
             {/* Left: Text + Metrics + CTAs */}
             <div className="animate-slide-up">
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-4 text-textPrimary">
-                Senior Front-End Engineer
+                Front-End Developer
               </h1>
               
               <p className="text-xl text-textSecondary mb-6">
@@ -89,12 +89,12 @@ export default function Home() {
               <div className="bg-card border border-border rounded-card p-6">
                 <img
                   src={profileImage}
-                  alt="Earl Hickson Jr. – Senior Front-End Engineer"
+                  alt="Earl Hickson Jr. – Front-End Developer"
                   className="w-32 h-32 rounded-full mx-auto mb-4"
                   data-testid="hero-image"
                 />
                 <h2 className="text-xl font-bold text-center text-textPrimary mb-1">Earl Hickson Jr.</h2>
-                <p className="text-center text-textSecondary mb-4">Senior Front-End Engineer • BJJ Black Belt</p>
+                <p className="text-center text-textSecondary mb-4">Front-End Developer</p>
                 <p className="text-sm text-textSecondary text-center">
                   I've delivered production features across healthcare systems, oncology content platforms, marketing landing pages, and small-business apps.
                 </p>
@@ -188,12 +188,6 @@ export default function Home() {
               <h3 className="font-bold mb-2 text-textPrimary" data-testid="service-performance">Angular / React / Next.js Expertise</h3>
               <p className="text-sm text-textSecondary">Deep experience with modern frameworks, performance optimization, and scalable architecture patterns.</p>
             </div>
-          </div>
-
-          <div className="text-center mt-8">
-            <Link to="/earldkaiju" className="text-dominant hover:underline">
-              Also offering: Private BJJ Lessons →
-            </Link>
           </div>
         </div>
       </section>

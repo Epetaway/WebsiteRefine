@@ -9,7 +9,7 @@ export default function Footer() {
             Earl Hickson Jr<span className="text-textSecondary">.</span>
           </div>
           <p className="text-sm">
-            Senior Front-End Engineer • BJJ Black Belt
+            Front-End Developer • React • Angular • TypeScript
           </p>
           <p className="text-sm mt-2">
             Parsippany, NJ
@@ -28,9 +28,6 @@ export default function Footer() {
           </Link>
           <Link to="/blog" className="hover:text-textPrimary transition-colors">
             Blog
-          </Link>
-          <Link to="/earldkaiju" className="hover:text-textPrimary transition-colors">
-            BJJ Lessons
           </Link>
         </nav>
 

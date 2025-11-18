@@ -6,10 +6,7 @@ const nav = [
   { to: "/about", label: "About" },
   { to: "/projects", label: "Projects" },
   { to: "/blog", label: "Blog" },
-  { to: "/earldkaiju", label: "BJJ Lessons" },
 ];
-
-const KAIJU_GREEN = "var(--kaiju-green, #86d64a)";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -24,21 +21,13 @@ export default function Header() {
   const activeDefault = "text-textPrimary bg-muted";
   const idle = "text-textSecondary hover:text-textPrimary hover:bg-muted";
 
-  const isKaijuPage = location.pathname.startsWith("/earldkaiju");
-
   const desktopLinkProps = (path: string, rrActive: boolean) => {
     const active = rrActive || isActivePath(path);
-    if (path === "/earldkaiju" && active) {
-      return { className: `${linkBase}`, style: { color: KAIJU_GREEN } as Record<string, string> };
-    }
     return { className: `${linkBase} ${active ? activeDefault : idle}` };
   };
 
   const mobileLinkProps = (path: string) => {
     const active = isActivePath(path);
-    if (path === "/earldkaiju" && active) {
-      return { className: "rounded-lg px-3 py-2 text-sm font-semibold bg-muted", style: { color: KAIJU_GREEN } };
-    }
     return {
       className: `rounded-lg px-3 py-2 text-sm font-semibold ${active ? "bg-muted text-textPrimary" : "text-textSecondary hover:bg-muted"}`,
     };
@@ -51,7 +40,7 @@ export default function Header() {
           <Link to="/" className="font-extrabold tracking-tight text-lg text-textPrimary">
             Earl Hickson Jr<span className="text-textSecondary">.</span>
           </Link>
-          <div className="text-xs text-textSecondary">Senior Front-End Engineer • BJJ Black Belt</div>
+          <div className="text-xs text-textSecondary">Front-End Developer</div>
         </div>
 
         <nav className="hidden md:flex items-center gap-2">
@@ -60,7 +49,6 @@ export default function Header() {
               key={item.to}
               to={item.to}
               className={({ isActive }) => desktopLinkProps(item.to, isActive).className}
-              style={({ isActive }) => desktopLinkProps(item.to, isActive).style}
             >
               {item.label}
             </NavLink>
@@ -74,9 +62,8 @@ export default function Header() {
             Download Resume
           </a>
           <a
-            href={`mailto:e@ehicksonjr.com?subject=${encodeURIComponent(isKaijuPage ? "BJJ Lesson Inquiry" : "Engineering Opportunity")}`}
-            className="ml-2 inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-white transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-            style={{ backgroundColor: isKaijuPage ? KAIJU_GREEN : "var(--color-accent, #B02244)" }}
+            href="mailto:e@ehicksonjr.com"
+            className="ml-2 inline-flex items-center rounded-xl px-3 py-2 text-sm font-semibold text-white bg-accent transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
           >
             Hire Me
           </a>
@@ -99,7 +86,7 @@ export default function Header() {
             {nav.map((item) => {
               const p = mobileLinkProps(item.to);
               return (
-                <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className={p.className} style={p.style}>
+                <Link key={item.to} to={item.to} onClick={() => setOpen(false)} className={p.className}>
                   {item.label}
                 </Link>
               );
@@ -114,9 +101,8 @@ export default function Header() {
               Download Resume
             </a>
             <a
-              href={`mailto:e@ehicksonjr.com?subject=${encodeURIComponent(isKaijuPage ? "BJJ Lesson Inquiry" : "Engineering Opportunity")}`}
-              className="rounded-lg px-3 py-2 text-sm font-semibold text-white"
-              style={{ backgroundColor: isKaijuPage ? KAIJU_GREEN : "var(--color-accent, #B02244)" }}
+              href="mailto:e@ehicksonjr.com"
+              className="rounded-lg px-3 py-2 text-sm font-semibold text-white bg-accent"
               onClick={() => setOpen(false)}
             >
               Hire Me
