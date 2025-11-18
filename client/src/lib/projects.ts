@@ -1,9 +1,9 @@
 /**
- * Case Studies Data Layer
- * Central source of truth for all case study content
+ * Projects Data Layer
+ * Central source of truth for all project content
  */
 
-export interface CaseStudy {
+export interface Project {
   slug: string;
   title: string;
   role: string;
@@ -16,13 +16,13 @@ export interface CaseStudy {
   featured?: boolean;
 }
 
-export const caseStudies: CaseStudy[] = [
+export const projects: Project[] = [
   {
     slug: "asembia-patient-portal",
     title: "Healthcare Patient Portal UI",
     role: "Front-End Developer",
     impact: "+37% Lead Conversions",
-    thumbnail: "/images/case-studies/asembia-portal.jpg",
+    thumbnail: "/images/projects/asembia-portal.jpg",
     tags: ["React", "TypeScript", "Healthcare UI", "Accessibility"],
     description: "Built healthcare patient portal UIs with complex multi-step flows, accessibility, and enterprise patterns.",
     year: "2023-2024",
@@ -34,7 +34,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Mobile Performance Optimization",
     role: "Senior Front-End Engineer",
     impact: "+75% Livestream Engagement",
-    thumbnail: "/images/case-studies/mobile-opt.jpg",
+    thumbnail: "/images/projects/mobile-opt.jpg",
     tags: ["Performance", "Mobile", "Optimization"],
     description: "Reduced layout shift and improved mobile responsiveness by optimizing CSS bundles across key user flows.",
     year: "2023",
@@ -45,7 +45,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Lead Conversion Rate Optimization",
     role: "UI/UX Engineer",
     impact: "+25% Organic Traffic",
-    thumbnail: "/images/case-studies/conversion-opt.jpg",
+    thumbnail: "/images/projects/conversion-opt.jpg",
     tags: ["A/B Testing", "UX", "Conversion"],
     description: "Supported marketing teams with A/B testing implementations that reduced bounce rate and increased form completion rates.",
     year: "2022-2023",
@@ -56,7 +56,7 @@ export const caseStudies: CaseStudy[] = [
     title: "WCAG 2.1 AA Accessibility Implementation",
     role: "Accessibility Engineer",
     impact: "Lighthouse Score +18 points",
-    thumbnail: "/images/case-studies/accessibility.jpg",
+    thumbnail: "/images/projects/accessibility.jpg",
     tags: ["Accessibility", "WCAG 2.1", "Lighthouse"],
     description: "Improved Lighthouse accessibility score to 95+ by adding ARIA labels, semantic HTML, and improving keyboard navigation.",
     year: "2022",
@@ -65,22 +65,22 @@ export const caseStudies: CaseStudy[] = [
 ];
 
 /**
- * Get featured case studies for homepage display
+ * Get featured projects for homepage display
  */
-export function getFeaturedCaseStudies(): CaseStudy[] {
-  return caseStudies.filter((study) => study.featured);
+export function getFeaturedProjects(): Project[] {
+  return projects.filter((project) => project.featured);
 }
 
 /**
- * Get case study by slug
+ * Get project by slug
  */
-export function getCaseStudyBySlug(slug: string): CaseStudy | undefined {
-  return caseStudies.find((study) => study.slug === slug);
+export function getProjectBySlug(slug: string): Project | undefined {
+  return projects.find((project) => project.slug === slug);
 }
 
 /**
- * Get all case studies
+ * Get all projects
  */
-export function getAllCaseStudies(): CaseStudy[] {
-  return caseStudies;
+export function getAllProjects(): Project[] {
+  return projects;
 }
