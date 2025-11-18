@@ -14,23 +14,23 @@
   
   /* Legacy shadcn/ui variables for compatibility */
   --background: hsl(0, 0%, 100%);
-  --foreground: hsl(210, 25%, 7.8431%);
-  --card: hsl(180, 6.6667%, 97.0588%);
-  --card-foreground: hsl(210, 25%, 7.8431%);
+  --foreground: hsl(0, 0%, 6.67%);
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(0, 0%, 6.67%);
   --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(210, 25%, 7.8431%);
+  --popover-foreground: hsl(0, 0%, 6.67%);
   --primary: #1d6fff;
   --primary-foreground: hsl(0, 0%, 100%);
-  --secondary: hsl(210, 25%, 7.8431%);
+  --secondary: hsl(0, 0%, 6.67%);
   --secondary-foreground: hsl(0, 0%, 100%);
-  --muted: hsl(0, 0%, 98%);
-  --muted-foreground: hsl(210, 25%, 7.8431%);
+  --muted: hsl(0, 0%, 97.5%);
+  --muted-foreground: hsl(0, 0%, 42%);
   --accent: #1d6fff;
   --accent-foreground: hsl(0, 0%, 100%);
-  --destructive: hsl(356.3033, 90.5579%, 54.3137%);
+  --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(0, 0%, 90%);
-  --input: hsl(0, 0%, 97%);
+  --border: hsl(0, 0%, 89.8%);
+  --input: hsl(0, 0%, 89.8%);
   --ring: #1d6fff;
   --chart-1: #1d6fff;
   --chart-2: hsl(159.7826, 100%, 36.0784%);
@@ -172,21 +172,21 @@ section#offer{
   }
 
   .card-hover:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 12px 24px rgba(29, 102, 255, 0.15);
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(29, 102, 255, 0.12);
   }
 
   .button-lift {
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .button-lift:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 8px 16px rgba(29, 102, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(29, 102, 255, 0.15);
   }
 
   .button-lift:active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(0);
   }
 }
 
