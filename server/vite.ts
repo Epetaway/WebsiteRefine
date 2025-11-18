@@ -31,14 +31,17 @@ export async function setupVite(app: Express, server: Server) {
   };
 
   // Get the actual config from the viteConfig function
-  const config = await viteConfig({ mode: "development", command: "serve" });
+  const configResult = typeof viteConfig === 'function' 
+    ? await viteConfig({ mode: "development", command: "serve" })
+    : viteConfig;
+  const baseConfig = configResult instanceof Promise ? await configResult : configResult;
 
   const vite = await createViteServer({
-    ...config,
+    ...baseConfig,
     configFile: false,
     root: path.resolve(__dirname, "..", "client"),
     resolve: {
-      ...config.resolve,
+      ...baseConfig.resolve,
       alias: {
         "@": path.resolve(__dirname, "..", "client", "src"),
         "@shared": path.resolve(__dirname, "..", "shared"),

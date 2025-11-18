@@ -6,7 +6,7 @@ import { blogPosts } from "@/data/blog-posts";
 function renderBasicMarkdown(md: string): string {
   let html = md.trim();
   html = html.replace(/```([\s\S]*?)```/g, (_m, code) => {
-    const esc = code.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" } as any)[c]!);
+    const esc = code.replace(/[&<>]/g, (c: string) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" } as any)[c]!);
     return `<pre class="overflow-auto rounded-lg border px-3 py-2 bg-gray-50"><code>${esc}</code></pre>`;
   });
   html = html
