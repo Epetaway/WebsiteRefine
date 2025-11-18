@@ -73,6 +73,10 @@ export default function Home() {
               <h1 className="font-display text-5xl md:text-6xl text-textPrimary mb-4 tracking-tight" data-testid="hero-title-primary">
                 Senior Front-End Engineer
               </h1>
+              
+              <p className="text-2xl lg:text-3xl text-gray-700 font-medium mb-6">
+                React • Angular • TypeScript
+              </p>
 
               <p className="text-textSecondary mb-2 text-sm">
                 Parsippany, NJ

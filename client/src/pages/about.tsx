@@ -63,7 +63,7 @@ export default function About() {
               About Earl
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              I'm a Front-End Developer with experience across healthcare, marketing, and non-profit products. I build responsive, accessible, and performance-minded interfaces using React, Angular, Vue, and modern JavaScript, and I enjoy collaborating with designers and product teams to ship real features that people actually use.
+              I'm a Front-End Developer who cares about clarity, correctness, and shipping real value. I specialize in React, Angular, TypeScript, and modern JavaScript—building frontends that are responsive, accessible, and easy to maintain. I've worked across healthcare, oncology content, marketing technology, and small-business systems. My strengths are component architecture, accessibility, performance, and turning designs into scalable UI patterns.
             </p>
           </div>
         </div>
@@ -75,26 +75,55 @@ export default function About() {
           <div className="grid lg:grid-cols-2 gap-12 mb-16">
             <div>
               <h2 className="text-3xl font-bold mb-6" data-testid="section-title-technical">
-                Technical Background
+                Areas of Expertise
               </h2>
-              <p className="text-gray-700 mb-6" data-testid="bio-technical">
-                I'm a Front-End Developer and graphic designer by training, with a B.A. in Graphic Design (Kean University)
-                and a Front-End Web Development Tech Degree from Team Treehouse. I focus on combining clean visual design with solid engineering practices to build accessible, maintainable web interfaces.
-              </p>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Component Architecture</h3>
+                  <p className="text-gray-700">
+                    Feature-first frontends built with predictable file structures, reusable components, and clean separation of concerns.
+                  </p>
+                </div>
 
-              <h3 className="text-xl font-semibold mb-4">Skills Matrix</h3>
-              <div className="space-y-3 mb-8">
-                {skills.map((skill, i) => (
-                  <div key={i} className="flex justify-between items-center">
-                    <span className="text-sm font-medium" data-testid={`skill-name-${i}`}>
-                      {skill.name}
-                    </span>
-                    <span className={`text-xs px-2 py-1 rounded ${skill.color}`} data-testid={`skill-level-${i}`}>
-                      {skill.level}
-                    </span>
-                  </div>
-                ))}
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Type Safety</h3>
+                  <p className="text-gray-700">
+                    TypeScript-driven workflows where UI, state, and API expectations are all explicit and correct.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Accessibility</h3>
+                  <p className="text-gray-700">
+                    WCAG 2.1 AA semantics, proper labeling, keyboard flows, safe colors, and real-world healthcare accessibility requirements.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Performance</h3>
+                  <p className="text-gray-700">
+                    Fast rendering, minimal re-renders, optimized bundle use, and responsive UX across devices.
+                  </p>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-2">Data-Driven UI</h3>
+                  <p className="text-gray-700">
+                    I use analytics, A/B tests, and user behavior to drive UI decisions and measure impact clearly.
+                  </p>
+                </div>
               </div>
+              
+              <h3 className="text-xl font-semibold mb-4 mt-8">Professional Snapshot</h3>
+              
+              <div className="space-y-4">
+                <div className="border-l-4 border-blue-500 pl-4">
+                  <h4 className="font-semibold text-gray-900">Healthcare Portal Engineering (Asembia)</h4>
+                  <p className="text-sm text-gray-600">
+                    Shipped UI fixes, accessibility updates, and refactors across large patient/provider portals. Improved responsiveness, resolved 150+ UI issues, and elevated front-end quality while integrating with backend teams.
+                  </p>
+                </div>
 
               <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
               <p className="text-sm text-gray-600 mb-4">

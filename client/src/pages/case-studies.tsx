@@ -6,9 +6,9 @@ export default function CaseStudies() {
   const engineeringProjects = projects ?? [];
   const isUnderConstruction = false;
 
-  const title = "Case Studies – Front-End, UI Systems, Branding | Earl Hickson Jr.";
+  const title = "Projects – Front-End Developer Portfolio | Earl Hickson Jr.";
   const description =
-    "Engineering case studies in React, Angular, performance, and accessibility, plus interactive brand books and identity systems.";
+    "A curated selection of front-end projects inspired by real work in healthcare portals, oncology content platforms, marketing landing systems, and non-profit tools.";
 
   return (
     <div>
@@ -56,9 +56,9 @@ export default function CaseStudies() {
           <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-16">
-                <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Case Studies</h1>
+                <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Projects</h1>
                 <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                  A collection of front-end engineering case studies inspired by real-world work across healthcare, marketing, and non-profit products. These examples highlight UI problem-solving, accessibility improvements, performance optimization, and responsive component-driven development.
+                  A curated selection of front-end projects inspired by real-world work across healthcare applications, oncology content platforms, marketing landing pages, and small business interfaces. Toggle between Developer and Portfolio views for technical or high-level summaries.
                 </p>
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function CaseStudies() {
 
           <section className="py-20 bg-white">
             <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-2xl font-bold mb-8" data-testid="section-title-engineering">Engineering Case Studies</h2>
+              <h2 className="text-2xl font-bold mb-8" data-testid="section-title-engineering">Featured Projects</h2>
 
               <div className="space-y-16">
                 {engineeringProjects.slice(0, 2).map((project) => (
