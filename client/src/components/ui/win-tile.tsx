@@ -31,7 +31,7 @@ export default function WinTile({
 }: WinTileProps) {
   return (
     <div
-      className={`${bgColor} p-8 rounded-2xl border hover:shadow-lg transition-shadow duration-300`}
+      className={`${bgColor} p-8 rounded-card border border-border hover:border-dominant transition-colors duration-300`}
     >
       <div
         className={`w-12 h-12 ${iconColor} rounded-xl flex items-center justify-center mb-6`}
@@ -40,7 +40,7 @@ export default function WinTile({
       </div>
 
       <h3
-        className="text-xl font-bold mb-4"
+        className="text-xl font-bold mb-4 text-textPrimary"
         data-testid={`title-${title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         {title}
@@ -51,11 +51,11 @@ export default function WinTile({
         <dl className="mb-6 space-y-3">
           {metrics.map((m, i) => (
             <div key={i}>
-              <dt className="text-sm text-gray-600">{m.label}</dt>
+              <dt className="text-sm text-textSecondary">{m.label}</dt>
               <dd className={`text-2xl font-bold ${metricColor}`}>
                 {m.value}{" "}
                 {m.improvement && (
-                  <span className="text-sm text-gray-500 ml-1">
+                  <span className="text-sm text-textSecondary ml-1">
                     ({m.improvement})
                   </span>
                 )}
@@ -73,7 +73,7 @@ export default function WinTile({
               {improvement}
             </div>
             <div
-              className="text-sm text-gray-600"
+              className="text-sm text-textSecondary"
               data-testid={`metric-label-${title
                 .toLowerCase()
                 .replace(/\s+/g, '-')}`}
@@ -85,14 +85,14 @@ export default function WinTile({
       )}
 
       <p
-        className="text-gray-700 text-sm leading-relaxed mb-4"
+        className="text-textSecondary text-sm leading-relaxed mb-4"
         data-testid={`description-${title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         {description}
       </p>
 
       <div
-        className="text-xs text-gray-500"
+        className="text-xs text-textSecondary"
         data-testid={`stack-${title.toLowerCase().replace(/\s+/g, '-')}`}
       >
         {stack}
