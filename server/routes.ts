@@ -245,13 +245,14 @@ Please follow up within 24 hours.
           
           const posts = [];
           
+          // Fetch existing posts once to avoid N+1 query problem
+          const existingPosts = await storage.getSocialMediaPosts('instagram');
+          const existingPostIds = new Set(existingPosts.map(p => p.postId));
+          
           for (const item of result.posts || []) {
             try {
-              // Check if post already exists
-              const existingPosts = await storage.getSocialMediaPosts('instagram');
-              const exists = existingPosts.some(p => p.postId === item.postId);
-              
-              if (!exists) {
+              // Check if post already exists using Set for O(1) lookup
+              if (!existingPostIds.has(item.postId)) {
                 const post = await storage.createSocialMediaPost({
                   platform: 'instagram',
                   postId: item.postId,
@@ -314,13 +315,14 @@ Please follow up within 24 hours.
       const data = await response.json();
       const posts = [];
 
+      // Fetch existing posts once to avoid N+1 query problem
+      const existingPosts = await storage.getSocialMediaPosts('youtube');
+      const existingVideoIds = new Set(existingPosts.map(p => p.postId));
+
       for (const item of data.items || []) {
         try {
-          // Check if video already exists
-          const existingPosts = await storage.getSocialMediaPosts('youtube');
-          const exists = existingPosts.some(p => p.postId === item.id.videoId);
-          
-          if (!exists) {
+          // Check if video already exists using Set for O(1) lookup
+          if (!existingVideoIds.has(item.id.videoId)) {
             const post = await storage.createSocialMediaPost({
               platform: 'youtube',
               postId: item.id.videoId,

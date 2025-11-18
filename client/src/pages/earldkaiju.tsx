@@ -89,7 +89,7 @@ export default function EarldKaiju() {
     refetchInterval: 5 * 60 * 1000,
   });
   const posts: SocialMediaPost[] = (socialMediaData as any)?.posts || [];
-  const youtubePosts = posts.filter((p) => p.platform === "youtube");
+  const youtubePosts = useMemo(() => posts.filter((p) => p.platform === "youtube"), [posts]);
   const fetchIG = useMutation({
     mutationFn: () => apiRequest("POST", "/api/social-media/fetch-instagram", {}),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/social-media"] }),
@@ -103,9 +103,9 @@ export default function EarldKaiju() {
   }, [socialMediaLoading, posts.length]);
 
   // medals
-  const golds = bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length;
-  const silvers = bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Silver").length;
-  const bronzes = bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Bronze").length;
+  const golds = useMemo(() => bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length, []);
+  const silvers = useMemo(() => bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Silver").length, []);
+  const bronzes = useMemo(() => bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Bronze").length, []);
 
   return (
     <div className="bg-black text-white">

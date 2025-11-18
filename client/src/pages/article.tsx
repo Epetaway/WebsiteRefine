@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { useRoute } from "wouter";
 import { Link } from "wouter";
 import { blogPosts } from "@/data/blog-posts";
@@ -7,7 +8,7 @@ export default function Article() {
   const [, params] = useRoute("/articles/:slug");
   const slug = params?.slug;
   
-  const post = blogPosts.find(p => p.slug === slug);
+  const post = useMemo(() => blogPosts.find(p => p.slug === slug), [slug]);
 
   if (!post) {
     return (
@@ -33,6 +34,11 @@ export default function Article() {
     development: "bg-blue-100 text-blue-700",
     general: "bg-gray-100 text-gray-700"
   };
+
+  const relatedPosts = useMemo(
+    () => blogPosts.filter(p => p.id !== post.id && p.category === post.category).slice(0, 2),
+    [post.id, post.category]
+  );
 
   return (
     <div className="">
@@ -161,10 +167,7 @@ export default function Article() {
           <div className="mt-16">
             <h3 className="text-2xl font-bold mb-8" data-testid="related-posts-title">More Articles</h3>
             <div className="grid md:grid-cols-2 gap-6">
-              {blogPosts
-                .filter(p => p.id !== post.id && p.category === post.category)
-                .slice(0, 2)
-                .map((relatedPost) => (
+              {relatedPosts.map((relatedPost) => (
                   <Link 
                     key={relatedPost.id} 
                     href={`/articles/${relatedPost.slug}`}
