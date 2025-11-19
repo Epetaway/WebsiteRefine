@@ -86,7 +86,7 @@ export default function Home() {
 
               <p className="text-textSecondary mb-2 text-sm">Parsippany, NJ</p>
 
-              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-bg-panel rounded-card shadow-card">
+              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-base rounded-card shadow-card">
                 <div>
                   <div className="text-2xl font-display text-accent mb-1">
                     +37%
@@ -141,7 +141,7 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center lg:justify-end">
-              <div className="bg-bg-panel rounded-card p-6 shadow-card max-w-sm w-full">
+              <div className="bg-base rounded-card p-6 shadow-card max-w-sm w-full">
                 <div className="aspect-square rounded-lg overflow-hidden mb-4">
                   <img
                     src={profileImage}

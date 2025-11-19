@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
+import profileImage from "@/images/me.png";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -28,14 +29,23 @@ export default function Header() {
       {/* Main Header */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-border-subtle">
         <div className="mx-auto max-w-content px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <Link to="/" className="flex flex-col">
-            <span className="font-semibold text-base text-textPrimary">
-              Earl Hickson Jr.
-            </span>
-            <span className="text-xs text-textSecondary">
-              Front-End Developer · React · Angular · TypeScript
-            </span>
-          </Link>
+          <div className="flex items-center gap-3">
+            <Link to="/" className="flex-shrink-0">
+              <img
+                src={profileImage}
+                alt="Earl Hickson Jr."
+                className="w-10 h-10 rounded-full object-cover"
+              />
+            </Link>
+            <Link to="/" className="flex flex-col">
+              <span className="font-semibold text-base text-textPrimary">
+                Earl Hickson Jr.
+              </span>
+              <span className="text-xs text-textSecondary">
+                Front-End Developer · React · Angular · TypeScript
+              </span>
+            </Link>
+          </div>
 
           <nav className="hidden md:flex items-center gap-6">
             {nav.map((item) => (
