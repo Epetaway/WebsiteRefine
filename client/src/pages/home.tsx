@@ -63,13 +63,6 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      {/* Top Banner */}
-      <div className="w-full bg-dominant text-white py-2 px-4 text-center">
-        <p className="text-sm">
-          Available for Senior Front-End roles & select freelance projects.
-        </p>
-      </div>
-
       {/* Hero Section */}
       <section className="w-full flex justify-center px-4 bg-base">
         <div className="w-full max-w-content py-24 md:py-32">
@@ -93,7 +86,7 @@ export default function Home() {
 
               <p className="text-textSecondary mb-2 text-sm">Parsippany, NJ</p>
 
-              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-bg-panel rounded-card border border-border-subtle">
+              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-bg-panel rounded-card shadow-card">
                 <div>
                   <div className="text-2xl font-display text-accent mb-1">
                     +37%
@@ -148,7 +141,7 @@ export default function Home() {
             </div>
 
             <div className="flex justify-center lg:justify-end">
-              <div className="bg-bg-panel border border-border-subtle rounded-card p-6 shadow-card max-w-sm w-full">
+              <div className="bg-bg-panel rounded-card p-6 shadow-card max-w-sm w-full">
                 <div className="aspect-square rounded-lg overflow-hidden mb-4">
                   <img
                     src={profileImage}
@@ -193,7 +186,7 @@ export default function Home() {
               <Link
                 key={project.slug}
                 to={`/projects/${project.slug}`}
-                className="group block bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300 hover:-translate-y-1"
+                className="group block bg-base rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300 hover:-translate-y-1"
               >
                 <div className="aspect-video bg-bg-panel rounded-lg mb-4 overflow-hidden">
                   <img
@@ -249,7 +242,7 @@ export default function Home() {
       </section>
 
       {/* Experience Section */}
-      <section className="w-full flex justify-center px-4 bg-bg-panel">
+      <section className="w-full flex justify-center px-4 bg-base">
         <div className="w-full max-w-content py-section-y">
           <div className="text-center mb-12">
             <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
@@ -263,10 +256,10 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Experience Layout with Featured Card */}
-          <div className="grid lg:grid-cols-[1.3fr_2fr] gap-10 items-start mb-12">
+          {/* Three Equal Cards Layout */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Blue Gradient Experience Card */}
-            <div className="bg-base border border-border-subtle rounded-card p-8 shadow-card hover:shadow-cardHover transition-all duration-300 gradient-animate text-white">
+            <div className="bg-base rounded-card p-8 shadow-card hover:shadow-cardHover transition-all duration-300 gradient-animate text-white flex flex-col">
               <h3 className="font-display text-3xl md:text-4xl mb-4 font-bold">
                 6+ years of experience
               </h3>
@@ -277,25 +270,32 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Experience Cards Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {experiences.map((exp) => (
-                <div
-                  key={exp.title}
-                  className="bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300"
-                >
-                  <div className="text-4xl mb-4">{exp.icon}</div>
-                  <h3 className="font-display text-lg text-textPrimary mb-1">
-                    {exp.title}
-                  </h3>
-                  <p className="text-xs text-accent uppercase tracking-wide mb-3 font-semibold">
-                    {exp.years}
-                  </p>
-                  <p className="text-sm text-textSecondary">
-                    {exp.description}
-                  </p>
-                </div>
-              ))}
+            {/* Other Experience Cards */}
+            <div className="bg-base rounded-card p-8 shadow-card hover:shadow-cardHover transition-all duration-300 flex flex-col">
+              <div className="text-4xl mb-4">💻</div>
+              <h3 className="font-display text-xl text-textPrimary mb-2">
+                Front-End Development
+              </h3>
+              <p className="text-xs text-accent uppercase tracking-wide mb-3 font-semibold">
+                6+ Years
+              </p>
+              <p className="text-sm text-textSecondary">
+                React, Angular, Vue, TypeScript with focus on accessibility and
+                performance.
+              </p>
+            </div>
+
+            <div className="bg-base rounded-card p-8 shadow-card hover:shadow-cardHover transition-all duration-300 flex flex-col">
+              <div className="text-4xl mb-4">🏥</div>
+              <h3 className="font-display text-xl text-textPrimary mb-2">
+                Healthcare & Enterprise
+              </h3>
+              <p className="text-xs text-accent uppercase tracking-wide mb-3 font-semibold">
+                3+ Years
+              </p>
+              <p className="text-sm text-textSecondary">
+                Patient portals, HIPAA compliance, complex multi-step workflows.
+              </p>
             </div>
           </div>
 
