@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import { getFeaturedProjects } from "@/lib/projects";
+import { getAllProjects } from "@/lib/projects";
+import { motion } from "framer-motion";
 import profileImage from "@/images/me.png";
 
 const SITE = "https://www.ehicksonjr.com";
@@ -34,10 +35,49 @@ const experiences = [
 ];
 
 export default function Home() {
-  const featuredProjects = getFeaturedProjects();
+  const allProjects = getAllProjects();
+  // Get the first 4 projects for the projects section
+  const displayProjects = allProjects.slice(0, 4);
+  
   const title = "Earl Hickson Jr. – Senior Front-End Engineer";
   const description =
     "Senior Front-End Engineer building accessible, responsive, and performance-focused web interfaces. 6+ years with React, Angular, Vue, and TypeScript across healthcare, marketing, and enterprise domains. Based in Parsippany, NJ.";
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut",
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut",
+      },
+    },
+  };
 
   return (
     <div className="bg-base">
@@ -53,238 +93,369 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      {/* Top Banner */}
-      <div className="w-full bg-dominant text-white py-2 px-4 text-center">
-        <p className="text-sm">
-          Available for Senior Front-End roles & select freelance projects.
-        </p>
-      </div>
-
       {/* Hero Section */}
-      <section className="w-full flex justify-center px-4 bg-base">
-        <div className="w-full max-w-content py-24 md:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center px-4 py-2 rounded-pill bg-dominant/10 text-dominant text-sm font-medium mb-6 border border-dominant/20">
+      <section className="w-full flex justify-center px-4 bg-base pt-20 pb-24 md:pt-32 md:pb-32">
+        <div className="w-full max-w-content">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Left Column - Text Content */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={containerVariants}
+              className="space-y-6"
+            >
+              <motion.div
+                variants={itemVariants}
+                className="inline-flex items-center px-4 py-2 rounded-pill bg-dominant/10 text-dominant text-sm font-medium border border-dominant/20"
+              >
                 <span className="w-2 h-2 bg-dominant rounded-full mr-2 animate-pulse" />
                 Available for Senior Front-End roles & select freelance projects
-              </div>
+              </motion.div>
 
-              <h1 className="font-display text-5xl md:text-6xl text-textPrimary mb-4 tracking-tight" data-testid="hero-title-primary">
+              <motion.h1
+                variants={itemVariants}
+                className="font-display text-5xl md:text-6xl lg:text-7xl text-textPrimary tracking-tight leading-tight"
+                data-testid="hero-title-primary"
+              >
                 Senior Front-End Engineer
-              </h1>
+              </motion.h1>
               
-              <p className="text-2xl lg:text-3xl text-gray-700 font-medium mb-6">
+              <motion.p
+                variants={itemVariants}
+                className="text-xl lg:text-2xl text-gray-600 font-medium"
+              >
                 React • Angular • TypeScript
-              </p>
+              </motion.p>
 
-              <p className="text-textSecondary mb-2 text-sm">
+              <motion.p
+                variants={itemVariants}
+                className="text-textSecondary text-base"
+              >
                 Parsippany, NJ
-              </p>
+              </motion.p>
 
-              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-bg-panel rounded-card border border-border-subtle">
+              <motion.div
+                variants={itemVariants}
+                className="grid grid-cols-3 gap-4 p-6 bg-white/50 backdrop-blur-sm rounded-2xl border border-gray-200 shadow-sm"
+              >
                 <div>
-                  <div className="text-2xl font-display text-accent mb-1">+37%</div>
+                  <div className="text-2xl md:text-3xl font-display font-bold text-dominant mb-1">+37%</div>
                   <div className="text-xs text-textSecondary">Lead Conversions</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-display text-accent mb-1">+25%</div>
+                  <div className="text-2xl md:text-3xl font-display font-bold text-dominant mb-1">+25%</div>
                   <div className="text-xs text-textSecondary">Organic Traffic</div>
                 </div>
                 <div>
-                  <div className="text-2xl font-display text-accent mb-1">+75%</div>
-                  <div className="text-xs text-textSecondary">Livestream Engagement</div>
+                  <div className="text-2xl md:text-3xl font-display font-bold text-dominant mb-1">+75%</div>
+                  <div className="text-xs text-textSecondary">Engagement</div>
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="rounded-pill bg-accent text-text-on-accent hover:bg-accent/90" data-testid="button-case-studies">
+              <motion.div
+                variants={itemVariants}
+                className="flex flex-wrap gap-4 pt-4"
+              >
+                <Button asChild size="lg" className="rounded-full bg-dominant text-white hover:bg-dominant/90 px-8 shadow-lg hover:shadow-xl transition-all" data-testid="button-case-studies">
                   <Link to="/projects">
-                    View Front-End Case Studies
+                    View Projects
                   </Link>
                 </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-pill border-dominant text-dominant hover:bg-dominant hover:text-text-on-accent" data-testid="button-resume">
+                <Button asChild variant="outline" size="lg" className="rounded-full border-2 border-gray-300 hover:border-dominant hover:bg-dominant/5 px-8" data-testid="button-resume">
                   <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
-                    Download Resume (PDF)
+                    Download Resume
                   </a>
                 </Button>
-              </div>
-            </div>
+              </motion.div>
+            </motion.div>
 
-            <div className="flex justify-center lg:justify-end">
-              <div className="bg-bg-panel border border-border-subtle rounded-card p-6 shadow-card max-w-sm w-full">
-                <div className="aspect-square rounded-lg overflow-hidden mb-4">
-                  <img
-                    src={profileImage}
-                    alt="Earl Hickson Jr."
-                    className="w-full h-full object-cover"
-                    data-testid="hero-image"
-                  />
+            {/* Right Column - Profile Image */}
+            <motion.div
+              initial="hidden"
+              animate="visible"
+              variants={imageVariants}
+              className="flex justify-center lg:justify-end"
+            >
+              <div className="relative w-full max-w-md">
+                {/* Decorative background elements */}
+                <div className="absolute -top-6 -right-6 w-72 h-72 bg-dominant/10 rounded-full blur-3xl -z-10" />
+                <div className="absolute -bottom-6 -left-6 w-72 h-72 bg-accent/10 rounded-full blur-3xl -z-10" />
+                
+                <div className="bg-white border border-gray-200 rounded-3xl p-6 shadow-xl backdrop-blur-sm">
+                  <div className="aspect-square rounded-2xl overflow-hidden mb-6 shadow-lg">
+                    <img
+                      src={profileImage}
+                      alt="Earl Hickson Jr."
+                      className="w-full h-full object-cover"
+                      data-testid="hero-image"
+                    />
+                  </div>
+                  <div>
+                    <h2 className="font-display text-2xl text-textPrimary mb-2 font-bold">
+                      Earl Hickson Jr.
+                    </h2>
+                    <p className="text-sm text-dominant mb-3 font-semibold">
+                      Senior Front-End Engineer · BJJ Black Belt
+                    </p>
+                    <p className="text-sm text-textSecondary leading-relaxed">
+                      Building responsive, accessible, and performance-focused web interfaces with modern front-end stacks.
+                    </p>
+                  </div>
                 </div>
-                <h2 className="font-display text-xl text-textPrimary mb-1">
-                  Earl Hickson Jr.
-                </h2>
-                <p className="text-sm text-dominant mb-3">
-                  Senior Front-End Engineer · BJJ Black Belt
-                </p>
-                <p className="text-sm text-textSecondary">
-                  Building responsive, accessible, and performance-focused web interfaces with modern front-end stacks.
-                </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="w-full flex justify-center px-4 bg-base">
-        <div className="w-full max-w-content py-section-y border-b border-border-subtle">
-          <div className="text-center mb-12">
-            <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
-              PORTFOLIO
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-4 tracking-tight">
-              Explore my latest Projects
-            </h2>
-            <p className="text-lg text-textSecondary max-w-2xl mx-auto">
-              Real-world front-end work with measurable business impact
-            </p>
-          </div>
+      <section className="w-full flex justify-center px-4 bg-gradient-to-b from-white to-gray-50 py-20 md:py-28">
+        <div className="w-full max-w-content">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="text-center mb-16"
+          >
+            <motion.p
+              variants={itemVariants}
+              className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4 font-semibold"
+            >
+              PROJECTS
+            </motion.p>
+            <motion.h2
+              variants={itemVariants}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-textPrimary mb-6 tracking-tight font-bold"
+            >
+              Featured Work
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-textSecondary max-w-2xl mx-auto"
+            >
+              Real-world front-end projects with measurable business impact
+            </motion.p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <Link
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={containerVariants}
+            className="grid md:grid-cols-2 gap-8"
+          >
+            {displayProjects.map((project, index) => (
+              <motion.div
                 key={project.slug}
-                to={`/projects/${project.slug}`}
-                className="group block bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300 hover:-translate-y-1"
+                variants={itemVariants}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
               >
-                <div className="aspect-video bg-bg-panel rounded-lg mb-4 overflow-hidden">
-                  <img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%231A1A1A' width='400' height='300'/%3E%3C/svg%3E";
-                    }}
-                  />
-                </div>
-                
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="font-display text-xl text-textPrimary group-hover:text-dominant transition-colors">
-                    {project.title}
-                  </h3>
-                  {project.year && (
-                    <span className="text-xs uppercase tracking-wide text-textSecondary whitespace-nowrap">
-                      {project.year}
-                    </span>
-                  )}
-                </div>
+                <Link
+                  to={`/projects/${project.slug}`}
+                  className="group block h-full"
+                >
+                  <div className="h-full bg-white border border-gray-200 rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500">
+                    {/* Project Image Placeholder */}
+                    <div className="aspect-video bg-gradient-to-br from-dominant/20 via-dominant/10 to-accent/10 rounded-2xl mb-6 overflow-hidden relative">
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-6xl opacity-20">
+                          {index === 0 && "🏥"}
+                          {index === 1 && "📱"}
+                          {index === 2 && "🎨"}
+                          {index === 3 && "⚡"}
+                        </div>
+                      </div>
+                      {project.thumbnail && (
+                        <img
+                          src={project.thumbnail}
+                          alt={project.title}
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          onError={(e) => {
+                            e.currentTarget.style.display = 'none';
+                          }}
+                        />
+                      )}
+                    </div>
+                    
+                    <div className="space-y-4">
+                      <div className="flex items-start justify-between gap-4">
+                        <h3 className="font-display text-2xl text-textPrimary group-hover:text-dominant transition-colors font-bold">
+                          {project.title}
+                        </h3>
+                        {project.year && (
+                          <span className="text-xs uppercase tracking-wide text-textSecondary whitespace-nowrap px-3 py-1 bg-gray-100 rounded-full">
+                            {project.year}
+                          </span>
+                        )}
+                      </div>
 
-                <p className="text-sm text-textSecondary mb-3">
-                  {project.role}
-                </p>
+                      <p className="text-sm text-dominant font-semibold">
+                        {project.role}
+                      </p>
 
-                <p className="text-sm text-accent font-semibold mb-4">
-                  {project.impact}
-                </p>
+                      <p className="text-base text-accent font-bold">
+                        {project.impact}
+                      </p>
 
-                {project.description && (
-                  <p className="text-sm text-textSecondary mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                )}
+                      {project.description && (
+                        <p className="text-sm text-textSecondary leading-relaxed line-clamp-2">
+                          {project.description}
+                        </p>
+                      )}
 
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-block px-3 py-1 text-xs rounded-pill bg-dominant/10 text-dominant border border-dominant/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              </Link>
+                      <div className="flex flex-wrap gap-2 pt-2">
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span
+                            key={tag}
+                            className="inline-block px-3 py-1.5 text-xs font-medium rounded-full bg-dominant/10 text-dominant border border-dominant/20"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="text-center mt-12"
+          >
+            <Button asChild size="lg" variant="outline" className="rounded-full border-2 border-dominant text-dominant hover:bg-dominant hover:text-white px-8 shadow-md hover:shadow-xl transition-all">
+              <Link to="/projects">
+                View All Projects →
+              </Link>
+            </Button>
+          </motion.div>
         </div>
       </section>
 
       {/* Experience Section */}
-      <section className="w-full flex justify-center px-4 bg-bg-panel">
-        <div className="w-full max-w-content py-section-y">
-          <div className="text-center mb-12">
-            <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
-              BACKGROUND
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-4 tracking-tight">
-              Experience & Expertise
-            </h2>
-            <p className="text-lg text-textSecondary max-w-2xl mx-auto">
+      <section className="w-full flex justify-center px-4 bg-white py-20 md:py-28">
+        <div className="w-full max-w-content">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={containerVariants}
+            className="text-center mb-16"
+          >
+            <motion.p
+              variants={itemVariants}
+              className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4 font-semibold"
+            >
+              EXPERTISE
+            </motion.p>
+            <motion.h2
+              variants={itemVariants}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-textPrimary mb-6 tracking-tight font-bold"
+            >
+              Experience & Skills
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-textSecondary max-w-2xl mx-auto"
+            >
               Building web interfaces since 2018
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {experiences.map((exp) => (
-              <div
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={containerVariants}
+            className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+          >
+            {experiences.map((exp, index) => (
+              <motion.div
                 key={exp.title}
-                className="bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300"
+                variants={itemVariants}
+                whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                className="bg-gradient-to-br from-white to-gray-50 border border-gray-200 rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300"
               >
-                <div className="text-4xl mb-4">{exp.icon}</div>
-                <h3 className="font-display text-lg text-textPrimary mb-1">
+                <div className="text-5xl mb-6">{exp.icon}</div>
+                <h3 className="font-display text-xl text-textPrimary mb-2 font-bold">
                   {exp.title}
                 </h3>
-                <p className="text-xs text-accent uppercase tracking-wide mb-3 font-semibold">
+                <p className="text-sm text-dominant uppercase tracking-wide mb-4 font-bold">
                   {exp.years}
                 </p>
-                <p className="text-sm text-textSecondary">
+                <p className="text-sm text-textSecondary leading-relaxed">
                   {exp.description}
                 </p>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
 
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" className="rounded-pill bg-dominant text-text-on-accent hover:bg-dominant/90" data-testid="button-contact">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3, duration: 0.5 }}
+            className="flex flex-wrap justify-center gap-4"
+          >
+            <Button asChild size="lg" className="rounded-full bg-dominant text-white hover:bg-dominant/90 px-8 shadow-lg hover:shadow-xl transition-all" data-testid="button-contact">
               <Link to="/about">
-                Learn more about me
+                Learn More About Me
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-pill border-accent text-accent hover:bg-accent hover:text-text-on-accent">
+            <Button asChild variant="outline" size="lg" className="rounded-full border-2 border-gray-300 hover:border-dominant hover:bg-dominant/5 px-8">
               <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
-                Download my resume
+                Download Resume
               </a>
             </Button>
-          </div>
+          </motion.div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="w-full flex justify-center px-4 bg-base">
-        <div className="w-full max-w-content py-section-y">
-          <div className="text-center">
-            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-6 tracking-tight">
+      <section className="w-full flex justify-center px-4 bg-gradient-to-br from-dominant/5 via-white to-accent/5 py-20 md:py-28">
+        <div className="w-full max-w-content">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+            className="text-center"
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-textPrimary mb-6 tracking-tight font-bold"
+            >
               Let's Build Something Great
-            </h2>
-            <p className="text-lg text-textSecondary max-w-2xl mx-auto mb-8">
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg md:text-xl text-textSecondary max-w-2xl mx-auto mb-10 leading-relaxed"
+            >
               I'm available for full-time senior front-end roles and select freelance projects. 
               Let's discuss how I can help your team deliver accessible, reliable, and fast user experiences.
-            </p>
+            </motion.p>
             
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="rounded-pill bg-accent text-text-on-accent hover:bg-accent/90">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-wrap justify-center gap-4"
+            >
+              <Button asChild size="lg" className="rounded-full bg-accent text-white hover:bg-accent/90 px-10 py-6 text-lg shadow-xl hover:shadow-2xl transition-all">
                 <a href="mailto:e@ehicksonjr.com">
                   Contact Me
                 </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-pill border-dominant text-dominant hover:bg-dominant hover:text-text-on-accent">
+              <Button asChild variant="outline" size="lg" className="rounded-full border-2 border-dominant text-dominant hover:bg-dominant hover:text-white px-10 py-6 text-lg shadow-md hover:shadow-xl transition-all">
                 <Link to="/projects">
-                  View Case Studies
+                  View All Projects
                 </Link>
               </Button>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>

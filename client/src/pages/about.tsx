@@ -124,8 +124,9 @@ export default function About() {
                     Shipped UI fixes, accessibility updates, and refactors across large patient/provider portals. Improved responsiveness, resolved 150+ UI issues, and elevated front-end quality while integrating with backend teams.
                   </p>
                 </div>
+              </div>
 
-              <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
+              <h3 className="text-xl font-semibold mb-4 mt-8">Development Workflow</h3>
               <p className="text-sm text-gray-600 mb-4">
                 I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
               </p>

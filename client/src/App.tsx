@@ -11,6 +11,7 @@ import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import Home from "@/pages/home";
 import Projects from "@/pages/projects";
+import CaseStudies from "@/pages/case-studies";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
