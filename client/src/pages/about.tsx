@@ -124,6 +124,7 @@ export default function About() {
                     Shipped UI fixes, accessibility updates, and refactors across large patient/provider portals. Improved responsiveness, resolved 150+ UI issues, and elevated front-end quality while integrating with backend teams.
                   </p>
                 </div>
+              </div>
 
               <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
               <p className="text-sm text-gray-600 mb-4">

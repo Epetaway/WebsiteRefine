@@ -25,6 +25,14 @@ export default {
         "bg-panel": "#1A1A1A",       // charcoal
         "bg-alt": "#F7F4E9",         // offwhite
         
+        // Afrofuturist Color Palette
+        teal: "#7DB5A5",
+        "sun-yellow": "#F6C63F",
+        "bar-red": "#C73538",
+        "base-black": "#0F0F0F",
+        charcoal: "#1A1A1A",
+        "off-white": "#F7F4E9",
+        
         // Accent colors (legacy)
         "accent-yellow": "#F6C63F",
         "accent-yellow-light": "#F4D25B",
@@ -119,6 +127,7 @@ export default {
       },
       fontFamily: {
         display: ["Space Grotesk", "system-ui", "sans-serif"],
+        "space-grotesk": ["Space Grotesk", "system-ui", "sans-serif"],
         body: ["Inter", "system-ui", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
         roboto: ["Roboto", "sans-serif"],
