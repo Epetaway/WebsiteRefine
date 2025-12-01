@@ -1,41 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { projects } from "@/data/projects";
 
-const professionalProjects = [
-  {
-    id: "patient-engagement-portal",
-    title: "Patient Engagement Portal – Healthcare UI Demo",
-    summary: "A full patient portal demo with multi-step onboarding, dashboards, prescription flows, and interface patterns modeled after real healthcare portals.",
-    tags: ["JavaScript", "Bootstrap", "Accessibility", "Healthcare", "SPA"],
-    devNotes: "Vanilla JavaScript (ES6 modules), Bootstrap, custom validation system, multi-step form flows, localStorage-backed state, SPA-style routing.",
-    links: {
-      demo: "https://epetaway.github.io/patient-portal-demo/#login",
-      repo: "https://github.com/epetaway/patient-portal-demo"
-    }
-  },
-  {
-    id: "dojonet-martial-arts-platform",
-    title: "DojoNet Martial Arts Portal Prototype",
-    summary: "A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.",
-    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    devNotes: "React, Next.js, TypeScript, Tailwind CSS, component-driven architecture.",
-    links: {
-      demo: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
-      repo: "https://github.com/epetaway/DojoNet-Prototype-MAX"
-    }
-  },
-  {
-    id: "healthcare-workflow-ux-demo",
-    title: "Healthcare Workflow UX Demo",
-    summary: "A UI demo modeling secure, multi-step healthcare workflows with a focus on accessibility, semantics, and clear hierarchical structure.",
-    tags: ["Healthcare", "UX", "Accessibility", "ARIA"],
-    devNotes: "Accessible forms, ARIA integration, semantic HTML, error-state UX patterns.",
-    links: {
-      repo: "#"
-    }
-  }
-];
+// Get featured projects for display
+const professionalProjects = projects.filter(p => p.category === "featured");
 
 export default function Projects() {
   const [viewMode, setViewMode] = useState<"developer" | "portfolio">("portfolio");
@@ -98,7 +67,7 @@ export default function Projects() {
                 </h2>
                 
                 <p className="text-gray-600 mb-6 text-lg" data-testid={`project-summary-${project.id}`}>
-                  {project.summary}
+                  {project.summary || project.description}
                 </p>
 
                 {/* Developer View Notes */}
@@ -111,7 +80,7 @@ export default function Projects() {
                 
                 {/* Tech Stack Tags */}
                 <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag, index) => (
+                  {(project.tags || []).map((tag, index) => (
                     <span
                       key={index}
                       className="text-xs bg-blue-100 text-blue-700 px-3 py-1 rounded-full"

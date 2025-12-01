@@ -2,36 +2,16 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import profileImage from "@/images/me.png";
+import { projects, RESUME_PATH } from "@/data/projects";
 
 const SITE = "https://www.ehicksonjr.com";
 
 export default function Home() {
-  const featuredProjects = [
-    {
-      id: "patient-engagement-portal",
-      title: "Patient Engagement Portal – Healthcare UI Demo",
-      summary: "Enterprise-style patient portal demo with multi-step registration, dashboards, and accessible form workflows based on real healthcare patterns.",
-      tags: ["Healthcare", "UI", "Accessibility"],
-      links: { repo: "https://github.com/epetaway/patient-portal-demo" },
-      slug: "patient-engagement-portal"
-    },
-    {
-      id: "dojonet-martial-arts-platform",
-      title: "DojoNet Martial Arts Portal Prototype",
-      summary: "A modern membership and scheduling portal for martial arts communities, featuring dynamic forms, event flows, and clean front-end architecture.",
-      tags: ["React", "TypeScript", "Community Platform"],
-      links: { repo: "https://github.com/epetaway/DojoNet-Prototype-MAX" },
-      slug: "dojonet-martial-arts-platform"
-    },
-    {
-      id: "healthcare-workflow-ux-demo",
-      title: "Healthcare Workflow UX Demo",
-      summary: "A reconstructed healthcare workflow demo focused on secure UI, accessible multi-step tasks, and enterprise-ready UX patterns.",
-      tags: ["Healthcare", "UX", "Accessibility"],
-      links: { repo: "#" },
-      slug: "healthcare-workflow-ux-demo"
-    }
-  ];
+  // Get featured projects from shared data
+  const featuredProjects = projects.filter(p => 
+    ["patient-engagement-portal", "dojonet-martial-arts-platform", "healthcare-workflow-ux-demo"].includes(p.id)
+  ).slice(0, 3);
+  
   const title = "Earl Hickson Jr. – Front-End Developer | Design Systems & UI";
   const description =
     "Portfolio of Earl Hickson Jr., a front-end developer focused on accessible, scalable, and high-performance UI for SaaS, healthcare, and marketing platforms.";
@@ -101,7 +81,7 @@ export default function Home() {
                   <Link to="/projects">View Projects</Link>
                 </Button>
                 <Button asChild variant="secondary" size="lg" className="border-2 border-textPrimary text-textPrimary hover:bg-textPrimary hover:text-white rounded-pill px-10 py-6 text-base button-lift">
-                  <a href="/assets/Earl_Hickson_Jr_FrontEnd_Engineer.docx" download>Download Resume</a>
+                  <a href={RESUME_PATH} download>Download Resume</a>
                 </Button>
                 <Button asChild variant="secondary" size="lg" className="border-2 border-textPrimary text-textPrimary hover:bg-textPrimary hover:text-white rounded-pill px-10 py-6 text-base button-lift" data-testid="button-contact">
                   <a href="mailto:e@ehicksonjr.com">Get In Touch</a>
@@ -153,10 +133,10 @@ export default function Home() {
                 </div>
                 <div className="p-8">
                   <div className="text-xs text-dominant font-bold mb-3 uppercase tracking-wide">
-                    {project.tags.join(" · ")}
+                    {(project.tags || []).join(" · ")}
                   </div>
                   <h3 className="font-bold text-2xl mb-4 text-textPrimary leading-tight">{project.title}</h3>
-                  <p className="text-base text-textSecondary mb-6 leading-relaxed">{project.summary}</p>
+                  <p className="text-base text-textSecondary mb-6 leading-relaxed">{project.summary || project.description}</p>
                   <div className="flex gap-3 mt-2">
                     <Button asChild size="sm" variant="secondary">
                       <Link to="/projects">View Project</Link>
@@ -341,7 +321,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild variant="secondary" size="lg" className="border-2 border-textPrimary text-textPrimary hover:bg-textPrimary hover:text-white rounded-pill px-10 py-6 text-base button-lift">
-              <a href="/assets/Earl_Hickson_Jr_FrontEnd_Engineer.docx" download>Get Template</a>
+              <a href={RESUME_PATH} download>Get Template</a>
             </Button>
             <Button asChild size="lg" className="bg-dominant hover:bg-blue-700 text-white rounded-pill px-10 py-6 text-base button-lift shadow-sm">
               <a href="mailto:e@ehicksonjr.com">Get In Touch</a>

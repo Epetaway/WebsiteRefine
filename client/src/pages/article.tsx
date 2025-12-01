@@ -1,7 +1,13 @@
 import { useRoute } from "wouter";
 import { Link } from "wouter";
 import { blogPosts } from "@/data/blog-posts";
+import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
+
+// Get featured projects for related section
+const relatedProjects = projects.filter(p => 
+  ["patient-engagement-portal", "dojonet-martial-arts-platform", "healthcare-workflow-ux-demo"].includes(p.id)
+).slice(0, 3);
 
 export default function Article() {
   const [, params] = useRoute("/articles/:slug");
@@ -161,18 +167,12 @@ export default function Article() {
           <div className="mt-16">
             <h3 className="text-2xl font-bold mb-8" data-testid="related-projects-title">Related Projects</h3>
             <div className="grid md:grid-cols-3 gap-6">
-              <div className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
-                <h4 className="font-bold mb-2">Patient Engagement Portal – Healthcare UI Demo</h4>
-                <p className="text-gray-600 text-sm">Enterprise-style patient portal demo with multi-step registration and accessible workflows.</p>
-              </div>
-              <div className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
-                <h4 className="font-bold mb-2">DojoNet Martial Arts Portal Prototype</h4>
-                <p className="text-gray-600 text-sm">Modern membership and scheduling portal for martial arts communities.</p>
-              </div>
-              <div className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
-                <h4 className="font-bold mb-2">Healthcare Workflow UX Demo</h4>
-                <p className="text-gray-600 text-sm">Secure UI demo focused on accessible multi-step healthcare workflows.</p>
-              </div>
+              {relatedProjects.map((project) => (
+                <div key={project.id} className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
+                  <h4 className="font-bold mb-2">{project.title}</h4>
+                  <p className="text-gray-600 text-sm">{project.summary || project.description}</p>
+                </div>
+              ))}
             </div>
           </div>
 
