@@ -14,16 +14,16 @@ export default function Footer() {
         </div>
 
         <nav className="grid gap-2 text-sm">
-          <Link to="/projects" className="hover:text-white transition-colors">
+          <Link to="/projects" className="hover:text-white ui-transition-soft">
             Projects
           </Link>
-          <Link to="/about" className="hover:text-white transition-colors">
+          <Link to="/about" className="hover:text-white ui-transition-soft">
             About
           </Link>
-          <Link to="/blog" className="hover:text-white transition-colors">
+          <Link to="/blog" className="hover:text-white ui-transition-soft">
             Blog
           </Link>
-          <Link to="/contact" className="hover:text-white transition-colors">
+          <Link to="/contact" className="hover:text-white ui-transition-soft">
             Contact
           </Link>
         </nav>
@@ -31,7 +31,7 @@ export default function Footer() {
         <div className="text-sm">
           <a
             href="mailto:e@ehicksonjr.com"
-            className="hover:text-white transition-colors"
+            className="hover:text-white ui-transition-soft"
           >
             e@ehicksonjr.com
           </a>
@@ -40,7 +40,7 @@ export default function Footer() {
               href="https://instagram.com/earld.kaiju"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="Instagram"
             >
               Instagram
@@ -49,7 +49,7 @@ export default function Footer() {
               href="https://twitter.com/epetaway"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="X (Twitter)"
             >
               X
@@ -58,7 +58,7 @@ export default function Footer() {
               href="https://youtube.com/@earldkaiju"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="YouTube"
             >
               YouTube
@@ -67,7 +67,7 @@ export default function Footer() {
               href="https://github.com/Epetaway"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="GitHub"
             >
               GitHub
@@ -76,7 +76,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/earlhicksonjr"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="LinkedIn"
             >
               LinkedIn
@@ -85,7 +85,7 @@ export default function Footer() {
               href="https://dribbble.com/earldkaiju"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="Dribbble"
             >
               Dribbble
@@ -94,7 +94,7 @@ export default function Footer() {
               href="https://behance.net/earldkaiju"
               target="_blank"
               rel="noreferrer"
-              className="hover:text-white transition-colors"
+              className="hover:text-white ui-transition-soft"
               aria-label="Behance"
             >
               Behance
