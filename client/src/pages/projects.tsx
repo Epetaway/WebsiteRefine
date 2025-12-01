@@ -105,7 +105,7 @@ export default function Projects() {
                       Live Demo
                     </a>
                   )}
-                  {project.links?.repo && project.links.repo !== "#" && (
+                  {project.links?.repo && (
                     <a
                       href={project.links.repo}
                       target="_blank"

@@ -216,9 +216,7 @@ export const projects: Project[] = [
       { label: "Accessibility", value: "WCAG 2.1 AA", improvement: "Compliant" },
       { label: "Semantics", value: "Full HTML5", improvement: "Screen reader friendly" }
     ],
-    links: {
-      repo: "#"
-    }
+    links: {}
   },
 
   {
