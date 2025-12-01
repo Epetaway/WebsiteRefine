@@ -16,6 +16,7 @@ import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
 import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
+import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import ThemeDemo from "@/pages/theme-demo";
 
@@ -36,6 +37,7 @@ function AppShell() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/earldkaiju" element={<EarldKaiju />} />
           <Route path="/articles/:slug" element={<Article />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/theme-demo" element={<ThemeDemo />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

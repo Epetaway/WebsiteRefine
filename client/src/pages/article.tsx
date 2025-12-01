@@ -157,6 +157,25 @@ export default function Article() {
             </div>
           </div>
 
+          {/* Related Projects */}
+          <div className="mt-16">
+            <h3 className="text-2xl font-bold mb-8" data-testid="related-projects-title">Related Projects</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
+                <h4 className="font-bold mb-2">Patient Engagement Portal – Healthcare UI Demo</h4>
+                <p className="text-gray-600 text-sm">Enterprise-style patient portal demo with multi-step registration and accessible workflows.</p>
+              </div>
+              <div className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
+                <h4 className="font-bold mb-2">DojoNet Martial Arts Portal Prototype</h4>
+                <p className="text-gray-600 text-sm">Modern membership and scheduling portal for martial arts communities.</p>
+              </div>
+              <div className="p-6 bg-gray-50 rounded-xl hover:shadow-md transition-shadow">
+                <h4 className="font-bold mb-2">Healthcare Workflow UX Demo</h4>
+                <p className="text-gray-600 text-sm">Secure UI demo focused on accessible multi-step healthcare workflows.</p>
+              </div>
+            </div>
+          </div>
+
           {/* Related Posts */}
           <div className="mt-16">
             <h3 className="text-2xl font-bold mb-8" data-testid="related-posts-title">More Articles</h3>

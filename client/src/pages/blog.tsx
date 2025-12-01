@@ -53,9 +53,9 @@ export default function Blog() {
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Latest Writings</h1>
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Notes on Front-End, Systems, and the Stuff in Between.</h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Articles on front-end development, accessibility, performance, and how I think about building UI as a developer.
+              I write about building better front-ends, designing for real people, improving workflow clarity, exploring healthcare technology, and staying sharp as a developer.
             </p>
           </div>
 

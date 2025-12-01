@@ -31,7 +31,7 @@ export default function Header() {
       {bannerVisible && (
         <div className="relative flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-4 text-center">
           <p className="text-sm text-white">
-            Enjoy an exclusive 30% discount on professional web design services until the end of 2025.
+            Now open to front-end roles and collaborations for 2025 (remote &amp; hybrid, NJ/NYC).
           </p>
           <button
             onClick={() => setBannerVisible(false)}

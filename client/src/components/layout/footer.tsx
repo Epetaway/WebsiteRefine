@@ -9,7 +9,7 @@ export default function Footer() {
             Earl Hickson Jr<span className="text-gray-500">.</span>
           </div>
           <p className="text-sm">
-            Front-End Developer • React • Angular • TypeScript • Accessible UI Engineering
+            Front-End Developer · React · TypeScript · Accessible UI Engineering
           </p>
         </div>
 
@@ -23,8 +23,8 @@ export default function Footer() {
           <Link to="/blog" className="hover:text-white transition-colors">
             Blog
           </Link>
-          <Link to="/earldkaiju" className="hover:text-white transition-colors">
-            BJJ Lessons
+          <Link to="/contact" className="hover:text-white transition-colors">
+            Contact
           </Link>
         </nav>
 
@@ -35,12 +35,40 @@ export default function Footer() {
           >
             e@ehicksonjr.com
           </a>
-          <div className="mt-3 flex gap-4">
+          <div className="mt-3 flex flex-wrap gap-4">
+            <a
+              href="https://instagram.com/earld.kaiju"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="Instagram"
+            >
+              Instagram
+            </a>
+            <a
+              href="https://twitter.com/epetaway"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="X (Twitter)"
+            >
+              X
+            </a>
+            <a
+              href="https://youtube.com/@earldkaiju"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="YouTube"
+            >
+              YouTube
+            </a>
             <a
               href="https://github.com/Epetaway"
               target="_blank"
               rel="noreferrer"
               className="hover:text-white transition-colors"
+              aria-label="GitHub"
             >
               GitHub
             </a>
@@ -49,15 +77,34 @@ export default function Footer() {
               target="_blank"
               rel="noreferrer"
               className="hover:text-white transition-colors"
+              aria-label="LinkedIn"
             >
               LinkedIn
+            </a>
+            <a
+              href="https://dribbble.com/earldkaiju"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="Dribbble"
+            >
+              Dribbble
+            </a>
+            <a
+              href="https://behance.net/earldkaiju"
+              target="_blank"
+              rel="noreferrer"
+              className="hover:text-white transition-colors"
+              aria-label="Behance"
+            >
+              Behance
             </a>
           </div>
         </div>
       </div>
 
       <div className="mt-10 py-6 text-center text-xs text-gray-500 border-t border-gray-800">
-        © {new Date().getFullYear()} Earl Hickson Jr.
+        © 2025 Earl Hickson Jr.
       </div>
     </footer>
   );
