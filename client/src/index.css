@@ -12,6 +12,13 @@
   --text-primary: #111111;
   --text-secondary: #3D3D3D;
   
+  /* Prismora Motion System */
+  --ease-soft: cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-fast: 150ms;
+  --transition-base: 220ms;
+  --radius-card: 1rem;
+  --radius-pill: 999px;
+  
   /* Legacy variables for compatibility */
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(210, 25%, 7.8431%);
@@ -155,6 +162,114 @@ section#offer{
 
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Prismora UI Transition System */
+  .ui-transition {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .ui-transition-soft {
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  /* Prismora Section Spacing Pattern */
+  .section-y {
+    @apply py-16 md:py-24;
+  }
+
+  .section-max {
+    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Button base styles for Prismora */
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-400;
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Button lift effect */
+  .button-lift {
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  .button-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Section reveal animation */
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--ease-soft);
+  }
+
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animation delay utilities for staggered reveals */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Link hover underline animation */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width var(--transition-base) var(--ease-soft);
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Icon hover scale effect */
+  .icon-hover {
+    transition: transform var(--transition-fast) var(--ease-soft);
+  }
+
+  .icon-hover:hover {
+    transform: scale(1.1);
   }
 }
 
