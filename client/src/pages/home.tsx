@@ -51,7 +51,7 @@ export default function Home() {
                   href="https://github.com/Epetaway"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-textSecondary hover:text-dominant transition-colors text-2xl"
+                  className="text-textSecondary hover:text-dominant ui-transition-soft icon-hover text-2xl"
                   aria-label="GitHub"
                 >
                   <i className="fab fa-github" />
@@ -60,7 +60,7 @@ export default function Home() {
                   href="https://linkedin.com/in/earlhicksonjr"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-textSecondary hover:text-dominant transition-colors text-2xl"
+                  className="text-textSecondary hover:text-dominant ui-transition-soft icon-hover text-2xl"
                   aria-label="LinkedIn"
                 >
                   <i className="fab fa-linkedin" />
@@ -69,7 +69,7 @@ export default function Home() {
                   href="https://twitter.com/epetaway"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-textSecondary hover:text-dominant transition-colors text-2xl"
+                  className="text-textSecondary hover:text-dominant ui-transition-soft icon-hover text-2xl"
                   aria-label="Twitter"
                 >
                   <i className="fab fa-twitter" />
