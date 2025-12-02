@@ -28,7 +28,7 @@ function AppShell() {
   return (
     <div className="min-h-screen flex flex-col bg-bg-base text-text-primary font-body">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-16">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<Projects />} />

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { X, Sun, Moon } from "lucide-react";
+import { Sun, Moon } from "lucide-react";
 import profileImage from "@/images/me.png";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -16,7 +16,6 @@ const titles = ["Front-End Engineer", "UI Designer", "Digital Creator", "Web Dev
 export default function Header() {
     const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
-  const [bannerVisible, setBannerVisible] = useState(true);
   const [currentTitle, setCurrentTitle] = useState(0);
   const [scrolled, setScrolled] = useState(false);
 

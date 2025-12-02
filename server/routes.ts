@@ -1,11 +1,9 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertContactSchema, insertBjjBookingSchema, insertSocialMediaPostSchema } from "@shared/schema";
+import { insertContactSchema, insertBjjBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import sgMail from '@sendgrid/mail';
-import path from 'path';
-import fs from 'fs';
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Initialize SendGrid
@@ -86,7 +84,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       process.env.THREADS_ACCESS_TOKEN = longLivedData.access_token;
       process.env.THREADS_USER_ID = tokenData.user_id;
 
-      console.log('Threads OAuth successful! Token expires in:', longLivedData.expires_in, 'seconds');
+      // Token stored successfully
       
       res.redirect('/EarldKaiju?success=instagram_connected');
     } catch (error) {
@@ -169,13 +167,9 @@ Please follow up within 24 hours.
           };
           
           await sgMail.send(msg);
-          console.log('Booking notification email sent successfully');
         } catch (emailError) {
-          console.error('Failed to send booking notification email:', emailError);
-          // Don't fail the booking if email fails
+          // Failed to send booking notification email but don't fail the booking
         }
-      } else {
-        console.warn('SendGrid API key not configured - booking notification email not sent');
       }
       
       res.json({ message: "BJJ lesson booking submitted successfully", id: booking.id });
@@ -183,7 +177,6 @@ Please follow up within 24 hours.
       if (error instanceof z.ZodError) {
         res.status(400).json({ message: "Invalid booking data", errors: error.errors });
       } else {
-        console.error("BJJ booking error:", error);
         res.status(500).json({ message: "Failed to submit booking request" });
       }
     }

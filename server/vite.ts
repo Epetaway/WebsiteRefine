@@ -12,15 +12,9 @@ const __dirname = path.dirname(__filename);
 
 const viteLogger = createLogger();
 
-export function log(message: string, source = "express") {
-  const formattedTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  });
-
-  console.log(`${formattedTime} [${source}] ${message}`);
+export function log(message: string) {
+  // Logging utility for development
+  void message;
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -33,6 +27,7 @@ export async function setupVite(app: Express, server: Server) {
   // Get the actual config from the viteConfig function
   const config = await viteConfig({ mode: "development", command: "serve" });
 
+    // console.log(`Vite server running on port ${port}`);
   const vite = await createViteServer({
     ...config,
     configFile: false,

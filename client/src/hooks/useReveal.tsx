@@ -35,5 +35,5 @@ export function useReveal(options: Partial<IntersectionObserverInit> = {}) {
     targets.forEach(t => observer.observe(t));
 
     return () => observer.disconnect();
-  }, [options.root, options.rootMargin, options.threshold]);
+  }, [options]);
 }

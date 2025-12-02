@@ -20,7 +20,6 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Form submission logic would go here
-    console.log("Form submitted:", formData);
   };
 
   return (

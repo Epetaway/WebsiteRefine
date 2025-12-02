@@ -54,25 +54,29 @@ export default function Blog() {
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade" className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-testid="page-title">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight leading-tight" data-testid="page-title">
               Notes on Front-End, Systems, and the Stuff in Between.
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
               I write about building better front-ends, designing for real people, improving workflow clarity, exploring healthcare technology, and staying sharp as a developer.
             </p>
           </ScrollReveal>
 
           <ScrollReveal animation="slide-up" delay={100}>
-            <div className="flex flex-wrap justify-center gap-2 mb-12">
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
               {categories.map((c) => (
                 <Button
                   key={c.key}
                   variant={filter === c.key ? "default" : "outline"}
                   onClick={() => setFilter(c.key as any)}
-                  className={filter === c.key ? "bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600" : "dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"}
+                  className={
+                    filter === c.key 
+                      ? "bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white hover:from-emerald-600 hover:to-emerald-700 dark:hover:from-emerald-700 dark:hover:to-emerald-800 shadow-md hover:shadow-lg transition-all duration-200 px-5 py-2.5 rounded-full font-semibold" 
+                      : "dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800 hover:border-emerald-300 dark:hover:border-emerald-700 px-5 py-2.5 rounded-full font-medium transition-all duration-200"
+                  }
                   data-testid={`filter-${c.key}`}
                 >
-                  {c.label} ({c.count})
+                  {c.label} <span className="opacity-70">({c.count})</span>
                 </Button>
               ))}
             </div>
@@ -114,11 +118,30 @@ export default function Blog() {
               ))}
             </div>
           ) : (
-            <div className="text-center py-12">
-              <p className="text-gray-500 dark:text-gray-400" data-testid="text-no-posts">
-                No posts found for this category.
-              </p>
-            </div>
+            <ScrollReveal animation="fade">
+              <div className="text-center py-20 px-4">
+                <div className="max-w-md mx-auto">
+                  <div className="mb-6">
+                    <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mb-4">
+                      <i className="fas fa-search text-3xl text-gray-400 dark:text-gray-600" />
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                    No posts found
+                  </h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6" data-testid="text-no-posts">
+                    No articles match this category yet. Check back soon or explore other topics.
+                  </p>
+                  <Button
+                    variant="outline"
+                    onClick={() => setFilter("all")}
+                    className="dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                  >
+                    View All Posts
+                  </Button>
+                </div>
+              </div>
+            </ScrollReveal>
           )}
         </div>
       </section>

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -100,7 +100,7 @@ export default function EarldKaiju() {
   });
   useEffect(() => {
     if (!socialMediaLoading && posts.length === 0) { fetchIG.mutate(); fetchYT.mutate(); }
-  }, [socialMediaLoading, posts.length]);
+  }, [socialMediaLoading, posts.length, fetchIG, fetchYT]);
 
   // medals
   const golds = bjjAccomplishments.tournament_history.filter((t: any) => t.placement === "Gold").length;
