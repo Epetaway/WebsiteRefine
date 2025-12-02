@@ -160,7 +160,7 @@ export default function Contact() {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full bg-dominant hover:bg-blue-700 text-white rounded-lg py-4"
+                className="w-full btn-primary"
               >
                 Submit
               </Button>

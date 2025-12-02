@@ -6,8 +6,11 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 import Header from "@/components/layout/header";
+import ScrollReveal from '@/components/ui/ScrollReveal';
+import { CursorFollower } from '@/components/ui/cursor-follower';
 import Footer from "@/components/layout/footer";
 import Home from "@/pages/home";
 import Projects from "@/pages/projects";
@@ -25,8 +28,10 @@ function AppShell() {
 
   return (
     <div className="min-h-screen flex flex-col bg-bg-base text-text-primary font-body">
+      <CursorFollower />
       <Header />
       <main className="flex-1">
+        {/* Global decorative cursor follower mount could go here later */}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<Projects />} />
@@ -42,7 +47,9 @@ function AppShell() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
-      <Footer />
+      <ScrollReveal animation="slide-up" threshold={0.05} once>
+        <Footer />
+      </ScrollReveal>
     </div>
   );
 }
@@ -58,10 +65,12 @@ export default function App() {
 
   return (
     <QueryClientProvider client={queryClient}>
+        <ThemeProvider>
       <TooltipProvider>
         <AppShell />
         <Toaster />
       </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

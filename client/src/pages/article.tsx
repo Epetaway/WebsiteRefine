@@ -145,18 +145,14 @@ export default function Article() {
                     Interested in collaborating on a project or discussing development opportunities?
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button asChild size="lg" data-testid="button-contact">
-                      <a href="mailto:hello@ehicksonjr.com">
+                      <a href="mailto:hello@ehicksonjr.com" className="btn-secondary" data-testid="button-contact">
                         <i className="fas fa-envelope mr-2"></i>
                         Get In Touch
                       </a>
-                    </Button>
-                    <Button asChild variant="outline" size="lg" data-testid="button-projects">
-                      <Link href="/projects">
+                      <Link to="/projects" className="btn-primary" data-testid="button-projects">
                         <i className="fas fa-code mr-2"></i>
                         View Case Studies
                       </Link>
-                    </Button>
                   </div>
                 </>
               )}

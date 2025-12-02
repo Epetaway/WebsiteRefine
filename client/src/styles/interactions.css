@@ -1,0 +1,68 @@
+/* Enhanced Interaction Styles */
+
+/* Scroll reveal utilities */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s var(--ease-soft);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced card interactions */
+.card-interactive {
+  transition: all var(--transition-base) var(--ease-soft);
+  will-change: transform, box-shadow;
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.dark .card-interactive:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Link glow effect */
+.link-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.link-glow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  transition: width 0.3s ease;
+}
+
+.link-glow:hover::after {
+  width: 100%;
+}
+
+/* Cursor follower */
+.cursor-follower {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(139, 92, 246, 0.5);
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
+  opacity: 0;
+}
+
+.cursor-follower.active {
+  opacity: 1;
+  transform: scale(1.5);
+}

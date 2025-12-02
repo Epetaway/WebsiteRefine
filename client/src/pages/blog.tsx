@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { blogPosts, type BlogPost } from "@/data/blog-posts";
 import BlogCard from "@/components/ui/blog-card";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Button } from "@/components/ui/button";
 
 const asTime = (iso?: string) => {
@@ -50,55 +51,73 @@ export default function Blog() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">Notes on Front-End, Systems, and the Stuff in Between.</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <ScrollReveal animation="fade" className="text-center mb-16">
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100" data-testid="page-title">
+              Notes on Front-End, Systems, and the Stuff in Between.
+            </h1>
+            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
               I write about building better front-ends, designing for real people, improving workflow clarity, exploring healthcare technology, and staying sharp as a developer.
             </p>
-          </div>
+          </ScrollReveal>
 
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {categories.map((c) => (
-              <Button
-                key={c.key}
-                variant={filter === c.key ? "default" : "outline"}
-                onClick={() => setFilter(c.key as any)}
-                className={filter === c.key ? "bg-primary-500 text-white" : ""}
-                data-testid={`filter-${c.key}`}
-              >
-                {c.label} ({c.count})
-              </Button>
-            ))}
-          </div>
+          <ScrollReveal animation="slide-up" delay={100}>
+            <div className="flex flex-wrap justify-center gap-2 mb-12">
+              {categories.map((c) => (
+                <Button
+                  key={c.key}
+                  variant={filter === c.key ? "default" : "outline"}
+                  onClick={() => setFilter(c.key as any)}
+                  className={filter === c.key ? "bg-purple-600 dark:bg-purple-700 text-white hover:bg-purple-700 dark:hover:bg-purple-600" : "dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"}
+                  data-testid={`filter-${c.key}`}
+                >
+                  {c.label} ({c.count})
+                </Button>
+              ))}
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {featured && (
-        <section className="py-16 bg-gray-50">
+        <section className="py-16 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold mb-8" data-testid="section-title-featured">Featured Post</h2>
-            <div className="grid gap-8 md:grid-cols-2">
-              <BlogCard post={featured} />
-            </div>
+            <ScrollReveal animation="slide-up">
+              <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100" data-testid="section-title-featured">
+                Featured Post
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal animation="scale" delay={100}>
+              <div className="grid gap-8 md:grid-cols-2">
+                <BlogCard post={featured} />
+              </div>
+            </ScrollReveal>
           </div>
         </section>
       )}
 
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold mb-8" data-testid="section-title-all">All Posts</h2>
+          <ScrollReveal animation="fade">
+            <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100" data-testid="section-title-all">
+              All Posts
+            </h2>
+          </ScrollReveal>
 
           {others.length > 0 ? (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {others.map((post) => (
-                <BlogCard key={post.id} post={post} />
+              {others.map((post, idx) => (
+                <ScrollReveal key={post.id} animation="scale" delay={idx * 50}>
+                  <BlogCard post={post} />
+                </ScrollReveal>
               ))}
             </div>
           ) : (
             <div className="text-center py-12">
-              <p className="text-gray-500" data-testid="text-no-posts">No posts found for this category.</p>
+              <p className="text-gray-500 dark:text-gray-400" data-testid="text-no-posts">
+                No posts found for this category.
+              </p>
             </div>
           )}
         </div>

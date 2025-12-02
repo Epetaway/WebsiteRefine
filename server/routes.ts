@@ -358,6 +358,78 @@ Please follow up within 24 hours.
     });
   });
 
+  // GitHub featured repos with simple in-memory cache
+  const ghCache: { data: any[]; ts: number } = { data: [], ts: 0 };
+  app.get('/api/github/featured', async (req, res) => {
+    try {
+      const now = Date.now();
+      const maxAge = 10 * 60 * 1000; // 10 minutes
+      if (ghCache.data.length && now - ghCache.ts < maxAge) {
+        return res.json({ repos: ghCache.data, cached: true });
+      }
+
+      const user = 'Epetaway';
+      const excludeNames = new Set(["WebsiteRefine", "portfolio", "Portfolio", "website"]);
+      const listResp = await fetch(`https://api.github.com/users/${user}/repos?sort=updated`);
+      const list = await listResp.json();
+      if (!Array.isArray(list)) return res.status(500).json({ error: 'GitHub list failed' });
+      const selected = list.filter((repo: any) => !repo.fork && !excludeNames.has(repo.name)).slice(0, 4);
+
+      const featured = await Promise.all(selected.map(async (repo: any) => {
+        let title = repo.name;
+        let desc = repo.description || '';
+        let tech: string[] = [];
+        // README
+        try {
+          const r = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/readme`);
+          if (r.ok) {
+            const j = await r.json();
+            if (j && j.content) {
+              const decoded = Buffer.from(j.content, 'base64').toString('utf8');
+              const lines = decoded.split(/\r?\n/);
+              let h1: string | undefined;
+              let para: string | undefined;
+              for (let i = 0; i < lines.length; i++) {
+                const l = lines[i].trim();
+                if (!h1 && l.startsWith('# ')) { h1 = l.replace(/^#\s+/, '').trim(); continue; }
+                if (!para && l && !l.startsWith('#')) { para = l; }
+                if (h1 && para) break;
+              }
+              title = h1 || title;
+              desc = para || desc;
+            }
+          }
+        } catch { void 0; }
+        // Topics
+        try {
+          const t = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/topics`, { headers: { Accept: 'application/vnd.github+json' } });
+          if (t.ok) {
+            const tj = await t.json();
+            if (Array.isArray(tj.names)) tech = tj.names;
+          }
+        } catch { void 0; }
+        if (repo.language && !tech.includes(repo.language)) tech = [repo.language, ...tech];
+
+        return {
+          title,
+          description: desc,
+          link: repo.html_url,
+          image: `https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}`,
+          tech,
+          html_url: repo.html_url,
+          homepage: repo.homepage || null,
+        };
+      }));
+
+      ghCache.data = featured;
+      ghCache.ts = now;
+      res.json({ repos: featured, cached: false });
+    } catch (e) {
+      console.error('GitHub featured error', e);
+      res.status(500).json({ error: 'Failed to fetch featured repos' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
