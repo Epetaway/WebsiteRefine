@@ -14,24 +14,28 @@
 
 /* Enhanced card interactions */
 .card-interactive {
-  transition: all var(--transition-base) var(--ease-soft);
+  transition: all 0.3s ease;
   will-change: transform, box-shadow;
   cursor: pointer;
 }
 
 .card-interactive:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
 }
 
 .dark .card-interactive:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+
+.card-interactive:active {
+  transform: translateY(-2px);
 }
 
 /* Link glow effect */
 .link-glow {
   position: relative;
-  transition: all 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .link-glow::after {
@@ -41,7 +45,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  background: currentColor;
   transition: width 0.3s ease;
 }
 
@@ -49,20 +53,25 @@
   width: 100%;
 }
 
-/* Cursor follower */
-.cursor-follower {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 2px solid rgba(139, 92, 246, 0.5);
-  pointer-events: none;
-  z-index: 9999;
-  transition: transform 0.15s ease-out, opacity 0.15s ease-out;
-  opacity: 0;
+.link-glow:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
 }
 
-.cursor-follower.active {
-  opacity: 1;
-  transform: scale(1.5);
+/* Universal interactive element styles */
+a, button, [role="button"] {
+  transition: all 0.3s ease;
+}
+
+a:hover, button:hover, [role="button"]:hover {
+  opacity: 0.9;
+}
+
+a:active, button:active, [role="button"]:active {
+  transform: scale(0.98);
+}
+
+a:focus-visible, button:focus-visible, [role="button"]:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
 }
