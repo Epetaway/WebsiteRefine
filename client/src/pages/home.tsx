@@ -172,10 +172,10 @@ export default function Home() {
             }}
           >
             {featured.map((item, idx) => (
-              <SwiperSlide key={idx}>
+              <SwiperSlide key={idx} className="h-auto">
                 <Link to={item.link} className="group block h-full">
                   <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[300px] mx-auto rounded-2xl card-hover">
-                    <div className="aspect-video bg-gray-100 dark:bg-slate-700/50">
+                    <div className="aspect-video bg-gray-100 dark:bg-slate-700/50 flex-shrink-0">
                       <img
                         src={item.image}
                         alt={`${item.title} preview`}
@@ -183,9 +183,9 @@ export default function Home() {
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-5 flex-1 flex flex-col">
+                    <div className="p-5 flex-1 flex flex-col min-h-[280px]">
                       {item.tech && (
-                        <div className="flex flex-wrap gap-1.5 mb-3">
+                        <div className="flex flex-wrap gap-1.5 mb-3 min-h-[28px]">
                           {item.tech.slice(0, 3).map((t) => (
                             <span key={t} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-700 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-200">
                               {t}
@@ -193,14 +193,11 @@ export default function Home() {
                           ))}
                         </div>
                       )}
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors flex items-center gap-2">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors line-clamp-2 min-h-[56px]">
                         {item.title}
-                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 ml-2">→</span>
                       </h3>
-                      <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed">{(() => {
-                        const txt = item.description;
-                        return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
-                      })()}</p>
+                      <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed line-clamp-3 min-h-[60px]">{item.description}</p>
                       <Link 
                         to={item.link} 
                         className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors mb-3"
