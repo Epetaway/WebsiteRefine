@@ -10,138 +10,42 @@ import TypewriterCode from "@/components/ui/TypewriterCode";
 import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
+import { getFeaturedProjects, GITHUB_USER, type Project } from "@/lib/projects";
+
+/** FeaturedItem type for rendering project cards */
+type FeaturedItem = {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+  tech: string[];
+  kind: 'github' | 'brand';
+  html_url: string;
+  homepage: string | null;
+};
+
+/**
+ * Convert a Project from lib/projects to a FeaturedItem for display
+ */
+function projectToFeaturedItem(project: Project): FeaturedItem {
+  return {
+    title: project.displayTitle,
+    description: project.description,
+    link: project.repoUrl,
+    image: `https://opengraph.githubassets.com/1/${GITHUB_USER}/${project.slug}`,
+    tech: project.techStack.slice(0, 6),
+    kind: 'github',
+    html_url: project.repoUrl,
+    homepage: project.liveUrl || null,
+  };
+}
 
 export default function Home() {
-  type FeaturedItem = {
-    title: string;
-    description: string;
-    link: string;
-    image: string;
-    tech?: string[];
-    kind: 'github' | 'brand';
-    // GitHub-only fields
-    html_url?: string;
-    homepage?: string | null;
-  };
-
-  const [featured, setFeatured] = useState<FeaturedItem[]>([]);
-
-  function extractReadmeMeta(content: string) {
-    // Simple parser: first H1 ("# Title") and first non-empty paragraph
-    const lines = content.split(/\r?\n/);
-    let title = undefined as string | undefined;
-    let excerpt = undefined as string | undefined;
-    for (let i = 0; i < lines.length; i++) {
-      const l = lines[i].trim();
-      if (!title && l.startsWith('# ')) {
-        title = l.replace(/^#\s+/, '').trim();
-        continue;
-      }
-      if (!excerpt && l && !l.startsWith('#')) {
-        excerpt = l;
-      }
-      if (title && excerpt) break;
-    }
-    return { title, excerpt };
-  }
-
-  // Clean up README paragraph: strip images/badges, code fences, and markdown links
-  function cleanupExcerpt(text: string) {
-    let t = text.trim();
-    // strip badges/images ![alt](url)
-    t = t.replace(/!\[[^\]]*\]\([^)]*\)/g, '');
-    // strip inline code fences/backticks
-    t = t.replace(/```[\s\S]*?```/g, '');
-    t = t.replace(/`([^`]*)`/g, '$1');
-    // convert markdown links [label](url) -> label
-    t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
-    // collapse multiple spaces
-    t = t.replace(/\s{2,}/g, ' ');
-    return t.trim();
-  }
-
-  // GitHub README content is base64; ensure proper UTF-8 decoding
-  function decodeReadmeBase64(b64: string) {
-    try {
-      const binary = atob(b64);
-      const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
-      const decoder = new TextDecoder('utf-8');
-      return decoder.decode(bytes);
-    } catch {
-      // fallback
-      try { return atob(b64); } catch { return ''; }
-    }
-  }
-
-  useEffect(() => {
-    // Pull top 4 repos for user, excluding the portfolio project
-    fetch("https://api.github.com/users/Epetaway/repos?sort=updated")
-      .then((r) => r.json())
-      .then(async (data) => {
-        if (!Array.isArray(data)) return;
-        const excludeNames = new Set(["WebsiteRefine", "portfolio", "Portfolio", "website"]);
-        const selected = data
-          .filter((repo) => !repo.fork && !excludeNames.has(repo.name))
-          .slice(0, 4);
-
-        // For each repo, fetch README title/excerpt and topics
-        const items: FeaturedItem[] = await Promise.all(
-          selected.map(async (repo) => {
-            let title = repo.name;
-            let desc = repo.description || "";
-            let tech: string[] = [];
-            // README
-            try {
-              const res = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/readme`);
-              if (res.ok) {
-                const json = await res.json();
-                if (json && json.content) {
-                  const decoded = decodeReadmeBase64(json.content);
-                  const meta = extractReadmeMeta(decoded);
-                  title = meta.title || title;
-                  desc = meta.excerpt ? cleanupExcerpt(meta.excerpt) : desc;
-                }
-              }
-            } catch { void 0; }
-            // Topics
-            try {
-              const topicsRes = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/topics`, {
-                headers: { Accept: 'application/vnd.github+json' },
-              });
-              if (topicsRes.ok) {
-                const tj = await topicsRes.json();
-                if (Array.isArray(tj.names)) tech = tj.names;
-              }
-            } catch { void 0; }
-            // Ensure language is present in tech pills
-            if (repo.language && !tech.includes(repo.language)) tech = [repo.language, ...tech];
-            // de-dup and limit pills
-            tech = Array.from(new Set(tech)).slice(0, 6);
-
-            return {
-              title,
-              description: desc || "",
-              link: repo.html_url,
-              image: `https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}`,
-              tech,
-              kind: 'github',
-              html_url: repo.html_url,
-              homepage: (() => {
-                const hp = (repo.homepage || '').trim();
-                if (hp) return hp;
-                // Fallback to GitHub Pages URL if pages are enabled
-                if (repo.has_pages && repo.owner?.login && repo.name) {
-                  return `https://${repo.owner.login}.github.io/${repo.name}`;
-                }
-                return null;
-              })(),
-            } as FeaturedItem;
-          })
-        );
-        setFeatured(items);
-      })
-      .catch(() => { void 0; });
+  // Use centralized project data from lib/projects.ts
+  const featured = useMemo<FeaturedItem[]>(() => {
+    const projects = getFeaturedProjects(4);
+    return projects.map(projectToFeaturedItem);
   }, []);
   return (
     <>
