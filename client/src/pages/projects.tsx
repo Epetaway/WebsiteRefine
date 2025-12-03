@@ -1,13 +1,14 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
-import { projects } from "@/data/projects";
+import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import { getPinnedProjects, getAdditionalProjects, GITHUB_USER } from "@/lib/projects";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useReveal } from "@/hooks/useReveal";
 import { Button } from "@/components/ui/button";
 
-// Get featured projects for display
-const professionalProjects = projects.filter(p => p.category === "featured");
+// Get projects from centralized data layer
+const pinnedProjects = getPinnedProjects();
+const additionalProjectsList = getAdditionalProjects();
 
 export default function Projects() {
   useReveal();
@@ -44,60 +45,47 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* Professional Demos */}
+      {/* Pinned Projects Section */}
       <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-[1120px] mx-auto px-5">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
-            {professionalProjects.map((project, idx) => (
-              <ScrollReveal key={project.id} animation="slide-up" delay={idx * 60}>
+            {pinnedProjects.map((project, idx) => (
+              <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                 <article 
                   data-reveal 
                   className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col"
                 >
                   {/* Project Preview Image - 16:9 aspect ratio */}
                   <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
-                    {project.image ? (
-                      <img
-                        src={project.image}
-                        alt={`${project.title} preview`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center space-y-2">
-                          <div className="text-4xl opacity-20">
-                            {project.category === 'featured' ? '⚡' : '🚀'}
-                          </div>
-                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                            Preview
-                          </p>
-                        </div>
-                      </div>
-                    )}
+                    <img
+                      src={`https://opengraph.githubassets.com/1/${GITHUB_USER}/${project.slug}`}
+                      alt={`${project.displayTitle} preview`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   {/* Project Content */}
                   <div className="p-5 space-y-4 flex-1 flex flex-col">
                     {/* Title with arrow */}
-                    <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2" data-testid={`project-title-${project.id}`}>
-                      {project.title}
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2" data-testid={`project-title-${project.slug}`}>
+                      {project.displayTitle}
                       <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-gray-400">→</span>
                     </h2>
                     
                     {/* Summary - limited to 100 characters */}
-                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed" data-testid={`project-summary-${project.id}`}>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed" data-testid={`project-summary-${project.slug}`}>
                       {(() => {
-                        const txt = project.summary || project.description;
+                        const txt = project.description;
                         return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
                       })()}
                     </p>
                     
                     {/* Read More Link */}
-                    {project.links?.demo && (
+                    {project.liveUrl && (
                       <a 
-                        href={project.links.demo}
+                        href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
@@ -108,41 +96,41 @@ export default function Projects() {
                     
                     {/* Tech Stack Tags */}
                     <div className="flex flex-wrap gap-1.5">
-                      {(project.tags || []).slice(0, 3).map((tag, index) => (
+                      {project.techStack.slice(0, 3).map((tech, index) => (
                         <span
                           key={index}
                           className="inline-flex items-center text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-full"
-                          data-testid={`project-tag-${project.id}-${index}`}
+                          data-testid={`project-tag-${project.slug}-${index}`}
                         >
-                          {tag}
+                          {tech}
                         </span>
                       ))}
                     </div>
                     
                     {/* CTA Links */}
                     <div className="flex flex-wrap gap-2 pt-1 mt-auto">
-                      {project.links?.demo && (
+                      {project.liveUrl && (
                         <a
-                          href={project.links.demo}
+                          href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-primary text-xs px-3 py-1.5"
-                          data-testid={`project-demo-${project.id}`}
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                          data-testid={`project-demo-${project.slug}`}
                         >
+                          <ExternalLink className="h-3.5 w-3.5" />
                           Live Demo
                         </a>
                       )}
-                      {project.links?.repo && (
-                        <a
-                          href={project.links.repo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="btn-secondary text-xs px-3 py-1.5"
-                          data-testid={`project-repo-${project.id}`}
-                        >
-                          View Code
-                        </a>
-                      )}
+                      <a
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
+                        data-testid={`project-repo-${project.slug}`}
+                      >
+                        <Github className="h-3.5 w-3.5" />
+                        View Code
+                      </a>
                     </div>
                   </div>
                 </article>
@@ -151,6 +139,91 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+      {/* Additional Projects Section */}
+      {additionalProjectsList.length > 0 && (
+        <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+          <div className="max-w-[1120px] mx-auto px-5">
+            <ScrollReveal as="div" animation="slide-up" threshold={0.1}>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+                More Public Work
+              </h2>
+            </ScrollReveal>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+              {additionalProjectsList.map((project, idx) => (
+                <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
+                  <article 
+                    data-reveal 
+                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col"
+                  >
+                    {/* Project Preview Image */}
+                    <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+                      <img
+                        src={`https://opengraph.githubassets.com/1/${GITHUB_USER}/${project.slug}`}
+                        alt={`${project.displayTitle} preview`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+
+                    {/* Project Content */}
+                    <div className="p-5 space-y-4 flex-1 flex flex-col">
+                      <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
+                        {project.displayTitle}
+                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-gray-400">→</span>
+                      </h2>
+                      
+                      <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {(() => {
+                          const txt = project.description;
+                          return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
+                        })()}
+                      </p>
+                      
+                      {/* Tech Stack Tags */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.techStack.slice(0, 3).map((tech, index) => (
+                          <span
+                            key={index}
+                            className="inline-flex items-center text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      {/* CTA Links */}
+                      <div className="flex flex-wrap gap-2 pt-1 mt-auto">
+                        {project.liveUrl && (
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                          >
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            Live Demo
+                          </a>
+                        )}
+                        <a
+                          href={project.repoUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
+                        >
+                          <Github className="h-3.5 w-3.5" />
+                          View Code
+                        </a>
+                      </div>
+                    </div>
+                  </article>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section - matching Home page gradient */}
       <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-emerald-600">
