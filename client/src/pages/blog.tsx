@@ -51,9 +51,9 @@ export default function Blog() {
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
 
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="fade" className="text-center mb-16">
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <ScrollReveal animation="slide-up" className="text-center mb-16">
             <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight leading-tight font-serif" data-testid="page-title">
               <span className="block text-emerald-600 dark:text-emerald-400">Notes on Front-End,</span>
               <span className="block">Systems, and the Stuff in Between.</span>
@@ -63,16 +63,16 @@ export default function Blog() {
             </p>
           </ScrollReveal>
 
-          <ScrollReveal animation="slide-up" delay={100}>
+          <ScrollReveal animation="fade" delay={100}>
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               {categories.map((c) => (
                 <Button
                   key={c.key}
-                  variant={filter === c.key ? "default" : "outline"}
-                  onClick={() => setFilter(c.key as any)}
+                  variant={filter === c.key ? "primary" : "outline"}
+                  onClick={() => setFilter(c.key as typeof filter)}
                   className={
                     filter === c.key 
-                      ? "bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white hover:from-emerald-600 hover:to-emerald-700 dark:hover:from-emerald-700 dark:hover:to-emerald-800 shadow-md hover:shadow-lg transition-all duration-200 px-5 py-2.5 rounded-full font-semibold ring-2 ring-emerald-400 dark:ring-emerald-700"
+                      ? "bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white hover:from-emerald-600 hover:to-emerald-700 dark:hover:from-emerald-700 dark:hover:to-emerald-800 shadow-md hover:shadow-lg transition-all duration-200 px-5 py-2.5 rounded-full font-semibold"
                       : "dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800 hover:border-emerald-300 dark:hover:border-emerald-700 px-5 py-2.5 rounded-full font-medium transition-all duration-200"
                   }
                   data-testid={`filter-${c.key}`}
@@ -86,16 +86,16 @@ export default function Blog() {
       </section>
 
       {featured && (
-        <section className="py-16 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+          <div className="max-w-[1120px] mx-auto px-5">
             <ScrollReveal animation="slide-up">
               <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 font-serif" data-testid="section-title-featured">
                 <span className="text-emerald-500 dark:text-emerald-400">Featured Post</span>
               </h2>
             </ScrollReveal>
-            <ScrollReveal animation="scale" delay={100}>
-              <div className="grid gap-8 md:grid-cols-2">
-                <div className="rounded-2xl shadow-lg dark:shadow-emerald-900/10 border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+            <ScrollReveal animation="slide-up" delay={100}>
+              <div className="max-w-sm">
+                <div className="rounded-2xl shadow-lg dark:shadow-emerald-900/10 border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-gray-900 card-hover">
                   <BlogCard post={featured} />
                 </div>
               </div>
@@ -104,19 +104,21 @@ export default function Blog() {
         </section>
       )}
 
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="fade">
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <ScrollReveal animation="slide-up">
             <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100" data-testid="section-title-all">
               All Posts
             </h2>
           </ScrollReveal>
 
           {others.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
               {others.map((post, idx) => (
-                <ScrollReveal key={post.id} animation="scale" delay={idx * 50}>
-                  <BlogCard post={post} />
+                <ScrollReveal key={post.id} animation="slide-up" delay={idx * 50}>
+                  <div className="card-hover">
+                    <BlogCard post={post} />
+                  </div>
                 </ScrollReveal>
               ))}
             </div>
@@ -126,7 +128,7 @@ export default function Blog() {
                 <div className="max-w-md mx-auto">
                   <div className="mb-6">
                     <div className="inline-flex items-center justify-center w-20 h-20 bg-gray-100 dark:bg-gray-800 rounded-full mb-4">
-                      <i className="fas fa-search text-3xl text-gray-400 dark:text-gray-600" />
+                      <span className="text-3xl text-gray-400 dark:text-gray-600">🔍</span>
                     </div>
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">

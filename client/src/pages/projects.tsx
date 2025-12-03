@@ -28,13 +28,13 @@ export default function Projects() {
       </Helmet>
 
       {/* Header - Hero-lite with gradient */}
-      <section className="relative py-24 sm:py-32 lg:py-36 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 overflow-hidden">
         {/* Subtle background grid pattern */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]" />
         
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-[1120px] mx-auto px-5">
           <ScrollReveal as="div" className="text-center mb-12" animation="slide-up" threshold={0.1}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight" data-testid="page-title">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white" data-testid="page-title">
               Projects &amp; Professional Front-End Demos
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">

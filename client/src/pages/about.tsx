@@ -45,15 +45,15 @@ export default function About() {
       </Helmet>
 
       {/* Header - Hero with subtle background motif */}
-      <section className="relative py-24 sm:py-32 lg:py-36 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 overflow-hidden">
+      <section className="relative py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 overflow-hidden">
         {/* Subtle grid pattern background */}
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]" />
         
         {/* Spotlight effect */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
         
-        <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="fade" className="text-center">
+        <div className="relative max-w-[1120px] mx-auto px-5">
+          <ScrollReveal animation="slide-up" className="text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight font-serif" data-testid="page-title">
               <span className="block text-purple-600 dark:text-purple-400">Code, Culture,</span>
               <span className="block">and Discipline.</span>
@@ -68,8 +68,8 @@ export default function About() {
       </section>
 
       {/* Background Section */}
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+        <div className="max-w-[1120px] mx-auto px-5">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <ScrollReveal animation="slide-up">
               <div className="space-y-6">
@@ -113,9 +113,9 @@ export default function About() {
       </section>
 
       {/* Skill Matrix */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal animation="fade">
+      <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <ScrollReveal animation="slide-up">
             <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-gray-100 tracking-tight" data-testid="section-title-skills">
               Skill Matrix
             </h2>
@@ -123,10 +123,10 @@ export default function About() {
           
           <div className="grid md:grid-cols-3 gap-6">
             {/* Expert */}
-            <ScrollReveal animation="scale" delay={0}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 h-full">
+            <ScrollReveal animation="slide-up" delay={0}>
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                  <div className="w-3 h-3 bg-green-500 rounded-full" />
                   <h3 className="text-xl font-bold text-green-700 dark:text-green-400 flex items-center gap-2"><span className="text-green-400">✧</span>Expert</h3>
                 </div>
                 <ul className="space-y-3">
@@ -143,10 +143,10 @@ export default function About() {
             </ScrollReveal>
 
             {/* Proficient */}
-            <ScrollReveal animation="scale" delay={100}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 h-full">
+            <ScrollReveal animation="slide-up" delay={60}>
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+                  <div className="w-3 h-3 bg-blue-500 rounded-full" />
                   <h3 className="text-xl font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2"><span className="text-blue-400">✧</span>Proficient</h3>
                 </div>
                 <ul className="space-y-3">
@@ -163,10 +163,10 @@ export default function About() {
             </ScrollReveal>
 
             {/* Familiar */}
-            <ScrollReveal animation="scale" delay={200}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 h-full">
+            <ScrollReveal animation="slide-up" delay={120}>
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" />
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full" />
                   <h3 className="text-xl font-bold text-yellow-700 dark:text-yellow-400 flex items-center gap-2"><span className="text-yellow-400">✧</span>Familiar</h3>
                 </div>
                 <ul className="space-y-3">
@@ -185,15 +185,21 @@ export default function About() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal animation="fade">
+      {/* CTA Section - matches Home page gradient CTA */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-emerald-600">
+        <div className="max-w-[1120px] mx-auto px-5 text-center">
+          <ScrollReveal animation="slide-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Let's Work Together
+            </h2>
+            <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+              Ready to bring your project to life with clean code and thoughtful design?
+            </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:e@ehicksonjr.com" className="btn-secondary">
+              <a href="mailto:e@ehicksonjr.com" className="btn-secondary bg-white/10 text-white border-white/30 hover:bg-white/20">
                 Get In Touch
               </a>
-              <Link to="/projects" className="btn-primary">
+              <Link to="/projects" className="btn-primary bg-white text-blue-600 hover:bg-slate-50">
                 View Projects
               </Link>
             </div>
