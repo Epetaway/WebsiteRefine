@@ -1,15 +1,15 @@
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 import { projects } from "@/data/projects";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useReveal } from "@/hooks/useReveal";
+import { Button } from "@/components/ui/button";
 
 // Get featured projects for display
 const professionalProjects = projects.filter(p => p.category === "featured");
 
 export default function Projects() {
-  const [viewMode, setViewMode] = useState<"developer" | "portfolio">("portfolio");
   useReveal();
 
   const title = "Projects & Professional Front-End Demos — Earl Hickson Jr.";
@@ -33,64 +33,13 @@ export default function Projects() {
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]" />
         
         <div className="relative max-w-[1120px] mx-auto px-5">
-          <ScrollReveal as="div" className="text-center mb-12" animation="slide-up" threshold={0.1}>
+          <ScrollReveal as="div" className="text-center" animation="slide-up" threshold={0.1}>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 tracking-tight text-gray-900 dark:text-white" data-testid="page-title">
               Projects &amp; Professional Front-End Demos
             </h1>
             <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
               These projects mirror the kind of work I have done in healthcare, nonprofit, and community environments. For privacy and NDAs, many are re-created as shareable demos using the same architecture, patterns, and technical constraints I used in production.
             </p>
-          </ScrollReveal>
-
-          {/* Enhanced View Toggle with sliding indicator */}
-          <ScrollReveal as="div" className="flex justify-center mt-12" animation="fade" threshold={0.1} delay={100}>
-              <div className="relative inline-flex bg-gray-100 dark:bg-gray-800/50 rounded-full p-1.5 shadow-sm border border-gray-200 dark:border-gray-700">
-                {/* Sliding indicator background with spring animation */}
-                <motion.div
-                  className="absolute top-1.5 bottom-1.5 bg-white dark:bg-gray-700 rounded-full shadow-md"
-                  initial={false}
-                  animate={{
-                    left: viewMode === "developer" ? "0.375rem" : "50%",
-                    width: "calc(50% - 0.375rem)"
-                  }}
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                  style={{ position: "absolute" }}
-                />
-              
-              {/* Developer toggle */}
-              <button
-                onClick={() => setViewMode("developer")}
-                className={`
-                  relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300
-                  ${viewMode === "developer" 
-                    ? "text-gray-900 dark:text-white" 
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
-                  }
-                `}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="text-lg font-mono">&lt;/&gt;</span>
-                  <span>Developer</span>
-                </span>
-              </button>
-              
-              {/* Portfolio toggle */}
-              <button
-                onClick={() => setViewMode("portfolio")}
-                className={`
-                  relative z-10 px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300
-                  ${viewMode === "portfolio" 
-                    ? "text-gray-900 dark:text-white" 
-                    : "text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
-                  }
-                `}
-              >
-                <span className="flex items-center gap-2">
-                  <span className="text-lg">✦</span>
-                  <span>Portfolio</span>
-                </span>
-              </button>
-            </div>
           </ScrollReveal>
         </div>
       </section>
@@ -128,20 +77,24 @@ export default function Projects() {
                       <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-gray-400">→</span>
                     </h2>
                     
-                    {/* Summary */}
-                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3" data-testid={`project-summary-${project.id}`}>
-                      {project.summary || project.description}
+                    {/* Summary - limited to 100 characters */}
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed" data-testid={`project-summary-${project.id}`}>
+                      {(() => {
+                        const txt = project.summary || project.description;
+                        return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
+                      })()}
                     </p>
-
-                    {/* Developer View Notes */}
-                    {viewMode === "developer" && project.devNotes && (
-                      <div className="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg border-l-2 border-blue-500 dark:border-blue-400 text-xs">
-                        <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-1 flex items-center gap-1">
-                          <span className="font-mono text-xs">&lt;/&gt;</span>
-                          Dev Notes
-                        </h3>
-                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">{project.devNotes}</p>
-                      </div>
+                    
+                    {/* Read More Link */}
+                    {project.links?.demo && (
+                      <a 
+                        href={project.links.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                      >
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </a>
                     )}
                     
                     {/* Tech Stack Tags */}
@@ -190,34 +143,22 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <ScrollReveal as="div" animation="fade" threshold={0.1}>
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
-              Let's Build Something Together
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto">
-              Interested in working together or learning more about my projects?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a
-                href="mailto:e@ehicksonjr.com"
-                className="btn-secondary inline-flex items-center justify-center gap-2"
-                data-testid="button-contact"
-              >
-                <i className="fas fa-envelope" aria-hidden="true" />
-                Get In Touch
-              </a>
-              <a
-                href="/assets/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary inline-flex items-center justify-center gap-2"
-              >
-                <i className="fas fa-download" aria-hidden="true" />
-                Get Resume
-              </a>
+      {/* CTA Section - matching Home page gradient */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-emerald-600">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <ScrollReveal as="div" animation="slide-up" threshold={0.1}>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Let's Build Something Together
+              </h2>
+              <p className="text-xl text-blue-50 mb-8">
+                Interested in working together or learning more about my projects? I'd love to hear from you.
+              </p>
+              <Link to="/contact">
+                <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 shadow-lg button-lift">
+                  Start a Conversation
+                </Button>
+              </Link>
             </div>
           </ScrollReveal>
         </div>

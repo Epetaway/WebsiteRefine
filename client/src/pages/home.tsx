@@ -7,7 +7,7 @@ import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import TypewriterCode from "@/components/ui/TypewriterCode";
-import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink } from "lucide-react";
+import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink, ArrowRight } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useEffect, useState } from "react";
@@ -292,10 +292,16 @@ export default function Home() {
                         {item.title}
                         <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                       </h3>
-                      <p className="text-gray-600 dark:text-slate-300/90 mb-4">{(() => {
+                      <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed">{(() => {
                         const txt = item.description;
-                        return txt.length > 160 ? txt.slice(0, 157) + "…" : txt;
+                        return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
                       })()}</p>
+                      <Link 
+                        to={item.link} 
+                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors mb-3"
+                      >
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Link>
                       {item.kind === 'github' && (
                         <div className="mt-auto flex gap-3">
                           {item.html_url && (
