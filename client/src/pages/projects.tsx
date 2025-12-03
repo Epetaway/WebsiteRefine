@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { projects } from "@/data/projects";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useReveal } from "@/hooks/useReveal";
@@ -43,15 +44,18 @@ export default function Projects() {
 
           {/* Enhanced View Toggle with sliding indicator */}
           <ScrollReveal as="div" className="flex justify-center mt-12" animation="fade" threshold={0.1} delay={100}>
-            <div className="relative inline-flex bg-gray-100 dark:bg-gray-800/50 rounded-full p-1.5 shadow-sm border border-gray-200 dark:border-gray-700">
-              {/* Sliding indicator background */}
-              <div
-                className="absolute top-1.5 bottom-1.5 bg-white dark:bg-gray-700 rounded-full shadow-md transition-all duration-300 ease-out"
-                style={{
-                  left: viewMode === "developer" ? "0.375rem" : "50%",
-                  width: "calc(50% - 0.375rem)"
-                }}
-              />
+              <div className="relative inline-flex bg-gray-100 dark:bg-gray-800/50 rounded-full p-1.5 shadow-sm border border-gray-200 dark:border-gray-700">
+                {/* Sliding indicator background with spring animation */}
+                <motion.div
+                  className="absolute top-1.5 bottom-1.5 bg-white dark:bg-gray-700 rounded-full shadow-md"
+                  initial={false}
+                  animate={{
+                    left: viewMode === "developer" ? "0.375rem" : "50%",
+                    width: "calc(50% - 0.375rem)"
+                  }}
+                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  style={{ position: "absolute" }}
+                />
               
               {/* Developer toggle */}
               <button
@@ -102,7 +106,7 @@ export default function Projects() {
                   className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-[#10b981]/20"
                 >
                   {/* Project Preview Image - 16:9 aspect ratio */}
-                  <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
+                  <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden group">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="text-center space-y-3">
                         <div className="text-6xl opacity-20">
@@ -113,7 +117,8 @@ export default function Projects() {
                         </p>
                       </div>
                     </div>
-                    {/* Hover zoom effect overlay */}
+                    {/* Image placeholder, zoom and border on hover */}
+                    <div className="absolute inset-0 transition-all duration-300 group-hover:scale-105 group-hover:border-4 group-hover:border-purple-500/40 rounded-xl pointer-events-none" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
@@ -149,6 +154,7 @@ export default function Projects() {
                           data-testid={`project-tag-${project.id}-${index}`}
                         >
                           <span className="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse" />
+                          <span className="mr-1 text-emerald-400 dark:text-emerald-300">✧</span>
                           {tag}
                         </span>
                       ))}
@@ -161,7 +167,7 @@ export default function Projects() {
                           href={project.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2.5 px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 dark:from-purple-500 dark:to-purple-600 dark:hover:from-purple-600 dark:hover:to-purple-700 text-white font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-200 group/cta"
+                          className="btn-primary inline-flex items-center gap-2.5"
                           data-testid={`project-demo-${project.id}`}
                         >
                           <i className="fas fa-external-link-alt text-sm" />
@@ -174,7 +180,7 @@ export default function Projects() {
                           href={project.links.repo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2.5 px-6 py-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-900 dark:text-gray-100 font-semibold rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all duration-200 ring-1 ring-gray-300 dark:ring-gray-700 hover:ring-gray-400 dark:hover:ring-gray-600"
+                          className="btn-secondary inline-flex items-center gap-2.5"
                           data-testid={`project-repo-${project.id}`}
                         >
                           <i className="fab fa-github text-base" />
