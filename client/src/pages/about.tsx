@@ -54,11 +54,14 @@ export default function About() {
         
         <div className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade" className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight" data-testid="page-title">
-              Code, Culture, and Discipline.
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight font-serif" data-testid="page-title">
+              <span className="block text-purple-600 dark:text-purple-400">Code, Culture,</span>
+              <span className="block">and Discipline.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-              I am a front-end developer based in Parsippany, NJ with over six years of experience building modern, accessible interfaces. My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering. I have contributed to healthcare platforms, nonprofit campaigns, and community-focused brands—always with a focus on clarity and maintainability.
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-light italic">
+              I am a front-end developer based in Parsippany, NJ with over six years of experience building modern, accessible interfaces.<br />
+              My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering.<br />
+              I have contributed to healthcare platforms, nonprofit campaigns, and community-focused brands—always with a focus on clarity and maintainability.
             </p>
           </ScrollReveal>
         </div>
@@ -85,7 +88,7 @@ export default function About() {
             <ScrollReveal animation="slide-up" delay={100}>
               <div className="relative group">
                 {/* Photo card with enhanced styling */}
-                <div className="relative overflow-hidden rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-purple-500/10 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                <div className="relative overflow-hidden rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-purple-500/10 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-transparent group-hover:border-purple-500/40">
                   <img
                     src={aboutImage}
                     alt="Earl Hickson Jr. training Brazilian Jiu-Jitsu"
@@ -94,10 +97,9 @@ export default function About() {
                   />
                   {/* Gradient overlay on hover */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
                   {/* Caption overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-sm font-medium">Black Belt, Brazilian Jiu-Jitsu</p>
+                    <p className="text-sm font-medium flex items-center gap-2"><span className="text-purple-400">✦</span>Black Belt, Brazilian Jiu-Jitsu</p>
                     <p className="text-xs opacity-90">Discipline in training, precision in code</p>
                   </div>
                 </div>
@@ -124,8 +126,8 @@ export default function About() {
             <ScrollReveal animation="scale" delay={0}>
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-green-500/10 transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-green-500 rounded-full" />
-                  <h3 className="text-xl font-bold text-green-700 dark:text-green-400">Expert</h3>
+                  <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" />
+                  <h3 className="text-xl font-bold text-green-700 dark:text-green-400 flex items-center gap-2"><span className="text-green-400">✧</span>Expert</h3>
                 </div>
                 <ul className="space-y-3">
                   {skillMatrix.expert.map((skill, index) => (
@@ -144,8 +146,8 @@ export default function About() {
             <ScrollReveal animation="scale" delay={100}>
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full" />
-                  <h3 className="text-xl font-bold text-blue-700 dark:text-blue-400">Proficient</h3>
+                  <div className="w-3 h-3 bg-blue-500 rounded-full animate-pulse" />
+                  <h3 className="text-xl font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2"><span className="text-blue-400">✧</span>Proficient</h3>
                 </div>
                 <ul className="space-y-3">
                   {skillMatrix.proficient.map((skill, index) => (
@@ -164,8 +166,8 @@ export default function About() {
             <ScrollReveal animation="scale" delay={200}>
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-yellow-500/10 transition-all duration-300 hover:-translate-y-1 border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                  <h3 className="text-xl font-bold text-yellow-700 dark:text-yellow-400">Familiar</h3>
+                  <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" />
+                  <h3 className="text-xl font-bold text-yellow-700 dark:text-yellow-400 flex items-center gap-2"><span className="text-yellow-400">✧</span>Familiar</h3>
                 </div>
                 <ul className="space-y-3">
                   {skillMatrix.familiar.map((skill, index) => (
