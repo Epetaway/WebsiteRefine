@@ -144,7 +144,7 @@ export function getAllProjects(): Project[] {
 
 /**
  * Get featured projects for homepage display
- * Returns projects marked as featured, or first N pinned projects
+ * Returns projects marked as featured (limited to count if provided)
  */
 export function getFeaturedProjects(count?: number): Project[] {
   const featured = getAllProjects().filter((project) => project.featured);
