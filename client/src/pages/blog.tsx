@@ -54,10 +54,11 @@ export default function Blog() {
       <section className="py-20 bg-white dark:bg-gray-950">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal animation="fade" className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight leading-tight" data-testid="page-title">
-              Notes on Front-End, Systems, and the Stuff in Between.
+            <h1 className="text-4xl lg:text-5xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight leading-tight font-serif" data-testid="page-title">
+              <span className="block text-emerald-600 dark:text-emerald-400">Notes on Front-End,</span>
+              <span className="block">Systems, and the Stuff in Between.</span>
             </h1>
-            <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg lg:text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed font-light italic">
               I write about building better front-ends, designing for real people, improving workflow clarity, exploring healthcare technology, and staying sharp as a developer.
             </p>
           </ScrollReveal>
@@ -71,12 +72,12 @@ export default function Blog() {
                   onClick={() => setFilter(c.key as any)}
                   className={
                     filter === c.key 
-                      ? "bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white hover:from-emerald-600 hover:to-emerald-700 dark:hover:from-emerald-700 dark:hover:to-emerald-800 shadow-md hover:shadow-lg transition-all duration-200 px-5 py-2.5 rounded-full font-semibold" 
+                      ? "bg-gradient-to-r from-emerald-500 to-emerald-600 dark:from-emerald-600 dark:to-emerald-700 text-white hover:from-emerald-600 hover:to-emerald-700 dark:hover:from-emerald-700 dark:hover:to-emerald-800 shadow-md hover:shadow-lg transition-all duration-200 px-5 py-2.5 rounded-full font-semibold ring-2 ring-emerald-400 dark:ring-emerald-700"
                       : "dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800 hover:border-emerald-300 dark:hover:border-emerald-700 px-5 py-2.5 rounded-full font-medium transition-all duration-200"
                   }
                   data-testid={`filter-${c.key}`}
                 >
-                  {c.label} <span className="opacity-70">({c.count})</span>
+                  <span className="mr-2 text-emerald-400 dark:text-emerald-300">✧</span>{c.label} <span className="opacity-70">({c.count})</span>
                 </Button>
               ))}
             </div>
@@ -88,13 +89,15 @@ export default function Blog() {
         <section className="py-16 bg-gray-50 dark:bg-gray-900">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <ScrollReveal animation="slide-up">
-              <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100" data-testid="section-title-featured">
-                Featured Post
+              <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 font-serif" data-testid="section-title-featured">
+                <span className="text-emerald-500 dark:text-emerald-400">Featured Post</span>
               </h2>
             </ScrollReveal>
             <ScrollReveal animation="scale" delay={100}>
               <div className="grid gap-8 md:grid-cols-2">
-                <BlogCard post={featured} />
+                <div className="rounded-2xl shadow-lg dark:shadow-emerald-900/10 border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-gray-900 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
+                  <BlogCard post={featured} />
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -126,11 +129,11 @@ export default function Blog() {
                       <i className="fas fa-search text-3xl text-gray-400 dark:text-gray-600" />
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-3 font-serif">
                     No posts found
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-6" data-testid="text-no-posts">
-                    No articles match this category yet. Check back soon or explore other topics.
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 italic" data-testid="text-no-posts">
+                    No articles match this category yet.<br />Check back soon or explore other topics.
                   </p>
                   <Button
                     variant="outline"
