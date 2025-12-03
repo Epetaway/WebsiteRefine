@@ -22,6 +22,7 @@ export interface Project {
   tags?: string[];
   slug?: string;
   devNotes?: string;
+  image?: string;
 }
 
 // Resume file path constant for consistency

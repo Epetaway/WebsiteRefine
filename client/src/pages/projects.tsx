@@ -56,16 +56,25 @@ export default function Projects() {
                 >
                   {/* Project Preview Image - 16:9 aspect ratio */}
                   <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center space-y-2">
-                        <div className="text-4xl opacity-20">
-                          {project.category === 'featured' ? '⚡' : '🚀'}
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={`${project.title} preview`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <div className="text-center space-y-2">
+                          <div className="text-4xl opacity-20">
+                            {project.category === 'featured' ? '⚡' : '🚀'}
+                          </div>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                            Preview
+                          </p>
                         </div>
-                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
-                          Preview
-                        </p>
                       </div>
-                    </div>
+                    )}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
