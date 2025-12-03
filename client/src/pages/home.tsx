@@ -6,6 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { SectionHeader } from "@/components/layout/SectionHeader";
+import TypewriterCode from "@/components/ui/TypewriterCode";
 import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -153,19 +154,19 @@ export default function Home() {
       </Helmet>
 
       {/* Hero Section */}
-      <Section className="min-h-[90vh] flex items-center bg-slate-950">
+      <Section className="min-h-[90vh] flex items-center bg-gray-50 dark:bg-slate-950">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal animation="slide-up" className="space-y-6">
-            <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
+            <Badge className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
               Available for select projects
             </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-50">
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-slate-50">
               Building digital experiences with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">
                 code & creativity
               </span>
             </h1>
-            <p className="text-lg text-slate-300 max-w-xl">
+            <p className="text-lg text-gray-600 dark:text-slate-300 max-w-xl">
               Full stack developer and designer specializing in thoughtful brand identities, 
               robust web applications, and user experiences that resonate. Bringing discipline 
               from the jiu-jitsu mat to clean, maintainable code.
@@ -180,64 +181,66 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          {/* Code Editor Card with float animation */}
+          {/* Code Editor Card with float animation and typing effect */}
           <ScrollReveal animation="scale" delay={150}>
-            <Card className="bg-slate-900 border-slate-800 p-1 shadow-2xl float-soft card-hover">
-              <div className="bg-slate-950 rounded-lg overflow-hidden">
+            <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-1 shadow-2xl float-soft card-hover">
+              <div className="bg-gray-50 dark:bg-slate-950 rounded-lg overflow-hidden">
                 {/* Editor Header */}
-                <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
+                <div className="bg-gray-100 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 py-2 flex items-center gap-2">
                   <div className="flex gap-1.5">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
                     <div className="w-3 h-3 rounded-full bg-amber-500"></div>
                     <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
                   </div>
-                  <span className="text-xs text-slate-400 ml-3 font-mono">earl-hickson.ts</span>
+                  <span className="text-xs text-gray-500 dark:text-slate-400 ml-3 font-mono">earl-hickson.ts</span>
                 </div>
-                {/* Code Content */}
+                {/* Code Content with Typing Animation */}
                 <div className="p-6 font-mono text-sm leading-relaxed">
-                  <div className="space-y-1">
-                    <div>
-                      <span className="text-purple-400">interface</span>{" "}
-                      <span className="text-blue-400">Developer</span>{" "}
-                      <span className="text-slate-500">{"{"}</span>
+                  <TypewriterCode startDelay={800} charDelay={25}>
+                    <div className="space-y-1">
+                      <div>
+                        <span className="text-purple-600 dark:text-purple-400">interface</span>{" "}
+                        <span className="text-blue-600 dark:text-blue-400">Developer</span>{" "}
+                        <span className="text-gray-500 dark:text-slate-500">{"{"}</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">name:</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"Earl Hickson"</span>
+                        <span className="text-gray-500 dark:text-slate-500">;</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">role:</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"Full Stack Developer"</span>
+                        <span className="text-gray-500 dark:text-slate-500">;</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">skills:</span>{" "}
+                        <span className="text-gray-500 dark:text-slate-500">{"["}</span>
+                      </div>
+                      <div className="pl-8">
+                        <span className="text-emerald-600 dark:text-emerald-400">"React"</span>
+                        <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"TypeScript"</span>
+                        <span className="text-gray-500 dark:text-slate-500">,</span>
+                      </div>
+                      <div className="pl-8">
+                        <span className="text-emerald-600 dark:text-emerald-400">"Node.js"</span>
+                        <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"UI/UX Design"</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-500 dark:text-slate-500">{"];"}</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">passion:</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"Building & BJJ"</span>
+                        <span className="text-gray-500 dark:text-slate-500">;</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-500 dark:text-slate-500">{"}"}</span>
+                      </div>
                     </div>
-                    <div className="pl-4">
-                      <span className="text-slate-400">name:</span>{" "}
-                      <span className="text-emerald-400">"Earl Hickson"</span>
-                      <span className="text-slate-500">;</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-slate-400">role:</span>{" "}
-                      <span className="text-emerald-400">"Full Stack Developer"</span>
-                      <span className="text-slate-500">;</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-slate-400">skills:</span>{" "}
-                      <span className="text-slate-500">{"["}</span>
-                    </div>
-                    <div className="pl-8">
-                      <span className="text-emerald-400">"React"</span>
-                      <span className="text-slate-500">,</span>{" "}
-                      <span className="text-emerald-400">"TypeScript"</span>
-                      <span className="text-slate-500">,</span>
-                    </div>
-                    <div className="pl-8">
-                      <span className="text-emerald-400">"Node.js"</span>
-                      <span className="text-slate-500">,</span>{" "}
-                      <span className="text-emerald-400">"UI/UX Design"</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-slate-500">{"];"}</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-slate-400">passion:</span>{" "}
-                      <span className="text-emerald-400">"Building & BJJ"</span>
-                      <span className="text-slate-500">;</span>
-                    </div>
-                    <div>
-                      <span className="text-slate-500">{"}"}</span>
-                    </div>
-                  </div>
+                  </TypewriterCode>
                 </div>
               </div>
             </Card>
@@ -246,7 +249,7 @@ export default function Home() {
       </Section>
 
       {/* Featured Work (GitHub Repos) - Carousel */}
-      <Section className="bg-slate-900">
+      <Section className="bg-gray-100 dark:bg-slate-900">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
             title="Featured Work" 
@@ -266,8 +269,8 @@ export default function Home() {
             {featured.map((item, idx) => (
               <SwiperSlide key={idx}>
                 <Link to={item.link} className="group block h-full">
-                  <Card className="bg-slate-800 border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[460px] card-hover">
-                    <div className="aspect-video bg-slate-700/50">
+                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[460px] card-hover">
+                    <div className="aspect-video bg-gray-100 dark:bg-slate-700/50">
                       <img
                         src={item.image}
                         alt={`${item.title} preview`}
@@ -279,17 +282,17 @@ export default function Home() {
                       {item.tech && (
                         <div className="flex flex-wrap gap-2 mb-3">
                           {item.tech.map((t) => (
-                            <Badge key={t} className="bg-slate-700/80 text-slate-200 ring-1 ring-inset ring-slate-600/50">
+                            <Badge key={t} className="bg-gray-100 dark:bg-slate-700/80 text-gray-700 dark:text-slate-200 ring-1 ring-inset ring-gray-300 dark:ring-slate-600/50">
                               {t}
                             </Badge>
                           ))}
                         </div>
                       )}
-                      <h3 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-blue-300 transition-colors flex items-center gap-2">
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors flex items-center gap-2">
                         {item.title}
                         <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                       </h3>
-                      <p className="text-slate-300/90 mb-4">{(() => {
+                      <p className="text-gray-600 dark:text-slate-300/90 mb-4">{(() => {
                         const txt = item.description;
                         return txt.length > 160 ? txt.slice(0, 157) + "…" : txt;
                       })()}</p>
@@ -302,7 +305,7 @@ export default function Home() {
                             </a>
                           )}
                           {item.homepage && (
-                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-300 shadow-sm">
+                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 shadow-sm">
                               <ExternalLink className="h-4 w-4" />
                               View Demo
                             </a>
@@ -320,7 +323,7 @@ export default function Home() {
         <ScrollReveal animation="fade" delay={200}>
           <div className="text-center mt-12">
             <Link to="/projects">
-              <Button variant="outline" size="lg" className="border-slate-700 text-slate-300 hover:bg-slate-800">
+              <Button variant="outline" size="lg" className="border-gray-300 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800">
                 View All Projects
               </Button>
             </Link>
@@ -329,7 +332,7 @@ export default function Home() {
       </Section>
 
       {/* How I Work */}
-      <Section className="bg-slate-950">
+      <Section className="bg-white dark:bg-slate-950">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
             title="Approach & Services" 
@@ -346,12 +349,12 @@ export default function Home() {
               { step: "04", title: "Launch & Iterate", desc: "Measure impact, improve performance, document, and support." },
             ].map((phase, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
-                <Card className="bg-slate-900 border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
+                <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
                   <div className="flex items-start gap-4">
-                    <div className="text-2xl font-bold text-blue-400 mt-0.5 w-10">{phase.step}</div>
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-0.5 w-10">{phase.step}</div>
                     <div>
-                      <h3 className="text-lg font-semibold text-slate-50 mb-1">{phase.title}</h3>
-                      <p className="text-sm text-slate-400 leading-relaxed">{phase.desc}</p>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-1">{phase.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{phase.desc}</p>
                     </div>
                   </div>
                 </Card>
@@ -384,10 +387,10 @@ export default function Home() {
               },
             ].map((service, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
-                <Card className="bg-slate-900 border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
-                  <service.icon className="h-9 w-9 text-emerald-400 mb-3" />
-                  <h3 className="text-base font-semibold text-slate-50 mb-1">{service.title}</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">{service.description}</p>
+                <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
+                  <service.icon className="h-9 w-9 text-emerald-600 dark:text-emerald-400 mb-3" />
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-slate-50 mb-1">{service.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{service.description}</p>
                 </Card>
               </ScrollReveal>
             ))}
@@ -396,20 +399,20 @@ export default function Home() {
       </Section>
 
       {/* About Preview */}
-      <Section className="bg-slate-950">
+      <Section className="bg-gray-100 dark:bg-slate-950">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal animation="slide-up">
             <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-slate-50">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-slate-50">
                 Code, Culture, Discipline
               </h2>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
                 As a full stack developer and Brazilian Jiu-Jitsu practitioner, I bring 
                 the same dedication to both crafts. The discipline, problem-solving, and 
                 resilience from the mats translates directly to writing clean code and 
                 building robust applications.
               </p>
-              <p className="text-lg text-slate-300 leading-relaxed">
+              <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
                 Whether it's designing a brand identity or architecting a complex system, 
                 I approach every project with thoughtfulness, precision, and a commitment 
                 to continuous improvement.
@@ -420,63 +423,65 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          {/* Code Editor Card with float animation */}
+          {/* Code Editor Card with float animation and typing effect */}
           <ScrollReveal animation="scale" delay={120}>
-            <Card className="bg-slate-900 border-slate-800 p-1 shadow-xl card-hover float-soft">
-            <div className="bg-slate-950 rounded-lg overflow-hidden">
-              <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
+            <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-1 shadow-xl card-hover float-soft">
+            <div className="bg-gray-50 dark:bg-slate-950 rounded-lg overflow-hidden">
+              <div className="bg-gray-100 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 py-2 flex items-center gap-2">
                 <div className="flex gap-1.5">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-amber-500"></div>
                   <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
                 </div>
-                <span className="text-xs text-slate-400 ml-3 font-mono">philosophy.ts</span>
+                <span className="text-xs text-gray-500 dark:text-slate-400 ml-3 font-mono">philosophy.ts</span>
               </div>
               <div className="p-6 font-mono text-sm leading-relaxed">
-                <div className="space-y-1">
-                  <div>
-                    <span className="text-purple-400">const</span>{" "}
-                    <span className="text-blue-400">approach</span>{" "}
-                    <span className="text-slate-500">=</span>{" "}
-                    <span className="text-slate-500">{"{"}</span>
+                <TypewriterCode startDelay={600} charDelay={30}>
+                  <div className="space-y-1">
+                    <div>
+                      <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
+                      <span className="text-blue-600 dark:text-blue-400">approach</span>{" "}
+                      <span className="text-gray-500 dark:text-slate-500">=</span>{" "}
+                      <span className="text-gray-500 dark:text-slate-500">{"{"}</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">mindset:</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Continuous improvement"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">process:</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Deliberate practice"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">outcome:</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Quality over speed"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">values:</span>{" "}
+                      <span className="text-gray-500 dark:text-slate-500">{"["}</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-emerald-600 dark:text-emerald-400">"Discipline"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Craft"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-emerald-600 dark:text-emerald-400">"Growth"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Excellence"</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-500 dark:text-slate-500">{"]"}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500 dark:text-slate-500">{"};"}</span>
+                    </div>
                   </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">mindset:</span>{" "}
-                    <span className="text-emerald-400">"Continuous improvement"</span>
-                    <span className="text-slate-500">,</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">process:</span>{" "}
-                    <span className="text-emerald-400">"Deliberate practice"</span>
-                    <span className="text-slate-500">,</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">outcome:</span>{" "}
-                    <span className="text-emerald-400">"Quality over speed"</span>
-                    <span className="text-slate-500">,</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">values:</span>{" "}
-                    <span className="text-slate-500">{"["}</span>
-                  </div>
-                  <div className="pl-8">
-                    <span className="text-emerald-400">"Discipline"</span>
-                    <span className="text-slate-500">,</span>{" "}
-                    <span className="text-emerald-400">"Craft"</span>
-                    <span className="text-slate-500">,</span>
-                  </div>
-                  <div className="pl-8">
-                    <span className="text-emerald-400">"Growth"</span>
-                    <span className="text-slate-500">,</span>{" "}
-                    <span className="text-emerald-400">"Excellence"</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-500">{"]"}</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500">{"};"}</span>
-                  </div>
-                </div>
+                </TypewriterCode>
               </div>
             </div>
             </Card>
