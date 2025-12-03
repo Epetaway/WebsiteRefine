@@ -96,83 +96,78 @@ export default function Projects() {
       </section>
 
       {/* Professional Demos */}
-      <section className="py-20 bg-white dark:bg-gray-950">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-16">
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
             {professionalProjects.map((project, idx) => (
-              <ScrollReveal key={project.id} animation="slide-up" delay={idx * 80}>
+              <ScrollReveal key={project.id} animation="slide-up" delay={idx * 60}>
                 <article 
                   data-reveal 
-                  className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl dark:hover:shadow-2xl dark:hover:shadow-purple-500/10 transition-all duration-300 hover:-translate-y-1 hover:border-[#10b981]/20"
+                  className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col"
                 >
                   {/* Project Preview Image - 16:9 aspect ratio */}
-                  <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden group">
+                  <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-center space-y-3">
-                        <div className="text-6xl opacity-20">
+                      <div className="text-center space-y-2">
+                        <div className="text-4xl opacity-20">
                           {project.category === 'featured' ? '⚡' : '🚀'}
                         </div>
-                        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                          Project Preview
+                        <p className="text-xs text-gray-500 dark:text-gray-400 font-medium">
+                          Preview
                         </p>
                       </div>
                     </div>
-                    {/* Image placeholder, zoom and border on hover */}
-                    <div className="absolute inset-0 transition-all duration-300 group-hover:scale-105 group-hover:border-4 group-hover:border-purple-500/40 rounded-xl pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
 
                   {/* Project Content */}
-                  <div className="p-8 space-y-6">
-                    {/* Title */}
-                    <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white tracking-tight" data-testid={`project-title-${project.id}`}>
+                  <div className="p-5 space-y-4 flex-1 flex flex-col">
+                    {/* Title with arrow */}
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2" data-testid={`project-title-${project.id}`}>
                       {project.title}
+                      <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-gray-400">→</span>
                     </h2>
                     
                     {/* Summary */}
-                    <p className="text-base sm:text-lg text-gray-700 dark:text-gray-300 leading-relaxed" data-testid={`project-summary-${project.id}`}>
+                    <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-3" data-testid={`project-summary-${project.id}`}>
                       {project.summary || project.description}
                     </p>
 
                     {/* Developer View Notes */}
                     {viewMode === "developer" && project.devNotes && (
-                      <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-xl border-l-4 border-blue-500 dark:border-blue-400">
-                        <h3 className="font-semibold text-sm text-blue-900 dark:text-blue-200 mb-2 flex items-center gap-2">
-                          <span className="font-mono">&lt;/&gt;</span>
-                          Developer View Notes
+                      <div className="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg border-l-2 border-blue-500 dark:border-blue-400 text-xs">
+                        <h3 className="font-semibold text-blue-900 dark:text-blue-200 mb-1 flex items-center gap-1">
+                          <span className="font-mono text-xs">&lt;/&gt;</span>
+                          Dev Notes
                         </h3>
-                        <p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{project.devNotes}</p>
+                        <p className="text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">{project.devNotes}</p>
                       </div>
                     )}
                     
-                    {/* Tech Stack Tags with icons and brand-green accents */}
-                    <div className="flex flex-wrap gap-2">
-                      {(project.tags || []).map((tag, index) => (
+                    {/* Tech Stack Tags */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {(project.tags || []).slice(0, 3).map((tag, index) => (
                         <span
                           key={index}
-                          className="inline-flex items-center gap-1.5 text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-3.5 py-1.5 rounded-full ring-1 ring-emerald-200 dark:ring-emerald-800 hover:ring-emerald-400 dark:hover:ring-emerald-600 hover:scale-105 transition-all duration-200"
+                          className="inline-flex items-center text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-full"
                           data-testid={`project-tag-${project.id}-${index}`}
                         >
-                          <span className="w-1.5 h-1.5 bg-emerald-500 dark:bg-emerald-400 rounded-full animate-pulse" />
-                          <span className="mr-1 text-emerald-400 dark:text-emerald-300">✧</span>
                           {tag}
                         </span>
                       ))}
                     </div>
                     
-                    {/* CTA Links - Enhanced and larger */}
-                    <div className="flex flex-wrap gap-3 pt-2">
+                    {/* CTA Links */}
+                    <div className="flex flex-wrap gap-2 pt-1 mt-auto">
                       {project.links?.demo && (
                         <a
                           href={project.links.demo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-primary inline-flex items-center gap-2.5"
+                          className="btn-primary text-xs px-3 py-1.5"
                           data-testid={`project-demo-${project.id}`}
                         >
-                          <i className="fas fa-external-link-alt text-sm" />
-                          <span>Live Demo</span>
-                          <i className="fas fa-arrow-right text-xs opacity-70 group-hover/cta:translate-x-1 transition-transform" />
+                          Live Demo
                         </a>
                       )}
                       {project.links?.repo && (
@@ -180,11 +175,10 @@ export default function Projects() {
                           href={project.links.repo}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="btn-secondary inline-flex items-center gap-2.5"
+                          className="btn-secondary text-xs px-3 py-1.5"
                           data-testid={`project-repo-${project.id}`}
                         >
-                          <i className="fab fa-github text-base" />
-                          <span>View Code</span>
+                          View Code
                         </a>
                       )}
                     </div>

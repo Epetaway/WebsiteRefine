@@ -155,7 +155,7 @@ export default function Home() {
       {/* Hero Section */}
       <Section className="min-h-[90vh] flex items-center bg-slate-950">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6">
+          <ScrollReveal animation="slide-up" className="space-y-6">
             <Badge className="bg-blue-500/10 text-blue-400 border-blue-500/20">
               Available for select projects
             </Badge>
@@ -178,153 +178,164 @@ export default function Home() {
                 Get Resume
               </a>
             </div>
-          </div>
+          </ScrollReveal>
 
-          {/* Code Editor Card */}
-          <Card className="bg-slate-900 border-slate-800 p-1 shadow-2xl">
-            <div className="bg-slate-950 rounded-lg overflow-hidden">
-              {/* Editor Header */}
-              <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+          {/* Code Editor Card with float animation */}
+          <ScrollReveal animation="scale" delay={150}>
+            <Card className="bg-slate-900 border-slate-800 p-1 shadow-2xl float-soft card-hover">
+              <div className="bg-slate-950 rounded-lg overflow-hidden">
+                {/* Editor Header */}
+                <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  </div>
+                  <span className="text-xs text-slate-400 ml-3 font-mono">earl-hickson.ts</span>
                 </div>
-                <span className="text-xs text-slate-400 ml-3 font-mono">earl-hickson.ts</span>
-              </div>
-              {/* Code Content */}
-              <div className="p-6 font-mono text-sm leading-relaxed">
-                <div className="space-y-1">
-                  <div>
-                    <span className="text-purple-400">interface</span>{" "}
-                    <span className="text-blue-400">Developer</span>{" "}
-                    <span className="text-slate-500">{"{"}</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">name:</span>{" "}
-                    <span className="text-emerald-400">"Earl Hickson"</span>
-                    <span className="text-slate-500">;</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">role:</span>{" "}
-                    <span className="text-emerald-400">"Full Stack Developer"</span>
-                    <span className="text-slate-500">;</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">skills:</span>{" "}
-                    <span className="text-slate-500">{"["}</span>
-                  </div>
-                  <div className="pl-8">
-                    <span className="text-emerald-400">"React"</span>
-                    <span className="text-slate-500">,</span>{" "}
-                    <span className="text-emerald-400">"TypeScript"</span>
-                    <span className="text-slate-500">,</span>
-                  </div>
-                  <div className="pl-8">
-                    <span className="text-emerald-400">"Node.js"</span>
-                    <span className="text-slate-500">,</span>{" "}
-                    <span className="text-emerald-400">"UI/UX Design"</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-500">{"];"}</span>
-                  </div>
-                  <div className="pl-4">
-                    <span className="text-slate-400">passion:</span>{" "}
-                    <span className="text-emerald-400">"Building & BJJ"</span>
-                    <span className="text-slate-500">;</span>
-                  </div>
-                  <div>
-                    <span className="text-slate-500">{"}"}</span>
+                {/* Code Content */}
+                <div className="p-6 font-mono text-sm leading-relaxed">
+                  <div className="space-y-1">
+                    <div>
+                      <span className="text-purple-400">interface</span>{" "}
+                      <span className="text-blue-400">Developer</span>{" "}
+                      <span className="text-slate-500">{"{"}</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-slate-400">name:</span>{" "}
+                      <span className="text-emerald-400">"Earl Hickson"</span>
+                      <span className="text-slate-500">;</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-slate-400">role:</span>{" "}
+                      <span className="text-emerald-400">"Full Stack Developer"</span>
+                      <span className="text-slate-500">;</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-slate-400">skills:</span>{" "}
+                      <span className="text-slate-500">{"["}</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-emerald-400">"React"</span>
+                      <span className="text-slate-500">,</span>{" "}
+                      <span className="text-emerald-400">"TypeScript"</span>
+                      <span className="text-slate-500">,</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-emerald-400">"Node.js"</span>
+                      <span className="text-slate-500">,</span>{" "}
+                      <span className="text-emerald-400">"UI/UX Design"</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-slate-500">{"];"}</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-slate-400">passion:</span>{" "}
+                      <span className="text-emerald-400">"Building & BJJ"</span>
+                      <span className="text-slate-500">;</span>
+                    </div>
+                    <div>
+                      <span className="text-slate-500">{"}"}</span>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </Card>
+            </Card>
+          </ScrollReveal>
         </div>
       </Section>
 
       {/* Featured Work (GitHub Repos) - Carousel */}
       <Section className="bg-slate-900">
-        <SectionHeader 
-          title="Featured Work" 
-          description="A few recent repositories from my GitHub"
-        />
-        <Swiper
-          spaceBetween={16}
-          slidesPerView={1.05}
-          breakpoints={{
-            640: { slidesPerView: 1.4 },
-            768: { slidesPerView: 2.1 },
-            1024: { slidesPerView: 3.1 },
-          }}
-        >
-          {featured.map((item, idx) => (
-            <SwiperSlide key={idx}>
-              <Link to={item.link} className="group block h-full">
-                <Card className="bg-slate-800 border-slate-700 hover:border-slate-600 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[460px]">
-                  <div className="aspect-video bg-slate-700/50">
-                    <img
-                      src={item.image}
-                      alt={`${item.title} preview`}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <div className="p-6 flex-1 flex flex-col min-h-[220px]">
-                    {item.tech && (
-                      <div className="flex flex-wrap gap-2 mb-3">
-                        {item.tech.map((t) => (
-                          <Badge key={t} className="bg-slate-700/80 text-slate-200 ring-1 ring-inset ring-slate-600/50">
-                            {t}
-                          </Badge>
-                        ))}
-                      </div>
-                    )}
-                    <h3 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-blue-300 transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-slate-300/90 mb-4">{(() => {
-                      const txt = item.description;
-                      return txt.length > 160 ? txt.slice(0, 157) + "…" : txt;
-                    })()}</p>
-                    {item.kind === 'github' && (
-                      <div className="mt-auto flex gap-3">
-                        {item.html_url && (
-                          <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm ring-1 ring-inset ring-indigo-600/40">
-                            <Github className="h-4 w-4" />
-                            View Code
-                          </a>
-                        )}
-                        {item.homepage && (
-                          <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-300 shadow-sm">
-                            <ExternalLink className="h-4 w-4" />
-                            View Demo
-                          </a>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              </Link>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <ScrollReveal animation="slide-up">
+          <SectionHeader 
+            title="Featured Work" 
+            description="A few recent repositories from my GitHub"
+          />
+        </ScrollReveal>
+        <ScrollReveal animation="fade" delay={100}>
+          <Swiper
+            spaceBetween={16}
+            slidesPerView={1.05}
+            breakpoints={{
+              640: { slidesPerView: 1.4 },
+              768: { slidesPerView: 2.1 },
+              1024: { slidesPerView: 3.1 },
+            }}
+          >
+            {featured.map((item, idx) => (
+              <SwiperSlide key={idx}>
+                <Link to={item.link} className="group block h-full">
+                  <Card className="bg-slate-800 border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[460px] card-hover">
+                    <div className="aspect-video bg-slate-700/50">
+                      <img
+                        src={item.image}
+                        alt={`${item.title} preview`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-6 flex-1 flex flex-col min-h-[220px]">
+                      {item.tech && (
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {item.tech.map((t) => (
+                            <Badge key={t} className="bg-slate-700/80 text-slate-200 ring-1 ring-inset ring-slate-600/50">
+                              {t}
+                            </Badge>
+                          ))}
+                        </div>
+                      )}
+                      <h3 className="text-xl font-bold text-slate-100 mb-2 group-hover:text-blue-300 transition-colors flex items-center gap-2">
+                        {item.title}
+                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                      </h3>
+                      <p className="text-slate-300/90 mb-4">{(() => {
+                        const txt = item.description;
+                        return txt.length > 160 ? txt.slice(0, 157) + "…" : txt;
+                      })()}</p>
+                      {item.kind === 'github' && (
+                        <div className="mt-auto flex gap-3">
+                          {item.html_url && (
+                            <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm ring-1 ring-inset ring-indigo-600/40">
+                              <Github className="h-4 w-4" />
+                              View Code
+                            </a>
+                          )}
+                          {item.homepage && (
+                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-300 shadow-sm">
+                              <ExternalLink className="h-4 w-4" />
+                              View Demo
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </Card>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </ScrollReveal>
 
-        <div className="text-center mt-12">
-          <Link to="/projects">
-            <Button variant="outline" size="lg" className="border-slate-700 text-slate-300 hover:bg-slate-800">
-              View All Projects
-            </Button>
-          </Link>
-        </div>
+        <ScrollReveal animation="fade" delay={200}>
+          <div className="text-center mt-12">
+            <Link to="/projects">
+              <Button variant="outline" size="lg" className="border-slate-700 text-slate-300 hover:bg-slate-800">
+                View All Projects
+              </Button>
+            </Link>
+          </div>
+        </ScrollReveal>
       </Section>
 
       {/* How I Work */}
       <Section className="bg-slate-950">
-        <SectionHeader 
-          title="Approach & Services" 
-          description="Clear process. Practical engineering. Thoughtful design. Everything tuned for outcomes."
-        />
+        <ScrollReveal animation="slide-up">
+          <SectionHeader 
+            title="Approach & Services" 
+            description="Clear process. Practical engineering. Thoughtful design. Everything tuned for outcomes."
+          />
+        </ScrollReveal>
         <div className="grid lg:grid-cols-2 gap-8">
           {/* Left: How I Work */}
           <div className="space-y-4">
@@ -334,8 +345,8 @@ export default function Home() {
               { step: "03", title: "Design & Build", desc: "Prototype quickly. Ship in tight loops. Test and refine." },
               { step: "04", title: "Launch & Iterate", desc: "Measure impact, improve performance, document, and support." },
             ].map((phase, idx) => (
-              <ScrollReveal key={idx} animation="slide-up" delay={idx * 80}>
-                <Card className="bg-slate-900 border-slate-800 p-6 hover:border-blue-500/30 transition-colors card-hover animate-scale-in">
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
+                <Card className="bg-slate-900 border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
                   <div className="flex items-start gap-4">
                     <div className="text-2xl font-bold text-blue-400 mt-0.5 w-10">{phase.step}</div>
                     <div>
@@ -372,8 +383,8 @@ export default function Home() {
                 description: "Analytics, A/B testing, SEO, and CI/CD to keep velocity high and risk low.",
               },
             ].map((service, idx) => (
-              <ScrollReveal key={idx} animation="slide-up" delay={idx * 80}>
-                <Card className="bg-slate-900 border-slate-800 p-6 hover:border-emerald-500/30 transition-colors card-hover animate-scale-in">
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
+                <Card className="bg-slate-900 border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
                   <service.icon className="h-9 w-9 text-emerald-400 mb-3" />
                   <h3 className="text-base font-semibold text-slate-50 mb-1">{service.title}</h3>
                   <p className="text-sm text-slate-400 leading-relaxed">{service.description}</p>
@@ -387,7 +398,7 @@ export default function Home() {
       {/* About Preview */}
       <Section className="bg-slate-950">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <ScrollReveal animation="slide-left">
+          <ScrollReveal animation="slide-up">
             <div className="space-y-6">
               <h2 className="text-4xl font-bold text-slate-50">
                 Code, Culture, Discipline
@@ -409,9 +420,9 @@ export default function Home() {
             </div>
           </ScrollReveal>
 
-          {/* Code Editor Card */}
-          <ScrollReveal animation="slide-right" delay={120}>
-            <Card className="bg-slate-900 border-slate-800 p-1 shadow-xl card-hover animate-scale-in">
+          {/* Code Editor Card with float animation */}
+          <ScrollReveal animation="scale" delay={120}>
+            <Card className="bg-slate-900 border-slate-800 p-1 shadow-xl card-hover float-soft">
             <div className="bg-slate-950 rounded-lg overflow-hidden">
               <div className="bg-slate-900 border-b border-slate-800 px-4 py-2 flex items-center gap-2">
                 <div className="flex gap-1.5">
@@ -475,20 +486,22 @@ export default function Home() {
 
       {/* Final CTA */}
       <Section className="bg-gradient-to-br from-blue-600 to-emerald-600">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Let's Build Something Great
-          </h2>
-          <p className="text-xl text-blue-50 mb-8">
-            Whether you need a brand identity, web application, or anything in between, 
-            I'd love to help bring your vision to life.
-          </p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 shadow-lg">
-              Start a Conversation
-            </Button>
-          </Link>
-        </div>
+        <ScrollReveal animation="slide-up">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              Let's Build Something Great
+            </h2>
+            <p className="text-xl text-blue-50 mb-8">
+              Whether you need a brand identity, web application, or anything in between, 
+              I'd love to help bring your vision to life.
+            </p>
+            <Link to="/contact">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 shadow-lg button-lift">
+                Start a Conversation
+              </Button>
+            </Link>
+          </div>
+        </ScrollReveal>
       </Section>
     </>
   );

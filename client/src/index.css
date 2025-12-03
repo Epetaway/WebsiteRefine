@@ -119,27 +119,6 @@
   --accent-foreground: hsl(0, 0%, 96.1%);
   --destructive: hsl(356.3033, 90.5579%, 54.3137%);
   --destructive-foreground: hsl(0, 0%, 100%);
-  .animate-scale-in {
-    animation: scaleIn 0.4s ease-out;
-  }
-
-  .animate-float {
-    animation: float 3s ease-in-out infinite;
-  }
-
-  .animate-slide-in-left {
-    animation: slideInLeft 0.6s ease-out;
-  }
-
-  .animate-slide-in-right {
-    animation: slideInRight 0.6s ease-out;
-  }
-
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
   --ring: hsl(162, 53%, 69%);
   --chart-1: hsl(162, 53%, 69%);
   --chart-2: hsl(45, 89%, 58%);
@@ -150,6 +129,44 @@
   --sidebar-foreground: hsl(0, 0%, 85.0980%);
   --sidebar-primary: hsl(162, 53%, 69%);
   --sidebar-primary-foreground: hsl(0, 0%, 100%);
+  --sidebar-accent: hsl(205.7143, 70%, 7.8431%);
+  --sidebar-accent-foreground: hsl(162, 53%, 69%);
+  --sidebar-border: hsl(205.7143, 15.7895%, 26.0784%);
+  --sidebar-ring: hsl(162, 53%, 69%);
+  --font-sans: Inter, system-ui, sans-serif;
+  --font-serif: Georgia, serif;
+  --shadow-2xs: 0px 2px 0px 0px rgba(0,0,0,0.06);
+  --shadow-xs: 0px 2px 0px 0px rgba(0,0,0,0.06);
+  --shadow-sm: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px -1px rgba(0,0,0,0.06);
+  --shadow: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px -1px rgba(0,0,0,0.06);
+  --shadow-md: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-xl: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -2px rgba(0,0,0,0.05);
+  --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.25);
+}
+
+/* Animation classes - available in both light and dark mode */
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.stagger-1 { animation-delay: 0.04s; }
+.stagger-2 { animation-delay: 0.08s; }
+.stagger-3 { animation-delay: 0.12s; }
+.stagger-4 { animation-delay: 0.16s; }
+.stagger-5 { animation-delay: 0.20s; }
 
 @keyframes scaleIn {
   from { transform: scale(0.95); opacity: 0; }
@@ -165,27 +182,7 @@
   from { transform: translateX(30px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
 }
-  --sidebar-accent: hsl(205.7143, 70%, 7.8431%);
-  --sidebar-accent-foreground: hsl(162, 53%, 69%);
-  --sidebar-border: hsl(205.7143, 15.7895%, 26.0784%);
-  --sidebar-ring: hsl(162, 53%, 69%);
-  --font-sans: Inter, system-ui, sans-serif;
-  --font-serif: Georgia, serif;
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  --shadow-2xs: 0px 2px 0px 0px rgba(0,0,0,0.06);
 
-  .dark .card-hover:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-  }
-  --shadow-xs: 0px 2px 0px 0px rgba(0,0,0,0.06);
-  --shadow-sm: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px -1px rgba(0,0,0,0.06);
-  --shadow: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px -1px rgba(0,0,0,0.06);
-  --shadow-md: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 2px 4px -1px rgba(0,0,0,0.06);
-  --shadow-lg: 0px 4px 6px -1px rgba(0,0,0,0.1), 0px 2px 4px -1px rgba(0,0,0,0.06);
-  --shadow-xl: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -2px rgba(0,0,0,0.05);
-  --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.25);
-}
 section#offer{
   background-color: var(--kaiju-cream);
 }
@@ -219,7 +216,7 @@ section#offer{
   }
 
   .section-max {
-    @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-[1120px] mx-auto px-5;
   }
 
   /* Button base styles for Prismora */
@@ -238,14 +235,36 @@ section#offer{
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-normal -tracking-[0.02em] text-gray-900 bg-gradient-to-b from-gray-200 to-gray-200 rounded shadow-[0_1px_0_0_rgba(99,106,126,0.6)] ui-transition-soft button-lift dark:text-gray-100 dark:from-gray-700 dark:to-gray-800 dark:shadow-[0_1px_0_0_rgba(156,163,175,0.3)];
   }
 
-  /* Card hover effects */
+  /* Card hover effects - improved with brand-green border accent */
   .card-hover {
     transition: all var(--transition-base) var(--ease-soft);
+    border: 1px solid transparent;
   }
 
   .card-hover:hover {
     transform: translateY(-4px);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(56, 141, 93, 0.3);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(56, 141, 93, 0.4);
+  }
+
+  /* Float animation for code editor blocks */
+  .float-soft {
+    animation: floatSoft 6s ease-in-out infinite;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .float-soft {
+      animation: none;
+    }
+    .card-hover:hover {
+      transform: none;
+    }
   }
 
   /* Button lift effect */
@@ -480,7 +499,17 @@ section#offer{
     transform: translateY(0px); 
   }
   50% { 
-    transform: translateY(-10px); 
+    transform: translateY(-6px); 
+  }
+}
+
+/* Subtle floating animation for code editor blocks - 6s duration as per spec */
+@keyframes floatSoft {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-6px); 
   }
 }
 
