@@ -10,8 +10,10 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "bg-gradient-to-b from-[#9a7aff] to-[#8057ff] text-white hover:from-[#8a6aef] hover:to-[#7047ef] button-lift",
-        secondary: "bg-gradient-to-b from-[#e7e7e9] to-[#e8e8e8] text-[#18171e] hover:from-[#d7d7d9] hover:to-[#d8d8d8] button-lift",
+        secondary: "bg-gradient-to-b from-[#e7e7e9] to-[#e8e8e8] text-[#18171e] hover:from-[#d7d7d9] hover:to-[#d8d8d8] button-lift dark:from-gray-700 dark:to-gray-800 dark:text-white",
         ghost: "bg-transparent text-[#18171e] hover:bg-[#f0f0f0] dark:text-white dark:hover:bg-[#2a2a2a]",
+        outline: "border border-gray-300 bg-transparent text-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800",
+        default: "bg-gradient-to-b from-[#9a7aff] to-[#8057ff] text-white hover:from-[#8a6aef] hover:to-[#7047ef] button-lift",
       },
       size: {
         default: "h-10 px-4 py-2",

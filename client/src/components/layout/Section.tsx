@@ -51,7 +51,7 @@ export const Section: React.FC<SectionProps> = ({
       data-reveal={animate ? true : undefined}
       className={cn('py-16 md:py-24', bgClasses, anim, staggerClass, 'ui-transition-soft', className)}
     >
-      <div className="container mx-auto px-4">
+      <div className="max-w-[1120px] mx-auto px-5">
         {children}
       </div>
     </section>

@@ -38,15 +38,15 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full sticky top-0 z-50 ui-transition-soft ${
+      className={`w-full h-16 sticky top-0 z-50 ui-transition-soft border-b backdrop-blur-xl ${
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-sm"
-          : "bg-gray-50 dark:bg-black"
+          ? "bg-white/80 dark:bg-slate-950/80 shadow-sm border-gray-200/50 dark:border-slate-800/50"
+          : "bg-white/60 dark:bg-slate-950/60 border-transparent"
       }`}
     >
       {/* Main Navbar */}
-      <div className="mx-auto max-w-[1040px] px-4">
-        <div className="flex items-center justify-between py-4">
+      <div className="mx-auto max-w-[1120px] h-full px-5">
+        <div className="flex items-center justify-between h-full">
           {/* Logo with Profile */}
           <Link to="/" className="flex items-center gap-3 group">
             <div className="relative h-12 w-12 rounded-full bg-gradient-to-b from-blue-400 to-blue-600 shadow-[inset_0_20px_12px_12px_rgba(255,255,255,0.2),0_0_4px_0_rgba(229,225,253,1),inset_0_-4px_8px_0_rgba(229,225,253,1)] overflow-hidden">
@@ -140,7 +140,7 @@ export default function Header() {
           id="mobile-nav"
           className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-sm border-t border-gray-200 dark:border-gray-800"
         >
-          <div className="mx-auto max-w-[1040px] px-4 py-3 flex flex-col gap-2">
+        <div className="mx-auto max-w-[1120px] px-5 py-3 flex flex-col gap-2">
             {nav.map((item) => (
               <Link
                 key={item.to}
