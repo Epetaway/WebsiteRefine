@@ -38,10 +38,10 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full h-16 sticky top-0 z-50 ui-transition-soft border-b border-transparent ${
+      className={`w-full h-16 sticky top-0 z-50 ui-transition-soft border-b backdrop-blur-xl ${
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-lg shadow-sm border-gray-200/50 dark:border-gray-800/50"
-          : "bg-gray-50 dark:bg-black"
+          ? "bg-white/80 dark:bg-slate-950/80 shadow-sm border-gray-200/50 dark:border-slate-800/50"
+          : "bg-white/60 dark:bg-slate-950/60 border-transparent"
       }`}
     >
       {/* Main Navbar */}

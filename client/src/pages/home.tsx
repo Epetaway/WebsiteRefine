@@ -252,24 +252,25 @@ export default function Home() {
       <Section className="bg-gray-100 dark:bg-slate-900">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
+            preLabel="// Featured Front-End Work"
             title="Featured Work" 
             description="A few recent repositories from my GitHub"
           />
         </ScrollReveal>
         <ScrollReveal animation="fade" delay={100}>
           <Swiper
-            spaceBetween={16}
+            spaceBetween={24}
             slidesPerView={1.05}
             breakpoints={{
-              640: { slidesPerView: 1.4 },
-              768: { slidesPerView: 2.1 },
-              1024: { slidesPerView: 3.1 },
+              640: { slidesPerView: 1.4, spaceBetween: 24 },
+              768: { slidesPerView: 2.1, spaceBetween: 24 },
+              1024: { slidesPerView: 3.1, spaceBetween: 24 },
             }}
           >
             {featured.map((item, idx) => (
               <SwiperSlide key={idx}>
                 <Link to={item.link} className="group block h-full">
-                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col min-h-[460px] card-hover">
+                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[300px] mx-auto rounded-2xl card-hover">
                     <div className="aspect-video bg-gray-100 dark:bg-slate-700/50">
                       <img
                         src={item.image}
@@ -278,17 +279,17 @@ export default function Home() {
                         loading="lazy"
                       />
                     </div>
-                    <div className="p-6 flex-1 flex flex-col min-h-[220px]">
+                    <div className="p-5 flex-1 flex flex-col">
                       {item.tech && (
-                        <div className="flex flex-wrap gap-2 mb-3">
-                          {item.tech.map((t) => (
-                            <Badge key={t} className="bg-gray-100 dark:bg-slate-700/80 text-gray-700 dark:text-slate-200 ring-1 ring-inset ring-gray-300 dark:ring-slate-600/50">
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {item.tech.slice(0, 3).map((t) => (
+                            <span key={t} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-700 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-200">
                               {t}
-                            </Badge>
+                            </span>
                           ))}
                         </div>
                       )}
-                      <h3 className="text-xl font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors flex items-center gap-2">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors flex items-center gap-2">
                         {item.title}
                         <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
                       </h3>
@@ -303,17 +304,17 @@ export default function Home() {
                         Read More <ArrowRight className="w-4 h-4" />
                       </Link>
                       {item.kind === 'github' && (
-                        <div className="mt-auto flex gap-3">
+                        <div className="mt-auto flex flex-wrap gap-2">
                           {item.html_url && (
-                            <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm ring-1 ring-inset ring-indigo-600/40">
-                              <Github className="h-4 w-4" />
+                            <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm">
+                              <Github className="h-3.5 w-3.5" />
                               View Code
                             </a>
                           )}
                           {item.homepage && (
-                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-2 text-sm rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 shadow-sm">
-                              <ExternalLink className="h-4 w-4" />
-                              View Demo
+                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300">
+                              <ExternalLink className="h-3.5 w-3.5" />
+                              Demo
                             </a>
                           )}
                         </div>
@@ -341,6 +342,7 @@ export default function Home() {
       <Section className="bg-white dark:bg-slate-950">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
+            preLabel="// Approach & Services"
             title="Approach & Services" 
             description="Clear process. Practical engineering. Thoughtful design. Everything tuned for outcomes."
           />
