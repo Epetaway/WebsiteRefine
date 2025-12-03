@@ -10,22 +10,27 @@ interface TypewriterCodeProps {
   showCursor?: boolean;
   /** Callback when typing is complete */
   onComplete?: () => void;
+  /** Threshold for triggering animation (0-1) */
+  threshold?: number;
 }
 
 /**
  * TypewriterCode component - renders children with a typing animation effect
  * Used for code editor blocks in the hero section
+ * Animation triggers when the element enters the viewport
  */
 export default function TypewriterCode({
   children,
   startDelay = 500,
   charDelay = 35,
   showCursor = true,
-  onComplete
+  onComplete,
+  threshold = 0.2
 }: TypewriterCodeProps) {
   const [displayedContent, setDisplayedContent] = useState<React.ReactNode>(null);
   const [isTyping, setIsTyping] = useState(true);
   const [hasStarted, setHasStarted] = useState(false);
+  const [isInView, setIsInView] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const hasAnimatedRef = useRef(false);
 
@@ -106,7 +111,30 @@ export default function TypewriterCode({
     return { node: null, charsUsed: 0 };
   }, []);
 
+  // IntersectionObserver to detect when element is in viewport
   useEffect(() => {
+    const element = containerRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimatedRef.current) {
+            setIsInView(true);
+          }
+        });
+      },
+      { threshold }
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [threshold]);
+
+  // Start typing animation when element is in view
+  useEffect(() => {
+    if (!isInView) return;
+    
     // Check for reduced motion preference
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     
@@ -139,7 +167,7 @@ export default function TypewriterCode({
     }, startDelay);
 
     return () => clearTimeout(startTimer);
-  }, [children, startDelay, charDelay, onComplete, getTextContent, cloneWithPartialText]);
+  }, [isInView, children, startDelay, charDelay, onComplete, getTextContent, cloneWithPartialText]);
 
   // If animation hasn't started, show nothing (or placeholder)
   if (!hasStarted && !displayedContent) {

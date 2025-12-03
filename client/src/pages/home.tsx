@@ -158,7 +158,7 @@ export default function Home() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <ScrollReveal animation="slide-up" className="space-y-6">
             <Badge className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
-              Available for select projects
+              Open to new opportunities
             </Badge>
             <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-slate-50">
               Building digital experiences with{" "}

@@ -3,29 +3,6 @@ import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import aboutImage from "@/images/BLKBELT.png";
 
-const skillMatrix = {
-  expert: [
-    { name: "React", icon: "⚛️" },
-    { name: "Next.js", icon: "▲" },
-    { name: "TypeScript", icon: "TS" },
-    { name: "JavaScript", icon: "JS" },
-    { name: "Tailwind CSS", icon: "🎨" },
-    { name: "Accessibility (WCAG 2.1)", icon: "♿" }
-  ],
-  proficient: [
-    { name: "Node.js / Express", icon: "📦" },
-    { name: "WordPress (Theme & Plugin Dev)", icon: "W" },
-    { name: "REST / API Integration", icon: "🔌" },
-    { name: "Bootstrap", icon: "B" }
-  ],
-  familiar: [
-    { name: "GraphQL", icon: "GQL" },
-    { name: "PHP", icon: "PHP" },
-    { name: "Python", icon: "🐍" },
-    { name: ".NET Front-End Integrations", icon: ".NET" }
-  ]
-};
-
 export default function About() {
   return (
     <div>
@@ -112,73 +89,106 @@ export default function About() {
         </div>
       </section>
 
-      {/* Skill Matrix */}
+      {/* Contact Section - with contact info and social links */}
       <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-[1120px] mx-auto px-5">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-gray-100 tracking-tight" data-testid="section-title-skills">
-              Skill Matrix
+            <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-gray-100 tracking-tight text-center" data-testid="section-title-contact">
+              Get In Touch
             </h2>
           </ScrollReveal>
           
-          <div className="grid md:grid-cols-3 gap-6">
-            {/* Expert */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Contact Info Card */}
             <ScrollReveal animation="slide-up" delay={0}>
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-green-500 rounded-full" />
-                  <h3 className="text-xl font-bold text-green-700 dark:text-green-400 flex items-center gap-2"><span className="text-green-400">✧</span>Expert</h3>
+                  <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
+                    <span className="text-purple-600 dark:text-purple-400 text-xl">✉️</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Contact Information</h3>
                 </div>
-                <ul className="space-y-3">
-                  {skillMatrix.expert.map((skill, index) => (
-                    <li key={index} className="flex items-center gap-3 group">
-                      <span className="flex items-center justify-center w-8 h-8 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-lg text-xs font-bold group-hover:scale-110 transition-transform">
-                        {skill.icon}
-                      </span>
-                      <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">{skill.name}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="space-y-4">
+                  <a 
+                    href="mailto:e@ehicksonjr.com" 
+                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                  >
+                    <span className="text-lg">📧</span>
+                    <span className="font-medium">e@ehicksonjr.com</span>
+                  </a>
+                  <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                    <span className="text-lg">📍</span>
+                    <span className="font-medium">Parsippany, NJ</span>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
 
-            {/* Proficient */}
+            {/* Social Links Card */}
             <ScrollReveal animation="slide-up" delay={60}>
               <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full" />
-                  <h3 className="text-xl font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2"><span className="text-blue-400">✧</span>Proficient</h3>
+                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
+                    <span className="text-blue-600 dark:text-blue-400 text-xl">🔗</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Connect With Me</h3>
                 </div>
-                <ul className="space-y-3">
-                  {skillMatrix.proficient.map((skill, index) => (
-                    <li key={index} className="flex items-center gap-3 group">
-                      <span className="flex items-center justify-center w-8 h-8 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 rounded-lg text-xs font-bold group-hover:scale-110 transition-transform">
-                        {skill.icon}
-                      </span>
-                      <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">{skill.name}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
-
-            {/* Familiar */}
-            <ScrollReveal animation="slide-up" delay={120}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-3 h-3 bg-yellow-500 rounded-full" />
-                  <h3 className="text-xl font-bold text-yellow-700 dark:text-yellow-400 flex items-center gap-2"><span className="text-yellow-400">✧</span>Familiar</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <a 
+                    href="https://github.com/Epetaway" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                  >
+                    <span>💻</span>
+                    <span className="font-medium text-sm">GitHub</span>
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/earlhicksonjr" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                  >
+                    <span>💼</span>
+                    <span className="font-medium text-sm">LinkedIn</span>
+                  </a>
+                  <a 
+                    href="https://twitter.com/epetaway" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-sky-100 dark:hover:bg-sky-900/30 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                  >
+                    <span>🐦</span>
+                    <span className="font-medium text-sm">X (Twitter)</span>
+                  </a>
+                  <a 
+                    href="https://instagram.com/earld.kaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                  >
+                    <span>📸</span>
+                    <span className="font-medium text-sm">Instagram</span>
+                  </a>
+                  <a 
+                    href="https://youtube.com/@earldkaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                  >
+                    <span>🎬</span>
+                    <span className="font-medium text-sm">YouTube</span>
+                  </a>
+                  <a 
+                    href="https://dribbble.com/earldkaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                  >
+                    <span>🎨</span>
+                    <span className="font-medium text-sm">Dribbble</span>
+                  </a>
                 </div>
-                <ul className="space-y-3">
-                  {skillMatrix.familiar.map((skill, index) => (
-                    <li key={index} className="flex items-center gap-3 group">
-                      <span className="flex items-center justify-center w-8 h-8 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-lg text-xs font-bold group-hover:scale-110 transition-transform">
-                        {skill.icon}
-                      </span>
-                      <span className="text-gray-700 dark:text-gray-300 text-sm font-medium">{skill.name}</span>
-                    </li>
-                  ))}
-                </ul>
               </div>
             </ScrollReveal>
           </div>
