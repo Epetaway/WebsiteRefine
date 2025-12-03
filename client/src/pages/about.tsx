@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import aboutImage from "@/images/BLKBELT.png";
+import { Mail, MapPin, Github, Linkedin, Twitter, Instagram, Youtube, Dribbble, Link as LinkIcon } from "lucide-react";
 
 export default function About() {
   return (
@@ -101,23 +102,27 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {/* Contact Info Card */}
             <ScrollReveal animation="slide-up" delay={0}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center">
-                    <span className="text-purple-600 dark:text-purple-400 text-xl">✉️</span>
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Contact Information</h3>
                 </div>
                 <div className="space-y-4">
                   <a 
                     href="mailto:e@ehicksonjr.com" 
-                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
                   >
-                    <span className="text-lg">📧</span>
+                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700/50 rounded-lg flex items-center justify-center group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition-colors">
+                      <Mail className="w-5 h-5" />
+                    </div>
                     <span className="font-medium">e@ehicksonjr.com</span>
                   </a>
                   <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <span className="text-lg">📍</span>
+                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700/50 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5" />
+                    </div>
                     <span className="font-medium">Parsippany, NJ</span>
                   </div>
                 </div>
@@ -126,10 +131,10 @@ export default function About() {
 
             {/* Social Links Card */}
             <ScrollReveal animation="slide-up" delay={60}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-sm card-hover border border-gray-200 dark:border-gray-700 h-full">
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 h-full">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/30 rounded-lg flex items-center justify-center">
-                    <span className="text-blue-600 dark:text-blue-400 text-xl">🔗</span>
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                    <LinkIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
                   </div>
                   <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Connect With Me</h3>
                 </div>
@@ -138,54 +143,54 @@ export default function About() {
                     href="https://github.com/Epetaway" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors group"
                   >
-                    <span>💻</span>
+                    <Github className="w-5 h-5" />
                     <span className="font-medium text-sm">GitHub</span>
                   </a>
                   <a 
                     href="https://www.linkedin.com/in/earlhicksonjr" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
                   >
-                    <span>💼</span>
+                    <Linkedin className="w-5 h-5" />
                     <span className="font-medium text-sm">LinkedIn</span>
                   </a>
                   <a 
                     href="https://twitter.com/epetaway" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-sky-100 dark:hover:bg-sky-900/30 hover:text-sky-600 dark:hover:text-sky-400 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-sky-100 dark:hover:bg-sky-900/30 hover:text-sky-600 dark:hover:text-sky-400 transition-colors group"
                   >
-                    <span>🐦</span>
+                    <Twitter className="w-5 h-5" />
                     <span className="font-medium text-sm">X (Twitter)</span>
                   </a>
                   <a 
                     href="https://instagram.com/earld.kaiju" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors group"
                   >
-                    <span>📸</span>
+                    <Instagram className="w-5 h-5" />
                     <span className="font-medium text-sm">Instagram</span>
                   </a>
                   <a 
                     href="https://youtube.com/@earldkaiju" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400 transition-colors group"
                   >
-                    <span>🎬</span>
+                    <Youtube className="w-5 h-5" />
                     <span className="font-medium text-sm">YouTube</span>
                   </a>
                   <a 
                     href="https://dribbble.com/earldkaiju" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 p-3 rounded-lg bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors group"
                   >
-                    <span>🎨</span>
+                    <Dribbble className="w-5 h-5" />
                     <span className="font-medium text-sm">Dribbble</span>
                   </a>
                 </div>
