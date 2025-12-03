@@ -1,313 +1,224 @@
 import { Helmet } from "react-helmet-async";
-import { workExperience } from "@/data/experience";
+import { Link } from "react-router-dom";
+import ScrollReveal from "@/components/ui/ScrollReveal";
 import aboutImage from "@/images/BLKBELT.png";
+import { Mail, MapPin, Github, Linkedin, Twitter, Instagram, Youtube, Dribbble, Link as LinkIcon } from "lucide-react";
 
 export default function About() {
-  const skills = [
-    { name: "JavaScript/TypeScript", level: "Expert", color: "bg-green-100 text-green-700" },
-    { name: "React/Angular", level: "Expert", color: "bg-green-100 text-green-700" },
-    { name: "WCAG/Accessibility", level: "Expert", color: "bg-green-100 text-green-700" },
-    { name: "Design Systems & UI Patterns", level: "Expert", color: "bg-green-100 text-green-700" },
-    { name: "Vue.js", level: "Proficient", color: "bg-blue-100 text-blue-700" },
-    { name: "Node.js/Express", level: "Proficient", color: "bg-blue-100 text-blue-700" },
-    { name: "API Integration", level: "Proficient", color: "bg-blue-100 text-blue-700" },
-    { name: "Performance Optimization", level: "Proficient", color: "bg-blue-100 text-blue-700" },
-    { name: "WordPress (themes & plugins)", level: "Proficient", color: "bg-blue-100 text-blue-700" },
-    { name: "GraphQL", level: "Familiar", color: "bg-yellow-100 text-yellow-700" },
-    { name: "Python", level: "Familiar", color: "bg-yellow-100 text-yellow-700" },
-  ];
-
-  const bjjLessons = [
-    {
-      title: "Calm Under Pressure",
-      description:
-        "BJJ teaches you to breathe and think clearly in stressful situations—the same mindset I apply when debugging production issues or handling tight deadlines.",
-    },
-    {
-      title: "Iterative Improvement",
-      description:
-        "Every roll refines technique. Likewise, every code review and sprint retrospective is a chance to improve delivery and quality.",
-    },
-    {
-      title: "Teaching & Mentorship",
-      description:
-        "Coaching on the mat sharpened my ability to break down concepts, give clear feedback, and support junior engineers.",
-    },
-  ];
-
-  // Render in the order provided (array already newest → oldest).
-  const timeline = workExperience;
-
   return (
-    <div className="">
+    <div>
       <Helmet>
         <title>About — Earl Hickson Jr. | Front-End Developer</title>
         <meta
           name="description"
-          content="Front-End Developer in Parsippany, NJ. Building accessible, performance-focused user interfaces with React, Angular, Vue, and TypeScript. BJJ black belt and mentor."
+          content="Front-End Developer in Parsippany, NJ. Building accessible, performance-focused user interfaces with React, TypeScript, and modern JavaScript. BJJ black belt and mentor."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/about" />
         <meta property="og:title" content="About — Earl Hickson Jr." />
         <meta
           property="og:description"
-          content="Front-End Developer focused on React, Angular, accessibility and performance. BJJ black belt and mentor."
+          content="Front-End Developer focused on React, accessibility and performance. BJJ black belt and mentor."
         />
         <meta property="og:type" content="profile" />
       </Helmet>
 
-      {/* Header */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl lg:text-5xl font-bold mb-6" data-testid="page-title">
-              About Earl
+      {/* Header - Hero with subtle background motif */}
+      <section className="relative py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 overflow-hidden">
+        {/* Subtle grid pattern background */}
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]" />
+        
+        {/* Spotlight effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
+        
+        <div className="relative max-w-[1120px] mx-auto px-5">
+          <ScrollReveal animation="slide-up" className="text-center">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight font-serif" data-testid="page-title">
+              <span className="block text-purple-600 dark:text-purple-400">Code, Culture,</span>
+              <span className="block">and Discipline.</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              I'm a Front-End Developer who cares about clarity, correctness, and shipping real value. I specialize in React, Angular, TypeScript, and modern JavaScript—building frontends that are responsive, accessible, and easy to maintain. I've worked across healthcare, oncology content, marketing technology, and small-business systems. My strengths are component architecture, accessibility, performance, and turning designs into scalable UI patterns.
+            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-light italic">
+              I am a front-end developer based in Parsippany, NJ with over six years of experience building modern, accessible interfaces.<br />
+              My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering.<br />
+              I have contributed to healthcare platforms, nonprofit campaigns, and community-focused brands—always with a focus on clarity and maintainability.
             </p>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Background Section */}
+      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <ScrollReveal animation="slide-up">
+              <div className="space-y-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 tracking-tight" data-testid="section-title-background">
+                  Background
+                </h2>
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                  I started in graphic design before moving into front-end development, where I discovered how much I enjoy building interfaces that do not just look good—they feel good to use. My work spans healthcare, nonprofits, membership systems, and community brands.
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+                  Years of Brazilian Jiu-Jitsu training shaped my mindset: discipline, patience, refinement. The same approach fuels how I write code, architect components, and collaborate with teams.
+                </p>
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="slide-up" delay={100}>
+              <div className="relative group">
+                {/* Photo card with enhanced styling */}
+                <div className="relative overflow-hidden rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-purple-500/10 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-transparent group-hover:border-purple-500/40">
+                  <img
+                    src={aboutImage}
+                    alt="Earl Hickson Jr. training Brazilian Jiu-Jitsu"
+                    className="w-full aspect-[4/5] object-cover transition-transform duration-300 group-hover:scale-105"
+                    data-testid="about-image"
+                  />
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Caption overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                    <p className="text-sm font-medium flex items-center gap-2"><span className="text-purple-400">✦</span>Black Belt, Brazilian Jiu-Jitsu</p>
+                    <p className="text-xs opacity-90">Discipline in training, precision in code</p>
+                  </div>
+                </div>
+                
+                {/* Decorative element */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-2xl -z-10" />
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Main */}
-      <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 mb-16">
-            <div>
-              <h2 className="text-3xl font-bold mb-6" data-testid="section-title-technical">
-                Areas of Expertise
-              </h2>
-              
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Component Architecture</h3>
-                  <p className="text-gray-700">
-                    Feature-first frontends built with predictable file structures, reusable components, and clean separation of concerns.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Type Safety</h3>
-                  <p className="text-gray-700">
-                    TypeScript-driven workflows where UI, state, and API expectations are all explicit and correct.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Accessibility</h3>
-                  <p className="text-gray-700">
-                    WCAG 2.1 AA semantics, proper labeling, keyboard flows, safe colors, and real-world healthcare accessibility requirements.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Performance</h3>
-                  <p className="text-gray-700">
-                    Fast rendering, minimal re-renders, optimized bundle use, and responsive UX across devices.
-                  </p>
-                </div>
-
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">Data-Driven UI</h3>
-                  <p className="text-gray-700">
-                    I use analytics, A/B tests, and user behavior to drive UI decisions and measure impact clearly.
-                  </p>
-                </div>
-              </div>
-              
-              <h3 className="text-xl font-semibold mb-4 mt-8">Professional Snapshot</h3>
-              
-              <div className="space-y-4">
-                <div className="border-l-4 border-blue-500 pl-4">
-                  <h4 className="font-semibold text-gray-900">Healthcare Portal Engineering (Asembia)</h4>
-                  <p className="text-sm text-gray-600">
-                    Shipped UI fixes, accessibility updates, and refactors across large patient/provider portals. Improved responsiveness, resolved 150+ UI issues, and elevated front-end quality while integrating with backend teams.
-                  </p>
-                </div>
-
-              <h3 className="text-xl font-semibold mb-4">Development Workflow</h3>
-              <p className="text-sm text-gray-600 mb-4">
-                I work in an iterative, experiment-friendly way: breaking down work into small tickets, collaborating in Figma, building component-driven UIs, opening clear pull requests, and using analytics to validate design and UX decisions. I'm comfortable working in Agile teams, participating in standups, and improving the front-end architecture over time.
-              </p>
-              <div className="text-sm text-gray-600 space-y-2">
-                <div data-testid="workflow-1">• Tickets → Feature branches → Pull requests → Code reviews</div>
-                <div data-testid="workflow-2">• CI/CD with GitHub Actions & Vercel</div>
-                <div data-testid="workflow-3">• Design collaboration in Figma & Storybook</div>
-                <div data-testid="workflow-4">• Analytics & A/B testing to inform UI decisions</div>
-              </div>
-            </div>
-
-            <div>
-              <h2 className="text-3xl font-bold mb-6" data-testid="section-title-bjj">
-                The BJJ Connection
-              </h2>
-
-              <div className="mb-6">
-                <img
-                  src={aboutImage}
-                  alt="Earl Hickson Jr. training Brazilian Jiu-Jitsu"
-                  className="w-full rounded-xl mb-4"
-                  data-testid="about-image"
-                />
-              </div>
-
-              <p className="text-gray-700 mb-6" data-testid="bio-bjj">
-                My journey into Brazilian Jiu-Jitsu began in 2015 and profoundly shaped my approach to engineering and
-                leadership. Earning my black belt is my most meaningful milestone outside of becoming a father.
-              </p>
-
-              <div className="space-y-4">
-                {bjjLessons.map((lesson, i) => (
-                  <div key={i} className="border-l-4 border-primary-500 pl-4">
-                    <h4 className="font-semibold text-gray-900" data-testid={`lesson-title-${i}`}>
-                      {lesson.title}
-                    </h4>
-                    <p className="text-sm text-gray-600" data-testid={`lesson-description-${i}`}>
-                      {lesson.description}
-                    </p>
+      {/* Contact Section - with contact info and social links */}
+      <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <ScrollReveal animation="slide-up">
+            <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-gray-100 tracking-tight text-center" data-testid="section-title-contact">
+              Get In Touch
+            </h2>
+          </ScrollReveal>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Contact Info Card */}
+            <ScrollReveal animation="slide-up" delay={0}>
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
+                    <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
                   </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Experience Timeline */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8" data-testid="section-title-experience">
-              Professional Experience
-            </h2>
-
-            <ol className="relative border-l border-gray-200 pl-4">
-              {timeline.map((job, i) => (
-                <li key={job.id} className="mb-10 ml-4">
-                  <div className="absolute -left-1.5 mt-1.5 h-3 w-3 rounded-full bg-primary-500" aria-hidden="true" />
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-lg bg-primary-500 text-white flex items-center justify-center">
-                      <i className="fas fa-laptop-code text-sm" />
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Contact Information</h3>
+                </div>
+                <div className="space-y-4">
+                  <a 
+                    href="mailto:e@ehicksonjr.com" 
+                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
+                  >
+                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700/50 rounded-lg flex items-center justify-center group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition-colors">
+                      <Mail className="w-5 h-5" />
                     </div>
-                    <div className="flex-1">
-                      <h3 className="font-semibold" data-testid={`job-title-${i}`}>
-                        {job.position}
-                      </h3>
-                      <p className="text-sm text-gray-600" data-testid={`job-company-${i}`}>
-                        {job.company} • {job.duration}
-                      </p>
+                    <span className="font-medium">e@ehicksonjr.com</span>
+                  </a>
+                  <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
+                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700/50 rounded-lg flex items-center justify-center">
+                      <MapPin className="w-5 h-5" />
                     </div>
+                    <span className="font-medium">Parsippany, NJ</span>
                   </div>
-
-                  {job.description && (
-                    <p className="mt-2 text-sm text-gray-700" data-testid={`job-description-${i}`}>
-                      {job.description}
-                    </p>
-                  )}
-
-                  {job.technologies?.length ? (
-                    <div className="mt-2 flex flex-wrap gap-2">
-                      {job.technologies.slice(0, 6).map((t, k) => (
-                        <span
-                          key={k}
-                          className="rounded-full bg-gray-100 px-2.5 py-1 text-xs text-gray-700"
-                          data-testid={`job-tech-${i}-${k}`}
-                        >
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  ) : null}
-                </li>
-              ))}
-            </ol>
-
-            <div className="mt-8 text-center space-y-3">
-              <div>
-                <a
-                  href="/assets/Earl_Hickson_Jr_FrontEnd_Engineer.docx"
-                  download="Earl_Hickson_Jr_FrontEnd_Engineer.docx"
-                  className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600 mr-6"
-                  data-testid="download-resume"
-                >
-                  <i className="fas fa-download mr-2"></i>
-                  Download Resume
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/earl-hickson-jr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center text-primary-500 font-semibold hover:text-primary-600"
-                  data-testid="link-linkedin-full"
-                >
-                  <i className="fab fa-linkedin mr-2"></i>
-                  View on LinkedIn
-                </a>
+                </div>
               </div>
-            </div>
-          </div>
+            </ScrollReveal>
 
-          {/* Personal Values */}
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8" data-testid="section-title-personal">
-              Personal Values
+            {/* Social Links Card */}
+            <ScrollReveal animation="slide-up" delay={60}>
+              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 h-full">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
+                    <LinkIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Connect With Me</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <a 
+                    href="https://github.com/Epetaway" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors group"
+                  >
+                    <Github className="w-5 h-5" />
+                    <span className="font-medium text-sm">GitHub</span>
+                  </a>
+                  <a 
+                    href="https://www.linkedin.com/in/earlhicksonjr" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
+                  >
+                    <Linkedin className="w-5 h-5" />
+                    <span className="font-medium text-sm">LinkedIn</span>
+                  </a>
+                  <a 
+                    href="https://twitter.com/epetaway" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-sky-100 dark:hover:bg-sky-900/30 hover:text-sky-600 dark:hover:text-sky-400 transition-colors group"
+                  >
+                    <Twitter className="w-5 h-5" />
+                    <span className="font-medium text-sm">X (Twitter)</span>
+                  </a>
+                  <a 
+                    href="https://instagram.com/earld.kaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors group"
+                  >
+                    <Instagram className="w-5 h-5" />
+                    <span className="font-medium text-sm">Instagram</span>
+                  </a>
+                  <a 
+                    href="https://youtube.com/@earldkaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400 transition-colors group"
+                  >
+                    <Youtube className="w-5 h-5" />
+                    <span className="font-medium text-sm">YouTube</span>
+                  </a>
+                  <a 
+                    href="https://dribbble.com/earldkaiju" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors group"
+                  >
+                    <Dribbble className="w-5 h-5" />
+                    <span className="font-medium text-sm">Dribbble</span>
+                  </a>
+                </div>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section - matches Home page gradient CTA */}
+      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-emerald-600">
+        <div className="max-w-[1120px] mx-auto px-5 text-center">
+          <ScrollReveal animation="slide-up">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Let's Work Together
             </h2>
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
-                <i className="fas fa-heart text-primary-500 text-3xl mb-4"></i>
-                <h3 className="font-semibold mb-2">Family First</h3>
-                <p className="text-sm text-gray-600">
-                  Father and husband who brings the same dedication to family life as to professional projects
-                </p>
-              </div>
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
-                <i className="fas fa-fist-raised text-primary-500 text-3xl mb-4"></i>
-                <h3 className="font-semibold mb-2">Martial Arts</h3>
-                <p className="text-sm text-gray-600">
-                  BJJ black belt teaching discipline, patience, and continuous improvement
-                </p>
-              </div>
-              <div className="text-center p-6 bg-gray-50 rounded-xl">
-                <i className="fas fa-code text-primary-500 text-3xl mb-4"></i>
-                <h3 className="font-semibold mb-2">Engineering</h3>
-                <p className="text-sm text-gray-600">
-                  Creating accessible, performant web experiences that make a real difference
-                </p>
-              </div>
+            <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
+              Ready to bring your project to life with clean code and thoughtful design?
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="mailto:e@ehicksonjr.com" className="btn-secondary bg-white/10 text-white border-white/30 hover:bg-white/20">
+                Get In Touch
+              </a>
+              <Link to="/projects" className="btn-primary bg-white text-blue-600 hover:bg-slate-50">
+                View Projects
+              </Link>
             </div>
-          </div>
-
-          {/* Social Links */}
-          <div className="text-center">
-            <h2 className="text-2xl font-bold mb-6" data-testid="section-title-connect">
-              Let's Connect
-            </h2>
-            <div className="flex justify-center space-x-6">
-              <a
-                href="https://www.linkedin.com/in/earl-hickson-jr/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white hover:bg-blue-700 transition-colors"
-                data-testid="link-linkedin"
-              >
-                <i className="fab fa-linkedin text-xl" />
-              </a>
-              <a
-                href="https://github.com/Epetaway"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white hover:bg-gray-900 transition-colors"
-                data-testid="link-github"
-              >
-                <i className="fab fa-github text-xl" />
-              </a>
-              <a
-                href="https://www.instagram.com/earld.kaiju/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center text-white hover:opacity-90 transition-opacity"
-                data-testid="link-instagram"
-              >
-                <i className="fab fa-instagram text-xl" />
-              </a>
-            </div>
-          </div>
+          </ScrollReveal>
         </div>
       </section>
     </div>

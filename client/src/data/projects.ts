@@ -21,22 +21,28 @@ export interface Project {
   summary?: string;
   tags?: string[];
   slug?: string;
+  devNotes?: string;
+  image?: string;
 }
+
+// Resume file path constant for consistency
+export const RESUME_PATH = "/assets/Earl_Hickson_Jr_FrontEnd_Engineer.docx";
 
 export const projects: Project[] = [
   {
     id: "patient-engagement-portal",
     slug: "patient-engagement-portal",
-    title: "Patient Engagement Portal – Front-End Demo",
+    title: "Patient Engagement Portal – Healthcare UI Demo",
     role: "Front-End Developer",
-    category: "development",
-    description: "A fully functional patient portal demo built as a single-page application using modern JavaScript patterns. Implements multi-step registration, login/session handling, dashboard components, refill workflows, profile management, and accessibility patterns.",
-    summary: "A fully functional patient portal demo built as a single-page application using modern JavaScript patterns. Implements multi-step registration, login/session handling, dashboard components, refill workflows, profile management, and accessibility patterns.",
+    category: "featured",
+    description: "A full patient portal demo with multi-step onboarding, dashboards, prescription flows, and interface patterns modeled after real healthcare portals.",
+    summary: "Enterprise-style patient portal demo with multi-step registration, dashboards, and accessible form workflows based on real healthcare patterns.",
     problem: "Healthcare portals need complex multi-step workflows, session-style authentication, responsive dashboards, and WCAG-compliant interfaces without overengineered frameworks.",
     solution: "Built a lightweight SPA using ES6+ modules with an MVC-inspired controller/service architecture. Implemented modular components, localStorage-based state, History API routing, and comprehensive WCAG compliance patterns.",
     result: "Delivered a production-ready demo that demonstrates scalable front-end patterns, accessible form handling, and real-world healthcare UI workflows.",
     stack: ["JavaScript (ES6+)", "Bootstrap 5", "SPA Architecture", "Form Validation", "Responsive UI", "WCAG 2.1"],
     tags: ["JavaScript", "Bootstrap", "Accessibility", "Healthcare", "SPA"],
+    devNotes: "Vanilla JavaScript (ES6 modules), Bootstrap, custom validation system, multi-step form flows, localStorage-backed state, SPA-style routing.",
     features: [
       "4-step registration wizard with validation + persistent form state",
       "Session-style login & protected routing system",
@@ -153,16 +159,17 @@ export const projects: Project[] = [
   {
     id: "dojonet-martial-arts-platform",
     slug: "dojonet-martial-arts-platform",
-    title: "DojoNet – Martial Arts Social Platform",
+    title: "DojoNet Martial Arts Portal Prototype",
     role: "Lead Front-End Developer & UI/UX Designer",
-    category: "development",
-    description: "A community-focused React SPA simulating a full-stack social platform experience for martial artists.",
-    summary: "Built a MySpace-meets-Reddit-style social platform prototype using React, Vite, and Tailwind. Architected as a single-page app using HashRouter with local JSON API simulation and modular components. Includes a dashboard feed, journal system, swipe-based partner finder, and event aggregation.",
+    category: "featured",
+    description: "A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.",
+    summary: "A modern membership and scheduling portal for martial arts communities, featuring dynamic forms, event flows, and clean front-end architecture.",
     problem: "Martial arts communities lack a dedicated platform that combines social networking, training journals, partner discovery, and event aggregation in one accessible interface.",
     solution: "Architected a modular React SPA using HashRouter for GitHub Pages compatibility, localStorage persistence, and JSON data simulation. Implemented Tailwind dark-mode design system with swipe-based interactions and accessible UI patterns.",
     result: "Delivered a production-ready prototype demonstrating full-stack thinking with front-end only tools, showcasing component architecture, state management, and modern UX patterns.",
     stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "localStorage", "GitHub Pages"],
-    tags: ["React", "TypeScript", "Community Platform", "SPA", "Social Network"],
+    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
+    devNotes: "React, Next.js, TypeScript, Tailwind CSS, component-driven architecture.",
     features: [
       "Modular features: Feed, ProfileCard, Journal, Events, Partner Finder",
       "Local JSON data simulation + localStorage persistence",
@@ -172,12 +179,7 @@ export const projects: Project[] = [
       "Event cards with static scraper logic",
       "Offline journaling with text/photo/video",
       "CSS animation for swipe/interactions",
-      "Accessible UI and semantic HTML",
-      "Journal training, upload videos, and track belts",
-      "Swipe-style partner discovery",
-      "Find open mats, tournaments, and seminars",
-      "Verified school affiliations and user roles",
-      "Parental supervision and youth safety features"
+      "Accessible UI and semantic HTML"
     ],
     metrics: [
       { label: "Architecture", value: "Modular SPA", improvement: "Scalable components" },
@@ -188,6 +190,34 @@ export const projects: Project[] = [
       demo: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
       repo: "https://github.com/epetaway/DojoNet-Prototype-MAX"
     }
+  },
+
+  {
+    id: "healthcare-workflow-ux-demo",
+    slug: "healthcare-workflow-ux-demo",
+    title: "Healthcare Workflow UX Demo",
+    role: "Front-End Developer",
+    category: "featured",
+    description: "A UI demo modeling secure, multi-step healthcare workflows with a focus on accessibility, semantics, and clear hierarchical structure.",
+    summary: "A reconstructed healthcare workflow demo focused on secure UI, accessible multi-step tasks, and enterprise-ready UX patterns.",
+    problem: "Healthcare workflows require secure, accessible interfaces with clear task flows and error handling.",
+    solution: "Built accessible forms with ARIA integration, semantic HTML structure, and comprehensive error-state UX patterns.",
+    result: "Delivered a demo showcasing enterprise-ready healthcare UX patterns with full accessibility compliance.",
+    stack: ["HTML5", "CSS3", "JavaScript", "ARIA", "Semantic HTML"],
+    tags: ["Healthcare", "UX", "Accessibility", "ARIA"],
+    devNotes: "Accessible forms, ARIA integration, semantic HTML, error-state UX patterns.",
+    features: [
+      "Accessible multi-step forms",
+      "ARIA integration for screen readers",
+      "Semantic HTML structure",
+      "Error-state UX patterns",
+      "Secure UI patterns"
+    ],
+    metrics: [
+      { label: "Accessibility", value: "WCAG 2.1 AA", improvement: "Compliant" },
+      { label: "Semantics", value: "Full HTML5", improvement: "Screen reader friendly" }
+    ],
+    links: {}
   },
 
   {

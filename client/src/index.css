@@ -12,6 +12,13 @@
   --text-primary: #111111;
   --text-secondary: #3D3D3D;
   
+  /* Prismora Motion System */
+  --ease-soft: cubic-bezier(0.19, 1, 0.22, 1);
+  --transition-fast: 150ms;
+  --transition-base: 220ms;
+  --radius-card: 1rem;
+  --radius-pill: 999px;
+  
   /* Legacy variables for compatibility */
   --background: hsl(0, 0%, 100%);
   --foreground: hsl(210, 25%, 7.8431%);
@@ -112,8 +119,6 @@
   --accent-foreground: hsl(0, 0%, 96.1%);
   --destructive: hsl(356.3033, 90.5579%, 54.3137%);
   --destructive-foreground: hsl(0, 0%, 100%);
-  --border: hsl(210, 5.2632%, 14.9020%);
-  --input: hsl(0, 0%, 14%);
   --ring: hsl(162, 53%, 69%);
   --chart-1: hsl(162, 53%, 69%);
   --chart-2: hsl(45, 89%, 58%);
@@ -130,8 +135,6 @@
   --sidebar-ring: hsl(162, 53%, 69%);
   --font-sans: Inter, system-ui, sans-serif;
   --font-serif: Georgia, serif;
-  --font-mono: 'JetBrains Mono', Courier New, monospace;
-  --radius: 1.3rem;
   --shadow-2xs: 0px 2px 0px 0px rgba(0,0,0,0.06);
   --shadow-xs: 0px 2px 0px 0px rgba(0,0,0,0.06);
   --shadow-sm: 0px 2px 0px 0px rgba(0,0,0,0.06), 0px 1px 2px -1px rgba(0,0,0,0.06);
@@ -141,6 +144,45 @@
   --shadow-xl: 0px 10px 15px -3px rgba(0,0,0,0.1), 0px 4px 6px -2px rgba(0,0,0,0.05);
   --shadow-2xl: 0px 25px 50px -12px rgba(0,0,0,0.25);
 }
+
+/* Animation classes - available in both light and dark mode */
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.stagger-1 { animation-delay: 0.04s; }
+.stagger-2 { animation-delay: 0.08s; }
+.stagger-3 { animation-delay: 0.12s; }
+.stagger-4 { animation-delay: 0.16s; }
+.stagger-5 { animation-delay: 0.20s; }
+
+@keyframes scaleIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(30px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
 section#offer{
   background-color: var(--kaiju-cream);
 }
@@ -158,6 +200,156 @@ section#offer{
   }
 }
 
+@layer components {
+  /* Prismora UI Transition System */
+  .ui-transition {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .ui-transition-soft {
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  /* Prismora Section Spacing Pattern */
+  .section-y {
+    @apply py-16 md:py-24;
+  }
+
+  .section-max {
+    @apply max-w-[1120px] mx-auto px-5;
+  }
+
+  /* Button base styles for Prismora */
+  .btn-base {
+    @apply inline-flex items-center justify-center rounded px-4 py-2 text-sm font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-amber-400;
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  /* Primary Button - Purple Gradient */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-normal -tracking-[0.02em] text-white bg-gradient-to-b from-purple-400 to-purple-600 rounded shadow-[0_1px_0_0_rgba(99,106,126,0.6)] ui-transition-soft button-lift dark:from-purple-500 dark:to-purple-700 dark:shadow-[0_1px_0_0_rgba(139,92,246,0.4)];
+  }
+
+  /* Secondary Button - Gray (auto dark) */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-normal -tracking-[0.02em] text-gray-900 bg-gradient-to-b from-gray-200 to-gray-200 rounded shadow-[0_1px_0_0_rgba(99,106,126,0.6)] ui-transition-soft button-lift dark:text-gray-100 dark:from-gray-700 dark:to-gray-800 dark:shadow-[0_1px_0_0_rgba(156,163,175,0.3)];
+  }
+
+  /* Card hover effects - improved with brand-green border accent */
+  .card-hover {
+    transition: all var(--transition-base) var(--ease-soft);
+    border: 1px solid transparent;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-color: rgba(56, 141, 93, 0.3);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(56, 141, 93, 0.4);
+  }
+
+  /* Float animation for code editor blocks */
+  .float-soft {
+    animation: floatSoft 6s ease-in-out infinite;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .float-soft {
+      animation: none;
+    }
+    .card-hover:hover {
+      transform: none;
+    }
+  }
+
+  /* Button lift effect */
+  .button-lift {
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  .button-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Section reveal animation */
+  .section-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s var(--ease-soft);
+  }
+
+  .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Animation delay utilities for staggered reveals */
+  .animation-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animation-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  /* Link hover underline animation */
+  .link-underline {
+    position: relative;
+  }
+
+  .link-underline::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: currentColor;
+    transition: width var(--transition-base) var(--ease-soft);
+  }
+
+  .link-underline:hover::after {
+    width: 100%;
+  }
+
+  /* Interactive link with glow */
+  .link-glow {
+    transition: all var(--transition-base) var(--ease-soft);
+  }
+
+  .link-glow:hover {
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+    transform: translateX(2px);
+  }
+
+  /* Icon hover scale effect */
+  .icon-hover {
+    transition: transform var(--transition-fast) var(--ease-soft);
+  }
+
+  .icon-hover:hover {
+    transform: scale(1.1);
+  }
+}
+
 @layer utilities {
   .gradient-text {
   background: linear-gradient(
@@ -170,31 +362,162 @@ section#offer{
   background-clip: text;
 }
 
-
+  /* Page animations */
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.6s ease-out;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.6s ease-out;
+    animation: slideUp 0.7s ease-out;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.5s ease-out;
   }
 
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
+
+  .animate-pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  /* Hover animations */
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1 shadow-xl;
+  }
+
+  .hover-scale {
+    @apply transition-transform duration-300 ease-out;
+  }
+
+  .hover-scale:hover {
+    @apply scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300;
+  }
+
+  .hover-glow:hover {
+    @apply shadow-[0_0_20px_rgba(168,85,247,0.4)];
+  }
+
+  /* Cursor follower ring active state */
+  .cursor-ring-active {
+    width: 56px !important;
+    height: 56px !important;
+    border-color: rgba(255,255,255,0.6) !important;
+  }
+
+  /* Focus animations */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2 dark:focus-visible:ring-purple-400 dark:focus-visible:ring-offset-slate-900;
+  }
+
+  /* IntersectionObserver-based reveal hooks */
+  .reveal-init {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 700ms var(--ease-soft), opacity 700ms var(--ease-soft);
+  }
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { 
+    opacity: 0; 
+  }
+  to { 
+    opacity: 1; 
+  }
 }
 
 @keyframes slideUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from { 
+    transform: translateY(40px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateY(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    transform: translateX(-40px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes slideInLeft {
+  from { 
+    transform: translateX(40px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateX(0); 
+    opacity: 1; 
+  }
+}
+
+@keyframes scaleIn {
+  from { 
+    transform: scale(0.9); 
+    opacity: 0; 
+  }
+  to { 
+    transform: scale(1); 
+    opacity: 1; 
+  }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-6px); 
+  }
+}
+
+/* Subtle floating animation for code editor blocks - 6s duration as per spec */
+@keyframes floatSoft {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-6px); 
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
+  }
+  50% { 
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
+  }
 }

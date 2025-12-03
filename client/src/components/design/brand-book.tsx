@@ -20,8 +20,6 @@ export default function BrandBook({ project }: { project: BrandProject }) {
     principles,
     grid,
     accessibility,
-    imagery,
-    iconography,
     motion,
     voice,
   } = project;

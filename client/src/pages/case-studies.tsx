@@ -128,21 +128,21 @@ export default function CaseStudies() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
                   href="mailto:e@ehicksonjr.com"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
+                    className="btn-secondary"
                   data-testid="button-contact"
                 >
                   <i className="fas fa-envelope mr-2" aria-hidden="true" />
                   Start a Conversation
                 </a>
                 <a
-                  href="/assets/"
+                    href="/assets/resume.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-white border-2 border-gray-200 rounded-xl font-semibold hover:border-primary-500 hover:text-primary-500 transition-colors"
+                    className="btn-primary"
                   data-testid="button-resume"
                 >
                   <i className="fas fa-download mr-2" aria-hidden="true" />
-                  Download Resume
+                    Get Resume
                 </a>
               </div>
             </div>

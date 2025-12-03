@@ -20,7 +20,7 @@ export function log(message: string, source = "express") {
     hour12: true,
   });
 
-  console.log(`${formattedTime} [${source}] ${message}`);
+  // console.log(`${formattedTime} [${source}] ${message}`);
 }
 
 export async function setupVite(app: Express, server: Server) {
@@ -33,6 +33,7 @@ export async function setupVite(app: Express, server: Server) {
   // Get the actual config from the viteConfig function
   const config = await viteConfig({ mode: "development", command: "serve" });
 
+    // console.log(`Vite server running on port ${port}`);
   const vite = await createViteServer({
     ...config,
     configFile: false,

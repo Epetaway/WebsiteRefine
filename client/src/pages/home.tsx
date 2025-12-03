@@ -1,292 +1,521 @@
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
-import { getFeaturedProjects } from "@/lib/projects";
-import profileImage from "@/images/me.png";
-
-const SITE = "https://www.ehicksonjr.com";
-
-const experiences = [
-  {
-    title: "Front-End Development",
-    years: "6+ Years",
-    description: "React, Angular, Vue, TypeScript with focus on accessibility and performance.",
-    icon: "💻",
-  },
-  {
-    title: "Healthcare & Enterprise",
-    years: "3+ Years",
-    description: "Patient portals, HIPAA compliance, complex multi-step workflows.",
-    icon: "🏥",
-  },
-  {
-    title: "Design Systems",
-    years: "4+ Years",
-    description: "Building and maintaining component libraries and design tokens.",
-    icon: "🎨",
-  },
-  {
-    title: "WCAG 2.1 AA",
-    years: "Certified",
-    description: "Accessible interfaces with semantic HTML, ARIA, and keyboard navigation.",
-    icon: "♿",
-  },
-];
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
+import { Section } from "@/components/layout/Section";
+import ScrollReveal from "@/components/ui/ScrollReveal";
+import { SectionHeader } from "@/components/layout/SectionHeader";
+import TypewriterCode from "@/components/ui/TypewriterCode";
+import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink, ArrowRight } from "lucide-react";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import { useEffect, useState } from "react";
 
 export default function Home() {
-  const featuredProjects = getFeaturedProjects();
-  const title = "Earl Hickson Jr. – Senior Front-End Engineer";
-  const description =
-    "Senior Front-End Engineer building accessible, responsive, and performance-focused web interfaces. 6+ years with React, Angular, Vue, and TypeScript across healthcare, marketing, and enterprise domains. Based in Parsippany, NJ.";
+  type FeaturedItem = {
+    title: string;
+    description: string;
+    link: string;
+    image: string;
+    tech?: string[];
+    kind: 'github' | 'brand';
+    // GitHub-only fields
+    html_url?: string;
+    homepage?: string | null;
+  };
 
+  const [featured, setFeatured] = useState<FeaturedItem[]>([]);
+
+  function extractReadmeMeta(content: string) {
+    // Simple parser: first H1 ("# Title") and first non-empty paragraph
+    const lines = content.split(/\r?\n/);
+    let title = undefined as string | undefined;
+    let excerpt = undefined as string | undefined;
+    for (let i = 0; i < lines.length; i++) {
+      const l = lines[i].trim();
+      if (!title && l.startsWith('# ')) {
+        title = l.replace(/^#\s+/, '').trim();
+        continue;
+      }
+      if (!excerpt && l && !l.startsWith('#')) {
+        excerpt = l;
+      }
+      if (title && excerpt) break;
+    }
+    return { title, excerpt };
+  }
+
+  // Clean up README paragraph: strip images/badges, code fences, and markdown links
+  function cleanupExcerpt(text: string) {
+    let t = text.trim();
+    // strip badges/images ![alt](url)
+    t = t.replace(/!\[[^\]]*\]\([^)]*\)/g, '');
+    // strip inline code fences/backticks
+    t = t.replace(/```[\s\S]*?```/g, '');
+    t = t.replace(/`([^`]*)`/g, '$1');
+    // convert markdown links [label](url) -> label
+    t = t.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '$1');
+    // collapse multiple spaces
+    t = t.replace(/\s{2,}/g, ' ');
+    return t.trim();
+  }
+
+  // GitHub README content is base64; ensure proper UTF-8 decoding
+  function decodeReadmeBase64(b64: string) {
+    try {
+      const binary = atob(b64);
+      const bytes = Uint8Array.from(binary, (c) => c.charCodeAt(0));
+      const decoder = new TextDecoder('utf-8');
+      return decoder.decode(bytes);
+    } catch {
+      // fallback
+      try { return atob(b64); } catch { return ''; }
+    }
+  }
+
+  useEffect(() => {
+    // Pull top 4 repos for user, excluding the portfolio project
+    fetch("https://api.github.com/users/Epetaway/repos?sort=updated")
+      .then((r) => r.json())
+      .then(async (data) => {
+        if (!Array.isArray(data)) return;
+        const excludeNames = new Set(["WebsiteRefine", "portfolio", "Portfolio", "website"]);
+        const selected = data
+          .filter((repo) => !repo.fork && !excludeNames.has(repo.name))
+          .slice(0, 4);
+
+        // For each repo, fetch README title/excerpt and topics
+        const items: FeaturedItem[] = await Promise.all(
+          selected.map(async (repo) => {
+            let title = repo.name;
+            let desc = repo.description || "";
+            let tech: string[] = [];
+            // README
+            try {
+              const res = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/readme`);
+              if (res.ok) {
+                const json = await res.json();
+                if (json && json.content) {
+                  const decoded = decodeReadmeBase64(json.content);
+                  const meta = extractReadmeMeta(decoded);
+                  title = meta.title || title;
+                  desc = meta.excerpt ? cleanupExcerpt(meta.excerpt) : desc;
+                }
+              }
+            } catch { void 0; }
+            // Topics
+            try {
+              const topicsRes = await fetch(`https://api.github.com/repos/${repo.owner.login}/${repo.name}/topics`, {
+                headers: { Accept: 'application/vnd.github+json' },
+              });
+              if (topicsRes.ok) {
+                const tj = await topicsRes.json();
+                if (Array.isArray(tj.names)) tech = tj.names;
+              }
+            } catch { void 0; }
+            // Ensure language is present in tech pills
+            if (repo.language && !tech.includes(repo.language)) tech = [repo.language, ...tech];
+            // de-dup and limit pills
+            tech = Array.from(new Set(tech)).slice(0, 6);
+
+            return {
+              title,
+              description: desc || "",
+              link: repo.html_url,
+              image: `https://opengraph.githubassets.com/1/${repo.owner.login}/${repo.name}`,
+              tech,
+              kind: 'github',
+              html_url: repo.html_url,
+              homepage: (() => {
+                const hp = (repo.homepage || '').trim();
+                if (hp) return hp;
+                // Fallback to GitHub Pages URL if pages are enabled
+                if (repo.has_pages && repo.owner?.login && repo.name) {
+                  return `https://${repo.owner.login}.github.io/${repo.name}`;
+                }
+                return null;
+              })(),
+            } as FeaturedItem;
+          })
+        );
+        setFeatured(items);
+      })
+      .catch(() => { void 0; });
+  }, []);
   return (
-    <div className="bg-base">
+    <>
       <Helmet>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={typeof window !== "undefined" ? window.location.href : SITE} />
-        <meta property="og:title" content={title} />
-        <meta property="og:description" content={description} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={typeof window !== "undefined" ? window.location.href : SITE} />
-        <meta property="og:site_name" content="Earl Hickson Jr." />
-        <meta name="twitter:card" content="summary_large_image" />
+        <title>Earl Hickson | Full Stack Developer & Designer</title>
+        <meta
+          name="description"
+          content="Full stack developer and designer crafting elegant digital experiences with code, creativity, and discipline."
+        />
       </Helmet>
 
-      {/* Top Banner */}
-      <div className="w-full bg-dominant text-white py-2 px-4 text-center">
-        <p className="text-sm">
-          Available for Senior Front-End roles & select freelance projects.
-        </p>
-      </div>
-
       {/* Hero Section */}
-      <section className="w-full flex justify-center px-4 bg-base">
-        <div className="w-full max-w-content py-24 md:py-32">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <div className="inline-flex items-center px-4 py-2 rounded-pill bg-dominant/10 text-dominant text-sm font-medium mb-6 border border-dominant/20">
-                <span className="w-2 h-2 bg-dominant rounded-full mr-2 animate-pulse" />
-                Available for Senior Front-End roles & select freelance projects
-              </div>
-
-              <h1 className="font-display text-5xl md:text-6xl text-textPrimary mb-4 tracking-tight" data-testid="hero-title-primary">
-                Senior Front-End Engineer
-              </h1>
-              
-              <p className="text-2xl lg:text-3xl text-gray-700 font-medium mb-6">
-                React • Angular • TypeScript
-              </p>
-
-              <p className="text-textSecondary mb-2 text-sm">
-                Parsippany, NJ
-              </p>
-
-              <div className="grid grid-cols-3 gap-4 my-8 p-6 bg-bg-panel rounded-card border border-border-subtle">
-                <div>
-                  <div className="text-2xl font-display text-accent mb-1">+37%</div>
-                  <div className="text-xs text-textSecondary">Lead Conversions</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-display text-accent mb-1">+25%</div>
-                  <div className="text-xs text-textSecondary">Organic Traffic</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-display text-accent mb-1">+75%</div>
-                  <div className="text-xs text-textSecondary">Livestream Engagement</div>
-                </div>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <Button asChild size="lg" className="rounded-pill bg-accent text-text-on-accent hover:bg-accent/90" data-testid="button-case-studies">
-                  <Link to="/projects">
-                    View Front-End Case Studies
-                  </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="rounded-pill border-dominant text-dominant hover:bg-dominant hover:text-text-on-accent" data-testid="button-resume">
-                  <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
-                    Download Resume (PDF)
-                  </a>
-                </Button>
-              </div>
-            </div>
-
-            <div className="flex justify-center lg:justify-end">
-              <div className="bg-bg-panel border border-border-subtle rounded-card p-6 shadow-card max-w-sm w-full">
-                <div className="aspect-square rounded-lg overflow-hidden mb-4">
-                  <img
-                    src={profileImage}
-                    alt="Earl Hickson Jr."
-                    className="w-full h-full object-cover"
-                    data-testid="hero-image"
-                  />
-                </div>
-                <h2 className="font-display text-xl text-textPrimary mb-1">
-                  Earl Hickson Jr.
-                </h2>
-                <p className="text-sm text-dominant mb-3">
-                  Senior Front-End Engineer · BJJ Black Belt
-                </p>
-                <p className="text-sm text-textSecondary">
-                  Building responsive, accessible, and performance-focused web interfaces with modern front-end stacks.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="w-full flex justify-center px-4 bg-base">
-        <div className="w-full max-w-content py-section-y border-b border-border-subtle">
-          <div className="text-center mb-12">
-            <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
-              PORTFOLIO
+      <Section className="min-h-[90vh] flex items-center bg-gray-50 dark:bg-slate-950">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <ScrollReveal animation="slide-up" className="space-y-6">
+            <Badge className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
+              Open to new opportunities
+            </Badge>
+            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-slate-50">
+              Building digital experiences with{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">
+                code & creativity
+              </span>
+            </h1>
+            <p className="text-lg text-gray-600 dark:text-slate-300 max-w-xl">
+              Full stack developer and designer specializing in thoughtful brand identities, 
+              robust web applications, and user experiences that resonate. Bringing discipline 
+              from the jiu-jitsu mat to clean, maintainable code.
             </p>
-            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-4 tracking-tight">
-              Explore my latest Projects
-            </h2>
-            <p className="text-lg text-textSecondary max-w-2xl mx-auto">
-              Real-world front-end work with measurable business impact
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            {featuredProjects.map((project) => (
-              <Link
-                key={project.slug}
-                to={`/projects/${project.slug}`}
-                className="group block bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="aspect-video bg-bg-panel rounded-lg mb-4 overflow-hidden">
-                  <img
-                    src={project.thumbnail}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    onError={(e) => {
-                      e.currentTarget.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Crect fill='%231A1A1A' width='400' height='300'/%3E%3C/svg%3E";
-                    }}
-                  />
-                </div>
-                
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="font-display text-xl text-textPrimary group-hover:text-dominant transition-colors">
-                    {project.title}
-                  </h3>
-                  {project.year && (
-                    <span className="text-xs uppercase tracking-wide text-textSecondary whitespace-nowrap">
-                      {project.year}
-                    </span>
-                  )}
-                </div>
-
-                <p className="text-sm text-textSecondary mb-3">
-                  {project.role}
-                </p>
-
-                <p className="text-sm text-accent font-semibold mb-4">
-                  {project.impact}
-                </p>
-
-                {project.description && (
-                  <p className="text-sm text-textSecondary mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                )}
-
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="inline-block px-3 py-1 text-xs rounded-pill bg-dominant/10 text-dominant border border-dominant/20"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
+            <div className="flex flex-wrap gap-4 pt-4">
+              <Link to="/contact" className="btn-secondary">
+                Get in Touch
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Experience Section */}
-      <section className="w-full flex justify-center px-4 bg-bg-panel">
-        <div className="w-full max-w-content py-section-y">
-          <div className="text-center mb-12">
-            <p className="uppercase text-xs tracking-[0.2em] text-textSecondary mb-4">
-              BACKGROUND
-            </p>
-            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-4 tracking-tight">
-              Experience & Expertise
-            </h2>
-            <p className="text-lg text-textSecondary max-w-2xl mx-auto">
-              Building web interfaces since 2018
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {experiences.map((exp) => (
-              <div
-                key={exp.title}
-                className="bg-base border border-border-subtle rounded-card p-6 shadow-card hover:shadow-cardHover transition-all duration-300"
-              >
-                <div className="text-4xl mb-4">{exp.icon}</div>
-                <h3 className="font-display text-lg text-textPrimary mb-1">
-                  {exp.title}
-                </h3>
-                <p className="text-xs text-accent uppercase tracking-wide mb-3 font-semibold">
-                  {exp.years}
-                </p>
-                <p className="text-sm text-textSecondary">
-                  {exp.description}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button asChild size="lg" className="rounded-pill bg-dominant text-text-on-accent hover:bg-dominant/90" data-testid="button-contact">
-              <Link to="/about">
-                Learn more about me
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="rounded-pill border-accent text-accent hover:bg-accent hover:text-text-on-accent">
-              <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer">
-                Download my resume
+              <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+                Get Resume
               </a>
-            </Button>
+            </div>
+          </ScrollReveal>
+
+          {/* Code Editor Card with float animation and typing effect */}
+          <ScrollReveal animation="scale" delay={150}>
+            <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-1 shadow-2xl float-soft card-hover">
+              <div className="bg-gray-50 dark:bg-slate-950 rounded-lg overflow-hidden">
+                {/* Editor Header */}
+                <div className="bg-gray-100 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 py-2 flex items-center gap-2">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                    <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                  </div>
+                  <span className="text-xs text-gray-500 dark:text-slate-400 ml-3 font-mono">earl-hickson.ts</span>
+                </div>
+                {/* Code Content with Typing Animation */}
+                <div className="p-6 font-mono text-sm leading-relaxed">
+                  <TypewriterCode startDelay={800} charDelay={25}>
+                    <div className="space-y-1">
+                      <div>
+                        <span className="text-purple-600 dark:text-purple-400">interface</span>{" "}
+                        <span className="text-blue-600 dark:text-blue-400">Developer</span>{" "}
+                        <span className="text-gray-500 dark:text-slate-500">{"{"}</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">name:</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"Earl Hickson"</span>
+                        <span className="text-gray-500 dark:text-slate-500">;</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">role:</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"Full Stack Developer"</span>
+                        <span className="text-gray-500 dark:text-slate-500">;</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">skills:</span>{" "}
+                        <span className="text-gray-500 dark:text-slate-500">{"["}</span>
+                      </div>
+                      <div className="pl-8">
+                        <span className="text-emerald-600 dark:text-emerald-400">"React"</span>
+                        <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"TypeScript"</span>
+                        <span className="text-gray-500 dark:text-slate-500">,</span>
+                      </div>
+                      <div className="pl-8">
+                        <span className="text-emerald-600 dark:text-emerald-400">"Node.js"</span>
+                        <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"UI/UX Design"</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-500 dark:text-slate-500">{"];"}</span>
+                      </div>
+                      <div className="pl-4">
+                        <span className="text-gray-600 dark:text-slate-400">passion:</span>{" "}
+                        <span className="text-emerald-600 dark:text-emerald-400">"Building & BJJ"</span>
+                        <span className="text-gray-500 dark:text-slate-500">;</span>
+                      </div>
+                      <div>
+                        <span className="text-gray-500 dark:text-slate-500">{"}"}</span>
+                      </div>
+                    </div>
+                  </TypewriterCode>
+                </div>
+              </div>
+            </Card>
+          </ScrollReveal>
+        </div>
+      </Section>
+
+      {/* Featured Work (GitHub Repos) - Carousel */}
+      <Section className="bg-gray-100 dark:bg-slate-900">
+        <ScrollReveal animation="slide-up">
+          <SectionHeader 
+            preLabel="// Featured Front-End Work"
+            title="Featured Work" 
+            description="A few recent repositories from my GitHub"
+          />
+        </ScrollReveal>
+        <ScrollReveal animation="fade" delay={100}>
+          <Swiper
+            spaceBetween={24}
+            slidesPerView={1.05}
+            breakpoints={{
+              640: { slidesPerView: 1.4, spaceBetween: 24 },
+              768: { slidesPerView: 2.1, spaceBetween: 24 },
+              1024: { slidesPerView: 3.1, spaceBetween: 24 },
+            }}
+          >
+            {featured.map((item, idx) => (
+              <SwiperSlide key={idx}>
+                <Link to={item.link} className="group block h-full">
+                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[300px] mx-auto rounded-2xl card-hover">
+                    <div className="aspect-video bg-gray-100 dark:bg-slate-700/50">
+                      <img
+                        src={item.image}
+                        alt={`${item.title} preview`}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="p-5 flex-1 flex flex-col">
+                      {item.tech && (
+                        <div className="flex flex-wrap gap-1.5 mb-3">
+                          {item.tech.slice(0, 3).map((t) => (
+                            <span key={t} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-700 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-200">
+                              {t}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors flex items-center gap-2">
+                        {item.title}
+                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
+                      </h3>
+                      <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed">{(() => {
+                        const txt = item.description;
+                        return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
+                      })()}</p>
+                      <Link 
+                        to={item.link} 
+                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors mb-3"
+                      >
+                        Read More <ArrowRight className="w-4 h-4" />
+                      </Link>
+                      {item.kind === 'github' && (
+                        <div className="mt-auto flex flex-wrap gap-2">
+                          {item.html_url && (
+                            <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm">
+                              <Github className="h-3.5 w-3.5" />
+                              View Code
+                            </a>
+                          )}
+                          {item.homepage && (
+                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300">
+                              <ExternalLink className="h-3.5 w-3.5" />
+                              Demo
+                            </a>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  </Card>
+                </Link>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </ScrollReveal>
+
+        <ScrollReveal animation="fade" delay={200}>
+          <div className="text-center mt-12">
+            <Link to="/projects">
+              <Button variant="outline" size="lg" className="border-gray-300 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800">
+                View All Projects
+              </Button>
+            </Link>
+          </div>
+        </ScrollReveal>
+      </Section>
+
+      {/* How I Work */}
+      <Section className="bg-white dark:bg-slate-950">
+        <ScrollReveal animation="slide-up">
+          <SectionHeader 
+            preLabel="// Approach & Services"
+            title="Approach & Services" 
+            description="Clear process. Practical engineering. Thoughtful design. Everything tuned for outcomes."
+          />
+        </ScrollReveal>
+        <div className="grid lg:grid-cols-2 gap-8">
+          {/* Left: How I Work */}
+          <div className="space-y-4">
+            {[
+              { step: "01", title: "Discover", desc: "Align on goals, audience, and constraints. Surface risks early." },
+              { step: "02", title: "Define", desc: "Shape scope, architecture, and success metrics that fit reality." },
+              { step: "03", title: "Design & Build", desc: "Prototype quickly. Ship in tight loops. Test and refine." },
+              { step: "04", title: "Launch & Iterate", desc: "Measure impact, improve performance, document, and support." },
+            ].map((phase, idx) => (
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
+                <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
+                  <div className="flex items-start gap-4">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-0.5 w-10">{phase.step}</div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-1">{phase.title}</h3>
+                      <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{phase.desc}</p>
+                    </div>
+                  </div>
+                </Card>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          {/* Right: What I Do */}
+          <div className="grid sm:grid-cols-2 gap-4">
+            {[
+              {
+                icon: Zap,
+                title: "Product Engineering",
+                description: "React, TypeScript, Node, Postgres. Fast, accessible, and maintainable by default.",
+              },
+              {
+                icon: Sparkles,
+                title: "UI/UX Design",
+                description: "From wireframes to production visuals. Design systems that scale without noise.",
+              },
+              {
+                icon: Palette,
+                title: "Brand Systems",
+                description: "Logos, typography, color, and usage. Cohesive identities with real-world rules.",
+              },
+              {
+                icon: Rocket,
+                title: "Growth & Ops",
+                description: "Analytics, A/B testing, SEO, and CI/CD to keep velocity high and risk low.",
+              },
+            ].map((service, idx) => (
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
+                <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
+                  <service.icon className="h-9 w-9 text-emerald-600 dark:text-emerald-400 mb-3" />
+                  <h3 className="text-base font-semibold text-gray-900 dark:text-slate-50 mb-1">{service.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{service.description}</p>
+                </Card>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
-      </section>
+      </Section>
 
-      {/* CTA Section */}
-      <section className="w-full flex justify-center px-4 bg-base">
-        <div className="w-full max-w-content py-section-y">
-          <div className="text-center">
-            <h2 className="font-display text-4xl md:text-5xl text-textPrimary mb-6 tracking-tight">
+      {/* About Preview */}
+      <Section className="bg-gray-100 dark:bg-slate-950">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <ScrollReveal animation="slide-up">
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-slate-50">
+                Code, Culture, Discipline
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
+                As a full stack developer and Brazilian Jiu-Jitsu practitioner, I bring 
+                the same dedication to both crafts. The discipline, problem-solving, and 
+                resilience from the mats translates directly to writing clean code and 
+                building robust applications.
+              </p>
+              <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
+                Whether it's designing a brand identity or architecting a complex system, 
+                I approach every project with thoughtfulness, precision, and a commitment 
+                to continuous improvement.
+              </p>
+              <Link to="/about" className="btn-secondary">
+                More About Me
+              </Link>
+            </div>
+          </ScrollReveal>
+
+          {/* Code Editor Card with float animation and typing effect */}
+          <ScrollReveal animation="scale" delay={120}>
+            <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-1 shadow-xl card-hover float-soft">
+            <div className="bg-gray-50 dark:bg-slate-950 rounded-lg overflow-hidden">
+              <div className="bg-gray-100 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 py-2 flex items-center gap-2">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-amber-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+                </div>
+                <span className="text-xs text-gray-500 dark:text-slate-400 ml-3 font-mono">philosophy.ts</span>
+              </div>
+              <div className="p-6 font-mono text-sm leading-relaxed">
+                <TypewriterCode startDelay={600} charDelay={30}>
+                  <div className="space-y-1">
+                    <div>
+                      <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
+                      <span className="text-blue-600 dark:text-blue-400">approach</span>{" "}
+                      <span className="text-gray-500 dark:text-slate-500">=</span>{" "}
+                      <span className="text-gray-500 dark:text-slate-500">{"{"}</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">mindset:</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Continuous improvement"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">process:</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Deliberate practice"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">outcome:</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Quality over speed"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-600 dark:text-slate-400">values:</span>{" "}
+                      <span className="text-gray-500 dark:text-slate-500">{"["}</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-emerald-600 dark:text-emerald-400">"Discipline"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Craft"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>
+                    </div>
+                    <div className="pl-8">
+                      <span className="text-emerald-600 dark:text-emerald-400">"Growth"</span>
+                      <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
+                      <span className="text-emerald-600 dark:text-emerald-400">"Excellence"</span>
+                    </div>
+                    <div className="pl-4">
+                      <span className="text-gray-500 dark:text-slate-500">{"]"}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500 dark:text-slate-500">{"};"}</span>
+                    </div>
+                  </div>
+                </TypewriterCode>
+              </div>
+            </div>
+            </Card>
+          </ScrollReveal>
+        </div>
+      </Section>
+
+      {/* Final CTA */}
+      <Section className="bg-gradient-to-br from-blue-600 to-emerald-600">
+        <ScrollReveal animation="slide-up">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
               Let's Build Something Great
             </h2>
-            <p className="text-lg text-textSecondary max-w-2xl mx-auto mb-8">
-              I'm available for full-time senior front-end roles and select freelance projects. 
-              Let's discuss how I can help your team deliver accessible, reliable, and fast user experiences.
+            <p className="text-xl text-blue-50 mb-8">
+              Whether you need a brand identity, web application, or anything in between, 
+              I'd love to help bring your vision to life.
             </p>
-            
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="rounded-pill bg-accent text-text-on-accent hover:bg-accent/90">
-                <a href="mailto:e@ehicksonjr.com">
-                  Contact Me
-                </a>
+            <Link to="/contact">
+              <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 shadow-lg button-lift">
+                Start a Conversation
               </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-pill border-dominant text-dominant hover:bg-dominant hover:text-text-on-accent">
-                <Link to="/projects">
-                  View Case Studies
-                </Link>
-              </Button>
-            </div>
+            </Link>
           </div>
-        </div>
-      </section>
-    </div>
+        </ScrollReveal>
+      </Section>
+    </>
   );
 }
