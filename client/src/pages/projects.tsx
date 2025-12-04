@@ -48,7 +48,7 @@ export default function Projects() {
       {/* Pinned Projects Section */}
       <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-[1120px] mx-auto px-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
             {pinnedProjects.map((project, idx) => (
               <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                 <article 
@@ -149,7 +149,7 @@ export default function Projects() {
                 More Public Work
               </h2>
             </ScrollReveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
               {additionalProjectsList.map((project, idx) => (
                 <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                   <article 
