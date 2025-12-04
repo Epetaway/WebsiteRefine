@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
-import { ArrowRight, Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink } from "lucide-react";
 import { getPinnedProjects, getAdditionalProjects, GITHUB_USER } from "@/lib/projects";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useReveal } from "@/hooks/useReveal";
@@ -48,7 +48,7 @@ export default function Projects() {
       {/* Pinned Projects Section */}
       <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-[1120px] mx-auto px-5">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(345px, 1fr))' }}>
             {pinnedProjects.map((project, idx) => (
               <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                 <article 
@@ -68,10 +68,9 @@ export default function Projects() {
 
                   {/* Project Content */}
                   <div className="p-5 space-y-4 flex-1 flex flex-col">
-                    {/* Title with arrow */}
-                    <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2" data-testid={`project-title-${project.slug}`}>
+                    {/* Title - no arrow */}
+                    <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight" data-testid={`project-title-${project.slug}`}>
                       {project.displayTitle}
-                      <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-gray-400">→</span>
                     </h2>
                     
                     {/* Summary - limited to 100 characters */}
@@ -81,18 +80,6 @@ export default function Projects() {
                         return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
                       })()}
                     </p>
-                    
-                    {/* Read More Link */}
-                    {project.liveUrl && (
-                      <a 
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                      >
-                        Read More <ArrowRight className="w-4 h-4" />
-                      </a>
-                    )}
                     
                     {/* Tech Stack Tags */}
                     <div className="flex flex-wrap gap-1.5">
@@ -149,7 +136,7 @@ export default function Projects() {
                 More Public Work
               </h2>
             </ScrollReveal>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(255px, 1fr))' }}>
               {additionalProjectsList.map((project, idx) => (
                 <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                   <article 
@@ -169,9 +156,8 @@ export default function Projects() {
 
                     {/* Project Content */}
                     <div className="p-5 space-y-4 flex-1 flex flex-col">
-                      <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight flex items-center gap-2">
+                      <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
                         {project.displayTitle}
-                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-gray-400">→</span>
                       </h2>
                       
                       <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
