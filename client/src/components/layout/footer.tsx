@@ -40,33 +40,6 @@ export default function Footer() {
           </a>
           <div className="mt-3 flex flex-wrap gap-4">
             <a
-              href="https://instagram.com/earld.kaiju"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"
-              aria-label="Instagram"
-            >
-              Instagram
-            </a>
-            <a
-              href="https://twitter.com/epetaway"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"
-              aria-label="X (Twitter)"
-            >
-              X
-            </a>
-            <a
-              href="https://youtube.com/@earldkaiju"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"
-              aria-label="YouTube"
-            >
-              YouTube
-            </a>
-            <a
               href="https://github.com/Epetaway"
               target="_blank"
               rel="noreferrer"
@@ -76,31 +49,13 @@ export default function Footer() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/earlhicksonjr"
+              href="https://www.linkedin.com/in/earl-hickson-jr/"
               target="_blank"
               rel="noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"
               aria-label="LinkedIn"
             >
               LinkedIn
-            </a>
-            <a
-              href="https://dribbble.com/earldkaiju"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"
-              aria-label="Dribbble"
-            >
-              Dribbble
-            </a>
-            <a
-              href="https://behance.net/earldkaiju"
-              target="_blank"
-              rel="noreferrer"
-              className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"
-              aria-label="Behance"
-            >
-              Behance
             </a>
           </div>
         </div>

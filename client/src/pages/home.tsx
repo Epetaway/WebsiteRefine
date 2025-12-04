@@ -7,7 +7,7 @@ import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import TypewriterCode from "@/components/ui/TypewriterCode";
-import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink, ArrowRight } from "lucide-react";
+import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink } from "lucide-react";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useMemo } from "react";
@@ -156,8 +156,8 @@ export default function Home() {
       <Section className="bg-gray-100 dark:bg-slate-900">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
-            preLabel="// Featured Front-End Work"
-            title="Featured Work" 
+            preLabel="// Featured Work"
+            title="GitHub Pinned Repositories" 
             description="A few recent repositories from my GitHub"
           />
         </ScrollReveal>
@@ -174,7 +174,7 @@ export default function Home() {
             {featured.map((item, idx) => (
               <SwiperSlide key={idx} className="h-auto">
                 <Link to={item.link} className="group block h-full">
-                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[300px] mx-auto rounded-2xl card-hover">
+                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[345px] mx-auto rounded-2xl card-hover">
                     <div className="aspect-video bg-gray-100 dark:bg-slate-700/50 flex-shrink-0">
                       <img
                         src={item.image}
@@ -195,15 +195,8 @@ export default function Home() {
                       )}
                       <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors line-clamp-2 min-h-[56px]">
                         {item.title}
-                        <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 ml-2">→</span>
                       </h3>
                       <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed line-clamp-3 min-h-[60px]">{item.description}</p>
-                      <Link 
-                        to={item.link} 
-                        className="inline-flex items-center gap-1 text-sm font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors mb-3"
-                      >
-                        Read More <ArrowRight className="w-4 h-4" />
-                      </Link>
                       {item.kind === 'github' && (
                         <div className="mt-auto flex flex-wrap gap-2">
                           {item.html_url && (
