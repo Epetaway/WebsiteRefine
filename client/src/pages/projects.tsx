@@ -181,7 +181,7 @@ export default function Projects() {
                         {project.techStack.slice(0, 2).map((tech, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center text-[10px] font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-1.5 py-0.5 rounded-full"
+                            className="inline-flex items-center text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-1.5 py-0.5 rounded-full"
                           >
                             {tech}
                           </span>
@@ -195,7 +195,7 @@ export default function Projects() {
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-2 py-1 text-[10px] rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                            className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
                           >
                             <ExternalLink className="h-3 w-3" />
                             Demo
@@ -205,7 +205,7 @@ export default function Projects() {
                           href={project.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-2 py-1 text-[10px] rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
+                          className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
                         >
                           <Github className="h-3 w-3" />
                           Code
