@@ -12,15 +12,15 @@ const __dirname = path.dirname(__filename);
 
 const viteLogger = createLogger();
 
-export function log(message: string, source = "express") {
-  const formattedTime = new Date().toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    second: "2-digit",
-    hour12: true,
-  });
-
-  // console.log(`${formattedTime} [${source}] ${message}`);
+export function log(_message: string, _source = "express") {
+  // Logging disabled - uncomment below to enable
+  // const formattedTime = new Date().toLocaleTimeString("en-US", {
+  //   hour: "numeric",
+  //   minute: "2-digit",
+  //   second: "2-digit",
+  //   hour12: true,
+  // });
+  // console.log(`${formattedTime} [${_source}] ${_message}`);
 }
 
 export async function setupVite(app: Express, server: Server) {
