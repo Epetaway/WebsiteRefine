@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Sun, Moon } from "lucide-react";
 import profileImage from "@/images/me.png";
 import { useTheme } from "@/contexts/ThemeContext";
+import { RESUME_PATH } from "@/data/projects";
 
 const nav = [
   { to: "/", label: "Home" },
@@ -112,7 +113,7 @@ export default function Header() {
               Get In Touch
             </Link>
             <a
-              href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx"
+              href={RESUME_PATH}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
@@ -175,7 +176,7 @@ export default function Header() {
               Get In Touch
             </Link>
             <a
-              href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx"
+              href={RESUME_PATH}
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"

@@ -12,6 +12,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useMemo } from "react";
 import { getFeaturedProjects, GITHUB_USER, type Project } from "@/lib/projects";
+import { RESUME_PATH } from "@/data/projects";
 
 /** FeaturedItem type for rendering project cards */
 type FeaturedItem = {
@@ -79,7 +80,7 @@ export default function Home() {
               <Link to="/contact" className="btn-secondary">
                 Get in Touch
               </Link>
-              <a href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx" target="_blank" rel="noopener noreferrer" className="btn-primary" download>
+              <a href={RESUME_PATH} target="_blank" rel="noopener noreferrer" className="btn-primary" download>
                 Get Resume
               </a>
             </div>

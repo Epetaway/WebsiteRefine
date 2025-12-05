@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { projects } from "@/data/projects";
+import { projects, RESUME_PATH } from "@/data/projects";
 import CaseStudyCard from "@/components/ui/case-study-card";
 
 export default function CaseStudies() {
@@ -135,7 +135,7 @@ export default function CaseStudies() {
                   Start a Conversation
                 </a>
                 <a
-                    href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx"
+                    href={RESUME_PATH}
                   target="_blank"
                   rel="noopener noreferrer"
                     className="btn-primary"
