@@ -12,15 +12,51 @@ export default function Contact() {
     budget: "",
     timeline: ""
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submission logic would go here
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+    
+    try {
+      // Build the message from form fields
+      const message = `Company: ${formData.company || 'Not specified'}
+Project: ${formData.project || 'Not specified'}
+Budget: ${formData.budget || 'Not specified'}
+Timeline: ${formData.timeline || 'Not specified'}`;
+      
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.fullName,
+          email: formData.email,
+          message: message,
+          type: 'general'
+        }),
+      });
+      
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Thank you! Your message has been sent successfully.' });
+        setFormData({ fullName: '', email: '', company: '', project: '', budget: '', timeline: '' });
+      } else {
+        const errorData = await response.json();
+        setSubmitStatus({ type: 'error', message: errorData.message || 'Failed to submit form. Please try again.' });
+      }
+    } catch {
+      setSubmitStatus({ type: 'error', message: 'An error occurred. Please try again later.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -162,10 +198,21 @@ export default function Contact() {
                 type="submit"
                 size="lg"
                 className="w-full btn-primary"
+                disabled={isSubmitting}
               >
-                Submit
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </Button>
             </div>
+            
+            {submitStatus && (
+              <div className={`mt-4 p-4 rounded-lg ${
+                submitStatus.type === 'success' 
+                  ? 'bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800' 
+                  : 'bg-red-50 dark:bg-red-900/30 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
+              }`}>
+                {submitStatus.message}
+              </div>
+            )}
           </form>
 
           <p className="text-center text-gray-600 dark:text-gray-400 mt-8">

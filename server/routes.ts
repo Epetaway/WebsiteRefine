@@ -5,6 +5,17 @@ import { insertContactSchema, insertBjjBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import sgMail from '@sendgrid/mail';
 
+// HTML escape function to prevent XSS in emails
+function escapeHtml(text: string | null | undefined): string {
+  if (!text) return '';
+  return text
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
   // Initialize SendGrid
   if (process.env.SENDGRID_API_KEY) {
@@ -106,6 +117,49 @@ export async function registerRoutes(app: Express): Promise<Server> {
     try {
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
+      
+      // Send email notification if SendGrid is configured
+      if (process.env.SENDGRID_API_KEY) {
+        try {
+          const msg = {
+            to: 'e@ehicksonjr.com',
+            from: 'e@ehicksonjr.com', // Must be verified sender in SendGrid
+            subject: `New Contact Form Submission from ${validatedData.name}`,
+            text: `
+New contact form submission received:
+
+Name: ${validatedData.name}
+Email: ${validatedData.email}
+Phone: ${validatedData.phone || 'Not provided'}
+Message: ${validatedData.message || 'Not provided'}
+
+Please follow up soon.
+            `,
+            html: `
+<h2>New Contact Form Submission</h2>
+<p><strong>Someone reached out through your website!</strong></p>
+
+<h3>Contact Information:</h3>
+<ul>
+  <li><strong>Name:</strong> ${escapeHtml(validatedData.name)}</li>
+  <li><strong>Email:</strong> ${escapeHtml(validatedData.email)}</li>
+  <li><strong>Phone:</strong> ${escapeHtml(validatedData.phone) || 'Not provided'}</li>
+</ul>
+
+<h3>Message:</h3>
+<p>${escapeHtml(validatedData.message) || 'No message provided'}</p>
+
+<p><em>Please follow up soon.</em></p>
+            `
+          };
+          
+          await sgMail.send(msg);
+        } catch (emailError) {
+          // Failed to send contact notification email but don't fail the submission
+          console.error("Failed to send contact email notification:", emailError);
+        }
+      }
+      
       res.json({ message: "Contact form submitted successfully", id: contact.id });
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -149,16 +203,16 @@ Please follow up within 24 hours.
 
 <h3>Contact Information:</h3>
 <ul>
-  <li><strong>Name:</strong> ${validatedData.name}</li>
-  <li><strong>Email:</strong> ${validatedData.email}</li>
-  <li><strong>Phone:</strong> ${validatedData.phone}</li>
+  <li><strong>Name:</strong> ${escapeHtml(validatedData.name)}</li>
+  <li><strong>Email:</strong> ${escapeHtml(validatedData.email)}</li>
+  <li><strong>Phone:</strong> ${escapeHtml(validatedData.phone)}</li>
 </ul>
 
 <h3>Training Details:</h3>
 <ul>
-  <li><strong>Program:</strong> ${validatedData.program || 'Not specified'}</li>
-  <li><strong>Goals:</strong> ${validatedData.goals || 'Not specified'}</li>
-  <li><strong>Availability:</strong> ${validatedData.availability || 'Not specified'}</li>
+  <li><strong>Program:</strong> ${escapeHtml(validatedData.program) || 'Not specified'}</li>
+  <li><strong>Goals:</strong> ${escapeHtml(validatedData.goals) || 'Not specified'}</li>
+  <li><strong>Availability:</strong> ${escapeHtml(validatedData.availability) || 'Not specified'}</li>
   <li><strong>SMS Consent:</strong> ${validatedData.smsConsent ? 'Yes' : 'No'}</li>
 </ul>
 
@@ -169,6 +223,7 @@ Please follow up within 24 hours.
           await sgMail.send(msg);
         } catch (emailError) {
           // Failed to send booking notification email but don't fail the booking
+          console.error("Failed to send BJJ booking email notification:", emailError);
         }
       }
       

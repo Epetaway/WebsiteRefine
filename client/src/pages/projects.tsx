@@ -60,7 +60,7 @@ export default function Projects() {
                 1024: { slidesPerView: 3.1, spaceBetween: 24 },
               }}
             >
-              {pinnedProjects.map((project, idx) => (
+              {pinnedProjects.map((project) => (
                 <SwiperSlide key={project.slug} className="h-auto">
                   <article 
                     data-reveal 
