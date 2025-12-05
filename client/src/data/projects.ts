@@ -26,7 +26,7 @@ export interface Project {
 }
 
 // Resume file path constant for consistency
-export const RESUME_PATH = "/assets/Earl_Hickson_Jr_FrontEnd_Engineer.docx";
+export const RESUME_PATH = "/assets/Earl_Hickson_Jr_Front_End_Engineer.docx";
 
 export const projects: Project[] = [
   {
