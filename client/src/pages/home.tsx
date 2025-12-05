@@ -79,7 +79,7 @@ export default function Home() {
               <Link to="/contact" className="btn-secondary">
                 Get in Touch
               </Link>
-              <a href="/assets/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <a href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx" target="_blank" rel="noopener noreferrer" className="btn-primary" download>
                 Get Resume
               </a>
             </div>

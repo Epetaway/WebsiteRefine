@@ -112,10 +112,11 @@ export default function Header() {
               Get In Touch
             </Link>
             <a
-              href="/assets/resume.pdf"
+              href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
+              download
             >
               Get Resume
             </a>
@@ -174,10 +175,11 @@ export default function Header() {
               Get In Touch
             </Link>
             <a
-              href="/assets/resume.pdf"
+              href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary"
+              download
               onClick={() => setOpen(false)}
             >
               Get Resume

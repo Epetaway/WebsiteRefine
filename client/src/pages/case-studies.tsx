@@ -135,11 +135,12 @@ export default function CaseStudies() {
                   Start a Conversation
                 </a>
                 <a
-                    href="/assets/resume.pdf"
+                    href="/assets/Earl_Hickson_Jr_Front_End_Engineer.docx"
                   target="_blank"
                   rel="noopener noreferrer"
                     className="btn-primary"
                   data-testid="button-resume"
+                  download
                 >
                   <i className="fas fa-download mr-2" aria-hidden="true" />
                     Get Resume
