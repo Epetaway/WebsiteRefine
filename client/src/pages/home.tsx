@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -12,9 +12,11 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { useMemo } from "react";
 import { getFeaturedProjects, GITHUB_USER, type Project } from "@/lib/projects";
+import { hasCaseStudy } from "@/data/caseStudies";
 
 /** FeaturedItem type for rendering project cards */
 type FeaturedItem = {
+  slug: string;
   title: string;
   description: string;
   link: string;
@@ -23,6 +25,7 @@ type FeaturedItem = {
   kind: 'github' | 'brand';
   html_url: string;
   homepage: string | null;
+  hasCaseStudy: boolean;
 };
 
 /**
@@ -30,6 +33,7 @@ type FeaturedItem = {
  */
 function projectToFeaturedItem(project: Project): FeaturedItem {
   return {
+    slug: project.slug,
     title: project.displayTitle,
     description: project.description,
     link: project.repoUrl,
@@ -38,10 +42,13 @@ function projectToFeaturedItem(project: Project): FeaturedItem {
     kind: 'github',
     html_url: project.repoUrl,
     homepage: project.liveUrl || null,
+    hasCaseStudy: hasCaseStudy(project.slug),
   };
 }
 
 export default function Home() {
+  const navigate = useNavigate();
+  
   // Use centralized project data from lib/projects.ts
   const featured = useMemo<FeaturedItem[]>(() => {
     const projects = getFeaturedProjects(4);
@@ -173,49 +180,60 @@ export default function Home() {
           >
             {featured.map((item, idx) => (
               <SwiperSlide key={idx} className="h-auto">
-                <Link to={item.link} className="group block h-full">
-                  <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[345px] mx-auto rounded-2xl card-hover">
-                    <div className="aspect-video bg-gray-100 dark:bg-slate-700/50 flex-shrink-0">
-                      <img
-                        src={item.image}
-                        alt={`${item.title} preview`}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
-                    </div>
-                    <div className="p-5 flex-1 flex flex-col min-h-[280px]">
-                      {item.tech && (
-                        <div className="flex flex-wrap gap-1.5 mb-3 min-h-[28px]">
-                          {item.tech.slice(0, 3).map((t) => (
-                            <span key={t} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-700 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-200">
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-                      )}
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors line-clamp-2 min-h-[56px]">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed line-clamp-3 min-h-[60px]">{item.description}</p>
-                      {item.kind === 'github' && (
-                        <div className="mt-auto flex flex-wrap gap-2">
-                          {item.html_url && (
-                            <a href={item.html_url} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm">
-                              <Github className="h-3.5 w-3.5" />
-                              View Code
-                            </a>
-                          )}
-                          {item.homepage && (
-                            <a href={item.homepage} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300">
-                              <ExternalLink className="h-3.5 w-3.5" />
-                              Demo
-                            </a>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  </Card>
-                </Link>
+                <Card 
+                  className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[397px] mx-auto rounded-2xl card-hover cursor-pointer group"
+                  onClick={() => navigate(`/projects/${item.slug}`)}
+                >
+                  <div className="aspect-video bg-gray-100 dark:bg-slate-700/50 flex-shrink-0">
+                    <img
+                      src={item.image}
+                      alt={`${item.title} preview`}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col min-h-[280px]">
+                    {item.tech && (
+                      <div className="flex flex-wrap gap-1.5 mb-3 min-h-[28px]">
+                        {item.tech.slice(0, 3).map((t) => (
+                          <span key={t} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-700 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-200">
+                            {t}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors line-clamp-2 min-h-[56px]">
+                      {item.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed line-clamp-3 min-h-[60px]">{item.description}</p>
+                    {item.kind === 'github' && (
+                      <div className="mt-auto flex flex-wrap gap-2">
+                        <a 
+                          href={item.html_url} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <Github className="h-3.5 w-3.5" />
+                          View Code
+                        </a>
+                        {item.homepage && (
+                          <a 
+                            href={item.homepage} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            View Demo
+                          </a>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                </Card>
               </SwiperSlide>
             ))}
           </Swiper>

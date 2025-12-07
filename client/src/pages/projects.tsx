@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Github, ExternalLink } from "lucide-react";
 import { getPinnedProjects, getAdditionalProjects, GITHUB_USER } from "@/lib/projects";
 import ScrollReveal from "@/components/ui/ScrollReveal";
@@ -14,6 +14,7 @@ const additionalProjectsList = getAdditionalProjects();
 
 export default function Projects() {
   useReveal();
+  const navigate = useNavigate();
 
   const title = "Projects & Professional Front-End Demos — Earl Hickson Jr.";
   const description = "Front-end development projects showcasing React, TypeScript, healthcare portals, and accessibility-focused UI.";
@@ -64,7 +65,8 @@ export default function Projects() {
                 <SwiperSlide key={project.slug} className="h-auto">
                   <article 
                     data-reveal 
-                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col max-w-[345px] mx-auto"
+                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col max-w-[397px] mx-auto cursor-pointer"
+                    onClick={() => navigate(`/projects/${project.slug}`)}
                   >
                     {/* Project Preview Image - 16:9 aspect ratio */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
@@ -79,7 +81,7 @@ export default function Projects() {
 
                     {/* Project Content */}
                     <div className="p-5 space-y-4 flex-1 flex flex-col">
-                      {/* Title - no arrow */}
+                      {/* Title */}
                       <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight" data-testid={`project-title-${project.slug}`}>
                         {project.displayTitle}
                       </h2>
@@ -114,9 +116,10 @@ export default function Projects() {
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
                             data-testid={`project-demo-${project.slug}`}
+                            onClick={(e) => e.stopPropagation()}
                           >
                             <ExternalLink className="h-3.5 w-3.5" />
-                            Live Demo
+                            View Demo
                           </a>
                         )}
                         <a
@@ -125,6 +128,7 @@ export default function Projects() {
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
                           data-testid={`project-repo-${project.slug}`}
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <Github className="h-3.5 w-3.5" />
                           View Code
@@ -153,7 +157,8 @@ export default function Projects() {
                 <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                   <article 
                     data-reveal 
-                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm card-hover h-full flex flex-col"
+                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm card-hover h-full flex flex-col cursor-pointer"
+                    onClick={() => navigate(`/projects/${project.slug}`)}
                   >
                     {/* Project Preview Image */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
@@ -196,6 +201,7 @@ export default function Projects() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                            onClick={(e) => e.stopPropagation()}
                           >
                             <ExternalLink className="h-3 w-3" />
                             Demo
@@ -206,6 +212,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
+                          onClick={(e) => e.stopPropagation()}
                         >
                           <Github className="h-3 w-3" />
                           Code
