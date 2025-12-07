@@ -34,7 +34,7 @@ export default function BlogCard({
       role="article"
       aria-labelledby={`post-${post.id}-title`}
       className={[
-        "group relative overflow-hidden rounded-2xl transition-shadow",
+        "group relative overflow-hidden rounded-2xl transition-shadow h-full",
         useGradient ? "bg-transparent" : "bg-white",
         "hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
       ].join(" ")}
@@ -42,12 +42,12 @@ export default function BlogCard({
     >
       <Link
         to={href}
-        className="block outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+        className="block h-full outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         aria-label={`Open blog post: ${post.title}`}
       >
         {useGradient ? (
           // Gradient version: text overlaid on gradient
-          <div className={["relative overflow-hidden", isDefault ? "aspect-[16/9]" : "aspect-[4/3]"].join(" ")}>
+          <div className="relative overflow-hidden h-full">
             <div className={`absolute inset-0 bg-gradient-to-br ${post.coverGradient}`} />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
             <div className={["relative h-full flex flex-col justify-end", isDefault ? "p-5 sm:p-6" : "p-4"].join(" ")}>
@@ -98,8 +98,8 @@ export default function BlogCard({
           </div>
         ) : (
           // Image version: original layout
-          <>
-            <div className={["relative overflow-hidden", isDefault ? "aspect-[16/9]" : "aspect-[4/3]"].join(" ")}>
+          <div className="h-full flex flex-col">
+            <div className="relative overflow-hidden flex-shrink-0" style={{ minHeight: '200px' }}>
               <img
                 src={coverSrc}
                 alt={post.title}
@@ -110,7 +110,7 @@ export default function BlogCard({
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
             </div>
 
-            <div className={isDefault ? "p-5 sm:p-6" : "p-4"}>
+            <div className={["flex-1 flex flex-col", isDefault ? "p-5 sm:p-6" : "p-4"].join(" ")}>
               <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-wide">
                 <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{post.category}</span>
                 <span className="text-gray-400">•</span>
@@ -162,7 +162,7 @@ export default function BlogCard({
                 </svg>
               </div>
             </div>
-          </>
+          </div>
         )}
       </Link>
     </article>
