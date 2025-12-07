@@ -33,6 +33,9 @@ export default function Blog() {
     [filtered]
   );
 
+  const featured = sorted[0];
+  const others = featured ? sorted.filter((p) => p.id !== featured.id) : sorted;
+
   const title = "Blog – Front-End, Accessibility, BJJ | Earl Hickson Jr.";
   const description =
     "Notes on React, Angular, performance, and accessibility—plus Brazilian Jiu-Jitsu lessons that inform my engineering craft.";
@@ -82,6 +85,23 @@ export default function Blog() {
         </div>
       </section>
 
+      {featured && (
+        <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
+          <div className="max-w-[1120px] mx-auto px-5">
+            <ScrollReveal animation="slide-up">
+              <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 font-serif" data-testid="section-title-featured">
+                <span className="text-emerald-500 dark:text-emerald-400">Featured Post</span>
+              </h2>
+            </ScrollReveal>
+            <ScrollReveal animation="slide-up" delay={100}>
+              <div style={{ maxWidth: '520px' }}>
+                <BlogCard post={featured} variant="default" />
+              </div>
+            </ScrollReveal>
+          </div>
+        </section>
+      )}
+
       <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
         <div className="max-w-[1400px] mx-auto px-5">
           <ScrollReveal animation="slide-up">
@@ -90,9 +110,9 @@ export default function Blog() {
             </h2>
           </ScrollReveal>
 
-          {sorted.length > 0 ? (
+          {others.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
-              {sorted.map((post, idx) => {
+              {others.map((post, idx) => {
                 // Create different sizes for bento box layout
                 const sizes = [
                   "md:col-span-2 md:row-span-2", // Large
