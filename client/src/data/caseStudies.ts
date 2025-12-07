@@ -31,6 +31,7 @@ export type ProjectCaseStudy = {
     description: string;
     color: 'blue' | 'green' | 'gold';
   }>;
+  screenshots?: string[];
   demoUrl?: string;
   codeUrl: string;
   repo: string;
@@ -108,6 +109,12 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         color: 'gold',
       },
     ],
+    screenshots: [
+      'https://raw.githubusercontent.com/Epetaway/patient-portal-demo/main/public/assets/screenshots/screenshot1.png',
+      'https://raw.githubusercontent.com/Epetaway/patient-portal-demo/main/public/assets/screenshots/screenshot2.png',
+      'https://raw.githubusercontent.com/Epetaway/patient-portal-demo/main/public/assets/screenshots/screenshot3.png',
+      'https://raw.githubusercontent.com/Epetaway/patient-portal-demo/main/public/assets/screenshots/screenshot4.png',
+    ],
     demoUrl: 'https://epetaway.github.io/patient-portal-demo/#login',
     codeUrl: 'https://github.com/Epetaway/patient-portal-demo',
     repo: 'patient-portal-demo',
@@ -182,6 +189,12 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         description: 'Responsive across all devices',
         color: 'gold',
       },
+    ],
+    screenshots: [
+      'https://raw.githubusercontent.com/Epetaway/DojoNet-Prototype-MAX/main/public/assets/screenshots/screenshot1.png',
+      'https://raw.githubusercontent.com/Epetaway/DojoNet-Prototype-MAX/main/public/assets/screenshots/screenshot2.png',
+      'https://raw.githubusercontent.com/Epetaway/DojoNet-Prototype-MAX/main/public/assets/screenshots/screenshot3.png',
+      'https://raw.githubusercontent.com/Epetaway/DojoNet-Prototype-MAX/main/public/assets/screenshots/screenshot4.png',
     ],
     demoUrl: 'https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard',
     codeUrl: 'https://github.com/Epetaway/DojoNet-Prototype-MAX',
@@ -258,6 +271,12 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         color: 'gold',
       },
     ],
+    screenshots: [
+      'https://raw.githubusercontent.com/Epetaway/ResumeCraft-ghpages/main/public/assets/screenshots/screenshot1.png',
+      'https://raw.githubusercontent.com/Epetaway/ResumeCraft-ghpages/main/public/assets/screenshots/screenshot2.png',
+      'https://raw.githubusercontent.com/Epetaway/ResumeCraft-ghpages/main/public/assets/screenshots/screenshot3.png',
+      'https://raw.githubusercontent.com/Epetaway/ResumeCraft-ghpages/main/public/assets/screenshots/screenshot4.png',
+    ],
     demoUrl: 'https://epetaway.github.io/ResumeCraft-ghpages',
     codeUrl: 'https://github.com/Epetaway/ResumeCraft-ghpages',
     repo: 'ResumeCraft-ghpages',
@@ -332,6 +351,12 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         description: 'Pure vanilla JavaScript',
         color: 'gold',
       },
+    ],
+    screenshots: [
+      'https://raw.githubusercontent.com/Epetaway/mtg-proxy-generator/main/public/assets/screenshots/screenshot1.png',
+      'https://raw.githubusercontent.com/Epetaway/mtg-proxy-generator/main/public/assets/screenshots/screenshot2.png',
+      'https://raw.githubusercontent.com/Epetaway/mtg-proxy-generator/main/public/assets/screenshots/screenshot3.png',
+      'https://raw.githubusercontent.com/Epetaway/mtg-proxy-generator/main/public/assets/screenshots/screenshot4.png',
     ],
     demoUrl: 'https://epetaway.github.io/mtg-proxy-generator/',
     codeUrl: 'https://github.com/Epetaway/mtg-proxy-generator',

@@ -191,6 +191,70 @@ export default function CaseStudy() {
         </ScrollReveal>
       </Section>
 
+      {/* Project Screenshots Gallery - Bento Grid */}
+      {caseStudy.screenshots && caseStudy.screenshots.length > 0 && (
+        <Section className="bg-white dark:bg-slate-950">
+          <ScrollReveal animation="slide-up">
+            <SectionHeader 
+              preLabel="// Gallery"
+              title="Project Screenshots"
+            />
+          </ScrollReveal>
+          
+          <ScrollReveal animation="fade" delay={100}>
+            {/* Bento Grid Layout - Responsive */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[200px]">
+              {caseStudy.screenshots.map((screenshot, idx) => {
+                // Create varied bento grid patterns
+                const getBentoClass = (index: number) => {
+                  const pattern = index % 6;
+                  if (pattern === 0) return 'md:col-span-2 md:row-span-2'; // Large
+                  if (pattern === 1) return 'md:row-span-2'; // Tall
+                  if (pattern === 2) return 'md:col-span-2'; // Wide
+                  return ''; // Standard
+                };
+                
+                return (
+                  <div
+                    key={idx}
+                    className={`group relative overflow-hidden rounded-xl bg-gray-100 dark:bg-slate-800 shadow-md hover:shadow-xl transition-all duration-300 ${getBentoClass(idx)}`}
+                  >
+                    <img
+                      src={screenshot}
+                      alt={`${caseStudy.title} screenshot ${idx + 1}`}
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                      loading="lazy"
+                      onError={(e) => {
+                        // Fallback to placeholder if image fails to load
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        const parent = target.parentElement;
+                        if (parent) {
+                          parent.innerHTML = `
+                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-800 dark:to-slate-900">
+                              <div class="text-center p-6">
+                                <svg class="w-12 h-12 mx-auto mb-2 text-gray-400 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <p class="text-sm text-gray-500 dark:text-slate-400">Screenshot ${idx + 1}</p>
+                              </div>
+                            </div>
+                          `;
+                        }
+                      }}
+                    />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
+                      <span className="text-white text-sm font-medium">View Screenshot</span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </ScrollReveal>
+        </Section>
+      )}
+
       {/* Business Outcomes */}
       <Section className="bg-gray-50 dark:bg-slate-900">
         <ScrollReveal animation="slide-up">
