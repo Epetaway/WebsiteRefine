@@ -38,11 +38,12 @@ export default function Header() {
 
   return (
     <header
-      className={`w-full h-16 sticky top-0 z-50 ui-transition-soft border-b backdrop-blur-xl ${
+      className={`w-full sticky top-0 z-50 ui-transition-soft border-b backdrop-blur-xl ${
         scrolled
           ? "bg-white/80 dark:bg-slate-950/80 shadow-sm border-gray-200/50 dark:border-slate-800/50"
           : "bg-white/60 dark:bg-slate-950/60 border-transparent"
       }`}
+      style={{ height: '72px' }}
     >
       {/* Main Navbar */}
       <div className="mx-auto max-w-[1120px] h-full px-5">
