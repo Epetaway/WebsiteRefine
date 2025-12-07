@@ -13,6 +13,7 @@ import { ExternalLink, Github, Code2 } from "lucide-react";
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const [screenshots, setScreenshots] = useState<string[]>([]);
+  const [loadingScreenshots, setLoadingScreenshots] = useState(true);
   
   const caseStudy = slug ? getCaseStudy(slug) : null;
 
@@ -20,16 +21,18 @@ export default function CaseStudy() {
   useEffect(() => {
     const fetchScreenshots = async () => {
       if (!caseStudy?.repo) {
+        setLoadingScreenshots(false);
         return;
       }
 
+      const apiUrl = `https://api.github.com/repos/Epetaway/${caseStudy.repo}/contents/public/assets/screenshots`;
+
       try {
-        const response = await fetch(
-          `https://api.github.com/repos/Epetaway/${caseStudy.repo}/contents/public/assets/screenshots`
-        );
+        const response = await fetch(apiUrl);
         
         if (response.ok) {
           const files = await response.json();
+          
           // Filter for image files and get their raw URLs
           const imageUrls = files
             .filter((file: any) => 
@@ -43,7 +46,9 @@ export default function CaseStudy() {
           setScreenshots(imageUrls);
         }
       } catch (error) {
-        console.error('Error fetching screenshots:', error);
+        // Silently fail - gallery won't show if screenshots can't be loaded
+      } finally {
+        setLoadingScreenshots(false);
       }
     };
 
@@ -229,6 +234,27 @@ export default function CaseStudy() {
       </Section>
 
       {/* Project Screenshots Gallery - Bento Grid */}
+      {/* Debug Info - Remove after testing */}
+      <Section className="bg-white dark:bg-slate-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg p-4 mb-8">
+            <h3 className="font-semibold text-yellow-900 dark:text-yellow-100 mb-2">Debug Info:</h3>
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">Repo: {caseStudy.repo}</p>
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">Loading: {loadingScreenshots ? 'Yes' : 'No'}</p>
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">Screenshots found: {screenshots.length}</p>
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">API URL: https://api.github.com/repos/Epetaway/{caseStudy.repo}/contents/public/assets/screenshots</p>
+            {screenshots.length > 0 && (
+              <div className="mt-2">
+                <p className="text-sm font-semibold text-yellow-900 dark:text-yellow-100">Screenshot URLs:</p>
+                <ul className="text-xs text-yellow-800 dark:text-yellow-200 list-disc list-inside">
+                  {screenshots.map((url, i) => <li key={i}>{url}</li>)}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      </Section>
+
       {screenshots.length > 0 && (
         <Section className="bg-white dark:bg-slate-950">
           <ScrollReveal animation="slide-up">
