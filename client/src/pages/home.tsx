@@ -181,8 +181,12 @@ export default function Home() {
             {featured.map((item, idx) => (
               <SwiperSlide key={idx} className="h-auto">
                 <Card 
-                  className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[397px] mx-auto rounded-2xl card-hover cursor-pointer group"
-                  onClick={() => navigate(`/projects/${item.slug}`)}
+                  className={`bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[397px] mx-auto rounded-2xl card-hover group ${item.hasCaseStudy ? 'cursor-pointer' : ''}`}
+                  onClick={() => {
+                    if (item.hasCaseStudy) {
+                      navigate(`/projects/${item.slug}`);
+                    }
+                  }}
                 >
                   <div className="aspect-video bg-gray-100 dark:bg-slate-700/50 flex-shrink-0">
                     <img

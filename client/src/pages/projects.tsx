@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { Github, ExternalLink } from "lucide-react";
 import { getPinnedProjects, getAdditionalProjects, GITHUB_USER } from "@/lib/projects";
+import { hasCaseStudy } from "@/data/caseStudies";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useReveal } from "@/hooks/useReveal";
 import { Button } from "@/components/ui/button";
@@ -65,8 +66,12 @@ export default function Projects() {
                 <SwiperSlide key={project.slug} className="h-auto">
                   <article 
                     data-reveal 
-                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col max-w-[397px] mx-auto cursor-pointer"
-                    onClick={() => navigate(`/projects/${project.slug}`)}
+                    className={`group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col max-w-[397px] mx-auto ${hasCaseStudy(project.slug) ? 'cursor-pointer' : ''}`}
+                    onClick={() => {
+                      if (hasCaseStudy(project.slug)) {
+                        navigate(`/projects/${project.slug}`);
+                      }
+                    }}
                   >
                     {/* Project Preview Image - 16:9 aspect ratio */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
@@ -157,8 +162,12 @@ export default function Projects() {
                 <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                   <article 
                     data-reveal 
-                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col cursor-pointer"
-                    onClick={() => navigate(`/projects/${project.slug}`)}
+                    className={`group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col ${hasCaseStudy(project.slug) ? 'cursor-pointer' : ''}`}
+                    onClick={() => {
+                      if (hasCaseStudy(project.slug)) {
+                        navigate(`/projects/${project.slug}`);
+                      }
+                    }}
                   >
                     {/* Project Preview Image - 16:9 aspect ratio */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
