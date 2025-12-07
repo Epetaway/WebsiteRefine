@@ -13,7 +13,6 @@ import { ExternalLink, Github, Code2 } from "lucide-react";
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const [screenshots, setScreenshots] = useState<string[]>([]);
-  const [loadingScreenshots, setLoadingScreenshots] = useState(true);
   
   const caseStudy = slug ? getCaseStudy(slug) : null;
 
@@ -21,7 +20,6 @@ export default function CaseStudy() {
   useEffect(() => {
     const fetchScreenshots = async () => {
       if (!caseStudy?.repo) {
-        setLoadingScreenshots(false);
         return;
       }
 
@@ -53,7 +51,6 @@ export default function CaseStudy() {
             
             if (imageUrls.length > 0) {
               setScreenshots(imageUrls);
-              setLoadingScreenshots(false);
               return; // Found screenshots, stop trying other paths
             }
           }
@@ -64,7 +61,6 @@ export default function CaseStudy() {
       }
       
       // No screenshots found in any location
-      setLoadingScreenshots(false);
     };
 
     fetchScreenshots();
