@@ -27,6 +27,7 @@ export default function BlogCard({
   });
 
   const isDefault = variant === "default";
+  const useGradient = !!post.coverGradient;
 
   return (
     <article
@@ -44,14 +45,20 @@ export default function BlogCard({
         aria-label={`Open blog post: ${post.title}`}
       >
         <div className={["relative overflow-hidden", isDefault ? "aspect-[16/9]" : "aspect-[4/3]"].join(" ")}>
-          <img
-            src={coverSrc}
-            alt={post.title}
-            className="h-full w-full object-cover transition-transform duration-500 motion-reduce:duration-0 group-hover:scale-[1.03]"
-            loading="lazy"
-            decoding="async"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+          {useGradient ? (
+            <div className={`h-full w-full bg-gradient-to-br ${post.coverGradient}`} />
+          ) : (
+            <>
+              <img
+                src={coverSrc}
+                alt={post.title}
+                className="h-full w-full object-cover transition-transform duration-500 motion-reduce:duration-0 group-hover:scale-[1.03]"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
+            </>
+          )}
         </div>
 
         <div className={isDefault ? "p-5 sm:p-6" : "p-4"}>

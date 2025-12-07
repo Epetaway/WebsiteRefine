@@ -12,6 +12,7 @@ export interface BlogPost {
   readTime: number;
   coverImage?: string;
   coverImageAlt?: string;     // NEW: better a11y
+  coverGradient?: string;     // NEW: CSS gradient classes (e.g., "from-purple-600 to-blue-600")
   relatedPosts?: string[];    // slugs of related posts
 }
 
@@ -85,8 +86,7 @@ I’m staying in this field because I love the craft and the impact. But I’m a
     featured: true,
     tags: ["DEI", "Job Search", "Black in Tech", "Front-End", "Career"],
     readTime: 7,
-    coverImage: "/images/blog/dei-rollback-black-tech-2025-banner.png",
-    coverImageAlt: "A Black male web developer at a desk with a laptop, looking stressed during a job search",
+    coverGradient: "from-purple-600 via-purple-500 to-indigo-600",
     relatedPosts: [
       "ai-ease-developer-anxiety",
       "bjj-habits-better-front-end-engineer",
@@ -238,8 +238,7 @@ And maybe he'll win some battles earlier than I did.`,
     category: "general",
     tags: ["Black in Tech", "BJJ", "Mental Health", "Fatherhood", "Career", "Personal Growth"],
     readTime: 8,
-    coverImage: "/images/blog/fighting-through-fog.png",
-    coverImageAlt: "A reflective moment of a Black developer and father contemplating his journey in tech and life",
+    coverGradient: "from-purple-700 via-violet-600 to-fuchsia-600",
     relatedPosts: [
       "dei-rollbacks-black-tech-job-hunt",
       "why-i-started-training-jiu-jitsu",
