@@ -14,6 +14,7 @@ export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const [screenshots, setScreenshots] = useState<string[]>([]);
   const [loadingScreenshots, setLoadingScreenshots] = useState(true);
+  const [screenshotPath, setScreenshotPath] = useState<string>('');
   
   const caseStudy = slug ? getCaseStudy(slug) : null;
 
@@ -25,31 +26,47 @@ export default function CaseStudy() {
         return;
       }
 
-      const apiUrl = `https://api.github.com/repos/Epetaway/${caseStudy.repo}/contents/public/assets/screenshots`;
+      // Try multiple possible screenshot locations
+      const possiblePaths = [
+        'public/assets/screenshots',
+        'assets/screenshots',
+        'screenshots',
+        'src/assets/screenshots'
+      ];
 
-      try {
-        const response = await fetch(apiUrl);
-        
-        if (response.ok) {
-          const files = await response.json();
+      for (const path of possiblePaths) {
+        try {
+          const apiUrl = `https://api.github.com/repos/Epetaway/${caseStudy.repo}/contents/${path}`;
+          const response = await fetch(apiUrl);
           
-          // Filter for image files and get their raw URLs
-          const imageUrls = files
-            .filter((file: any) => 
-              file.type === 'file' && 
-              /\.(png|jpg|jpeg|svg|gif|webp)$/i.test(file.name)
-            )
-            .map((file: any) => 
-              `https://raw.githubusercontent.com/Epetaway/${caseStudy.repo}/main/public/assets/screenshots/${file.name}`
-            );
-          
-          setScreenshots(imageUrls);
+          if (response.ok) {
+            const files = await response.json();
+            
+            // Filter for image files and get their raw URLs
+            const imageUrls = files
+              .filter((file: any) => 
+                file.type === 'file' && 
+                /\.(png|jpg|jpeg|svg|gif|webp)$/i.test(file.name)
+              )
+              .map((file: any) => 
+                `https://raw.githubusercontent.com/Epetaway/${caseStudy.repo}/main/${path}/${file.name}`
+              );
+            
+            if (imageUrls.length > 0) {
+              setScreenshots(imageUrls);
+              setScreenshotPath(path);
+              setLoadingScreenshots(false);
+              return; // Found screenshots, stop trying other paths
+            }
+          }
+        } catch (error) {
+          // Try next path
+          continue;
         }
-      } catch (error) {
-        // Silently fail - gallery won't show if screenshots can't be loaded
-      } finally {
-        setLoadingScreenshots(false);
       }
+      
+      // No screenshots found in any location
+      setLoadingScreenshots(false);
     };
 
     fetchScreenshots();
@@ -242,7 +259,8 @@ export default function CaseStudy() {
             <p className="text-sm text-yellow-800 dark:text-yellow-200">Repo: {caseStudy.repo}</p>
             <p className="text-sm text-yellow-800 dark:text-yellow-200">Loading: {loadingScreenshots ? 'Yes' : 'No'}</p>
             <p className="text-sm text-yellow-800 dark:text-yellow-200">Screenshots found: {screenshots.length}</p>
-            <p className="text-sm text-yellow-800 dark:text-yellow-200">API URL: https://api.github.com/repos/Epetaway/{caseStudy.repo}/contents/public/assets/screenshots</p>
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">Path used: {screenshotPath || 'None found'}</p>
+            <p className="text-sm text-yellow-800 dark:text-yellow-200">Paths tried: public/assets/screenshots, assets/screenshots, screenshots, src/assets/screenshots</p>
             {screenshots.length > 0 && (
               <div className="mt-2">
                 <p className="text-sm font-semibold text-yellow-900 dark:text-yellow-100">Screenshot URLs:</p>
