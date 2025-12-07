@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useState, useEffect } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -11,16 +12,52 @@ import { ExternalLink, Github, Code2 } from "lucide-react";
 
 export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
+  const [screenshots, setScreenshots] = useState<string[]>([]);
+  
+  const caseStudy = slug ? getCaseStudy(slug) : null;
+
+  // Fetch screenshots dynamically from GitHub
+  useEffect(() => {
+    const fetchScreenshots = async () => {
+      if (!caseStudy?.repo) {
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `https://api.github.com/repos/Epetaway/${caseStudy.repo}/contents/public/assets/screenshots`
+        );
+        
+        if (response.ok) {
+          const files = await response.json();
+          // Filter for image files and get their raw URLs
+          const imageUrls = files
+            .filter((file: any) => 
+              file.type === 'file' && 
+              /\.(png|jpg|jpeg|svg|gif|webp)$/i.test(file.name)
+            )
+            .map((file: any) => 
+              `https://raw.githubusercontent.com/Epetaway/${caseStudy.repo}/main/public/assets/screenshots/${file.name}`
+            );
+          
+          setScreenshots(imageUrls);
+        }
+      } catch (error) {
+        console.error('Error fetching screenshots:', error);
+      }
+    };
+
+    fetchScreenshots();
+  }, [caseStudy?.repo]);
   
   if (!slug) {
     return <Navigate to="/projects" replace />;
   }
 
-  const caseStudy = getCaseStudy(slug);
-
   if (!caseStudy) {
     return <Navigate to="/projects" replace />;
   }
+
 
   return (
     <>
@@ -192,7 +229,7 @@ export default function CaseStudy() {
       </Section>
 
       {/* Project Screenshots Gallery - Bento Grid */}
-      {caseStudy.screenshots && caseStudy.screenshots.length > 0 && (
+      {screenshots.length > 0 && (
         <Section className="bg-white dark:bg-slate-950">
           <ScrollReveal animation="slide-up">
             <SectionHeader 
@@ -204,7 +241,7 @@ export default function CaseStudy() {
           <ScrollReveal animation="fade" delay={100}>
             {/* Bento Grid Layout - Responsive */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[200px]">
-              {caseStudy.screenshots.map((screenshot, idx) => {
+              {screenshots.map((screenshot, idx) => {
                 // Create varied bento grid patterns
                 const getBentoClass = (index: number) => {
                   const pattern = index % 6;
