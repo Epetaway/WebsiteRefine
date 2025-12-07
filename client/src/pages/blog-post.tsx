@@ -72,6 +72,7 @@ export default function BlogPost() {
   const raw = post.coverImage || "/images/blog/placeholder.jpg";
   const isHttp = /^https?:\/\//i.test(raw);
   const coverSrc = isHttp ? raw : `${base}${raw.replace(/^\/+/, "")}`;
+  const useGradient = !!post.coverGradient;
 
   const title = `${post.title} – Blog | Earl Hickson Jr.`;
   const description = post.excerpt || "Front-end engineering notes and insights.";
@@ -125,7 +126,11 @@ export default function BlogPost() {
       <section className="pb-12">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="overflow-hidden rounded-2xl border border-gray-200">
-            <img src={coverSrc} alt={post.title} className="h-auto w-full object-cover" loading="lazy" />
+            {useGradient ? (
+              <div className={`h-64 md:h-96 w-full bg-gradient-to-br ${post.coverGradient}`} />
+            ) : (
+              <img src={coverSrc} alt={post.title} className="h-auto w-full object-cover" loading="lazy" />
+            )}
           </div>
         </div>
       </section>

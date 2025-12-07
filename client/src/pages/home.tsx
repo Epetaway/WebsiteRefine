@@ -13,6 +13,7 @@ import 'swiper/css';
 import { useMemo } from "react";
 import { getFeaturedProjects, GITHUB_USER, type Project } from "@/lib/projects";
 import { RESUME_PATH } from "@/data/projects";
+import { hasCaseStudy } from "@/data/caseStudies";
 
 /** FeaturedItem type for rendering project cards */
 type FeaturedItem = {

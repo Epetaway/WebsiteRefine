@@ -94,10 +94,8 @@ export default function Blog() {
               </h2>
             </ScrollReveal>
             <ScrollReveal animation="slide-up" delay={100}>
-              <div style={{ maxWidth: '326px' }}>
-                <div className="rounded-2xl shadow-lg dark:shadow-emerald-900/10 border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-gray-900 card-hover">
-                  <BlogCard post={featured} />
-                </div>
+              <div style={{ maxWidth: '520px' }}>
+                <BlogCard post={featured} variant="default" />
               </div>
             </ScrollReveal>
           </div>
@@ -105,7 +103,7 @@ export default function Blog() {
       )}
 
       <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
-        <div className="max-w-[1120px] mx-auto px-5">
+        <div className="max-w-[1400px] mx-auto px-5">
           <ScrollReveal animation="slide-up">
             <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100" data-testid="section-title-all">
               All Posts
@@ -113,14 +111,26 @@ export default function Blog() {
           </ScrollReveal>
 
           {others.length > 0 ? (
-            <div className="grid gap-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
-              {others.map((post, idx) => (
-                <ScrollReveal key={post.id} animation="slide-up" delay={idx * 50}>
-                  <div className="card-hover">
-                    <BlogCard post={post} />
-                  </div>
-                </ScrollReveal>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
+              {others.map((post, idx) => {
+                // Create different sizes for bento box layout
+                const sizes = [
+                  "md:col-span-2 md:row-span-2", // Large
+                  "md:col-span-1 md:row-span-1", // Small
+                  "md:col-span-1 md:row-span-2", // Tall
+                  "md:col-span-2 md:row-span-1", // Wide
+                  "md:col-span-1 md:row-span-1", // Small
+                ];
+                const sizeClass = sizes[idx % sizes.length];
+
+                return (
+                  <ScrollReveal key={post.id} animation="fade" delay={idx * 30}>
+                    <div className={`h-full ${sizeClass}`}>
+                      <BlogCard post={post} variant={sizeClass.includes("col-span-2") ? "default" : "minimal"} />
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
             </div>
           ) : (
             <ScrollReveal animation="fade">
