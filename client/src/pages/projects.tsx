@@ -152,15 +152,15 @@ export default function Projects() {
                 More Public Work
               </h2>
             </ScrollReveal>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {additionalProjectsList.map((project, idx) => (
                 <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                   <article 
                     data-reveal 
-                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl overflow-hidden shadow-sm card-hover h-full flex flex-col cursor-pointer"
+                    className="group bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow-sm card-hover h-full flex flex-col cursor-pointer"
                     onClick={() => navigate(`/projects/${project.slug}`)}
                   >
-                    {/* Project Preview Image */}
+                    {/* Project Preview Image - 16:9 aspect ratio */}
                     <div className="relative aspect-video bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 overflow-hidden">
                       <img
                         src={`https://opengraph.githubassets.com/1/${GITHUB_USER}/${project.slug}`}
@@ -171,51 +171,56 @@ export default function Projects() {
                       <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
 
-                    {/* Project Content - Compact */}
-                    <div className="p-3 space-y-2 flex-1 flex flex-col">
-                      <h2 className="text-sm font-bold text-gray-900 dark:text-white tracking-tight line-clamp-1">
+                    {/* Project Content */}
+                    <div className="p-5 space-y-4 flex-1 flex flex-col">
+                      {/* Title */}
+                      <h2 className="text-lg font-bold text-gray-900 dark:text-white tracking-tight">
                         {project.displayTitle}
                       </h2>
                       
-                      <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed line-clamp-2">
-                        {project.description}
+                      {/* Summary - limited to 100 characters */}
+                      <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">
+                        {(() => {
+                          const txt = project.description;
+                          return txt.length > 100 ? txt.slice(0, 97) + "…" : txt;
+                        })()}
                       </p>
                       
-                      {/* Tech Stack Tags - Compact */}
-                      <div className="flex flex-wrap gap-1">
-                        {project.techStack.slice(0, 2).map((tech, index) => (
+                      {/* Tech Stack Tags */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.techStack.slice(0, 3).map((tech, index) => (
                           <span
                             key={index}
-                            className="inline-flex items-center text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-1.5 py-0.5 rounded-full"
+                            className="inline-flex items-center text-xs font-medium bg-emerald-50 dark:bg-emerald-950/30 text-emerald-700 dark:text-emerald-300 px-2 py-1 rounded-full"
                           >
                             {tech}
                           </span>
                         ))}
                       </div>
                       
-                      {/* CTA Links - Compact */}
-                      <div className="flex flex-wrap gap-1.5 pt-1 mt-auto">
+                      {/* CTA Links */}
+                      <div className="flex flex-wrap gap-2 pt-1 mt-auto">
                         {project.liveUrl && (
                           <a
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
                             onClick={(e) => e.stopPropagation()}
                           >
-                            <ExternalLink className="h-3 w-3" />
-                            Demo
+                            <ExternalLink className="h-3.5 w-3.5" />
+                            View Demo
                           </a>
                         )}
                         <a
                           href={project.repoUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 px-2 py-1 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
+                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <Github className="h-3 w-3" />
-                          Code
+                          <Github className="h-3.5 w-3.5" />
+                          View Code
                         </a>
                       </div>
                     </div>
