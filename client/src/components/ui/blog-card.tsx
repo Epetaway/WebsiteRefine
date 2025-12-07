@@ -36,7 +36,7 @@ export default function BlogCard({
       className={[
         "group relative overflow-hidden rounded-2xl transition-shadow",
         useGradient ? "bg-transparent" : "bg-white",
-        "ring-1 ring-gray-200 hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
+        "hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
       ].join(" ")}
       data-testid={`blog-card-${post.id}`}
     >
