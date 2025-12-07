@@ -30,22 +30,22 @@ export default function CaseStudy() {
       </Helmet>
 
       {/* Hero Section */}
-      <Section className="min-h-[60vh] flex items-center bg-gradient-to-br from-emerald-50 via-blue-50 to-purple-50 dark:from-emerald-950/30 dark:via-blue-950/30 dark:to-purple-950/30">
+      <Section className="min-h-[60vh] flex items-center bg-gradient-to-br from-blue-600 to-emerald-600">
         <div className="space-y-6">
           <ScrollReveal animation="slide-up">
-            <Badge className="bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20">
+            <Badge className="bg-white/10 text-white border-white/30">
               Case Study
             </Badge>
           </ScrollReveal>
           
           <ScrollReveal animation="slide-up" delay={100}>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-slate-50 tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
               {caseStudy.title}
             </h1>
           </ScrollReveal>
           
           <ScrollReveal animation="slide-up" delay={150}>
-            <p className="text-xl text-gray-600 dark:text-slate-300 max-w-3xl">
+            <p className="text-xl text-blue-50 max-w-3xl">
               {caseStudy.subtitle}
             </p>
           </ScrollReveal>
@@ -53,7 +53,7 @@ export default function CaseStudy() {
           <ScrollReveal animation="slide-up" delay={200}>
             <div className="flex flex-wrap gap-2">
               {caseStudy.technical.techStack.slice(0, 5).map((tech) => (
-                <Badge key={tech} variant="outline" className="border-gray-300 dark:border-slate-700">
+                <Badge key={tech} variant="outline" className="border-white/30 text-white">
                   {tech}
                 </Badge>
               ))}
