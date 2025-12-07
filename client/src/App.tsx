@@ -13,6 +13,8 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 import Footer from "@/components/layout/footer";
 import Home from "@/pages/home";
 import Projects from "@/pages/projects";
+import CaseStudy from "@/pages/case-study";
+import DeveloperView from "@/pages/developer-view";
 import About from "@/pages/about";
 import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
@@ -33,7 +35,8 @@ function AppShell() {
           <Route path="/" element={<Home />} />
           <Route path="/case-studies" element={<Projects />} />
           <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<Projects />} />
+          <Route path="/projects/:slug" element={<CaseStudy />} />
+          <Route path="/projects/:slug/dev" element={<DeveloperView />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

@@ -94,7 +94,7 @@ export default function Blog() {
               </h2>
             </ScrollReveal>
             <ScrollReveal animation="slide-up" delay={100}>
-              <div className="max-w-sm">
+              <div style={{ maxWidth: '326px' }}>
                 <div className="rounded-2xl shadow-lg dark:shadow-emerald-900/10 border border-emerald-100 dark:border-emerald-900 bg-white dark:bg-gray-900 card-hover">
                   <BlogCard post={featured} />
                 </div>
@@ -113,7 +113,7 @@ export default function Blog() {
           </ScrollReveal>
 
           {others.length > 0 ? (
-            <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
+            <div className="grid gap-8" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))' }}>
               {others.map((post, idx) => (
                 <ScrollReveal key={post.id} animation="slide-up" delay={idx * 50}>
                   <div className="card-hover">
