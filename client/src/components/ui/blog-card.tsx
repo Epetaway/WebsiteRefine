@@ -29,14 +29,35 @@ export default function BlogCard({
   const isDefault = variant === "default";
   const useGradient = !!post.coverGradient;
 
+  // Category-specific colors for badges
+  const categoryColors = {
+    bjj: {
+      bg: "bg-purple-100 dark:bg-purple-900/30",
+      text: "text-purple-700 dark:text-purple-300",
+      border: "border-purple-200 dark:border-purple-800"
+    },
+    development: {
+      bg: "bg-blue-100 dark:bg-blue-900/30",
+      text: "text-blue-700 dark:text-blue-300",
+      border: "border-blue-200 dark:border-blue-800"
+    },
+    general: {
+      bg: "bg-emerald-100 dark:bg-emerald-900/30",
+      text: "text-emerald-700 dark:text-emerald-300",
+      border: "border-emerald-200 dark:border-emerald-800"
+    }
+  };
+
+  const categoryColor = categoryColors[post.category];
+
   return (
     <article
       role="article"
       aria-labelledby={`post-${post.id}-title`}
       className={[
         "group relative overflow-hidden rounded-2xl transition-shadow h-full",
-        useGradient ? "bg-transparent" : "bg-white",
-        "hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)]",
+        useGradient ? "bg-transparent" : "bg-white dark:bg-gray-800",
+        "hover:shadow-[0_8px_30px_rgba(0,0,0,0.06)] dark:hover:shadow-[0_8px_30px_rgba(0,0,0,0.3)] focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:focus-within:shadow-[0_8px_30px_rgba(0,0,0,0.35)]",
       ].join(" ")}
       data-testid={`blog-card-${post.id}`}
     >
@@ -52,37 +73,39 @@ export default function BlogCard({
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
             <div className={["relative h-full flex flex-col justify-end", isDefault ? "p-5 sm:p-6" : "p-4"].join(" ")}>
               <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-wide">
-                <span className="rounded-full bg-white/20 backdrop-blur-sm px-2 py-0.5 text-white">{post.category}</span>
-                <span className="text-white/60">•</span>
-                <time className="text-white/80" dateTime={post.publishedAt}>
+                <span className={`rounded-full ${categoryColor.bg} ${categoryColor.text} border ${categoryColor.border} px-2.5 py-1 font-semibold shadow-sm`}>
+                  {post.category}
+                </span>
+                <span className="text-white/50">•</span>
+                <time className="text-white/70 font-medium" dateTime={post.publishedAt}>
                   {dateLabel}
                 </time>
-                <span className="text-white/60">•</span>
-                <span className="text-white/80">{post.readTime} min</span>
+                <span className="text-white/50">•</span>
+                <span className="text-white/70 font-medium">{post.readTime} min</span>
               </div>
 
               <h3
                 id={`post-${post.id}-title`}
                 className={[
-                  "font-semibold leading-snug line-clamp-2 text-white",
+                  "font-bold leading-snug line-clamp-2 text-white drop-shadow-sm",
                   isDefault ? "text-lg md:text-xl" : "text-base md:text-lg",
                 ].join(" ")}
               >
                 {post.title}
               </h3>
 
-              <p className={["mt-2 text-sm text-white/90", isDefault ? "line-clamp-3" : "line-clamp-2"].join(" ")}>
+              <p className={["mt-2 text-sm text-white/95 font-normal", isDefault ? "line-clamp-3" : "line-clamp-2"].join(" ")}>
                 {post.excerpt}
               </p>
 
-              <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-white">
+              <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 transition-all duration-200 w-fit border border-white/20">
                 Read more
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="transition-transform group-hover:translate-x-0.5"
+                  className="transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 >
                   <path
@@ -112,44 +135,46 @@ export default function BlogCard({
 
             <div className={["flex-1 flex flex-col", isDefault ? "p-5 sm:p-6" : "p-4"].join(" ")}>
               <div className="mb-2 flex flex-wrap items-center gap-2 text-[11px] uppercase tracking-wide">
-                <span className="rounded-full bg-gray-100 px-2 py-0.5 text-gray-700">{post.category}</span>
-                <span className="text-gray-400">•</span>
-                <time className="text-gray-500" dateTime={post.publishedAt}>
+                <span className={`rounded-full ${categoryColor.bg} ${categoryColor.text} border ${categoryColor.border} px-2.5 py-1 font-semibold shadow-sm`}>
+                  {post.category}
+                </span>
+                <span className="text-gray-400 dark:text-gray-600">•</span>
+                <time className="text-gray-600 dark:text-gray-400 font-medium" dateTime={post.publishedAt}>
                   {dateLabel}
                 </time>
-                <span className="text-gray-400">•</span>
-                <span className="text-gray-500">{post.readTime} min</span>
+                <span className="text-gray-400 dark:text-gray-600">•</span>
+                <span className="text-gray-600 dark:text-gray-400 font-medium">{post.readTime} min</span>
               </div>
 
               <h3
                 id={`post-${post.id}-title`}
                 className={[
-                  "font-semibold leading-snug line-clamp-2 gradient-text",
+                  "font-bold leading-snug line-clamp-2 text-gray-900 dark:text-white",
                   isDefault ? "text-lg md:text-xl" : "text-base md:text-lg",
                 ].join(" ")}
               >
                 {post.title}
               </h3>
 
-              <p className={["mt-2 text-sm text-gray-600", isDefault ? "line-clamp-3" : "line-clamp-2"].join(" ")}>
+              <p className={["mt-2 text-sm text-gray-600 dark:text-gray-300", isDefault ? "line-clamp-3" : "line-clamp-2"].join(" ")}>
                 {post.excerpt}
               </p>
 
               {isDefault && post.takeaway ? (
                 <div className="mt-3 text-sm">
-                  <span className="font-semibold text-gray-900">Takeaway: </span>
-                  <span className="text-gray-700">{post.takeaway}</span>
+                  <span className="font-semibold text-gray-900 dark:text-white">Takeaway: </span>
+                  <span className="text-gray-700 dark:text-gray-300">{post.takeaway}</span>
                 </div>
               ) : null}
 
-              <div className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-gray-900">
+              <div className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 dark:text-emerald-400 hover:text-emerald-700 dark:hover:text-emerald-300 bg-emerald-50 dark:bg-emerald-900/20 hover:bg-emerald-100 dark:hover:bg-emerald-900/30 rounded-full px-4 py-2 transition-all duration-200 w-fit border border-emerald-200 dark:border-emerald-800">
                 Read more
                 <svg
                   width="16"
                   height="16"
                   viewBox="0 0 24 24"
                   fill="none"
-                  className="transition-transform group-hover:translate-x-0.5"
+                  className="transition-transform group-hover:translate-x-1"
                   aria-hidden="true"
                 >
                   <path
