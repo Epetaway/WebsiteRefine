@@ -84,8 +84,14 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-[1400px] mx-auto px-5">
+      <section className="py-16 md:py-24 relative overflow-hidden">
+        {/* Large mesh gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-blue-50 to-emerald-50 dark:from-purple-950/30 dark:via-blue-950/30 dark:to-emerald-950/30" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.15),transparent_50%)] dark:bg-[radial-gradient(circle_at_30%_20%,rgba(168,85,247,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_60%,rgba(59,130,246,0.15),transparent_50%)] dark:bg-[radial-gradient(circle_at_70%_60%,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(16,185,129,0.15),transparent_50%)] dark:bg-[radial-gradient(circle_at_50%_80%,rgba(16,185,129,0.1),transparent_50%)]" />
+        
+        <div className="max-w-[1400px] mx-auto px-5 relative z-10">
           <ScrollReveal animation="slide-up">
             <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 font-serif" data-testid="section-title-all">
               <span className="text-emerald-500 dark:text-emerald-400">All Posts</span>
@@ -93,28 +99,46 @@ export default function Blog() {
           </ScrollReveal>
 
           {allPosts.length > 0 ? (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
+            <div 
+              className={`grid gap-4 auto-rows-[280px] ${
+                allPosts.length === 1 
+                  ? "grid-cols-1" 
+                  : allPosts.length === 2 
+                  ? "grid-cols-1 md:grid-cols-2" 
+                  : "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+              }`}
+            >
               {allPosts.map((post, idx) => {
-                // First post (featured) takes extra space in the bento grid
+                // Adjust layout based on number of posts
                 let sizeClass;
-                if (idx === 0) {
-                  // Featured post - takes 2 columns and 2 rows (4x the base cell area)
-                  sizeClass = "md:col-span-2 md:row-span-2";
+                
+                if (allPosts.length === 1) {
+                  // Single post: full width
+                  sizeClass = "col-span-1 row-span-2";
+                } else if (allPosts.length === 2) {
+                  // Two posts: each takes one column
+                  sizeClass = "md:col-span-1 md:row-span-2";
                 } else {
-                  // Other posts follow a varied bento pattern
-                  const patterns = [
-                    "md:col-span-1 md:row-span-1", // Small
-                    "md:col-span-1 md:row-span-2", // Tall
-                    "md:col-span-2 md:row-span-1", // Wide
-                    "md:col-span-1 md:row-span-1", // Small
-                  ];
-                  sizeClass = patterns[(idx - 1) % patterns.length];
+                  // Multiple posts: bento grid with featured post
+                  if (idx === 0) {
+                    // Featured post - takes 2 columns and 2 rows
+                    sizeClass = "md:col-span-2 md:row-span-2";
+                  } else {
+                    // Other posts follow a varied bento pattern
+                    const patterns = [
+                      "md:col-span-1 md:row-span-1", // Small
+                      "md:col-span-1 md:row-span-2", // Tall
+                      "md:col-span-2 md:row-span-1", // Wide
+                      "md:col-span-1 md:row-span-1", // Small
+                    ];
+                    sizeClass = patterns[(idx - 1) % patterns.length];
+                  }
                 }
 
                 return (
                   <ScrollReveal key={post.id} animation="fade" delay={idx * 30}>
                     <div className={`h-full ${sizeClass}`}>
-                      <BlogCard post={post} variant={sizeClass.includes("col-span-2") ? "default" : "minimal"} />
+                      <BlogCard post={post} variant={sizeClass.includes("col-span-2") || allPosts.length <= 2 ? "default" : "minimal"} />
                     </div>
                   </ScrollReveal>
                 );
