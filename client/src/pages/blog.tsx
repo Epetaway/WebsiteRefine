@@ -33,8 +33,7 @@ export default function Blog() {
     [filtered]
   );
 
-  const featured = sorted[0];
-  const others = featured ? sorted.filter((p) => p.id !== featured.id) : sorted;
+  const allPosts = sorted;
 
   const title = "Blog – Front-End, Accessibility, BJJ | Earl Hickson Jr.";
   const description =
@@ -85,43 +84,33 @@ export default function Blog() {
         </div>
       </section>
 
-      {featured && (
-        <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
-          <div className="max-w-[1120px] mx-auto px-5">
-            <ScrollReveal animation="slide-up">
-              <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 font-serif" data-testid="section-title-featured">
-                <span className="text-emerald-500 dark:text-emerald-400">Featured Post</span>
-              </h2>
-            </ScrollReveal>
-            <ScrollReveal animation="slide-up" delay={100}>
-              <div style={{ maxWidth: '520px' }}>
-                <BlogCard post={featured} variant="default" />
-              </div>
-            </ScrollReveal>
-          </div>
-        </section>
-      )}
-
-      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
+      <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-[1400px] mx-auto px-5">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100" data-testid="section-title-all">
-              All Posts
+            <h2 className="text-2xl font-bold mb-8 text-gray-900 dark:text-gray-100 font-serif" data-testid="section-title-all">
+              <span className="text-emerald-500 dark:text-emerald-400">All Posts</span>
             </h2>
           </ScrollReveal>
 
-          {others.length > 0 ? (
+          {allPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
-              {others.map((post, idx) => {
-                // Create different sizes for bento box layout
-                const sizes = [
-                  "md:col-span-2 md:row-span-2", // Large
-                  "md:col-span-1 md:row-span-1", // Small
-                  "md:col-span-1 md:row-span-2", // Tall
-                  "md:col-span-2 md:row-span-1", // Wide
-                  "md:col-span-1 md:row-span-1", // Small
-                ];
-                const sizeClass = sizes[idx % sizes.length];
+              {allPosts.map((post, idx) => {
+                // First post (featured) takes 1.5x space (3 columns out of 6, or col-span-3 in a 6-column grid)
+                // We'll use md:col-span-2 for the featured post to give it extra width
+                let sizeClass;
+                if (idx === 0) {
+                  // Featured post - takes approximately 1.5x space
+                  sizeClass = "md:col-span-2 md:row-span-2";
+                } else {
+                  // Other posts follow a varied bento pattern
+                  const patterns = [
+                    "md:col-span-1 md:row-span-1", // Small
+                    "md:col-span-1 md:row-span-2", // Tall
+                    "md:col-span-2 md:row-span-1", // Wide
+                    "md:col-span-1 md:row-span-1", // Small
+                  ];
+                  sizeClass = patterns[(idx - 1) % patterns.length];
+                }
 
                 return (
                   <ScrollReveal key={post.id} animation="fade" delay={idx * 30}>
