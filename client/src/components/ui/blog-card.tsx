@@ -48,7 +48,8 @@ export default function BlogCard({
     }
   };
 
-  const categoryColor = categoryColors[post.category];
+  // Fallback to general theme if category not found
+  const categoryColor = categoryColors[post.category] || categoryColors.general;
 
   return (
     <article
