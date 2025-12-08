@@ -95,11 +95,10 @@ export default function Blog() {
           {allPosts.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 auto-rows-[280px]">
               {allPosts.map((post, idx) => {
-                // First post (featured) takes 1.5x space (3 columns out of 6, or col-span-3 in a 6-column grid)
-                // We'll use md:col-span-2 for the featured post to give it extra width
+                // First post (featured) takes extra space in the bento grid
                 let sizeClass;
                 if (idx === 0) {
-                  // Featured post - takes approximately 1.5x space
+                  // Featured post - takes 2 columns and 2 rows (4x the base cell area)
                   sizeClass = "md:col-span-2 md:row-span-2";
                 } else {
                   // Other posts follow a varied bento pattern
