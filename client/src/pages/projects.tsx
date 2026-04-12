@@ -17,8 +17,8 @@ export default function Projects() {
   useReveal();
   const navigate = useNavigate();
 
-  const title = "Projects & Professional Front-End Demos — Earl Hickson Jr.";
-  const description = "Front-end development projects showcasing React, TypeScript, healthcare portals, and accessibility-focused UI.";
+  const title = "Projects — Earl Hickson Jr. | React · TypeScript · Next.js · Supabase";
+  const description = "Front-end projects by Earl Hickson Jr. showcasing React, TypeScript, Next.js, Supabase, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations.";
 
   return (
     <div>
@@ -29,7 +29,10 @@ export default function Projects() {
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ehicksonjr.com/projects" />
+        <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
       {/* Header - Hero-lite with gradient */}

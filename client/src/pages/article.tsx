@@ -1,5 +1,6 @@
 import { useRoute } from "wouter";
 import { Link } from "wouter";
+import { Helmet } from "react-helmet-async";
 import { blogPosts } from "@/data/blog-posts";
 import { projects } from "@/data/projects";
 import { Button } from "@/components/ui/button";
@@ -40,8 +41,25 @@ export default function Article() {
     general: "bg-gray-100 text-gray-700"
   };
 
+  const description = post.excerpt || "Front-end engineering notes and insights from Earl Hickson Jr.";
+
   return (
     <div className="">
+      <Helmet>
+        <title>{post.title} – Blog | Earl Hickson Jr.</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={`https://www.ehicksonjr.com/articles/${post.slug}`} />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={`https://www.ehicksonjr.com/articles/${post.slug}`} />
+        <meta property="og:image" content="/assets/og/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content="/assets/og/og-image.jpg" />
+      </Helmet>
+
       {/* Header */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

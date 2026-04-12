@@ -26,9 +26,44 @@ export interface Project {
 }
 
 // Resume file path constant for consistency
-export const RESUME_PATH = "/assets/Earl_Hickson_Jr_Front_End_Engineer.docx";
+export const RESUME_PATH = "/assets/Earl_Hickson_Jr_Resume.pdf";
 
 export const projects: Project[] = [
+  {
+    id: "gundam-forge",
+    slug: "gundam-forge",
+    title: "Gundam Forge – Deck Builder & Playtest Simulator",
+    role: "Full-Stack Developer",
+    category: "featured",
+    description: "A production-focused deck builder and playtest simulator for the Gundam Card Game, featuring advanced card search, real-time filtering, deck validation, and an interactive zone-based playtester.",
+    summary: "Full-stack monorepo app for building and playtesting Gundam Card Game decks. Includes advanced search, contract-driven API patterns, and an interactive simulator with undo/redo and AI-assisted gameplay.",
+    problem: "No dedicated tooling existed for organizing, validating, and playtesting Gundam Card Game decks in a single, production-quality interface.",
+    solution: "Built a Next.js 14 + Supabase monorepo with shared TypeScript contract packages, deterministic filtering/sorting APIs, runtime schema validation, and a multi-phase playtester featuring zone-based board state, mulligan flow, keyboard shortcuts, and undo/redo history.",
+    result: "Delivered a full end-to-end product with a scalable card data pipeline, reliable image-fallback strategy, and strict quality gates—lint, typecheck, build, contract, and smoke tests.",
+    stack: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Supabase", "Vitest", "Framer Motion", "npm Workspaces"],
+    tags: ["Next.js", "TypeScript", "Supabase", "Full-Stack", "Monorepo", "Game Dev"],
+    devNotes: "Monorepo with shared contract packages; Supabase backend; Vitest unit/contract tests; deterministic pagination and sorting for reproducible API behavior.",
+    features: [
+      "Advanced card search with keyword parsing, filters, and autocomplete",
+      "Deck construction flow with real-time validation rules",
+      "Interactive playtester with zone-based battlefield and game actions",
+      "Undo/redo history, mulligan flow, and keyboard shortcuts",
+      "AI opponent logic and ability system",
+      "Card data sync pipeline with fallback image delivery strategy",
+      "Contract-driven API patterns with runtime schema validation",
+      "Release smoke checks and contract test workflow",
+      "Mobile-responsive and accessibility-aware design"
+    ],
+    metrics: [
+      { label: "Architecture", value: "Monorepo", improvement: "Shared contracts across packages" },
+      { label: "Test Coverage", value: "Contract + Smoke", improvement: "Prevents payload drift" },
+      { label: "Data Reliability", value: "Image fallback layers", improvement: "Zero broken assets" }
+    ],
+    links: {
+      demo: "https://epetaway.github.io/Gundam-Forge/",
+      repo: "https://github.com/Epetaway/Gundam-Forge"
+    }
+  },
   {
     id: "patient-engagement-portal",
     slug: "patient-engagement-portal",

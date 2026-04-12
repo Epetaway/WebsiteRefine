@@ -49,7 +49,7 @@ export default function Footer() {
               GitHub
             </a>
             <a
-              href="https://www.linkedin.com/in/earl-hickson-jr/"
+              href="https://www.linkedin.com/in/earlhicksonjr"
               target="_blank"
               rel="noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white ui-transition-soft"

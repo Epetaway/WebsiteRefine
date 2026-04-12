@@ -8,18 +8,24 @@ export default function About() {
   return (
     <div>
       <Helmet>
-        <title>About — Earl Hickson Jr. | Front-End Developer</title>
+        <title>About — Earl Hickson Jr. | Front-End Developer | React · TypeScript · WCAG 2.1 AA</title>
         <meta
           name="description"
-          content="Front-End Developer in Parsippany, NJ. Building accessible, performance-focused user interfaces with React, TypeScript, and modern JavaScript. BJJ black belt and mentor."
+          content="Front-End Developer in Parsippany, NJ with 6+ years of experience. React, TypeScript, Next.js, WCAG 2.1 AA accessibility, healthcare portals, and REST API integrations. BJJ black belt and mentor."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/about" />
-        <meta property="og:title" content="About — Earl Hickson Jr." />
+        <meta property="og:title" content="About — Earl Hickson Jr. | Front-End Developer" />
         <meta
           property="og:description"
-          content="Front-End Developer focused on React, accessibility and performance. BJJ black belt and mentor."
+          content="Front-End Developer in Parsippany, NJ with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. Healthcare portals, REST APIs, and performance-focused applications."
         />
         <meta property="og:type" content="profile" />
+        <meta property="og:url" content="https://www.ehicksonjr.com/about" />
+        <meta property="og:image" content="/assets/og/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="About — Earl Hickson Jr. | Front-End Developer" />
+        <meta name="twitter:description" content="Front-End Developer in Parsippany, NJ with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs." />
+        <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
       {/* Header - Hero with subtle background motif */}

@@ -12,100 +12,46 @@ export const workExperience: WorkExperience[] = [
   {
     id: "ama-fight-club",
     company: "AMA Fight Club",
-    position: "Front-End Consultant",
-    duration: "Jan 2025 – Present",
+    position: "Front-End & Digital Integration Specialist",
+    duration: "Nov 2024 – Present",
     description:
-      "Rebuilt marketing site in Bootstrap 5.3 + SCSS, improving page speed by 55% and Lighthouse mobile score 63 → 97. Integrated Zen Planner API, driving a 37% lift in free-trial sign-ups.",
-    technologies: ["Bootstrap", "SCSS", "API Integration", "Performance Optimization"]
-  },
-  {
-    id: "freelance-current",
-    company: "Self-Employed",
-    position: "Freelance Front-End Developer",
-    duration: "Mar 2018 – Present",
-    description:
-      "Delivered 20+ responsive web apps/sites. Increased client conversion rates by 28% through UX refinements, accessibility fixes, and mobile-first layouts.",
-    technologies: ["React", "TypeScript", "JavaScript", "Node.js", "MongoDB"]
+      "Implemented front-end functionality using HTML, CSS, and JavaScript within the Wix environment. Managed CMS content, built landing pages, and optimized for SEO, accessibility, and mobile. Developed and maintained form and API integrations with ZipRecruiter, enabling real-time lead capture and candidate tracking workflows.",
+    technologies: ["HTML", "CSS", "JavaScript", "Wix CMS", "SEO", "API Integration", "Analytics"]
   },
   {
     id: "asembia",
     company: "Asembia",
-    position: "Front-End Developer (Contract)",
-    duration: "Dec 2023 – Oct 2024",
+    position: "Front-End Developer",
+    duration: "Nov 2023 – Sep 2024",
     description:
-      "Built modular Razor view components with SCSS + Bootstrap 5 in a .NET stack. Shipped monthly RAG dashboard that improved provider performance tracking by 30%.",
-    technologies: ["Razor", "SCSS", "Bootstrap", ".NET", "Data Visualization"]
+      "Developed and maintained user interfaces with JavaScript, HTML, CSS, and React. Integrated secure REST APIs to retrieve and submit patient prescription data. Contributed to HIPAA-compliant patient and provider platforms. Implemented WCAG 2.1 AA accessibility standards. Worked within a .NET-based environment and utilized Git (Bitbucket) and CI/CD pipelines.",
+    technologies: ["JavaScript", "React", "HTML", "CSS", "REST APIs", "WCAG 2.1", ".NET", "Git", "CI/CD"]
   },
   {
-    id: "renewal-andersen",
-    company: "Renewal by Andersen (Affiliated Facility)",
-    position: "Warehouse Manager",
-    duration: "Mar 2020 – Mar 2021",
+    id: "broadcastmed",
+    company: "BroadcastMed",
+    position: "Lead Designer & Front-End Developer",
+    duration: "Aug 2021 – Feb 2023",
     description:
-      "Led 10+ staff and coordinated 25+ daily deliveries; reduced dispatch errors by 35% via process standardization and better handoffs.",
-    technologies: ["Process Management", "Team Leadership", "Logistics Coordination"]
+      "Led design and front-end development of healthcare marketing microsites and landing pages within a proprietary CMS, supporting HIPAA-compliant digital campaigns. Increased lead submissions by 18% through refined layouts and CTA placement. Reduced HTML email production time by 25% via a structured design system.",
+    technologies: ["HTML", "CSS", "JavaScript", "Email Templates", "CMS", "Design Systems", "Healthcare"]
   },
   {
     id: "prosek",
     company: "Prosek Partners",
-    position: "Freelance Front-End Web Engineer",
-    duration: "2019 – 2020",
+    position: "Front-End Developer (Contract)",
+    duration: "Mar 2021 – Aug 2021",
     description:
-      "Developed and maintained finance-sector sites with reusable components and performance-minded theming.",
-    technologies: ["WordPress", "PHP", "JavaScript", "CSS"]
+      "Developed responsive landing pages using React, HTML, CSS, JavaScript, and component-based UI patterns for client-facing marketing initiatives. Built projects using Vue.js in a collaborative environment. Implemented SEO best practices and analytics tracking to enhance user engagement.",
+    technologies: ["React", "Vue.js", "JavaScript", "HTML", "CSS", "SEO", "Git"]
   },
   {
     id: "seide",
-    company: "William R. Seide Agency",
-    position: "Frontend Engineer",
-    duration: "2018 – 2019",
+    company: "William R. Seide Agency LLC",
+    position: "Front-End Developer",
+    duration: "Dec 2019 – May 2020",
     description:
-      "Shipped insurance landing pages and quote flows; tightened CLS and improved form completion rates.",
-    technologies: ["HTML", "CSS", "JavaScript", "jQuery"]
-  },
-  {
-    id: "merkle",
-    company: "Merkle",
-    position: "Email Marketing Specialist",
-    duration: "2017 – 2018",
-    description:
-      "Built responsive, accessible email templates and automated campaigns for enterprise brands.",
-    technologies: ["HTML", "CSS", "Email Templates", "Marketing Automation"]
-  },
-  {
-    id: "merck",
-    company: "Merck",
-    position: "Freelance Web Engineer",
-    duration: "2016 – 2017",
-    description:
-      "Implemented content updates and front-end features within a regulated CMS environment.",
-    technologies: ["HTML", "CSS", "JavaScript", "CMS"]
-  },
-  {
-    id: "novocent",
-    company: "Novocent",
-    position: "Frontend Web Engineer",
-    duration: "2015 – 2016",
-    description:
-      "Developed patient-facing UIs with a focus on responsive layouts and clear information hierarchy.",
-    technologies: ["HTML", "CSS", "JavaScript", "Bootstrap"]
-  },
-  {
-    id: "verizon",
-    company: "Verizon Wireless",
-    position: "Front-End Engineer",
-    duration: "2014 – 2015",
-    description:
-      "Supported telecom web properties; optimized responsive components and improved accessibility.",
-    technologies: ["HTML", "CSS", "JavaScript", "Responsive Design"]
-  },
-  {
-    id: "second-melody",
-    company: "Second Melody",
-    position: "Web Engineer",
-    duration: "2013 – 2014",
-    description:
-      "Built music-industry ecommerce and promo pages; standardized component styles for faster iteration.",
-    technologies: ["HTML", "CSS", "JavaScript", "E-commerce"]
+      "Implemented front-end solutions using HTML, CSS, and JavaScript, increasing usability and form completion rates across devices. Developed and maintained mobile-first, responsive websites for insurance and financial services clients.",
+    technologies: ["HTML", "CSS", "JavaScript", "Responsive Design", "Mobile-first"]
   }
 ];

@@ -58,11 +58,21 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Earl Hickson | Full Stack Developer & Designer</title>
+        <title>Earl Hickson Jr. | Front-End Developer — React, TypeScript, Next.js | Parsippany, NJ</title>
         <meta
           name="description"
-          content="Full stack developer and designer crafting elegant digital experiences with code, creativity, and discipline."
+          content="Front-End Developer with 6+ years of experience in React, TypeScript, Next.js, and Supabase. WCAG 2.1 AA accessible UIs, healthcare portals, and REST API integrations. Based in Parsippany, NJ. Open to full-time and contract roles."
         />
+        <link rel="canonical" href="https://www.ehicksonjr.com/" />
+        <meta property="og:title" content="Earl Hickson Jr. | Front-End Developer — React, TypeScript, Next.js" />
+        <meta property="og:description" content="Front-End Developer with 6+ years in React, TypeScript, Next.js, and Supabase. WCAG 2.1 AA accessible UIs, healthcare portals, and REST API integrations. Based in Parsippany, NJ." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ehicksonjr.com/" />
+        <meta property="og:image" content="/assets/og/og-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Earl Hickson Jr. | Front-End Developer — React, TypeScript, Next.js" />
+        <meta name="twitter:description" content="Front-End Developer with 6+ years in React, TypeScript, Next.js, and Supabase. WCAG 2.1 AA accessible UIs, healthcare portals, and REST API integrations." />
+        <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
       {/* Hero Section */}

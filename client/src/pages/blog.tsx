@@ -36,19 +36,23 @@ export default function Blog() {
   const featured = sorted[0];
   const others = featured ? sorted.filter((p) => p.id !== featured.id) : sorted;
 
-  const title = "Blog – Front-End, Accessibility, BJJ | Earl Hickson Jr.";
+  const title = "Blog – Front-End Development, Accessibility & BJJ | Earl Hickson Jr.";
   const description =
-    "Notes on React, Angular, performance, and accessibility—plus Brazilian Jiu-Jitsu lessons that inform my engineering craft.";
+    "Notes on React, TypeScript, performance, and WCAG accessibility—plus Brazilian Jiu-Jitsu lessons that inform my engineering craft.";
 
   return (
     <div>
       <Helmet>
         <title>{title}</title>
         <meta name="description" content={description} />
+        <link rel="canonical" href="https://www.ehicksonjr.com/blog" />
         <meta property="og:title" content={title} />
         <meta property="og:description" content={description} />
         <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.ehicksonjr.com/blog" />
+        <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
       <section className="py-16 md:py-24 bg-white dark:bg-gray-950">

@@ -32,6 +32,7 @@ export type Project = {
  * These serve as the primary data source for projects
  */
 export const pinnedRepoSlugs: string[] = [
+  "Gundam-Forge",
   "patient-portal-demo",
   "DojoNet-Prototype-MAX",
   "ResumeCraft-ghpages",
@@ -43,6 +44,20 @@ export const pinnedRepoSlugs: string[] = [
  * This serves as the fallback/static data source when API fetching is not used
  */
 export const pinnedProjects: Project[] = [
+  {
+    slug: "Gundam-Forge",
+    name: "Gundam-Forge",
+    displayTitle: "Gundam Forge – Deck Builder & Playtest Simulator",
+    description: "A production-focused deck builder and playtest simulator for the Gundam Card Game, featuring advanced card search, real-time filtering, deck validation, and an interactive zone-based playtester.",
+    longDescription: "Full-stack monorepo app for building and playtesting Gundam Card Game decks. Includes advanced search, contract-driven API patterns, and an interactive simulator with undo/redo and AI-assisted gameplay.",
+    techStack: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Supabase", "Vitest", "Framer Motion", "npm Workspaces"],
+    repoUrl: `https://github.com/${GITHUB_USER}/Gundam-Forge`,
+    liveUrl: "https://epetaway.github.io/Gundam-Forge/",
+    role: "Full-Stack Developer",
+    tags: ["Next.js", "TypeScript", "Supabase", "Full-Stack", "Monorepo", "Game Dev"],
+    featured: true,
+    pinned: true,
+  },
   {
     slug: "patient-portal-demo",
     name: "patient-portal-demo",
