@@ -1,8 +1,8 @@
-import type { DesignProject } from "@/data/design-projects";
-import BrandIdentityViewer from "@/components/design/brand-identity-viewer";
+import type { BrandProject } from "@/data/brand-book-projects";
+import BrandBook from "@/components/design/brand-book";
 import MarketingGrid from "@/components/design/marketing-grid";
 
-export default function DesignCaseStudies({ projects }: { projects: DesignProject[] }) {
+export default function DesignCaseStudies({ projects }: { projects: BrandProject[] }) {
   if (!projects || projects.length === 0) {
     return (
       <section className="bg-white">
@@ -18,8 +18,8 @@ export default function DesignCaseStudies({ projects }: { projects: DesignProjec
     <div className="border-t">
       {projects.map((p) => (
         <div key={p.id} className="border-b">
-          <BrandIdentityViewer project={p} />
-          <MarketingGrid project={p} />
+          <BrandBook project={p} />
+          <MarketingGrid applications={p.applications?.images} campaigns={p.campaigns?.images} />
         </div>
       ))}
     </div>

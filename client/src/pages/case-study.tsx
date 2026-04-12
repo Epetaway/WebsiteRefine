@@ -54,7 +54,7 @@ export default function CaseStudy() {
               return; // Found screenshots, stop trying other paths
             }
           }
-        } catch (error) {
+        } catch {
           // Try next path
           continue;
         }
