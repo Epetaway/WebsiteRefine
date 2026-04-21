@@ -38,6 +38,86 @@ export type ProjectCaseStudy = {
 };
 
 export const caseStudyData: Record<string, ProjectCaseStudy> = {
+  'WithYou': {
+    slug: 'WithYou',
+    title: 'WithYou',
+    subtitle: 'Designing a privacy-first relationship platform focused on intentional communication and behavioral UX',
+    summary: 'A mobile-first application designed to help couples communicate without pressure using structured check-ins, shared preferences, and intentional planning systems.',
+    overview: {
+      description: 'WithYou is a mobile-first application designed to help couples communicate without pressure using structured check-ins, shared preferences, and intentional planning systems. Built as a full-stack product system with React Native frontend, Express backend, and PostgreSQL database, it demonstrates thoughtful product design that prioritizes user well-being over engagement metrics.',
+      problem: 'Most relationship apps optimize for engagement and retention rather than user well-being. Existing tools often create pressure to communicate constantly, lack structure for meaningful connection, or fail to preserve privacy. Couples need a system that encourages intentional communication without friction or surveillance.',
+      goals: [
+        'Design a system that encourages communication without pressure',
+        'Require mutual participation to prevent one-sided interactions',
+        'Preserve privacy with end-to-end encryption and zero tracking',
+        'Support real-world connection through structured intentionality',
+        'Create healthy digital behavior patterns through UX design',
+      ],
+    },
+    role: [
+      {
+        title: 'Product Strategy & UX Design',
+        description: 'Designed behavioral systems that discourage addictive patterns while encouraging intentional connection. Built wireframes, flows, and interaction patterns focused on mutual participation and consent.',
+      },
+      {
+        title: 'Full-Stack Engineering',
+        description: 'Architected monorepo with React Native frontend (Expo), Express API backend, PostgreSQL database with Prisma ORM, and shared TypeScript types for type safety across boundaries.',
+      },
+      {
+        title: 'Security & Privacy Engineering',
+        description: 'Implemented JWT authentication, bcrypt password hashing, Zod validation, per-relationship data isolation, and privacy-first architecture with zero tracking or monetization.',
+      },
+      {
+        title: 'System Architecture',
+        description: 'Built production-ready infrastructure with clean separation of concerns, validation-first API design, error handling, and patterns that scale without introducing complexity.',
+      },
+    ],
+    technical: {
+      architecture: 'Full-stack monorepo with React Native (Expo) mobile frontend communicating with Express API backend. Shared TypeScript types and validation schemas (Zod) enforce consistency across client and server. PostgreSQL database with Prisma ORM handles relational data. Architecture prioritizes type safety, validation at boundaries, and clean separation between presentation and business logic.',
+      techStack: ['React Native', 'Expo', 'TypeScript', 'Express.js', 'PostgreSQL', 'Prisma ORM', 'Zod', 'JWT Authentication', 'bcrypt'],
+      approach: [
+        {
+          title: 'Monorepo Structure',
+          description: 'Shared packages for types, validation schemas, and utilities. Separate apps for mobile and backend ensure clear boundaries while maintaining consistency through shared contracts.',
+        },
+        {
+          title: 'Validation-First API',
+          description: 'All endpoints validate input with Zod schemas before processing. Type-safe request/response contracts prevent mismatches between client and server expectations.',
+        },
+        {
+          title: 'Privacy by Design',
+          description: 'No tracking pixels, analytics cookies, or monetization logic. Data is encrypted in transit and at rest. Each relationship exists in isolated database contexts.',
+        },
+        {
+          title: 'Behavioral UX Systems',
+          description: 'Reveal logic prevents information asymmetry. Mood check-ins use multi-dimensional data to reflect emotional complexity. Planning flows require mutual action to prevent unilateral pressure.',
+        },
+      ],
+    },
+    outcomes: [
+      {
+        metric: '100%',
+        label: 'Privacy First',
+        description: 'Zero tracking, zero monetization',
+        color: 'blue',
+      },
+      {
+        metric: '6',
+        label: 'Core Features',
+        description: 'Pairing, moods, plans, chat, sync, wearables',
+        color: 'green',
+      },
+      {
+        metric: 'Production-Ready',
+        label: 'Status',
+        description: 'Full-stack system, beta-tested',
+        color: 'gold',
+      },
+    ],
+    demoUrl: undefined,
+    codeUrl: 'https://github.com/Epetaway/WithYou',
+    repo: 'WithYou',
+  },
   'patient-portal-demo': {
     slug: 'patient-portal-demo',
     title: 'Patient Engagement Portal – Healthcare UI Demo',
