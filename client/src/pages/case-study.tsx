@@ -8,6 +8,7 @@ import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { getCaseStudy } from "@/data/caseStudies";
+import WithYouCaseStudy from "@/case-studies/withyou";
 import { ExternalLink, Github, Code2 } from "lucide-react";
 
 export default function CaseStudy() {
@@ -72,6 +73,10 @@ export default function CaseStudy() {
 
   if (!caseStudy) {
     return <Navigate to="/projects" replace />;
+  }
+
+  if (slug === "WithYou") {
+    return <WithYouCaseStudy />;
   }
 
 
