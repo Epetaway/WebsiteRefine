@@ -33,10 +33,9 @@ export type Project = {
  */
 export const pinnedRepoSlugs: string[] = [
   "Gundam-Forge",
-  "patient-portal-demo",
   "DojoNet-Prototype-MAX",
-  "ResumeCraft-ghpages",
-  "mtg-proxy-generator",
+  "WithYou",
+  "ama-fight-club",
 ];
 
 /**
@@ -59,20 +58,6 @@ export const pinnedProjects: Project[] = [
     pinned: true,
   },
   {
-    slug: "patient-portal-demo",
-    name: "patient-portal-demo",
-    displayTitle: "Patient Engagement Portal – Healthcare UI Demo",
-    description: "A full patient portal demo with multi-step onboarding, dashboards, prescription flows, and interface patterns modeled after real healthcare portals.",
-    longDescription: "Enterprise-style patient portal demo with multi-step registration, dashboards, and accessible form workflows based on real healthcare patterns.",
-    techStack: ["JavaScript", "Bootstrap 5", "SPA Architecture", "WCAG 2.1"],
-    repoUrl: `https://github.com/${GITHUB_USER}/patient-portal-demo`,
-    liveUrl: "https://epetaway.github.io/patient-portal-demo/#login",
-    role: "Front-End Developer",
-    tags: ["Healthcare", "Accessibility", "JavaScript", "Bootstrap"],
-    featured: true,
-    pinned: true,
-  },
-  {
     slug: "DojoNet-Prototype-MAX",
     name: "DojoNet-Prototype-MAX",
     displayTitle: "DojoNet Martial Arts Portal Prototype",
@@ -87,68 +72,38 @@ export const pinnedProjects: Project[] = [
     pinned: true,
   },
   {
-    slug: "ResumeCraft-ghpages",
-    name: "ResumeCraft-ghpages",
-    displayTitle: "ResumeCraft – AI-Powered Resume Builder",
-    description: "Full-stack app that helps users create tailored resumes using AI prompts and parsing tools.",
-    longDescription: "Cut time-to-first-resume from ~25 minutes to under 5; simplified editing and export for friction-free iterations.",
-    techStack: ["React", "TypeScript", "Node.js", "OpenAI API", "Tailwind CSS"],
-    repoUrl: `https://github.com/${GITHUB_USER}/ResumeCraft-ghpages`,
-    liveUrl: "https://epetaway.github.io/ResumeCraft-ghpages",
-    role: "Full-Stack Developer",
-    tags: ["React", "AI", "TypeScript"],
+    slug: "WithYou",
+    name: "WithYou",
+    displayTitle: "WithYou – Relationship Wellness App",
+    description: "A privacy-first relationship app that encourages meaningful connection through intentional communication.",
+    longDescription: "Full-stack mobile app for couples with behavioral UX design, structured check-ins, shared plans, and real-time sync—prioritizing connection without surveillance.",
+    techStack: ["React Native", "Node.js", "PostgreSQL", "TypeScript"],
+    repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
+    role: "Full Stack Engineer",
+    tags: ["React Native", "Privacy", "Behavioral UX"],
     featured: true,
     pinned: true,
   },
   {
-    slug: "mtg-proxy-generator",
-    name: "mtg-proxy-generator",
-    displayTitle: "MTG Proxy Generator – DOM Manipulation Showcase",
-    description: "Interactive card composer demonstrating vanilla JavaScript proficiency and dynamic rendering.",
-    longDescription: "Lightweight utility that runs fully client-side, showcasing strong DOM skills and performant rendering without frameworks.",
-    techStack: ["Vanilla JavaScript", "HTML5 Canvas", "CSS3", "LocalStorage"],
-    repoUrl: `https://github.com/${GITHUB_USER}/mtg-proxy-generator`,
-    liveUrl: "https://epetaway.github.io/mtg-proxy-generator/",
-    role: "Front-End Developer",
-    tags: ["JavaScript", "Canvas API", "No Framework"],
-    featured: false,
+    slug: "ama-fight-club",
+    name: "ama-fight-club",
+    displayTitle: "AMA Fight Club – Website & Digital Growth",
+    description: "Redesigned the website and marketing strategy resulting in significant SEO improvements and lead growth.",
+    longDescription: "Overhauled site structure, SEO, CTA placement, and API integrations—driving +156% organic traffic, +210% leads, and +87% conversions for a high-growth combat sports brand.",
+    techStack: ["WordPress", "SEO", "Analytics", "JavaScript"],
+    repoUrl: "https://amafightclub.com",
+    liveUrl: "https://amafightclub.com",
+    role: "Frontend Developer",
+    tags: ["WordPress", "SEO", "Analytics"],
+    featured: true,
     pinned: true,
   },
 ];
 
 /**
- * Additional projects beyond pinned repos - still public on GitHub
+ * Additional projects beyond pinned repos - see full list on GitHub
  */
-export const additionalProjects: Project[] = [
-  {
-    slug: "WHEEL-OF-SUCCESS",
-    name: "WHEEL-OF-SUCCESS",
-    displayTitle: "Game Show App – Wheel of Success",
-    description: "Browser-based word-guessing game with dynamic state, feedback, and animations.",
-    longDescription: "Interactive experience demonstrating logic flow, user feedback, and maintainable vanilla JS structure.",
-    techStack: ["JavaScript", "HTML", "CSS"],
-    repoUrl: `https://github.com/${GITHUB_USER}/WHEEL-OF-SUCCESS`,
-    liveUrl: "https://epetaway.github.io/WHEEL-OF-SUCCESS/",
-    role: "Front-End Developer",
-    tags: ["JavaScript", "Game Development"],
-    featured: false,
-    pinned: false,
-  },
-  {
-    slug: "WebsiteRefine",
-    name: "WebsiteRefine",
-    displayTitle: "Portfolio Website – Full-Stack Implementation",
-    description: "Modern engineering portfolio showcasing responsive design, performance optimization, and clear personal branding.",
-    longDescription: "95+ Lighthouse scores, sub-1s first load on desktop, and a clearer narrative that improves recruiter engagement.",
-    techStack: ["React 18", "Vite", "TypeScript", "Tailwind CSS", "Framer Motion"],
-    repoUrl: `https://github.com/${GITHUB_USER}/WebsiteRefine`,
-    liveUrl: "https://www.ehicksonjr.com",
-    role: "Full-Stack Developer",
-    tags: ["React", "TypeScript", "Portfolio"],
-    featured: false,
-    pinned: false,
-  },
-];
+export const additionalProjects: Project[] = [];
 
 /**
  * Get all projects - combines pinned and additional projects

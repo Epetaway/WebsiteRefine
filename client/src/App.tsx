@@ -20,6 +20,7 @@ import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
 import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
+import Approach from "@/pages/approach";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import ThemeDemo from "@/pages/theme-demo";
@@ -28,7 +29,7 @@ function AppShell() {
   useAnalytics();
 
   return (
-    <div className="min-h-screen flex flex-col bg-bg-base text-text-primary font-body">
+    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body">
       <Header />
       <main className="flex-1">
         <Routes>
@@ -37,6 +38,7 @@ function AppShell() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<CaseStudy />} />
           <Route path="/projects/:slug/dev" element={<DeveloperView />} />
+          <Route path="/approach" element={<Approach />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />

@@ -2,231 +2,232 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import aboutImage from "@/images/BLKBELT.png";
-import { Mail, MapPin, Github, Linkedin, Twitter, Instagram, Youtube, Dribbble, Link as LinkIcon } from "lucide-react";
+import { Mail, MapPin, Github, Linkedin, Twitter, Instagram, Youtube, Dribbble, ArrowRight } from "lucide-react";
+import { RESUME_PATH } from "@/data/projects";
 
 export default function About() {
   return (
-    <div>
+    <>
       <Helmet>
-        <title>About — Earl Hickson Jr. | Front-End Developer | React · TypeScript · WCAG 2.1 AA</title>
+        <title>About — Earl Hickson Jr. | Senior Front-End Engineer | React · TypeScript</title>
         <meta
           name="description"
-          content="Front-End Developer in Parsippany, NJ with 6+ years of experience. React, TypeScript, Next.js, WCAG 2.1 AA accessibility, healthcare portals, and REST API integrations. BJJ black belt and mentor."
+          content="Senior Front-End Engineer in Parsippany, NJ with 6+ years building scalable UI systems, accessible interfaces, and high-performance applications. BJJ instructor, designer, product thinker."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/about" />
-        <meta property="og:title" content="About — Earl Hickson Jr. | Front-End Developer" />
-        <meta
-          property="og:description"
-          content="Front-End Developer in Parsippany, NJ with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. Healthcare portals, REST APIs, and performance-focused applications."
-        />
+        <meta property="og:title" content="About — Earl Hickson Jr. | Senior Front-End Engineer" />
+        <meta property="og:description" content="Senior Front-End Engineer with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. Healthcare portals, REST APIs, and performance-focused applications." />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://www.ehicksonjr.com/about" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="About — Earl Hickson Jr. | Front-End Developer" />
-        <meta name="twitter:description" content="Front-End Developer in Parsippany, NJ with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs." />
-        <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
-      {/* Header - Hero with subtle background motif */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-b from-gray-50 via-white to-white dark:from-gray-900 dark:via-gray-950 dark:to-gray-950 overflow-hidden">
-        {/* Subtle grid pattern background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)] dark:bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)]" />
-        
-        {/* Spotlight effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
-        
-        <div className="relative max-w-[1120px] mx-auto px-5">
-          <ScrollReveal animation="slide-up" className="text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-gray-100 tracking-tight font-serif" data-testid="page-title">
-              <span className="block text-purple-600 dark:text-purple-400">Code, Culture,</span>
-              <span className="block">and Discipline.</span>
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <section className="bg-slate-950 py-24">
+        <div className="mx-auto max-w-[1120px] w-full px-5">
+          <ScrollReveal animation="slide-up" className="max-w-3xl">
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">About Me</p>
+            <h1 className="text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+              Code, Culture,<br />
+              <span className="text-violet-400">and Discipline.</span>
             </h1>
-            <p className="text-lg sm:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed font-light italic">
-              I am a front-end developer based in Parsippany, NJ with over six years of experience building modern, accessible interfaces.<br />
-              My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering.<br />
-              I have contributed to healthcare platforms, nonprofit campaigns, and community-focused brands—always with a focus on clarity and maintainability.
+            <p className="text-xl text-slate-300 leading-relaxed">
+              I'm a Senior Front-End Engineer based in Parsippany, NJ with 6+ years building modern, accessible interfaces. My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering.
             </p>
           </ScrollReveal>
         </div>
       </section>
 
-      {/* Background Section */}
-      <section className="py-16 md:py-24 bg-white dark:bg-gray-950">
-        <div className="max-w-[1120px] mx-auto px-5">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+      {/* ── BACKGROUND ───────────────────────────────────────────────────── */}
+      <section className="bg-slate-900 py-24">
+        <div className="mx-auto max-w-[1120px] w-full px-5">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal animation="slide-up">
-              <div className="space-y-6">
-                <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100 tracking-tight" data-testid="section-title-background">
-                  Background
-                </h2>
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  I started in graphic design before moving into front-end development, where I discovered how much I enjoy building interfaces that do not just look good—they feel good to use. My work spans healthcare, nonprofits, membership systems, and community brands.
-                </p>
-                <p className="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
-                  Years of Brazilian Jiu-Jitsu training shaped my mindset: discipline, patience, refinement. The same approach fuels how I write code, architect components, and collaborate with teams.
-                </p>
+              <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Background</p>
+              <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+                Designer turned engineer, always a student.
+              </h2>
+              <p className="text-slate-300 text-lg leading-relaxed mb-4">
+                I started in graphic design before moving into front-end development, where I discovered how much I enjoy building interfaces that don't just look good — they feel good to use. My work spans healthcare, nonprofits, membership systems, and high-growth brands.
+              </p>
+              <p className="text-slate-400 leading-relaxed mb-6">
+                Years of Brazilian Jiu-Jitsu training shaped my mindset: discipline, patience, refinement. The same approach fuels how I write code, architect components, and collaborate with teams under pressure.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={RESUME_PATH}
+                  download
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium text-sm transition-colors"
+                >
+                  Download Resume <ArrowRight className="w-4 h-4" />
+                </a>
+                <Link
+                  to="/approach"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium text-sm transition-colors"
+                >
+                  My Approach <ArrowRight className="w-4 h-4" />
+                </Link>
               </div>
             </ScrollReveal>
 
-            <ScrollReveal animation="slide-up" delay={100}>
+            <ScrollReveal animation="fade" delay={120}>
               <div className="relative group">
-                {/* Photo card with enhanced styling */}
-                <div className="relative overflow-hidden rounded-2xl shadow-xl dark:shadow-2xl dark:shadow-purple-500/10 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 border-4 border-transparent group-hover:border-purple-500/40">
-                  <img
-                    src={aboutImage}
-                    alt="Earl Hickson Jr. training Brazilian Jiu-Jitsu"
-                    className="w-full aspect-[4/5] object-cover transition-transform duration-300 group-hover:scale-105"
-                    data-testid="about-image"
-                  />
-                  {/* Gradient overlay on hover */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/0 to-black/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  {/* Caption overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <p className="text-sm font-medium flex items-center gap-2"><span className="text-purple-400">✦</span>Black Belt, Brazilian Jiu-Jitsu</p>
-                    <p className="text-xs opacity-90">Discipline in training, precision in code</p>
-                  </div>
+                <img
+                  src={aboutImage}
+                  alt="Earl Hickson Jr. training Brazilian Jiu-Jitsu"
+                  className="w-full rounded-xl object-cover aspect-[4/5]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-sm font-medium text-violet-300">Black Belt, Brazilian Jiu-Jitsu</p>
+                  <p className="text-xs text-slate-300">Discipline in training, precision in code</p>
                 </div>
-                
-                {/* Decorative element */}
-                <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-2xl -z-10" />
               </div>
             </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Contact Section - with contact info and social links */}
-      <section className="py-16 md:py-24 bg-gray-50 dark:bg-gray-900">
-        <div className="max-w-[1120px] mx-auto px-5">
+      {/* ── CAREER HIGHLIGHTS ────────────────────────────────────────────── */}
+      <section className="bg-slate-950 py-24">
+        <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-3xl sm:text-4xl font-bold mb-10 text-gray-900 dark:text-gray-100 tracking-tight text-center" data-testid="section-title-contact">
-              Get In Touch
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Experience</p>
+            <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-10">
+              Where I've built real things
             </h2>
           </ScrollReveal>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Contact Info Card */}
-            <ScrollReveal animation="slide-up" delay={0}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-xl flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Contact Information</h3>
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                company: "Asembia",
+                role: "Front-End Developer",
+                period: "Nov 2023 – Sep 2024",
+                highlights: ["HIPAA-compliant patient portals", "WCAG 2.1 AA accessibility", "REST API integrations", "React + .NET environment"],
+              },
+              {
+                company: "BroadcastMed",
+                role: "Lead Designer & Front-End Developer",
+                period: "Aug 2021 – Feb 2023",
+                highlights: ["+18% lead submissions", "−25% email production time", "Healthcare marketing microsites", "Design system creation"],
+              },
+              {
+                company: "AMA Fight Club",
+                role: "Frontend & Digital Integration",
+                period: "Nov 2024 – Present",
+                highlights: ["+156% organic traffic", "+210% leads generated", "ZipRecruiter API integration", "SEO & conversion optimization"],
+              },
+            ].map(({ company, role, period, highlights }, idx) => (
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
+                <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-violet-500/40 transition-colors h-full">
+                  <p className="text-xs text-violet-400 font-medium mb-1">{period}</p>
+                  <h3 className="text-lg font-bold text-white mb-1">{company}</h3>
+                  <p className="text-sm text-slate-400 mb-4">{role}</p>
+                  <ul className="space-y-1.5">
+                    {highlights.map((h) => (
+                      <li key={h} className="text-sm text-slate-300 flex items-start gap-2">
+                        <span className="text-violet-500 mt-0.5 flex-shrink-0">›</span>
+                        {h}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-                <div className="space-y-4">
-                  <a 
-                    href="mailto:e@ehicksonjr.com" 
-                    className="flex items-center gap-3 text-gray-700 dark:text-gray-300 hover:text-purple-600 dark:hover:text-purple-400 transition-colors group"
-                  >
-                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700/50 rounded-lg flex items-center justify-center group-hover:bg-purple-100 dark:group-hover:bg-purple-900/30 transition-colors">
-                      <Mail className="w-5 h-5" />
-                    </div>
-                    <span className="font-medium">e@ehicksonjr.com</span>
-                  </a>
-                  <div className="flex items-center gap-3 text-gray-700 dark:text-gray-300">
-                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-700/50 rounded-lg flex items-center justify-center">
-                      <MapPin className="w-5 h-5" />
-                    </div>
-                    <span className="font-medium">Parsippany, NJ</span>
-                  </div>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            {/* Social Links Card */}
-            <ScrollReveal animation="slide-up" delay={60}>
-              <div className="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg card-hover border border-gray-200 dark:border-gray-700 h-full">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900/30 rounded-xl flex items-center justify-center">
-                    <LinkIcon className="w-6 h-6 text-blue-600 dark:text-blue-400" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">Connect With Me</h3>
-                </div>
-                <div className="grid grid-cols-2 gap-3">
-                  <a 
-                    href="https://github.com/Epetaway" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white transition-colors group"
-                  >
-                    <Github className="w-5 h-5" />
-                    <span className="font-medium text-sm">GitHub</span>
-                  </a>
-                  <a 
-                    href="https://www.linkedin.com/in/earlhicksonjr" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                    <span className="font-medium text-sm">LinkedIn</span>
-                  </a>
-                  <a 
-                    href="https://twitter.com/epetaway" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-sky-100 dark:hover:bg-sky-900/30 hover:text-sky-600 dark:hover:text-sky-400 transition-colors group"
-                  >
-                    <Twitter className="w-5 h-5" />
-                    <span className="font-medium text-sm">X (Twitter)</span>
-                  </a>
-                  <a 
-                    href="https://instagram.com/earld.kaiju" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors group"
-                  >
-                    <Instagram className="w-5 h-5" />
-                    <span className="font-medium text-sm">Instagram</span>
-                  </a>
-                  <a 
-                    href="https://youtube.com/@earldkaiju" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-red-900/30 hover:text-red-600 dark:hover:text-red-400 transition-colors group"
-                  >
-                    <Youtube className="w-5 h-5" />
-                    <span className="font-medium text-sm">YouTube</span>
-                  </a>
-                  <a 
-                    href="https://dribbble.com/earldkaiju" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-3 rounded-xl bg-gray-100 dark:bg-gray-700/50 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-pink-900/30 hover:text-pink-600 dark:hover:text-pink-400 transition-colors group"
-                  >
-                    <Dribbble className="w-5 h-5" />
-                    <span className="font-medium text-sm">Dribbble</span>
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Section - matches Home page gradient CTA */}
-      <section className="py-16 md:py-24 bg-gradient-to-br from-blue-600 to-emerald-600">
-        <div className="max-w-[1120px] mx-auto px-5 text-center">
+      {/* ── CONNECT ──────────────────────────────────────────────────────── */}
+      <section className="bg-slate-900 py-24">
+        <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-              Let's Work Together
-            </h2>
-            <p className="text-xl text-blue-50 mb-8 max-w-2xl mx-auto">
-              Ready to bring your project to life with clean code and thoughtful design?
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="mailto:e@ehicksonjr.com" className="btn-secondary bg-white/10 text-white border-white/30 hover:bg-white/20">
-                Get In Touch
-              </a>
-              <Link to="/projects" className="btn-primary bg-white text-blue-600 hover:bg-slate-50">
-                View Projects
-              </Link>
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Get In Touch</p>
+            <div className="grid lg:grid-cols-2 gap-10">
+              {/* Contact info */}
+              <div>
+                <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+                  Let's connect.
+                </h2>
+                <div className="space-y-4 mb-8">
+                  <a
+                    href="mailto:e@ehicksonjr.com"
+                    className="flex items-center gap-3 text-slate-300 hover:text-violet-400 transition-colors"
+                  >
+                    <Mail className="w-5 h-5 text-violet-400 flex-shrink-0" />
+                    e@ehicksonjr.com
+                  </a>
+                  <div className="flex items-center gap-3 text-slate-400">
+                    <MapPin className="w-5 h-5 text-violet-400 flex-shrink-0" />
+                    Parsippany, NJ
+                  </div>
+                </div>
+              </div>
+
+              {/* Social links */}
+              <div>
+                <p className="text-sm text-slate-400 mb-4">Find me online</p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                  {[
+                    { icon: Github, label: "GitHub", href: "https://github.com/Epetaway" },
+                    { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/earlhicksonjr" },
+                    { icon: Twitter, label: "X (Twitter)", href: "https://twitter.com/epetaway" },
+                    { icon: Instagram, label: "Instagram", href: "https://instagram.com/earld.kaiju" },
+                    { icon: Youtube, label: "YouTube", href: "https://youtube.com/@earldkaiju" },
+                    { icon: Dribbble, label: "Dribbble", href: "https://dribbble.com/earldkaiju" },
+                  ].map(({ icon: Icon, label, href }) => (
+                    <a
+                      key={label}
+                      href={href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2.5 px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:border-violet-500/50 hover:text-white transition-colors text-sm font-medium"
+                    >
+                      <Icon className="w-4 h-4 text-violet-400" />
+                      {label}
+                    </a>
+                  ))}
+                </div>
+              </div>
             </div>
           </ScrollReveal>
         </div>
       </section>
-    </div>
+
+      {/* ── CTA ──────────────────────────────────────────────────────────── */}
+      <section className="bg-gradient-to-br from-slate-950 via-violet-950/30 to-slate-950 border-t border-slate-800">
+        <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
+          <ScrollReveal animation="slide-up">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-4">
+                <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+                  Let's work together.
+                </h2>
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  Open to senior front-end roles, contract work, and collaborations on products that care about accessibility, performance, and real impact.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 lg:justify-end">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors"
+                >
+                  Get In Touch <ArrowRight className="w-4 h-4" />
+                </Link>
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium transition-colors"
+                >
+                  View My Work <ArrowRight className="w-4 h-4" />
+                </Link>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+    </>
   );
 }

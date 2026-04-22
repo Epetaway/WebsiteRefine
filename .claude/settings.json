@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git restore *)",
+      "Bash(npx tsc *)",
+      "Read(//private/var/folders/**)",
+      "Read(//Users/earlhickson/Downloads/**)",
+      "Read(//Users/earlhickson/Desktop/**)",
+      "Read(//Users/earlhickson/Pictures/**)",
+      "Bash(xargs ls *)"
+    ],
+    "additionalDirectories": [
+      "/Users/earlhickson/Downloads"
+    ]
+  }
+}

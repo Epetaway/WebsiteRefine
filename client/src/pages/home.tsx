@@ -1,448 +1,371 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card } from "@/components/ui/card";
 import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { SectionHeader } from "@/components/layout/SectionHeader";
-import TypewriterCode from "@/components/ui/TypewriterCode";
-import { Palette, Zap, Sparkles, Rocket, Github, ExternalLink } from "lucide-react";
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import { useMemo } from "react";
-import { getFeaturedProjects, GITHUB_USER, type Project } from "@/lib/projects";
+import { Zap, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, Users, ArrowRight } from "lucide-react";
 import { RESUME_PATH } from "@/data/projects";
-import { hasCaseStudy } from "@/data/caseStudies";
+import justMeImg from "@/images/justMe.png";
+import earlBjjPhoto from "@/images/earl-bjj-photo.png";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
-/** FeaturedItem type for rendering project cards */
-type FeaturedItem = {
-  slug: string;
-  title: string;
-  description: string;
-  link: string;
-  image: string;
-  tech: string[];
-  kind: 'github' | 'brand';
-  html_url: string;
-  homepage: string | null;
-  hasCaseStudy: boolean;
-};
-
-/**
- * Convert a Project from lib/projects to a FeaturedItem for display
- */
-function projectToFeaturedItem(project: Project): FeaturedItem {
-  return {
-    slug: project.slug,
-    title: project.displayTitle,
-    description: project.description,
-    link: project.repoUrl,
-    image: `https://opengraph.githubassets.com/1/${GITHUB_USER}/${project.slug}`,
-    tech: project.techStack.slice(0, 6),
-    kind: 'github',
-    html_url: project.repoUrl,
-    homepage: project.liveUrl || null,
-    hasCaseStudy: hasCaseStudy(project.slug),
-  };
-}
+const featuredProjects = [
+  {
+    title: "Gundam Forge",
+    description: "A deck-building web app for Gundam card game players to create, test, and refine decks.",
+    tech: ["React", "TypeScript", "Firebase"],
+    image: "https://opengraph.githubassets.com/1/Epetaway/Gundam-Forge",
+    slug: "Gundam-Forge",
+  },
+  {
+    title: "DojoNet",
+    description: "A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.",
+    tech: ["React", "TypeScript", "Tailwind CSS"],
+    image: "https://opengraph.githubassets.com/1/Epetaway/DojoNet-Prototype-MAX",
+    slug: "DojoNet-Prototype-MAX",
+  },
+  {
+    title: "WithYou",
+    description: "A privacy-first relationship app that encourages meaningful connection through intentional communication.",
+    tech: ["React Native", "Node.js", "PostgreSQL"],
+    image: "https://opengraph.githubassets.com/1/Epetaway/WithYou",
+    slug: "WithYou",
+  },
+  {
+    title: "AMA Fight Club",
+    description: "Redesigned the website and marketing strategy resulting in significant SEO and lead growth.",
+    tech: ["WordPress", "SEO", "Analytics"],
+    image: null,
+    slug: "ama-fight-club",
+  },
+];
 
 export default function Home() {
-  const navigate = useNavigate();
-  
-  // Use centralized project data from lib/projects.ts
-  const featured = useMemo<FeaturedItem[]>(() => {
-    const projects = getFeaturedProjects(4);
-    return projects.map(projectToFeaturedItem);
-  }, []);
   return (
     <>
       <Helmet>
-        <title>Earl Hickson Jr. | Front-End Developer — React, TypeScript, Next.js | Parsippany, NJ</title>
+        <title>Earl Hickson Jr. | Senior Front-End Engineer — React, TypeScript | Parsippany, NJ</title>
         <meta
           name="description"
-          content="Front-End Developer with 6+ years of experience in React, TypeScript, Next.js, and Supabase. WCAG 2.1 AA accessible UIs, healthcare portals, and REST API integrations. Based in Parsippany, NJ. Open to full-time and contract roles."
+          content="Senior Front-End Engineer with 6+ years building scalable UI systems, accessible interfaces, and high-performance applications across healthcare, media, and high-growth platforms. Based in Parsippany, NJ."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/" />
-        <meta property="og:title" content="Earl Hickson Jr. | Front-End Developer — React, TypeScript, Next.js" />
-        <meta property="og:description" content="Front-End Developer with 6+ years in React, TypeScript, Next.js, and Supabase. WCAG 2.1 AA accessible UIs, healthcare portals, and REST API integrations. Based in Parsippany, NJ." />
+        <meta property="og:title" content="Earl Hickson Jr. | Senior Front-End Engineer — React, TypeScript" />
+        <meta property="og:description" content="Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact. 6+ years across healthcare, media, and high-growth platforms." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ehicksonjr.com/" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Earl Hickson Jr. | Front-End Developer — React, TypeScript, Next.js" />
-        <meta name="twitter:description" content="Front-End Developer with 6+ years in React, TypeScript, Next.js, and Supabase. WCAG 2.1 AA accessible UIs, healthcare portals, and REST API integrations." />
+        <meta name="twitter:title" content="Earl Hickson Jr. | Senior Front-End Engineer — React, TypeScript" />
+        <meta name="twitter:description" content="Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
-      {/* Hero Section */}
-      <Section className="min-h-[90vh] flex items-center bg-gray-50 dark:bg-slate-950">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <ScrollReveal animation="slide-up" className="space-y-6">
-            <Badge className="bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20">
-              Open to new opportunities
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 dark:text-slate-50">
-              Building digital experiences with{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500 dark:from-blue-400 dark:to-emerald-400">
-                code & creativity
-              </span>
-            </h1>
-            <p className="text-lg text-gray-600 dark:text-slate-300 max-w-xl">
-              Full stack developer and designer specializing in thoughtful brand identities, 
-              robust web applications, and user experiences that resonate. Bringing discipline 
-              from the jiu-jitsu mat to clean, maintainable code.
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <section className="relative bg-slate-950 min-h-[92vh] flex items-center overflow-hidden">
+        {/* Photo — positioned absolutely, bleeds to the right edge */}
+        <ScrollReveal animation="fade" delay={100} className="absolute inset-y-0 right-0 w-[52%] hidden lg:block pointer-events-none select-none">
+          {/* Left fade — blends photo into page bg */}
+          <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-10" />
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent z-10" />
+          <img
+            src={justMeImg}
+            alt="Earl Hickson Jr."
+            className="w-full h-full object-cover object-[center_15%]"
+          />
+        </ScrollReveal>
+
+        {/* Text — sits on top inside the container */}
+        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-24">
+          <ScrollReveal animation="slide-up" className="space-y-6 max-w-[580px]">
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium">
+              Front-End Engineer
             </p>
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link to="/contact" className="btn-secondary">
-                Get in Touch
+            <h1 className="text-5xl md:text-[64px] font-bold text-white leading-[1.05] -tracking-[0.03em]">
+              Building high-performance interfaces that{" "}
+              <span className="text-violet-400">actually move the business.</span>
+            </h1>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact.
+            </p>
+            <p className="text-base text-slate-400">
+              6+ years delivering production-ready experiences across healthcare, media, and high-growth platforms.
+            </p>
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Link
+                to="/projects"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors"
+              >
+                View My Work <ArrowRight className="w-4 h-4" />
               </Link>
-              <a href={RESUME_PATH} target="_blank" rel="noopener noreferrer" className="btn-primary" download>
-                Get Resume
-              </a>
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium transition-colors"
+              >
+                Let's Connect <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </ScrollReveal>
+        </div>
+      </section>
 
-          {/* Code Editor Card with float animation and typing effect */}
-          <ScrollReveal animation="scale" delay={150}>
-            <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-1 shadow-2xl float-soft card-hover">
-              <div className="bg-gray-50 dark:bg-slate-950 rounded-lg overflow-hidden">
-                {/* Editor Header */}
-                <div className="bg-gray-100 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 py-2 flex items-center gap-2">
-                  <div className="flex gap-1.5">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-                  </div>
-                  <span className="text-xs text-gray-500 dark:text-slate-400 ml-3 font-mono">earl-hickson.ts</span>
+      {/* ── TRUST STRIP ──────────────────────────────────────────────────── */}
+      <section className="bg-slate-900 border-y border-slate-800">
+        <div className="mx-auto max-w-[1120px] w-full px-5 py-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { icon: Zap, metric: "18%", label: "Improved Lighthouse performance" },
+              { icon: Accessibility, metric: "WCAG 2.1 AA", label: "Accessibility implementation" },
+              { icon: Layers, metric: "Reusable", label: "Component systems across React & Angular" },
+              { icon: Shield, metric: "HIPAA", label: "Healthcare dashboards & secure environments" },
+            ].map(({ icon: Icon, metric, label }, idx) => (
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
+                <div className="border border-slate-800 rounded-xl p-5 flex flex-col items-center text-center gap-2 hover:border-violet-500/40 transition-colors">
+                  <Icon className="w-6 h-6 text-violet-400" />
+                  <span className="text-xl font-bold text-white">{metric}</span>
+                  <span className="text-xs text-slate-400 leading-snug">{label}</span>
                 </div>
-                {/* Code Content with Typing Animation */}
-                <div className="p-6 font-mono text-sm leading-relaxed">
-                  <TypewriterCode startDelay={800} charDelay={25}>
-                    <div className="space-y-1">
-                      <div>
-                        <span className="text-purple-600 dark:text-purple-400">interface</span>{" "}
-                        <span className="text-blue-600 dark:text-blue-400">Developer</span>{" "}
-                        <span className="text-gray-500 dark:text-slate-500">{"{"}</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-gray-600 dark:text-slate-400">name:</span>{" "}
-                        <span className="text-emerald-600 dark:text-emerald-400">"Earl Hickson"</span>
-                        <span className="text-gray-500 dark:text-slate-500">;</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-gray-600 dark:text-slate-400">role:</span>{" "}
-                        <span className="text-emerald-600 dark:text-emerald-400">"Full Stack Developer"</span>
-                        <span className="text-gray-500 dark:text-slate-500">;</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-gray-600 dark:text-slate-400">skills:</span>{" "}
-                        <span className="text-gray-500 dark:text-slate-500">{"["}</span>
-                      </div>
-                      <div className="pl-8">
-                        <span className="text-emerald-600 dark:text-emerald-400">"React"</span>
-                        <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
-                        <span className="text-emerald-600 dark:text-emerald-400">"TypeScript"</span>
-                        <span className="text-gray-500 dark:text-slate-500">,</span>
-                      </div>
-                      <div className="pl-8">
-                        <span className="text-emerald-600 dark:text-emerald-400">"Node.js"</span>
-                        <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
-                        <span className="text-emerald-600 dark:text-emerald-400">"UI/UX Design"</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-gray-500 dark:text-slate-500">{"];"}</span>
-                      </div>
-                      <div className="pl-4">
-                        <span className="text-gray-600 dark:text-slate-400">passion:</span>{" "}
-                        <span className="text-emerald-600 dark:text-emerald-400">"Building & BJJ"</span>
-                        <span className="text-gray-500 dark:text-slate-500">;</span>
-                      </div>
-                      <div>
-                        <span className="text-gray-500 dark:text-slate-500">{"}"}</span>
-                      </div>
-                    </div>
-                  </TypewriterCode>
-                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHAT I DO ────────────────────────────────────────────────────── */}
+      <Section className="bg-slate-950">
+        <ScrollReveal animation="slide-up">
+          <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">What I Do</p>
+          <div className="grid lg:grid-cols-2 gap-6 mb-12 items-end">
+            <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+              I don't just build UIs — I build systems that scale.
+            </h2>
+            <p className="text-slate-300 text-lg leading-relaxed">
+              I specialize in turning complex product requirements into clean, maintainable, and high-performing front-end architectures.
+            </p>
+          </div>
+        </ScrollReveal>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              icon: Code2,
+              title: "Modern Front-End Development",
+              desc: "Building responsive, production-grade applications using React, Angular, and TypeScript with a focus on performance and scalability.",
+            },
+            {
+              icon: Monitor,
+              title: "UI/UX Implementation",
+              desc: "Translating design into polished, intuitive interfaces that feel smooth, intentional, and user-focused.",
+            },
+            {
+              icon: Blocks,
+              title: "Reusable Component Architecture",
+              desc: "Creating systems—not one-offs—so teams can move faster, ship consistently, and scale without breaking things.",
+            },
+          ].map(({ icon: Icon, title, desc }, idx) => (
+            <ScrollReveal key={idx} animation="slide-up" delay={idx * 80}>
+              <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-violet-500/40 transition-colors h-full">
+                <Icon className="w-8 h-8 text-violet-400 mb-4" />
+                <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">{desc}</p>
               </div>
-            </Card>
-          </ScrollReveal>
+            </ScrollReveal>
+          ))}
         </div>
       </Section>
 
-      {/* Featured Work (GitHub Repos) - Carousel */}
-      <Section className="bg-gray-100 dark:bg-slate-900">
+      {/* ── FEATURED WORK ────────────────────────────────────────────────── */}
+      <Section className="bg-slate-900">
         <ScrollReveal animation="slide-up">
-          <SectionHeader 
-            preLabel="// Featured Work"
-            title="GitHub Pinned Repositories" 
-            description="A few recent repositories from my GitHub"
-          />
+          <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-2">Featured Work</p>
+          <div className="flex items-end justify-between mb-10">
+            <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em]">
+              Selected Work
+            </h2>
+            <Link
+              to="/projects"
+              className="hidden md:inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 transition-colors font-medium"
+            >
+              View all projects <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
         </ScrollReveal>
-        <ScrollReveal animation="fade" delay={100}>
-          <Swiper
-            spaceBetween={24}
-            slidesPerView={1.05}
-            breakpoints={{
-              640: { slidesPerView: 1.4, spaceBetween: 24 },
-              768: { slidesPerView: 2.1, spaceBetween: 24 },
-              1024: { slidesPerView: 3.1, spaceBetween: 24 },
-            }}
-          >
-            {featured.map((item, idx) => (
-              <SwiperSlide key={idx} className="h-auto">
-                <Card 
-                  className={`bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 hover:border-[#388d5d]/50 transition-all duration-300 overflow-hidden h-full flex flex-col max-w-[397px] mx-auto rounded-2xl card-hover group ${item.hasCaseStudy ? 'cursor-pointer' : ''}`}
-                  onClick={() => {
-                    if (item.hasCaseStudy) {
-                      navigate(`/projects/${item.slug}`);
-                    }
-                  }}
-                >
-                  <div className="aspect-video bg-gray-100 dark:bg-slate-700/50 flex-shrink-0">
+
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={24}
+          slidesPerView={1}
+          breakpoints={{
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 4 },
+          }}
+          loop={true}
+          pagination={{ clickable: true }}
+          autoplay={false}
+          className="pb-12"
+        >
+          {featuredProjects.map(({ title, description, tech, image, slug }, idx) => (
+            <SwiperSlide key={idx} className="!w-auto">
+              <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden hover:border-violet-500/40 transition-colors group flex flex-col h-full min-h-[420px]">
+                <div className="aspect-video bg-slate-800 overflow-hidden flex-shrink-0">
+                  {image ? (
                     <img
-                      src={item.image}
-                      alt={`${item.title} preview`}
-                      className="w-full h-full object-cover"
+                      src={image}
+                      alt={`${title} preview`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
+                  ) : (
+                    <div className="w-full h-full bg-gradient-to-br from-violet-900/60 to-slate-800 flex items-center justify-center">
+                      <span className="text-slate-500 text-sm font-medium">{title}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="p-5 flex flex-col flex-1">
+                  <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+                  <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1">{description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {tech.map((t) => (
+                      <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300">
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                  <div className="p-5 flex-1 flex flex-col min-h-[280px]">
-                    {item.tech && (
-                      <div className="flex flex-wrap gap-1.5 mb-3 min-h-[28px]">
-                        {item.tech.slice(0, 3).map((t) => (
-                          <span key={t} className="inline-flex items-center rounded-full bg-slate-100 dark:bg-slate-700 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-200">
-                            {t}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                    <h3 className="text-lg font-bold text-gray-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors line-clamp-2 min-h-[56px]">
-                      {item.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-slate-300/90 mb-3 text-sm leading-relaxed line-clamp-3 min-h-[60px]">{item.description}</p>
-                    {item.kind === 'github' && (
-                      <div className="mt-auto flex flex-wrap gap-2">
-                        <a 
-                          href={item.html_url} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-sm"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <Github className="h-3.5 w-3.5" />
-                          View Code
-                        </a>
-                        {item.homepage && (
-                          <a 
-                            href={item.homepage} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-md border border-emerald-500/40 hover:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300"
-                            onClick={(e) => e.stopPropagation()}
-                          >
-                            <ExternalLink className="h-3.5 w-3.5" />
-                            View Demo
-                          </a>
-                        )}
-                      </div>
-                    )}
-                  </div>
-                </Card>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </ScrollReveal>
+                  <Link
+                    to={`/projects/${slug}`}
+                    className="inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors"
+                  >
+                    View Case Study <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         <ScrollReveal animation="fade" delay={200}>
-          <div className="text-center mt-12">
-            <Link to="/projects">
-              <Button variant="outline" size="lg" className="border-gray-300 dark:border-slate-700 text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-800">
-                View All Projects
-              </Button>
+          <div className="mt-8 md:hidden text-center">
+            <Link
+              to="/projects"
+              className="inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors"
+            >
+              View all projects <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </ScrollReveal>
       </Section>
 
-      {/* How I Work */}
-      <Section className="bg-white dark:bg-slate-950">
+      {/* ── HOW I THINK ──────────────────────────────────────────────────── */}
+      <Section className="bg-slate-950">
         <ScrollReveal animation="slide-up">
-          <SectionHeader 
-            preLabel="// Approach & Services"
-            title="Approach & Services" 
-            description="Clear process. Practical engineering. Thoughtful design. Everything tuned for outcomes."
-          />
-        </ScrollReveal>
-        <div className="grid lg:grid-cols-2 gap-8">
-          {/* Left: How I Work */}
-          <div className="space-y-4">
-            {[
-              { step: "01", title: "Discover", desc: "Align on goals, audience, and constraints. Surface risks early." },
-              { step: "02", title: "Define", desc: "Shape scope, architecture, and success metrics that fit reality." },
-              { step: "03", title: "Design & Build", desc: "Prototype quickly. Ship in tight loops. Test and refine." },
-              { step: "04", title: "Launch & Iterate", desc: "Measure impact, improve performance, document, and support." },
-            ].map((phase, idx) => (
-              <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
-                <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
-                  <div className="flex items-start gap-4">
-                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400 mt-0.5 w-10">{phase.step}</div>
-                    <div>
-                      <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-1">{phase.title}</h3>
-                      <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{phase.desc}</p>
-                    </div>
-                  </div>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          {/* Right: What I Do */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              {
-                icon: Zap,
-                title: "Product Engineering",
-                description: "React, TypeScript, Node, Postgres. Fast, accessible, and maintainable by default.",
-              },
-              {
-                icon: Sparkles,
-                title: "UI/UX Design",
-                description: "From wireframes to production visuals. Design systems that scale without noise.",
-              },
-              {
-                icon: Palette,
-                title: "Brand Systems",
-                description: "Logos, typography, color, and usage. Cohesive identities with real-world rules.",
-              },
-              {
-                icon: Rocket,
-                title: "Growth & Ops",
-                description: "Analytics, A/B testing, SEO, and CI/CD to keep velocity high and risk low.",
-              },
-            ].map((service, idx) => (
-              <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
-                <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-6 hover:border-[#388d5d]/40 transition-colors card-hover">
-                  <service.icon className="h-9 w-9 text-emerald-600 dark:text-emerald-400 mb-3" />
-                  <h3 className="text-base font-semibold text-gray-900 dark:text-slate-50 mb-1">{service.title}</h3>
-                  <p className="text-sm text-gray-600 dark:text-slate-400 leading-relaxed">{service.description}</p>
-                </Card>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </Section>
-
-      {/* About Preview */}
-      <Section className="bg-gray-100 dark:bg-slate-950">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <ScrollReveal animation="slide-up">
-            <div className="space-y-6">
-              <h2 className="text-4xl font-bold text-gray-900 dark:text-slate-50">
-                Code, Culture, Discipline
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                As a full stack developer and Brazilian Jiu-Jitsu practitioner, I bring 
-                the same dedication to both crafts. The discipline, problem-solving, and 
-                resilience from the mats translates directly to writing clean code and 
-                building robust applications.
-              </p>
-              <p className="text-lg text-gray-600 dark:text-slate-300 leading-relaxed">
-                Whether it's designing a brand identity or architecting a complex system, 
-                I approach every project with thoughtfulness, precision, and a commitment 
-                to continuous improvement.
-              </p>
-              <Link to="/about" className="btn-secondary">
-                More About Me
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          {/* Code Editor Card with float animation and typing effect */}
-          <ScrollReveal animation="scale" delay={120}>
-            <Card className="bg-white dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-1 shadow-xl card-hover float-soft">
-            <div className="bg-gray-50 dark:bg-slate-950 rounded-lg overflow-hidden">
-              <div className="bg-gray-100 dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 px-4 py-2 flex items-center gap-2">
-                <div className="flex gap-1.5">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-amber-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
-                </div>
-                <span className="text-xs text-gray-500 dark:text-slate-400 ml-3 font-mono">philosophy.ts</span>
-              </div>
-              <div className="p-6 font-mono text-sm leading-relaxed">
-                <TypewriterCode startDelay={600} charDelay={30}>
-                  <div className="space-y-1">
-                    <div>
-                      <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
-                      <span className="text-blue-600 dark:text-blue-400">approach</span>{" "}
-                      <span className="text-gray-500 dark:text-slate-500">=</span>{" "}
-                      <span className="text-gray-500 dark:text-slate-500">{"{"}</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-gray-600 dark:text-slate-400">mindset:</span>{" "}
-                      <span className="text-emerald-600 dark:text-emerald-400">"Continuous improvement"</span>
-                      <span className="text-gray-500 dark:text-slate-500">,</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-gray-600 dark:text-slate-400">process:</span>{" "}
-                      <span className="text-emerald-600 dark:text-emerald-400">"Deliberate practice"</span>
-                      <span className="text-gray-500 dark:text-slate-500">,</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-gray-600 dark:text-slate-400">outcome:</span>{" "}
-                      <span className="text-emerald-600 dark:text-emerald-400">"Quality over speed"</span>
-                      <span className="text-gray-500 dark:text-slate-500">,</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-gray-600 dark:text-slate-400">values:</span>{" "}
-                      <span className="text-gray-500 dark:text-slate-500">{"["}</span>
-                    </div>
-                    <div className="pl-8">
-                      <span className="text-emerald-600 dark:text-emerald-400">"Discipline"</span>
-                      <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
-                      <span className="text-emerald-600 dark:text-emerald-400">"Craft"</span>
-                      <span className="text-gray-500 dark:text-slate-500">,</span>
-                    </div>
-                    <div className="pl-8">
-                      <span className="text-emerald-600 dark:text-emerald-400">"Growth"</span>
-                      <span className="text-gray-500 dark:text-slate-500">,</span>{" "}
-                      <span className="text-emerald-600 dark:text-emerald-400">"Excellence"</span>
-                    </div>
-                    <div className="pl-4">
-                      <span className="text-gray-500 dark:text-slate-500">{"]"}</span>
-                    </div>
-                    <div>
-                      <span className="text-gray-500 dark:text-slate-500">{"};"}</span>
-                    </div>
-                  </div>
-                </TypewriterCode>
-              </div>
-            </div>
-            </Card>
-          </ScrollReveal>
-        </div>
-      </Section>
-
-      {/* Final CTA */}
-      <Section className="bg-gradient-to-br from-blue-600 to-emerald-600">
-        <ScrollReveal animation="slide-up">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Let's Build Something Great
+          <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">How I Think</p>
+          <div className="grid lg:grid-cols-2 gap-6 mb-12 items-end">
+            <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+              I think like a developer, designer, and product owner.
             </h2>
-            <p className="text-xl text-blue-50 mb-8">
-              Whether you need a brand identity, web application, or anything in between, 
-              I'd love to help bring your vision to life.
-            </p>
-            <Link to="/contact">
-              <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 shadow-lg button-lift">
-                Start a Conversation
-              </Button>
-            </Link>
+            <div className="space-y-2">
+              <p className="text-slate-300 text-lg">I don't just take tickets and build screens.</p>
+              <p className="text-slate-400">I think about:</p>
+            </div>
           </div>
         </ScrollReveal>
+
+        <div className="grid md:grid-cols-3 gap-5">
+          {[
+            {
+              icon: Scale,
+              text: "How this scales in 6 months",
+            },
+            {
+              icon: Users,
+              text: "How users actually interact with it",
+            },
+            {
+              icon: Code2,
+              text: "That mindset is what separates clean code from real product engineering.",
+            },
+          ].map(({ icon: Icon, text }, idx) => (
+            <ScrollReveal key={idx} animation="slide-up" delay={idx * 80} className="h-full">
+              <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-violet-500/40 transition-colors flex gap-4 items-start h-full min-h-[100px]">
+                <Icon className="w-6 h-6 text-violet-400 flex-shrink-0 mt-0.5" />
+                <p className="text-slate-300 leading-relaxed">{text}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+        </div>
       </Section>
+
+      {/* ── ABOUT PREVIEW ────────────────────────────────────────────────── */}
+      <section className="bg-[#F7BC0A]">
+        <div className="mx-auto max-w-[1320px] w-full px-5 py-10 lg:py-0">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <ScrollReveal animation="fade" delay={100}>
+              <div className="overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+                <img
+                  src={earlBjjPhoto}
+                  alt="Earl Hickson Jr."
+                  className="w-full h-[440px] sm:h-[560px] lg:h-[720px] object-cover object-center"
+                />
+              </div>
+            </ScrollReveal>
+
+            <ScrollReveal animation="slide-up" className="space-y-6 lg:pr-10">
+              <p className="text-xs tracking-widest uppercase text-slate-800 font-medium">About Me</p>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 -tracking-[0.03em] leading-[1.1]">
+                More than just code.
+              </h2>
+              <p className="text-slate-900/90 text-lg leading-relaxed max-w-xl">
+                I'm a front-end engineer, designer, and Brazilian Jiu-Jitsu instructor. I bring discipline, creativity, and problem-solving into everything I build—whether it's a UI system or a training session.
+              </p>
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-slate-900 hover:bg-slate-800 text-white font-medium transition-colors"
+              >
+                View About Me <ArrowRight className="w-4 h-4" />
+              </Link>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA STRIP ────────────────────────────────────────────────────── */}
+      <section className="bg-gradient-to-br from-slate-950 via-violet-950/30 to-slate-950 border-t border-slate-800">
+        <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
+          <ScrollReveal animation="slide-up">
+            <div className="grid lg:grid-cols-2 gap-10 items-center">
+              <div className="space-y-4">
+                <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+                  Let's build something that actually works.
+                </h2>
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  If you're looking for someone who can deliver clean UI, strong architecture, and real impact—I'm ready.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4 lg:justify-end">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors"
+                >
+                  Contact Me <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href={RESUME_PATH}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium transition-colors"
+                >
+                  View Resume
+                </a>
+              </div>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
     </>
   );
 }

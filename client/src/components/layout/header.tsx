@@ -1,38 +1,21 @@
 import { useState, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { Sun, Moon } from "lucide-react";
 import profileImage from "@/images/me.png";
-import { useTheme } from "@/contexts/ThemeContext";
 import { RESUME_PATH } from "@/data/projects";
 
 const nav = [
-  { to: "/", label: "Home" },
-  { to: "/projects", label: "Projects" },
+  { to: "/projects", label: "Work" },
+  { to: "/approach", label: "Approach" },
   { to: "/about", label: "About" },
-  { to: "/blog", label: "Blog" },
+  { to: "/contact", label: "Contact" },
 ];
 
-const titles = ["Front-End Engineer", "UI Designer", "Digital Creator", "Web Developer"];
-
 export default function Header() {
-    const { theme, toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
-  const [currentTitle, setCurrentTitle] = useState(0);
   const [scrolled, setScrolled] = useState(false);
 
-  // Cycle through titles every 3 seconds
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTitle((prev) => (prev + 1) % titles.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
-
-  // Track scroll position for sticky header effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -41,92 +24,78 @@ export default function Header() {
     <header
       className={`w-full sticky top-0 z-50 ui-transition-soft border-b backdrop-blur-xl ${
         scrolled
-          ? "bg-white/80 dark:bg-slate-950/80 shadow-sm border-gray-200/50 dark:border-slate-800/50"
-          : "bg-white/60 dark:bg-slate-950/60 border-transparent"
+          ? "bg-slate-950/90 shadow-sm border-slate-800/60"
+          : "bg-slate-950/70 border-transparent"
       }`}
       style={{ height: '72px' }}
     >
-      {/* Main Navbar */}
       <div className="mx-auto max-w-[1120px] h-full px-5">
         <div className="flex items-center justify-between h-full">
-          {/* Logo with Profile */}
+
+          {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 rounded-full bg-gradient-to-b from-blue-400 to-blue-600 shadow-[inset_0_20px_12px_12px_rgba(255,255,255,0.2),0_0_4px_0_rgba(229,225,253,1),inset_0_-4px_8px_0_rgba(229,225,253,1)] overflow-hidden">
+            <div className="relative h-10 w-10 rounded-full overflow-hidden ring-1 ring-slate-700 group-hover:ring-violet-500/50 transition-all">
               <img
                 src={profileImage}
                 alt="Earl Hickson Jr."
                 className="absolute inset-0 w-full h-full object-cover"
-                style={{ maskImage: "linear-gradient(rgb(0, 0, 0) 60%, rgba(0, 0, 0, 0) 100%)" }}
+                style={{ maskImage: "linear-gradient(rgb(0,0,0) 60%, rgba(0,0,0,0) 100%)" }}
               />
             </div>
             <div className="flex flex-col">
-              <span className="text-base font-medium text-gray-900 dark:text-gray-100 -tracking-[0.04em] leading-tight">
+              <span className="text-base font-medium text-white -tracking-[0.04em] leading-tight">
                 Earl Hickson Jr.
               </span>
-              <div className="h-[18px] overflow-hidden">
-                <div
-                  className="transition-transform duration-500 ease-out"
-                  style={{ transform: `translateY(-${currentTitle * 18}px)` }}
-                >
-                  {titles.map((title, idx) => (
-                    <p key={idx} className="text-sm text-gray-500 dark:text-gray-400 -tracking-[0.02em] leading-[18px]">
-                      {title}
-                    </p>
-                  ))}
-                </div>
-              </div>
+              <p className="text-xs text-slate-400 -tracking-[0.02em] leading-[16px]">
+                Frontend Engineer & Product Thinker
+              </p>
             </div>
           </Link>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4">
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-1">
             {nav.map((item) => (
               <NavLink
                 key={item.to}
                 to={item.to}
                 className={({ isActive }) =>
-                  `px-4 py-1 text-sm font-medium -tracking-[0.04em] ui-transition-soft link-underline ${
-                    isActive
-                      ? "text-gray-900 dark:text-gray-100"
-                      : "text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white"
+                  `relative px-4 py-1.5 text-sm font-medium -tracking-[0.03em] transition-colors group ${
+                    isActive ? "text-white" : "text-slate-400 hover:text-white"
                   }`
                 }
               >
-                {item.label}
+                {({ isActive }) => (
+                  <>
+                    {item.label}
+                    <span className={`absolute -bottom-0.5 left-1/2 -translate-x-1/2 h-0.5 rounded-full bg-violet-500 transition-all duration-200 ${isActive ? "w-4" : "w-0 group-hover:w-3 group-hover:opacity-40"}`} />
+                  </>
+                )}
               </NavLink>
             ))}
-          </nav>
-
-          {/* CTA Buttons & Theme Toggle */}
-          <div className="hidden md:flex items-center gap-2">
-            <button
-              onClick={toggleTheme}
-              className="p-2 rounded-md hover:bg-gray-200 dark:hover:bg-gray-700 ui-transition-soft"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-              ) : (
-                <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-              )}
-            </button>
-            <Link to="/about" className="btn-secondary">
-              Get In Touch
-            </Link>
             <a
               href={RESUME_PATH}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
               download
+              className="px-4 py-1.5 text-sm font-medium -tracking-[0.03em] transition-colors text-slate-400 hover:text-white"
             >
-              Get Resume
+              Resume
             </a>
+          </nav>
+
+          {/* Desktop CTA */}
+          <div className="hidden md:flex items-center">
+            <Link
+              to="/contact"
+              className="px-4 py-2 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-colors"
+            >
+              Let's Connect
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden inline-flex items-center justify-center rounded-md px-3 py-2 text-sm bg-gray-200 dark:bg-gray-800 ui-transition-soft"
+            className="md:hidden inline-flex items-center justify-center rounded-md px-3 py-2 text-sm bg-slate-800 text-slate-200 hover:bg-slate-700 transition-colors"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -137,55 +106,42 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Nav */}
       {open && (
         <div
           id="mobile-nav"
-          className="md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-sm border-t border-gray-200 dark:border-gray-800"
+          className="md:hidden bg-slate-950/98 backdrop-blur-lg shadow-sm border-t border-slate-800"
         >
-        <div className="mx-auto max-w-[1120px] px-5 py-3 flex flex-col gap-2">
+          <div className="mx-auto max-w-[1120px] px-5 py-3 flex flex-col gap-1">
             {nav.map((item) => (
               <Link
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="rounded-full px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ui-transition-soft"
+                className="px-3 py-2.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
               >
                 {item.label}
               </Link>
             ))}
-            <button
-              onClick={() => {
-                toggleTheme();
-                setOpen(false);
-              }}
-              className="rounded-full px-3 py-2 text-sm font-semibold text-gray-800 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 ui-transition-soft flex items-center gap-2"
-            >
-              {theme === "dark" ? (
-                <>
-                  <Sun className="h-4 w-4" />
-                  Light Mode
-                </>
-              ) : (
-                <>
-                  <Moon className="h-4 w-4" />
-                  Dark Mode
-                </>
-              )}
-            </button>
-            <Link to="/about" onClick={() => setOpen(false)} className="btn-secondary">
-              Get In Touch
-            </Link>
             <a
               href={RESUME_PATH}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-primary"
               download
               onClick={() => setOpen(false)}
+              className="px-3 py-2.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
             >
-              Get Resume
+              Resume
             </a>
+            <div className="pt-2 pb-1">
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="block w-full text-center px-4 py-2.5 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-medium transition-colors"
+              >
+                Let's Connect
+              </Link>
+            </div>
           </div>
         </div>
       )}

@@ -418,6 +418,86 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
     codeUrl: 'https://github.com/Epetaway/mtg-proxy-generator',
     repo: 'mtg-proxy-generator',
   },
+  'ama-fight-club': {
+    slug: 'ama-fight-club',
+    title: 'AMA Fight Club',
+    subtitle: 'Redesigning a combat sports brand\'s digital presence for measurable growth in organic traffic and lead conversion',
+    summary: 'A full website and digital marketing overhaul for AMA Fight Club—a high-growth combat sports gym. Improved site structure, SEO, CTA placement, and API integrations resulted in triple-digit gains across traffic, leads, and conversions.',
+    overview: {
+      description: 'AMA Fight Club needed a digital presence that matched the energy of the brand. The existing site had low organic visibility, poor UX, and was failing to convert visitors into leads. I redesigned the information architecture, overhauled on-page SEO, rebuilt key landing pages, and integrated real-time lead capture workflows.',
+      problem: 'The site had poor search visibility, outdated design that didn\'t reflect the brand\'s strength, and a lead capture flow that created friction. Prospective members couldn\'t find the gym online, and those who did weren\'t converting.',
+      goals: [
+        'Improve organic search visibility for local combat sports terms',
+        'Redesign key landing pages to reduce friction and drive conversions',
+        'Integrate real-time lead capture with ZipRecruiter API for staff recruitment',
+        'Improve site performance and mobile responsiveness',
+        'Build a scalable CMS structure for ongoing content updates',
+      ],
+    },
+    role: [
+      {
+        title: 'Frontend & Digital Integration',
+        description: 'Implemented frontend functionality using HTML, CSS, and JavaScript within the Wix CMS environment. Built landing pages focused on conversion, accessibility, and mobile-first performance.',
+      },
+      {
+        title: 'SEO Strategy & Execution',
+        description: 'Overhauled on-page SEO including meta structure, heading hierarchy, schema markup, and local search optimization—resulting in significant improvements in organic rankings.',
+      },
+      {
+        title: 'API Integration & Automation',
+        description: 'Developed and maintained form and API integrations with ZipRecruiter, enabling real-time lead capture and candidate tracking workflows.',
+      },
+      {
+        title: 'Analytics & Optimization',
+        description: 'Set up analytics tracking, identified drop-off points in the conversion funnel, and iteratively improved CTA placement and page layout to maximize lead generation.',
+      },
+    ],
+    technical: {
+      architecture: 'WordPress and Wix CMS environment with custom HTML, CSS, and JavaScript for frontend enhancements. ZipRecruiter API integration for real-time lead capture. Google Analytics for funnel tracking and conversion optimization.',
+      techStack: ['WordPress', 'Wix CMS', 'HTML', 'CSS', 'JavaScript', 'SEO', 'Google Analytics', 'ZipRecruiter API'],
+      approach: [
+        {
+          title: 'Information Architecture Overhaul',
+          description: 'Restructured the site hierarchy to prioritize high-intent pages and reduce clicks to conversion points.',
+        },
+        {
+          title: 'On-Page SEO Rebuild',
+          description: 'Rewrote meta tags, heading structure, and local schema markup to target high-value combat sports search terms in the area.',
+        },
+        {
+          title: 'Conversion-Focused Landing Pages',
+          description: 'Redesigned class and membership pages with clearer CTAs, social proof, and reduced cognitive load to improve sign-up rates.',
+        },
+        {
+          title: 'API-Driven Lead Capture',
+          description: 'Integrated ZipRecruiter API to automate candidate tracking and lead notifications for the gym\'s staff recruitment pipeline.',
+        },
+      ],
+    },
+    outcomes: [
+      {
+        metric: '+156%',
+        label: 'Organic Traffic',
+        description: 'Increase in organic search traffic',
+        color: 'green',
+      },
+      {
+        metric: '+210%',
+        label: 'Leads Generated',
+        description: 'Increase in lead form submissions',
+        color: 'blue',
+      },
+      {
+        metric: '+87%',
+        label: 'Conversions',
+        description: 'Increase in membership sign-ups',
+        color: 'gold',
+      },
+    ],
+    demoUrl: 'https://amafightclub.com',
+    codeUrl: 'https://amafightclub.com',
+    repo: 'ama-fight-club',
+  },
 };
 
 /**

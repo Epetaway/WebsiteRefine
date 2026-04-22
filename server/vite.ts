@@ -19,6 +19,7 @@ export function log(message: string, source = "express") {
     second: "2-digit",
     hour12: true,
   });
+  // eslint-disable-next-line no-console
   console.log(`${formattedTime} [${source}] ${message}`);
 }
 
