@@ -4,6 +4,7 @@ import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Zap, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, Users, ArrowRight } from "lucide-react";
 import { RESUME_PATH } from "@/data/projects";
+import { resolveCaseStudySlug } from "@/data/caseStudies";
 import justMeImg from "@/images/justMe.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -208,7 +209,10 @@ export default function Home() {
           autoplay={false}
           className="pb-12"
         >
-          {featuredProjects.map(({ title, description, tech, image, slug }, idx) => (
+          {featuredProjects.map(({ title, description, tech, image, slug }, idx) => {
+            const caseStudySlug = resolveCaseStudySlug(slug) ?? slug;
+
+            return (
             <SwiperSlide key={idx} className="!w-auto">
               <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden hover:border-violet-500/40 transition-colors group flex flex-col h-full min-h-[420px]">
                 <div className="aspect-video bg-slate-800 overflow-hidden flex-shrink-0">
@@ -236,7 +240,7 @@ export default function Home() {
                     ))}
                   </div>
                   <Link
-                    to={`/projects/${slug}`}
+                    to={`/projects/${caseStudySlug}`}
                     className="inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors"
                   >
                     View Case Study <ArrowRight className="w-3.5 h-3.5" />
@@ -244,7 +248,8 @@ export default function Home() {
                 </div>
               </div>
             </SwiperSlide>
-          ))}
+            );
+          })}
         </Swiper>
 
         <ScrollReveal animation="fade" delay={200}>

@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Section } from "@/components/layout/Section";
 import { SectionHeader } from "@/components/layout/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { getCaseStudy } from "@/data/caseStudies";
+import { getCaseStudy, resolveCaseStudySlug } from "@/data/caseStudies";
 import WithYouCaseStudy from "@/case-studies/withyou";
 import { ExternalLink, Github, Code2 } from "lucide-react";
 
@@ -15,6 +15,7 @@ export default function CaseStudy() {
   const { slug } = useParams<{ slug: string }>();
   const [screenshots, setScreenshots] = useState<string[]>([]);
   
+  const canonicalSlug = slug ? resolveCaseStudySlug(slug) : undefined;
   const caseStudy = slug ? getCaseStudy(slug) : null;
 
   // Fetch screenshots dynamically from GitHub
@@ -75,7 +76,7 @@ export default function CaseStudy() {
     return <Navigate to="/projects" replace />;
   }
 
-  if (slug === "WithYou") {
+  if (canonicalSlug === "WithYou") {
     return <WithYouCaseStudy />;
   }
 

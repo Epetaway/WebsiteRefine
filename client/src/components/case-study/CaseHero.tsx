@@ -4,23 +4,78 @@ type CaseHeroProps = {
   title: string;
   subtitle: string;
   image: string;
+  imageMobile?: string;
+  imagePosition?: string;
+  imagePositionMobile?: string;
+  imagePositionTablet?: string;
+  imagePositionDesktop?: string;
+  imageHeightMobile?: string;
+  imageHeightTablet?: string;
+  imageHeightDesktop?: string;
+  overlayOpacity?: string;
   eyebrow?: string;
   theme: CaseStudyTheme;
 };
 
-export function CaseHero({ title, subtitle, image, eyebrow, theme }: CaseHeroProps) {
+export function CaseHero({
+  title,
+  subtitle,
+  image,
+  imageMobile,
+  imagePosition = "center center",
+  imagePositionMobile,
+  imagePositionTablet,
+  imagePositionDesktop,
+  imageHeightMobile = "300px",
+  imageHeightTablet = "380px",
+  imageHeightDesktop = "520px",
+  overlayOpacity = "from-black/70 via-black/15",
+  eyebrow,
+  theme,
+}: CaseHeroProps) {
   return (
     <section className="mb-10">
       <div className="relative overflow-hidden rounded-3xl border" style={{ borderColor: theme.colors.border }}>
         <div className="absolute inset-0" style={{ background: theme.gradients.hero }} />
+        <picture className="block sm:hidden">
+          {imageMobile && <source media="(max-width: 639px)" srcSet={imageMobile} />}
+          <img
+            src={image}
+            alt={`${title} interface collage`}
+            className="w-full object-cover"
+            style={{
+              height: imageHeightMobile,
+              objectPosition: imagePositionMobile ?? imagePosition,
+            }}
+            loading="eager"
+          />
+        </picture>
+
         <img
           src={image}
-          alt={`${title} interface collage`}
-          className="h-[300px] w-full object-cover object-center sm:h-[380px] lg:h-[520px]"
+          alt=""
+          aria-hidden="true"
+          className="hidden w-full object-cover sm:block lg:hidden"
+          style={{
+            height: imageHeightTablet,
+            objectPosition: imagePositionTablet ?? imagePosition,
+          }}
           loading="eager"
         />
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+        <img
+          src={image}
+          alt=""
+          aria-hidden="true"
+          className="hidden w-full object-cover lg:block"
+          style={{
+            height: imageHeightDesktop,
+            objectPosition: imagePositionDesktop ?? imagePosition,
+          }}
+          loading="eager"
+        />
+
+        <div className={`absolute inset-0 bg-gradient-to-t ${overlayOpacity} to-transparent`} />
 
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-8 lg:p-10">
           {eyebrow && (

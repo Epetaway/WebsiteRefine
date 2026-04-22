@@ -500,18 +500,58 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
   },
 };
 
+function normalizeSlug(value: string): string {
+  return value.trim().toLowerCase();
+}
+
+function buildSlugIndex(): Map<string, string> {
+  const index = new Map<string, string>();
+
+  for (const [key, caseStudy] of Object.entries(caseStudyData)) {
+    const variants = [
+      key,
+      caseStudy.slug,
+      caseStudy.repo,
+      caseStudy.title,
+    ];
+
+    for (const variant of variants) {
+      index.set(normalizeSlug(variant), key);
+    }
+  }
+
+  return index;
+}
+
+const caseStudySlugIndex = buildSlugIndex();
+
+export function resolveCaseStudySlug(slug: string): string | undefined {
+  const exact = caseStudyData[slug];
+  if (exact) {
+    return exact.slug;
+  }
+
+  const canonicalKey = caseStudySlugIndex.get(normalizeSlug(slug));
+  if (!canonicalKey) {
+    return undefined;
+  }
+
+  return caseStudyData[canonicalKey]?.slug;
+}
+
 /**
  * Get case study data by slug
  */
 export function getCaseStudy(slug: string): ProjectCaseStudy | undefined {
-  return caseStudyData[slug];
+  const canonicalSlug = resolveCaseStudySlug(slug);
+  return canonicalSlug ? caseStudyData[canonicalSlug] : undefined;
 }
 
 /**
  * Check if a project has case study data
  */
 export function hasCaseStudy(slug: string): boolean {
-  return slug in caseStudyData;
+  return Boolean(resolveCaseStudySlug(slug));
 }
 
 /**

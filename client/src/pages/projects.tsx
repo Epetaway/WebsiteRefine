@@ -2,7 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link, useNavigate } from "react-router-dom";
 import { Github, ExternalLink, ArrowRight } from "lucide-react";
 import { getPinnedProjects, getAdditionalProjects, GITHUB_USER } from "@/lib/projects";
-import { hasCaseStudy } from "@/data/caseStudies";
+import { resolveCaseStudySlug } from "@/data/caseStudies";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { useReveal } from "@/hooks/useReveal";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -68,10 +68,11 @@ export default function Projects() {
                 <SwiperSlide key={project.slug} className="!w-auto">
                   <article
                     data-reveal
-                      className={`group bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden hover:border-violet-500/40 transition-colors h-full flex flex-col min-h-[420px] ${hasCaseStudy(project.slug) ? 'cursor-pointer' : ''}`}
+                      className={`group bg-slate-950 border border-slate-800 rounded-2xl overflow-hidden hover:border-violet-500/40 transition-colors h-full flex flex-col min-h-[420px] ${resolveCaseStudySlug(project.slug) ? 'cursor-pointer' : ''}`}
                     onClick={() => {
-                      if (hasCaseStudy(project.slug)) {
-                        navigate(`/projects/${project.slug}`);
+                      const caseStudySlug = resolveCaseStudySlug(project.slug);
+                      if (caseStudySlug) {
+                        navigate(`/projects/${caseStudySlug}`);
                       }
                     }}
                   >
@@ -146,9 +147,10 @@ export default function Projects() {
                 <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
                   <article
                     data-reveal
-                    className={`group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-violet-500/40 transition-colors h-full flex flex-col ${hasCaseStudy(project.slug) ? 'cursor-pointer' : ''}`}
+                    className={`group bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-violet-500/40 transition-colors h-full flex flex-col ${resolveCaseStudySlug(project.slug) ? 'cursor-pointer' : ''}`}
                     onClick={() => {
-                      if (hasCaseStudy(project.slug)) navigate(`/projects/${project.slug}`);
+                      const caseStudySlug = resolveCaseStudySlug(project.slug);
+                      if (caseStudySlug) navigate(`/projects/${caseStudySlug}`);
                     }}
                   >
                     <div className="relative aspect-video bg-slate-800 overflow-hidden flex-shrink-0">
