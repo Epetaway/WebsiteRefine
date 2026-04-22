@@ -24,8 +24,8 @@ export default function Header() {
     <header
       className={`w-full sticky top-0 z-50 ui-transition-soft border-b backdrop-blur-xl ${
         scrolled
-          ? "bg-slate-950/90 shadow-sm border-slate-800/60"
-          : "bg-slate-950/70 border-transparent"
+          ? "bg-[#0D0D0D]/90 shadow-sm border-[#20252A]"
+          : "bg-[#0D0D0D]/70 border-transparent"
       }`}
       style={{ height: '72px' }}
     >
@@ -34,7 +34,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="relative h-10 w-10 rounded-full overflow-hidden ring-1 ring-slate-700 group-hover:ring-violet-500/50 transition-all">
+            <div className="relative h-10 w-10 rounded-full overflow-hidden ring-1 ring-[#363C42] group-hover:ring-violet-500/50 transition-all">
               <img
                 src={profileImage}
                 alt="Earl Hickson Jr."
@@ -60,7 +60,7 @@ export default function Header() {
                 to={item.to}
                 className={({ isActive }) =>
                   `relative px-4 py-1.5 text-sm font-medium -tracking-[0.03em] transition-colors group ${
-                    isActive ? "text-white" : "text-slate-400 hover:text-white"
+                    isActive ? "text-white" : "text-[#7A7A7A] hover:text-white"
                   }`
                 }
               >
@@ -77,7 +77,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               download
-              className="px-4 py-1.5 text-sm font-medium -tracking-[0.03em] transition-colors text-slate-400 hover:text-white"
+              className="px-4 py-1.5 text-sm font-medium -tracking-[0.03em] transition-colors text-[#7A7A7A] hover:text-white"
             >
               Resume
             </a>
@@ -95,7 +95,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden inline-flex items-center justify-center rounded-md px-3 py-2 text-sm bg-slate-800 text-slate-200 hover:bg-slate-700 transition-colors"
+            className="md:hidden inline-flex items-center justify-center rounded-md px-3 py-2 text-sm bg-[#1A1A1A] text-[#B7B7B7] hover:bg-[#363C42] transition-colors"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -110,7 +110,7 @@ export default function Header() {
       {open && (
         <div
           id="mobile-nav"
-          className="md:hidden bg-slate-950/98 backdrop-blur-lg shadow-sm border-t border-slate-800"
+          className="md:hidden bg-[#0D0D0D]/98 backdrop-blur-lg shadow-sm border-t border-[#20252A]"
         >
           <div className="mx-auto max-w-[1120px] px-5 py-3 flex flex-col gap-1">
             {nav.map((item) => (
@@ -118,7 +118,7 @@ export default function Header() {
                 key={item.to}
                 to={item.to}
                 onClick={() => setOpen(false)}
-                className="px-3 py-2.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+                className="px-3 py-2.5 text-sm font-medium text-[#B7B7B7] hover:text-white hover:bg-[#1A1A1A] rounded-lg transition-colors"
               >
                 {item.label}
               </Link>
@@ -129,7 +129,7 @@ export default function Header() {
               rel="noopener noreferrer"
               download
               onClick={() => setOpen(false)}
-              className="px-3 py-2.5 text-sm font-medium text-slate-300 hover:text-white hover:bg-slate-800 rounded-lg transition-colors"
+              className="px-3 py-2.5 text-sm font-medium text-[#B7B7B7] hover:text-white hover:bg-[#1A1A1A] rounded-lg transition-colors"
             >
               Resume
             </a>

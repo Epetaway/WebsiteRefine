@@ -122,7 +122,7 @@ export default function CaseStudy() {
       </Section>
 
       {/* Project Overview */}
-      <Section className="bg-white dark:bg-slate-950">
+      <Section className="bg-white dark:bg-[#0D0D0D]">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
             preLabel="// Overview"
@@ -131,27 +131,27 @@ export default function CaseStudy() {
         </ScrollReveal>
         
         <ScrollReveal animation="fade" delay={100}>
-          <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-8">
+          <Card className="bg-gray-50 dark:bg-[#111111] border-gray-200 dark:border-[#20252A] p-8">
             <div className="space-y-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-3">Summary</h3>
-                <p className="text-gray-700 dark:text-slate-300 leading-relaxed">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Summary</h3>
+                <p className="text-gray-700 dark:text-[#B7B7B7] leading-relaxed">
                   {caseStudy.overview.description}
                 </p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-3">Problem Statement</h3>
-                <p className="text-gray-700 dark:text-slate-300 leading-relaxed">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">Problem Statement</h3>
+                <p className="text-gray-700 dark:text-[#B7B7B7] leading-relaxed">
                   {caseStudy.overview.problem}
                 </p>
               </div>
               
               <div>
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-3">High-Level Goals</h3>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">High-Level Goals</h3>
                 <ul className="space-y-2">
                   {caseStudy.overview.goals.map((goal, idx) => (
-                    <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-slate-300">
+                    <li key={idx} className="flex items-start gap-3 text-gray-700 dark:text-[#B7B7B7]">
                       <span className="text-emerald-500 mt-1.5">•</span>
                       <span>{goal}</span>
                     </li>
@@ -164,7 +164,7 @@ export default function CaseStudy() {
       </Section>
 
       {/* My Role & Responsibilities */}
-      <Section className="bg-gray-50 dark:bg-slate-900">
+      <Section className="bg-gray-50 dark:bg-[#111111]">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
             preLabel="// Contributions"
@@ -175,11 +175,11 @@ export default function CaseStudy() {
         <div className="grid md:grid-cols-2 gap-6">
           {caseStudy.role.map((item, idx) => (
             <ScrollReveal key={idx} animation="slide-up" delay={idx * 50}>
-              <Card className="bg-white dark:bg-slate-800 border-gray-200 dark:border-slate-700 p-6 h-full card-hover">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-slate-50 mb-3">
+              <Card className="bg-white dark:bg-[#1A1A1A] border-gray-200 dark:border-[#363C42] p-6 h-full card-hover">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-gray-600 dark:text-[#B7B7B7] leading-relaxed">
                   {item.description}
                 </p>
               </Card>
@@ -189,7 +189,7 @@ export default function CaseStudy() {
       </Section>
 
       {/* Technical Approach */}
-      <Section className="bg-white dark:bg-slate-950">
+      <Section className="bg-white dark:bg-[#0D0D0D]">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
             preLabel="// Engineering"
@@ -198,21 +198,21 @@ export default function CaseStudy() {
         </ScrollReveal>
         
         <ScrollReveal animation="fade" delay={100}>
-          <Card className="bg-gray-50 dark:bg-slate-900 border-gray-200 dark:border-slate-800 p-8">
+          <Card className="bg-gray-50 dark:bg-[#111111] border-gray-200 dark:border-[#20252A] p-8">
             <div className="space-y-8">
               {/* Architecture Overview */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-50 mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Architecture Overview
                 </h3>
-                <p className="text-gray-700 dark:text-slate-300 leading-relaxed mb-4">
+                <p className="text-gray-700 dark:text-[#B7B7B7] leading-relaxed mb-4">
                   {caseStudy.technical.architecture}
                 </p>
               </div>
 
               {/* Tech Stack */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-50 mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Tech Stack
                 </h3>
                 <div className="flex flex-wrap gap-3">
@@ -229,16 +229,16 @@ export default function CaseStudy() {
 
               {/* Implementation Details */}
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-slate-50 mb-4">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                   Implementation Highlights
                 </h3>
                 <div className="space-y-4">
                   {caseStudy.technical.approach.map((item, idx) => (
                     <div key={idx} className="border-l-4 border-emerald-500 pl-4">
-                      <h4 className="font-semibold text-gray-900 dark:text-slate-50 mb-2">
+                      <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
                         {item.title}
                       </h4>
-                      <p className="text-gray-600 dark:text-slate-300 leading-relaxed">
+                      <p className="text-gray-600 dark:text-[#B7B7B7] leading-relaxed">
                         {item.description}
                       </p>
                     </div>
@@ -252,7 +252,7 @@ export default function CaseStudy() {
 
       {/* Project Screenshots Gallery - Bento Grid */}
       {screenshots.length > 0 && (
-        <Section className="bg-white dark:bg-slate-950">
+        <Section className="bg-white dark:bg-[#0D0D0D]">
           <ScrollReveal animation="slide-up">
             <SectionHeader 
               preLabel="// Gallery"
@@ -276,7 +276,7 @@ export default function CaseStudy() {
                 return (
                   <div
                     key={idx}
-                    className={`group relative overflow-hidden rounded-xl bg-gray-100 dark:bg-slate-800 shadow-md hover:shadow-xl transition-all duration-300 ${getBentoClass(idx)}`}
+                    className={`group relative overflow-hidden rounded-xl bg-gray-100 dark:bg-[#1A1A1A] shadow-md hover:shadow-xl transition-all duration-300 ${getBentoClass(idx)}`}
                   >
                     <img
                       src={screenshot}
@@ -290,12 +290,12 @@ export default function CaseStudy() {
                         const parent = target.parentElement;
                         if (parent) {
                           parent.innerHTML = `
-                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-slate-800 dark:to-slate-900">
+                            <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 dark:from-[#1A1A1A] dark:to-[#111111]">
                               <div class="text-center p-6">
-                                <svg class="w-12 h-12 mx-auto mb-2 text-gray-400 dark:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-12 h-12 mx-auto mb-2 text-gray-400 dark:text-[#5A5A5A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                 </svg>
-                                <p class="text-sm text-gray-500 dark:text-slate-400">Screenshot ${idx + 1}</p>
+                                <p class="text-sm text-gray-500 dark:text-[#7A7A7A]">Screenshot ${idx + 1}</p>
                               </div>
                             </div>
                           `;
@@ -315,7 +315,7 @@ export default function CaseStudy() {
       )}
 
       {/* Business Outcomes */}
-      <Section className="bg-gray-50 dark:bg-slate-900">
+      <Section className="bg-gray-50 dark:bg-[#111111]">
         <ScrollReveal animation="slide-up">
           <SectionHeader 
             preLabel="// Impact"
@@ -364,7 +364,7 @@ export default function CaseStudy() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button size="lg" className="bg-white text-blue-600 hover:bg-slate-50 shadow-lg button-lift">
+                  <Button size="lg" className="bg-white text-blue-600 hover:bg-gray-100 shadow-lg button-lift">
                     <ExternalLink className="mr-2 h-5 w-5" />
                     View Live Demo
                   </Button>
@@ -394,11 +394,11 @@ export default function CaseStudy() {
       </Section>
 
       {/* Back to Projects */}
-      <Section className="bg-white dark:bg-slate-950">
+      <Section className="bg-white dark:bg-[#0D0D0D]">
         <ScrollReveal animation="fade">
           <div className="text-center">
             <Link to="/projects">
-              <Button variant="outline" size="lg" className="border-gray-300 dark:border-slate-700">
+              <Button variant="outline" size="lg" className="border-gray-300 dark:border-[#363C42]">
                 ← Back to All Projects
               </Button>
             </Link>

@@ -83,14 +83,14 @@ Timeline: ${formData.timeline || 'Not specified'}`;
       </Helmet>
 
       {/* Header */}
-      <section className="py-24 bg-slate-950">
+      <section className="py-16 md:py-24 bg-[#0D0D0D]">
         <div className="max-w-[1120px] mx-auto px-5">
           <ScrollReveal animation="slide-up" className="max-w-2xl">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Contact</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
               Let's build something that actually works.
             </h1>
-            <p className="text-xl text-slate-300 leading-relaxed">
+            <p className="text-xl text-[#B7B7B7] leading-relaxed">
               Open to front-end roles, contract work, and collaborations on products that care about accessibility, performance, and clarity.
             </p>
           </ScrollReveal>
@@ -98,12 +98,12 @@ Timeline: ${formData.timeline || 'Not specified'}`;
       </section>
 
       {/* Contact Form */}
-      <section className="py-24 bg-slate-900">
+      <section className="py-16 md:py-24 bg-[#111111]">
         <div className="max-w-2xl mx-auto px-5">
           <ScrollReveal animation="fade">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-              <label htmlFor="fullName" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="fullName" className="block text-sm font-medium text-[#B7B7B7] mb-2">
                 Full Name
               </label>
               <input
@@ -113,12 +113,12 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 value={formData.fullName}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-slate-700 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-slate-800 text-white placeholder-slate-500"
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white placeholder-[#5A5A5A]"
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-[#B7B7B7] mb-2">
                 Email Address
               </label>
               <input
@@ -128,12 +128,12 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="w-full px-4 py-3 border border-slate-700 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-slate-800 text-white placeholder-slate-500"
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white placeholder-[#5A5A5A]"
               />
             </div>
 
             <div>
-              <label htmlFor="company" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="company" className="block text-sm font-medium text-[#B7B7B7] mb-2">
                 Company or Organization
               </label>
               <input
@@ -142,12 +142,12 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 name="company"
                 value={formData.company}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-700 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-slate-800 text-white placeholder-slate-500"
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white placeholder-[#5A5A5A]"
               />
             </div>
 
             <div>
-              <label htmlFor="project" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="project" className="block text-sm font-medium text-[#B7B7B7] mb-2">
                 What Are You Building?
               </label>
               <textarea
@@ -156,12 +156,12 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 value={formData.project}
                 onChange={handleChange}
                 rows={4}
-                className="w-full px-4 py-3 border border-slate-700 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-slate-800 text-white placeholder-slate-500"
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white placeholder-[#5A5A5A]"
               />
             </div>
 
             <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="budget" className="block text-sm font-medium text-[#B7B7B7] mb-2">
                 Budget Range
               </label>
               <select
@@ -169,7 +169,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 name="budget"
                 value={formData.budget}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-700 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-slate-800 text-white placeholder-slate-500"
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white"
               >
                 <option value="">Select a range</option>
                 <option value="under-5k">Under $5,000</option>
@@ -181,7 +181,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
             </div>
 
             <div>
-              <label htmlFor="timeline" className="block text-sm font-medium text-slate-300 mb-2">
+              <label htmlFor="timeline" className="block text-sm font-medium text-[#B7B7B7] mb-2">
                 Timeline
               </label>
               <select
@@ -189,7 +189,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 name="timeline"
                 value={formData.timeline}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-slate-700 rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-slate-800 text-white placeholder-slate-500"
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white"
               >
                 <option value="">Select a timeline</option>
                 <option value="asap">ASAP</option>
@@ -222,7 +222,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
             )}
           </form>
 
-          <p className="text-center text-slate-400 mt-8">
+          <p className="text-center text-[#7A7A7A] mt-8">
             You can also reach me directly at{" "}
             <a href="mailto:e@ehicksonjr.com" className="text-violet-400 hover:text-violet-300 hover:underline">
               e@ehicksonjr.com

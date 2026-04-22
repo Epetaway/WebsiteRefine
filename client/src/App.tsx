@@ -24,12 +24,13 @@ import Approach from "@/pages/approach";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import ThemeDemo from "@/pages/theme-demo";
+import CaseStudyPreview from "@/pages/case-study-preview";
 
 function AppShell() {
   useAnalytics();
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 font-body">
+    <div className="min-h-screen flex flex-col bg-[#0D0D0D] text-[#F5F5F5] font-body">
       <Header />
       <main className="flex-1">
         <Routes>
@@ -46,6 +47,7 @@ function AppShell() {
           <Route path="/articles/:slug" element={<Article />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/theme-demo" element={<ThemeDemo />} />
+          <Route path="/case-study-preview" element={<CaseStudyPreview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

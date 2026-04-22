@@ -189,14 +189,28 @@ section#offer{
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground scroll-smooth;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   html {
     scroll-behavior: smooth;
+  }
+
+  /* Remove default focus ring; handled by focus-visible below */
+  *:focus {
+    outline: none;
+  }
+
+  *:focus-visible {
+    outline: 2px solid rgba(139, 92, 246, 0.7);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
@@ -235,21 +249,28 @@ section#offer{
     @apply inline-flex items-center justify-center px-4 py-2 text-sm font-normal -tracking-[0.02em] text-gray-900 bg-gradient-to-b from-gray-200 to-gray-200 rounded shadow-[0_1px_0_0_rgba(99,106,126,0.6)] ui-transition-soft button-lift dark:text-gray-100 dark:from-gray-700 dark:to-gray-800 dark:shadow-[0_1px_0_0_rgba(156,163,175,0.3)];
   }
 
-  /* Card hover effects - improved with brand-green border accent */
+  /* Card hover effects */
   .card-hover {
-    transition: all var(--transition-base) var(--ease-soft);
+    transition: transform var(--transition-base) var(--ease-soft),
+                border-color var(--transition-base) var(--ease-soft),
+                box-shadow var(--transition-base) var(--ease-soft);
     border: 1px solid transparent;
   }
 
   .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    border-color: rgba(56, 141, 93, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+    border-color: rgba(139, 92, 246, 0.3);
+  }
+
+  .card-hover:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 100ms;
   }
 
   .dark .card-hover:hover {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-    border-color: rgba(56, 141, 93, 0.4);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    border-color: rgba(139, 92, 246, 0.35);
   }
 
   /* Float animation for code editor blocks */
@@ -259,22 +280,46 @@ section#offer{
 
   /* Respect reduced motion preference */
   @media (prefers-reduced-motion: reduce) {
-    .float-soft {
-      animation: none;
+    .float-soft,
+    .animate-float,
+    .animate-fade-in,
+    .animate-slide-up,
+    .animate-scale-in,
+    .animate-slide-in-left,
+    .animate-slide-in-right,
+    .section-reveal {
+      animation: none !important;
+      transition: none !important;
     }
-    .card-hover:hover {
+    .card-hover:hover,
+    .card-hover:active,
+    .button-lift:hover,
+    .button-lift:active {
+      transform: none;
+      box-shadow: none;
+    }
+    .reveal-init {
+      opacity: 1;
       transform: none;
     }
   }
 
   /* Button lift effect */
   .button-lift {
-    transition: all var(--transition-base) var(--ease-soft);
+    transition: transform var(--transition-base) var(--ease-soft),
+                box-shadow var(--transition-base) var(--ease-soft),
+                background-color var(--transition-base) var(--ease-soft);
   }
 
   .button-lift:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .button-lift:active {
+    transform: scale(0.97);
+    box-shadow: none;
+    transition-duration: 80ms;
   }
 
   /* Section reveal animation */
@@ -439,6 +484,44 @@ section#offer{
     transform: translateY(0);
     transition: transform 700ms var(--ease-soft), opacity 700ms var(--ease-soft);
   }
+
+  /* Smooth card transitions — use on any interactive card */
+  .smooth-card {
+    transition: transform 220ms var(--ease-soft),
+                border-color 220ms var(--ease-soft),
+                box-shadow 220ms var(--ease-soft);
+    will-change: transform;
+  }
+
+  .smooth-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.22);
+  }
+
+  .smooth-card:active {
+    transform: translateY(-1px) scale(0.99);
+    transition-duration: 100ms;
+  }
+
+  /* Smooth CTA button press feedback */
+  .smooth-btn {
+    transition: background-color 180ms var(--ease-soft),
+                border-color 180ms var(--ease-soft),
+                color 180ms var(--ease-soft),
+                transform 180ms var(--ease-soft),
+                box-shadow 180ms var(--ease-soft);
+  }
+
+  .smooth-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.18);
+  }
+
+  .smooth-btn:active {
+    transform: scale(0.97);
+    box-shadow: none;
+    transition-duration: 80ms;
+  }
 }
 
 @keyframes fadeIn {
@@ -514,10 +597,22 @@ section#offer{
 }
 
 @keyframes pulseGlow {
-  0%, 100% { 
+  0%, 100% {
     box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
   }
-  50% { 
+  50% {
     box-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
   }
+}
+
+/* Equal-height project swiper cards */
+.project-swiper .swiper-wrapper {
+  align-items: stretch;
+}
+.project-swiper .swiper-slide {
+  height: auto !important;
+  display: flex;
+}
+.project-swiper .swiper-slide > * {
+  width: 100%;
 }

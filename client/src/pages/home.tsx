@@ -66,13 +66,11 @@ export default function Home() {
       </Helmet>
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="relative bg-slate-950 min-h-[92vh] flex items-center overflow-hidden">
-        {/* Photo — positioned absolutely, bleeds to the right edge */}
+      <section className="relative bg-[#0D0D0D] overflow-hidden lg:min-h-[92vh] lg:flex lg:items-center">
+        {/* Photo — desktop only, absolutely positioned on right */}
         <ScrollReveal animation="fade" delay={100} className="absolute inset-y-0 right-0 w-[52%] hidden lg:block pointer-events-none select-none">
-          {/* Left fade — blends photo into page bg */}
-          <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent z-10" />
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent z-10" />
+          <div className="absolute inset-y-0 left-0 w-64 bg-gradient-to-r from-[#0D0D0D] via-[#0D0D0D]/80 to-transparent z-10" />
+          <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0D0D0D] via-[#0D0D0D]/40 to-transparent z-10" />
           <img
             src={justMeImg}
             alt="Earl Hickson Jr."
@@ -80,42 +78,54 @@ export default function Home() {
           />
         </ScrollReveal>
 
-        {/* Text — sits on top inside the container */}
-        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-24">
+        {/* Content — text block + mobile portrait stacked */}
+        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-16 lg:py-24">
           <ScrollReveal animation="slide-up" className="space-y-6 max-w-[580px]">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium">
               Front-End Engineer
             </p>
-            <h1 className="text-5xl md:text-[64px] font-bold text-white leading-[1.05] -tracking-[0.03em]">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-[1.05] -tracking-[0.03em]">
               Building high-performance interfaces that{" "}
               <span className="text-violet-400">actually move the business.</span>
             </h1>
-            <p className="text-lg text-slate-300 leading-relaxed">
+            <p className="text-lg text-[#B7B7B7] leading-relaxed">
               Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact.
             </p>
-            <p className="text-base text-slate-400">
+            <p className="text-base text-[#7A7A7A]">
               6+ years delivering production-ready experiences across healthcare, media, and high-growth platforms.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
                 to="/projects"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium smooth-btn"
               >
                 View My Work <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium smooth-btn"
               >
                 Let's Connect <ArrowRight className="w-4 h-4" />
               </Link>
+            </div>
+          </ScrollReveal>
+
+          {/* Portrait — mobile/tablet only, shown below CTA buttons */}
+          <ScrollReveal animation="fade" delay={200} className="lg:hidden mt-10 flex justify-center pb-4">
+            <div className="relative w-64 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <img
+                src={justMeImg}
+                alt="Earl Hickson Jr."
+                className="w-full h-80 object-cover object-[center_15%]"
+              />
+              <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
             </div>
           </ScrollReveal>
         </div>
       </section>
 
       {/* ── TRUST STRIP ──────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 border-y border-slate-800">
+      <section className="bg-[#111111] border-y border-[#20252A]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -125,10 +135,10 @@ export default function Home() {
               { icon: Shield, metric: "HIPAA", label: "Healthcare dashboards & secure environments" },
             ].map(({ icon: Icon, metric, label }, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
-                <div className="border border-slate-800 rounded-xl p-5 flex flex-col items-center text-center gap-2 hover:border-violet-500/40 transition-colors">
+                <div className="border border-[#20252A] rounded-xl p-5 flex flex-col items-center text-center gap-2 hover:border-violet-500/40 smooth-card">
                   <Icon className="w-6 h-6 text-violet-400" />
                   <span className="text-xl font-bold text-white">{metric}</span>
-                  <span className="text-xs text-slate-400 leading-snug">{label}</span>
+                  <span className="text-xs text-[#7A7A7A] leading-snug">{label}</span>
                 </div>
               </ScrollReveal>
             ))}
@@ -137,14 +147,14 @@ export default function Home() {
       </section>
 
       {/* ── WHAT I DO ────────────────────────────────────────────────────── */}
-      <Section className="bg-slate-950">
+      <Section className="bg-[#0D0D0D]">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">What I Do</p>
           <div className="grid lg:grid-cols-2 gap-6 mb-12 items-end">
-            <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
               I don't just build UIs — I build systems that scale.
             </h2>
-            <p className="text-slate-300 text-lg leading-relaxed">
+            <p className="text-[#B7B7B7] text-lg leading-relaxed">
               I specialize in turning complex product requirements into clean, maintainable, and high-performing front-end architectures.
             </p>
           </div>
@@ -169,10 +179,10 @@ export default function Home() {
             },
           ].map(({ icon: Icon, title, desc }, idx) => (
             <ScrollReveal key={idx} animation="slide-up" delay={idx * 80}>
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-violet-500/40 transition-colors h-full">
+              <div className="bg-[#111111] border border-[#20252A] rounded-xl p-6 hover:border-violet-500/40 smooth-card h-full">
                 <Icon className="w-8 h-8 text-violet-400 mb-4" />
                 <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-                <p className="text-sm text-slate-400 leading-relaxed">{desc}</p>
+                <p className="text-sm text-[#7A7A7A] leading-relaxed">{desc}</p>
               </div>
             </ScrollReveal>
           ))}
@@ -180,11 +190,11 @@ export default function Home() {
       </Section>
 
       {/* ── FEATURED WORK ────────────────────────────────────────────────── */}
-      <Section className="bg-slate-900">
+      <Section className="bg-[#111111]">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-2">Featured Work</p>
           <div className="flex items-end justify-between mb-10">
-            <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em]">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white -tracking-[0.03em]">
               Selected Work
             </h2>
             <Link
@@ -207,15 +217,15 @@ export default function Home() {
           loop={true}
           pagination={{ clickable: true }}
           autoplay={false}
-          className="pb-12"
+          className="project-swiper pb-12"
         >
           {featuredProjects.map(({ title, description, tech, image, slug }, idx) => {
             const caseStudySlug = resolveCaseStudySlug(slug) ?? slug;
 
             return (
-            <SwiperSlide key={idx} className="!w-auto">
-              <div className="bg-slate-950 border border-slate-800 rounded-xl overflow-hidden hover:border-violet-500/40 transition-colors group flex flex-col h-full min-h-[420px]">
-                <div className="aspect-video bg-slate-800 overflow-hidden flex-shrink-0">
+            <SwiperSlide key={idx}>
+              <div className="bg-[#0D0D0D] border border-[#20252A] rounded-xl overflow-hidden hover:border-violet-500/40 transition-colors group flex flex-col h-[420px]">
+                <div className="aspect-video bg-[#1A1A1A] overflow-hidden flex-shrink-0">
                   {image ? (
                     <img
                       src={image}
@@ -224,17 +234,17 @@ export default function Home() {
                       loading="lazy"
                     />
                   ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-violet-900/60 to-slate-800 flex items-center justify-center">
-                      <span className="text-slate-500 text-sm font-medium">{title}</span>
+                    <div className="w-full h-full bg-gradient-to-br from-violet-900/60 to-[#1A1A1A] flex items-center justify-center">
+                      <span className="text-[#7A7A7A] text-sm font-medium">{title}</span>
                     </div>
                   )}
                 </div>
                 <div className="p-5 flex flex-col flex-1">
                   <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed mb-4 flex-1">{description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4">
+                  <p className="text-sm text-[#7A7A7A] leading-relaxed mb-4 line-clamp-3">{description}</p>
+                  <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
                     {tech.map((t) => (
-                      <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-slate-800 text-slate-300">
+                      <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-[#1A1A1A] text-[#B7B7B7]">
                         {t}
                       </span>
                     ))}
@@ -265,16 +275,16 @@ export default function Home() {
       </Section>
 
       {/* ── HOW I THINK ──────────────────────────────────────────────────── */}
-      <Section className="bg-slate-950">
+      <Section className="bg-[#0D0D0D]">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">How I Think</p>
           <div className="grid lg:grid-cols-2 gap-6 mb-12 items-end">
-            <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
               I think like a developer, designer, and product owner.
             </h2>
             <div className="space-y-2">
-              <p className="text-slate-300 text-lg">I don't just take tickets and build screens.</p>
-              <p className="text-slate-400">I think about:</p>
+              <p className="text-[#B7B7B7] text-lg">I don't just take tickets and build screens.</p>
+              <p className="text-[#7A7A7A]">I think about:</p>
             </div>
           </div>
         </ScrollReveal>
@@ -295,9 +305,9 @@ export default function Home() {
             },
           ].map(({ icon: Icon, text }, idx) => (
             <ScrollReveal key={idx} animation="slide-up" delay={idx * 80} className="h-full">
-              <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-violet-500/40 transition-colors flex gap-4 items-start h-full min-h-[100px]">
+              <div className="bg-[#111111] border border-[#20252A] rounded-xl p-6 hover:border-violet-500/40 smooth-card flex gap-4 items-start h-full min-h-[100px]">
                 <Icon className="w-6 h-6 text-violet-400 flex-shrink-0 mt-0.5" />
-                <p className="text-slate-300 leading-relaxed">{text}</p>
+                <p className="text-[#B7B7B7] leading-relaxed">{text}</p>
               </div>
             </ScrollReveal>
           ))}
@@ -320,7 +330,7 @@ export default function Home() {
 
             <ScrollReveal animation="slide-up" className="space-y-6 lg:pr-10">
               <p className="text-xs tracking-widest uppercase text-slate-800 font-medium">About Me</p>
-              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 -tracking-[0.03em] leading-[1.1]">
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 -tracking-[0.03em] leading-[1.1]">
                 More than just code.
               </h2>
               <p className="text-slate-900/90 text-lg leading-relaxed max-w-xl">
@@ -338,22 +348,22 @@ export default function Home() {
       </section>
 
       {/* ── CTA STRIP ────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-slate-950 via-violet-950/30 to-slate-950 border-t border-slate-800">
+      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D] border-t border-[#20252A]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
           <ScrollReveal animation="slide-up">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div className="space-y-4">
-                <h2 className="text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+                <h2 className="font-display text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
                   Let's build something that actually works.
                 </h2>
-                <p className="text-slate-300 text-lg leading-relaxed">
+                <p className="text-[#B7B7B7] text-lg leading-relaxed">
                   If you're looking for someone who can deliver clean UI, strong architecture, and real impact—I'm ready.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium smooth-btn"
                 >
                   Contact Me <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -362,7 +372,7 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   download
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium smooth-btn"
                 >
                   View Resume
                 </a>

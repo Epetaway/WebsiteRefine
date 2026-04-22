@@ -24,15 +24,15 @@ export default function About() {
       </Helmet>
 
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <section className="bg-slate-950 py-24">
+      <section className="bg-[#0D0D0D] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up" className="max-w-3xl">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">About Me</p>
-            <h1 className="text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
               Code, Culture,<br />
               <span className="text-violet-400">and Discipline.</span>
             </h1>
-            <p className="text-xl text-slate-300 leading-relaxed">
+            <p className="text-xl text-[#B7B7B7] leading-relaxed">
               I'm a Senior Front-End Engineer based in Parsippany, NJ with 6+ years building modern, accessible interfaces. My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering.
             </p>
           </ScrollReveal>
@@ -40,18 +40,18 @@ export default function About() {
       </section>
 
       {/* ── BACKGROUND ───────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 py-24">
+      <section className="bg-[#111111] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <ScrollReveal animation="slide-up">
               <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Background</p>
-              <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+              <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
                 Designer turned engineer, always a student.
               </h2>
-              <p className="text-slate-300 text-lg leading-relaxed mb-4">
+              <p className="text-[#B7B7B7] text-lg leading-relaxed mb-4">
                 I started in graphic design before moving into front-end development, where I discovered how much I enjoy building interfaces that don't just look good — they feel good to use. My work spans healthcare, nonprofits, membership systems, and high-growth brands.
               </p>
-              <p className="text-slate-400 leading-relaxed mb-6">
+              <p className="text-[#7A7A7A] leading-relaxed mb-6">
                 Years of Brazilian Jiu-Jitsu training shaped my mindset: discipline, patience, refinement. The same approach fuels how I write code, architect components, and collaborate with teams under pressure.
               </p>
               <div className="flex flex-wrap gap-3">
@@ -66,7 +66,7 @@ export default function About() {
                 </a>
                 <Link
                   to="/approach"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium text-sm transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium text-sm transition-colors"
                 >
                   My Approach <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -83,7 +83,7 @@ export default function About() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-sm font-medium text-violet-300">Black Belt, Brazilian Jiu-Jitsu</p>
-                  <p className="text-xs text-slate-300">Discipline in training, precision in code</p>
+                  <p className="text-xs text-[#B7B7B7]">Discipline in training, precision in code</p>
                 </div>
               </div>
             </ScrollReveal>
@@ -92,11 +92,11 @@ export default function About() {
       </section>
 
       {/* ── CAREER HIGHLIGHTS ────────────────────────────────────────────── */}
-      <section className="bg-slate-950 py-24">
+      <section className="bg-[#0D0D0D] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Experience</p>
-            <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-10">
+            <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-10">
               Where I've built real things
             </h2>
           </ScrollReveal>
@@ -122,13 +122,13 @@ export default function About() {
               },
             ].map(({ company, role, period, highlights }, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-violet-500/40 transition-colors h-full">
+                <div className="bg-[#111111] border border-[#20252A] rounded-xl p-6 hover:border-violet-500/40 smooth-card h-full">
                   <p className="text-xs text-violet-400 font-medium mb-1">{period}</p>
                   <h3 className="text-lg font-bold text-white mb-1">{company}</h3>
-                  <p className="text-sm text-slate-400 mb-4">{role}</p>
+                  <p className="text-sm text-[#7A7A7A] mb-4">{role}</p>
                   <ul className="space-y-1.5">
                     {highlights.map((h) => (
-                      <li key={h} className="text-sm text-slate-300 flex items-start gap-2">
+                      <li key={h} className="text-sm text-[#B7B7B7] flex items-start gap-2">
                         <span className="text-violet-500 mt-0.5 flex-shrink-0">›</span>
                         {h}
                       </li>
@@ -142,25 +142,25 @@ export default function About() {
       </section>
 
       {/* ── CONNECT ──────────────────────────────────────────────────────── */}
-      <section className="bg-slate-900 py-24">
+      <section className="bg-[#111111] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Get In Touch</p>
             <div className="grid lg:grid-cols-2 gap-10">
               {/* Contact info */}
               <div>
-                <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
+                <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-6">
                   Let's connect.
                 </h2>
                 <div className="space-y-4 mb-8">
                   <a
                     href="mailto:e@ehicksonjr.com"
-                    className="flex items-center gap-3 text-slate-300 hover:text-violet-400 transition-colors"
+                    className="flex items-center gap-3 text-[#B7B7B7] hover:text-violet-400 transition-colors"
                   >
                     <Mail className="w-5 h-5 text-violet-400 flex-shrink-0" />
                     e@ehicksonjr.com
                   </a>
-                  <div className="flex items-center gap-3 text-slate-400">
+                  <div className="flex items-center gap-3 text-[#7A7A7A]">
                     <MapPin className="w-5 h-5 text-violet-400 flex-shrink-0" />
                     Parsippany, NJ
                   </div>
@@ -169,7 +169,7 @@ export default function About() {
 
               {/* Social links */}
               <div>
-                <p className="text-sm text-slate-400 mb-4">Find me online</p>
+                <p className="text-sm text-[#7A7A7A] mb-4">Find me online</p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {[
                     { icon: Github, label: "GitHub", href: "https://github.com/Epetaway" },
@@ -184,7 +184,7 @@ export default function About() {
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2.5 px-4 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:border-violet-500/50 hover:text-white transition-colors text-sm font-medium"
+                      className="flex items-center gap-2.5 px-4 py-3 rounded-lg bg-[#1A1A1A] border border-[#363C42] text-[#B7B7B7] hover:border-violet-500/50 hover:text-white smooth-btn text-sm font-medium"
                     >
                       <Icon className="w-4 h-4 text-violet-400" />
                       {label}
@@ -198,15 +198,15 @@ export default function About() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-slate-950 via-violet-950/30 to-slate-950 border-t border-slate-800">
+      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D] border-t border-[#20252A]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
           <ScrollReveal animation="slide-up">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
               <div className="space-y-4">
-                <h2 className="text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
+                <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
                   Let's work together.
                 </h2>
-                <p className="text-slate-300 text-lg leading-relaxed">
+                <p className="text-[#B7B7B7] text-lg leading-relaxed">
                   Open to senior front-end roles, contract work, and collaborations on products that care about accessibility, performance, and real impact.
                 </p>
               </div>
@@ -219,7 +219,7 @@ export default function About() {
                 </Link>
                 <Link
                   to="/projects"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-slate-700 hover:border-violet-500/60 text-slate-300 hover:text-white font-medium transition-colors"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium transition-colors"
                 >
                   View My Work <ArrowRight className="w-4 h-4" />
                 </Link>
