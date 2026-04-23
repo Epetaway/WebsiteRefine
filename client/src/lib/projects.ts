@@ -68,6 +68,7 @@ export const pinnedProjects: Project[] = [
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     repoUrl: `https://github.com/${GITHUB_USER}/DojoNet-Prototype-MAX`,
     liveUrl: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
+    image: "/images/dojonet/dojonet_card.png",
     role: "Lead Front-End Developer & UI/UX Designer",
     tags: ["React", "TypeScript", "Tailwind CSS"],
     featured: true,

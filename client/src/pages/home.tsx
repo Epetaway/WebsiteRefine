@@ -32,6 +32,7 @@ const featuredCardProjects = [
     liveUrl: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
     category: "Front-End",
     githubUser: GITHUB_USER,
+    image: "/images/dojonet/dojonet_card.png",
     caseStudySlug: resolveCaseStudySlug("DojoNet-Prototype-MAX"),
   },
   {
