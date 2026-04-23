@@ -50,7 +50,6 @@ export function ProjectCardStandard({ project }: StandardCardProps) {
     description,
     techStack,
     repoUrl,
-    liveUrl,
     githubUser,
     image,
     category,
@@ -134,17 +133,6 @@ export function ProjectCardStandard({ project }: StandardCardProps) {
             <span className="inline-flex items-center gap-1 text-xs font-semibold text-violet-300" style={bodyShadow}>
               View Case Study <ArrowRight className="w-3 h-3" />
             </span>
-          )}
-          {liveUrl && !caseStudySlug && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1 text-xs font-medium text-violet-300 hover:text-violet-200"
-            >
-              <ExternalLink className="w-3 h-3" /> Demo
-            </a>
           )}
           <a
             href={repoUrl}
@@ -307,13 +295,13 @@ export function ProjectCardFeaturedHero({ project }: { project: ProjectCardData 
                 View Case Study <ArrowRight className="w-4 h-4" />
               </span>
             )}
-            {liveUrl && !caseStudySlug && (
+            {liveUrl && (
               <a
                 href={liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white text-sm font-semibold transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-white/25 hover:border-white/50 text-white/80 hover:text-white text-sm font-medium backdrop-blur-sm transition-colors"
               >
                 <ExternalLink className="w-4 h-4" /> Live Demo
               </a>
@@ -357,7 +345,6 @@ export function ProjectCardTile({
     description,
     techStack,
     repoUrl,
-    liveUrl,
     githubUser,
     image,
     category,
@@ -449,17 +436,6 @@ export function ProjectCardTile({
             <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-violet-300" style={bodyShadow}>
               View Case Study <ArrowRight className="w-3.5 h-3.5" />
             </span>
-          )}
-          {liveUrl && !caseStudySlug && (
-            <a
-              href={liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="inline-flex items-center gap-1.5 text-xs font-medium text-violet-300 hover:text-violet-200 transition-colors"
-            >
-              <ExternalLink className="w-3.5 h-3.5" /> Live Demo
-            </a>
           )}
           <a
             href={repoUrl}

@@ -98,7 +98,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
       </section>
 
       {/* Contact Form */}
-      <section className="py-16 md:py-24 bg-[#111111]">
+      <section className="py-16 md:py-24 bg-[#0D0D0D]">
         <div className="max-w-2xl mx-auto px-5">
           <ScrollReveal animation="fade">
             <form onSubmit={handleSubmit} className="space-y-6">

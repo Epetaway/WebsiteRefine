@@ -31,7 +31,7 @@ export default function Approach() {
       </section>
 
       {/* ── HOW I THINK ABOUT USERS ──────────────────────────────────────── */}
-      <section className="bg-[#111111] py-16 md:py-24">
+      <section className="bg-[#0D0D0D] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">User-Centered Thinking</p>
@@ -94,7 +94,7 @@ export default function Approach() {
       </section>
 
       {/* ── SYSTEMS THINKING ─────────────────────────────────────────────── */}
-      <section className="bg-[#111111] py-16 md:py-24">
+      <section className="bg-[#0D0D0D] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Systems Thinking</p>
@@ -187,7 +187,7 @@ export default function Approach() {
       </section>
 
       {/* ── CTA ──────────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D] border-t border-[#20252A]">
+      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
           <ScrollReveal animation="slide-up">
             <div className="max-w-2xl">
