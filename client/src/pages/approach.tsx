@@ -120,10 +120,6 @@ export default function Approach() {
                   company: "BroadcastMed — Marketing Systems",
                   detail: "Designed and built healthcare marketing microsites at scale. Reduced email production time by 25% and increased lead submissions by 18% through a structured design system.",
                 },
-                {
-                  company: "AMA Fight Club — Data-Driven Growth",
-                  detail: "Rebuilt a combat sports brand's digital presence end-to-end. Analytics, SEO, and conversion-focused design drove +156% organic traffic and +210% leads.",
-                },
               ].map(({ company, detail }, idx) => (
                 <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
                   <div className="bg-[#0D0D0D] border border-[#20252A] rounded-xl p-5 hover:border-violet-500/40 smooth-card">

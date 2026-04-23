@@ -114,12 +114,6 @@ export default function About() {
                 period: "Aug 2021 – Feb 2023",
                 highlights: ["+18% lead submissions", "−25% email production time", "Healthcare marketing microsites", "Design system creation"],
               },
-              {
-                company: "AMA Fight Club",
-                role: "Frontend & Digital Integration",
-                period: "Nov 2024 – Present",
-                highlights: ["+156% organic traffic", "+210% leads generated", "ZipRecruiter API integration", "SEO & conversion optimization"],
-              },
             ].map(({ company, role, period, highlights }, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
                 <div className="bg-[#111111] border border-[#20252A] rounded-xl p-6 hover:border-violet-500/40 smooth-card h-full">

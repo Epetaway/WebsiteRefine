@@ -133,36 +133,4 @@ export const projects: Project[] = [
       repo: "https://github.com/Epetaway/WithYou"
     }
   },
-
-  {
-    id: "ama-fight-club",
-    slug: "ama-fight-club",
-    title: "AMA Fight Club – Website & Digital Growth",
-    role: "Frontend Developer",
-    category: "featured",
-    description: "Redesigned the website and marketing strategy resulting in significant SEO improvements and lead growth.",
-    summary: "Overhauled site structure, SEO, CTA placement, and API integrations—driving +156% organic traffic, +210% leads, and +87% conversions for a high-growth combat sports brand.",
-    problem: "AMA Fight Club's existing website had poor SEO, weak CTA placement, and no analytics pipeline—resulting in low organic traffic and missed lead conversions.",
-    solution: "Overhauled the site architecture, implemented structured SEO across all pages, redesigned CTA placement based on user flow analysis, and integrated analytics and marketing APIs.",
-    result: "+156% organic traffic, +210% leads generated, and +87% conversion rate improvement for a high-growth combat sports brand.",
-    stack: ["WordPress", "SEO", "Analytics", "JavaScript"],
-    tags: ["WordPress", "SEO", "Analytics"],
-    features: [
-      "Full site architecture overhaul",
-      "On-page and technical SEO implementation",
-      "Strategic CTA placement and redesign",
-      "Analytics and marketing API integrations",
-      "Conversion rate optimization",
-      "Mobile-responsive design updates"
-    ],
-    metrics: [
-      { label: "Organic Traffic", value: "+156%", improvement: "SEO overhaul" },
-      { label: "Leads Generated", value: "+210%", improvement: "CTA optimization" },
-      { label: "Conversion Rate", value: "+87%", improvement: "UX + analytics" }
-    ],
-    links: {
-      demo: "https://amafightclub.com",
-      repo: "https://amafightclub.com"
-    }
-  }
 ];

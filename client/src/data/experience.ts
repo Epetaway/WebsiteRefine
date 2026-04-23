@@ -10,15 +10,6 @@ export interface WorkExperience {
 
 export const workExperience: WorkExperience[] = [
   {
-    id: "ama-fight-club",
-    company: "AMA Fight Club",
-    position: "Front-End & Digital Integration Specialist",
-    duration: "Nov 2024 – Present",
-    description:
-      "Implemented front-end functionality using HTML, CSS, and JavaScript within the Wix environment. Managed CMS content, built landing pages, and optimized for SEO, accessibility, and mobile. Developed and maintained form and API integrations with ZipRecruiter, enabling real-time lead capture and candidate tracking workflows.",
-    technologies: ["HTML", "CSS", "JavaScript", "Wix CMS", "SEO", "API Integration", "Analytics"]
-  },
-  {
     id: "asembia",
     company: "Asembia",
     position: "Front-End Developer",
