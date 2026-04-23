@@ -23,7 +23,7 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     "DojoNet is a front-end-heavy martial arts community product that combines social feed patterns, journal workflows, event discovery, direct messaging, and partner matchmaking in one responsive web experience. The product direction mixes MySpace-style profile customization with 2025-grade UI tokens, accessible interaction patterns, and optional backend architecture for future multi-device sync. The current implementation is designed to run locally with persisted demo data while still modeling production-scale features like moderation, notifications, and verification.",
   liveUrl: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
   repoUrl: "https://github.com/Epetaway/DojoNet-Prototype-MAX",
-  heroImage: "/images/dojonet/dojonet_card.png",
+  heroImage: "/images/dojonet/dojonet_hero.png",
 
   meta: [
     { icon: <Target size={16} />, label: "Role", value: "Lead Front-End Developer & UI/UX Designer" },
@@ -41,7 +41,7 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
       "Martial arts practitioners, gym-affiliated members, coaches, competitors, and hobbyists looking to train, connect, and discover events.",
     type: "Local-first web prototype with optional backend architecture",
     myRole: "Lead Front-End Developer & UI/UX Designer",
-    image: "/images/dojonet/dojonet_card.png",
+    image: "/images/dojonet/dojonet_overview.png",
   },
 
   challenge: {
@@ -105,37 +105,42 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
 
   features: [
     {
-      image: "/images/dojonet/dojonet_card.png",
+      image: "/images/dojonet/dojonet_hero.png",
       title: "Hero Search and Event Discovery",
       description:
         "The home screen leads with a full-width hero, integrated search, and an events rail that pulls upcoming activity into a clear conversion path from exploration to event detail.",
       tag: "Home",
     },
     {
+      image: "/images/dojonet/dojonet_partners.png",
       title: "Swipe-Style Partner Matchmaking",
       description:
         "The partner screen adapts dating-app interaction patterns for martial arts by combining swipe gestures, compatibility scoring, belt and discipline context, and hard age-gating for safer discovery.",
       tag: "Partners",
     },
     {
+      image: "/images/dojonet/dojonet_journal.png",
       title: "Training Journal Workspace",
       description:
         "The journal experience groups entries, techniques, progress, and goals into a structured training workflow so practitioners can track skills, milestones, and personal development over time.",
       tag: "Journal",
     },
     {
+      image: "/images/dojonet/dojonet_profile.png",
       title: "Customizable Martial Arts Profiles",
       description:
         "Profiles turn identity into a feature with visual theme presets, profile music, Dojo Circle Top 8 connections, rank and gym context, and editable layouts that lean into nostalgic social customization.",
       tag: "Profile",
     },
     {
+      image: "/images/dojonet/dojonet_events.png",
       title: "Event Detail Actions",
       description:
         "Event pages go beyond listing data by supporting RSVP status, discussion, sharing, reminders, and calendar workflows inside a tabbed detail view.",
       tag: "Events",
     },
     {
+      image: "/images/dojonet/dojonet_messages.png",
       title: "Messaging, Notifications, and Community Threads",
       description:
         "The platform rounds out the social loop with conversation lists, unread states, type-based notifications, and forum-style discussion surfaces that connect public community activity with private communication.",
