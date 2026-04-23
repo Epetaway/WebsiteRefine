@@ -11,7 +11,7 @@ const FADE_UP = {
 
 export function CaseStudyTechStack({ stack }: CaseStudyTechStackProps) {
   return (
-    <section id="tech-stack" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="tech-stack" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -30,7 +30,7 @@ export function CaseStudyTechStack({ stack }: CaseStudyTechStackProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-6"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
       >
         Technologies used
       </motion.h2>
@@ -46,7 +46,7 @@ export function CaseStudyTechStack({ stack }: CaseStudyTechStackProps) {
           <motion.span
             key={tech}
             variants={FADE_UP}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-[#20252A] bg-[#111111] text-[#B7B7B7] hover:border-[var(--case-accent)] hover:text-[#F5F5F5] transition-colors duration-150"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-[var(--cs-border)] bg-[var(--cs-surface)] text-[var(--cs-text-secondary)] hover:border-[var(--case-accent)] hover:text-[var(--cs-text-primary)] transition-colors duration-150"
           >
             {tech}
           </motion.span>

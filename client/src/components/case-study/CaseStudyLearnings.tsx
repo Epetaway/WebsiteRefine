@@ -13,7 +13,7 @@ const FADE_UP = {
 
 export function CaseStudyLearnings({ items }: CaseStudyLearningsProps) {
   return (
-    <section id="learnings" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="learnings" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -32,7 +32,7 @@ export function CaseStudyLearnings({ items }: CaseStudyLearningsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-6"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
       >
         Key takeaways
       </motion.h2>
@@ -48,7 +48,7 @@ export function CaseStudyLearnings({ items }: CaseStudyLearningsProps) {
           <motion.li
             key={idx}
             variants={FADE_UP}
-            className="flex items-start gap-3 text-sm text-[#B7B7B7] leading-relaxed"
+            className="flex items-start gap-3 text-sm text-[var(--cs-text-secondary)] leading-relaxed"
           >
             <CheckCircle2
               className="w-4 h-4 mt-0.5 flex-none"

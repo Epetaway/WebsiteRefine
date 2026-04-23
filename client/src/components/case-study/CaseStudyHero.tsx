@@ -24,7 +24,7 @@ export function CaseStudyHero({
       {/* Back link */}
       <Link
         to="/projects"
-        className="inline-flex items-center gap-2 text-sm text-[#B7B7B7] hover:text-[#F5F5F5] transition-colors mb-6 group"
+        className="inline-flex items-center gap-2 text-sm text-[var(--cs-text-secondary)] hover:text-[var(--cs-text-primary)] transition-colors mb-6 group"
       >
         <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-0.5" />
         All Projects
@@ -38,7 +38,7 @@ export function CaseStudyHero({
         className="text-xs font-semibold uppercase tracking-[0.2em] mb-3"
         style={{ color: "var(--case-accent)" }}
       >
-        Case Study
+        {category}
       </motion.p>
 
       {/* Title */}
@@ -46,7 +46,7 @@ export function CaseStudyHero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.05 }}
-        className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F5F5F5] leading-tight max-w-3xl mb-4"
+        className="font-['Space_Grotesk'] text-4xl sm:text-5xl lg:text-6xl font-bold text-[var(--cs-text-primary)] leading-tight max-w-3xl mb-4"
       >
         {title}
       </motion.h1>
@@ -56,7 +56,7 @@ export function CaseStudyHero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.1 }}
-        className="text-base sm:text-lg text-[#B7B7B7] max-w-2xl mb-6 leading-relaxed"
+        className="text-base sm:text-lg text-[var(--cs-text-secondary)] max-w-2xl mb-6 leading-relaxed"
       >
         {subtitle}
       </motion.p>
@@ -73,7 +73,7 @@ export function CaseStudyHero({
             href={liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white transition-all hover:-translate-y-0.5 hover:shadow-lg"
             style={{
               background: "var(--case-accent)",
               boxShadow: "0 0 0 0 var(--case-glow)",
@@ -94,7 +94,7 @@ export function CaseStudyHero({
             href={repoUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-semibold text-[#F5F5F5] border border-[#363C42] bg-[#1A1A1A] transition-all hover:-translate-y-0.5 hover:border-[var(--case-accent)] hover:shadow-lg"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-[var(--cs-text-primary)] border border-[var(--cs-border-strong)] bg-[var(--cs-surface)] transition-all hover:-translate-y-0.5 hover:border-[var(--case-accent)] hover:shadow-lg"
           >
             <Github className="w-4 h-4" />
             View Code
@@ -107,8 +107,8 @@ export function CaseStudyHero({
         initial={{ opacity: 0, y: 24 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
-        className="w-full rounded-2xl overflow-hidden border border-[#20252A] bg-[#111827]"
-        style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}
+        className="w-full rounded-2xl overflow-hidden border border-[var(--cs-border)] bg-[var(--cs-surface)]"
+        style={{ boxShadow: "0 32px 80px rgba(0,0,0,0.12)" }}
       >
         <img
           src={heroImage}
@@ -121,7 +121,7 @@ export function CaseStudyHero({
             el.style.display = "none";
             const parent = el.parentElement;
             if (parent) {
-              parent.innerHTML = `<div class="flex items-center justify-center h-64 text-[#7A7A7A] text-sm">No preview available</div>`;
+              parent.innerHTML = `<div class="flex items-center justify-center h-64 text-sm" style="color:var(--cs-text-muted)">No preview available</div>`;
             }
           }}
         />

@@ -27,6 +27,7 @@ function CodePanel({ tab }: { tab: CodeTab }) {
   };
 
   return (
+    // Code blocks stay dark for readability regardless of page theme
     <div className="relative rounded-b-xl border border-t-0 border-[#20252A] bg-[#0A0A0A] overflow-hidden">
       {/* File label bar */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1A1A1A]">
@@ -73,7 +74,7 @@ export function CaseStudyCodeTabs({ tabs }: CaseStudyCodeTabsProps) {
   if (tabs.length === 0) return null;
 
   return (
-    <section id="code" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="code" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -92,7 +93,7 @@ export function CaseStudyCodeTabs({ tabs }: CaseStudyCodeTabsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-2"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
         Code in action
       </motion.h2>
@@ -103,7 +104,7 @@ export function CaseStudyCodeTabs({ tabs }: CaseStudyCodeTabsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[#B7B7B7] text-sm leading-relaxed mb-6 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6 max-w-lg"
       >
         Snippets that demonstrate problem-solving, clean architecture, and implementation.
       </motion.p>

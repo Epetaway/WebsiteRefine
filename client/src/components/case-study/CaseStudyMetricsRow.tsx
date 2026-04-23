@@ -14,7 +14,7 @@ export function CaseStudyMetricsRow({ metrics }: CaseStudyMetricsRowProps) {
   if (metrics.length === 0) return null;
 
   return (
-    <section id="impact" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="impact" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -33,7 +33,7 @@ export function CaseStudyMetricsRow({ metrics }: CaseStudyMetricsRowProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-6"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
       >
         The impact
       </motion.h2>
@@ -49,7 +49,7 @@ export function CaseStudyMetricsRow({ metrics }: CaseStudyMetricsRowProps) {
           <motion.div
             key={metric.label}
             variants={FADE_UP}
-            className="rounded-xl border border-[#20252A] bg-[#111111] p-5 text-center hover:-translate-y-0.5 transition-transform duration-200"
+            className="rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] p-5 text-center hover:-translate-y-0.5 transition-transform duration-200"
           >
             <p
               className="font-['Space_Grotesk'] text-3xl sm:text-4xl font-bold mb-1"
@@ -57,9 +57,9 @@ export function CaseStudyMetricsRow({ metrics }: CaseStudyMetricsRowProps) {
             >
               {metric.value}
             </p>
-            <p className="text-sm font-semibold text-[#F5F5F5] mb-1">{metric.label}</p>
+            <p className="text-sm font-semibold text-[var(--cs-text-primary)] mb-1">{metric.label}</p>
             {metric.description && (
-              <p className="text-xs text-[#7A7A7A]">{metric.description}</p>
+              <p className="text-xs text-[var(--cs-text-muted)]">{metric.description}</p>
             )}
           </motion.div>
         ))}

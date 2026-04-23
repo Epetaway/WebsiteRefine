@@ -6,7 +6,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
-import { ThemeProvider } from "@/contexts/ThemeContext";
+import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
 
 import Header from "@/components/layout/header";
 import ScrollReveal from '@/components/ui/ScrollReveal';
@@ -28,9 +28,17 @@ import CaseStudyPreview from "@/pages/case-study-preview";
 
 function AppShell() {
   useAnalytics();
+  const { pageChrome } = useTheme();
+  const isLight = pageChrome === "light";
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#0D0D0D] text-[#F5F5F5] font-body">
+    <div
+      className="min-h-screen flex flex-col font-body"
+      style={{
+        backgroundColor: isLight ? "#F7F7FB" : "#0D0D0D",
+        color: isLight ? "#111827" : "#F5F5F5",
+      }}
+    >
       <Header />
       <main className="flex-1">
         <Routes>

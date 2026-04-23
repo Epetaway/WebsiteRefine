@@ -25,7 +25,6 @@ export function CaseStudyTOC({ sections }: CaseStudyTOCProps) {
         });
 
         if (intersecting.size > 0) {
-          // Activate the topmost visible section
           const topmost = Array.from(intersecting.entries()).sort(
             ([, a], [, b]) => a - b
           )[0][0];
@@ -52,7 +51,7 @@ export function CaseStudyTOC({ sections }: CaseStudyTOCProps) {
 
   return (
     <nav aria-label="On this page" className="hidden lg:block">
-      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#7A7A7A] mb-4">
+      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[var(--cs-text-muted)] mb-4">
         On This Page
       </p>
       <ol className="space-y-1">
@@ -65,15 +64,15 @@ export function CaseStudyTOC({ sections }: CaseStudyTOCProps) {
                 className={[
                   "relative w-full text-left flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors duration-150",
                   isActive
-                    ? "text-[#F5F5F5] font-medium"
-                    : "text-[#7A7A7A] hover:text-[#B7B7B7]",
+                    ? "text-[var(--cs-text-primary)] font-medium"
+                    : "text-[var(--cs-text-muted)] hover:text-[var(--cs-text-secondary)]",
                 ].join(" ")}
               >
                 {isActive && (
                   <motion.span
                     layoutId="toc-indicator"
                     className="absolute inset-0 rounded-lg"
-                    style={{ background: "rgba(255,255,255,0.05)" }}
+                    style={{ background: "rgba(0,0,0,0.04)" }}
                     transition={
                       prefersReduced ? { duration: 0 } : { type: "spring", stiffness: 380, damping: 36 }
                     }
@@ -81,7 +80,7 @@ export function CaseStudyTOC({ sections }: CaseStudyTOCProps) {
                 )}
                 <span
                   className="relative flex-none text-[10px] font-mono tabular-nums"
-                  style={{ color: isActive ? "var(--case-accent)" : "#7A7A7A" }}
+                  style={{ color: isActive ? "var(--case-accent)" : "var(--cs-text-muted)" }}
                 >
                   {String(idx + 1).padStart(2, "0")}
                 </span>
@@ -93,18 +92,16 @@ export function CaseStudyTOC({ sections }: CaseStudyTOCProps) {
       </ol>
 
       {/* CTA card */}
-      <div
-        className="mt-8 p-4 rounded-xl border border-[#20252A] bg-[#111111] space-y-3"
-      >
-        <p className="text-sm font-semibold text-[#F5F5F5]">
+      <div className="mt-8 p-4 rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] space-y-3">
+        <p className="text-sm font-semibold text-[var(--cs-text-primary)]">
           Interested in working together?
         </p>
-        <p className="text-xs text-[#7A7A7A] leading-relaxed">
+        <p className="text-xs text-[var(--cs-text-muted)] leading-relaxed">
           I'm open to full-time roles, contract work, and product collaborations.
         </p>
         <a
           href="/contact"
-          className="block w-full text-center py-2 rounded-lg text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
+          className="block w-full text-center py-2 rounded-full text-sm font-semibold text-white transition-all hover:-translate-y-0.5"
           style={{ background: "var(--case-accent)" }}
         >
           Let's Connect

@@ -12,7 +12,7 @@ const FADE_UP = {
 
 export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
   return (
-    <section id="approach" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="approach" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -31,7 +31,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-2"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
         How I approached it
       </motion.h2>
@@ -42,7 +42,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[#B7B7B7] text-sm leading-relaxed mb-8 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8 max-w-lg"
       >
         High-level overview of the process, research, and development decisions.
       </motion.p>
@@ -58,13 +58,13 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
           <motion.div
             key={step.title}
             variants={FADE_UP}
-            className="relative rounded-xl border border-[#20252A] bg-[#111111] p-5"
+            className="relative rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] p-5"
           >
             {/* Connector line (except last) */}
             {idx < steps.length - 1 && (
               <div
                 className="hidden lg:block absolute top-8 right-0 w-4 h-px"
-                style={{ background: "#20252A", transform: "translateX(100%)" }}
+                style={{ background: "var(--cs-border)", transform: "translateX(100%)" }}
               />
             )}
 
@@ -74,8 +74,8 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
             >
               {step.number}
             </span>
-            <p className="text-sm font-semibold text-[#F5F5F5] mb-2">{step.title}</p>
-            <p className="text-xs text-[#7A7A7A] leading-relaxed">{step.description}</p>
+            <p className="text-sm font-semibold text-[var(--cs-text-primary)] mb-2">{step.title}</p>
+            <p className="text-xs text-[var(--cs-text-muted)] leading-relaxed">{step.description}</p>
           </motion.div>
         ))}
       </motion.div>

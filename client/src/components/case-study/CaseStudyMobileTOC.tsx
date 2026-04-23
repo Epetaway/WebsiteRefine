@@ -20,14 +20,14 @@ export function CaseStudyMobileTOC({ sections }: CaseStudyMobileTOCProps) {
 
   return (
     <div className="lg:hidden px-4 sm:px-6 mt-4 max-w-[1200px] mx-auto">
-      <div className="border border-[#20252A] rounded-xl overflow-hidden bg-[#111111]">
+      <div className="border border-[var(--cs-border)] rounded-xl overflow-hidden bg-[var(--cs-surface)]">
         <button
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
           aria-controls="mobile-toc-list"
-          className="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-[#B7B7B7]"
+          className="flex w-full items-center justify-between px-4 py-3 text-sm font-medium text-[var(--cs-text-secondary)]"
         >
-          <span className="text-[10px] font-semibold uppercase tracking-widest text-[#7A7A7A]">
+          <span className="text-[10px] font-semibold uppercase tracking-widest text-[var(--cs-text-muted)]">
             On This Page
           </span>
           <ChevronDown
@@ -47,13 +47,13 @@ export function CaseStudyMobileTOC({ sections }: CaseStudyMobileTOCProps) {
               animate={prefersReduced ? {} : { height: "auto", opacity: 1 }}
               exit={prefersReduced ? {} : { height: 0, opacity: 0 }}
               transition={{ duration: 0.22, ease: "easeInOut" }}
-              className="overflow-hidden border-t border-[#20252A] divide-y divide-[#20252A]"
+              className="overflow-hidden border-t border-[var(--cs-border)] divide-y divide-[var(--cs-border)]"
             >
               {sections.map((section, idx) => (
                 <li key={section.id}>
                   <button
                     onClick={() => handleNav(section.id)}
-                    className="flex w-full items-center gap-3 px-4 py-3 text-sm text-[#B7B7B7] hover:text-[#F5F5F5] hover:bg-white/5 transition-colors text-left"
+                    className="flex w-full items-center gap-3 px-4 py-3 text-sm text-[var(--cs-text-secondary)] hover:text-[var(--cs-text-primary)] hover:bg-black/[0.03] transition-colors text-left"
                   >
                     <span
                       className="text-[10px] font-mono tabular-nums flex-none"

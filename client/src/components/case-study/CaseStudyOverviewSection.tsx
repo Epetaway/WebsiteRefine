@@ -56,7 +56,7 @@ export function CaseStudyOverviewSection({
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-3"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-3"
       >
         {title}
       </motion.h2>
@@ -67,7 +67,7 @@ export function CaseStudyOverviewSection({
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[#B7B7B7] text-sm leading-relaxed mb-6 max-w-xl"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6 max-w-xl"
       >
         {description}
       </motion.p>
@@ -84,12 +84,12 @@ export function CaseStudyOverviewSection({
         {chips.map((chip) => (
           <div
             key={chip.label}
-            className="flex flex-col gap-0.5 px-3 py-2.5 rounded-lg border border-[#20252A] bg-[#111111]"
+            className="flex flex-col gap-0.5 px-3 py-2.5 rounded-lg border border-[var(--cs-border)] bg-[var(--cs-surface)]"
           >
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-[#7A7A7A]">
+            <span className="text-[10px] font-semibold uppercase tracking-wider text-[var(--cs-text-muted)]">
               {chip.label}
             </span>
-            <span className="text-sm text-[#F5F5F5] font-medium">{chip.value}</span>
+            <span className="text-sm text-[var(--cs-text-primary)] font-medium">{chip.value}</span>
           </div>
         ))}
       </motion.div>
@@ -102,7 +102,7 @@ export function CaseStudyOverviewSection({
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5, delay: 0.16 }}
-          className="rounded-xl overflow-hidden border border-[#20252A] bg-[#111827]"
+          className="rounded-xl overflow-hidden border border-[var(--cs-border)] bg-[var(--cs-surface)]"
         >
           <img
             src={image}

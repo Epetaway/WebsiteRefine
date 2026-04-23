@@ -1,3 +1,5 @@
+import type React from "react";
+
 export type CaseStudyTheme = {
   name: string;
   colors: {
@@ -38,13 +40,13 @@ export type CodeHighlight = {
 // ─── Premium Case Study Types ────────────────────────────────────────────────
 
 export type MetaItem = {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   value: string;
 };
 
 export type GoalItem = {
-  icon: string;
+  icon: React.ReactNode;
   title: string;
   description: string;
 };
@@ -73,7 +75,7 @@ export type LearningItem = {
 };
 
 export type FutureItem = {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
 };
 
@@ -88,6 +90,15 @@ export type DarkCaseStudyTheme = {
   accent: string;
   glow: string;
   badge: string;
+  // Optional light-mode surface overrides (defaults to dark in PremiumCaseStudyLayout)
+  bg?: string;
+  surface?: string;
+  surface2?: string;
+  textPrimary?: string;
+  textSecondary?: string;
+  textMuted?: string;
+  border?: string;
+  borderStrong?: string;
 };
 
 export type TocSection = {

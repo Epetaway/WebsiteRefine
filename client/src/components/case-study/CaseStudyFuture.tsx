@@ -12,7 +12,7 @@ const FADE_UP = {
 
 export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
   return (
-    <section id="next-steps" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="next-steps" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -31,7 +31,7 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-2"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
         Future improvements
       </motion.h2>
@@ -42,7 +42,7 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[#B7B7B7] text-sm leading-relaxed mb-6 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6 max-w-lg"
       >
         Planned features, enhancements, or areas for future iteration.
       </motion.p>
@@ -58,9 +58,9 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
           <motion.div
             key={item.label}
             variants={FADE_UP}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[#20252A] bg-[#111111] text-sm text-[#B7B7B7] hover:border-[var(--case-accent)] hover:text-[#F5F5F5] transition-colors duration-150"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] text-sm text-[var(--cs-text-secondary)] hover:border-[var(--case-accent)] hover:text-[var(--cs-text-primary)] transition-colors duration-150"
           >
-            <span aria-hidden="true">{item.icon}</span>
+            <span aria-hidden="true" className="flex-none" style={{ color: "var(--case-accent)" }}>{item.icon}</span>
             <span>{item.label}</span>
           </motion.div>
         ))}

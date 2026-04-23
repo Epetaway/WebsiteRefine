@@ -24,7 +24,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="features" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="features" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -45,7 +45,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4, delay: 0.04 }}
-            className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-2"
+            className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
           >
             Core features and functionality
           </motion.h2>
@@ -55,7 +55,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.4, delay: 0.08 }}
-            className="text-[#B7B7B7] text-sm max-w-lg"
+            className="text-[var(--cs-text-secondary)] text-sm max-w-lg"
           >
             Highlight the most important features built and the value they provide.
           </motion.p>
@@ -66,14 +66,14 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
           <button
             onClick={scrollPrev}
             aria-label="Previous feature"
-            className="w-9 h-9 rounded-full border border-[#20252A] bg-[#111111] flex items-center justify-center text-[#B7B7B7] hover:text-[#F5F5F5] hover:border-[var(--case-accent)] transition-colors"
+            className="w-9 h-9 rounded-full border border-[var(--cs-border)] bg-[var(--cs-surface)] flex items-center justify-center text-[var(--cs-text-secondary)] hover:text-[var(--cs-text-primary)] hover:border-[var(--case-accent)] transition-colors"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
           <button
             onClick={scrollNext}
             aria-label="Next feature"
-            className="w-9 h-9 rounded-full border border-[#20252A] bg-[#111111] flex items-center justify-center text-[#B7B7B7] hover:text-[#F5F5F5] hover:border-[var(--case-accent)] transition-colors"
+            className="w-9 h-9 rounded-full border border-[var(--cs-border)] bg-[var(--cs-surface)] flex items-center justify-center text-[var(--cs-text-secondary)] hover:text-[var(--cs-text-primary)] hover:border-[var(--case-accent)] transition-colors"
           >
             <ChevronRight className="w-4 h-4" />
           </button>
@@ -86,11 +86,11 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
           {features.map((feature, idx) => (
             <div
               key={idx}
-              className="flex-none w-[85%] sm:w-[46%] lg:w-[31%] rounded-xl border border-[#20252A] bg-[#111111] overflow-hidden hover:-translate-y-0.5 transition-transform duration-200"
+              className="flex-none w-[85%] sm:w-[46%] lg:w-[31%] rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] overflow-hidden hover:-translate-y-0.5 transition-transform duration-200"
             >
               {/* Screenshot */}
               {feature.image ? (
-                <div className="w-full aspect-[16/10] bg-[#0D0D0D] overflow-hidden">
+                <div className="w-full aspect-[16/10] bg-[var(--cs-surface-2)] overflow-hidden">
                   <img
                     src={feature.image}
                     alt={feature.title}
@@ -99,7 +99,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
                   />
                 </div>
               ) : (
-                <div className="w-full aspect-[16/10] bg-gradient-to-br from-[#1A1A1A] to-[#111111] flex items-center justify-center">
+                <div className="w-full aspect-[16/10] bg-[var(--cs-surface-2)] flex items-center justify-center">
                   <span className="text-4xl opacity-30">🖼</span>
                 </div>
               )}
@@ -111,14 +111,14 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
                     className="inline-block text-[10px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded-full mb-2"
                     style={{
                       color: "var(--case-accent)",
-                      background: "rgba(255,255,255,0.05)",
+                      background: "rgba(0,0,0,0.04)",
                     }}
                   >
                     {feature.tag}
                   </span>
                 )}
-                <p className="text-sm font-semibold text-[#F5F5F5] mb-1">{feature.title}</p>
-                <p className="text-xs text-[#7A7A7A] leading-relaxed">{feature.description}</p>
+                <p className="text-sm font-semibold text-[var(--cs-text-primary)] mb-1">{feature.title}</p>
+                <p className="text-xs text-[var(--cs-text-muted)] leading-relaxed">{feature.description}</p>
               </div>
             </div>
           ))}
@@ -130,14 +130,14 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
         <button
           onClick={scrollPrev}
           aria-label="Previous feature"
-          className="w-9 h-9 rounded-full border border-[#20252A] bg-[#111111] flex items-center justify-center text-[#B7B7B7]"
+          className="w-9 h-9 rounded-full border border-[var(--cs-border)] bg-[var(--cs-surface)] flex items-center justify-center text-[var(--cs-text-secondary)]"
         >
           <ChevronLeft className="w-4 h-4" />
         </button>
         <button
           onClick={scrollNext}
           aria-label="Next feature"
-          className="w-9 h-9 rounded-full border border-[#20252A] bg-[#111111] flex items-center justify-center text-[#B7B7B7]"
+          className="w-9 h-9 rounded-full border border-[var(--cs-border)] bg-[var(--cs-surface)] flex items-center justify-center text-[var(--cs-text-secondary)]"
         >
           <ChevronRight className="w-4 h-4" />
         </button>

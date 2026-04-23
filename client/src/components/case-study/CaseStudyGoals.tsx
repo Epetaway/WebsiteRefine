@@ -12,7 +12,7 @@ const FADE_UP = {
 
 export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
   return (
-    <section id="goals" className="scroll-mt-24 py-12 border-t border-[#1A1A1A]">
+    <section id="goals" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -31,7 +31,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[#F5F5F5] mb-2"
+        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
         What success looked like
       </motion.h2>
@@ -42,7 +42,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[#B7B7B7] text-sm leading-relaxed mb-8 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8 max-w-lg"
       >
         Define the objectives and what success would mean for users and the business.
       </motion.p>
@@ -58,20 +58,20 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
           <motion.div
             key={goal.title}
             variants={FADE_UP}
-            className="rounded-xl border border-[#20252A] bg-[#111111] p-5 flex flex-col gap-3 hover:-translate-y-0.5 transition-transform duration-200"
+            className="rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] p-5 flex flex-col gap-3 hover:-translate-y-0.5 transition-transform duration-200"
           >
             <div
-              className="w-10 h-10 rounded-lg flex items-center justify-center text-xl"
-              style={{ background: "rgba(255,255,255,0.05)", border: "1px solid #20252A" }}
+              className="w-10 h-10 rounded-lg flex items-center justify-center"
+              style={{ background: "rgba(0,0,0,0.04)", border: "1px solid var(--cs-border)", color: "var(--case-accent)" }}
             >
               {goal.icon}
             </div>
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-wider text-[#7A7A7A] mb-1">
+              <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--cs-text-muted)] mb-1">
                 Goal {String(idx + 1).padStart(2, "0")}
               </p>
-              <p className="text-sm font-semibold text-[#F5F5F5] mb-1">{goal.title}</p>
-              <p className="text-xs text-[#7A7A7A] leading-relaxed">{goal.description}</p>
+              <p className="text-sm font-semibold text-[var(--cs-text-primary)] mb-1">{goal.title}</p>
+              <p className="text-xs text-[var(--cs-text-muted)] leading-relaxed">{goal.description}</p>
             </div>
           </motion.div>
         ))}
