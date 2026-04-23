@@ -28,7 +28,7 @@ function CodePanel({ tab }: { tab: CodeTab }) {
 
   return (
     // Code blocks stay dark for readability regardless of page theme
-    <div className="relative rounded-b-xl border border-t-0 border-[#20252A] bg-[#0A0A0A] overflow-hidden">
+    <div className="relative rounded-b-xl border border-t-0 border-[#20252A] bg-[#0A0A0A] overflow-x-auto overflow-y-hidden">
       {/* File label bar */}
       <div className="flex items-center justify-between px-4 py-2.5 border-b border-[#1A1A1A]">
         <div className="flex items-center gap-2">

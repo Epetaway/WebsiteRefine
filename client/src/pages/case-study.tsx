@@ -9,6 +9,7 @@ import { SectionHeader } from "@/components/layout/SectionHeader";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { getCaseStudy, resolveCaseStudySlug } from "@/data/caseStudies";
 import WithYouCaseStudy from "@/case-studies/withyou";
+import GundamForgeCaseStudy from "@/case-studies/gundam-forge";
 import { ExternalLink, Github, Code2 } from "lucide-react";
 
 export default function CaseStudy() {
@@ -78,6 +79,10 @@ export default function CaseStudy() {
 
   if (canonicalSlug === "WithYou") {
     return <WithYouCaseStudy />;
+  }
+
+  if (canonicalSlug === "gundam-forge") {
+    return <GundamForgeCaseStudy />;
   }
 
 

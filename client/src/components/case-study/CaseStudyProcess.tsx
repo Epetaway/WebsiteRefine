@@ -42,7 +42,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8"
       >
         High-level overview of the process, research, and development decisions.
       </motion.p>
@@ -52,7 +52,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-        className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        className="grid sm:grid-cols-2 gap-4"
       >
         {steps.map((step, idx) => (
           <motion.div

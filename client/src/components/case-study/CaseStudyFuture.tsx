@@ -42,7 +42,7 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6"
       >
         Planned features, enhancements, or areas for future iteration.
       </motion.p>

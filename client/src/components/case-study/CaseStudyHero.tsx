@@ -56,7 +56,8 @@ export function CaseStudyHero({
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.45, delay: 0.1 }}
-        className="text-base sm:text-lg text-[var(--cs-text-secondary)] max-w-2xl mb-6 leading-relaxed"
+        className="text-base sm:text-lg max-w-2xl mb-6 leading-relaxed"
+        style={{ color: "var(--cs-text-secondary)" }}
       >
         {subtitle}
       </motion.p>

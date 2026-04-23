@@ -42,7 +42,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8 max-w-lg"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8"
       >
         Define the objectives and what success would mean for users and the business.
       </motion.p>
@@ -52,7 +52,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-        className="grid sm:grid-cols-3 gap-4"
+        className="grid sm:grid-cols-2 xl:grid-cols-3 gap-4"
       >
         {goals.map((goal, idx) => (
           <motion.div

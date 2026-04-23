@@ -57,7 +57,7 @@ export function PremiumCaseStudyTemplate({ data }: Props) {
         <div className="lg:grid lg:grid-cols-[1fr_260px] lg:gap-12 xl:gap-16">
 
           {/* ── Left: content sections ───────────────────────── */}
-          <main>
+          <main className="min-w-0">
             <CaseStudyOverviewSection
               description={data.overview.description}
               industry={data.overview.industry}

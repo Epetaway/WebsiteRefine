@@ -67,7 +67,7 @@ export function CaseStudyOverviewSection({
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.08 }}
-        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6 max-w-xl"
+        className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6"
       >
         {description}
       </motion.p>

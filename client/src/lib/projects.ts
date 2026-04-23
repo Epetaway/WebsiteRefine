@@ -57,7 +57,7 @@ export const pinnedProjects: Project[] = [
     liveUrl: "https://epetaway.github.io/Gundam-Forge/",
     role: "Full-Stack Developer",
     tags: ["Next.js", "TypeScript", "Supabase", "Full-Stack", "Monorepo", "Game Dev"],
-    image: "/images/gundam-forge/card-bg.jpg",
+    image: "/images/gundam-forge/gundam_card.png",
     shortTitle: "Gundam Forge",
     subtitle: "Deck Builder & Playtest Simulator",
     featured: true,
