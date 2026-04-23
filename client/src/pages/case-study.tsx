@@ -10,6 +10,7 @@ import ScrollReveal from "@/components/ui/ScrollReveal";
 import { getCaseStudy, resolveCaseStudySlug } from "@/data/caseStudies";
 import WithYouCaseStudy from "@/case-studies/withyou";
 import GundamForgeCaseStudy from "@/case-studies/gundam-forge";
+import DojoNetCaseStudy from "@/case-studies/dojonet";
 import { ExternalLink, Github, Code2 } from "lucide-react";
 
 export default function CaseStudy() {
@@ -73,16 +74,21 @@ export default function CaseStudy() {
     return <Navigate to="/projects" replace />;
   }
 
-  if (!caseStudy) {
-    return <Navigate to="/projects" replace />;
-  }
-
+  // Premium case studies — checked before the generic guard
   if (canonicalSlug === "WithYou") {
     return <WithYouCaseStudy />;
   }
 
   if (canonicalSlug === "gundam-forge") {
     return <GundamForgeCaseStudy />;
+  }
+
+  if (canonicalSlug === "dojonet") {
+    return <DojoNetCaseStudy />;
+  }
+
+  if (!caseStudy) {
+    return <Navigate to="/projects" replace />;
   }
 
 

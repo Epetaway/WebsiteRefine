@@ -193,81 +193,6 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
     codeUrl: 'https://github.com/Epetaway/patient-portal-demo',
     repo: 'patient-portal-demo',
   },
-  'DojoNet-Prototype-MAX': {
-    slug: 'DojoNet-Prototype-MAX',
-    title: 'DojoNet Martial Arts Portal Prototype',
-    subtitle: 'Modern membership and scheduling system for martial arts communities',
-    summary: 'A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.',
-    overview: {
-      description: 'DojoNet is a comprehensive martial arts school management platform that streamlines membership management, class scheduling, and student progress tracking. Built with React and TypeScript, it demonstrates modern front-end architecture and design system implementation.',
-      problem: 'Traditional martial arts schools rely on paper forms and spreadsheets for managing memberships, schedules, and student progress. This creates administrative overhead and limits student engagement.',
-      goals: [
-        'Simplify member registration and onboarding',
-        'Provide intuitive class scheduling interface',
-        'Enable progress tracking and belt advancement',
-        'Create responsive, mobile-first experience',
-      ],
-    },
-    role: [
-      {
-        title: 'Full-Stack Development',
-        description: 'Architected and implemented the complete application using React, TypeScript, and modern tooling',
-      },
-      {
-        title: 'UI/UX Design',
-        description: 'Designed the entire user interface, component system, and user flows from wireframes to production',
-      },
-      {
-        title: 'Design System',
-        description: 'Built a cohesive design system with Tailwind CSS including typography, color tokens, and component patterns',
-      },
-      {
-        title: 'Performance Optimization',
-        description: 'Optimized bundle size, lazy loading, and rendering performance for fast initial loads',
-      },
-    ],
-    technical: {
-      architecture: 'Modern React SPA with component-based architecture. Uses Vite for fast development builds and optimized production bundles. Implements client-side routing with dynamic route loading.',
-      techStack: ['React 18', 'TypeScript', 'Tailwind CSS', 'Vite', 'React Router'],
-      approach: [
-        {
-          title: 'Type Safety',
-          description: 'Full TypeScript implementation with strict mode for catching errors at compile time',
-        },
-        {
-          title: 'Component Library',
-          description: 'Reusable component library with consistent styling and behavior patterns',
-        },
-        {
-          title: 'Mobile-First Design',
-          description: 'Responsive layouts that work seamlessly across all device sizes',
-        },
-      ],
-    },
-    outcomes: [
-      {
-        metric: '50%',
-        label: 'Faster Onboarding',
-        description: 'Member registration time reduced',
-        color: 'blue',
-      },
-      {
-        metric: '98',
-        label: 'Lighthouse Score',
-        description: 'Performance optimization',
-        color: 'green',
-      },
-      {
-        metric: '100%',
-        label: 'Mobile Ready',
-        description: 'Responsive across all devices',
-        color: 'gold',
-      },
-    ],
-    demoUrl: 'https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard',
-    codeUrl: 'https://github.com/Epetaway/DojoNet-Prototype-MAX',
-    repo: 'DojoNet-Prototype-MAX',
-  },
   'ResumeCraft-ghpages': {
     slug: 'ResumeCraft-ghpages',
     title: 'ResumeCraft – AI-Powered Resume Builder',
@@ -483,6 +408,72 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
     demoUrl: 'https://earlhickson.github.io/Gundam-Forge',
     codeUrl: 'https://github.com/Epetaway/Gundam-Forge',
     repo: 'Gundam-Forge',
+  },
+  'dojonet': {
+    slug: 'dojonet',
+    title: 'DojoNet',
+    subtitle: 'A local-first martial arts social platform with event discovery, partner matchmaking, training journals, and customizable profiles.',
+    summary: 'DojoNet is a front-end-heavy martial arts community prototype combining social feed patterns, journal workflows, event discovery, and partner matchmaking in one responsive web experience.',
+    overview: {
+      description: 'DojoNet is a martial arts social network prototype built around community, training identity, and discovery. It supports customizable profiles, social posting, forums, event exploration, training journals, notifications, direct messaging, and a safety-aware partner matching system.',
+      problem: 'Generic social products do not capture martial arts identity such as belt rank, discipline, gym affiliation, and training goals — and finding training partners requires stronger safety controls than existing platforms provide.',
+      goals: [
+        'Bring expressive identity tools (theme presets, Dojo Circle, rank context) into a martial arts social context',
+        'Combine event discovery, partner matchmaking, and messaging with safety-first age-gating and moderation',
+        'Validate a production-grade social product surface using only local-first persistence',
+      ],
+    },
+    role: [
+      {
+        title: 'Lead Front-End Developer',
+        description: 'Built the complete React + Vite + Tailwind application with Zustand state management and Framer Motion animations across all feature surfaces.',
+      },
+      {
+        title: 'UI/UX Designer',
+        description: 'Designed the full DojoNet UI system including the Dojo Red token palette, Bebas Neue display typography, component atoms, and profile theme presets.',
+      },
+    ],
+    technical: {
+      architecture: 'Local-first React SPA using Vite for builds, Zustand for persisted demo state, and Framer Motion for interaction polish. Optional Express/Prisma backend path is architecturally documented for future multi-device sync.',
+      techStack: ['React', 'Vite', 'Tailwind CSS', 'Zustand', 'Framer Motion', 'Express', 'Prisma', 'PostgreSQL'],
+      approach: [
+        {
+          title: 'Local-First Persistence',
+          description: 'Seeded demo data and bot users allow full feature exploration without a running backend.',
+        },
+        {
+          title: 'Safety-First Partner Matching',
+          description: 'Age-gating, moderation hooks, and verification cues are enforced in filtering logic, not just UI copy.',
+        },
+        {
+          title: 'Token-Based Design System',
+          description: 'CSS custom properties drive light mode, dark mode, and four profile theme presets from a single token layer.',
+        },
+      ],
+    },
+    outcomes: [
+      {
+        metric: '11',
+        label: 'Seeded demo users',
+        description: 'Interconnected bot community with varied ranks, themes, and gyms',
+        color: 'blue',
+      },
+      {
+        metric: '4',
+        label: 'Profile theme presets',
+        description: 'Default, Tatami, Iron, and Neon with dynamic gradients',
+        color: 'green',
+      },
+      {
+        metric: '6',
+        label: 'Feature surfaces',
+        description: 'Feed, events, partners, journals, messaging, and forums',
+        color: 'gold',
+      },
+    ],
+    demoUrl: 'https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard',
+    codeUrl: 'https://github.com/Epetaway/DojoNet-Prototype-MAX',
+    repo: 'DojoNet-Prototype-MAX',
   },
 };
 
