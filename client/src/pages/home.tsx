@@ -7,40 +7,42 @@ import { RESUME_PATH } from "@/data/projects";
 import { resolveCaseStudySlug } from "@/data/caseStudies";
 import justMeImg from "@/images/justMe.png";
 import earlBjjPhoto from "@/images/earl-bjj-photo.png";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import { ProjectCardStandard, ProjectCardCTA } from "@/components/ui/ProjectCard";
+import { GITHUB_USER } from "@/lib/projects";
 
-const featuredProjects = [
+const featuredCardProjects = [
   {
-    title: "Gundam Forge",
-    description: "A deck-building web app for Gundam card game players to create, test, and refine decks.",
-    tech: ["React", "TypeScript", "Firebase"],
-    image: "https://opengraph.githubassets.com/1/Epetaway/Gundam-Forge",
     slug: "Gundam-Forge",
+    displayTitle: "Gundam Forge",
+    description: "A deck-building web app for Gundam card game players to create, test, and refine decks.",
+    techStack: ["Next.js", "TypeScript", "Supabase"],
+    repoUrl: `https://github.com/${GITHUB_USER}/Gundam-Forge`,
+    liveUrl: "https://epetaway.github.io/Gundam-Forge/",
+    category: "Full-Stack",
+    githubUser: GITHUB_USER,
+    caseStudySlug: resolveCaseStudySlug("Gundam-Forge"),
   },
   {
-    title: "DojoNet",
-    description: "A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.",
-    tech: ["React", "TypeScript", "Tailwind CSS"],
-    image: "https://opengraph.githubassets.com/1/Epetaway/DojoNet-Prototype-MAX",
     slug: "DojoNet-Prototype-MAX",
+    displayTitle: "DojoNet",
+    description: "A prototype membership and class scheduling system for martial arts schools.",
+    techStack: ["React", "TypeScript", "Tailwind CSS"],
+    repoUrl: `https://github.com/${GITHUB_USER}/DojoNet-Prototype-MAX`,
+    liveUrl: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
+    category: "Front-End",
+    githubUser: GITHUB_USER,
+    caseStudySlug: resolveCaseStudySlug("DojoNet-Prototype-MAX"),
   },
   {
-    title: "WithYou",
-    description: "A privacy-first relationship app that encourages meaningful connection through intentional communication.",
-    tech: ["React Native", "Node.js", "PostgreSQL"],
-    image: "https://opengraph.githubassets.com/1/Epetaway/WithYou",
     slug: "WithYou",
-  },
-  {
-    title: "AMA Fight Club",
-    description: "Redesigned the website and marketing strategy resulting in significant SEO and lead growth.",
-    tech: ["WordPress", "SEO", "Analytics"],
-    image: null,
-    slug: "ama-fight-club",
+    displayTitle: "WithYou",
+    description: "A privacy-first relationship app built to encourage meaningful connection through intentional communication.",
+    techStack: ["React Native", "Node.js", "PostgreSQL"],
+    repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
+    category: "Mobile / Full-Stack",
+    githubUser: GITHUB_USER,
+    image: "/images/withyou/withyou_card.png",
+    caseStudySlug: resolveCaseStudySlug("WithYou"),
   },
 ];
 
@@ -206,61 +208,22 @@ export default function Home() {
           </div>
         </ScrollReveal>
 
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={24}
-          slidesPerView={1}
-          breakpoints={{
-            640: { slidesPerView: 2 },
-            1024: { slidesPerView: 4 },
-          }}
-          loop={true}
-          pagination={{ clickable: true }}
-          autoplay={false}
-          className="project-swiper pb-12"
-        >
-          {featuredProjects.map(({ title, description, tech, image, slug }, idx) => {
-            const caseStudySlug = resolveCaseStudySlug(slug) ?? slug;
-
-            return (
-            <SwiperSlide key={idx}>
-              <div className="bg-[#0D0D0D] border border-[#20252A] rounded-xl overflow-hidden hover:border-violet-500/40 transition-colors group flex flex-col h-[420px]">
-                <div className="aspect-video bg-[#1A1A1A] overflow-hidden flex-shrink-0">
-                  {image ? (
-                    <img
-                      src={image}
-                      alt={`${title} preview`}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
-                    />
-                  ) : (
-                    <div className="w-full h-full bg-gradient-to-br from-violet-900/60 to-[#1A1A1A] flex items-center justify-center">
-                      <span className="text-[#7A7A7A] text-sm font-medium">{title}</span>
-                    </div>
-                  )}
-                </div>
-                <div className="p-5 flex flex-col flex-1">
-                  <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-                  <p className="text-sm text-[#7A7A7A] leading-relaxed mb-4 line-clamp-3">{description}</p>
-                  <div className="flex flex-wrap gap-1.5 mb-4 mt-auto">
-                    {tech.map((t) => (
-                      <span key={t} className="text-xs px-2.5 py-1 rounded-full bg-[#1A1A1A] text-[#B7B7B7]">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <Link
-                    to={`/projects/${caseStudySlug}`}
-                    className="inline-flex items-center gap-1.5 text-sm text-violet-400 hover:text-violet-300 font-medium transition-colors"
-                  >
-                    View Case Study <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            </SwiperSlide>
-            );
-          })}
-        </Swiper>
+        {/* 4-column card grid — 3 project cards + 1 CTA card */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          {featuredCardProjects.map((project, idx) => (
+            <ScrollReveal key={project.slug} animation="slide-up" delay={idx * 60}>
+              <ProjectCardStandard project={project} />
+            </ScrollReveal>
+          ))}
+          <ScrollReveal animation="slide-up" delay={featuredCardProjects.length * 60}>
+            <ProjectCardCTA
+              headline="Ready to see the full picture?"
+              subline="Browse the complete project archive — case studies, demos, and live work."
+              ctaLabel="View All Work"
+              ctaHref="/projects"
+            />
+          </ScrollReveal>
+        </div>
 
         <ScrollReveal animation="fade" delay={200}>
           <div className="mt-8 md:hidden text-center">

@@ -23,6 +23,7 @@ export type Project = {
   liveUrl?: string;          // live demo URL
   role?: string;             // e.g. "Front-End", "Healthcare UI"
   tags?: string[];           // e.g. ["Healthcare", "Accessibility"]
+  image?: string;            // override image URL for cards
   featured?: boolean;        // mark for homepage feature
   pinned?: boolean;          // whether it came from GitHub pinned
 };
@@ -81,6 +82,7 @@ export const pinnedProjects: Project[] = [
     repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
     role: "Full Stack Engineer",
     tags: ["React Native", "Privacy", "Behavioral UX"],
+    image: "/images/withyou/withyou_card.png",
     featured: true,
     pinned: true,
   },
