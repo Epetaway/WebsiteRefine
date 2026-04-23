@@ -24,6 +24,8 @@ export type Project = {
   role?: string;             // e.g. "Front-End", "Healthcare UI"
   tags?: string[];           // e.g. ["Healthcare", "Accessibility"]
   image?: string;            // override image URL for cards
+  shortTitle?: string;       // compact name for card h3 e.g. "Gundam Forge"
+  subtitle?: string;         // one-line type label e.g. "Deck Builder & Simulator"
   featured?: boolean;        // mark for homepage feature
   pinned?: boolean;          // whether it came from GitHub pinned
 };
@@ -56,6 +58,8 @@ export const pinnedProjects: Project[] = [
     role: "Full-Stack Developer",
     tags: ["Next.js", "TypeScript", "Supabase", "Full-Stack", "Monorepo", "Game Dev"],
     image: "/images/gundam-forge/gundam_card.png",
+    shortTitle: "Gundam Forge",
+    subtitle: "Deck Builder & Playtest Simulator",
     featured: true,
     pinned: true,
   },
@@ -69,6 +73,8 @@ export const pinnedProjects: Project[] = [
     repoUrl: `https://github.com/${GITHUB_USER}/DojoNet-Prototype-MAX`,
     liveUrl: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
     image: "/images/dojonet/dojonet_card.png",
+    shortTitle: "DojoNet",
+    subtitle: "Martial Arts Portal",
     role: "Lead Front-End Developer & UI/UX Designer",
     tags: ["React", "TypeScript", "Tailwind CSS"],
     featured: true,
@@ -85,6 +91,8 @@ export const pinnedProjects: Project[] = [
     role: "Full Stack Engineer",
     tags: ["React Native", "Privacy", "Behavioral UX"],
     image: "/images/withyou/withyou_card.png",
+    shortTitle: "WithYou",
+    subtitle: "Relationship Wellness App",
     featured: true,
     pinned: true,
   },
@@ -99,6 +107,8 @@ export const pinnedProjects: Project[] = [
     liveUrl: "https://amafightclub.com",
     role: "Frontend Developer",
     tags: ["WordPress", "SEO", "Analytics"],
+    shortTitle: "AMA Fight Club",
+    subtitle: "Website & Digital Growth",
     featured: true,
     pinned: true,
   },

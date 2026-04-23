@@ -14,6 +14,8 @@ const featuredCardProjects = [
   {
     slug: "Gundam-Forge",
     displayTitle: "Gundam Forge",
+    shortTitle: "Gundam Forge",
+    subtitle: "Deck Builder & Simulator",
     description: "A deck-building web app for Gundam card game players to create, test, and refine decks.",
     techStack: ["Next.js", "TypeScript", "Supabase"],
     repoUrl: `https://github.com/${GITHUB_USER}/Gundam-Forge`,
@@ -26,6 +28,8 @@ const featuredCardProjects = [
   {
     slug: "DojoNet-Prototype-MAX",
     displayTitle: "DojoNet",
+    shortTitle: "DojoNet",
+    subtitle: "Martial Arts Portal",
     description: "A prototype membership and class scheduling system for martial arts schools.",
     techStack: ["React", "TypeScript", "Tailwind CSS"],
     repoUrl: `https://github.com/${GITHUB_USER}/DojoNet-Prototype-MAX`,
@@ -38,6 +42,8 @@ const featuredCardProjects = [
   {
     slug: "WithYou",
     displayTitle: "WithYou",
+    shortTitle: "WithYou",
+    subtitle: "Relationship Wellness App",
     description: "A privacy-first relationship app built to encourage meaningful connection through intentional communication.",
     techStack: ["React Native", "Node.js", "PostgreSQL"],
     repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
