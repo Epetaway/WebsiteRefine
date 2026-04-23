@@ -20,6 +20,7 @@ const featuredCardProjects = [
     liveUrl: "https://epetaway.github.io/Gundam-Forge/",
     category: "Full-Stack",
     githubUser: GITHUB_USER,
+    image: "/images/gundam-forge/gundam_card.png",
     caseStudySlug: resolveCaseStudySlug("Gundam-Forge"),
   },
   {
