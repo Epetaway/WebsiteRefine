@@ -135,7 +135,7 @@ export default function Home() {
       </section>
 
       {/* ── TRUST STRIP ──────────────────────────────────────────────────── */}
-      <section className="bg-[#111111] border-y border-[#20252A]">
+      <section className="bg-[#0D0D0D]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -200,7 +200,7 @@ export default function Home() {
       </Section>
 
       {/* ── FEATURED WORK ────────────────────────────────────────────────── */}
-      <Section className="bg-[#111111]">
+      <Section className="bg-[#0D0D0D]">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-2">Featured Work</p>
           <div className="flex items-end justify-between mb-10">
@@ -319,7 +319,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA STRIP ────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D] border-t border-[#20252A]">
+      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
           <ScrollReveal animation="slide-up">
             <div className="grid lg:grid-cols-2 gap-10 items-center">

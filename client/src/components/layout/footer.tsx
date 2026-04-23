@@ -7,10 +7,8 @@ export default function Footer() {
 
   return (
     <footer
-      className="border-t"
       style={{
         backgroundColor: isLight ? "#F2F4F8" : "#0D0D0D",
-        borderColor: isLight ? "#E5E7EB" : "#20252A",
       }}
     >
       <div className="mx-auto max-w-[1120px] px-5 py-16 grid gap-10 md:grid-cols-3">
@@ -83,9 +81,8 @@ export default function Footer() {
       </div>
 
       <div
-        className="border-t py-6 text-center text-xs"
+        className="py-6 text-center text-xs"
         style={{
-          borderColor: isLight ? "#E5E7EB" : "#20252A",
           color: isLight ? "#9CA3AF" : "#5A5A5A",
         }}
       >
