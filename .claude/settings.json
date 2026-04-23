@@ -7,7 +7,19 @@
       "Read(//Users/earlhickson/Downloads/**)",
       "Read(//Users/earlhickson/Desktop/**)",
       "Read(//Users/earlhickson/Pictures/**)",
-      "Bash(xargs ls *)"
+      "Bash(xargs ls *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5000)",
+      "Bash(curl -s http://localhost:3000/projects/WithYou)",
+      "Bash(pkill -f \"tsx server/index.ts\")",
+      "Bash(unzip -l \"/Users/earlhickson/Downloads/withyou_asset_pack.zip\")",
+      "Bash(unzip -p withyou_asset_pack.zip device/device_1.txt device/device_2.txt cozy_home/cozy_home_1.txt outdoor/outdoor_1.txt intimate/intimate_1.txt)",
+      "Bash(lsof -ti:5000)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Read(//private/tmp/**)",
+      "Bash(xargs cat *)",
+      "Bash(node -e \"const l = require\\('/Users/earlhickson/Documents/GitHub/WebsiteRefine/node_modules/lucide-react'\\); console.log\\(['Swords','Globe','BarChart2','Smartphone','Lock','Shuffle','Target','Calendar','User','Monitor','Layers','Zap','TrendingUp','Users'].map\\(n => n + ':' + \\(n in l\\)\\).join\\('\\\\n'\\)\\)\")"
     ],
     "additionalDirectories": [
       "/Users/earlhickson/Downloads"
