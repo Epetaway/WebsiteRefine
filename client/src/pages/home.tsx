@@ -6,7 +6,6 @@ import { Zap, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, User
 import { RESUME_PATH } from "@/data/projects";
 import { resolveCaseStudySlug } from "@/data/caseStudies";
 import justMeImg from "@/images/justMe.png";
-import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import { ProjectCardStandard, ProjectCardCTA } from "@/components/ui/ProjectCard";
 import { GITHUB_USER } from "@/lib/projects";
 
@@ -286,25 +285,24 @@ export default function Home() {
       </Section>
 
       {/* ── ABOUT PREVIEW ────────────────────────────────────────────────── */}
-      <section className="bg-[#F7BC0A]">
-        <div className="mx-auto max-w-[1320px] w-full px-5 py-10 lg:py-0">
-          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <ScrollReveal animation="fade" delay={100}>
-              <div className="overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
-                <img
-                  src={earlBjjPhoto}
-                  alt="Earl Hickson Jr."
-                  className="w-full h-[440px] sm:h-[560px] lg:h-[720px] object-cover object-center"
-                />
-              </div>
-            </ScrollReveal>
+      <section className="relative overflow-hidden min-h-[560px] sm:min-h-[640px] lg:min-h-[680px] flex items-end">
+        {/* Mobile background (portrait) */}
+        <div
+          className="absolute inset-0 bg-cover bg-center lg:hidden"
+          style={{ backgroundImage: "url('/images/about/more-than-just-mobile.png')" }}
+        />
+        {/* Desktop background (landscape) */}
+        <div
+          className="absolute inset-0 bg-cover bg-center hidden lg:block"
+          style={{ backgroundImage: "url('/images/about/more-than-just-desktop.png')" }}
+        />
+        {/* Right-side overlay for text legibility on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent lg:bg-gradient-to-l lg:from-black/55 lg:via-black/20 lg:to-transparent" />
 
-            <ScrollReveal animation="slide-up" className="space-y-6 lg:pr-10">
-              <p className="text-xs tracking-widest uppercase text-slate-800 font-medium">About Me</p>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 -tracking-[0.03em] leading-[1.1]">
-                More than just code.
-              </h2>
-              <p className="text-slate-900/90 text-lg leading-relaxed max-w-xl">
+        <div className="relative z-10 w-full px-5 py-10 lg:py-14">
+          <div className="mx-auto max-w-[1320px] flex justify-center lg:justify-end">
+            <ScrollReveal animation="slide-up" className="space-y-5 max-w-sm text-center lg:text-left lg:pr-10">
+              <p className="text-white/90 text-lg leading-relaxed">
                 I'm a front-end engineer, designer, and Brazilian Jiu-Jitsu instructor. I bring discipline, creativity, and problem-solving into everything I build—whether it's a UI system or a training session.
               </p>
               <Link
