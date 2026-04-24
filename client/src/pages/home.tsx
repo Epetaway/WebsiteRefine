@@ -87,8 +87,18 @@ export default function Home() {
           />
         </ScrollReveal>
 
-        {/* Content — text block + mobile portrait stacked */}
-        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-16 lg:py-24">
+        {/* Portrait — mobile only, above hero copy */}
+        <div className="lg:hidden relative w-full">
+          <img
+            src={justMeImg}
+            alt="Earl Hickson Jr."
+            className="w-full h-[520px] sm:h-[640px] object-cover object-[center_15%]"
+          />
+          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
+        </div>
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-10 lg:py-24">
           <ScrollReveal animation="slide-up" className="space-y-6 max-w-[580px]">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium">
               Front-End Engineer
@@ -116,18 +126,6 @@ export default function Home() {
               >
                 Let's Connect <ArrowRight className="w-4 h-4" />
               </Link>
-            </div>
-          </ScrollReveal>
-
-          {/* Portrait — mobile/tablet only, shown below CTA buttons */}
-          <ScrollReveal animation="fade" delay={200} className="lg:hidden mt-10 -mx-5">
-            <div className="relative w-full overflow-hidden">
-              <img
-                src={justMeImg}
-                alt="Earl Hickson Jr."
-                className="w-full h-[520px] sm:h-[640px] object-cover object-[center_15%]"
-              />
-              <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
             </div>
           </ScrollReveal>
         </div>
@@ -296,13 +294,13 @@ export default function Home() {
           className="absolute inset-0 bg-cover bg-center hidden lg:block"
           style={{ backgroundImage: "url('/images/about/more-than-just-desktop.png')" }}
         />
-        {/* Right-side overlay for text legibility on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent lg:bg-gradient-to-l lg:from-black/55 lg:via-black/20 lg:to-transparent" />
+        {/* Overlay — heavy bottom scrim on mobile, side scrim on desktop */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10 lg:bg-gradient-to-l lg:from-black/70 lg:via-black/30 lg:to-transparent" />
 
         <div className="relative z-10 w-full px-5 py-10 lg:py-14">
           <div className="mx-auto max-w-[1320px] flex justify-center lg:justify-end">
             <ScrollReveal animation="slide-up" className="space-y-5 max-w-sm text-center lg:text-left lg:pr-10">
-              <p className="text-white/90 text-lg leading-relaxed">
+              <p className="text-white text-lg leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}>
                 I'm a front-end engineer, designer, and Brazilian Jiu-Jitsu instructor. I bring discipline, creativity, and problem-solving into everything I build—whether it's a UI system or a training session.
               </p>
               <Link
