@@ -120,14 +120,14 @@ export default function Home() {
           </ScrollReveal>
 
           {/* Portrait — mobile/tablet only, shown below CTA buttons */}
-          <ScrollReveal animation="fade" delay={200} className="lg:hidden mt-10 flex justify-center pb-4">
-            <div className="relative w-64 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <ScrollReveal animation="fade" delay={200} className="lg:hidden mt-10 -mx-5">
+            <div className="relative w-full overflow-hidden">
               <img
                 src={justMeImg}
                 alt="Earl Hickson Jr."
-                className="w-full h-80 object-cover object-[center_15%]"
+                className="w-full h-[520px] sm:h-[640px] object-cover object-[center_15%]"
               />
-              <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
             </div>
           </ScrollReveal>
         </div>
