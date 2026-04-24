@@ -26,7 +26,7 @@ export const gundamForgePremiumData: PremiumCaseStudyData = {
     "Gundam Forge is a full-stack, statically-exported web platform that lets competitive Gundam Card Game players build decks, browse 471+ cards, simulate matches against an AI opponent, and track live meta standings from Limitless TCG tournaments. Built as a monorepo with a purpose-built design system, it ships zero-latency on GitHub Pages with no server required. The project spans a rules-compliant game engine, advanced synergy-scoring card search, and a tokenized UI that reads like a cockpit display.",
   liveUrl: "https://earlhickson.github.io/Gundam-Forge",
   repoUrl: "https://github.com/earlhickson/Gundam-Forge",
-  heroImage: "/images/gundam-forge/dashboard-hero.png",
+  heroImage: "/images/gundam-forge/hero-bg.png",
 
   meta: [
     { icon: <Target size={16} />, label: "Role", value: "Full-Stack Developer & Systems Designer" },
@@ -43,6 +43,7 @@ export const gundamForgePremiumData: PremiumCaseStudyData = {
     targetUsers:
       "Competitive GCG players, deck theorycrafters, and tournament-level pilots who want fast iteration tools without paying for a subscription platform.",
     type: "Full-Stack Product — Game Engine + UI Platform",
+    image: "/images/gundam-forge/dashboard-hero.png",
     myRole:
       "Sole developer: designed the token-based design system, built the monorepo architecture, implemented official GCG Comprehensive Rules v1.5.0 in TypeScript, wired the Limitless TCG meta pipeline, and shipped 241 prerendered static routes.",
   },
