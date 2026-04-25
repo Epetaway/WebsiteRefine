@@ -7,10 +7,10 @@ export default function Approach() {
   return (
     <>
       <Helmet>
-        <title>Approach | Earl Hickson Jr. — Front-End / UI Engineer & Product Thinker</title>
+        <title>Approach | Earl Hickson Jr. — Front-End Developer & Designer</title>
         <meta
           name="description"
-          content="How I think about users, systems, and interfaces. A product-minded, HCI-focused approach to UI engineering that prioritizes behavior, clarity, and long-term value."
+          content="How Earl Hickson Jr. thinks about users, systems, and interfaces. A design-trained front-end developer's approach to building interfaces that are technically sound and visually considered."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/approach" />
       </Helmet>
@@ -24,7 +24,7 @@ export default function Approach() {
               Designing for people, not just screens.
             </h1>
             <p className="text-xl text-[#B7B7B7] max-w-2xl leading-relaxed">
-              I'm a Front-End / UI Engineer with a product-thinker mindset. I don't just translate designs into code — I think about why the interface exists, who it's for, and how it shapes behavior.
+              I'm a Front-End Developer with a BFA in Graphic Design. I don't just translate designs into code — I think about why the interface exists, who it's for, and how it shapes behavior.
             </p>
           </ScrollReveal>
         </div>
@@ -114,11 +114,11 @@ export default function Approach() {
               {[
                 {
                   company: "Asembia — Healthcare UX",
-                  detail: "Built HIPAA-compliant patient portals where every UX decision carried real-world consequence. Accessibility wasn't a checkbox — it was a patient's ability to manage their prescriptions.",
+                  detail: "Audited a fragmented enterprise codebase across HIPAA-compliant healthcare platforms, established a design system, migrated Bootstrap 3 to 5, and got a new component architecture adopted across the team — starting with a direct conversation with the CEO about why it mattered.",
                 },
                 {
                   company: "BroadcastMed — Marketing Systems",
-                  detail: "Designed and built healthcare marketing microsites at scale. Reduced email production time by 25% and increased lead submissions by 18% through a structured design system.",
+                  detail: "Built healthcare marketing microsites and a standardized HTML email system that reduced production time by 25%. Increased lead form submissions by 18% through targeted layout and UX improvements — decisions informed by Google Analytics and Hotjar data, not guesswork.",
                 },
               ].map(({ company, detail }, idx) => (
                 <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>

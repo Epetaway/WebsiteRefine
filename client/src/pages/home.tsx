@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { Zap, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, Users, ArrowRight } from "lucide-react";
+import { TrendingUp, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, Users, ArrowRight } from "lucide-react";
 import { RESUME_PATH } from "@/data/projects";
 import { resolveCaseStudySlug } from "@/data/caseStudies";
 import justMeImg from "@/images/justMe.png";
@@ -14,12 +14,12 @@ const featuredCardProjects = [
     slug: "Gundam-Forge",
     displayTitle: "Gundam Forge",
     shortTitle: "Gundam Forge",
-    subtitle: "Deck Builder & Simulator",
-    description: "A deck-building web app for Gundam card game players to create, test, and refine decks.",
-    techStack: ["Next.js", "TypeScript", "Supabase"],
+    subtitle: "Deck Builder & Meta Analysis Tool",
+    description: "A fully functional competitive deck-building and meta-analysis tool for the Gundam Card Game — live card data via external API, advanced filtering, deck management, local saves, and a working play tester.",
+    techStack: ["React", "TypeScript", "Next.js"],
     repoUrl: `https://github.com/${GITHUB_USER}/Gundam-Forge`,
     liveUrl: "https://epetaway.github.io/Gundam-Forge/",
-    category: "Full-Stack",
+    category: "Front-End",
     githubUser: GITHUB_USER,
     image: "/images/gundam-forge/gundam_card.png",
     caseStudySlug: resolveCaseStudySlug("Gundam-Forge"),
@@ -46,7 +46,7 @@ const featuredCardProjects = [
     description: "A privacy-first relationship app built to encourage meaningful connection through intentional communication.",
     techStack: ["React Native", "Node.js", "PostgreSQL"],
     repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
-    category: "Mobile / Full-Stack",
+    category: "Mobile / Front-End",
     githubUser: GITHUB_USER,
     image: "/images/withyou/withyou_card.png",
     caseStudySlug: resolveCaseStudySlug("WithYou"),
@@ -57,20 +57,20 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Earl Hickson Jr. | Front-End / UI Engineer — React, TypeScript | Parsippany, NJ</title>
+        <title>Earl Hickson Jr. | Front-End Developer & Designer — React, TypeScript | Parsippany, NJ</title>
         <meta
           name="description"
-          content="Front-End / UI Engineer with 6+ years building accessible, responsive, performance-focused web applications across healthcare, marketing, and client-facing platforms. Based in Parsippany, NJ."
+          content="Front-End Developer and Designer with 6+ years building responsive, accessible, performance-optimized web applications across healthcare, finance, media, and nonprofits. BFA in Graphic Design. Based in Parsippany, NJ."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/" />
-        <meta property="og:title" content="Earl Hickson Jr. | Front-End / UI Engineer — React, TypeScript" />
-        <meta property="og:description" content="Front-End / UI Engineer bridging design and engineering — scalable UI systems, performance optimization, and real-world product impact. 6+ years across healthcare, media, and high-growth platforms." />
+        <meta property="og:title" content="Earl Hickson Jr. | Front-End Developer & Designer — React, TypeScript" />
+        <meta property="og:description" content="Front-End Developer and Designer with a BFA in Graphic Design — building interfaces that are technically sound and visually considered. 6+ years across healthcare, finance, media, and nonprofits." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ehicksonjr.com/" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Earl Hickson Jr. | Front-End / UI Engineer — React, TypeScript" />
-        <meta name="twitter:description" content="Front-End / UI Engineer bridging design and engineering — scalable UI systems, performance optimization, and real-world product impact." />
+        <meta name="twitter:title" content="Earl Hickson Jr. | Front-End Developer & Designer — React, TypeScript" />
+        <meta name="twitter:description" content="Front-End Developer and Designer bridging design thinking and front-end engineering — scalable component systems, WCAG 2.1 AA accessibility, and real product impact." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
@@ -91,17 +91,17 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-16 lg:py-24">
           <ScrollReveal animation="slide-up" className="space-y-6 max-w-[580px]">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium">
-              Front-End / UI Engineer
+              Front-End Developer & Designer
             </p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-[1.05] -tracking-[0.03em]">
-              Building high-performance interfaces that{" "}
-              <span className="text-violet-400">actually move the business.</span>
+              Building interfaces that are{" "}
+              <span className="text-violet-400">technically sound and visually considered.</span>
             </h1>
             <p className="text-lg text-[#B7B7B7] leading-relaxed">
-              Front-End / UI Engineer with 6+ years building accessible, responsive, performance-focused web applications across healthcare, marketing, and client-facing platforms.
+              Front-End Developer and Designer with 6+ years building responsive, accessible, performance-optimized web applications across healthcare, finance, media, and nonprofit sectors.
             </p>
             <p className="text-base text-[#7A7A7A]">
-              I bridge design and engineering by turning complex workflows into scalable, user-friendly interfaces.
+              BFA in Graphic Design meets front-end engineering — the intersection that produces interfaces your users actually want to use.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
@@ -138,10 +138,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1120px] w-full px-5 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: Zap, metric: "18%", label: "Improved Lighthouse performance" },
-              { icon: Accessibility, metric: "WCAG 2.1 AA", label: "Accessibility implementation" },
-              { icon: Layers, metric: "Reusable", label: "Component systems across React & Angular" },
-              { icon: Shield, metric: "HIPAA", label: "Healthcare dashboards & secure environments" },
+              { icon: TrendingUp, metric: "+18%", label: "Lead form submissions via layout & UX improvements at BroadcastMed" },
+              { icon: Accessibility, metric: "WCAG 2.1 AA", label: "Accessibility implementation across healthcare platforms" },
+              { icon: Layers, metric: "Bootstrap 3→5", label: "Enterprise design system migration and component library at Asembia" },
+              { icon: Shield, metric: "HIPAA", label: "Healthcare dashboards and secure provider-facing environments" },
             ].map(({ icon: Icon, metric, label }, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
                 <div className="border border-[#20252A] rounded-xl p-5 flex flex-col items-center text-center gap-2 hover:border-violet-500/40 smooth-card">
@@ -161,10 +161,10 @@ export default function Home() {
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">What I Do</p>
           <div className="grid lg:grid-cols-2 gap-6 mb-12 items-end">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
-              I don't just build UIs — I build systems that scale.
+              I design it and build it — and I know the difference.
             </h2>
             <p className="text-[#B7B7B7] text-lg leading-relaxed">
-              I specialize in turning complex product requirements into clean, maintainable, and high-performing front-end architectures.
+              My formal design background and front-end engineering experience aren't separate tracks — they inform each other on every project I touch.
             </p>
           </div>
         </ScrollReveal>
@@ -173,18 +173,18 @@ export default function Home() {
           {[
             {
               icon: Code2,
-              title: "Modern Front-End Development",
-              desc: "Building responsive, production-grade applications using React, Angular, and TypeScript with a focus on performance and scalability.",
+              title: "Front-End Development",
+              desc: "Building responsive, production-grade applications using React, TypeScript, and SCSS/CSS within .NET-backed enterprise environments — with a focus on performance, accessibility, and maintainability.",
             },
             {
               icon: Monitor,
               title: "UI/UX Implementation",
-              desc: "Translating design into polished, intuitive interfaces that feel smooth, intentional, and user-focused.",
+              desc: "Translating design thinking into polished, intuitive interfaces. I started in graphic design and understand both sides of the handoff — which means far fewer revisions and stronger outcomes.",
             },
             {
               icon: Blocks,
-              title: "Reusable Component Architecture",
-              desc: "Creating systems—not one-offs—so teams can move faster, ship consistently, and scale without breaking things.",
+              title: "Design System Architecture",
+              desc: "Building reusable component libraries — not one-offs — so teams can ship consistently and scale without breaking things. I've done this in Bootstrap 5, React, and custom token-based systems.",
             },
           ].map(({ icon: Icon, title, desc }, idx) => (
             <ScrollReveal key={idx} animation="slide-up" delay={idx * 80}>
@@ -250,7 +250,7 @@ export default function Home() {
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">How I Think</p>
           <div className="grid lg:grid-cols-2 gap-6 mb-12 items-end">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white -tracking-[0.03em] leading-[1.1]">
-              I think like a developer, designer, and product owner.
+              I think like a developer, a designer, and the person who has to use it.
             </h2>
             <div className="space-y-2">
               <p className="text-[#B7B7B7] text-lg">I don't just take tickets and build screens.</p>
@@ -263,15 +263,15 @@ export default function Home() {
           {[
             {
               icon: Scale,
-              text: "How this scales in 6 months",
+              text: "How this component system needs to evolve in six months when the team triples.",
             },
             {
               icon: Users,
-              text: "How users actually interact with it",
+              text: "How a clinical user under time pressure actually reads and interacts with this table.",
             },
             {
               icon: Code2,
-              text: "That mindset is what separates clean code from real product engineering.",
+              text: "Whether the design token I'm using today will survive the next rebrand — and if not, how to make the fix a one-liner.",
             },
           ].map(({ icon: Icon, text }, idx) => (
             <ScrollReveal key={idx} animation="slide-up" delay={idx * 80} className="h-full">
@@ -303,7 +303,7 @@ export default function Home() {
           <div className="mx-auto max-w-[1320px] flex justify-center lg:justify-end">
             <ScrollReveal animation="slide-up" className="space-y-5 max-w-sm text-center lg:text-left lg:pr-10">
               <p className="text-white text-lg leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}>
-                I'm a front-end engineer, designer, and Brazilian Jiu-Jitsu instructor. I bring discipline, creativity, and problem-solving into everything I build—whether it's a UI system or a training session.
+                I hold a BFA in Graphic Design and a Front-End Development certificate — and I've spent 6+ years using both at once. I also teach Brazilian Jiu-Jitsu, which has more in common with software architecture than you'd think.
               </p>
               <Link
                 to="/about"
@@ -326,7 +326,7 @@ export default function Home() {
                   Let's build something that actually works.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  If you're looking for someone who can deliver clean UI, strong architecture, and real impact—I'm ready.
+                  If you need clean UI, a coherent design system, and someone who can move fast without making a mess — I'm ready.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">
