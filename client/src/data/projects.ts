@@ -34,32 +34,31 @@ export const projects: Project[] = [
   {
     id: "gundam-forge",
     slug: "gundam-forge",
-    title: "Gundam Forge – Deck Builder & Playtest Simulator",
-    role: "Full-Stack Developer",
+    title: "Gundam Forge – Deck Builder & Meta Analysis Tool",
+    role: "Front-End Developer & Designer",
     category: "featured",
-    description: "A production-focused deck builder and playtest simulator for the Gundam Card Game, featuring advanced card search, real-time filtering, deck validation, and an interactive zone-based playtester.",
-    summary: "Full-stack monorepo app for building and playtesting Gundam Card Game decks. Includes advanced search, contract-driven API patterns, and an interactive simulator with undo/redo and AI-assisted gameplay.",
-    problem: "No dedicated tooling existed for organizing, validating, and playtesting Gundam Card Game decks in a single, production-quality interface.",
-    solution: "Built a Next.js 14 + Supabase monorepo with shared TypeScript contract packages, deterministic filtering/sorting APIs, runtime schema validation, and a multi-phase playtester featuring zone-based board state, mulligan flow, keyboard shortcuts, and undo/redo history.",
-    result: "Delivered a full end-to-end product with a scalable card data pipeline, reliable image-fallback strategy, and strict quality gates—lint, typecheck, build, contract, and smoke tests.",
-    stack: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "Supabase", "Vitest", "Framer Motion", "npm Workspaces"],
-    tags: ["Next.js", "TypeScript", "Supabase", "Full-Stack", "Monorepo", "Game Dev"],
-    devNotes: "Monorepo with shared contract packages; Supabase backend; Vitest unit/contract tests; deterministic pagination and sorting for reproducible API behavior.",
+    description: "A competitive deck-building and meta-analysis tool for the Gundam Card Game with an active player community — live card data via external API, advanced filtering, deck management with local saves, and a working rules-accurate play tester.",
+    summary: "A real product, not a side project. Component-driven React application with API integration, client-side state management, and UX thinking applied to an active competitive card game community. Split-panel deck builder, synergy-scoring card browser, rules-accurate playtest simulator, and live meta dashboard sourced from tournament data.",
+    problem: "Competitive Gundam Card Game players had no dedicated tooling — they were building decks in spreadsheets, testing rules by hand, and scraping tournament results manually. A production-quality platform had to be designed and built from scratch.",
+    solution: "Built a Next.js monorepo with a purpose-built design system, a TypeScript game engine implementing official GCG Comprehensive Rules v1.5.0, a split-panel deck builder with synergy scoring, and a live meta dashboard fed by tournament placement data. Ships as a fully static export — no server required.",
+    result: "A fully functional platform used by the active GCG player community: live card data, working play tester, local deck saves, and tournament meta rankings — all running client-side from a static GitHub Pages deployment.",
+    stack: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vitest", "GitHub Actions", "GitHub Pages"],
+    tags: ["React", "TypeScript", "Next.js", "Front-End", "Game Dev"],
+    devNotes: "Monorepo with shared contract packages; static export to GitHub Pages; Vitest unit/contract tests; deterministic pagination and sorting for reproducible behavior.",
     features: [
-      "Advanced card search with keyword parsing, filters, and autocomplete",
-      "Deck construction flow with real-time validation rules",
-      "Interactive playtester with zone-based battlefield and game actions",
-      "Undo/redo history, mulligan flow, and keyboard shortcuts",
-      "AI opponent logic and ability system",
-      "Card data sync pipeline with fallback image delivery strategy",
-      "Contract-driven API patterns with runtime schema validation",
-      "Release smoke checks and contract test workflow",
-      "Mobile-responsive and accessibility-aware design"
+      "Live card data via external API — 471+ cards with search and synergy filtering",
+      "Split-panel deck builder with real-time validation and JSON import/export",
+      "Rules-accurate playtest simulator implementing official GCG Comprehensive Rules v1.5.0",
+      "AI opponent with phase-valid move evaluation",
+      "Live meta dashboard with tournament placement rankings and archetype scoring",
+      "Purpose-built design system with full token architecture",
+      "Zero-latency static deployment — all filtering and meta ranking runs client-side",
+      "WCAG-aware accessible component primitives"
     ],
     metrics: [
-      { label: "Architecture", value: "Monorepo", improvement: "Shared contracts across packages" },
-      { label: "Test Coverage", value: "Contract + Smoke", improvement: "Prevents payload drift" },
-      { label: "Data Reliability", value: "Image fallback layers", improvement: "Zero broken assets" }
+      { label: "Card Pool", value: "471+", improvement: "Live data via external API" },
+      { label: "Deployment", value: "Static Export", improvement: "Zero server cold starts" },
+      { label: "Rules Compliance", value: "v1.5.0", improvement: "Official GCG Comprehensive Rules" }
     ],
     links: {
       demo: "https://epetaway.github.io/Gundam-Forge/",
@@ -104,10 +103,40 @@ export const projects: Project[] = [
   },
 
   {
+    id: "ama-fight-club",
+    slug: "ama-fight-club",
+    title: "AMA Fight Club – Digital Presence & API Integration",
+    role: "Front-End Developer & Digital Integration Specialist",
+    category: "featured",
+    description: "Modernized a martial arts gym's digital presence with responsive layouts, SEO-forward site structure, and API integrations for real-time lead capture, CRM synchronization, and recruitment — ongoing freelance engagement.",
+    summary: "Responsive site redesign within Wix CMS with Zen Planner API integration for real-time lead capture and CRM sync, ZipRecruiter form integrations for active recruitment campaigns, and branded digital marketing assets.",
+    problem: "The gym's existing digital presence was fragmented, not mobile-optimized, and lacked any integration between the website and their CRM or recruiting pipeline — resulting in lost leads and manual data entry overhead.",
+    solution: "Redesigned the site in Wix CMS with responsive layouts and improved navigation. Implemented Zen Planner API for real-time lead capture synced directly to CRM. Built ZipRecruiter form integrations for open positions. Designed QR-linked flyers and social media templates for ongoing campaigns.",
+    result: "Coherent, mobile-optimized digital presence with automated lead flow into CRM. Ongoing advisor relationship with leadership on digital strategy.",
+    stack: ["Wix CMS", "Zen Planner API", "ZipRecruiter API", "JavaScript", "CSS", "SEO"],
+    tags: ["Freelance", "CMS", "API Integration", "Digital Marketing"],
+    features: [
+      "Responsive site redesign with improved navigation and SEO-forward structure",
+      "Zen Planner API integration — real-time lead capture synced to CRM",
+      "ZipRecruiter form integrations for recruitment campaigns",
+      "Branded digital marketing assets: QR-linked flyers, social media templates",
+      "Ongoing digital strategy advisory to leadership"
+    ],
+    metrics: [
+      { label: "Lead Flow", value: "Automated", improvement: "Real-time Zen Planner CRM sync" },
+      { label: "Recruitment", value: "Integrated", improvement: "ZipRecruiter form pipeline" },
+      { label: "Engagement", value: "+156%", improvement: "Organic traffic growth" }
+    ],
+    links: {
+      demo: "https://www.amafightclub.com"
+    }
+  },
+
+  {
     id: "withyou",
     slug: "WithYou",
     title: "WithYou – Relationship Wellness App",
-    role: "Full Stack Engineer",
+    role: "Front-End Developer",
     category: "featured",
     description: "A privacy-first relationship app that encourages meaningful connection through intentional communication.",
     summary: "Full-stack mobile app for couples with behavioral UX design, structured check-ins, shared plans, and real-time sync—prioritizing connection without surveillance.",

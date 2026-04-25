@@ -9,14 +9,14 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — Earl Hickson Jr. | Front-End / UI Engineer | React · TypeScript</title>
+        <title>About — Earl Hickson Jr. | Front-End Developer & Designer | React · TypeScript</title>
         <meta
           name="description"
-          content="Front-End / UI Engineer in Parsippany, NJ with 6+ years building accessible, responsive, performance-focused web applications. IBM Full Stack Software Developer certified. Expanding into cloud-native full-stack development. BJJ instructor, designer, product thinker."
+          content="Front-End Developer and Designer in Parsippany, NJ with 6+ years building accessible, responsive, performance-optimized web applications. BFA in Graphic Design from Kean University. Front-End Development certificate from Team Treehouse."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/about" />
-        <meta property="og:title" content="About — Earl Hickson Jr. | Front-End / UI Engineer" />
-        <meta property="og:description" content="Front-End / UI Engineer with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. Healthcare portals, REST APIs, and performance-focused applications." />
+        <meta property="og:title" content="About — Earl Hickson Jr. | Front-End Developer & Designer" />
+        <meta property="og:description" content="Front-End Developer and Designer with 6+ years in React, TypeScript, and WCAG 2.1 AA. BFA in Graphic Design — building interfaces that are technically sound and visually considered." />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://www.ehicksonjr.com/about" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
@@ -33,7 +33,7 @@ export default function About() {
               <span className="text-violet-400">and Discipline.</span>
             </h1>
             <p className="text-xl text-[#B7B7B7] leading-relaxed">
-              I'm a Front-End / UI Engineer based in Parsippany, NJ with 6+ years building accessible, responsive, performance-focused web applications. My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering — and I'm actively growing that foundation into full-stack and cloud-native development.
+              I'm a Front-End Developer and Designer based in Parsippany, NJ with 6+ years building responsive, accessible, performance-optimized web applications across healthcare, finance, media, and nonprofit sectors. My BFA in Graphic Design and front-end engineering background aren't separate things — they're the same practice, applied at different layers of a product.
             </p>
           </ScrollReveal>
         </div>
@@ -49,13 +49,13 @@ export default function About() {
                 Designer turned engineer, always a student.
               </h2>
               <p className="text-[#B7B7B7] text-lg leading-relaxed mb-4">
-                I started in graphic design before moving into front-end development, where I discovered how much I enjoy building interfaces that don't just look good — they feel good to use. My work spans healthcare, nonprofits, membership systems, and high-growth brands.
+                I graduated from Kean University with a BFA in Graphic Design, then built on that foundation with a Front-End Web Development Certificate and Full Stack JavaScript Certificate from Team Treehouse. That combination — formal design training plus front-end engineering — shapes how I work. I think about layout, hierarchy, and visual weight the same way I think about component structure and state management.
               </p>
               <p className="text-[#B7B7B7] leading-relaxed mb-4">
-                Now expanding into full-stack — actively building with Node.js, PostgreSQL, Docker, and cloud-native systems. I earned the IBM Full Stack Software Developer Professional Certificate in December 2025, covering Cloud Native, DevOps, Kubernetes, Microservices, and more.
+                My career has spanned healthcare portals, financial services sites, media marketing platforms, and nonprofit campaigns. I've built design systems, integrated REST APIs in .NET environments, established accessibility standards, and shipped work that reached clinical providers, patients, and enterprise stakeholders.
               </p>
               <p className="text-[#7A7A7A] leading-relaxed mb-6">
-                Years of Brazilian Jiu-Jitsu training shaped my mindset: discipline, patience, refinement. The same approach fuels how I write code, architect components, and collaborate with teams under pressure.
+                Brazilian Jiu-Jitsu trained me in a different kind of precision: discipline, patience, refinement under pressure. The same mindset fuels how I write code, architect components, and collaborate with teams when the deadline moves up.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -107,15 +107,40 @@ export default function About() {
             {[
               {
                 company: "Asembia",
-                role: "Front-End / UI Engineer",
-                period: "Nov 2023 – Sep 2024",
-                highlights: ["HIPAA-compliant patient portals", "WCAG 2.1 AA accessibility", "REST API integrations", "React + .NET environment"],
+                role: "Front-End Developer",
+                period: "Dec 2023 – Oct 2024",
+                highlights: [
+                  "Audited fragmented codebase, built design system",
+                  "Bootstrap 3 → 5 migration with reusable component library",
+                  "Simplified prescriber portal data layouts for clinical users",
+                  "REST API integration in .NET environment",
+                  "WCAG 2.1 AA across HIPAA-compliant platforms",
+                  "CEO buy-in for modernized architecture",
+                ],
+              },
+              {
+                company: "AMA Fight Club",
+                role: "Front-End Developer & Digital Integration Specialist",
+                period: "Jan 2025 – Present",
+                highlights: [
+                  "Responsive site redesign in Wix CMS",
+                  "Zen Planner API integration for lead capture & CRM sync",
+                  "ZipRecruiter form integrations for recruitment",
+                  "Branded digital marketing assets and QR campaigns",
+                  "Digital strategy advisor to leadership",
+                ],
               },
               {
                 company: "BroadcastMed",
-                role: "Lead UI Engineer & Designer",
+                role: "Lead Designer & Front-End Developer",
                 period: "Aug 2021 – Feb 2023",
-                highlights: ["+18% lead submissions", "−25% email production time", "Healthcare marketing microsites", "Design system creation"],
+                highlights: [
+                  "+18% lead form submissions via layout & UX improvements",
+                  "−25% email production time via standardized HTML email system",
+                  "Healthcare marketing microsites in proprietary CMS",
+                  "Data-informed design via Google Analytics & Hotjar",
+                  "Mentored junior developers and designers",
+                ],
               },
             ].map(({ company, role, period, highlights }, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
@@ -138,51 +163,49 @@ export default function About() {
         </div>
       </section>
 
-      {/* ── CERTIFICATIONS ───────────────────────────────────────────────── */}
+      {/* ── EDUCATION & CERTIFICATIONS ───────────────────────────────────── */}
       <section className="bg-[#0D0D0D] pb-16 md:pb-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up">
-            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Certifications</p>
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Education & Certifications</p>
             <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-10">
-              Always leveling up.
+              The foundation behind the work.
             </h2>
           </ScrollReveal>
-          <ScrollReveal animation="slide-up" delay={60}>
-            <div className="bg-[#111111] border border-violet-500/30 rounded-xl p-6 max-w-2xl hover:border-violet-500/60 smooth-card">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div>
-                  <p className="text-xs text-violet-400 font-medium mb-1">Completed Dec 2025</p>
-                  <h3 className="text-lg font-bold text-white mb-1">IBM Full Stack Software Developer</h3>
-                  <p className="text-sm text-[#7A7A7A]">Professional Certificate · Coursera · 15 Courses</p>
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {
+                badge: "BFA · 2015",
+                title: "Bachelor of Fine Arts in Graphic Design",
+                institution: "Kean University · Union, NJ",
+                note: "Formal design training that informs every layout, component, and system I build.",
+                highlight: true,
+              },
+              {
+                badge: "Certificate · 2022",
+                title: "Front-End Web Development",
+                institution: "Team Treehouse",
+                note: "Structured front-end engineering curriculum — HTML, CSS, JavaScript, responsive design, and accessibility.",
+                highlight: false,
+              },
+              {
+                badge: "Certificate · 2022",
+                title: "Full Stack JavaScript",
+                institution: "Team Treehouse",
+                note: "Node.js, Express, REST APIs, and database fundamentals applied to full-stack JavaScript projects.",
+                highlight: false,
+              },
+            ].map(({ badge, title, institution, note, highlight }, idx) => (
+              <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
+                <div className={`bg-[#111111] border rounded-xl p-6 hover:border-violet-500/60 smooth-card h-full ${highlight ? "border-violet-500/30" : "border-[#20252A]"}`}>
+                  <p className="text-xs text-violet-400 font-medium mb-2">{badge}</p>
+                  <h3 className="text-base font-bold text-white mb-1">{title}</h3>
+                  <p className="text-sm text-[#7A7A7A] mb-3">{institution}</p>
+                  <p className="text-sm text-[#B7B7B7] leading-relaxed">{note}</p>
                 </div>
-                <a
-                  href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/ZD6SUR06VY2K"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-shrink-0 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-medium hover:bg-violet-500/20 transition-colors"
-                >
-                  View Certificate
-                </a>
-              </div>
-              <ul className="grid grid-cols-2 gap-1.5">
-                {[
-                  "Node.js & Express",
-                  "Docker & Kubernetes",
-                  "OpenShift & Cloud Native",
-                  "CI/CD Pipelines",
-                  "Python & Django ORM",
-                  "SQL, NoSQL & Databases",
-                  "Microservices & Serverless",
-                  "Application Security",
-                ].map((skill) => (
-                  <li key={skill} className="text-sm text-[#B7B7B7] flex items-start gap-2">
-                    <span className="text-violet-500 mt-0.5 flex-shrink-0">›</span>
-                    {skill}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </ScrollReveal>
+              </ScrollReveal>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -252,7 +275,7 @@ export default function About() {
                   Let's work together.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  Open to front-end, UI engineering, and full-stack roles — and collaborations on products that care about accessibility, performance, and real impact. Currently growing into cloud-native and backend systems.
+                  Open to front-end roles, freelance engagements, and collaborations on products that take accessibility, performance, and design craft seriously.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">
