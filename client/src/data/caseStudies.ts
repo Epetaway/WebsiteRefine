@@ -425,7 +425,7 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
     },
     role: [
       {
-        title: 'Lead Front-End Developer',
+        title: 'Lead UI Engineer',
         description: 'Built the complete React + Vite + Tailwind application with Zustand state management and Framer Motion animations across all feature surfaces.',
       },
       {

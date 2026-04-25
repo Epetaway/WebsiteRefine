@@ -62,23 +62,23 @@ Timeline: ${formData.timeline || 'Not specified'}`;
   return (
     <div>
       <Helmet>
-        <title>Contact — Earl Hickson Jr. | Front-End Developer | React · TypeScript · NJ</title>
+        <title>Contact — Earl Hickson Jr. | Front-End / UI Engineer | React · TypeScript · NJ</title>
         <meta
           name="description"
-          content="Hire Earl Hickson Jr. — Front-End Developer in Parsippany, NJ with 6+ years in React, TypeScript, Next.js, and WCAG 2.1 AA accessible UIs. Open to full-time roles and contract work."
+          content="Hire Earl Hickson Jr. — Front-End / UI Engineer in Parsippany, NJ with 6+ years in React, TypeScript, Next.js, and WCAG 2.1 AA accessible UIs. Open to full-time roles and contract work."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/contact" />
-        <meta property="og:title" content="Contact — Earl Hickson Jr. | Front-End Developer" />
+        <meta property="og:title" content="Contact — Earl Hickson Jr. | Front-End / UI Engineer" />
         <meta
           property="og:description"
-          content="Hire Earl Hickson Jr. — Front-End Developer in Parsippany, NJ. React, TypeScript, Next.js, WCAG 2.1 AA. Open to full-time and contract roles."
+          content="Hire Earl Hickson Jr. — Front-End / UI Engineer in Parsippany, NJ. React, TypeScript, Next.js, WCAG 2.1 AA. Open to full-time and contract roles."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ehicksonjr.com/contact" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact — Earl Hickson Jr. | Front-End Developer" />
-        <meta name="twitter:description" content="Hire Earl Hickson Jr. — React, TypeScript, Next.js developer in Parsippany, NJ. Open to full-time and contract roles." />
+        <meta name="twitter:title" content="Contact — Earl Hickson Jr. | Front-End / UI Engineer" />
+        <meta name="twitter:description" content="Hire Earl Hickson Jr. — Front-End / UI Engineer in Parsippany, NJ. React, TypeScript, Next.js. Open to full-time and contract roles." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 

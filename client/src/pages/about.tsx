@@ -9,14 +9,14 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — Earl Hickson Jr. | Senior Front-End Engineer | React · TypeScript</title>
+        <title>About — Earl Hickson Jr. | Front-End / UI Engineer | React · TypeScript</title>
         <meta
           name="description"
-          content="Senior Front-End Engineer in Parsippany, NJ with 6+ years building scalable UI systems, accessible interfaces, and high-performance applications. BJJ instructor, designer, product thinker."
+          content="Front-End / UI Engineer in Parsippany, NJ with 6+ years building accessible, responsive, performance-focused web applications. IBM Full Stack Software Developer certified. Expanding into cloud-native full-stack development. BJJ instructor, designer, product thinker."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/about" />
-        <meta property="og:title" content="About — Earl Hickson Jr. | Senior Front-End Engineer" />
-        <meta property="og:description" content="Senior Front-End Engineer with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. Healthcare portals, REST APIs, and performance-focused applications." />
+        <meta property="og:title" content="About — Earl Hickson Jr. | Front-End / UI Engineer" />
+        <meta property="og:description" content="Front-End / UI Engineer with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. Healthcare portals, REST APIs, and performance-focused applications." />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://www.ehicksonjr.com/about" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
@@ -33,7 +33,7 @@ export default function About() {
               <span className="text-violet-400">and Discipline.</span>
             </h1>
             <p className="text-xl text-[#B7B7B7] leading-relaxed">
-              I'm a Senior Front-End Engineer based in Parsippany, NJ with 6+ years building modern, accessible interfaces. My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering.
+              I'm a Front-End / UI Engineer based in Parsippany, NJ with 6+ years building accessible, responsive, performance-focused web applications. My background in graphic design and Brazilian Jiu-Jitsu gives me a structured, disciplined approach to UI engineering — and I'm actively growing that foundation into full-stack and cloud-native development.
             </p>
           </ScrollReveal>
         </div>
@@ -50,6 +50,9 @@ export default function About() {
               </h2>
               <p className="text-[#B7B7B7] text-lg leading-relaxed mb-4">
                 I started in graphic design before moving into front-end development, where I discovered how much I enjoy building interfaces that don't just look good — they feel good to use. My work spans healthcare, nonprofits, membership systems, and high-growth brands.
+              </p>
+              <p className="text-[#B7B7B7] leading-relaxed mb-4">
+                Now expanding into full-stack — actively building with Node.js, PostgreSQL, Docker, and cloud-native systems. I earned the IBM Full Stack Software Developer Professional Certificate in December 2025, covering Cloud Native, DevOps, Kubernetes, Microservices, and more.
               </p>
               <p className="text-[#7A7A7A] leading-relaxed mb-6">
                 Years of Brazilian Jiu-Jitsu training shaped my mindset: discipline, patience, refinement. The same approach fuels how I write code, architect components, and collaborate with teams under pressure.
@@ -104,13 +107,13 @@ export default function About() {
             {[
               {
                 company: "Asembia",
-                role: "Front-End Developer",
+                role: "Front-End / UI Engineer",
                 period: "Nov 2023 – Sep 2024",
                 highlights: ["HIPAA-compliant patient portals", "WCAG 2.1 AA accessibility", "REST API integrations", "React + .NET environment"],
               },
               {
                 company: "BroadcastMed",
-                role: "Lead Designer & Front-End Developer",
+                role: "Lead UI Engineer & Designer",
                 period: "Aug 2021 – Feb 2023",
                 highlights: ["+18% lead submissions", "−25% email production time", "Healthcare marketing microsites", "Design system creation"],
               },
@@ -132,6 +135,54 @@ export default function About() {
               </ScrollReveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── CERTIFICATIONS ───────────────────────────────────────────────── */}
+      <section className="bg-[#0D0D0D] pb-16 md:pb-24">
+        <div className="mx-auto max-w-[1120px] w-full px-5">
+          <ScrollReveal animation="slide-up">
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Certifications</p>
+            <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-10">
+              Always leveling up.
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal animation="slide-up" delay={60}>
+            <div className="bg-[#111111] border border-violet-500/30 rounded-xl p-6 max-w-2xl hover:border-violet-500/60 smooth-card">
+              <div className="flex items-start justify-between gap-4 mb-4">
+                <div>
+                  <p className="text-xs text-violet-400 font-medium mb-1">Completed Dec 2025</p>
+                  <h3 className="text-lg font-bold text-white mb-1">IBM Full Stack Software Developer</h3>
+                  <p className="text-sm text-[#7A7A7A]">Professional Certificate · Coursera · 15 Courses</p>
+                </div>
+                <a
+                  href="https://www.coursera.org/account/accomplishments/professional-cert/certificate/ZD6SUR06VY2K"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/30 text-violet-400 text-xs font-medium hover:bg-violet-500/20 transition-colors"
+                >
+                  View Certificate
+                </a>
+              </div>
+              <ul className="grid grid-cols-2 gap-1.5">
+                {[
+                  "Node.js & Express",
+                  "Docker & Kubernetes",
+                  "OpenShift & Cloud Native",
+                  "CI/CD Pipelines",
+                  "Python & Django ORM",
+                  "SQL, NoSQL & Databases",
+                  "Microservices & Serverless",
+                  "Application Security",
+                ].map((skill) => (
+                  <li key={skill} className="text-sm text-[#B7B7B7] flex items-start gap-2">
+                    <span className="text-violet-500 mt-0.5 flex-shrink-0">›</span>
+                    {skill}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
@@ -201,7 +252,7 @@ export default function About() {
                   Let's work together.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  Open to senior front-end roles, contract work, and collaborations on products that care about accessibility, performance, and real impact.
+                  Open to front-end, UI engineering, and full-stack roles — and collaborations on products that care about accessibility, performance, and real impact. Currently growing into cloud-native and backend systems.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">

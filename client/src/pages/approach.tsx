@@ -7,10 +7,10 @@ export default function Approach() {
   return (
     <>
       <Helmet>
-        <title>Approach | Earl Hickson Jr. — Frontend Engineer & Product Thinker</title>
+        <title>Approach | Earl Hickson Jr. — Front-End / UI Engineer & Product Thinker</title>
         <meta
           name="description"
-          content="How I think about users, systems, and interfaces. A product-minded, HCI-focused approach to frontend engineering that prioritizes behavior, clarity, and long-term value."
+          content="How I think about users, systems, and interfaces. A product-minded, HCI-focused approach to UI engineering that prioritizes behavior, clarity, and long-term value."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/approach" />
       </Helmet>
@@ -24,7 +24,7 @@ export default function Approach() {
               Designing for people, not just screens.
             </h1>
             <p className="text-xl text-[#B7B7B7] max-w-2xl leading-relaxed">
-              I'm a frontend engineer with a product-thinker mindset. I don't just translate designs into code — I think about why the interface exists, who it's for, and how it shapes behavior.
+              I'm a Front-End / UI Engineer with a product-thinker mindset. I don't just translate designs into code — I think about why the interface exists, who it's for, and how it shapes behavior.
             </p>
           </ScrollReveal>
         </div>

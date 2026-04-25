@@ -6,7 +6,7 @@ export default function CaseStudies() {
   const engineeringProjects = projects ?? [];
   const isUnderConstruction = false;
 
-  const title = "Projects – Front-End Developer Portfolio | Earl Hickson Jr.";
+  const title = "Projects – Front-End / UI Engineer Portfolio | Earl Hickson Jr.";
   const description =
     "A curated selection of front-end projects inspired by real work in healthcare portals, oncology content platforms, marketing landing systems, and non-profit tools.";
 

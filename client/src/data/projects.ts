@@ -71,7 +71,7 @@ export const projects: Project[] = [
     id: "dojonet-martial-arts-platform",
     slug: "dojonet-martial-arts-platform",
     title: "DojoNet Martial Arts Portal Prototype",
-    role: "Lead Front-End Developer & UI/UX Designer",
+    role: "Lead UI Engineer & Designer",
     category: "featured",
     description: "A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.",
     summary: "A modern membership and scheduling portal for martial arts communities, featuring dynamic forms, event flows, and clean front-end architecture.",

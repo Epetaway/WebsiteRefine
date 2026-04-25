@@ -36,7 +36,7 @@ export default function Blog() {
   const featured = sorted[0];
   const others = featured ? sorted.filter((p) => p.id !== featured.id) : sorted;
 
-  const title = "Blog – Front-End Development, Accessibility & BJJ | Earl Hickson Jr.";
+  const title = "Blog – UI Engineering, Accessibility & BJJ | Earl Hickson Jr.";
   const description =
     "Notes on React, TypeScript, performance, and WCAG accessibility—plus Brazilian Jiu-Jitsu lessons that inform my engineering craft.";
 

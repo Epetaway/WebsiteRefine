@@ -26,7 +26,7 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
   heroImage: "/images/dojonet/dojonet_hero.png",
 
   meta: [
-    { icon: <Target size={16} />, label: "Role", value: "Lead Front-End Developer & UI/UX Designer" },
+    { icon: <Target size={16} />, label: "Role", value: "Lead UI Engineer & Designer" },
     { icon: <Calendar size={16} />, label: "Duration", value: "TBD" },
     { icon: <User size={16} />, label: "Team", value: "Solo" },
     { icon: <Monitor size={16} />, label: "Platform", value: "Responsive web app prototype" },
@@ -40,7 +40,7 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     targetUsers:
       "Martial arts practitioners, gym-affiliated members, coaches, competitors, and hobbyists looking to train, connect, and discover events.",
     type: "Local-first web prototype with optional backend architecture",
-    myRole: "Lead Front-End Developer & UI/UX Designer",
+    myRole: "Lead UI Engineer & Designer",
     image: "/images/dojonet/dojonet_overview.png",
   },
 

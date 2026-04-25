@@ -19,7 +19,8 @@
       "Bash(git commit -m ' *)",
       "Read(//private/tmp/**)",
       "Bash(xargs cat *)",
-      "Bash(node -e \"const l = require\\('/Users/earlhickson/Documents/GitHub/WebsiteRefine/node_modules/lucide-react'\\); console.log\\(['Swords','Globe','BarChart2','Smartphone','Lock','Shuffle','Target','Calendar','User','Monitor','Layers','Zap','TrendingUp','Users'].map\\(n => n + ':' + \\(n in l\\)\\).join\\('\\\\n'\\)\\)\")"
+      "Bash(node -e \"const l = require\\('/Users/earlhickson/Documents/GitHub/WebsiteRefine/node_modules/lucide-react'\\); console.log\\(['Swords','Globe','BarChart2','Smartphone','Lock','Shuffle','Target','Calendar','User','Monitor','Layers','Zap','TrendingUp','Users'].map\\(n => n + ':' + \\(n in l\\)\\).join\\('\\\\n'\\)\\)\")",
+      "Bash(git push *)"
     ],
     "additionalDirectories": [
       "/Users/earlhickson/Downloads"

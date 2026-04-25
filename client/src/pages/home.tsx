@@ -6,6 +6,7 @@ import { Zap, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, User
 import { RESUME_PATH } from "@/data/projects";
 import { resolveCaseStudySlug } from "@/data/caseStudies";
 import justMeImg from "@/images/justMe.png";
+import earlBjjPhoto from "@/images/earl-bjj-photo.png";
 import { ProjectCardStandard, ProjectCardCTA } from "@/components/ui/ProjectCard";
 import { GITHUB_USER } from "@/lib/projects";
 
@@ -57,20 +58,20 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Earl Hickson Jr. | Senior Front-End Engineer — React, TypeScript | Parsippany, NJ</title>
+        <title>Earl Hickson Jr. | Front-End / UI Engineer — React, TypeScript | Parsippany, NJ</title>
         <meta
           name="description"
-          content="Senior Front-End Engineer with 6+ years building scalable UI systems, accessible interfaces, and high-performance applications across healthcare, media, and high-growth platforms. Based in Parsippany, NJ."
+          content="Front-End / UI Engineer with 6+ years building accessible, responsive, performance-focused web applications across healthcare, marketing, and client-facing platforms. Based in Parsippany, NJ."
         />
         <link rel="canonical" href="https://www.ehicksonjr.com/" />
-        <meta property="og:title" content="Earl Hickson Jr. | Senior Front-End Engineer — React, TypeScript" />
-        <meta property="og:description" content="Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact. 6+ years across healthcare, media, and high-growth platforms." />
+        <meta property="og:title" content="Earl Hickson Jr. | Front-End / UI Engineer — React, TypeScript" />
+        <meta property="og:description" content="Front-End / UI Engineer bridging design and engineering — scalable UI systems, performance optimization, and real-world product impact. 6+ years across healthcare, media, and high-growth platforms." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://www.ehicksonjr.com/" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Earl Hickson Jr. | Senior Front-End Engineer — React, TypeScript" />
-        <meta name="twitter:description" content="Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact." />
+        <meta name="twitter:title" content="Earl Hickson Jr. | Front-End / UI Engineer — React, TypeScript" />
+        <meta name="twitter:description" content="Front-End / UI Engineer bridging design and engineering — scalable UI systems, performance optimization, and real-world product impact." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
@@ -87,31 +88,21 @@ export default function Home() {
           />
         </ScrollReveal>
 
-        {/* Portrait — mobile only, above hero copy */}
-        <div className="lg:hidden relative w-full">
-          <img
-            src={justMeImg}
-            alt="Earl Hickson Jr."
-            className="w-full h-[520px] sm:h-[640px] object-cover object-[center_15%]"
-          />
-          <div className="absolute bottom-0 inset-x-0 h-40 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-10 lg:py-24">
+        {/* Content — text block + mobile portrait stacked */}
+        <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-16 lg:py-24">
           <ScrollReveal animation="slide-up" className="space-y-6 max-w-[580px]">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium">
-              Front-End Engineer
+              Front-End / UI Engineer
             </p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-[1.05] -tracking-[0.03em]">
               Building high-performance interfaces that{" "}
               <span className="text-violet-400">actually move the business.</span>
             </h1>
             <p className="text-lg text-[#B7B7B7] leading-relaxed">
-              Senior Front-End Engineer specializing in scalable UI systems, performance optimization, and real-world product impact.
+              Front-End / UI Engineer with 6+ years building accessible, responsive, performance-focused web applications across healthcare, marketing, and client-facing platforms.
             </p>
             <p className="text-base text-[#7A7A7A]">
-              6+ years delivering production-ready experiences across healthcare, media, and high-growth platforms.
+              I bridge design and engineering by turning complex workflows into scalable, user-friendly interfaces.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
@@ -128,11 +119,23 @@ export default function Home() {
               </Link>
             </div>
           </ScrollReveal>
+
+          {/* Portrait — mobile/tablet only, shown below CTA buttons */}
+          <ScrollReveal animation="fade" delay={200} className="lg:hidden mt-10 flex justify-center pb-4">
+            <div className="relative w-64 rounded-2xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+              <img
+                src={justMeImg}
+                alt="Earl Hickson Jr."
+                className="w-full h-80 object-cover object-[center_15%]"
+              />
+              <div className="absolute bottom-0 inset-x-0 h-16 bg-gradient-to-t from-[#0D0D0D] to-transparent" />
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* ── TRUST STRIP ──────────────────────────────────────────────────── */}
-      <section className="bg-[#0D0D0D]">
+      <section className="bg-[#111111] border-y border-[#20252A]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
@@ -197,7 +200,7 @@ export default function Home() {
       </Section>
 
       {/* ── FEATURED WORK ────────────────────────────────────────────────── */}
-      <Section className="bg-[#0D0D0D]">
+      <Section className="bg-[#111111]">
         <ScrollReveal animation="slide-up">
           <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-2">Featured Work</p>
           <div className="flex items-end justify-between mb-10">
@@ -283,24 +286,25 @@ export default function Home() {
       </Section>
 
       {/* ── ABOUT PREVIEW ────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden min-h-[560px] sm:min-h-[640px] lg:min-h-[680px] flex items-end">
-        {/* Mobile background (portrait) */}
-        <div
-          className="absolute inset-0 bg-cover bg-center lg:hidden"
-          style={{ backgroundImage: "url('/images/about/more-than-just-mobile.png')" }}
-        />
-        {/* Desktop background (landscape) */}
-        <div
-          className="absolute inset-0 bg-cover bg-center hidden lg:block"
-          style={{ backgroundImage: "url('/images/about/more-than-just-desktop.png')" }}
-        />
-        {/* Overlay — heavy bottom scrim on mobile, side scrim on desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-black/10 lg:bg-gradient-to-l lg:from-black/70 lg:via-black/30 lg:to-transparent" />
+      <section className="bg-[#F7BC0A]">
+        <div className="mx-auto max-w-[1320px] w-full px-5 py-10 lg:py-0">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            <ScrollReveal animation="fade" delay={100}>
+              <div className="overflow-hidden rounded-2xl shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+                <img
+                  src={earlBjjPhoto}
+                  alt="Earl Hickson Jr."
+                  className="w-full h-[440px] sm:h-[560px] lg:h-[720px] object-cover object-center"
+                />
+              </div>
+            </ScrollReveal>
 
-        <div className="relative z-10 w-full px-5 py-10 lg:py-14">
-          <div className="mx-auto max-w-[1320px] flex justify-center lg:justify-end">
-            <ScrollReveal animation="slide-up" className="space-y-5 max-w-sm text-center lg:text-left lg:pr-10">
-              <p className="text-white text-lg leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}>
+            <ScrollReveal animation="slide-up" className="space-y-6 lg:pr-10">
+              <p className="text-xs tracking-widest uppercase text-slate-800 font-medium">About Me</p>
+              <h2 className="font-display text-4xl md:text-5xl font-bold text-slate-900 -tracking-[0.03em] leading-[1.1]">
+                More than just code.
+              </h2>
+              <p className="text-slate-900/90 text-lg leading-relaxed max-w-xl">
                 I'm a front-end engineer, designer, and Brazilian Jiu-Jitsu instructor. I bring discipline, creativity, and problem-solving into everything I build—whether it's a UI system or a training session.
               </p>
               <Link
@@ -315,7 +319,7 @@ export default function Home() {
       </section>
 
       {/* ── CTA STRIP ────────────────────────────────────────────────────── */}
-      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D]">
+      <section className="bg-gradient-to-br from-[#0D0D0D] via-violet-950/30 to-[#0D0D0D] border-t border-[#20252A]">
         <div className="mx-auto max-w-[1120px] w-full px-5 py-20">
           <ScrollReveal animation="slide-up">
             <div className="grid lg:grid-cols-2 gap-10 items-center">
