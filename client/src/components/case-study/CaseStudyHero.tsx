@@ -1,6 +1,7 @@
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ProtectedPrototypeButton } from "./ProtectedPrototypeButton";
 
 type CaseStudyHeroProps = {
   category: string;
@@ -9,6 +10,11 @@ type CaseStudyHeroProps = {
   heroImage: string;
   liveUrl?: string;
   repoUrl?: string;
+  prototype?: {
+    url: string;
+    label?: string;
+    description?: string;
+  };
 };
 
 export function CaseStudyHero({
@@ -18,6 +24,7 @@ export function CaseStudyHero({
   heroImage,
   liveUrl,
   repoUrl,
+  prototype,
 }: CaseStudyHeroProps) {
   return (
     <section className="px-4 pt-8 pb-0 sm:px-6 lg:px-8 max-w-[1200px] mx-auto">
@@ -100,6 +107,13 @@ export function CaseStudyHero({
             <Github className="w-4 h-4" />
             View Code
           </a>
+        )}
+        {prototype && (
+          <ProtectedPrototypeButton
+            url={prototype.url}
+            label={prototype.label}
+            description={prototype.description}
+          />
         )}
       </motion.div>
 

@@ -9,8 +9,7 @@ export default function Contact() {
     email: "",
     company: "",
     project: "",
-    budget: "",
-    timeline: ""
+    opportunityType: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
@@ -28,9 +27,8 @@ export default function Contact() {
     try {
       // Build the message from form fields
       const message = `Company: ${formData.company || 'Not specified'}
-Project: ${formData.project || 'Not specified'}
-Budget: ${formData.budget || 'Not specified'}
-Timeline: ${formData.timeline || 'Not specified'}`;
+Opportunity Type: ${formData.opportunityType || 'Not specified'}
+Message: ${formData.project || 'Not specified'}`;
       
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -47,7 +45,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
       
       if (response.ok) {
         setSubmitStatus({ type: 'success', message: 'Thank you! Your message has been sent successfully.' });
-        setFormData({ fullName: '', email: '', company: '', project: '', budget: '', timeline: '' });
+        setFormData({ fullName: '', email: '', company: '', project: '', opportunityType: '' });
       } else {
         const errorData = await response.json();
         setSubmitStatus({ type: 'error', message: errorData.message || 'Failed to submit form. Please try again.' });
@@ -62,23 +60,23 @@ Timeline: ${formData.timeline || 'Not specified'}`;
   return (
     <div>
       <Helmet>
-        <title>Contact — Earl Hickson Jr. | Front-End Developer & Designer | React · TypeScript · NJ</title>
+        <title>Contact — Earl Hickson Jr. | UX Engineer | React · TypeScript · NJ</title>
         <meta
           name="description"
-          content="Hire Earl Hickson Jr. — Front-End Developer and Designer in Parsippany, NJ with 6+ years in React, TypeScript, and WCAG 2.1 AA accessible UIs. BFA in Graphic Design. Open to full-time roles and freelance engagements."
+          content="Reach out to Earl Hickson Jr. — UX Engineer in Parsippany, NJ with 10+ years in React, TypeScript, and WCAG 2.1 AA. Currently open to full-time roles."
         />
-        <link rel="canonical" href="https://www.ehicksonjr.com/contact" />
-        <meta property="og:title" content="Contact — Earl Hickson Jr. | Front-End Developer & Designer" />
+        <link rel="canonical" href="https://ehicksonjr.com/contact" />
+        <meta property="og:title" content="Contact — Earl Hickson Jr. | UX Engineer" />
         <meta
           property="og:description"
-          content="Hire Earl Hickson Jr. — Front-End Developer and Designer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA, BFA in Graphic Design. Open to full-time and freelance roles."
+          content="Reach out to Earl Hickson Jr. — UX Engineer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA, BFA in Graphic Design. Open to full-time roles."
         />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.ehicksonjr.com/contact" />
+        <meta property="og:url" content="https://ehicksonjr.com/contact" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact — Earl Hickson Jr. | Front-End Developer & Designer" />
-        <meta name="twitter:description" content="Hire Earl Hickson Jr. — Front-End Developer and Designer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA. Open to full-time and freelance roles." />
+        <meta name="twitter:title" content="Contact — Earl Hickson Jr. | UX Engineer" />
+        <meta name="twitter:description" content="Reach out to Earl Hickson Jr. — UX Engineer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA. Open to full-time roles." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
@@ -91,7 +89,7 @@ Timeline: ${formData.timeline || 'Not specified'}`;
               Let's build something that actually works.
             </h1>
             <p className="text-xl text-[#B7B7B7] leading-relaxed">
-              Open to front-end roles, freelance engagements, and collaborations on products that take accessibility, performance, and design craft seriously.
+              Currently open to full-time UX Engineer and front-end roles. If you're hiring or want to collaborate on a product that takes accessibility and design craft seriously, reach out.
             </p>
           </ScrollReveal>
         </div>
@@ -147,8 +145,28 @@ Timeline: ${formData.timeline || 'Not specified'}`;
             </div>
 
             <div>
+              <label htmlFor="opportunityType" className="block text-sm font-medium text-[#B7B7B7] mb-2">
+                Opportunity Type
+              </label>
+              <select
+                id="opportunityType"
+                name="opportunityType"
+                value={formData.opportunityType}
+                onChange={handleChange}
+                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white"
+              >
+                <option value="">Select type</option>
+                <option value="full-time">Full-time role</option>
+                <option value="contract">Contract / consulting</option>
+                <option value="freelance">Freelance project</option>
+                <option value="collaboration">Open-source / collaboration</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+
+            <div>
               <label htmlFor="project" className="block text-sm font-medium text-[#B7B7B7] mb-2">
-                What Are You Building?
+                Tell me more
               </label>
               <textarea
                 id="project"
@@ -156,48 +174,9 @@ Timeline: ${formData.timeline || 'Not specified'}`;
                 value={formData.project}
                 onChange={handleChange}
                 rows={4}
+                placeholder="What are you working on? What are you looking for?"
                 className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white placeholder-[#5A5A5A]"
               />
-            </div>
-
-            <div>
-              <label htmlFor="budget" className="block text-sm font-medium text-[#B7B7B7] mb-2">
-                Budget Range
-              </label>
-              <select
-                id="budget"
-                name="budget"
-                value={formData.budget}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white"
-              >
-                <option value="">Select a range</option>
-                <option value="under-5k">Under $5,000</option>
-                <option value="5k-15k">$5,000 - $15,000</option>
-                <option value="15k-50k">$15,000 - $50,000</option>
-                <option value="50k-plus">$50,000+</option>
-                <option value="full-time">Full-time Role</option>
-              </select>
-            </div>
-
-            <div>
-              <label htmlFor="timeline" className="block text-sm font-medium text-[#B7B7B7] mb-2">
-                Timeline
-              </label>
-              <select
-                id="timeline"
-                name="timeline"
-                value={formData.timeline}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-[#363C42] rounded-lg focus:ring-2 focus:ring-violet-500 focus:border-transparent bg-[#1A1A1A] text-white"
-              >
-                <option value="">Select a timeline</option>
-                <option value="asap">ASAP</option>
-                <option value="1-month">Within 1 month</option>
-                <option value="1-3-months">1-3 months</option>
-                <option value="3-6-months">3-6 months</option>
-                <option value="flexible">Flexible</option>
-              </select>
             </div>
 
             <div className="pt-4">

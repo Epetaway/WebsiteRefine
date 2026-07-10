@@ -16,7 +16,7 @@ import { CaseStudyLearnings } from "./CaseStudyLearnings";
 import { CaseStudyFuture } from "./CaseStudyFuture";
 import { CaseStudyBottomCTA } from "./CaseStudyBottomCTA";
 
-const TOC_SECTIONS: TocSection[] = [
+const BASE_TOC_SECTIONS: TocSection[] = [
   { id: "overview",   label: "Overview" },
   { id: "challenge",  label: "The Challenge" },
   { id: "goals",      label: "The Goal" },
@@ -34,6 +34,8 @@ type Props = {
 };
 
 export function PremiumCaseStudyTemplate({ data }: Props) {
+  const tocSections = BASE_TOC_SECTIONS;
+
   return (
     <PremiumCaseStudyLayout theme={data.theme}>
       {/* ── Hero ─────────────────────────────────────────────── */}
@@ -44,13 +46,14 @@ export function PremiumCaseStudyTemplate({ data }: Props) {
         heroImage={data.heroImage}
         liveUrl={data.liveUrl}
         repoUrl={data.repoUrl}
+        prototype={data.prototype}
       />
 
       {/* ── Meta strip ───────────────────────────────────────── */}
       <CaseStudyMetaStrip items={data.meta} />
 
       {/* ── Mobile TOC (below meta strip) ────────────────────── */}
-      <CaseStudyMobileTOC sections={TOC_SECTIONS} />
+      <CaseStudyMobileTOC sections={tocSections} />
 
       {/* ── Main 2-col grid ──────────────────────────────────── */}
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 mt-8">
@@ -92,7 +95,7 @@ export function PremiumCaseStudyTemplate({ data }: Props) {
           {/* ── Right: sticky TOC rail ────────────────────────── */}
           <aside className="hidden lg:block">
             <div className="sticky top-24 pt-12">
-              <CaseStudyTOC sections={TOC_SECTIONS} />
+              <CaseStudyTOC sections={tocSections} />
             </div>
           </aside>
         </div>

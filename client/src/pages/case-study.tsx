@@ -11,6 +11,7 @@ import { getCaseStudy, resolveCaseStudySlug } from "@/data/caseStudies";
 import WithYouCaseStudy from "@/case-studies/withyou";
 import GundamForgeCaseStudy from "@/case-studies/gundam-forge";
 import DojoNetCaseStudy from "@/case-studies/dojonet";
+import { ProtectedPrototypeButton } from "@/components/case-study";
 import { ExternalLink, Github, Code2 } from "lucide-react";
 
 export default function CaseStudy() {
@@ -260,6 +261,35 @@ export default function CaseStudy() {
           </Card>
         </ScrollReveal>
       </Section>
+
+      {/* ── Prototype / Interactive Demo ──────────────────────────────────────── */}
+      {caseStudy.prototype && (
+        <Section className="bg-white dark:bg-[#0D0D0D]">
+          <ScrollReveal animation="slide-up">
+            <SectionHeader
+              preLabel="// Prototype"
+              title="Interactive Prototype"
+            />
+          </ScrollReveal>
+
+          <ScrollReveal animation="fade" delay={100}>
+            <div className="bg-gray-50 dark:bg-[#111111] border border-gray-200 dark:border-[#20252A] rounded-xl p-8 flex flex-col md:flex-row items-start md:items-center gap-8">
+              <div className="flex-1 min-w-0">
+                {caseStudy.prototype.description && (
+                  <p className="text-gray-700 dark:text-[#B7B7B7] leading-relaxed">
+                    {caseStudy.prototype.description}
+                  </p>
+                )}
+              </div>
+              <ProtectedPrototypeButton
+                url={caseStudy.prototype.url}
+                label={caseStudy.prototype.label}
+                description={caseStudy.prototype.description}
+              />
+            </div>
+          </ScrollReveal>
+        </Section>
+      )}
 
       {/* Project Screenshots Gallery - Bento Grid */}
       {screenshots.length > 0 && (

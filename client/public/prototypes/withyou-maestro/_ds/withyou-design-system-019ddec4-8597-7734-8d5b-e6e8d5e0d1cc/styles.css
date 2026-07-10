@@ -1,0 +1,6 @@
+/* WithYou Design System — root stylesheet entry point
+ * Import this one file to get the full token set.
+ * All preview pages and templates should reference this instead of
+ * linking colors_and_type.css directly.
+ */
+@import url('./colors_and_type.css');

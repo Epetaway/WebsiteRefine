@@ -7,12 +7,12 @@ export default function Approach() {
   return (
     <>
       <Helmet>
-        <title>Approach | Earl Hickson Jr. — Front-End Developer & Designer</title>
+        <title>Approach | Earl Hickson Jr. — UX Engineer</title>
         <meta
           name="description"
-          content="How Earl Hickson Jr. thinks about users, systems, and interfaces. A design-trained front-end developer's approach to building interfaces that are technically sound and visually considered."
+          content="How Earl Hickson Jr. thinks about users, systems, and interfaces. A UX Engineer's approach to building products that are technically sound and human-centered."
         />
-        <link rel="canonical" href="https://www.ehicksonjr.com/approach" />
+        <link rel="canonical" href="https://ehicksonjr.com/approach" />
       </Helmet>
 
       {/* ── PAGE HERO ────────────────────────────────────────────────────── */}
@@ -24,7 +24,7 @@ export default function Approach() {
               Designing for people, not just screens.
             </h1>
             <p className="text-xl text-[#B7B7B7] max-w-2xl leading-relaxed">
-              I'm a Front-End Developer with a BFA in Graphic Design. I don't just translate designs into code — I think about why the interface exists, who it's for, and how it shapes behavior.
+              I'm a UX Engineer with a BFA in Graphic Design. I work at the intersection of design thinking and front-end engineering — focused on why the interface exists, who it's for, and how it shapes behavior.
             </p>
           </ScrollReveal>
         </div>
@@ -118,7 +118,7 @@ export default function Approach() {
                 },
                 {
                   company: "BroadcastMed — Marketing Systems",
-                  detail: "Built healthcare marketing microsites and a standardized HTML email system that reduced production time by 25%. Increased lead form submissions by 18% through targeted layout and UX improvements — decisions informed by Google Analytics and Hotjar data, not guesswork.",
+                  detail: "Built healthcare marketing microsites and a standardized HTML email system that brought consistency to multi-client production. Applied Google Analytics and Hotjar data to drive layout and UX decisions on lead capture flows — bringing measurable rigor to design choices.",
                 },
               ].map(({ company, detail }, idx) => (
                 <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>

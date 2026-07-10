@@ -68,7 +68,7 @@ export default function Header() {
                 className="text-xs -tracking-[0.02em] leading-[16px]"
                 style={{ color: isLight ? "#6B7280" : "#94A3B8" }}
               >
-                Frontend Engineer & Product Thinker
+                UX Engineer
               </p>
             </div>
           </Link>

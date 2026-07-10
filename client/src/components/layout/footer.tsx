@@ -20,7 +20,7 @@ export default function Footer() {
             Earl Hickson Jr.
           </div>
           <p className="text-sm mb-1" style={{ color: isLight ? "#6B7280" : "#7A7A7A" }}>
-            Frontend Engineer & Product Thinker
+            UX Engineer
           </p>
           <p className="text-sm" style={{ color: isLight ? "#6B7280" : "#7A7A7A" }}>
             React · TypeScript · Accessible UI

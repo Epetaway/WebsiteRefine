@@ -29,8 +29,6 @@ function toCardData(p: ReturnType<typeof getPinnedProjects>[number]) {
 
 const METRICS: Record<string, { metric: string; metricLabel: string }> = {
   "WithYou": { metric: "+100%", metricLabel: "privacy-first — zero tracking" },
-  "ama-fight-club": { metric: "+156%", metricLabel: "organic traffic growth" },
-  "DojoNet-Prototype-MAX": { metric: "98", metricLabel: "Lighthouse score" },
   "Gundam-Forge": { metric: "3000+", metricLabel: "lines of shared TypeScript" },
 };
 
@@ -52,13 +50,13 @@ export default function Projects() {
   return (
     <>
       <Helmet>
-        <title>Work — Earl Hickson Jr. | React · TypeScript · Front-End Engineering</title>
-        <meta name="description" content="Front-end projects by Earl Hickson Jr. showcasing React, TypeScript, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations." />
-        <link rel="canonical" href="https://www.ehicksonjr.com/projects" />
-        <meta property="og:title" content="Work — Earl Hickson Jr. | Front-End Engineering" />
-        <meta property="og:description" content="Front-end projects by Earl Hickson Jr. showcasing React, TypeScript, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations." />
+        <title>Work — Earl Hickson Jr. | React · TypeScript · UX Engineering</title>
+        <meta name="description" content="UX engineering work by Earl Hickson Jr. — React, TypeScript, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations across 10+ years." />
+        <link rel="canonical" href="https://ehicksonjr.com/projects" />
+        <meta property="og:title" content="Work — Earl Hickson Jr. | UX Engineering" />
+        <meta property="og:description" content="UX engineering work by Earl Hickson Jr. — React, TypeScript, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations across 10+ years." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.ehicksonjr.com/projects" />
+        <meta property="og:url" content="https://ehicksonjr.com/projects" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
@@ -101,7 +99,7 @@ export default function Projects() {
                   Let's build something together.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  Interested in working together or learning more about my projects? I'd love to hear from you.
+                  Currently open to full-time UX Engineer and front-end roles. If your team builds products where accessibility, performance, and design craft matter, let's talk.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">

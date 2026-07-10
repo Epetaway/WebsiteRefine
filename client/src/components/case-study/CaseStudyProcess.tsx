@@ -3,6 +3,10 @@ import { ProcessStep } from "./types";
 
 type CaseStudyProcessProps = {
   steps: ProcessStep[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
 };
 
 const FADE_UP = {
@@ -10,9 +14,15 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
+export function CaseStudyProcess({
+  steps,
+  id = "approach",
+  eyebrow = "04 My Approach",
+  heading = "How I approached it",
+  intro = "High-level overview of the process, research, and development decisions.",
+}: CaseStudyProcessProps) {
   return (
-    <section id="approach" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -22,7 +32,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        04 My Approach
+        {eyebrow}
       </motion.p>
 
       <motion.h2
@@ -33,7 +43,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         transition={{ duration: 0.4, delay: 0.04 }}
         className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
-        How I approached it
+        {heading}
       </motion.h2>
 
       <motion.p
@@ -44,7 +54,7 @@ export function CaseStudyProcess({ steps }: CaseStudyProcessProps) {
         transition={{ duration: 0.4, delay: 0.08 }}
         className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8"
       >
-        High-level overview of the process, research, and development decisions.
+        {intro}
       </motion.p>
 
       <motion.div

@@ -135,6 +135,13 @@ export const withYouPremiumData: PremiumCaseStudyData = {
     },
   ],
 
+  prototype: {
+    url: "/prototypes/withyou-maestro/Prototype.dc.html",
+    label: "Maestro Prototype",
+    description:
+      "Interactive click-through of the Maestro flow — home rail, check-ins, and mood-ring reveal — built from the same design tokens as the production app. Password-protected.",
+  },
+
   techStack: [
     "TypeScript",
     "Expo + React Native",

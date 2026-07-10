@@ -3,6 +3,10 @@ import { FutureItem } from "./types";
 
 type CaseStudyFutureProps = {
   items: FutureItem[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
 };
 
 const FADE_UP = {
@@ -10,9 +14,15 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
+export function CaseStudyFuture({
+  items,
+  id = "next-steps",
+  eyebrow = "10 What's Next",
+  heading = "Future improvements",
+  intro = "Planned features, enhancements, or areas for future iteration.",
+}: CaseStudyFutureProps) {
   return (
-    <section id="next-steps" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -22,7 +32,7 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        10 What's Next
+        {eyebrow}
       </motion.p>
 
       <motion.h2
@@ -33,7 +43,7 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
         transition={{ duration: 0.4, delay: 0.04 }}
         className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
-        Future improvements
+        {heading}
       </motion.h2>
 
       <motion.p
@@ -44,7 +54,7 @@ export function CaseStudyFuture({ items }: CaseStudyFutureProps) {
         transition={{ duration: 0.4, delay: 0.08 }}
         className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6"
       >
-        Planned features, enhancements, or areas for future iteration.
+        {intro}
       </motion.p>
 
       <motion.div

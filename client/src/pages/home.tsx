@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Section } from "@/components/layout/Section";
 import ScrollReveal from "@/components/ui/ScrollReveal";
-import { TrendingUp, Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, Users, ArrowRight } from "lucide-react";
+import { Accessibility, Layers, Shield, Code2, Monitor, Blocks, Scale, Users, ArrowRight } from "lucide-react";
 import { RESUME_PATH } from "@/data/projects";
 import { resolveCaseStudySlug } from "@/data/caseStudies";
 import justMeImg from "@/images/justMe.png";
@@ -18,7 +18,6 @@ const featuredCardProjects = [
     description: "A fully functional competitive deck-building and meta-analysis tool for the Gundam Card Game — live card data via external API, advanced filtering, deck management, local saves, and a working play tester.",
     techStack: ["React", "TypeScript", "Next.js"],
     repoUrl: `https://github.com/${GITHUB_USER}/Gundam-Forge`,
-    liveUrl: "https://epetaway.github.io/Gundam-Forge/",
     category: "Front-End",
     githubUser: GITHUB_USER,
     image: "/images/gundam-forge/gundam_card.png",
@@ -57,20 +56,20 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        <title>Earl Hickson Jr. | Front-End Developer & Designer — React, TypeScript | Parsippany, NJ</title>
+        <title>Earl Hickson Jr. | UX Engineer — React, TypeScript, Accessibility | Parsippany, NJ</title>
         <meta
           name="description"
-          content="Front-End Developer and Designer with 6+ years building responsive, accessible, performance-optimized web applications across healthcare, finance, media, and nonprofits. BFA in Graphic Design. Based in Parsippany, NJ."
+          content="UX Engineer with 10+ years building accessible, human-centered digital products across healthcare, media, and enterprise. BFA in Graphic Design. Based in Parsippany, NJ."
         />
-        <link rel="canonical" href="https://www.ehicksonjr.com/" />
-        <meta property="og:title" content="Earl Hickson Jr. | Front-End Developer & Designer — React, TypeScript" />
-        <meta property="og:description" content="Front-End Developer and Designer with a BFA in Graphic Design — building interfaces that are technically sound and visually considered. 6+ years across healthcare, finance, media, and nonprofits." />
+        <link rel="canonical" href="https://ehicksonjr.com/" />
+        <meta property="og:title" content="Earl Hickson Jr. | UX Engineer — React, TypeScript, Accessibility" />
+        <meta property="og:description" content="UX Engineer with a BFA in Graphic Design — building interfaces that are technically sound, accessible, and human-centered. 10+ years across healthcare, media, and enterprise." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://www.ehicksonjr.com/" />
+        <meta property="og:url" content="https://ehicksonjr.com/" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Earl Hickson Jr. | Front-End Developer & Designer — React, TypeScript" />
-        <meta name="twitter:description" content="Front-End Developer and Designer bridging design thinking and front-end engineering — scalable component systems, WCAG 2.1 AA accessibility, and real product impact." />
+        <meta name="twitter:title" content="Earl Hickson Jr. | UX Engineer — React, TypeScript, Accessibility" />
+        <meta name="twitter:description" content="UX Engineer bridging human-centered design and front-end engineering — accessible component systems, WCAG 2.1 AA, and real product impact." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
@@ -91,17 +90,17 @@ export default function Home() {
         <div className="relative z-10 mx-auto max-w-[1120px] w-full px-5 py-16 lg:py-24">
           <ScrollReveal animation="slide-up" className="space-y-6 max-w-[580px]">
             <p className="text-xs tracking-widest uppercase text-violet-400 font-medium">
-              Front-End Developer & Designer
+              UX Engineer
             </p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-[64px] font-bold text-white leading-[1.05] -tracking-[0.03em]">
               Building interfaces that are{" "}
-              <span className="text-violet-400">technically sound and visually considered.</span>
+              <span className="text-violet-400">technically sound and human-centered.</span>
             </h1>
             <p className="text-lg text-[#B7B7B7] leading-relaxed">
-              Front-End Developer and Designer with 6+ years building responsive, accessible, performance-optimized web applications across healthcare, finance, media, and nonprofit sectors.
+              UX Engineer with 10+ years building accessible, human-centered digital products across healthcare, media, and enterprise. I work at the intersection of design thinking and front-end engineering.
             </p>
             <p className="text-base text-[#7A7A7A]">
-              BFA in Graphic Design meets front-end engineering — the intersection that produces interfaces your users actually want to use.
+              BFA in Graphic Design meets full-stack front-end engineering — the combination that produces interfaces your users actually want to use.
             </p>
             <div className="flex flex-wrap gap-4 pt-2">
               <Link
@@ -109,6 +108,12 @@ export default function Home() {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-violet-600 hover:bg-violet-500 text-white font-medium smooth-btn"
               >
                 View My Work <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                to="/approach"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium smooth-btn"
+              >
+                My Approach <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/contact"
@@ -138,10 +143,10 @@ export default function Home() {
         <div className="mx-auto max-w-[1120px] w-full px-5 py-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { icon: TrendingUp, metric: "+18%", label: "Lead form submissions via layout & UX improvements at BroadcastMed" },
-              { icon: Accessibility, metric: "WCAG 2.1 AA", label: "Accessibility implementation across healthcare platforms" },
+              { icon: Accessibility, metric: "WCAG 2.1 AA", label: "Accessibility implementation across HIPAA-compliant healthcare platforms" },
               { icon: Layers, metric: "Bootstrap 3→5", label: "Enterprise design system migration and component library at Asembia" },
               { icon: Shield, metric: "HIPAA", label: "Healthcare dashboards and secure provider-facing environments" },
+              { icon: Code2, metric: "10+ Years", label: "UX engineering across healthcare, media, enterprise, and product" },
             ].map(({ icon: Icon, metric, label }, idx) => (
               <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
                 <div className="border border-[#20252A] rounded-xl p-5 flex flex-col items-center text-center gap-2 hover:border-violet-500/40 smooth-card">
@@ -303,7 +308,7 @@ export default function Home() {
           <div className="mx-auto max-w-[1320px] flex justify-center lg:justify-end">
             <ScrollReveal animation="slide-up" className="space-y-5 max-w-sm text-center lg:text-left lg:pr-10">
               <p className="text-white text-lg leading-relaxed" style={{ textShadow: "0 1px 8px rgba(0,0,0,0.8)" }}>
-                I hold a BFA in Graphic Design and a Front-End Development certificate — and I've spent 6+ years using both at once. I also teach Brazilian Jiu-Jitsu, which has more in common with software architecture than you'd think.
+                I hold a BFA in Graphic Design and an IBM Full Stack Software Developer certification — and I've spent 10+ years using both at once. I also teach Brazilian Jiu-Jitsu, which has more in common with software architecture than you'd think.
               </p>
               <Link
                 to="/about"
@@ -326,7 +331,7 @@ export default function Home() {
                   Let's build something that actually works.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  If you need clean UI, a coherent design system, and someone who can move fast without making a mess — I'm ready.
+                  Currently open to full-time UX Engineer and front-end roles. If you're hiring or want to collaborate on something that takes accessibility and design craft seriously — let's talk.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">

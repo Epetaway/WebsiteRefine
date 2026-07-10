@@ -2,6 +2,10 @@ import { motion } from "framer-motion";
 
 type CaseStudyTechStackProps = {
   stack: string[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
 };
 
 const FADE_UP = {
@@ -9,9 +13,15 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyTechStack({ stack }: CaseStudyTechStackProps) {
+export function CaseStudyTechStack({
+  stack,
+  id = "tech-stack",
+  eyebrow = "06 Tech Stack",
+  heading = "Technologies used",
+  intro,
+}: CaseStudyTechStackProps) {
   return (
-    <section id="tech-stack" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -21,7 +31,7 @@ export function CaseStudyTechStack({ stack }: CaseStudyTechStackProps) {
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        06 Tech Stack
+        {eyebrow}
       </motion.p>
 
       <motion.h2
@@ -32,8 +42,21 @@ export function CaseStudyTechStack({ stack }: CaseStudyTechStackProps) {
         transition={{ duration: 0.4, delay: 0.04 }}
         className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
       >
-        Technologies used
+        {heading}
       </motion.h2>
+
+      {intro && (
+        <motion.p
+          variants={FADE_UP}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.4, delay: 0.06 }}
+          className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-6 -mt-3 max-w-lg"
+        >
+          {intro}
+        </motion.p>
+      )}
 
       <motion.div
         initial="hidden"

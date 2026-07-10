@@ -3,6 +3,10 @@ import { GoalItem } from "./types";
 
 type CaseStudyGoalsProps = {
   goals: GoalItem[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
 };
 
 const FADE_UP = {
@@ -10,9 +14,15 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
+export function CaseStudyGoals({
+  goals,
+  id = "goals",
+  eyebrow = "03 The Goal",
+  heading = "What success looked like",
+  intro = "Define the objectives and what success would mean for users and the business.",
+}: CaseStudyGoalsProps) {
   return (
-    <section id="goals" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -22,7 +32,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        03 The Goal
+        {eyebrow}
       </motion.p>
 
       <motion.h2
@@ -33,7 +43,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         transition={{ duration: 0.4, delay: 0.04 }}
         className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
       >
-        What success looked like
+        {heading}
       </motion.h2>
 
       <motion.p
@@ -44,7 +54,7 @@ export function CaseStudyGoals({ goals }: CaseStudyGoalsProps) {
         transition={{ duration: 0.4, delay: 0.08 }}
         className="text-[var(--cs-text-secondary)] text-sm leading-relaxed mb-8"
       >
-        Define the objectives and what success would mean for users and the business.
+        {intro}
       </motion.p>
 
       <motion.div

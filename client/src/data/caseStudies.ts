@@ -33,6 +33,11 @@ export type ProjectCaseStudy = {
   }>;
   screenshots?: string[];
   demoUrl?: string;
+  prototype?: {
+    url: string;
+    label?: string;
+    description?: string;
+  };
   codeUrl: string;
   repo: string;
 };
@@ -104,7 +109,7 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
       {
         metric: '6',
         label: 'Core Features',
-        description: 'Pairing, moods, plans, chat, sync, wearables',
+        description: 'Pairing, check-ins, shared plans, chat, real-time sync, journey',
         color: 'green',
       },
       {
@@ -113,6 +118,16 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         description: 'Full-stack system, beta-tested',
         color: 'gold',
       },
+    ],
+    screenshots: [
+      '/images/withyou/maestro/tour-00-home.png',
+      '/images/withyou/maestro/tour-01-connect.png',
+      '/images/withyou/maestro/tour-02-gallery.png',
+      '/images/withyou/maestro/tour-03-us.png',
+      '/images/withyou/maestro/ci-00-home.png',
+      '/images/withyou/maestro/ci-04-feeling-selected.png',
+      '/images/withyou/maestro/hms-01-input.png',
+      '/images/withyou/maestro/hms-03-output.png',
     ],
     demoUrl: undefined,
     codeUrl: 'https://github.com/Epetaway/WithYou',
@@ -192,81 +207,6 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
     demoUrl: 'https://epetaway.github.io/patient-portal-demo/#login',
     codeUrl: 'https://github.com/Epetaway/patient-portal-demo',
     repo: 'patient-portal-demo',
-  },
-  'ResumeCraft-ghpages': {
-    slug: 'ResumeCraft-ghpages',
-    title: 'ResumeCraft – AI-Powered Resume Builder',
-    subtitle: 'Intelligent resume creation with AI assistance and real-time editing',
-    summary: 'Full-stack app that helps users create tailored resumes using AI prompts and parsing tools.',
-    overview: {
-      description: 'ResumeCraft leverages AI to streamline the resume creation process, reducing time-to-first-resume from ~25 minutes to under 5 minutes. The platform combines intelligent parsing, AI-powered content suggestions, and an intuitive editing interface for friction-free iterations.',
-      problem: 'Creating a professional resume is time-consuming and often overwhelming. Users struggle with formatting, content optimization, and tailoring resumes for specific roles.',
-      goals: [
-        'Reduce resume creation time by 80%+',
-        'Provide AI-powered content suggestions',
-        'Enable easy customization and iteration',
-        'Support multiple export formats',
-      ],
-    },
-    role: [
-      {
-        title: 'Full-Stack Development',
-        description: 'Built complete application from front-end React interface to Node.js backend with OpenAI integration',
-      },
-      {
-        title: 'AI Integration',
-        description: 'Integrated OpenAI API for intelligent content generation and resume optimization',
-      },
-      {
-        title: 'UX Engineering',
-        description: 'Designed and implemented intuitive editing interface with real-time preview and formatting',
-      },
-      {
-        title: 'API Design',
-        description: 'Architected RESTful API for resume parsing, generation, and export functionality',
-      },
-    ],
-    technical: {
-      architecture: 'Full-stack application with React frontend and Node.js backend. Uses OpenAI API for content generation and intelligent suggestions. Implements real-time preview with efficient state management.',
-      techStack: ['React', 'TypeScript', 'Node.js', 'OpenAI API', 'Tailwind CSS'],
-      approach: [
-        {
-          title: 'AI-Powered Generation',
-          description: 'Smart prompting strategy to generate relevant, tailored resume content',
-        },
-        {
-          title: 'Real-Time Preview',
-          description: 'Live preview updates as users edit, ensuring WYSIWYG experience',
-        },
-        {
-          title: 'Export Options',
-          description: 'Multiple export formats (PDF, DOCX, JSON) for maximum compatibility',
-        },
-      ],
-    },
-    outcomes: [
-      {
-        metric: '80%',
-        label: 'Time Saved',
-        description: 'Resume creation time reduction',
-        color: 'blue',
-      },
-      {
-        metric: '5 min',
-        label: 'Avg. Time',
-        description: 'To first complete resume',
-        color: 'green',
-      },
-      {
-        metric: '92',
-        label: 'User Satisfaction',
-        description: 'Positive feedback score',
-        color: 'gold',
-      },
-    ],
-    demoUrl: 'https://epetaway.github.io/ResumeCraft-ghpages',
-    codeUrl: 'https://github.com/Epetaway/ResumeCraft-ghpages',
-    repo: 'ResumeCraft-ghpages',
   },
   'mtg-proxy-generator': {
     slug: 'mtg-proxy-generator',
@@ -405,7 +345,7 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         color: 'gold',
       },
     ],
-    demoUrl: 'https://earlhickson.github.io/Gundam-Forge',
+    demoUrl: undefined,
     codeUrl: 'https://github.com/Epetaway/Gundam-Forge',
     repo: 'Gundam-Forge',
   },
@@ -472,6 +412,11 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
       },
     ],
     demoUrl: 'https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard',
+    prototype: {
+      url: 'https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard',
+      label: 'Launch Interactive Prototype',
+      description: 'A fully functional local-first prototype with seeded demo data — browse the feed, partner matchmaking, training journals, event discovery, and messaging without any backend.',
+    },
     codeUrl: 'https://github.com/Epetaway/DojoNet-Prototype-MAX',
     repo: 'DojoNet-Prototype-MAX',
   },

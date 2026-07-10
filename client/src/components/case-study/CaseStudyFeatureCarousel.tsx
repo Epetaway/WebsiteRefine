@@ -6,6 +6,10 @@ import { FeatureMediaItem } from "./types";
 
 type CaseStudyFeatureCarouselProps = {
   features: FeatureMediaItem[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  intro?: string;
 };
 
 const FADE_UP = {
@@ -13,7 +17,13 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselProps) {
+export function CaseStudyFeatureCarousel({
+  features,
+  id = "features",
+  eyebrow = "05 Key Features",
+  heading = "Core features and functionality",
+  intro = "Highlight the most important features built and the value they provide.",
+}: CaseStudyFeatureCarouselProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     align: "start",
@@ -24,7 +34,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section id="features" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -34,7 +44,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        05 Key Features
+        {eyebrow}
       </motion.p>
 
       <div className="flex items-end justify-between mb-6">
@@ -47,7 +57,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
             transition={{ duration: 0.4, delay: 0.04 }}
             className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
           >
-            Core features and functionality
+            {heading}
           </motion.h2>
           <motion.p
             variants={FADE_UP}
@@ -57,7 +67,7 @@ export function CaseStudyFeatureCarousel({ features }: CaseStudyFeatureCarouselP
             transition={{ duration: 0.4, delay: 0.08 }}
             className="text-[var(--cs-text-secondary)] text-sm max-w-lg"
           >
-            Highlight the most important features built and the value they provide.
+            {intro}
           </motion.p>
         </div>
 

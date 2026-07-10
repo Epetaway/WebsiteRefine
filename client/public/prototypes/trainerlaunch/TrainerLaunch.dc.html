@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:#E9E5DD;background-image:radial-gradient(circle at 20% 15%,#F2EFE8 0,#E4E0D7 60%);font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  ::-webkit-scrollbar{width:0;height:0}
+  .tl-scroll{scrollbar-width:none;-ms-overflow-style:none}
+  @keyframes tl-fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes tl-shimmer{100%{background-position:-200% 0}}
+  @keyframes tl-spin{to{transform:rotate(360deg)}}
+  @keyframes tl-pop{0%{transform:scale(.85);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+  @keyframes tl-check{to{stroke-dashoffset:0}}
+  @keyframes tl-toast{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
+</style>
+</helmet>
+
+<div style="min-height:100vh;display:flex;gap:40px;padding:48px 56px;align-items:flex-start">
+
+  <!-- ============ SCREEN NAVIGATOR RAIL ============ -->
+  <div class="tl-scroll" style="position:sticky;top:48px;width:236px;flex:none;font-family:Inter;max-height:calc(100vh - 80px);overflow-y:auto">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px">
+      <div style="width:30px;height:30px;border-radius:9px;background:linear-gradient(140deg,#0E9C6E,#0A7A57);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(14,156,110,.32)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 8v8M18 8v8M6 12h12M4 10v4M20 10v4" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </div>
+      <div>
+        <div style="font-family:Manrope;font-weight:800;font-size:15px;color:#1D1B17;letter-spacing:-.02em">TrainerLaunch</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:#8A857D;margin:0 0 20px 40px;letter-spacing:.02em">Interactive prototype</div>
+
+    <sc-for list="{{ railGroups }}" as="grp" hint-placeholder-count="4">
+      <div style="margin-bottom:18px">
+        <div style="font-size:10.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#A39D93;padding:0 8px;margin-bottom:6px">{{ grp.title }}</div>
+        <sc-for list="{{ grp.items }}" as="it" hint-placeholder-count="3">
+          <button onClick="{{ it.onClick }}" style="{{ it.style }}" style-hover="background:#fff;color:#1D1B17">
+            <span style="width:16px;display:inline-flex;justify-content:center">{{ it.dot }}</span>
+            {{ it.label }}
+          </button>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- ============ PHONE FRAME ============ -->
+  <div style="flex:none;position:relative">
+    <div style="position:relative;width:412px;height:866px;background:#0F0E0C;border-radius:56px;padding:11px;box-shadow:0 2px 6px rgba(0,0,0,.18),0 40px 80px -20px rgba(30,26,20,.42),inset 0 0 0 2px rgba(255,255,255,.06)">
+      <div style="position:absolute;top:52px;left:-3px;width:3px;height:34px;background:#242220;border-radius:3px 0 0 3px"></div>
+      <div style="position:absolute;top:104px;left:-3px;width:3px;height:56px;background:#242220;border-radius:3px 0 0 3px"></div>
+      <div style="position:absolute;top:174px;left:-3px;width:3px;height:56px;background:#242220;border-radius:3px 0 0 3px"></div>
+      <div style="position:absolute;top:130px;right:-3px;width:3px;height:78px;background:#242220;border-radius:0 3px 3px 0"></div>
+
+      <div style="position:relative;width:390px;height:844px;background:#F6F4EF;border-radius:46px;overflow:hidden">
+
+        <!-- status bar -->
+        <div style="position:absolute;top:0;left:0;right:0;height:52px;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:0 30px;font-family:Inter;pointer-events:none">
+          <span style="font-size:14px;font-weight:600;color:{{ chromeColor }}">9:41</span>
+          <div style="display:flex;gap:6px;align-items:center;color:{{ chromeColor }}">
+            <svg width="17" height="11" viewBox="0 0 17 11" fill="none"><rect x="0" y="7" width="3" height="4" rx="1" fill="currentColor"/><rect x="4.5" y="5" width="3" height="6" rx="1" fill="currentColor"/><rect x="9" y="2.5" width="3" height="8.5" rx="1" fill="currentColor"/><rect x="13.5" y="0" width="3" height="11" rx="1" fill="currentColor"/></svg>
+            <svg width="16" height="11" viewBox="0 0 16 11" fill="none"><path d="M8 2.2C10.3 2.2 12.4 3.1 14 4.6M8 6.1c1.2 0 2.4.5 3.2 1.3M4.8 4.6C6.4 3.1 8.5 2.2 8 2.2M8 9.4l1.4-1.5c-.8-.8-2-.8-2.8 0L8 9.4Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="26" height="12" viewBox="0 0 26 12" fill="none"><rect x="1" y="1" width="21" height="10" rx="3" stroke="currentColor" stroke-opacity=".45" stroke-width="1.2"/><rect x="3" y="3" width="16" height="6" rx="1.5" fill="currentColor"/><rect x="23.5" y="4" width="1.6" height="4" rx=".8" fill="currentColor" fill-opacity=".55"/></svg>
+          </div>
+        </div>
+
+        <!-- SCREEN SCROLL AREA -->
+        <div class="tl-scroll" ref="{{ setScroller }}" style="position:absolute;inset:0;overflow-y:auto;overflow-x:hidden">
+
+          <!-- ================= LANDING ================= -->
+          <sc-if value="{{ isLanding }}" hint-placeholder-val="{{ true }}">
+          <div style="animation:tl-fade .4s ease both">
+            <!-- public nav -->
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(234,230,222,.7)">
+              <span style="font-family:Manrope;font-weight:800;font-size:17px;color:#1D1B17;letter-spacing:-.02em">Maya Ellis</span>
+              <div style="display:flex;align-items:center;gap:14px">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="#4B4741" stroke-width="2" stroke-linecap="round"/></svg>
+                <button onClick="{{ goBook }}" style="font-family:Inter;font-weight:600;font-size:13px;color:#fff;background:#0E9C6E;border:none;padding:9px 15px;border-radius:11px;cursor:pointer;box-shadow:0 4px 12px rgba(14,156,110,.28)" style-hover="background:#0A7A57">Book</button>
+              </div>
+            </div>
+
+            <!-- hero -->
+            <div style="padding:26px 22px 8px">
+              <div style="display:inline-flex;align-items:center;gap:7px;background:#EAF6F0;color:#0A7A57;font-size:12px;font-weight:600;padding:6px 12px;border-radius:999px;margin-bottom:20px">
+                <span style="width:6px;height:6px;border-radius:50%;background:#0E9C6E;display:inline-block"></span>Now accepting new clients
+              </div>
+              <h1 style="font-family:Manrope;font-weight:800;font-size:42px;line-height:1.02;letter-spacing:-.03em;color:#1D1B17;margin:0 0 16px;text-wrap:balance">Train with intention, not intensity.</h1>
+              <p style="font-size:16px;line-height:1.55;color:#57534C;margin:0 0 24px;max-width:330px">Personalized coaching for busy people who want to feel strong, move well, and actually enjoy the process.</p>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:22px">
+                <button onClick="{{ goBook }}" style="font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:16px;border-radius:15px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.32);display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:#0A7A57;transform:translateY(-1px)">Book a free consult
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </button>
+                <button onClick="{{ goServices }}" style="font-family:Inter;font-weight:600;font-size:16px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;padding:16px;border-radius:15px;cursor:pointer" style-hover="border-color:#0E9C6E;color:#0A7A57">View programs</button>
+              </div>
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:24px">
+                <div style="display:flex">
+                  <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#F6C89A,#E89B6C);border:2px solid #F6F4EF;margin-left:-6px"></span>
+                  <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#9CD0B6,#5FA98A);border:2px solid #F6F4EF;margin-left:-8px"></span>
+                  <span style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#B9C4E8,#7E90CC);border:2px solid #F6F4EF;margin-left:-8px"></span>
+                </div>
+                <div style="font-size:13px;color:#57534C"><b style="color:#1D1B17">4.9</b> · 120+ clients coached</div>
+              </div>
+            </div>
+
+            <!-- hero visual: duotone abstract -->
+            <div style="padding:0 22px 30px">
+              <div style="position:relative;height:280px;border-radius:26px;overflow:hidden;background:linear-gradient(150deg,#0E9C6E 0%,#0A7A57 55%,#0C5F47 100%)">
+                <div style="position:absolute;inset:0;background:radial-gradient(120px 160px at 78% 20%,rgba(255,255,255,.22),transparent 70%),radial-gradient(180px 200px at 12% 96%,rgba(0,0,0,.28),transparent 65%)"></div>
+                <svg style="position:absolute;inset:0;width:100%;height:100%;opacity:.5" viewBox="0 0 300 280" preserveAspectRatio="none"><path d="M0 210 Q75 150 150 190 T300 170" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none"/><path d="M0 240 Q75 185 150 220 T300 205" stroke="rgba(255,255,255,.2)" stroke-width="1.5" fill="none"/></svg>
+                <div style="position:absolute;left:20px;bottom:20px;background:rgba(255,255,255,.14);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);border-radius:16px;padding:13px 16px;color:#fff">
+                  <div style="font-family:Manrope;font-weight:800;font-size:26px;line-height:1">12 wks</div>
+                  <div style="font-size:12px;opacity:.85;margin-top:2px">avg. to first milestone</div>
+                </div>
+                <div style="position:absolute;right:18px;top:18px;background:rgba(255,255,255,.94);border-radius:14px;padding:11px 13px;box-shadow:0 10px 24px rgba(0,0,0,.2);animation:tl-pop .6s .2s both">
+                  <div style="display:flex;align-items:center;gap:7px"><span style="width:8px;height:8px;border-radius:50%;background:#0E9C6E"></span><span style="font-size:11px;font-weight:600;color:#1D1B17">Certified NASM · 8 yrs</span></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- services preview -->
+            <div style="padding:0 22px 8px">
+              <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:14px">
+                <h2 style="font-family:Manrope;font-weight:700;font-size:22px;color:#1D1B17;margin:0;letter-spacing:-.02em">How we work together</h2>
+              </div>
+              <sc-for list="{{ services }}" as="sv" hint-placeholder-count="3">
+                <button onClick="{{ goServices }}" style="width:100%;text-align:left;display:flex;gap:14px;align-items:center;background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:16px;margin-bottom:10px;cursor:pointer" style-hover="border-color:#D8F0E5;box-shadow:0 8px 22px rgba(30,26,20,.06);transform:translateY(-1px)">
+                  <span style="width:46px;height:46px;flex:none;border-radius:13px;background:{{ sv.tint }};display:flex;align-items:center;justify-content:center">{{ sv.icon }}</span>
+                  <span style="flex:1">
+                    <span style="display:block;font-family:Manrope;font-weight:700;font-size:15.5px;color:#1D1B17">{{ sv.name }}</span>
+                    <span style="display:block;font-size:13px;color:#8A857D;margin-top:2px">{{ sv.desc }}</span>
+                  </span>
+                  <span style="font-family:Manrope;font-weight:700;font-size:14px;color:#0A7A57">{{ sv.price }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <!-- testimonial -->
+            <div style="padding:22px 22px 8px">
+              <div style="background:#1D1B17;border-radius:24px;padding:26px 24px;color:#fff;position:relative;overflow:hidden">
+                <div style="position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,rgba(14,156,110,.35),transparent 70%)"></div>
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" style="opacity:.5;margin-bottom:8px"><path d="M10 8H6a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v2a2 2 0 0 1-2 2M20 8h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h2v2a2 2 0 0 1-2 2" stroke="#0E9C6E" stroke-width="1.6"/></svg>
+                <p style="font-family:Manrope;font-weight:500;font-size:18px;line-height:1.5;margin:0 0 18px;letter-spacing:-.01em">"I've tried a dozen programs. Maya is the first coach who made it feel sustainable. Down 18lbs and I still have a life."</p>
+                <div style="display:flex;align-items:center;gap:11px">
+                  <span style="width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,#F6C89A,#E89B6C)"></span>
+                  <div><div style="font-weight:600;font-size:14px">Jordan Reyes</div><div style="font-size:12px;opacity:.6">Client · 7 months</div></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ -->
+            <div style="padding:26px 22px 8px">
+              <h2 style="font-family:Manrope;font-weight:700;font-size:22px;color:#1D1B17;margin:0 0 14px;letter-spacing:-.02em">Common questions</h2>
+              <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="3">
+                <button onClick="{{ f.onClick }}" style="width:100%;text-align:left;background:#fff;border:1px solid #EDE9E1;border-radius:16px;padding:16px 16px;margin-bottom:8px;cursor:pointer">
+                  <span style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                    <span style="font-family:Manrope;font-weight:600;font-size:14.5px;color:#1D1B17">{{ f.q }}</span>
+                    <span style="{{ f.iconStyle }}">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="#8A857D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                  </span>
+                  <span style="{{ f.bodyStyle }}">{{ f.a }}</span>
+                </button>
+              </sc-for>
+            </div>
+
+            <!-- footer CTA -->
+            <div style="padding:24px 22px 40px">
+              <div style="border-radius:24px;background:linear-gradient(150deg,#EAF6F0,#F6F4EF);border:1px solid #DCEEE4;padding:28px 22px;text-align:center">
+                <h2 style="font-family:Manrope;font-weight:800;font-size:26px;line-height:1.1;color:#1D1B17;margin:0 0 10px;letter-spacing:-.02em">Let's build your plan.</h2>
+                <p style="font-size:14px;color:#57534C;margin:0 0 18px">Free 20-minute call. No pressure, no contracts.</p>
+                <button onClick="{{ goBook }}" style="font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:15px 28px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.3)" style-hover="background:#0A7A57">Book a free consult</button>
+                <div style="margin-top:22px;padding-top:18px;border-top:1px solid #DCEEE4;display:flex;justify-content:space-between;font-size:12px;color:#8A857D">
+                  <span>© Maya Ellis Coaching</span>
+                  <span style="display:flex;gap:14px"><span>Instagram</span><span>TikTok</span></span>
+                </div>
+              </div>
+              <div style="text-align:center;margin-top:14px;font-size:11px;color:#B5AFA4">Powered by <b style="color:#0A7A57">TrainerLaunch</b></div>
+            </div>
+          </div>
+          </sc-if>
+
+                    <!-- ================= SERVICES ================= -->
+          <sc-if value="{{ isServices }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLanding }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Programs</span>
+            </div>
+            <div style="padding:24px 22px 8px">
+              <h1 style="font-family:Manrope;font-weight:800;font-size:30px;line-height:1.08;letter-spacing:-.03em;color:#1D1B17;margin:0 0 10px">Find the right fit for your goals.</h1>
+              <p style="font-size:15px;line-height:1.55;color:#57534C;margin:0 0 22px">Every program includes app access, custom programming, and direct messaging with me.</p>
+            </div>
+            <div style="padding:0 22px">
+              <div style="border-radius:22px;border:1.5px solid #0E9C6E;background:#fff;padding:22px;margin-bottom:14px;position:relative;box-shadow:0 12px 30px rgba(14,156,110,.1)">
+                <span style="position:absolute;top:-11px;left:22px;background:#0E9C6E;color:#fff;font-size:11px;font-weight:700;letter-spacing:.04em;padding:4px 11px;border-radius:999px">MOST POPULAR</span>
+                <div style="font-family:Manrope;font-weight:700;font-size:20px;color:#1D1B17">1:1 Coaching</div>
+                <div style="display:flex;align-items:baseline;gap:4px;margin:6px 0 14px"><span style="font-family:Manrope;font-weight:800;font-size:34px;color:#1D1B17;letter-spacing:-.02em">$220</span><span style="color:#8A857D;font-size:14px">/month</span></div>
+                <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:18px">
+                  <sc-for list="{{ proFeatures }}" as="ft" hint-placeholder-count="4">
+                    <div style="display:flex;align-items:center;gap:10px;font-size:13.5px;color:#3E3A34"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#EAF6F0"/><path d="M8 12.5l2.5 2.5 5-5.5" stroke="#0A7A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>{{ ft }}</div>
+                  </sc-for>
+                </div>
+                <button onClick="{{ goBook }}" style="width:100%;font-family:Inter;font-weight:600;font-size:15px;color:#fff;background:#0E9C6E;border:none;padding:14px;border-radius:13px;cursor:pointer" style-hover="background:#0A7A57">Start with a free consult</button>
+              </div>
+              <div style="display:flex;gap:12px;margin-bottom:14px">
+                <div style="flex:1;border-radius:20px;border:1px solid #EDE9E1;background:#fff;padding:18px">
+                  <div style="font-family:Manrope;font-weight:700;font-size:16px;color:#1D1B17">Small Group</div>
+                  <div style="font-family:Manrope;font-weight:800;font-size:24px;color:#1D1B17;margin:4px 0 2px">$120<span style="font-size:12px;font-weight:500;color:#8A857D">/mo</span></div>
+                  <div style="font-size:12px;color:#8A857D;line-height:1.5">Train alongside 2–4 others, same accountability.</div>
+                </div>
+                <div style="flex:1;border-radius:20px;border:1px solid #EDE9E1;background:#fff;padding:18px">
+                  <div style="font-family:Manrope;font-weight:700;font-size:16px;color:#1D1B17">Nutrition</div>
+                  <div style="font-family:Manrope;font-weight:800;font-size:24px;color:#1D1B17;margin:4px 0 2px">$90<span style="font-size:12px;font-weight:500;color:#8A857D">/mo</span></div>
+                  <div style="font-size:12px;color:#8A857D;line-height:1.5">Habit-based nutrition coaching, no meal plans.</div>
+                </div>
+              </div>
+            </div>
+            <div style="padding:22px 22px 44px">
+              <div style="background:#F0F1FB;border-radius:20px;padding:20px;display:flex;gap:14px;align-items:center">
+                <span style="width:44px;height:44px;flex:none;border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.7 18.9 8 13 3.5 9l6-.5L12 3z" stroke="#4C5FC4" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+                <div><div style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17">Not sure which to pick?</div><div style="font-size:12.5px;color:#57534C;margin-top:2px">The free consult sorts it out in 20 minutes.</div></div>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= BOOK CONSULT ================= -->
+          <sc-if value="{{ isBook }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLanding }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Book a free consult</span>
+            </div>
+            <div style="padding:22px 22px 40px">
+              <div style="display:flex;gap:6px;margin-bottom:22px">
+                <span style="flex:1;height:4px;border-radius:2px;background:#0E9C6E"></span>
+                <span style="flex:1;height:4px;border-radius:2px;background:#0E9C6E"></span>
+                <span style="flex:1;height:4px;border-radius:2px;background:#E6E1D8"></span>
+              </div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:7px">Your name</label>
+              <input value="{{ bookName }}" onInput="{{ setName }}" placeholder="Jordan Reyes" style="width:100%;font-family:Inter;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:14px 15px;margin-bottom:16px;outline:none" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"/>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:7px">Email</label>
+              <input value="{{ bookEmail }}" onInput="{{ setEmail }}" placeholder="you@email.com" style="width:100%;font-family:Inter;font-size:15px;color:#1D1B17;background:#fff;border:1px solid {{ emailBorder }};border-radius:13px;padding:14px 15px;margin-bottom:6px;outline:none" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"/>
+              <sc-if value="{{ emailError }}" hint-placeholder-val="{{ false }}"><div style="font-size:12px;color:#D0453B;margin:0 0 10px;display:flex;align-items:center;gap:5px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#D0453B" stroke-width="1.8"/><path d="M12 8v5M12 16h.01" stroke="#D0453B" stroke-width="1.8" stroke-linecap="round"/></svg>Please enter a valid email.</div></sc-if>
+              <div style="height:10px"></div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:9px">What's your main goal?</label>
+              <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px">
+                <sc-for list="{{ goals }}" as="g" hint-placeholder-count="4">
+                  <button onClick="{{ g.onClick }}" style="{{ g.style }}">{{ g.label }}</button>
+                </sc-for>
+              </div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:9px">Preferred time</label>
+              <div style="display:flex;gap:8px;margin-bottom:24px">
+                <sc-for list="{{ times }}" as="t" hint-placeholder-count="3">
+                  <button onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</button>
+                </sc-for>
+              </div>
+              <button onClick="{{ submitBook }}" style="width:100%;font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:16px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.3);display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:#0A7A57">
+                <sc-if value="{{ booking }}" hint-placeholder-val="{{ false }}"><span style="width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:tl-spin .7s linear infinite;display:inline-block"></span></sc-if>
+                <sc-if value="{{ notBooking }}" hint-placeholder-val="{{ true }}">Request my consult</sc-if>
+              </button>
+              <div style="text-align:center;font-size:12px;color:#8A857D;margin-top:12px;display:flex;align-items:center;justify-content:center;gap:6px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#8A857D" stroke-width="1.8"/><path d="M8 11V8a4 4 0 018 0v3" stroke="#8A857D" stroke-width="1.8"/></svg>Your info is private and never shared.</div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= SUCCESS ================= -->
+          <sc-if value="{{ isSuccess }}" hint-placeholder-val="{{ false }}">
+          <div style="min-height:844px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 30px;animation:tl-fade .4s ease both">
+            <div style="width:96px;height:96px;border-radius:50%;background:#EAF6F0;display:flex;align-items:center;justify-content:center;margin-bottom:26px;animation:tl-pop .6s both">
+              <svg width="52" height="52" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="#0E9C6E"/><path d="M16 27l7 7 14-15" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="40" stroke-dashoffset="40" style="animation:tl-check .5s .35s ease forwards"/></svg>
+            </div>
+            <h1 style="font-family:Manrope;font-weight:800;font-size:30px;line-height:1.1;letter-spacing:-.02em;color:#1D1B17;margin:0 0 12px">You're on the calendar.</h1>
+            <p style="font-size:15px;line-height:1.6;color:#57534C;margin:0 0 28px;max-width:290px">Maya will reach out within a few hours to confirm your <b style="color:#1D1B17">Weekday consult</b>. Check your inbox for details.</p>
+            <div style="width:100%;max-width:320px;background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;text-align:left;margin-bottom:26px;display:flex;gap:14px;align-items:center">
+              <span style="width:46px;height:46px;flex:none;border-radius:12px;background:linear-gradient(135deg,#9CD0B6,#5FA98A)"></span>
+              <div><div style="font-family:Manrope;font-weight:700;font-size:15px;color:#1D1B17">Maya Ellis</div><div style="font-size:12.5px;color:#8A857D">Certified coach · replies in ~2 hrs</div></div>
+            </div>
+            <button onClick="{{ goLanding }}" style="width:100%;max-width:320px;font-family:Inter;font-weight:600;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;padding:15px;border-radius:14px;cursor:pointer" style-hover="border-color:#0E9C6E;color:#0A7A57">Back to home</button>
+          </div>
+          </sc-if>
+
+          <!-- ================= DASHBOARD OVERVIEW ================= -->
+          <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:86px">
+            <div style="padding:60px 22px 14px;background:#fff;border-bottom:1px solid #EDE9E1">
+              <div style="display:flex;align-items:center;justify-content:space-between">
+                <div>
+                  <div style="font-size:13px;color:#8A857D">Good morning,</div>
+                  <div style="font-family:Manrope;font-weight:800;font-size:23px;color:#1D1B17;letter-spacing:-.02em">Maya 👋</div>
+                </div>
+                <button onClick="{{ goNotif }}" style="position:relative;width:42px;height:42px;border-radius:13px;border:1px solid #EDE9E1;background:#F6F4EF;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9M13.7 21a2 2 0 01-3.4 0" stroke="#4B4741" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span style="position:absolute;top:9px;right:10px;width:8px;height:8px;border-radius:50%;background:#0E9C6E;border:2px solid #F6F4EF"></span>
+                </button>
+              </div>
+            </div>
+            <div style="padding:20px 22px 0">
+              <!-- stat cards -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                <sc-for list="{{ stats }}" as="st" hint-placeholder-count="4">
+                  <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:16px">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+                      <span style="width:34px;height:34px;border-radius:10px;background:{{ st.tint }};display:flex;align-items:center;justify-content:center">{{ st.icon }}</span>
+                      <span style="font-size:11px;font-weight:600;color:{{ st.deltaColor }};background:{{ st.deltaBg }};padding:3px 7px;border-radius:8px">{{ st.delta }}</span>
+                    </div>
+                    <div style="font-family:Manrope;font-weight:800;font-size:26px;color:#1D1B17;letter-spacing:-.02em">{{ st.value }}</div>
+                    <div style="font-size:12.5px;color:#8A857D;margin-top:1px">{{ st.label }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <!-- traffic chart -->
+              <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:12px">
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+                  <div><div style="font-family:Manrope;font-weight:700;font-size:15px;color:#1D1B17">Website visitors</div><div style="font-size:12px;color:#8A857D">Last 7 days</div></div>
+                  <div style="font-family:Manrope;font-weight:800;font-size:20px;color:#1D1B17">1,284</div>
+                </div>
+                <div style="display:flex;align-items:flex-end;gap:7px;height:96px">
+                  <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+                    <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px">
+                      <div style="width:100%;border-radius:6px 6px 3px 3px;background:{{ b.color }};height:{{ b.h }}"></div>
+                      <span style="font-size:10px;color:#B5AFA4">{{ b.day }}</span>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+              <!-- quick actions -->
+              <div style="font-family:Manrope;font-weight:700;font-size:15px;color:#1D1B17;margin:6px 2px 10px">Quick actions</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+                <button onClick="{{ goEditor }}" style="text-align:left;background:#1D1B17;border:none;border-radius:18px;padding:16px;cursor:pointer;color:#fff" style-hover="transform:translateY(-2px)">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-bottom:20px"><path d="M4 20h16M6 16l9-9 3 3-9 9H6v-3z" stroke="#0E9C6E" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <div style="font-family:Manrope;font-weight:700;font-size:14px">Edit website</div>
+                  <div style="font-size:11.5px;opacity:.6;margin-top:1px">Update your homepage</div>
+                </button>
+                <button onClick="{{ goLeads }}" style="text-align:left;background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:16px;cursor:pointer" style-hover="transform:translateY(-2px);border-color:#DCEEE4">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-bottom:20px"><path d="M4 6h16v12H4zM4 7l8 6 8-6" stroke="#0A7A57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <div style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17">View leads</div>
+                  <div style="font-size:11.5px;color:#8A857D;margin-top:1px">3 new inquiries</div>
+                </button>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= LEAD INBOX ================= -->
+          <sc-if value="{{ isLeads }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:86px">
+            <div style="padding:60px 22px 14px;background:#fff;border-bottom:1px solid #EDE9E1">
+              <div style="font-family:Manrope;font-weight:800;font-size:23px;color:#1D1B17;letter-spacing:-.02em">Leads</div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <sc-for list="{{ leadTabs }}" as="tab" hint-placeholder-count="3">
+                  <button onClick="{{ tab.onClick }}" style="{{ tab.style }}">{{ tab.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <div style="padding:14px 22px 0">
+              <sc-for list="{{ leads }}" as="ld" hint-placeholder-count="4">
+                <button onClick="{{ ld.onClick }}" style="width:100%;text-align:left;display:flex;gap:13px;align-items:center;background:#fff;border:1px solid #EDE9E1;border-radius:16px;padding:14px;margin-bottom:10px;cursor:pointer" style-hover="border-color:#DCEEE4;box-shadow:0 6px 18px rgba(30,26,20,.05)">
+                  <span style="width:44px;height:44px;flex:none;border-radius:50%;background:{{ ld.avatar }};display:flex;align-items:center;justify-content:center;font-family:Manrope;font-weight:700;font-size:15px;color:#fff">{{ ld.initials }}</span>
+                  <span style="flex:1;min-width:0">
+                    <span style="display:flex;align-items:center;gap:7px">
+                      <span style="font-family:Manrope;font-weight:700;font-size:15px;color:#1D1B17">{{ ld.name }}</span>
+                      <sc-if value="{{ ld.isNew }}" hint-placeholder-val="{{ false }}"><span style="font-size:10px;font-weight:700;color:#0A7A57;background:#EAF6F0;padding:2px 7px;border-radius:6px">NEW</span></sc-if>
+                    </span>
+                    <span style="display:block;font-size:12.5px;color:#8A857D;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">{{ ld.goal }} · {{ ld.time }}</span>
+                  </span>
+                  <span style="font-size:11px;color:#B5AFA4;flex:none">{{ ld.when }}</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= LEAD DETAIL ================= -->
+          <sc-if value="{{ isLeadDetail }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLeads }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Lead detail</span>
+            </div>
+            <div style="padding:22px 22px 0;text-align:center">
+              <span style="width:76px;height:76px;border-radius:50%;background:linear-gradient(135deg,#F6C89A,#E89B6C);display:inline-flex;align-items:center;justify-content:center;font-family:Manrope;font-weight:700;font-size:26px;color:#fff;margin-bottom:12px">JR</span>
+              <div style="font-family:Manrope;font-weight:800;font-size:22px;color:#1D1B17">Jordan Reyes</div>
+              <div style="font-size:13px;color:#8A857D;margin-top:2px">jordan.reyes@email.com</div>
+              <div style="display:flex;gap:10px;justify-content:center;margin:18px 0 8px">
+                <button onClick="{{ emailToast }}" style="display:flex;align-items:center;gap:7px;font-family:Inter;font-weight:600;font-size:14px;color:#fff;background:#0E9C6E;border:none;padding:11px 18px;border-radius:12px;cursor:pointer" style-hover="background:#0A7A57"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4zM4 7l8 6 8-6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Reply</button>
+                <button onClick="{{ callToast }}" style="width:44px;height:44px;border-radius:12px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1a11 11 0 005 5l1-2 5 2v3a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="#1D1B17" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+            <div style="padding:16px 22px 0">
+              <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:12px">
+                <div style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17;margin-bottom:14px">Inquiry details</div>
+                <sc-for list="{{ leadFields }}" as="lf" hint-placeholder-count="4">
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid #F2EFE8">
+                    <span style="font-size:13px;color:#8A857D">{{ lf.k }}</span>
+                    <span style="font-size:13px;font-weight:600;color:#1D1B17">{{ lf.v }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:12px">
+                <div style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17;margin-bottom:8px">Their message</div>
+                <p style="font-size:13.5px;line-height:1.6;color:#57534C;margin:0">"Hey Maya! I've been following you on Instagram for a while. I want to lose about 15lbs before my wedding in the fall and actually keep it off. I have a home gym setup. Can we chat?"</p>
+              </div>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:8px">Update status</label>
+              <div style="display:flex;gap:8px">
+                <sc-for list="{{ statusOpts }}" as="so" hint-placeholder-count="3">
+                  <button onClick="{{ so.onClick }}" style="{{ so.style }}">{{ so.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= WEBSITE EDITOR ================= -->
+          <sc-if value="{{ isEditor }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(234,230,222,.7)">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button onClick="{{ goDashboard }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Edit homepage</span>
+              </div>
+              <button onClick="{{ goPublish }}" style="font-family:Inter;font-weight:600;font-size:13px;color:#fff;background:#0E9C6E;border:none;padding:9px 16px;border-radius:11px;cursor:pointer" style-hover="background:#0A7A57">Publish</button>
+            </div>
+            <div style="padding:18px 22px 0">
+              <!-- live preview thumbnail -->
+              <div style="border-radius:18px;overflow:hidden;border:1px solid #EDE9E1;margin-bottom:16px;position:relative">
+                <div style="height:150px;background:linear-gradient(150deg,#0E9C6E,#0A7A57);position:relative">
+                  <div style="position:absolute;left:16px;bottom:16px;color:#fff"><div style="font-family:Manrope;font-weight:800;font-size:18px">{{ heroTitle }}</div></div>
+                </div>
+                <div style="position:absolute;top:12px;right:12px;background:rgba(255,255,255,.9);font-size:10px;font-weight:600;color:#0A7A57;padding:4px 9px;border-radius:8px;display:flex;align-items:center;gap:5px"><span style="width:6px;height:6px;border-radius:50%;background:#0E9C6E"></span>Live preview</div>
+              </div>
+              <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:12px">
+                <label style="display:block;font-size:12px;font-weight:600;color:#8A857D;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Hero headline</label>
+                <input value="{{ heroTitle }}" onInput="{{ setHero }}" style="width:100%;font-family:Manrope;font-weight:700;font-size:16px;color:#1D1B17;background:#F6F4EF;border:1px solid #E6E1D8;border-radius:12px;padding:12px 14px;outline:none;margin-bottom:16px" style-focus="border-color:#0E9C6E;background:#fff;box-shadow:0 0 0 3px rgba(14,156,110,.1)"/>
+                <label style="display:block;font-size:12px;font-weight:600;color:#8A857D;text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px">Subheadline</label>
+                <textarea onInput="{{ setSub }}" style="width:100%;font-family:Inter;font-size:14px;line-height:1.5;color:#1D1B17;background:#F6F4EF;border:1px solid #E6E1D8;border-radius:12px;padding:12px 14px;outline:none;resize:none;height:76px" style-focus="border-color:#0E9C6E;background:#fff;box-shadow:0 0 0 3px rgba(14,156,110,.1)">{{ heroSub }}</textarea>
+              </div>
+              <!-- manager shortcuts -->
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
+                <sc-for list="{{ managerLinks }}" as="ml" hint-placeholder-count="4">
+                  <button onClick="{{ ml.onClick }}" style="display:flex;align-items:center;gap:10px;text-align:left;background:#fff;border:1px solid #EDE9E1;border-radius:14px;padding:13px;cursor:pointer" style-hover="border-color:#DCEEE4;transform:translateY(-1px)">
+                    <span style="width:32px;height:32px;flex:none;border-radius:9px;background:{{ ml.tint }};display:flex;align-items:center;justify-content:center">{{ ml.icon }}</span>
+                    <span style="font-family:Manrope;font-weight:600;font-size:13px;color:#1D1B17">{{ ml.label }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <!-- section toggles -->
+              <div style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17;margin:4px 2px 8px">Homepage sections</div>
+              <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:6px 18px">
+                <sc-for list="{{ sections }}" as="sec" hint-placeholder-count="4">
+                  <div style="display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid {{ sec.border }}">
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="7" r="1.4" fill="#C4BEB4"/><circle cx="6" cy="12" r="1.4" fill="#C4BEB4"/><circle cx="6" cy="17" r="1.4" fill="#C4BEB4"/><circle cx="11" cy="7" r="1.4" fill="#C4BEB4"/><circle cx="11" cy="12" r="1.4" fill="#C4BEB4"/><circle cx="11" cy="17" r="1.4" fill="#C4BEB4"/></svg>
+                      <span style="font-family:Manrope;font-weight:600;font-size:14px;color:#1D1B17">{{ sec.name }}</span>
+                    </div>
+                    <button onClick="{{ sec.onToggle }}" style="{{ sec.toggleStyle }}"><span style="{{ sec.knobStyle }}"></span></button>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= ONBOARDING WIZARD ================= -->
+          <sc-if value="{{ isOnboarding }}" hint-placeholder-val="{{ false }}">
+          <div style="min-height:844px;display:flex;flex-direction:column;animation:tl-fade .4s ease both">
+            <div style="padding:56px 22px 0">
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <span style="font-family:Manrope;font-weight:800;font-size:15px;color:#1D1B17;letter-spacing:-.02em">Set up your site</span>
+                <span style="font-size:13px;color:#8A857D">Step {{ obStep }} of 4</span>
+              </div>
+              <div style="height:6px;border-radius:3px;background:#E6E1D8;overflow:hidden"><div style="height:100%;border-radius:3px;background:#0E9C6E;width:{{ obPct }};transition:width .4s cubic-bezier(.4,0,.2,1)"></div></div>
+            </div>
+            <div style="flex:1;padding:30px 22px 0">
+              <span style="width:56px;height:56px;border-radius:16px;background:#EAF6F0;display:flex;align-items:center;justify-content:center;margin-bottom:22px">{{ obIcon }}</span>
+              <h1 style="font-family:Manrope;font-weight:800;font-size:28px;line-height:1.1;letter-spacing:-.02em;color:#1D1B17;margin:0 0 10px">{{ obTitle }}</h1>
+              <p style="font-size:15px;line-height:1.55;color:#57534C;margin:0 0 26px">{{ obDesc }}</p>
+              <sc-for list="{{ obFields }}" as="fld" hint-placeholder-count="2">
+                <div style="margin-bottom:16px">
+                  <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:7px">{{ fld.label }}</label>
+                  <sc-if value="{{ fld.isChips }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-wrap:wrap;gap:8px">
+                      <sc-for list="{{ fld.chips }}" as="c" hint-placeholder-count="4"><button onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</button></sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ fld.isInput }}" hint-placeholder-val="{{ true }}">
+                    <input value="{{ fld.value }}" onInput="{{ fld.onInput }}" placeholder="{{ fld.ph }}" style="width:100%;font-family:Inter;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:14px 15px;outline:none" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"/>
+                  </sc-if>
+                </div>
+              </sc-for>
+            </div>
+            <div style="padding:16px 22px 30px;display:flex;gap:10px">
+              <sc-if value="{{ obCanBack }}" hint-placeholder-val="{{ false }}"><button onClick="{{ obBack }}" style="font-family:Inter;font-weight:600;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;padding:15px 22px;border-radius:14px;cursor:pointer" style-hover="border-color:#0E9C6E">Back</button></sc-if>
+              <button onClick="{{ obNext }}" style="flex:1;font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:15px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.28)" style-hover="background:#0A7A57">{{ obNextLabel }}</button>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= PUBLISHING WORKFLOW ================= -->
+          <sc-if value="{{ isPublish }}" hint-placeholder-val="{{ false }}">
+          <div style="min-height:844px;display:flex;flex-direction:column;animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;background:rgba(246,244,239,.9);backdrop-filter:blur(14px);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goEditor }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Publish changes</span>
+            </div>
+            <div style="flex:1;padding:22px 22px 0">
+              <sc-if value="{{ publishDone }}" hint-placeholder-val="{{ false }}">
+                <div style="text-align:center;padding-top:60px">
+                  <div style="width:88px;height:88px;border-radius:50%;background:#EAF6F0;display:inline-flex;align-items:center;justify-content:center;margin-bottom:24px;animation:tl-pop .6s both">
+                    <svg width="46" height="46" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" fill="#0E9C6E"/><path d="M16 27l7 7 14-15" stroke="#fff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </div>
+                  <h1 style="font-family:Manrope;font-weight:800;font-size:26px;color:#1D1B17;margin:0 0 10px">Your site is live 🎉</h1>
+                  <p style="font-size:14px;color:#57534C;margin:0 0 22px">Changes are published to <b style="color:#0A7A57">maya-ellis.trainerlaunch.co</b></p>
+                  <button onClick="{{ goDashboard }}" style="font-family:Inter;font-weight:600;font-size:15px;color:#fff;background:#0E9C6E;border:none;padding:14px 26px;border-radius:14px;cursor:pointer" style-hover="background:#0A7A57">Back to dashboard</button>
+                </div>
+              </sc-if>
+              <sc-if value="{{ publishPending }}" hint-placeholder-val="{{ true }}">
+                <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:14px">
+                  <div style="font-family:Manrope;font-weight:700;font-size:15px;color:#1D1B17;margin-bottom:4px">Review your changes</div>
+                  <div style="font-size:13px;color:#8A857D">3 edits since your last publish</div>
+                </div>
+                <sc-for list="{{ changes }}" as="ch" hint-placeholder-count="3">
+                  <div style="display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #EDE9E1;border-radius:14px;padding:14px;margin-bottom:10px">
+                    <span style="width:34px;height:34px;flex:none;border-radius:10px;background:#EAF6F0;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6 16l9-9 3 3-9 9H6v-3z" stroke="#0A7A57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <div style="flex:1"><div style="font-family:Manrope;font-weight:600;font-size:14px;color:#1D1B17">{{ ch.title }}</div><div style="font-size:12px;color:#8A857D">{{ ch.detail }}</div></div>
+                  </div>
+                </sc-for>
+                <div style="background:#F0F1FB;border-radius:14px;padding:14px;display:flex;gap:11px;align-items:center;margin-top:6px">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4C5FC4" stroke-width="1.7"/><path d="M12 8v5M12 16h.01" stroke="#4C5FC4" stroke-width="1.7" stroke-linecap="round"/></svg>
+                  <span style="font-size:12.5px;color:#3E3A34;line-height:1.4">Visitors will see updates within ~30 seconds of publishing.</span>
+                </div>
+              </sc-if>
+            </div>
+            <sc-if value="{{ publishPending }}" hint-placeholder-val="{{ true }}">
+            <div style="padding:16px 22px 30px">
+              <button onClick="{{ doPublish }}" style="width:100%;font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:16px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.3);display:flex;align-items:center;justify-content:center;gap:8px" style-hover="background:#0A7A57">
+                <sc-if value="{{ publishing }}" hint-placeholder-val="{{ false }}"><span style="width:18px;height:18px;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;border-radius:50%;animation:tl-spin .7s linear infinite;display:inline-block"></span>Publishing…</sc-if>
+                <sc-if value="{{ notPublishing }}" hint-placeholder-val="{{ true }}">Publish to my site</sc-if>
+              </button>
+            </div>
+            </sc-if>
+          </div>
+          </sc-if>
+
+          <!-- ================= SETTINGS (More tab) ================= -->
+          <sc-if value="{{ isSettings }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:86px">
+            <div style="padding:60px 22px 18px;background:#fff;border-bottom:1px solid #EDE9E1">
+              <div style="font-family:Manrope;font-weight:800;font-size:23px;color:#1D1B17;letter-spacing:-.02em;margin-bottom:16px">Settings</div>
+              <div style="display:flex;gap:13px;align-items:center">
+                <span style="width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,#9CD0B6,#5FA98A);display:flex;align-items:center;justify-content:center;font-family:Manrope;font-weight:700;font-size:19px;color:#fff">ME</span>
+                <div><div style="font-family:Manrope;font-weight:700;font-size:16px;color:#1D1B17">Maya Ellis</div><div style="font-size:13px;color:#8A857D">maya-ellis.trainerlaunch.co</div></div>
+              </div>
+            </div>
+            <div style="padding:16px 22px 0">
+              <sc-for list="{{ settingGroups }}" as="sg" hint-placeholder-count="2">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:14px 4px 8px">{{ sg.title }}</div>
+                <div style="background:#fff;border:1px solid #EDE9E1;border-radius:16px;padding:4px 16px">
+                  <sc-for list="{{ sg.rows }}" as="r" hint-placeholder-count="3">
+                    <button onClick="{{ r.onClick }}" style="width:100%;display:flex;align-items:center;gap:13px;padding:14px 0;border-bottom:1px solid {{ r.border }};background:none;border-left:none;border-right:none;border-top:none;cursor:pointer;text-align:left" style-hover="opacity:.7">
+                      <span style="width:32px;height:32px;flex:none;border-radius:9px;background:{{ r.tint }};display:flex;align-items:center;justify-content:center">{{ r.icon }}</span>
+                      <span style="flex:1;font-family:Inter;font-weight:500;font-size:14.5px;color:#1D1B17">{{ r.label }}</span>
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="#C4BEB4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                  </sc-for>
+                </div>
+              </sc-for>
+              <button onClick="{{ goComponents }}" style="width:100%;margin-top:18px;font-family:Inter;font-weight:600;font-size:14px;color:#0A7A57;background:#EAF6F0;border:none;padding:14px;border-radius:14px;cursor:pointer">View design system →</button>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= COMPONENTS ================= -->
+          <sc-if value="{{ isComponents }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding:56px 22px 40px">
+            <div style="font-family:Manrope;font-weight:800;font-size:24px;color:#1D1B17;letter-spacing:-.02em">Component library</div>
+            <div style="font-size:13px;color:#8A857D;margin-bottom:20px">The building blocks behind every screen</div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Buttons</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px">
+              <span style="font-family:Inter;font-weight:600;font-size:14px;color:#fff;background:#0E9C6E;padding:11px 18px;border-radius:12px">Primary</span>
+              <span style="font-family:Inter;font-weight:600;font-size:14px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;padding:11px 18px;border-radius:12px">Secondary</span>
+              <span style="font-family:Inter;font-weight:600;font-size:14px;color:#0A7A57;background:#EAF6F0;padding:11px 18px;border-radius:12px">Tonal</span>
+              <span style="font-family:Inter;font-weight:600;font-size:14px;color:#8A857D;background:transparent;padding:11px 18px;border-radius:12px">Ghost</span>
+            </div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Inputs & chips</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:16px">
+              <div style="border:1px solid #E6E1D8;border-radius:12px;padding:12px 14px;font-size:14px;color:#8A857D;margin-bottom:10px">Placeholder text</div>
+              <div style="border:1px solid #0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12);border-radius:12px;padding:12px 14px;font-size:14px;color:#1D1B17;margin-bottom:14px">Focused field</div>
+              <div style="display:flex;gap:8px"><span style="font-size:13px;font-weight:600;color:#0A7A57;background:#EAF6F0;border:1px solid #0E9C6E;padding:8px 14px;border-radius:11px">Selected</span><span style="font-size:13px;font-weight:500;color:#57534C;background:#fff;border:1px solid #E6E1D8;padding:8px 14px;border-radius:11px">Default</span></div>
+            </div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Badges & avatars</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:16px">
+              <span style="font-size:11px;font-weight:700;color:#0A7A57;background:#EAF6F0;padding:3px 9px;border-radius:7px">NEW</span>
+              <span style="font-size:11px;font-weight:700;color:#4C5FC4;background:#F0F1FB;padding:3px 9px;border-radius:7px">PRO</span>
+              <span style="font-size:11px;font-weight:700;color:#B87A2E;background:#FBF0EA;padding:3px 9px;border-radius:7px">PENDING</span>
+              <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#F6C89A,#E89B6C);display:inline-flex;align-items:center;justify-content:center;color:#fff;font-family:Manrope;font-weight:700;font-size:13px">JR</span>
+              <span style="width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#9CD0B6,#5FA98A)"></span>
+            </div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Feedback & states</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:16px">
+              <div style="display:flex;gap:10px;align-items:center;background:#EAF6F0;border-radius:12px;padding:12px 14px;margin-bottom:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0E9C6E"/><path d="M8 12.5l2.5 2.5 5-5.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:13px;color:#0A5C43;font-weight:500">Saved successfully</span></div>
+              <div style="display:flex;gap:10px;align-items:center;background:#FBEDEB;border-radius:12px;padding:12px 14px;margin-bottom:14px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#D0453B" stroke-width="1.8"/><path d="M12 8v5M12 16h.01" stroke="#D0453B" stroke-width="1.8" stroke-linecap="round"/></svg><span style="font-size:13px;color:#A0332B;font-weight:500">Something went wrong</span></div>
+              <div style="display:flex;gap:8px"><span style="height:12px;flex:1;border-radius:6px;background:linear-gradient(90deg,#EDE9E1 25%,#F6F4EF 50%,#EDE9E1 75%);background-size:200% 100%;animation:tl-shimmer 1.4s infinite"></span><span style="height:12px;width:40px;border-radius:6px;background:linear-gradient(90deg,#EDE9E1 25%,#F6F4EF 50%,#EDE9E1 75%);background-size:200% 100%;animation:tl-shimmer 1.4s infinite"></span></div>
+            </div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Toggle & progress</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;display:flex;align-items:center;gap:20px">
+              <span style="width:44px;height:26px;border-radius:999px;background:#0E9C6E;position:relative;flex:none"><span style="position:absolute;top:3px;left:21px;width:20px;height:20px;border-radius:50%;background:#fff"></span></span>
+              <span style="width:44px;height:26px;border-radius:999px;background:#DAD5CC;position:relative;flex:none"><span style="position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff"></span></span>
+              <span style="flex:1;height:6px;border-radius:3px;background:#E6E1D8;overflow:hidden"><span style="display:block;height:100%;width:64%;background:#0E9C6E;border-radius:3px"></span></span>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= DESIGN TOKENS / HANDOFF ================= -->
+          <sc-if value="{{ isTokens }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding:56px 22px 40px">
+            <div style="font-family:Manrope;font-weight:800;font-size:24px;color:#1D1B17;letter-spacing:-.02em">Design tokens</div>
+            <div style="font-size:13px;color:#8A857D;margin-bottom:20px">Developer handoff · Tailwind-ready</div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Color</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:16px;margin-bottom:16px">
+              <sc-for list="{{ colorTokens }}" as="ct" hint-placeholder-count="5">
+                <div style="display:flex;align-items:center;gap:12px;padding:7px 0">
+                  <span style="width:34px;height:34px;border-radius:10px;background:{{ ct.hex }};border:1px solid rgba(0,0,0,.06);flex:none"></span>
+                  <span style="flex:1"><span style="display:block;font-family:Manrope;font-weight:600;font-size:13.5px;color:#1D1B17">{{ ct.name }}</span><span style="display:block;font-size:11.5px;color:#A39D93;font-family:ui-monospace,monospace">{{ ct.token }}</span></span>
+                  <span style="font-size:12px;color:#8A857D;font-family:ui-monospace,monospace">{{ ct.hex }}</span>
+                </div>
+              </sc-for>
+            </div>
+
+            <div style="display:flex;gap:12px;margin-bottom:16px">
+              <div style="flex:1">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Spacing · 8pt</div>
+                <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:14px 16px">
+                  <sc-for list="{{ spacing }}" as="sp" hint-placeholder-count="5">
+                    <div style="display:flex;align-items:center;gap:10px;padding:5px 0"><span style="height:10px;background:#0E9C6E;border-radius:3px;width:{{ sp.w }}"></span><span style="font-size:12px;color:#57534C;font-family:ui-monospace,monospace">{{ sp.label }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="flex:1">
+                <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Radius</div>
+                <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:14px 16px">
+                  <sc-for list="{{ radii }}" as="rd" hint-placeholder-count="4">
+                    <div style="display:flex;align-items:center;gap:10px;padding:5px 0"><span style="width:24px;height:24px;background:#EAF6F0;border:1.5px solid #0E9C6E;border-radius:{{ rd.r }}"></span><span style="font-size:12px;color:#57534C;font-family:ui-monospace,monospace">{{ rd.label }}</span></div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Type scale</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px;margin-bottom:16px">
+              <div style="font-family:Manrope;font-weight:800;font-size:32px;color:#1D1B17;letter-spacing:-.02em;line-height:1.1">Display 32</div>
+              <div style="font-family:Manrope;font-weight:700;font-size:22px;color:#1D1B17;margin-top:6px">Heading 22</div>
+              <div style="font-family:Inter;font-size:16px;color:#3E3A34;margin-top:6px">Body 16 · Inter regular</div>
+              <div style="font-family:Inter;font-size:13px;color:#8A857D;margin-top:6px">Caption 13 · muted</div>
+            </div>
+
+            <div style="font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A39D93;margin:6px 2px 10px">Elevation & motion</div>
+            <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px">
+              <div style="display:flex;gap:14px;margin-bottom:16px">
+                <span style="width:48px;height:48px;border-radius:14px;background:#fff;box-shadow:0 1px 3px rgba(30,26,20,.08)"></span>
+                <span style="width:48px;height:48px;border-radius:14px;background:#fff;box-shadow:0 8px 22px rgba(30,26,20,.1)"></span>
+                <span style="width:48px;height:48px;border-radius:14px;background:#fff;box-shadow:0 20px 40px -10px rgba(30,26,20,.22)"></span>
+              </div>
+              <div style="font-size:12.5px;color:#57534C;line-height:1.6;font-family:ui-monospace,monospace">ease: cubic-bezier(.4,0,.2,1)<br/>fast 150ms · base 250ms · slow 400ms</div>
+            </div>
+            <div style="text-align:center;font-size:11px;color:#B5AFA4;margin-top:20px">Base grid 4px · Breakpoints 390 / 768 / 1280 · WCAG AA contrast</div>
+          </div>
+          </sc-if>
+
+          <!-- ================= ABOUT TRAINER ================= -->
+          <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLanding }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">About Maya</span>
+            </div>
+            <div style="padding:0 22px">
+              <div style="height:230px;border-radius:0 0 26px 26px;margin:0 -22px 20px;background:linear-gradient(160deg,#0E9C6E,#0A7A57 60%,#0C5F47);position:relative;overflow:hidden">
+                <div style="position:absolute;inset:0;background:radial-gradient(150px 180px at 80% 25%,rgba(255,255,255,.2),transparent 70%)"></div>
+                <div style="position:absolute;left:22px;bottom:22px;color:#fff">
+                  <div style="font-family:Manrope;font-weight:800;font-size:30px;letter-spacing:-.02em">Maya Ellis</div>
+                  <div style="font-size:14px;opacity:.85;margin-top:2px">Strength & lifestyle coach · Austin, TX</div>
+                </div>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:22px">
+                <sc-for list="{{ aboutStats }}" as="ast" hint-placeholder-count="3">
+                  <div style="background:#fff;border:1px solid #EDE9E1;border-radius:16px;padding:14px;text-align:center">
+                    <div style="font-family:Manrope;font-weight:800;font-size:22px;color:#1D1B17">{{ ast.v }}</div>
+                    <div style="font-size:11px;color:#8A857D;margin-top:2px">{{ ast.k }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <h2 style="font-family:Manrope;font-weight:700;font-size:20px;color:#1D1B17;margin:0 0 10px;letter-spacing:-.02em">My approach</h2>
+              <p style="font-size:15px;line-height:1.65;color:#57534C;margin:0 0 16px">I spent eight years watching people burn out on programs built for someone else's life. So I coach differently — we start with your schedule, your body, and your goals, then build something you'll actually keep doing.</p>
+              <p style="font-size:15px;line-height:1.65;color:#57534C;margin:0 0 22px">No crash diets. No punishment. Just steady, sustainable progress with someone in your corner every week.</p>
+              <h2 style="font-family:Manrope;font-weight:700;font-size:20px;color:#1D1B17;margin:0 0 12px;letter-spacing:-.02em">Credentials</h2>
+              <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:26px">
+                <sc-for list="{{ credentials }}" as="cr" hint-placeholder-count="3">
+                  <div style="display:flex;align-items:center;gap:11px;background:#fff;border:1px solid #EDE9E1;border-radius:14px;padding:13px 15px">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3l2.2 4.6 5 .7-3.6 3.5.9 5L12 14.9 7.6 16.8l.9-5L4.8 8.3l5-.7L12 3z" stroke="#0A7A57" stroke-width="1.6" stroke-linejoin="round"/></svg>
+                    <span style="font-size:14px;font-weight:500;color:#1D1B17">{{ cr }}</span>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="padding-bottom:40px"><button onClick="{{ goBook }}" style="width:100%;font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:16px;border-radius:15px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.3)" style-hover="background:#0A7A57">Work with me</button></div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= PROGRAM DETAILS ================= -->
+          <sc-if value="{{ isProgram }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goServices }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">1:1 Coaching</span>
+            </div>
+            <div style="padding:22px 22px 40px">
+              <span style="display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;color:#0A7A57;background:#EAF6F0;padding:4px 11px;border-radius:999px;margin-bottom:14px">12-WEEK PROGRAM</span>
+              <h1 style="font-family:Manrope;font-weight:800;font-size:30px;line-height:1.08;letter-spacing:-.03em;color:#1D1B17;margin:0 0 12px">Fully tailored strength & lifestyle coaching</h1>
+              <p style="font-size:15px;line-height:1.6;color:#57534C;margin:0 0 22px">A complete system built around your life — programming, nutrition, and weekly accountability that adapts as you progress.</p>
+              <div style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17;margin-bottom:12px">Your weekly rhythm</div>
+              <div style="position:relative;padding-left:26px;margin-bottom:26px">
+                <div style="position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:#D8F0E5"></div>
+                <sc-for list="{{ weekly }}" as="wk" hint-placeholder-count="4">
+                  <div style="position:relative;padding-bottom:18px">
+                    <span style="position:absolute;left:-25px;top:2px;width:20px;height:20px;border-radius:50%;background:#EAF6F0;border:2px solid #0E9C6E;display:flex;align-items:center;justify-content:center"><span style="width:6px;height:6px;border-radius:50%;background:#0E9C6E"></span></span>
+                    <div style="font-family:Manrope;font-weight:700;font-size:14.5px;color:#1D1B17">{{ wk.t }}</div>
+                    <div style="font-size:13px;color:#8A857D;margin-top:2px;line-height:1.5">{{ wk.d }}</div>
+                  </div>
+                </sc-for>
+              </div>
+              <div style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17;margin-bottom:12px">Everything included</div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:26px">
+                <sc-for list="{{ included }}" as="inc" hint-placeholder-count="6">
+                  <div style="display:flex;align-items:center;gap:8px;background:#fff;border:1px solid #EDE9E1;border-radius:13px;padding:12px 13px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#EAF6F0"/><path d="M8 12.5l2.5 2.5 5-5.5" stroke="#0A7A57" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="font-size:12.5px;font-weight:500;color:#1D1B17">{{ inc }}</span></div>
+                </sc-for>
+              </div>
+              <div style="background:#1D1B17;border-radius:20px;padding:22px;display:flex;align-items:center;justify-content:space-between;color:#fff">
+                <div><div style="font-size:12px;opacity:.6">Starting at</div><div style="font-family:Manrope;font-weight:800;font-size:26px">$220<span style="font-size:14px;opacity:.6;font-weight:500">/mo</span></div></div>
+                <button onClick="{{ goBook }}" style="font-family:Inter;font-weight:600;font-size:15px;color:#1D1B17;background:#fff;border:none;padding:13px 20px;border-radius:12px;cursor:pointer" style-hover="background:#EAF6F0">Book a consult</button>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= TRANSFORMATION GALLERY ================= -->
+          <sc-if value="{{ isGallery }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLanding }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Client results</span>
+            </div>
+            <div style="padding:22px 22px 40px">
+              <h1 style="font-family:Manrope;font-weight:800;font-size:28px;line-height:1.1;letter-spacing:-.02em;color:#1D1B17;margin:0 0 8px">Real people, real progress.</h1>
+              <p style="font-size:14px;color:#57534C;margin:0 0 20px">A few of the journeys I've had the privilege to coach.</p>
+              <div style="display:flex;flex-direction:column;gap:14px">
+                <sc-for list="{{ gallery }}" as="gl" hint-placeholder-count="4">
+                  <div style="border-radius:20px;overflow:hidden;border:1px solid #EDE9E1;background:#fff">
+                    <div style="display:flex;height:150px">
+                      <div style="flex:1;background:{{ gl.before }};position:relative"><span style="position:absolute;top:10px;left:10px;font-size:10px;font-weight:700;color:#fff;background:rgba(0,0,0,.35);padding:3px 8px;border-radius:6px">BEFORE</span></div>
+                      <div style="flex:1;background:{{ gl.after }};position:relative"><span style="position:absolute;top:10px;right:10px;font-size:10px;font-weight:700;color:#fff;background:rgba(14,156,110,.85);padding:3px 8px;border-radius:6px">AFTER</span></div>
+                    </div>
+                    <div style="padding:14px 16px;display:flex;align-items:center;justify-content:space-between">
+                      <div><div style="font-family:Manrope;font-weight:700;font-size:15px;color:#1D1B17">{{ gl.name }}</div><div style="font-size:12px;color:#8A857D">{{ gl.time }}</div></div>
+                      <span style="font-size:12px;font-weight:700;color:#0A7A57;background:#EAF6F0;padding:5px 11px;border-radius:9px">{{ gl.result }}</span>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= TESTIMONIALS ================= -->
+          <sc-if value="{{ isTestimonials }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLanding }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">What clients say</span>
+            </div>
+            <div style="padding:22px 22px 40px">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px">
+                <div style="font-family:Manrope;font-weight:800;font-size:40px;color:#1D1B17;letter-spacing:-.02em">4.9</div>
+                <div><div style="display:flex;gap:2px;margin-bottom:3px"><sc-for list="{{ fiveStars }}" as="fs" hint-placeholder-count="5"><svg width="16" height="16" viewBox="0 0 24 24" fill="#0E9C6E"><path d="M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.7 18.9 8 13 3.5 9l6-.5L12 3z"/></svg></sc-for></div><div style="font-size:12.5px;color:#8A857D">From 120+ coached clients</div></div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <sc-for list="{{ reviews }}" as="rv" hint-placeholder-count="4">
+                  <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px">
+                    <div style="display:flex;gap:2px;margin-bottom:10px"><sc-for list="{{ fiveStars }}" as="fs2" hint-placeholder-count="5"><svg width="13" height="13" viewBox="0 0 24 24" fill="#0E9C6E"><path d="M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.7 18.9 8 13 3.5 9l6-.5L12 3z"/></svg></sc-for></div>
+                    <p style="font-size:14px;line-height:1.6;color:#3E3A34;margin:0 0 14px">{{ rv.text }}</p>
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="width:34px;height:34px;border-radius:50%;background:{{ rv.avatar }}"></span>
+                      <div><div style="font-family:Manrope;font-weight:600;font-size:13.5px;color:#1D1B17">{{ rv.name }}</div><div style="font-size:11.5px;color:#8A857D">{{ rv.meta }}</div></div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= LEAD CAPTURE FORM ================= -->
+          <sc-if value="{{ isCapture }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.82);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goLanding }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Get in touch</span>
+            </div>
+            <div style="padding:22px 22px 40px">
+              <h1 style="font-family:Manrope;font-weight:800;font-size:26px;line-height:1.12;letter-spacing:-.02em;color:#1D1B17;margin:0 0 8px">Have a question first?</h1>
+              <p style="font-size:14px;color:#57534C;margin:0 0 22px">Drop me a note and I'll get back to you personally within a day.</p>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:7px">Name</label>
+              <input placeholder="Your name" style="width:100%;font-family:Inter;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:14px 15px;margin-bottom:16px;outline:none" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"/>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:7px">Email</label>
+              <input placeholder="you@email.com" style="width:100%;font-family:Inter;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:14px 15px;margin-bottom:16px;outline:none" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"/>
+              <label style="display:block;font-size:13px;font-weight:600;color:#1D1B17;margin-bottom:7px">Message</label>
+              <textarea placeholder="Tell me a bit about your goals…" style="width:100%;font-family:Inter;font-size:15px;line-height:1.5;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:14px 15px;margin-bottom:22px;outline:none;resize:none;height:110px" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"></textarea>
+              <button onClick="{{ submitCapture }}" style="width:100%;font-family:Inter;font-weight:600;font-size:16px;color:#fff;background:#0E9C6E;border:none;padding:16px;border-radius:14px;cursor:pointer;box-shadow:0 8px 22px rgba(14,156,110,.3)" style-hover="background:#0A7A57">Send message</button>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= SERVICE MANAGEMENT ================= -->
+          <sc-if value="{{ isServiceMgmt }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(234,230,222,.7)">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button onClick="{{ goEditor }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Services</span>
+              </div>
+              <button onClick="{{ addServiceToast }}" style="width:36px;height:36px;border-radius:11px;background:#0E9C6E;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#0A7A57"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+            </div>
+            <div style="padding:18px 22px 0">
+              <sc-for list="{{ serviceRows }}" as="svc" hint-placeholder-count="3">
+                <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:16px;margin-bottom:12px">
+                  <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px">
+                    <div style="display:flex;gap:12px;align-items:center">
+                      <span style="width:42px;height:42px;flex:none;border-radius:12px;background:{{ svc.tint }};display:flex;align-items:center;justify-content:center">{{ svc.icon }}</span>
+                      <div><div style="font-family:Manrope;font-weight:700;font-size:15.5px;color:#1D1B17">{{ svc.name }}</div><div style="font-size:12.5px;color:#8A857D">{{ svc.price }}</div></div>
+                    </div>
+                    <span style="{{ svc.badgeStyle }}">{{ svc.status }}</span>
+                  </div>
+                  <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid #F2EFE8">
+                    <button onClick="{{ svc.edit }}" style="flex:1;font-family:Inter;font-weight:600;font-size:13px;color:#1D1B17;background:#F6F4EF;border:none;padding:10px;border-radius:10px;cursor:pointer" style-hover="background:#EDE9E1">Edit</button>
+                    <button onClick="{{ svc.toggle }}" style="flex:1;font-family:Inter;font-weight:600;font-size:13px;color:{{ svc.toggleColor }};background:{{ svc.toggleBg }};border:none;padding:10px;border-radius:10px;cursor:pointer">{{ svc.toggleLabel }}</button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= MEDIA LIBRARY ================= -->
+          <sc-if value="{{ isMedia }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goSettings }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Media library</span>
+            </div>
+            <div style="padding:18px 22px 0">
+              <button onClick="{{ uploadToast }}" style="width:100%;border:2px dashed #C9DED2;background:#F1F8F4;border-radius:16px;padding:22px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;margin-bottom:18px" style-hover="border-color:#0E9C6E;background:#EAF6F0">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 16V6M8 10l4-4 4 4" stroke="#0A7A57" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 18h14" stroke="#0A7A57" stroke-width="1.8" stroke-linecap="round"/></svg>
+                <span style="font-family:Manrope;font-weight:600;font-size:14px;color:#0A7A57">Upload photos</span>
+                <span style="font-size:12px;color:#8A857D">JPG or PNG · up to 10MB</span>
+              </button>
+              <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px"><span style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17">All media</span><span style="font-size:12px;color:#8A857D">18 items</span></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px">
+                <sc-for list="{{ mediaItems }}" as="m" hint-placeholder-count="9">
+                  <div style="aspect-ratio:1;border-radius:13px;background:{{ m }};position:relative;overflow:hidden" style-hover="opacity:.9"><span style="position:absolute;inset:0;background:radial-gradient(circle at 70% 25%,rgba(255,255,255,.18),transparent 70%)"></span></div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= TESTIMONIAL MANAGER ================= -->
+          <sc-if value="{{ isTestiMgr }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(234,230,222,.7)">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button onClick="{{ goEditor }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Testimonials</span>
+              </div>
+              <button onClick="{{ addTestiToast }}" style="width:36px;height:36px;border-radius:11px;background:#0E9C6E;border:none;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="background:#0A7A57"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></button>
+            </div>
+            <div style="padding:18px 22px 0">
+              <sc-for list="{{ testiRows }}" as="tr" hint-placeholder-count="3">
+                <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:16px;margin-bottom:12px">
+                  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="width:36px;height:36px;border-radius:50%;background:{{ tr.avatar }}"></span>
+                      <div><div style="font-family:Manrope;font-weight:600;font-size:14px;color:#1D1B17">{{ tr.name }}</div><div style="display:flex;gap:1px"><sc-for list="{{ fiveStars }}" as="s5" hint-placeholder-count="5"><svg width="11" height="11" viewBox="0 0 24 24" fill="#0E9C6E"><path d="M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.7 18.9 8 13 3.5 9l6-.5L12 3z"/></svg></sc-for></div></div>
+                    </div>
+                    <span style="{{ tr.badgeStyle }}">{{ tr.status }}</span>
+                  </div>
+                  <p style="font-size:13px;line-height:1.55;color:#57534C;margin:0 0 12px">{{ tr.text }}</p>
+                  <div style="display:flex;gap:8px;padding-top:12px;border-top:1px solid #F2EFE8">
+                    <button onClick="{{ tr.toggle }}" style="flex:1;font-family:Inter;font-weight:600;font-size:13px;color:{{ tr.actionColor }};background:{{ tr.actionBg }};border:none;padding:10px;border-radius:10px;cursor:pointer">{{ tr.actionLabel }}</button>
+                    <button onClick="{{ tr.del }}" style="width:42px;font-family:Inter;font-weight:600;font-size:13px;color:#B5AFA4;background:#F6F4EF;border:none;padding:10px;border-radius:10px;cursor:pointer;display:flex;align-items:center;justify-content:center" style-hover="color:#D0453B"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 7h14M9 7V5h6v2M8 7l1 12h6l1-12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= ANALYTICS ================= -->
+          <sc-if value="{{ isAnalytics }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="padding:60px 22px 14px;background:#fff;border-bottom:1px solid #EDE9E1">
+              <div style="font-family:Manrope;font-weight:800;font-size:23px;color:#1D1B17;letter-spacing:-.02em">Analytics</div>
+              <div style="display:flex;gap:8px;margin-top:14px">
+                <sc-for list="{{ rangeTabs }}" as="rt" hint-placeholder-count="3"><button onClick="{{ rt.onClick }}" style="{{ rt.style }}">{{ rt.label }}</button></sc-for>
+              </div>
+            </div>
+            <div style="padding:18px 22px 0">
+              <div style="background:#1D1B17;border-radius:20px;padding:20px;color:#fff;margin-bottom:12px;position:relative;overflow:hidden">
+                <div style="position:absolute;right:-20px;top:-20px;width:120px;height:120px;border-radius:50%;background:radial-gradient(circle,rgba(14,156,110,.3),transparent 70%)"></div>
+                <div style="font-size:13px;opacity:.7">Total visitors · 30 days</div>
+                <div style="font-family:Manrope;font-weight:800;font-size:34px;margin:4px 0 2px;letter-spacing:-.02em">5,842</div>
+                <div style="font-size:12px;color:#7FE0BC">▲ 18% vs. previous period</div>
+                <svg viewBox="0 0 300 70" style="width:100%;height:64px;margin-top:14px" preserveAspectRatio="none"><path d="M0 55 C40 50 55 30 90 34 C130 39 150 12 190 18 C230 24 250 8 300 6" stroke="#0E9C6E" stroke-width="2.5" fill="none"/><path d="M0 55 C40 50 55 30 90 34 C130 39 150 12 190 18 C230 24 250 8 300 6 L300 70 L0 70 Z" fill="url(#ag)" opacity=".25"/><defs><linearGradient id="ag" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0E9C6E"/><stop offset="1" stop-color="#0E9C6E" stop-opacity="0"/></linearGradient></defs></svg>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">
+                <sc-for list="{{ analyticsStats }}" as="as" hint-placeholder-count="4">
+                  <div style="background:#fff;border:1px solid #EDE9E1;border-radius:16px;padding:15px"><div style="font-size:12px;color:#8A857D;margin-bottom:6px">{{ as.k }}</div><div style="font-family:Manrope;font-weight:800;font-size:22px;color:#1D1B17">{{ as.v }}</div><div style="font-size:11px;color:{{ as.dc }};margin-top:2px">{{ as.d }}</div></div>
+                </sc-for>
+              </div>
+              <div style="background:#fff;border:1px solid #EDE9E1;border-radius:18px;padding:18px">
+                <div style="font-family:Manrope;font-weight:700;font-size:14px;color:#1D1B17;margin-bottom:14px">Top traffic sources</div>
+                <sc-for list="{{ sources }}" as="src" hint-placeholder-count="4">
+                  <div style="margin-bottom:13px">
+                    <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px"><span style="color:#1D1B17;font-weight:500">{{ src.name }}</span><span style="color:#8A857D">{{ src.pct }}</span></div>
+                    <div style="height:8px;border-radius:4px;background:#F2EFE8;overflow:hidden"><div style="height:100%;border-radius:4px;background:{{ src.color }};width:{{ src.pct }}"></div></div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= PROFILE EDITOR ================= -->
+          <sc-if value="{{ isProfile }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(234,230,222,.7)">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button onClick="{{ goSettings }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Profile</span>
+              </div>
+              <button onClick="{{ saveProfileToast }}" style="font-family:Inter;font-weight:600;font-size:13px;color:#fff;background:#0E9C6E;border:none;padding:9px 16px;border-radius:11px;cursor:pointer" style-hover="background:#0A7A57">Save</button>
+            </div>
+            <div style="padding:22px 22px 0;text-align:center">
+              <div style="position:relative;display:inline-block;margin-bottom:8px">
+                <span style="width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,#9CD0B6,#5FA98A);display:inline-flex;align-items:center;justify-content:center;font-family:Manrope;font-weight:700;font-size:30px;color:#fff">ME</span>
+                <button onClick="{{ uploadToast }}" style="position:absolute;bottom:0;right:0;width:30px;height:30px;border-radius:50%;background:#1D1B17;border:3px solid #F6F4EF;display:flex;align-items:center;justify-content:center;cursor:pointer"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 20h16M6 16l9-9 3 3-9 9H6v-3z" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              </div>
+            </div>
+            <div style="padding:14px 22px 0">
+              <sc-for list="{{ profileFields }}" as="pf" hint-placeholder-count="4">
+                <label style="display:block;font-size:12px;font-weight:600;color:#8A857D;text-transform:uppercase;letter-spacing:.04em;margin:0 2px 7px">{{ pf.label }}</label>
+                <sc-if value="{{ pf.isArea }}" hint-placeholder-val="{{ false }}"><textarea onInput="{{ pf.onInput }}" style="width:100%;font-family:Inter;font-size:15px;line-height:1.5;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:13px 15px;margin-bottom:16px;outline:none;resize:none;height:92px" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)">{{ pf.value }}</textarea></sc-if>
+                <sc-if value="{{ pf.isText }}" hint-placeholder-val="{{ true }}"><input value="{{ pf.value }}" onInput="{{ pf.onInput }}" style="width:100%;font-family:Inter;font-size:15px;color:#1D1B17;background:#fff;border:1px solid #E6E1D8;border-radius:13px;padding:13px 15px;margin-bottom:16px;outline:none" style-focus="border-color:#0E9C6E;box-shadow:0 0 0 3px rgba(14,156,110,.12)"/></sc-if>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= BRAND CUSTOMIZATION ================= -->
+          <sc-if value="{{ isBrand }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(234,230,222,.7)">
+              <button onClick="{{ goSettings }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Brand</span>
+            </div>
+            <div style="padding:20px 22px 0">
+              <!-- live preview -->
+              <div style="border-radius:18px;overflow:hidden;border:1px solid #EDE9E1;margin-bottom:20px">
+                <div style="height:110px;background:linear-gradient(150deg,{{ brandColor }},{{ brandColorDark }});display:flex;align-items:flex-end;padding:14px"><span style="font-family:{{ brandFont }};font-weight:800;font-size:18px;color:#fff">Maya Ellis</span></div>
+                <div style="padding:14px;background:#fff;display:flex;align-items:center;justify-content:space-between"><span style="font-size:12px;color:#8A857D;font-family:{{ brandFont }}">Preview of your site header</span><span style="font-size:11px;font-weight:600;color:#fff;background:{{ brandColor }};padding:6px 12px;border-radius:9px">Book</span></div>
+              </div>
+              <div style="font-size:12px;font-weight:600;color:#8A857D;text-transform:uppercase;letter-spacing:.04em;margin:0 2px 10px">Accent color</div>
+              <div style="display:flex;gap:12px;margin-bottom:22px">
+                <sc-for list="{{ brandColors }}" as="bc" hint-placeholder-count="5"><button onClick="{{ bc.onClick }}" style="{{ bc.style }}"><sc-if value="{{ bc.active }}" hint-placeholder-val="{{ false }}"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></sc-if></button></sc-for>
+              </div>
+              <div style="font-size:12px;font-weight:600;color:#8A857D;text-transform:uppercase;letter-spacing:.04em;margin:0 2px 10px">Heading font</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <sc-for list="{{ brandFonts }}" as="bf" hint-placeholder-count="3"><button onClick="{{ bf.onClick }}" style="{{ bf.style }}"><span style="font-family:{{ bf.font }};font-weight:700;font-size:16px;color:#1D1B17">{{ bf.name }}</span><sc-if value="{{ bf.active }}" hint-placeholder-val="{{ false }}"><span style="width:20px;height:20px;border-radius:50%;background:#0E9C6E;display:flex;align-items:center;justify-content:center"><svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4 4 10-10" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></sc-if></button></sc-for>
+              </div>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= NOTIFICATION CENTER ================= -->
+          <sc-if value="{{ isNotif }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;backdrop-filter:blur(14px);background:rgba(246,244,239,.9);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(234,230,222,.7)">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button onClick="{{ goDashboard }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid #E6E1D8;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#1D1B17" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#1D1B17">Notifications</span>
+              </div>
+              <button onClick="{{ readAllToast }}" style="font-family:Inter;font-weight:600;font-size:12.5px;color:#0A7A57;background:none;border:none;cursor:pointer">Mark all read</button>
+            </div>
+            <div style="padding:14px 22px 0">
+              <sc-for list="{{ notifs }}" as="nt" hint-placeholder-count="5">
+                <div style="display:flex;gap:12px;background:{{ nt.bg }};border:1px solid {{ nt.border }};border-radius:16px;padding:14px;margin-bottom:10px">
+                  <span style="width:38px;height:38px;flex:none;border-radius:11px;background:{{ nt.tint }};display:flex;align-items:center;justify-content:center">{{ nt.icon }}</span>
+                  <div style="flex:1"><div style="font-size:13.5px;color:#1D1B17;line-height:1.45"><b style="font-weight:600">{{ nt.title }}</b> {{ nt.body }}</div><div style="font-size:11.5px;color:#A39D93;margin-top:4px">{{ nt.time }}</div></div>
+                  <sc-if value="{{ nt.unread }}" hint-placeholder-val="{{ false }}"><span style="width:8px;height:8px;border-radius:50%;background:#0E9C6E;flex:none;margin-top:5px"></span></sc-if>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          </sc-if>
+
+          <!-- ================= MOBILE PREVIEW ================= -->
+          <sc-if value="{{ isPreview }}" hint-placeholder-val="{{ false }}">
+          <div style="animation:tl-fade .4s ease both;min-height:844px;background:#1D1B17;padding-bottom:100px">
+            <div style="position:sticky;top:0;z-index:30;background:rgba(29,27,23,.85);backdrop-filter:blur(14px);padding:56px 22px 12px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)">
+              <div style="display:flex;align-items:center;gap:12px">
+                <button onClick="{{ goEditor }}" style="width:36px;height:36px;flex:none;border-radius:11px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;cursor:pointer" style-hover="border-color:#0E9C6E"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M15 18l-6-6 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <span style="font-family:Manrope;font-weight:700;font-size:17px;color:#fff">Preview</span>
+              </div>
+              <div style="display:flex;gap:6px;background:rgba(255,255,255,.08);padding:4px;border-radius:11px">
+                <sc-for list="{{ previewTabs }}" as="pt" hint-placeholder-count="2"><button onClick="{{ pt.onClick }}" style="{{ pt.style }}">{{ pt.label }}</button></sc-for>
+              </div>
+            </div>
+            <div style="padding:24px 0;display:flex;justify-content:center">
+              <div style="width:{{ previewW }};transition:width .35s cubic-bezier(.4,0,.2,1);background:#0F0E0C;border-radius:28px;padding:8px;box-shadow:0 30px 60px -20px rgba(0,0,0,.6)">
+                <div style="background:#F6F4EF;border-radius:22px;overflow:hidden">
+                  <div style="height:130px;background:linear-gradient(150deg,#0E9C6E,#0A7A57);display:flex;align-items:flex-end;padding:14px"><div style="color:#fff"><div style="font-family:Manrope;font-weight:800;font-size:16px">Train with intention</div><div style="font-size:10px;opacity:.85;margin-top:2px">Maya Ellis · Austin, TX</div></div></div>
+                  <div style="padding:14px">
+                    <div style="height:34px;border-radius:10px;background:#0E9C6E;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:600;margin-bottom:12px">Book a free consult</div>
+                    <div style="display:flex;gap:8px;margin-bottom:12px"><div style="flex:1;height:56px;border-radius:10px;background:#EAF6F0"></div><div style="flex:1;height:56px;border-radius:10px;background:#F0F1FB"></div><div style="flex:1;height:56px;border-radius:10px;background:#FBF0EA"></div></div>
+                    <div style="height:10px;border-radius:5px;background:#EDE9E1;margin-bottom:7px"></div>
+                    <div style="height:10px;width:70%;border-radius:5px;background:#EDE9E1"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div style="text-align:center;color:rgba(255,255,255,.5);font-size:12px">Live preview of maya-ellis.trainerlaunch.co</div>
+            <div style="padding:22px;text-align:center"><button onClick="{{ goPublish }}" style="font-family:Inter;font-weight:600;font-size:15px;color:#1D1B17;background:#fff;border:none;padding:14px 26px;border-radius:14px;cursor:pointer" style-hover="background:#EAF6F0">Publish this version</button></div>
+          </div>
+          </sc-if>
+
+          <!--SCREENS-->
+
+        </div>
+
+        <!-- dashboard bottom tab bar -->
+        <sc-if value="{{ showTabBar }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;bottom:0;left:0;right:0;z-index:45;background:rgba(255,255,255,.92);backdrop-filter:blur(16px);border-top:1px solid #EDE9E1;padding:9px 20px 22px;display:flex;justify-content:space-between">
+            <sc-for list="{{ tabs }}" as="tb" hint-placeholder-count="4">
+              <button onClick="{{ tb.onClick }}" style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:none;cursor:pointer">
+                <span style="{{ tb.iconWrap }}">{{ tb.icon }}</span>
+                <span style="font-size:10.5px;font-weight:{{ tb.weight }};color:{{ tb.color }}">{{ tb.label }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </sc-if>
+
+        <!-- home indicator -->
+        <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);width:130px;height:5px;border-radius:3px;background:{{ homeBarColor }};z-index:50;pointer-events:none"></div>
+
+        <!-- toast -->
+        <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+          <div style="position:absolute;bottom:96px;left:50%;transform:translateX(-50%);z-index:60;background:#1D1B17;color:#fff;font-size:13px;font-weight:500;padding:12px 18px;border-radius:13px;box-shadow:0 12px 30px rgba(0,0,0,.28);display:flex;align-items:center;gap:9px;animation:tl-toast .3s ease both;white-space:nowrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0E9C6E"/><path d="M8 12.5l2.5 2.5 5-5.5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            {{ toast }}
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { screen: 'landing', openFaq: 0, bookName: '', bookEmail: '', goal: 'Lose weight', time: 'Weekday', booking: false, emailError: false,
+    leadTab: 'New', leadStatus: 'New', heroTitle: 'Train with intention', heroSub: 'Personalized coaching for busy people who want to feel strong and move well.',
+    sectionsOn: { Services: true, Testimonials: true, Gallery: false, FAQ: true },
+    obStep: 1, obName: '', obTagline: '', obNiche: 'Weight loss', obTone: 'Warm', publishing: false, publishDone: false };
+
+  setScroller = (el) => { this.scroller = el; };
+
+  go(screen) {
+    this.setState({ screen });
+    if (this.scroller) this.scroller.scrollTop = 0;
+  }
+
+  showToast(msg) {
+    this.setState({ toast: msg });
+    clearTimeout(this._t);
+    this._t = setTimeout(() => this.setState({ toast: null }), 2400);
+  }
+
+  brandHex() {
+    const map = { emerald: '#0E9C6E', blue: '#4C5FC4', plum: '#8A5A9C', clay: '#C2703D', ink: '#1D1B17' };
+    return map[this.state.brandKey || 'emerald'];
+  }
+  brandHexDark() {
+    const map = { emerald: '#0A7A57', blue: '#3A4BA0', plum: '#6E4680', clay: '#9E5A2E', ink: '#000000' };
+    return map[this.state.brandKey || 'emerald'];
+  }
+
+  notifData() {
+    return [
+      { title: 'Jordan Reyes', body: 'submitted a consult request.', time: '12 min ago', unread: true, tint: '#EAF6F0', paths: ['M4 6h16v12H4z','M4 7l8 6 8-6'] },
+      { title: 'New review', body: 'Priya N. left you a 5-star testimonial.', time: '1 hour ago', unread: true, tint: '#FBF0EA', paths: ['M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.7 18.9 8 13 3.5 9l6-.5L12 3z'] },
+      { title: 'Traffic milestone', body: 'Your site passed 1,000 visitors this week.', time: '3 hours ago', unread: false, tint: '#F0F1FB', paths: ['M4 19V5','M4 15l5-5 4 3 7-8'] },
+      { title: 'Site published', body: 'Your latest changes are now live.', time: 'Yesterday', unread: false, tint: '#EAF6F0', paths: ['M20 6L9 17l-5-5'] },
+      { title: 'Sam Whitfield', body: 'replied to your message.', time: '2 days ago', unread: false, tint: '#F0F1FB', paths: ['M8 10h8M8 14h5','M4 6h16v12H4z'] },
+    ].map(n => ({ title: n.title, body: n.body, time: n.time, unread: n.unread, tint: n.tint,
+      bg: n.unread ? '#fff' : '#FAF8F4', border: n.unread ? '#DCEEE4' : '#EDE9E1',
+      icon: React.createElement('svg', { width: 18, height: 18, viewBox: '0 0 24 24', fill: 'none' }, n.paths.map((p, i) => React.createElement('path', { key: i, d: p, stroke: '#4B4741', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }))) }));
+  }
+
+  serviceMgmtRows() {
+    const active = this.state.svcActive || { '1:1 Coaching': true, 'Small Group': true, 'Nutrition Plan': false };
+    const defs = [
+      { name: '1:1 Coaching', price: '$220/mo', tint: '#EAF6F0', paths: ['M6 12h12','M9 8v8','M15 8v8'] },
+      { name: 'Small Group', price: '$120/mo', tint: '#F0F1FB', paths: ['M9 11a3 3 0 100-6 3 3 0 000 6z','M3 19c0-3 2.7-4.5 6-4.5','M16 11a4 4 0 100-8'] },
+      { name: 'Nutrition Plan', price: '$90/mo', tint: '#FBF0EA', paths: ['M12 3c-3 4-5 6-5 9a5 5 0 0010 0c0-3-2-5-5-9z'] },
+    ];
+    return defs.map(d => {
+      const on = active[d.name];
+      return { name: d.name, price: d.price, tint: d.tint,
+        icon: React.createElement('svg', { width: 20, height: 20, viewBox: '0 0 24 24', fill: 'none' }, d.paths.map((p, i) => React.createElement('path', { key: i, d: p, stroke: '#0A7A57', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round' }))),
+        status: on ? 'Live' : 'Hidden',
+        badgeStyle: `font-size:11px;font-weight:700;padding:4px 9px;border-radius:8px;color:${on?'#0A7A57':'#8A857D'};background:${on?'#EAF6F0':'#F2EFE8'}`,
+        edit: () => this.showToast('Editing ' + d.name),
+        toggle: () => this.setState(st => ({ svcActive: { ...active, [d.name]: !on } })),
+        toggleLabel: on ? 'Hide' : 'Publish', toggleColor: on ? '#8A857D' : '#0A7A57', toggleBg: on ? '#F6F4EF' : '#EAF6F0' };
+    });
+  }
+
+  testiMgrRows() {
+    const pub = this.state.testiPub || { 'Jordan Reyes': true, 'Priya Nair': true, 'Dana Brooks': false };
+    const defs = [
+      { name: 'Jordan Reyes', avatar: 'linear-gradient(135deg,#F6C89A,#E89B6C)', text: '"Maya is the first coach who made it feel sustainable. Down 18lbs and I still have a life."' },
+      { name: 'Priya Nair', avatar: 'linear-gradient(135deg,#9CD0B6,#5FA98A)', text: '"I finally understand why I\'m doing each exercise. The check-ins keep me honest."' },
+      { name: 'Dana Brooks', avatar: 'linear-gradient(135deg,#B9C4E8,#7E90CC)', text: '"Came back from a knee injury stronger than before."' },
+    ];
+    return defs.map(d => {
+      const on = pub[d.name];
+      return { name: d.name, avatar: d.avatar, text: d.text,
+        status: on ? 'Published' : 'Pending',
+        badgeStyle: `font-size:11px;font-weight:700;padding:4px 9px;border-radius:8px;color:${on?'#0A7A57':'#B87A2E'};background:${on?'#EAF6F0':'#FBF0EA'}`,
+        toggle: () => this.setState(st => ({ testiPub: { ...pub, [d.name]: !on } })),
+        actionLabel: on ? 'Unpublish' : 'Publish', actionColor: on ? '#8A857D' : '#0A7A57', actionBg: on ? '#F6F4EF' : '#EAF6F0',
+        del: () => this.showToast('Testimonial removed') };
+    });
+  }
+
+  onboardingVals() {
+    const step = this.state.obStep;
+    const chip = (label, active, on) => ({ label, onClick: on,
+      style: `font-family:Inter;font-size:13px;font-weight:${active?600:500};color:${active?'#0A7A57':'#57534C'};background:${active?'#EAF6F0':'#fff'};border:1px solid ${active?'#0E9C6E':'#E6E1D8'};padding:9px 14px;border-radius:11px;cursor:pointer` });
+    const steps = {
+      1: { title: 'Welcome to TrainerLaunch', desc: 'Let\'s build a website that turns followers into clients. This takes about 2 minutes.',
+        icon: this.icon(['M6 8v8M18 8v8M6 12h12']),
+        fields: [ { label: 'Your name', isInput: true, value: this.state.obName, ph: 'Maya Ellis', onInput: (e) => this.setState({ obName: e.target.value }) } ] },
+      2: { title: 'What do you specialize in?', desc: 'We\'ll tailor your homepage copy and layout to your focus.',
+        icon: this.icon(['M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8']),
+        fields: [ { label: 'Primary focus', isChips: true, chips: ['Weight loss','Strength','Mobility','Nutrition'].map(n => chip(n, this.state.obNiche===n, () => this.setState({ obNiche: n }))) } ] },
+      3: { title: 'Set your tone', desc: 'This shapes your headlines and calls to action.',
+        icon: this.icon(['M4 6h16M4 12h10M4 18h7']),
+        fields: [
+          { label: 'Brand voice', isChips: true, chips: ['Warm','Bold','Calm','Playful'].map(n => chip(n, this.state.obTone===n, () => this.setState({ obTone: n }))) },
+          { label: 'Tagline', isInput: true, value: this.state.obTagline, ph: 'Train with intention', onInput: (e) => this.setState({ obTagline: e.target.value }) },
+        ] },
+      4: { title: 'You\'re all set', desc: 'We\'ve generated your starter site. Preview it, then publish when you\'re ready.',
+        icon: this.icon(['M20 6L9 17l-5-5']),
+        fields: [] },
+    };
+    const cur = steps[step];
+    return {
+      obStep: step, obPct: (step/4*100) + '%',
+      obTitle: cur.title, obDesc: cur.desc, obIcon: cur.icon,
+      obFields: cur.fields.map(f => ({ isChips: !!f.isChips, isInput: !!f.isInput, label: f.label, chips: f.chips || [], value: f.value || '', ph: f.ph || '', onInput: f.onInput || (()=>{}) })),
+      obCanBack: step > 1,
+      obNextLabel: step === 4 ? 'Go to my dashboard' : (step === 1 ? 'Get started' : 'Continue'),
+      obBack: () => this.setState(st => ({ obStep: Math.max(1, st.obStep - 1) })),
+      obNext: () => { if (step === 4) { this.go('dashboard'); } else { this.setState(st => ({ obStep: st.obStep + 1 })); } },
+    };
+  }
+
+  settingsData() {
+    const row = (label, tint, paths, dest) => ({ label, tint, border: '#F2EFE8',
+      onClick: dest ? (() => this.go(dest)) : (() => this.showToast(label + ' — coming soon')),
+      icon: React.createElement('svg', { width: 17, height: 17, viewBox: '0 0 24 24', fill: 'none' },
+        paths.map((d, i) => React.createElement('path', { key: i, d, stroke: '#4B4741', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }))) });
+    const g1 = [ row('Profile editor', '#EAF6F0', ['M12 12a4 4 0 100-8 4 4 0 000 8z','M4 20c0-4 4-6 8-6s8 2 8 6'], 'profile'), row('Brand customization', '#F0F1FB', ['M12 3l2.5 5.5 6 .5-4.5 4'], 'brand'), row('Media library', '#FBF0EA', ['M4 6h16v12H4z','M9 13l2 2 4-5 5 6'], 'media') ];
+    const g2 = [ row('Notifications', '#EAF6F0', ['M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9'], 'notifCenter'), row('Domain & publishing', '#F0F1FB', ['M12 3a9 9 0 100 18 9 9 0 000-18z','M3 12h18'], 'publish'), row('Billing', '#FBF0EA', ['M3 7h18v10H3z','M3 11h18']) ];
+    g1[g1.length-1].border = 'transparent';
+    g2[g2.length-1].border = 'transparent';
+    return [ { title: 'Website', rows: g1 }, { title: 'Account', rows: g2 } ];
+  }
+
+  buildTabs(s) {
+    const items = [
+      ['dashboard','Home',['M3 11l9-8 9 8','M5 10v9h14v-9']],
+      ['leads','Leads',['M4 6h16v12H4z','M4 7l8 6 8-6']],
+      ['editor','Editor',['M4 20h16','M6 16l9-9 3 3-9 9H6v-3z']],
+      ['settings','More',['M5 12h.01M12 12h.01M19 12h.01']],
+    ];
+    const map = { leadDetail: 'leads', publish: 'editor' };
+    const cur = map[s] || s;
+    return items.map(([id, label, paths]) => {
+      const active = cur === id;
+      return { label, onClick: () => this.go(id),
+        weight: active ? 700 : 500, color: active ? '#0A7A57' : '#A39D93',
+        iconWrap: `display:inline-flex;align-items:center;justify-content:center`,
+        icon: React.createElement('svg', { width: 23, height: 23, viewBox: '0 0 24 24', fill: 'none' },
+          paths.map((d, i) => React.createElement('path', { key: i, d, stroke: active ? '#0E9C6E' : '#A39D93', strokeWidth: 1.9, strokeLinecap: 'round', strokeLinejoin: 'round' }))) };
+    });
+  }
+
+  leadList() {
+    const all = [
+      { name: 'Jordan Reyes', initials: 'JR', goal: 'Lose 15 lbs', time: 'Weekday AM', when: '12m', isNew: true, avatar: 'linear-gradient(135deg,#F6C89A,#E89B6C)', status: 'New' },
+      { name: 'Priya Nair', initials: 'PN', goal: 'Build muscle', time: 'Evening', when: '1h', isNew: true, avatar: 'linear-gradient(135deg,#9CD0B6,#5FA98A)', status: 'New' },
+      { name: 'Sam Whitfield', initials: 'SW', goal: 'Feel stronger', time: 'Weekend', when: '3h', isNew: true, avatar: 'linear-gradient(135deg,#B9C4E8,#7E90CC)', status: 'New' },
+      { name: 'Alex Kim', initials: 'AK', goal: 'Stay consistent', time: 'Weekday PM', when: '1d', isNew: false, avatar: 'linear-gradient(135deg,#E6B8D4,#C77FA8)', status: 'Contacted' },
+      { name: 'Dana Brooks', initials: 'DB', goal: 'Post-injury', time: 'Evening', when: '2d', isNew: false, avatar: 'linear-gradient(135deg,#C9C2B4,#9C947F)', status: 'Contacted' },
+    ];
+    const tab = this.state.leadTab;
+    const filtered = tab === 'All' ? all : all.filter(l => l.status === tab);
+    return filtered.map(l => ({ ...l, onClick: () => this.go('leadDetail') }));
+  }
+
+  icon(paths) {
+    return React.createElement('svg', { width: 22, height: 22, viewBox: '0 0 24 24', fill: 'none' },
+      paths.map((d, i) => React.createElement('path', { key: i, d, stroke: '#0A7A57', strokeWidth: 1.9, strokeLinecap: 'round', strokeLinejoin: 'round' })));
+  }
+
+  renderVals() {
+    const s = this.state.screen;
+    const dashScreens = ['dashboard','leads','leadDetail','editor','settings','analytics','notifCenter','serviceMgmt','testiMgr','media','profile','brand'];
+    const isDash = dashScreens.includes(s);
+    const darkScreen = s === 'preview';
+
+    // navigator rail
+    const mk = (title, items) => ({ title, items: items.map(([id, label, dot]) => {
+      const active = s === id;
+      return {
+        label, dot: dot || '',
+        onClick: () => this.go(id),
+        style: `width:100%;display:flex;align-items:center;gap:9px;text-align:left;font-family:Inter;font-size:13px;font-weight:${active?600:500};color:${active?'#0A7A57':'#6B6660'};background:${active?'#fff':'transparent'};border:1px solid ${active?'#DCEEE4':'transparent'};box-shadow:${active?'0 2px 8px rgba(30,26,20,.05)':'none'};padding:8px 8px;border-radius:10px;cursor:pointer;margin-bottom:2px`
+      };
+    }) });
+
+    const railGroups = [
+      mk('Public website', [['landing','Landing','●'],['about','About','●'],['services','Services','●'],['program','Program details','●'],['gallery','Transformations','●'],['testimonials','Testimonials','●'],['capture','Lead capture','●'],['book','Book consult','●'],['success','Confirmation','●']]),
+      mk('Trainer dashboard', [['dashboard','Overview','■'],['leads','Lead inbox','■'],['leadDetail','Lead detail','■'],['analytics','Analytics','■'],['notifCenter','Notifications','■'],['settings','Settings','■']]),
+      mk('Website manager', [['editor','Homepage editor','▸'],['serviceMgmt','Services','▸'],['testiMgr','Testimonials','▸'],['media','Media library','▸'],['brand','Brand','▸'],['profile','Profile','▸'],['preview','Mobile preview','▸']]),
+      mk('Flows', [['onboarding','Onboarding','◆'],['publish','Publishing','◆']]),
+      mk('System', [['components','Components','◇'],['tokens','Design tokens','◇']]),
+    ];
+
+    // services data
+    const services = [
+      { name: '1:1 Coaching', desc: 'Fully tailored, weekly check-ins', price: '$220/mo', tint: '#EAF6F0', icon: this.icon(['M6 12h12','M9 8v8','M15 8v8']) },
+      { name: 'Small Group', desc: 'Train with 2–4 others', price: '$120/mo', tint: '#F0F1FB', icon: this.icon(['M9 11a3 3 0 100-6 3 3 0 000 6z','M17 11a3 3 0 100-6 3 3 0 000 6z','M3 19c0-3 2.7-4.5 6-4.5M21 19c0-2-1.5-3.4-4-4']) },
+      { name: 'Nutrition Plan', desc: 'Habits that actually stick', price: '$90/mo', tint: '#FBF0EA', icon: this.icon(['M12 3c-3 4-5 6-5 9a5 5 0 0010 0c0-3-2-5-5-9z']) },
+    ];
+
+    // faqs
+    const faqData = [
+      { q: 'Do I need a gym membership?', a: 'No. I build programs around what you have — home, hotel, or full gym. We start with an equipment audit on our first call.' },
+      { q: 'How do check-ins work?', a: 'You log workouts in the app and send a weekly video or note. I reply within 24 hours with adjustments and feedback.' },
+      { q: 'What if I have an injury?', a: 'I coach around limitations every day and coordinate with your PT when needed. Nothing we do should hurt.' },
+    ];
+    const faqs = faqData.map((f, i) => {
+      const open = this.state.openFaq === i;
+      return { q: f.q, a: f.a,
+        onClick: () => this.setState({ openFaq: open ? -1 : i }),
+        iconStyle: `flex:none;display:inline-flex;transition:transform .25s ease;transform:rotate(${open?180:0}deg)`,
+        bodyStyle: `display:block;overflow:hidden;font-size:13.5px;line-height:1.55;color:#57534C;max-height:${open?200:0}px;opacity:${open?1:0};margin-top:${open?10:0}px;transition:all .3s ease`
+      };
+    });
+
+    // book form
+    const goalOpts = ['Lose weight', 'Build muscle', 'Feel stronger', 'Stay consistent'];
+    const timeOpts = ['Weekday', 'Evening', 'Weekend'];
+    const chip = (label, active, on) => ({ label, onClick: on,
+      style: `font-family:Inter;font-size:13px;font-weight:${active?600:500};color:${active?'#0A7A57':'#57534C'};background:${active?'#EAF6F0':'#fff'};border:1px solid ${active?'#0E9C6E':'#E6E1D8'};padding:9px 14px;border-radius:11px;cursor:pointer` });
+    const goals = goalOpts.map(g => chip(g, this.state.goal === g, () => this.setState({ goal: g })));
+    const times = timeOpts.map(t => chip(t, this.state.time === t, () => this.setState({ time: t })));
+
+    return {
+      screen: s,
+      isLanding: s === 'landing',
+      isServices: s === 'services',
+      isBook: s === 'book',
+      isSuccess: s === 'success',
+      proFeatures: ['Custom weekly programming', 'Video form reviews', 'Direct messaging with Maya', 'Habit & nutrition guidance'],
+      bookName: this.state.bookName, bookEmail: this.state.bookEmail,
+      setName: (e) => this.setState({ bookName: e.target.value }),
+      setEmail: (e) => this.setState({ bookEmail: e.target.value, emailError: false }),
+      emailError: this.state.emailError,
+      emailBorder: this.state.emailError ? '#D0453B' : '#E6E1D8',
+      goals, times,
+      booking: this.state.booking, notBooking: !this.state.booking,
+      submitBook: () => {
+        const ok = /.+@.+\..+/.test(this.state.bookEmail);
+        if (!ok) { this.setState({ emailError: true }); return; }
+        this.setState({ booking: true });
+        setTimeout(() => { this.setState({ booking: false }); this.go('success'); }, 1100);
+      },
+      goLanding: () => this.go('landing'),
+
+      // ---- batch A public ----
+      isAbout: s === 'about',
+      isProgram: s === 'program',
+      isGallery: s === 'gallery',
+      isTestimonials: s === 'testimonials',
+      isCapture: s === 'capture',
+      aboutStats: [ {v:'8 yrs',k:'Coaching'}, {v:'120+',k:'Clients'}, {v:'4.9★',k:'Rating'} ],
+      credentials: ['NASM Certified Personal Trainer', 'Precision Nutrition L1 Coach', 'Pre/Post-natal specialist'],
+      weekly: [
+        { t: 'Monday · Program drop', d: 'Your week of training lands in the app, tailored to how last week went.' },
+        { t: 'Wed · Mid-week check', d: 'Quick pulse on energy, sleep, and any tweaks needed.' },
+        { t: 'Fri · Form review', d: 'Send a lift video, get frame-by-frame feedback within 24h.' },
+        { t: 'Sun · Weekly reflection', d: 'We review wins, adjust nutrition targets, and set next week\'s focus.' },
+      ],
+      included: ['Custom programming', 'Nutrition targets', 'Video form reviews', 'Direct messaging', 'Habit tracking', 'Progress check-ins'],
+      gallery: [
+        { name: 'Jordan R.', time: '7 months', result: '−18 lbs', before: 'linear-gradient(160deg,#C9C2B4,#9C947F)', after: 'linear-gradient(160deg,#9CD0B6,#5FA98A)' },
+        { name: 'Priya N.', time: '5 months', result: '+ strength', before: 'linear-gradient(160deg,#D6CFC2,#A89F8B)', after: 'linear-gradient(160deg,#8FC7AD,#4F9C7C)' },
+        { name: 'Sam W.', time: '9 months', result: '−24 lbs', before: 'linear-gradient(160deg,#CFC7B8,#A0977F)', after: 'linear-gradient(160deg,#A3D4BC,#5CA486)' },
+        { name: 'Dana B.', time: '4 months', result: 'pain-free', before: 'linear-gradient(160deg,#D2CABC,#9A917C)', after: 'linear-gradient(160deg,#96CCB2,#569E80)' },
+      ],
+      fiveStars: [1,2,3,4,5],
+      reviews: [
+        { text: '"Maya is the first coach who made it feel sustainable. Down 18lbs and I still have a life."', name: 'Jordan Reyes', meta: 'Client · 7 months', avatar: 'linear-gradient(135deg,#F6C89A,#E89B6C)' },
+        { text: '"I finally understand why I\'m doing each exercise. The weekly check-ins keep me honest."', name: 'Priya Nair', meta: 'Client · 5 months', avatar: 'linear-gradient(135deg,#9CD0B6,#5FA98A)' },
+        { text: '"Came back from a knee injury stronger than before. She coached around it the whole way."', name: 'Dana Brooks', meta: 'Client · 4 months', avatar: 'linear-gradient(135deg,#B9C4E8,#7E90CC)' },
+        { text: '"Zero fluff, all substance. My energy and sleep are night-and-day different."', name: 'Sam Whitfield', meta: 'Client · 9 months', avatar: 'linear-gradient(135deg,#E6B8D4,#C77FA8)' },
+      ],
+      goProgram: () => this.go('program'),
+      submitCapture: () => { this.showToast('Message sent — I\'ll reply soon ✉️'); this.go('landing'); },
+      goSettings: () => this.go('settings'),
+
+      // ---- batch C config ----
+      isProfile: s === 'profile',
+      isBrand: s === 'brand',
+      isNotif: s === 'notifCenter',
+      isPreview: s === 'preview',
+      saveProfileToast: () => { this.showToast('Profile saved ✓'); this.go('settings'); },
+      readAllToast: () => this.showToast('All caught up ✓'),
+      profileFields: [
+        { label: 'Display name', isText: true, value: this.state.pName ?? 'Maya Ellis', onInput: (e) => this.setState({ pName: e.target.value }) },
+        { label: 'Title', isText: true, value: this.state.pTitle ?? 'Strength & lifestyle coach', onInput: (e) => this.setState({ pTitle: e.target.value }) },
+        { label: 'Location', isText: true, value: this.state.pLoc ?? 'Austin, TX', onInput: (e) => this.setState({ pLoc: e.target.value }) },
+        { label: 'Bio', isArea: true, value: this.state.pBio ?? 'Eight years helping busy people build strength that lasts — no crash diets, no burnout.', onInput: (e) => this.setState({ pBio: e.target.value }) },
+      ],
+      brandColor: this.brandHex(), brandColorDark: this.brandHexDark(), brandFont: this.state.brandFont || 'Manrope',
+      brandColors: [['emerald','#0E9C6E'],['blue','#4C5FC4'],['plum','#8A5A9C'],['clay','#C2703D'],['ink','#1D1B17']].map(([k,hex]) => {
+        const active = (this.state.brandKey || 'emerald') === k;
+        return { onClick: () => this.setState({ brandKey: k }), active,
+          style: `width:44px;height:44px;border-radius:13px;background:${hex};border:${active?'2px solid #1D1B17':'2px solid transparent'};box-shadow:0 0 0 3px ${active?'rgba(29,27,23,.12)':'transparent'};display:flex;align-items:center;justify-content:center;cursor:pointer` };
+      }),
+      brandFonts: ['Manrope','Inter','Georgia'].map(f => {
+        const active = (this.state.brandFont || 'Manrope') === f;
+        return { name: f, font: f, active, onClick: () => this.setState({ brandFont: f }),
+          style: `width:100%;display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid ${active?'#0E9C6E':'#E6E1D8'};border-radius:14px;padding:14px 16px;cursor:pointer` };
+      }),
+      notifs: this.notifData(),
+      previewTabs: ['Mobile','Desktop'].map(t => {
+        const active = (this.state.previewDev || 'Mobile') === t;
+        return { label: t, onClick: () => this.setState({ previewDev: t }),
+          style: `font-family:Inter;font-size:12.5px;font-weight:600;color:${active?'#1D1B17':'rgba(255,255,255,.7)'};background:${active?'#fff':'transparent'};border:none;padding:7px 14px;border-radius:8px;cursor:pointer` };
+      }),
+      previewW: (this.state.previewDev || 'Mobile') === 'Desktop' ? '320px' : '210px',
+
+      // ---- batch B management ----
+      isServiceMgmt: s === 'serviceMgmt',
+      isMedia: s === 'media',
+      isTestiMgr: s === 'testiMgr',
+      isAnalytics: s === 'analytics',
+      serviceRows: this.serviceMgmtRows(),
+      mediaItems: ['linear-gradient(160deg,#9CD0B6,#5FA98A)','linear-gradient(160deg,#F6C89A,#E89B6C)','linear-gradient(160deg,#B9C4E8,#7E90CC)','linear-gradient(160deg,#0E9C6E,#0A7A57)','linear-gradient(160deg,#E6B8D4,#C77FA8)','linear-gradient(160deg,#C9C2B4,#9C947F)','linear-gradient(160deg,#8FC7AD,#4F9C7C)','linear-gradient(160deg,#F2D3A8,#D89B62)','linear-gradient(160deg,#A9B6E0,#6E82C4)'],
+      uploadToast: () => this.showToast('Uploading… ✓ Added to library'),
+      addServiceToast: () => this.showToast('New service draft created'),
+      addTestiToast: () => this.showToast('Request sent to client'),
+      testiRows: this.testiMgrRows(),
+      rangeTabs: ['7d','30d','90d'].map(t => ({ label: t, onClick: () => this.setState({ range: t }),
+        style: `font-family:Inter;font-size:13px;font-weight:${(this.state.range||'30d')===t?600:500};color:${(this.state.range||'30d')===t?'#fff':'#57534C'};background:${(this.state.range||'30d')===t?'#1D1B17':'#fff'};border:1px solid ${(this.state.range||'30d')===t?'#1D1B17':'#E6E1D8'};padding:8px 16px;border-radius:11px;cursor:pointer` })),
+      analyticsStats: [
+        { k: 'Page views', v: '14.2k', d: '▲ 12%', dc: '#0A7A57' },
+        { k: 'Consult requests', v: '38', d: '▲ 9%', dc: '#0A7A57' },
+        { k: 'Avg. time on site', v: '2m 14s', d: '▲ 6%', dc: '#0A7A57' },
+        { k: 'Bounce rate', v: '34%', d: '▼ 4%', dc: '#0A7A57' },
+      ],
+      sources: [
+        { name: 'Instagram', pct: '52%', color: '#0E9C6E' },
+        { name: 'Direct / referral', pct: '24%', color: '#4C5FC4' },
+        { name: 'TikTok', pct: '15%', color: '#E89B6C' },
+        { name: 'Google', pct: '9%', color: '#C4BEB4' },
+      ],
+
+      chromeColor: darkScreen ? '#FFFFFF' : '#1D1B17',
+      homeBarColor: darkScreen ? 'rgba(255,255,255,.5)' : '#1D1B17',
+      toast: this.state.toast,
+      railGroups, services, faqs,
+      goBook: () => this.go('book'),
+      goServices: () => this.go('services'),
+      goDashboard: () => this.go('dashboard'),
+      goLeads: () => this.go('leads'),
+      goEditor: () => this.go('editor'),
+      goPublish: () => this.go('publish'),
+      goNotif: () => this.go('notifCenter'),
+
+      isDashboard: s === 'dashboard',
+      isLeads: s === 'leads',
+      isLeadDetail: s === 'leadDetail',
+      isEditor: s === 'editor',
+      showTabBar: isDash,
+      tabs: this.buildTabs(s),
+      stats: [
+        { label: 'New leads', value: '3', delta: '+2', deltaColor: '#0A7A57', deltaBg: '#EAF6F0', tint: '#EAF6F0', icon: this.icon(['M4 6h16v12H4z','M4 7l8 6 8-6']) },
+        { label: 'Visitors', value: '1.2k', delta: '+18%', deltaColor: '#0A7A57', deltaBg: '#EAF6F0', tint: '#F0F1FB', icon: this.icon(['M4 19V5','M4 15l5-5 4 3 7-8']) },
+        { label: 'Conv. rate', value: '4.8%', delta: '+0.6', deltaColor: '#0A7A57', deltaBg: '#EAF6F0', tint: '#FBF0EA', icon: this.icon(['M12 3v18','M7 8l5-5 5 5','M7 16l5 5 5-5']) },
+        { label: 'Active clients', value: '14', delta: '=', deltaColor: '#8A857D', deltaBg: '#F2EFE8', tint: '#EAF6F0', icon: this.icon(['M9 11a3 3 0 100-6 3 3 0 000 6z','M3 19c0-3 2.7-4.5 6-4.5','M16 11a4 4 0 100-8','M21 19c0-2.5-2-4-5-4.2']) },
+      ],
+      bars: [['M','44%'],['T','62%'],['W','52%'],['T','78%'],['F','96%',true],['S','70%'],['S','58%']].map(([day,h,hot]) => ({ day, h, color: hot ? '#0E9C6E' : '#CFE9DC' })),
+
+      leadTabs: ['New','Contacted','All'].map(t => ({ label: t, onClick: () => this.setState({ leadTab: t }),
+        style: `font-family:Inter;font-size:13px;font-weight:${this.state.leadTab===t?600:500};color:${this.state.leadTab===t?'#fff':'#57534C'};background:${this.state.leadTab===t?'#1D1B17':'#fff'};border:1px solid ${this.state.leadTab===t?'#1D1B17':'#E6E1D8'};padding:8px 15px;border-radius:11px;cursor:pointer` })),
+      leads: this.leadList(),
+      leadFields: [ {k:'Goal',v:'Lose 15 lbs'}, {k:'Program interest',v:'1:1 Coaching'}, {k:'Preferred time',v:'Weekday AM'}, {k:'Source',v:'Instagram'} ],
+      statusOpts: ['New','Contacted','Won'].map(t => ({ label: t, onClick: () => { this.setState({ leadStatus: t }); this.showToast('Status → '+t); },
+        style: `flex:1;font-family:Inter;font-size:13px;font-weight:${this.state.leadStatus===t?600:500};color:${this.state.leadStatus===t?'#0A7A57':'#57534C'};background:${this.state.leadStatus===t?'#EAF6F0':'#fff'};border:1px solid ${this.state.leadStatus===t?'#0E9C6E':'#E6E1D8'};padding:11px;border-radius:11px;cursor:pointer` })),
+      emailToast: () => this.showToast('Reply drafted ✉️'),
+      callToast: () => this.showToast('Calling Jordan…'),
+
+      heroTitle: this.state.heroTitle,
+      heroSub: this.state.heroSub,
+      setHero: (e) => this.setState({ heroTitle: e.target.value }),
+      setSub: (e) => this.setState({ heroSub: e.target.value }),
+      sections: ['Services','Testimonials','Gallery','FAQ'].map((name, i, arr) => {
+        const on = this.state.sectionsOn[name];
+        return { name, border: i === arr.length-1 ? 'transparent' : '#F2EFE8',
+          onToggle: () => this.setState(st => ({ sectionsOn: { ...st.sectionsOn, [name]: !st.sectionsOn[name] } })),
+          toggleStyle: `width:44px;height:26px;border-radius:999px;border:none;background:${on?'#0E9C6E':'#DAD5CC'};position:relative;cursor:pointer;transition:background .2s`,
+          knobStyle: `position:absolute;top:3px;left:${on?'21px':'3px'};width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.2);transition:left .2s` };
+      }),
+
+      managerLinks: [
+        { label: 'Services', dest: 'serviceMgmt', tint: '#EAF6F0', paths: ['M6 12h12','M9 8v8','M15 8v8'] },
+        { label: 'Testimonials', dest: 'testiMgr', tint: '#FBF0EA', paths: ['M12 3l2.5 5.5 6 .5-4.5 4 1.3 5.9L12 15.8 6.7 18.9 8 13 3.5 9l6-.5L12 3z'] },
+        { label: 'Media', dest: 'media', tint: '#F0F1FB', paths: ['M4 6h16v12H4z','M9 13l2 2 4-5 5 6'] },
+        { label: 'Preview', dest: 'preview', tint: '#EAF6F0', paths: ['M7 3h10v18H7z','M10 19h4'] },
+      ].map(m => ({ label: m.label, tint: m.tint, onClick: () => this.go(m.dest),
+        icon: React.createElement('svg', { width: 16, height: 16, viewBox: '0 0 24 24', fill: 'none' }, m.paths.map((p, i) => React.createElement('path', { key: i, d: p, stroke: '#0A7A57', strokeWidth: 1.7, strokeLinecap: 'round', strokeLinejoin: 'round' }))) })),
+
+      // ---- onboarding ----
+      isOnboarding: s === 'onboarding',
+      ...this.onboardingVals(),
+
+      // ---- publishing ----
+      isPublish: s === 'publish',
+      publishDone: this.state.publishDone,
+      publishPending: !this.state.publishDone,
+      publishing: this.state.publishing, notPublishing: !this.state.publishing,
+      changes: [
+        { title: 'Hero headline updated', detail: '"Train with intention"' },
+        { title: 'Testimonials section', detail: 'Added Jordan R. review' },
+        { title: 'Gallery hidden', detail: 'Toggled off on homepage' },
+      ],
+      doPublish: () => { this.setState({ publishing: true }); setTimeout(() => this.setState({ publishing: false, publishDone: true }), 1400); },
+
+      // ---- settings ----
+      isSettings: s === 'settings',
+      goComponents: () => this.go('components'),
+      settingGroups: this.settingsData(),
+
+      // ---- components / tokens ----
+      isComponents: s === 'components',
+      isTokens: s === 'tokens',
+      colorTokens: [
+        { name: 'Warm White', token: 'bg.surface', hex: '#F6F4EF' },
+        { name: 'Deep Charcoal', token: 'text.primary', hex: '#1D1B17' },
+        { name: 'Soft Gray', token: 'text.muted', hex: '#8A857D' },
+        { name: 'Emerald', token: 'accent.primary', hex: '#0E9C6E' },
+        { name: 'Royal Blue', token: 'accent.alt', hex: '#4C5FC4' },
+      ],
+      spacing: [['xs','12px'],['sm','20px'],['md','32px'],['lg','48px'],['xl','64px']].map(([label,w]) => ({ label: `${label} · ${w}`, w })),
+      radii: [['sm','10px'],['md','14px'],['lg','20px'],['full','999px']].map(([label,r]) => ({ label, r: r === '999px' ? '12px' : r })),
+    };
+  }
+}
+</script>
+</body>
+</html>

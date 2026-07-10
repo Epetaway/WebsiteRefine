@@ -4,6 +4,9 @@ import { LearningItem } from "./types";
 
 type CaseStudyLearningsProps = {
   items: LearningItem[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
 };
 
 const FADE_UP = {
@@ -11,9 +14,14 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyLearnings({ items }: CaseStudyLearningsProps) {
+export function CaseStudyLearnings({
+  items,
+  id = "learnings",
+  eyebrow = "09 What I Learned",
+  heading = "Key takeaways",
+}: CaseStudyLearningsProps) {
   return (
-    <section id="learnings" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -23,7 +31,7 @@ export function CaseStudyLearnings({ items }: CaseStudyLearningsProps) {
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        09 What I Learned
+        {eyebrow}
       </motion.p>
 
       <motion.h2
@@ -34,7 +42,7 @@ export function CaseStudyLearnings({ items }: CaseStudyLearningsProps) {
         transition={{ duration: 0.4, delay: 0.04 }}
         className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
       >
-        Key takeaways
+        {heading}
       </motion.h2>
 
       <motion.ul

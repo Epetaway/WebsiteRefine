@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 type CaseStudyChallengeProps = {
   description: string;
   problems: string[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  problemsLabel?: string;
 };
 
 const FADE_UP = {
@@ -11,9 +15,16 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyChallenge({ description, problems }: CaseStudyChallengeProps) {
+export function CaseStudyChallenge({
+  description,
+  problems,
+  id = "challenge",
+  eyebrow = "02 The Challenge",
+  heading = "The problem to solve",
+  problemsLabel = "Key Problems",
+}: CaseStudyChallengeProps) {
   return (
-    <section id="challenge" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
+    <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
         variants={FADE_UP}
         initial="hidden"
@@ -23,7 +34,7 @@ export function CaseStudyChallenge({ description, problems }: CaseStudyChallenge
         className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
         style={{ color: "var(--case-accent)" }}
       >
-        02 The Challenge
+        {eyebrow}
       </motion.p>
 
       <div className="grid xl:grid-cols-2 gap-8 items-start">
@@ -37,7 +48,7 @@ export function CaseStudyChallenge({ description, problems }: CaseStudyChallenge
             transition={{ duration: 0.4, delay: 0.04 }}
             className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-3"
           >
-            The problem to solve
+            {heading}
           </motion.h2>
           <motion.p
             variants={FADE_UP}
@@ -60,7 +71,7 @@ export function CaseStudyChallenge({ description, problems }: CaseStudyChallenge
           className="rounded-xl border border-[var(--cs-border)] bg-[var(--cs-surface)] p-5 space-y-3"
         >
           <p className="text-[10px] font-semibold uppercase tracking-widest text-[var(--cs-text-muted)] mb-2">
-            Key Problems
+            {problemsLabel}
           </p>
           {problems.map((problem) => (
             <motion.div

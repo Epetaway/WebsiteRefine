@@ -23,7 +23,6 @@ import Article from "@/pages/article";
 import Approach from "@/pages/approach";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
-import ThemeDemo from "@/pages/theme-demo";
 import CaseStudyPreview from "@/pages/case-study-preview";
 
 function AppShell() {
@@ -54,7 +53,6 @@ function AppShell() {
           <Route path="/earldkaiju" element={<EarldKaiju />} />
           <Route path="/articles/:slug" element={<Article />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/theme-demo" element={<ThemeDemo />} />
           <Route path="/case-study-preview" element={<CaseStudyPreview />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

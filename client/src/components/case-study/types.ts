@@ -136,6 +136,95 @@ export type PremiumCaseStudyData = {
   metrics: MetricItem[];
   learnings: LearningItem[];
   futureItems: FutureItem[];
+  /** Password-gated link, rendered as a CTA button in the hero (see ProtectedPrototypeButton). */
+  prototype?: {
+    url: string;
+    /** Button text. Defaults to "View Prototype". */
+    label?: string;
+    /** Optional hover tooltip with extra context. */
+    description?: string;
+  };
+  prevProject?: { slug: string; title: string };
+  nextProject?: { slug: string; title: string };
+  theme: DarkCaseStudyTheme;
+};
+
+// ─── Design-Doc Case Study Types ─────────────────────────────────────────────
+// For case studies sourced from a full claude.ai design-doc export (Overview,
+// Problem, Opportunity, Goals, Research, Design Principles, Information
+// Architecture, Key Features, Visual Design, Technical Architecture, Design
+// System, Accessibility, Challenges, Outcomes, Reflection, Next Steps).
+
+export type ProseSectionData = {
+  heading: string;
+  paragraphs: string[];
+  tags?: string[];
+};
+
+export type ResearchData = {
+  interviewIntro: string;
+  quotes: string[];
+  competitiveIntro: string;
+  competitors: string[];
+  observations: string[];
+};
+
+export type IAColumn = {
+  title: string;
+  items: string[];
+};
+
+export type DesignDocCaseStudyData = {
+  slug: string;
+  title: string;
+  category: string;
+  subtitle: string;
+  summary: string;
+  liveUrl?: string;
+  repoUrl?: string;
+  heroImage: string;
+  meta: MetaItem[];
+  overview: {
+    description: string;
+    industry: string;
+    targetUsers: string;
+    type: string;
+    myRole: string;
+    image?: string;
+  };
+  problem: {
+    description: string;
+    problems: string[];
+  };
+  opportunity: ProseSectionData;
+  goals: GoalItem[];
+  research: ResearchData;
+  designPrinciples: ProcessStep[];
+  informationArchitecture: {
+    intro?: string;
+    columns: IAColumn[];
+  };
+  features: FeatureMediaItem[];
+  visualDesign: ProseSectionData;
+  techStack: string[];
+  technicalArchitectureIntro?: string;
+  designSystem: {
+    intro: string;
+    components: string[];
+  };
+  accessibility: LearningItem[];
+  challenges: ProseSectionData;
+  outcomes: ProseSectionData;
+  reflection: ProseSectionData;
+  nextSteps: FutureItem[];
+  /** Password-gated link, rendered as a CTA button in the hero (see ProtectedPrototypeButton). */
+  prototype?: {
+    url: string;
+    /** Button text. Defaults to "View Prototype". */
+    label?: string;
+    /** Optional hover tooltip with extra context. */
+    description?: string;
+  };
   prevProject?: { slug: string; title: string };
   nextProject?: { slug: string; title: string };
   theme: DarkCaseStudyTheme;

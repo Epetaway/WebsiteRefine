@@ -26,7 +26,7 @@ export interface Project {
 }
 
 // Resume file path constant for consistency
-export const RESUME_PATH = "/assets/Earl_Hickson_Jr_Resume.pdf";
+export const RESUME_PATH = "/assets/Earl_Hickson_Jr_UX_Engineer_Resume.docx";
 
 // Only these four projects are highlighted site-wide.
 // All other work is available at https://github.com/Epetaway
@@ -61,7 +61,6 @@ export const projects: Project[] = [
       { label: "Rules Compliance", value: "v1.5.0", improvement: "Official GCG Comprehensive Rules" }
     ],
     links: {
-      demo: "https://epetaway.github.io/Gundam-Forge/",
       repo: "https://github.com/Epetaway/Gundam-Forge"
     }
   },
@@ -78,8 +77,8 @@ export const projects: Project[] = [
     solution: "Architected a modular React SPA using HashRouter for GitHub Pages compatibility, localStorage persistence, and JSON data simulation. Implemented Tailwind dark-mode design system with swipe-based interactions and accessible UI patterns.",
     result: "Delivered a production-ready prototype demonstrating full-stack thinking with front-end only tools, showcasing component architecture, state management, and modern UX patterns.",
     stack: ["React", "TypeScript", "Tailwind CSS", "Vite", "localStorage", "GitHub Pages"],
-    tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
-    devNotes: "React, Next.js, TypeScript, Tailwind CSS, component-driven architecture.",
+    tags: ["React", "TypeScript", "Tailwind CSS", "Vite"],
+    devNotes: "React, TypeScript, Tailwind CSS, Vite, component-driven architecture.",
     features: [
       "Modular features: Feed, ProfileCard, Journal, Events, Partner Finder",
       "Local JSON data simulation + localStorage persistence",
@@ -99,36 +98,6 @@ export const projects: Project[] = [
     links: {
       demo: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
       repo: "https://github.com/epetaway/DojoNet-Prototype-MAX"
-    }
-  },
-
-  {
-    id: "ama-fight-club",
-    slug: "ama-fight-club",
-    title: "AMA Fight Club – Digital Presence & API Integration",
-    role: "Front-End Developer & Digital Integration Specialist",
-    category: "featured",
-    description: "Modernized a martial arts gym's digital presence with responsive layouts, SEO-forward site structure, and API integrations for real-time lead capture, CRM synchronization, and recruitment — ongoing freelance engagement.",
-    summary: "Responsive site redesign within Wix CMS with Zen Planner API integration for real-time lead capture and CRM sync, ZipRecruiter form integrations for active recruitment campaigns, and branded digital marketing assets.",
-    problem: "The gym's existing digital presence was fragmented, not mobile-optimized, and lacked any integration between the website and their CRM or recruiting pipeline — resulting in lost leads and manual data entry overhead.",
-    solution: "Redesigned the site in Wix CMS with responsive layouts and improved navigation. Implemented Zen Planner API for real-time lead capture synced directly to CRM. Built ZipRecruiter form integrations for open positions. Designed QR-linked flyers and social media templates for ongoing campaigns.",
-    result: "Coherent, mobile-optimized digital presence with automated lead flow into CRM. Ongoing advisor relationship with leadership on digital strategy.",
-    stack: ["Wix CMS", "Zen Planner API", "ZipRecruiter API", "JavaScript", "CSS", "SEO"],
-    tags: ["Freelance", "CMS", "API Integration", "Digital Marketing"],
-    features: [
-      "Responsive site redesign with improved navigation and SEO-forward structure",
-      "Zen Planner API integration — real-time lead capture synced to CRM",
-      "ZipRecruiter form integrations for recruitment campaigns",
-      "Branded digital marketing assets: QR-linked flyers, social media templates",
-      "Ongoing digital strategy advisory to leadership"
-    ],
-    metrics: [
-      { label: "Lead Flow", value: "Automated", improvement: "Real-time Zen Planner CRM sync" },
-      { label: "Recruitment", value: "Integrated", improvement: "ZipRecruiter form pipeline" },
-      { label: "Engagement", value: "+156%", improvement: "Organic traffic growth" }
-    ],
-    links: {
-      demo: "https://www.amafightclub.com"
     }
   },
 

@@ -25,6 +25,13 @@ export { CaseStudyMetricsRow } from "./CaseStudyMetricsRow";
 export { CaseStudyLearnings } from "./CaseStudyLearnings";
 export { CaseStudyFuture } from "./CaseStudyFuture";
 export { CaseStudyBottomCTA } from "./CaseStudyBottomCTA";
+export { ProtectedPrototypeButton } from "./ProtectedPrototypeButton";
+
+// ── Design-doc template system ────────────────────────────────────────────────
+export { DesignDocCaseStudyTemplate } from "./DesignDocCaseStudyTemplate";
+export { CaseStudyProse } from "./CaseStudyProse";
+export { CaseStudyResearch } from "./CaseStudyResearch";
+export { CaseStudyInformationArchitecture } from "./CaseStudyInformationArchitecture";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export type {
@@ -44,4 +51,9 @@ export type {
   LearningItem,
   FutureItem,
   CodeTab,
+  // Design-doc types
+  DesignDocCaseStudyData,
+  ProseSectionData,
+  ResearchData,
+  IAColumn,
 } from "./types";

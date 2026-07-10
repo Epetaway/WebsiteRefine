@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -31,6 +31,12 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 import kaijuBanner from "@/images/kaiju-banner.png";
 import kaijuWordmark from "@/images/kaiju-logo.png";
@@ -41,6 +47,46 @@ import Testimonials from "@/components/ui/testimonials-carousel";
 
 const KAIJU_GREEN = "var(--kaiju-green, #86d64a)";
 const KAIJU_GREEN_20 = "var(--kaiju-green-20, rgba(134,214,74,.2))";
+
+// Public-site sections, mirroring the IA a TrainerLaunch trainer site publishes:
+// Home -> Services -> Program Details -> Gallery -> About -> Testimonials -> FAQ -> Book
+const SITE_NAV = [
+  { id: "services", label: "Services" },
+  { id: "program", label: "Program" },
+  { id: "gallery", label: "Gallery" },
+  { id: "about", label: "About" },
+  { id: "testimonials", label: "Testimonials" },
+  { id: "faq", label: "FAQ" },
+];
+
+const FOCUS_AREAS = ["Lapel Guard", "Half Guard", "Inversions", "Wrestling", "Judo", "Pressure Passing"];
+
+const FAQS = [
+  {
+    q: "Do I need any prior experience?",
+    a: "No experience required. Sessions are private or small-group, so they're built around your pace instead of a fixed curriculum — total beginners and active competitors both get real training time.",
+  },
+  {
+    q: "What should I wear to my first lesson?",
+    a: "Comfortable athletic clothes (shorts or leggings plus a rash guard or t-shirt) are fine to start. If a session calls for gi work, I'll let you know beforehand — no need to buy gear before your first lesson.",
+  },
+  {
+    q: "What ages do you coach?",
+    a: "Kids as young as 5 (see the Parent & Me package), teens, and adults. Programs are matched to age and goals rather than one class for everyone.",
+  },
+  {
+    q: "Where do lessons happen?",
+    a: "Private and semi-private sessions are based in the Parsippany, NJ area. Exact location details are confirmed once you book.",
+  },
+  {
+    q: "How does booking actually work?",
+    a: "Fill out the form below with your goals and availability. I text and email every request back within 24 hours to confirm a time.",
+  },
+];
+
+function scrollToId(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+}
 
 export default function EarldKaiju() {
   const { toast } = useToast();
@@ -98,8 +144,12 @@ export default function EarldKaiju() {
     mutationFn: () => apiRequest("POST", "/api/social-media/fetch-youtube", {}),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: ["/api/social-media"] }),
   });
+  const hasAttemptedSocialFetch = useRef(false);
   useEffect(() => {
-    if (!socialMediaLoading && posts.length === 0) { fetchIG.mutate(); fetchYT.mutate(); }
+    if (socialMediaLoading || posts.length > 0 || hasAttemptedSocialFetch.current) return;
+    hasAttemptedSocialFetch.current = true;
+    fetchIG.mutate();
+    fetchYT.mutate();
   }, [socialMediaLoading, posts.length, fetchIG, fetchYT]);
 
   // medals
@@ -118,7 +168,7 @@ export default function EarldKaiju() {
       </Helmet>
 
       {/* HERO */}
-      <section className="relative py-16 md:py-20">
+      <section id="home" className="relative py-16 md:py-20">
         <div className="absolute inset-0 opacity-25" style={{ backgroundImage: `url(${kaijuBanner})`, backgroundSize: "cover", backgroundPosition: "center" }} />
         <div className="absolute inset-0 bg-black/60" />
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -138,7 +188,7 @@ export default function EarldKaiju() {
               size="lg"
               className="text-black"
               style={{ backgroundColor: KAIJU_GREEN }}
-              onClick={() => document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => scrollToId("booking")}
             >
               <i className="fa-solid fa-calendar-days mr-2" />
               Book Your Lesson
@@ -151,7 +201,29 @@ export default function EarldKaiju() {
         </div>
       </section>
 
-      {/* BOOKING FORM */}
+      {/* SITE NAV — mirrors a TrainerLaunch public-site nav (Services / Program / Gallery / About / Testimonials / FAQ) */}
+      <nav aria-label="Page sections" className="border-y border-white/10 bg-black/80">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-gray-300">
+          {SITE_NAV.map((item) => (
+            <button
+              key={item.id}
+              onClick={() => scrollToId(item.id)}
+              className="hover:text-white transition-colors"
+            >
+              {item.label}
+            </button>
+          ))}
+          <button
+            onClick={() => scrollToId("booking")}
+            className="ml-auto inline-flex items-center px-4 py-1.5 rounded-full text-xs font-semibold text-black"
+            style={{ backgroundColor: KAIJU_GREEN }}
+          >
+            Book Now
+          </button>
+        </div>
+      </nav>
+
+      {/* BOOKING FORM / CONSULTATION REQUEST */}
       <section id="booking" className="py-10">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="rounded-2xl p-8 bg-white/[0.06] shadow-2xl shadow-black/40">
@@ -277,138 +349,198 @@ export default function EarldKaiju() {
         </div>
       </section>
 
-      {/* SERVICES (cream background handled in CSS) */}
-<section id="offer" className="py-14">
-  <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="grid lg:grid-cols-3 gap-6">
-      {[
-        {
-          title: "Private Lessons (1-on-1)",
-          copy:
-            "Tailored coaching focused on self-defense fundamentals, positional awareness, and technique progression. Great for beginners, hobbyists, and competitors.",
-          rows: [
-            ["Price", "$60 / hour"],
-            ["Intro Offer", "$50 (one-time)"],
-          ],
-        },
-        {
-          title: "Semi-Private (2–4 people)",
-          copy:
-            "Train with a friend or small group. You’ll share drilling time, get individualized feedback, and split the cost.",
-          rows: [["Price", "$40 per person"]],
-        },
-        {
-          title: "Parent & Me Package",
-          copy:
-            "Ages 5–8. A 4-week bonding series that introduces safety, confidence, and fun movement patterns you can practice together.",
-          rows: [["Price", "$200 total"]],
-        },
-      ].map((card, i) => (
-        <div
-          key={i}
-          className="rounded-2xl p-6 bg-white border border-black/5 shadow-sm flex flex-col"
-        >
-          <h3 className="font-bold text-lg text-slate-900">{card.title}</h3>
-          <p className="text-sm mt-2 text-slate-700">{card.copy}</p>
+      {/* SERVICES */}
+      <section id="services" className="py-14">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: KAIJU_GREEN }}>Services</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-white">Pick the format that fits you</h2>
+          </div>
+          <div className="grid lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: "Private Lessons (1-on-1)",
+                copy:
+                  "Tailored coaching focused on self-defense fundamentals, positional awareness, and technique progression. Great for beginners, hobbyists, and competitors.",
+                rows: [
+                  ["Price", "$60 / hour"],
+                  ["Intro Offer", "$50 (one-time)"],
+                ],
+              },
+              {
+                title: "Semi-Private (2–4 people)",
+                copy:
+                  "Train with a friend or small group. You’ll share drilling time, get individualized feedback, and split the cost.",
+                rows: [["Price", "$40 per person"]],
+              },
+              {
+                title: "Parent & Me Package",
+                copy:
+                  "Ages 5–8. A 4-week bonding series that introduces safety, confidence, and fun movement patterns you can practice together.",
+                rows: [["Price", "$200 total"]],
+              },
+            ].map((card, i) => (
+              <div
+                key={i}
+                className="rounded-2xl p-6 bg-white border border-black/5 shadow-sm flex flex-col"
+              >
+                <h3 className="font-bold text-lg text-slate-900">{card.title}</h3>
+                <p className="text-sm mt-2 text-slate-700">{card.copy}</p>
 
-          <div className="mt-4 text-sm space-y-2">
-            {card.rows.map(([k, v]) => (
-              <div key={k} className="flex justify-between">
-                <span className="text-slate-600">{k}</span>
-                <span className="font-semibold text-slate-900">{v}</span>
+                <div className="mt-4 text-sm space-y-2">
+                  {card.rows.map(([k, v]) => (
+                    <div key={k} className="flex justify-between">
+                      <span className="text-slate-600">{k}</span>
+                      <span className="font-semibold text-slate-900">{v}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <Button
+                  className="mt-auto text-black"
+                  style={{ backgroundColor: KAIJU_GREEN }}
+                  onClick={() => scrollToId("booking")}
+                >
+                  Book
+                </Button>
               </div>
             ))}
           </div>
-
-          <Button
-            className="mt-auto text-black"
-            style={{ backgroundColor: KAIJU_GREEN }}
-            onClick={() =>
-              document.getElementById("booking")?.scrollIntoView({ behavior: "smooth" })
-            }
-          >
-            Book
-          </Button>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
-      {/* ABOUT + RECORD + LATEST VIDEOS */}
-      <section className="py-14">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_.9fr] gap-8 items-start">
+      {/* PROGRAM DETAILS */}
+      <section id="program" className="py-14 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10">
           <div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: KAIJU_GREEN }}>Program Details</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">How training works</h2>
+            <ul className="space-y-4 text-gray-200">
+              <li className="flex gap-3">
+                <span className="mt-1 flex-none w-1.5 h-1.5 rounded-full" style={{ backgroundColor: KAIJU_GREEN }} />
+                <span><strong className="text-white">Format:</strong> 1-on-1 or small-group (2–4), scheduled around your availability — no fixed class times to work around.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1 flex-none w-1.5 h-1.5 rounded-full" style={{ backgroundColor: KAIJU_GREEN }} />
+                <span><strong className="text-white">Who it's for:</strong> total beginners, hobbyists, and active competitors prepping for tournaments.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1 flex-none w-1.5 h-1.5 rounded-full" style={{ backgroundColor: KAIJU_GREEN }} />
+                <span><strong className="text-white">What you'll build:</strong> technical fundamentals, live-rolling confidence, and a game plan suited to your body type and goals.</span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-1 flex-none w-1.5 h-1.5 rounded-full" style={{ backgroundColor: KAIJU_GREEN }} />
+                <span><strong className="text-white">Coaching style:</strong> establish boundaries early, slow the fight down, and create advantages before adding speed.</span>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: KAIJU_GREEN }}>Focus Areas</p>
+            <h3 className="text-lg font-semibold mb-4">What we drill</h3>
+            <div className="flex flex-wrap gap-2">
+              {FOCUS_AREAS.map((t) => (
+                <span key={t} className="rounded-full px-3 py-1 text-xs font-semibold" style={{ color: KAIJU_GREEN, backgroundColor: KAIJU_GREEN_20 }}>
+                  {t}
+                </span>
+              ))}
+            </div>
+            <p className="mt-4 text-gray-300 leading-relaxed">
+              My game: establish boundaries early, slow the fight, and create advantages using <strong>lapel guard</strong>, <strong>half guard</strong>, <strong>inversions</strong>, <strong>wrestling</strong>, and a touch of <strong>judo</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* RESULTS & TRAINING GALLERY */}
+      <section id="gallery" className="py-14 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: KAIJU_GREEN }}>Gallery</p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Results & training gallery</h2>
+
+          <div className="grid grid-cols-3 gap-3 max-w-md mb-8">
+            <div className="rounded-xl p-4 text-center bg-white/[0.06] shadow-lg shadow-black/40">
+              <div className="text-2xl font-bold text-yellow-400">{golds}</div>
+              <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-1">Gold</div>
+            </div>
+            <div className="rounded-xl p-4 text-center bg-white/[0.06] shadow-lg shadow-black/40">
+              <div className="text-2xl font-bold text-gray-200">{silvers}</div>
+              <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-1">Silver</div>
+            </div>
+            <div className="rounded-xl p-4 text-center bg-white/[0.06] shadow-lg shadow-black/40">
+              <div className="text-2xl font-bold text-orange-500">{bronzes}</div>
+              <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-1">Bronze</div>
+            </div>
+          </div>
+
+          {!socialMediaLoading && youtubePosts.length > 0 && (
+            <div>
+              <h3 className="font-semibold mb-3">Latest BJJ Content</h3>
+              <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                {youtubePosts.slice(0, 4).map((p) => (
+                  <a
+                    key={p.postId}
+                    href={p.permalink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block rounded-xl overflow-hidden bg-white/[0.06] hover:bg-white/[0.1] transition-colors shadow-lg shadow-black/40"
+                  >
+                    <div className="aspect-video bg-black/50">
+                      <img src={p.thumbnailUrl || ""} alt={p.caption || "YouTube video"} className="w-full h-full object-cover" />
+                    </div>
+                    <div className="p-3 text-sm text-gray-300 line-clamp-2">{p.caption || "Watch on YouTube"}</div>
+                  </a>
+                ))}
+              </div>
+              <div className="mt-4 flex gap-3">
+                <a className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors" href="https://youtube.com/@earldkaiju" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors" href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer">Instagram</a>
+              </div>
+            </div>
+          )}
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="py-14 border-t border-white/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-[1.1fr_.9fr] gap-8 items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: KAIJU_GREEN }}>About</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-3">About Earl</h2>
             <p className="text-gray-200 leading-relaxed">
               BJJ Black Belt with 8+ years teaching private & small-group lessons across Parsippany. I teach a technical, safety-first system that builds confidence and real-world control.
             </p>
-            <div className="mt-4">
-              <p className="text-gray-300">
-                My game: establish boundaries early, slow the fight, and create advantages using <strong>lapel guard</strong>, <strong>half guard</strong>, <strong>inversions</strong>, <strong>wrestling</strong>, and a touch of <strong>judo</strong>.
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {["Lapel Guard", "Half Guard", "Inversions", "Wrestling", "Judo", "Pressure Passing"].map((t) => (
-                  <span key={t} className="rounded-full px-3 py-1 text-xs font-semibold" style={{ color: KAIJU_GREEN, backgroundColor: KAIJU_GREEN_20 }}>
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Latest videos */}
-            {!socialMediaLoading && youtubePosts.length > 0 && (
-              <div className="mt-8">
-                <h3 className="font-semibold mb-3">Latest BJJ Content</h3>
-                <div className="grid gap-4 grid-cols-1 md:grid-cols-2">
-                  {youtubePosts.slice(0, 4).map((p) => (
-                    <a
-                      key={p.postId}
-                      href={p.permalink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block rounded-xl overflow-hidden bg-white/[0.06] hover:bg-white/[0.1] transition-colors shadow-lg shadow-black/40"
-                    >
-                      <div className="aspect-video bg-black/50">
-                        <img src={p.thumbnailUrl || ""} alt={p.caption || "YouTube video"} className="w-full h-full object-cover" />
-                      </div>
-                      <div className="p-3 text-sm text-gray-300 line-clamp-2">{p.caption || "Watch on YouTube"}</div>
-                    </a>
-                  ))}
-                </div>
-                <div className="mt-3 flex gap-3">
-                  <a className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors" href="https://youtube.com/@earldkaiju" target="_blank" rel="noopener noreferrer">YouTube</a>
-                  <a className="inline-flex items-center px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 transition-colors" href="https://www.instagram.com/earld.kaiju/" target="_blank" rel="noopener noreferrer">Instagram</a>
-                </div>
-              </div>
-            )}
           </div>
 
-          {/* Photo + compact record */}
-          <div>
-            <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
-              <img src={earlBjjPhoto} alt="Earl training BJJ" className="w-full h-auto object-cover" />
-            </div>
-            <div className="mt-4 grid grid-cols-3 gap-3">
-              <div className="rounded-xl p-4 text-center bg-white/[0.06] shadow-lg shadow-black/40">
-                <div className="text-2xl font-bold text-yellow-400">{golds}</div>
-                <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-1">Gold</div>
-              </div>
-              <div className="rounded-xl p-4 text-center bg-white/[0.06] shadow-lg shadow-black/40">
-                <div className="text-2xl font-bold text-gray-200">{silvers}</div>
-                <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-1">Silver</div>
-              </div>
-              <div className="rounded-xl p-4 text-center bg-white/[0.06] shadow-lg shadow-black/40">
-                <div className="text-2xl font-bold text-orange-500">{bronzes}</div>
-                <div className="text-[11px] uppercase tracking-wide text-gray-400 mt-1">Bronze</div>
-              </div>
-            </div>
+          <div className="rounded-2xl overflow-hidden shadow-2xl shadow-black/50">
+            <img src={earlBjjPhoto} alt="Earl training BJJ" className="w-full h-auto object-cover" />
           </div>
         </div>
       </section>
 
       {/* TESTIMONIALS (stationary bg + overlay slider) */}
-      <Testimonials backgroundImage="/images/testimonials-bg.jpg" />
+      <div id="testimonials">
+        <Testimonials backgroundImage="/images/testimonials-bg.jpg" />
+      </div>
+
+      {/* FAQ */}
+      <section id="faq" className="py-14 border-t border-white/10">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs font-semibold uppercase tracking-widest mb-2" style={{ color: KAIJU_GREEN }}>FAQ</p>
+          <h2 className="text-2xl md:text-3xl font-bold mb-6">Frequently asked questions</h2>
+          <Accordion type="single" collapsible className="w-full">
+            {FAQS.map((item, idx) => (
+              <AccordionItem key={idx} value={`faq-${idx}`} className="border-white/10">
+                <AccordionTrigger className="text-left text-white hover:no-underline">
+                  {item.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-gray-300 leading-relaxed">
+                  {item.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
 
       {/* SEO JSON-LD */}
       <script
@@ -427,6 +559,20 @@ export default function EarldKaiju() {
               { "@type": "Offer", "name": "Semi-Private", "price": "40", "priceCurrency": "USD" },
               { "@type": "Offer", "name": "Parent & Me (4-week)", "price": "200", "priceCurrency": "USD" }
             ]
+          })
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": FAQS.map((item) => ({
+              "@type": "Question",
+              "name": item.q,
+              "acceptedAnswer": { "@type": "Answer", "text": item.a },
+            })),
           })
         }}
       />

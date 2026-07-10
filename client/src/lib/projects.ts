@@ -38,7 +38,6 @@ export const pinnedRepoSlugs: string[] = [
   "Gundam-Forge",
   "DojoNet-Prototype-MAX",
   "WithYou",
-  "ama-fight-club",
 ];
 
 /**
@@ -93,23 +92,6 @@ export const pinnedProjects: Project[] = [
     image: "/images/withyou/withyou_card.png",
     shortTitle: "WithYou",
     subtitle: "Relationship Wellness App",
-    featured: true,
-    pinned: true,
-  },
-  {
-    slug: "ama-fight-club",
-    name: "ama-fight-club",
-    displayTitle: "AMA Fight Club – Digital Presence & Integration",
-    description: "Modernized a martial arts gym's digital presence with responsive layouts, SEO-forward site structure, and API integrations for real-time lead capture, CRM synchronization, and recruitment.",
-    longDescription: "Responsive site redesign within Wix CMS with Zen Planner API integration for real-time lead capture and CRM sync, ZipRecruiter form integrations for recruitment campaigns, and branded digital marketing assets including QR-linked flyers and social media templates.",
-    techStack: ["Wix CMS", "Zen Planner API", "ZipRecruiter API", "JavaScript", "CSS"],
-    repoUrl: `https://github.com/${GITHUB_USER}/ama-fight-club`,
-    liveUrl: "https://www.amafightclub.com",
-    role: "Front-End Developer & Digital Integration Specialist",
-    tags: ["Freelance", "CMS", "API Integration", "Digital Marketing"],
-    image: "/images/ama-fight-club/ama_card.png",
-    shortTitle: "AMA Fight Club",
-    subtitle: "Digital Presence & Integration",
     featured: true,
     pinned: true,
   },

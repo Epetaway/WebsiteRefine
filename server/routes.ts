@@ -1,5 +1,6 @@
 import type { Express } from "express";
 import { createServer, type Server } from "http";
+import { timingSafeEqual } from "crypto";
 import { storage } from "./storage";
 import { insertContactSchema, insertBjjBookingSchema } from "@shared/schema";
 import { z } from "zod";
@@ -14,6 +15,19 @@ function escapeHtml(text: string | null | undefined): string {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
+}
+
+// Constant-time string comparison so password checks don't leak timing info
+function safeCompare(a: string, b: string): boolean {
+  const bufA = Buffer.from(a);
+  const bufB = Buffer.from(b);
+  if (bufA.length !== bufB.length) {
+    // Still run a comparison of equal-length buffers so failure timing
+    // doesn't vary between "wrong length" and "wrong value".
+    timingSafeEqual(bufA, bufA);
+    return false;
+  }
+  return timingSafeEqual(bufA, bufB);
 }
 
 export async function registerRoutes(app: Express): Promise<Server> {
@@ -395,6 +409,25 @@ Please follow up within 24 hours.
       console.error("YouTube fetch error:", error);
       res.status(500).json({ message: "Failed to fetch YouTube videos" });
     }
+  });
+
+  // Password gate for case study prototype links. One shared password
+  // (PROTOTYPE_ACCESS_PASSWORD) unlocks every prototype on the site for
+  // PROTOTYPE_ACCESS_TTL_MINUTES; the client re-checks and re-prompts once
+  // that window expires. The password itself never reaches the client bundle.
+  app.post("/api/prototype-access", (req, res) => {
+    const expected = process.env.PROTOTYPE_ACCESS_PASSWORD;
+    if (!expected) {
+      return res.status(500).json({ error: "Prototype access isn't configured yet." });
+    }
+
+    const { password } = req.body ?? {};
+    if (typeof password !== "string" || !safeCompare(password, expected)) {
+      return res.status(401).json({ error: "Incorrect password. Try again." });
+    }
+
+    const ttlMinutes = parseInt(process.env.PROTOTYPE_ACCESS_TTL_MINUTES ?? "30", 10);
+    res.json({ ok: true, ttlMinutes: Number.isFinite(ttlMinutes) ? ttlMinutes : 30 });
   });
 
   // Resume download endpoint

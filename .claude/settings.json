@@ -20,7 +20,9 @@
       "Read(//private/tmp/**)",
       "Bash(xargs cat *)",
       "Bash(node -e \"const l = require\\('/Users/earlhickson/Documents/GitHub/WebsiteRefine/node_modules/lucide-react'\\); console.log\\(['Swords','Globe','BarChart2','Smartphone','Lock','Shuffle','Target','Calendar','User','Monitor','Layers','Zap','TrendingUp','Users'].map\\(n => n + ':' + \\(n in l\\)\\).join\\('\\\\n'\\)\\)\")",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(grep -ril \"TrainerLaunch\" /Users/ehicksonjr/Dev/Projects/WebsiteRefine 2>/dev/null; echo \"---\"; grep -ril \"TrainerLaunch\" /Users/ehicksonjr/Dev/Projects/withyou 2>/dev/null)",
+      "Read(//Users/ehicksonjr/Dev/Projects/withyou/**)"
     ],
     "additionalDirectories": [
       "/Users/earlhickson/Downloads"

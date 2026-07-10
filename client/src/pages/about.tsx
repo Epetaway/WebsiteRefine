@@ -9,16 +9,16 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — Earl Hickson Jr. | Front-End Developer & Designer | React · TypeScript</title>
+        <title>About — Earl Hickson Jr. | UX Engineer | React · TypeScript · Accessibility</title>
         <meta
           name="description"
-          content="Front-End Developer and Designer in Parsippany, NJ with 6+ years building accessible, responsive, performance-optimized web applications. BFA in Graphic Design from Kean University. Front-End Development certificate from Team Treehouse."
+          content="UX Engineer in Parsippany, NJ with 10+ years building accessible, human-centered digital products. BFA in Graphic Design from Kean University. IBM Full Stack Software Developer certificate."
         />
-        <link rel="canonical" href="https://www.ehicksonjr.com/about" />
-        <meta property="og:title" content="About — Earl Hickson Jr. | Front-End Developer & Designer" />
-        <meta property="og:description" content="Front-End Developer and Designer with 6+ years in React, TypeScript, and WCAG 2.1 AA. BFA in Graphic Design — building interfaces that are technically sound and visually considered." />
+        <link rel="canonical" href="https://ehicksonjr.com/about" />
+        <meta property="og:title" content="About — Earl Hickson Jr. | UX Engineer" />
+        <meta property="og:description" content="UX Engineer with 10+ years in React, TypeScript, and WCAG 2.1 AA. BFA in Graphic Design — building interfaces that are technically sound and human-centered." />
         <meta property="og:type" content="profile" />
-        <meta property="og:url" content="https://www.ehicksonjr.com/about" />
+        <meta property="og:url" content="https://ehicksonjr.com/about" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
@@ -33,7 +33,7 @@ export default function About() {
               <span className="text-violet-400">and Discipline.</span>
             </h1>
             <p className="text-xl text-[#B7B7B7] leading-relaxed">
-              I'm a Front-End Developer and Designer based in Parsippany, NJ with 6+ years building responsive, accessible, performance-optimized web applications across healthcare, finance, media, and nonprofit sectors. My BFA in Graphic Design and front-end engineering background aren't separate things — they're the same practice, applied at different layers of a product.
+              I'm a UX Engineer based in Parsippany, NJ with 10+ years building accessible, human-centered digital products across healthcare, media, and enterprise. My BFA in Graphic Design and front-end engineering background aren't separate things — they're the same practice, applied at different layers of a product.
             </p>
           </ScrollReveal>
         </div>
@@ -49,7 +49,7 @@ export default function About() {
                 Designer turned engineer, always a student.
               </h2>
               <p className="text-[#B7B7B7] text-lg leading-relaxed mb-4">
-                I graduated from Kean University with a BFA in Graphic Design, then built on that foundation with a Front-End Web Development Certificate and Full Stack JavaScript Certificate from Team Treehouse. That combination — formal design training plus front-end engineering — shapes how I work. I think about layout, hierarchy, and visual weight the same way I think about component structure and state management.
+                I graduated from Kean University with a BFA in Graphic Design, then built on that foundation with an IBM Full Stack Software Developer Professional Certificate (Coursera, 2025). That combination — formal design training plus full-stack engineering — shapes how I work. I think about layout, hierarchy, and visual weight the same way I think about component structure and state management.
               </p>
               <p className="text-[#B7B7B7] leading-relaxed mb-4">
                 My career has spanned healthcare portals, financial services sites, media marketing platforms, and nonprofit campaigns. I've built design systems, integrated REST APIs in .NET environments, established accessibility standards, and shipped work that reached clinical providers, patients, and enterprise stakeholders.
@@ -106,19 +106,6 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               {
-                company: "Asembia",
-                role: "Front-End Developer",
-                period: "Dec 2023 – Oct 2024",
-                highlights: [
-                  "Audited fragmented codebase, built design system",
-                  "Bootstrap 3 → 5 migration with reusable component library",
-                  "Simplified prescriber portal data layouts for clinical users",
-                  "REST API integration in .NET environment",
-                  "WCAG 2.1 AA across HIPAA-compliant platforms",
-                  "CEO buy-in for modernized architecture",
-                ],
-              },
-              {
                 company: "AMA Fight Club",
                 role: "Front-End Developer & Digital Integration Specialist",
                 period: "Jan 2025 – Present",
@@ -131,15 +118,52 @@ export default function About() {
                 ],
               },
               {
+                company: "Asembia",
+                role: "Front-End Developer",
+                period: "Dec 2023 – Oct 2024",
+                highlights: [
+                  "Audited fragmented codebase, built design system",
+                  "Bootstrap 3 → 5 migration with reusable component library",
+                  "Simplified prescriber portal data layouts for clinical users",
+                  "REST API integration in .NET environment",
+                  "WCAG 2.1 AA across HIPAA-compliant platforms",
+                  "Presented new component architecture to CEO",
+                ],
+              },
+              {
                 company: "BroadcastMed",
                 role: "Lead Designer & Front-End Developer",
-                period: "Aug 2021 – Feb 2023",
+                period: "Nov 2021 – Mar 2023",
                 highlights: [
-                  "+18% lead form submissions via layout & UX improvements",
-                  "−25% email production time via standardized HTML email system",
                   "Healthcare marketing microsites in proprietary CMS",
+                  "Standardized HTML email system reducing production overhead",
                   "Data-informed design via Google Analytics & Hotjar",
+                  "UX improvements to lead capture flows",
                   "Mentored junior developers and designers",
+                ],
+              },
+              {
+                company: "Merck",
+                role: "Freelance Front-End Developer",
+                period: "2019",
+                highlights: [
+                  "Front-end development supporting digital marketing initiatives",
+                ],
+              },
+              {
+                company: "Verizon Wireless",
+                role: "Front-End Developer",
+                period: "2015 – 2016",
+                highlights: [
+                  "Front-end development on consumer-facing digital interfaces",
+                ],
+              },
+              {
+                company: "KBS&P",
+                role: "Digital Designer & Front-End Developer",
+                period: "2014 – 2015",
+                highlights: [
+                  "Design and front-end work at a NYC-based advertising agency",
                 ],
               },
             ].map(({ company, role, period, highlights }, idx) => (
@@ -172,7 +196,7 @@ export default function About() {
               The foundation behind the work.
             </h2>
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid md:grid-cols-2 gap-5">
             {[
               {
                 badge: "BFA · 2015",
@@ -182,17 +206,10 @@ export default function About() {
                 highlight: true,
               },
               {
-                badge: "Certificate · 2022",
-                title: "Front-End Web Development",
-                institution: "Team Treehouse",
-                note: "Structured front-end engineering curriculum — HTML, CSS, JavaScript, responsive design, and accessibility.",
-                highlight: false,
-              },
-              {
-                badge: "Certificate · 2022",
-                title: "Full Stack JavaScript",
-                institution: "Team Treehouse",
-                note: "Node.js, Express, REST APIs, and database fundamentals applied to full-stack JavaScript projects.",
+                badge: "Certificate · Dec 2025",
+                title: "IBM Full Stack Software Developer",
+                institution: "Coursera — Verified",
+                note: "15-course professional certificate covering cloud-native full-stack development, containerization, microservices, and DevOps practices.",
                 highlight: false,
               },
             ].map(({ badge, title, institution, note, highlight }, idx) => (
@@ -275,7 +292,7 @@ export default function About() {
                   Let's work together.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  Open to front-end roles, freelance engagements, and collaborations on products that take accessibility, performance, and design craft seriously.
+                  Currently open to full-time UX Engineer and front-end roles. I'm looking for teams building products where accessibility, performance, and design craft actually matter.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">

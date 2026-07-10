@@ -1,0 +1,344 @@
+/* ─────────────────────────────────────────────────────────────
+ * WithYou — Colors, Type, and Tokens · v4 (May 16, 2026)
+ *
+ * Direction shift, May 2026:
+ *  - Surface is warm cream #FBF4EC (up from #FFF9F4 — more saturated)
+ *  - Coral remains the in-product primary action with a stronger
+ *    coral-tinted shadow recipe
+ *  - Primary buttons are PILL (h/2 radius), not 16-rect
+ *  - Dark mode uses true plum: #1A1422 / #251D30 / #2F2540
+ *  - Amber accent added for "waiting" / "surprised" tones
+ *  - Caveat handwriting added for diary / private reflection
+ *  - Plum/aubergine tokens demoted to legacy aliases
+ * ───────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Caveat:wght@500;600&display=swap');
+
+:root {
+  /* ── Brand · v4 ─────────────────────────────────────────── */
+  --wy-coral:        #FF6B6B;
+  --wy-coral-deep:   #E45558;
+  --wy-coral-pressed:#C84A4D;
+  --wy-blush:        #FFB4A4;
+  --wy-blush-soft:   #FFD8CC;
+  --wy-blush-tint:   #FFE9E2;   /* light coral wash, mode-chrome pill */
+  --wy-lavender:     #A78BFA;
+  --wy-lavender-deep:#6D4FD9;
+  --wy-lavender-soft:#E4DBFA;
+  --wy-sage:         #6BB48F;
+  --wy-sage-deep:    #3D8B5F;
+  --wy-sage-soft:    #D6ECDF;
+  --wy-amber:        #E6A85C;
+  --wy-amber-deep:   #9B6312;
+  --wy-amber-soft:   #FCEBD3;
+  --wy-navy:         #1D2841;   /* brand ink · headlines · status */
+  --wy-navy-deep:    #101627;
+
+  /* ── Accent aliases (short names used in templates) ─────── */
+  --wy-lav-soft:  var(--wy-lavender-soft);
+  --wy-lav-deep:  var(--wy-lavender-deep);
+  --wy-amb-soft:  var(--wy-amber-soft);
+  --wy-amb-deep:  var(--wy-amber-deep);
+
+  /* ── Neutrals ───────────────────────────────────────────── */
+  --wy-ink:          #111827;
+  --wy-charcoal:     #374151;
+  --wy-gray:         #6B7280;
+  --wy-gray-light:   #E5E7EB;
+  --wy-cream:        #FBF4EC;   /* primary surface (warmer than v3) */
+  --wy-cream-deep:   #F4EADD;   /* deeper card backdrop */
+  --wy-white:        #FFFFFF;
+  --wy-hairline:     rgba(29, 40, 65, 0.06);
+
+  /* ── Dark · plum, never pure black ──────────────────────── */
+  --wy-plum:         #1A1422;   /* page surface (dark) */
+  --wy-plum-deep:    #120E18;
+  --wy-plum-surface: #251D30;   /* card surface */
+  --wy-plum-elev:    #2F2540;   /* elevated card */
+  --wy-plum-border:  rgba(255, 255, 255, 0.06);
+  --wy-plum-border-strong: rgba(255, 255, 255, 0.10);
+  --wy-dark-text:    #F5EFE6;
+  --wy-dark-text-dim:#B9AFC2;
+  --wy-dark-text-muted:#8A8094;
+
+  /* ── Semantic ───────────────────────────────────────────── */
+  --wy-success:      #2DC55E;
+  --wy-warning:      #F59E0B;
+  --wy-info:         #3B82F6;
+  --wy-error:        #FF686B;
+  --wy-love:         var(--wy-coral);
+  --wy-calm:         var(--wy-lavender);
+  --wy-waiting:      var(--wy-amber);
+
+  /* ── Legacy aliases (kept so older v3 cards still resolve) */
+  --wy-plum-soft:    #F2E8EE;   /* old plum-soft → maps to mauve-soft */
+  --wy-mauve:        #B79EC0;
+  --wy-mauve-soft:   #F1EAF3;
+  --wy-aubergine:        var(--wy-navy);
+  --wy-aubergine-deep:   var(--wy-navy-deep);
+  --wy-aubergine-soft:   var(--wy-mauve-soft);
+  --wy-off-white:        var(--wy-cream-deep);
+  --wy-coral-hover:      var(--wy-coral-deep);
+  --wy-light-gray:       var(--wy-gray-light);
+
+  /* ── Foreground / background semantic vars (light) ──────── */
+  --fg1:             var(--wy-navy);     /* primary text */
+  --fg2:             var(--wy-charcoal); /* secondary text */
+  --fg3:             var(--wy-gray);     /* muted / metadata */
+  --fg-on-dark:      #FFFFFF;
+  --fg-on-coral:     #FFFFFF;
+
+  --bg1:             var(--wy-cream);    /* page */
+  --bg2:             var(--wy-white);    /* card */
+  --bg3:             var(--wy-cream-deep);/* alt section */
+  --border:          var(--wy-hairline);
+  --border-strong:   rgba(29, 40, 65, 0.10);
+
+  /* ── Material 3 role mapping (Android) ──────────────────── */
+  --m3-primary:              var(--wy-coral);
+  --m3-on-primary:           #FFFFFF;
+  --m3-primary-container:    var(--wy-blush-soft);
+  --m3-on-primary-container: var(--wy-coral-pressed);
+  --m3-secondary:            var(--wy-lavender);
+  --m3-on-secondary:         #FFFFFF;
+  --m3-secondary-container:  var(--wy-lavender-soft);
+  --m3-on-secondary-container: var(--wy-lavender-deep);
+  --m3-tertiary:             var(--wy-sage);
+  --m3-on-tertiary:          #FFFFFF;
+  --m3-tertiary-container:   var(--wy-sage-soft);
+  --m3-on-tertiary-container:var(--wy-sage-deep);
+  --m3-surface:              var(--wy-cream);
+  --m3-surface-container:    var(--wy-cream-deep);
+  --m3-surface-container-high:#F0E5D6;
+  --m3-surface-variant:      #ECE0CF;
+  --m3-on-surface:           var(--wy-navy);
+  --m3-on-surface-variant:   var(--wy-charcoal);
+  --m3-outline:              #BCB1A6;
+  --m3-outline-variant:      #E5DED6;
+  --m3-error:                var(--wy-error);
+  --m3-on-error:             #FFFFFF;
+  --m3-scrim:                rgba(20, 16, 26, 0.55);
+
+  /* ── iOS aliases (UIKit-style names) ────────────────────── */
+  --ios-tint:                var(--wy-coral);
+  --ios-destructive:         var(--wy-coral-pressed);
+  --ios-bg:                  var(--wy-cream);
+  --ios-bg-grouped:          var(--wy-cream-deep);
+  --ios-elevated-surface:    #FFFFFF;
+  --ios-card-surface:        #FFFFFF;
+  --ios-separator:           rgba(29, 40, 65, 0.10);
+  --ios-label-primary:       var(--wy-navy);
+  --ios-label-secondary:     var(--wy-charcoal);
+  --ios-label-tertiary:      var(--wy-gray);
+  --ios-fill-primary:        rgba(255, 107, 107, 0.10);
+  --ios-fill-secondary:      rgba(29, 40, 65, 0.06);
+
+  /* ── Layout tokens ─────────────────────────────────────── */
+  --header-h-ios:            44px;   /* @kind spacing */
+  --header-h-ios-large:      96px;   /* @kind spacing */
+  --header-h-android:        56px;   /* @kind spacing */
+  --tabbar-h-ios:            83px;   /* @kind spacing */
+  --tabbar-h-android:        80px;   /* @kind spacing */
+  --screen-pad-mobile:       20px;   /* @kind spacing */
+  --screen-pad-tablet:       40px;   /* @kind spacing */
+  --max-content-tablet:      720px;  /* @kind spacing */
+  --safe-top:                50px;   /* @kind spacing */
+  --safe-bot:                34px;   /* @kind spacing */
+  --artboard-w:              390px;  /* @kind spacing */
+  --artboard-h:              844px;  /* @kind spacing */
+
+  /* ── Gradients ──────────────────────────────────────────── */
+  --grad-sunset:        linear-gradient(135deg, #FF6B6B, #FFB4A4);        /* @kind other */
+  --grad-dusk:          linear-gradient(135deg, #A78BFA, #FFB4A4);        /* @kind other */
+  --grad-pair:          linear-gradient(135deg, #FFB4A4, #A78BFA);        /* @kind other */
+  --grad-warm-wash:     linear-gradient(160deg, #FFE9E2, #EFE5FB);        /* @kind other */
+  --grad-cream-tonal:   linear-gradient(180deg, #FFF4EA 0%, #F4EADD 60%); /* @kind other */
+  --grad-plum-night:    linear-gradient(135deg, #1A1422, #FF6B6B);        /* @kind other */
+  --grad-sage:          linear-gradient(135deg, #C8E4D2, #6BB48F);        /* @kind other */
+  --grad-coral-icon:    linear-gradient(135deg, #FFD8CC, #FFB4A4 50%, #FF6B6B); /* @kind other */
+
+  /* ── Type families ──────────────────────────────────────── */
+  --font-sans:        'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; /* @kind font */
+  --font-display:     'Inter', -apple-system, system-ui, sans-serif;                       /* @kind font */
+  --font-mono:        'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;         /* @kind font */
+  --font-handwriting: 'Caveat', 'Bradley Hand', cursive;                                   /* @kind font */
+
+  /* ── Spacing — 4-based ──────────────────────────────────── */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  12px;
+  --space-lg:  16px;
+  --space-xl2: 20px;
+  --space-xl:  24px;
+  --space-xxl: 32px;
+  --space-3xl: 48px;
+  --space-4xl: 64px;
+  --space-5xl: 80px;
+
+  /* ── Radius ─────────────────────────────────────────────── */
+  --radius-xs:    8px;
+  --radius-sm:   10px;
+  --radius-md:   12px;
+  --radius-lg:   16px;
+  --radius-xl:   20px;
+  --radius-2xl:  24px;
+  --radius-3xl:  28px;
+  --radius-card: 26px;          /* default card radius (v4) */
+  --radius-pill: 999px;
+
+  /* ── Shadow / elevation (navy-tinted, never grey) ──────── */
+  --shadow-xs: 0 1px 2px rgba(29, 40, 65, 0.04);
+  --shadow-sm: 0 1px 2px rgba(29, 40, 65, 0.03), 0 6px 18px rgba(29, 40, 65, 0.05);
+  --shadow-md: 0 12px 32px -16px rgba(29, 40, 65, 0.18);
+  --shadow-lg: 0 30px 60px -20px rgba(29, 40, 65, 0.22);
+  --shadow-modal: 0 40px 80px -20px rgba(29, 40, 65, 0.30);
+  --shadow-coral: 0 8px 20px rgba(255, 107, 107, 0.32), 0 1px 2px rgba(255, 107, 107, 0.40);
+  --shadow-coral-sm: 0 4px 12px rgba(255, 107, 107, 0.25);
+
+  /* ── Motion ─────────────────────────────────────────────── */
+  --ease-out:        cubic-bezier(0.22, 1, 0.36, 1);  /* @kind other */
+  --ease-in-out:     cubic-bezier(0.65, 0, 0.35, 1);  /* @kind other */
+  --duration-fast:   150ms;   /* @kind other */
+  --duration-base:   220ms;   /* @kind other */
+  --duration-slow:   360ms;   /* @kind other */
+  --duration-reveal: 420ms;   /* @kind other */
+  --duration-breath: 3200ms;  /* @kind other */
+}
+
+/* ── Dark mode — plum, never pure black ─────────────────── */
+[data-theme="dark"], .wy-dark {
+  --fg1: var(--wy-dark-text);
+  --fg2: var(--wy-dark-text-dim);
+  --fg3: var(--wy-dark-text-muted);
+
+  --bg1: var(--wy-plum);
+  --bg2: var(--wy-plum-surface);
+  --bg3: var(--wy-plum-elev);
+  --border:        var(--wy-plum-border);
+  --border-strong: var(--wy-plum-border-strong);
+
+  --ios-bg:               var(--wy-plum);
+  --ios-bg-grouped:       var(--wy-plum-deep);
+  --ios-card-surface:     var(--wy-plum-surface);
+  --ios-elevated-surface: var(--wy-plum-elev);
+  --ios-separator:        var(--wy-plum-border);
+  --ios-label-primary:    var(--wy-dark-text);
+  --ios-label-secondary:  var(--wy-dark-text-dim);
+  --ios-label-tertiary:   var(--wy-dark-text-muted);
+
+  /* Tinted accent surfaces → translucent over plum (stay readable on dark) */
+  --wy-blush-tint:    rgba(255,138,128,0.14);
+  --wy-blush-soft:    rgba(255,138,128,0.22);
+  --wy-lavender-soft: rgba(167,139,250,0.22);
+  --wy-sage-soft:     rgba(107,180,143,0.20);
+  --wy-amber-soft:    rgba(230,168,92,0.20);
+
+  /* Deep accent text → lightened hues for contrast on dark */
+  --wy-coral-pressed: #FFA194;
+  --wy-coral-deep:    #FF8E84;
+  --wy-lavender-deep: #CBB8FF;
+  --wy-sage-deep:     #93D9B2;
+  --wy-amber-deep:    #F1C892;
+}
+
+/* ─────────────────────────────────────────────────────────────
+ * Semantic type styles — v4
+ *  Display 42 / 700 / -1.6   (was 56/-2)
+ *  H1     30 / 700 / -1
+ *  H2     22 / 700 / -0.5
+ *  Body   14 / 500 / 0
+ *  Mono   10–11 / 700 / 1.2–1.4 letterspacing
+ *  Handwriting · Caveat — diary only
+ * ───────────────────────────────────────────────────────────── */
+
+.wy-display, h1.wy-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 1.02;
+  letter-spacing: -1.6px;
+  color: var(--fg1);
+}
+
+.wy-h1, h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 1.1;
+  letter-spacing: -1px;
+  color: var(--fg1);
+}
+
+.wy-h2, h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+  color: var(--fg1);
+}
+
+.wy-h3, h3 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+  color: var(--fg1);
+}
+
+.wy-body, p {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.55;
+  letter-spacing: -0.1px;
+  color: var(--fg2);
+}
+
+.wy-body-strong {
+  font-weight: 600;
+  color: var(--fg1);
+}
+
+.wy-caption {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 11.5px;
+  line-height: 1.4;
+  color: var(--fg3);
+}
+
+.wy-eyebrow, .wy-overline {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 1.4px;
+  color: var(--fg3);
+  text-transform: uppercase;
+}
+
+.wy-handwriting {
+  font-family: var(--font-handwriting);
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--fg1);
+}
+
+.wy-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.4px;
+  color: var(--fg2);
+}
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  background: var(--bg3);
+  padding: 1px 5px;
+  border-radius: 4px;
+  color: var(--fg2);
+}

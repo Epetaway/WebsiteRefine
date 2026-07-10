@@ -1,6 +1,6 @@
-# Earl Hickson Jr. - Portfolio Website
+# Earl Hickson Jr. — Portfolio
 
-Professional Brazilian Jiu-Jitsu coaching platform and portfolio website showcasing Earl's expertise as a Front-End Developer and BJJ Black Belt.
+UX Engineer and Front-End Developer with 10+ years building accessible, human-centered digital products across healthcare, media, and enterprise. Source for [ehicksonjr.com](https://ehicksonjr.com/).
 
 ## 🚀 Quick Start
 
@@ -43,8 +43,7 @@ VITE_GA_MEASUREMENT_ID=your_google_analytics_id
 
 ## 🎯 Features
 
-- ✅ Professional portfolio showcase
-- ✅ BJJ lesson booking system at `/EarldKaiju`
+- ✅ UX Engineer portfolio — case studies, featured work, approach
 - ✅ YouTube integration for training videos
 - ✅ Contact forms with SendGrid integration
 - ✅ Google Analytics tracking
