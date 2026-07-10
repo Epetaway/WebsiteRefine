@@ -103,10 +103,10 @@ const PREVIEW_DATA: DesignDocCaseStudyData = {
   informationArchitecture: {
     intro: "Map the routes, screens, or flows — grouped by user state or job, not by folder structure. Derivable from the codebase's route list.",
     columns: [
-      { title: "Flow group A", items: ["Screen name", "Screen name", "Screen name"] },
-      { title: "Flow group B", items: ["Screen name", "Screen name"] },
-      { title: "Flow group C", items: ["Screen name", "Screen name", "Screen name"] },
-      { title: "Flow group D", items: ["Screen name"] },
+      { title: "Flow group A", items: ["Screen name A1", "Screen name A2", "Screen name A3"] },
+      { title: "Flow group B", items: ["Screen name B1", "Screen name B2"] },
+      { title: "Flow group C", items: ["Screen name C1", "Screen name C2", "Screen name C3"] },
+      { title: "Flow group D", items: ["Screen name D1"] },
     ],
   },
 
