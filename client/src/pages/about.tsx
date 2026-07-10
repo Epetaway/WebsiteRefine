@@ -9,14 +9,14 @@ export default function About() {
   return (
     <>
       <Helmet>
-        <title>About — Earl Hickson Jr. | UX Engineer | React · TypeScript · Accessibility</title>
+        <title>About — Earl Hickson Jr. | Human-Centered Front-End Engineer</title>
         <meta
           name="description"
-          content="UX Engineer in Parsippany, NJ with 10+ years building accessible, human-centered digital products. BFA in Graphic Design from Kean University. IBM Full Stack Software Developer certificate."
+          content="BFA in Graphic Design, 6+ years of front-end engineering, and a Brazilian Jiu-Jitsu practice that shapes how I think about systems under pressure. IBM Full Stack Software Developer certified."
         />
         <link rel="canonical" href="https://ehicksonjr.com/about" />
-        <meta property="og:title" content="About — Earl Hickson Jr. | UX Engineer" />
-        <meta property="og:description" content="UX Engineer with 10+ years in React, TypeScript, and WCAG 2.1 AA. BFA in Graphic Design — building interfaces that are technically sound and human-centered." />
+        <meta property="og:title" content="About — Earl Hickson Jr. | Human-Centered Front-End Engineer" />
+        <meta property="og:description" content="BFA in Graphic Design, 6+ years in React, TypeScript, and WCAG 2.1 AA — building interfaces that are technically sound and human-centered." />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content="https://ehicksonjr.com/about" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
@@ -33,7 +33,8 @@ export default function About() {
               <span className="text-violet-400">and Discipline.</span>
             </h1>
             <p className="text-xl text-[#B7B7B7] leading-relaxed">
-              I'm a UX Engineer based in Parsippany, NJ with 10+ years building accessible, human-centered digital products across healthcare, media, and enterprise. My BFA in Graphic Design and front-end engineering background aren't separate things — they're the same practice, applied at different layers of a product.
+              I began in graphic design, where I learned to organize information and communicate visually. Front-end engineering taught me how those ideas become working systems. Accessibility taught me that every technical decision shapes who can participate. Teaching Brazilian Jiu-Jitsu showed me how people learn through feedback, repetition, trust, and progressive challenge.{" "}
+              <span className="text-white font-medium">Human-Computer Interaction is where those experiences meet</span> — my work now focuses on products that help people understand complex information, build meaningful skills, and interact with technology more confidently.
             </p>
           </ScrollReveal>
         </div>
@@ -52,10 +53,10 @@ export default function About() {
                 I graduated from Kean University with a BFA in Graphic Design, then built on that foundation with an IBM Full Stack Software Developer Professional Certificate (Coursera, 2025). That combination — formal design training plus full-stack engineering — shapes how I work. I think about layout, hierarchy, and visual weight the same way I think about component structure and state management.
               </p>
               <p className="text-[#B7B7B7] leading-relaxed mb-4">
-                My career has spanned healthcare portals, financial services sites, media marketing platforms, and nonprofit campaigns. I've built design systems, integrated REST APIs in .NET environments, established accessibility standards, and shipped work that reached clinical providers, patients, and enterprise stakeholders.
+                My career has spanned different domains — media marketing platforms, financial services, nonprofit campaigns, healthcare portals — but the discipline is the same everywhere: understand who's using the thing before deciding how it should work.
               </p>
               <p className="text-[#7A7A7A] leading-relaxed mb-6">
-                Brazilian Jiu-Jitsu trained me in a different kind of precision: discipline, patience, refinement under pressure. The same mindset fuels how I write code, architect components, and collaborate with teams when the deadline moves up.
+                Brazilian Jiu-Jitsu trained me in a different kind of precision: discipline, patience, refinement under pressure. Teaching it showed me how people actually learn — through feedback, trust, and progressive challenge — which is the same lens I bring to interface design.
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
@@ -106,18 +107,6 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               {
-                company: "AMA Fight Club",
-                role: "Front-End Developer & Digital Integration Specialist",
-                period: "Jan 2025 – Present",
-                highlights: [
-                  "Responsive site redesign in Wix CMS",
-                  "Zen Planner API integration for lead capture & CRM sync",
-                  "ZipRecruiter form integrations for recruitment",
-                  "Branded digital marketing assets and QR campaigns",
-                  "Digital strategy advisor to leadership",
-                ],
-              },
-              {
                 company: "Asembia",
                 role: "Front-End Developer",
                 period: "Dec 2023 – Oct 2024",
@@ -127,7 +116,6 @@ export default function About() {
                   "Simplified prescriber portal data layouts for clinical users",
                   "REST API integration in .NET environment",
                   "WCAG 2.1 AA across HIPAA-compliant platforms",
-                  "Presented new component architecture to CEO",
                 ],
               },
               {
@@ -136,10 +124,19 @@ export default function About() {
                 period: "Nov 2021 – Mar 2023",
                 highlights: [
                   "Healthcare marketing microsites in proprietary CMS",
-                  "Standardized HTML email system reducing production overhead",
+                  "Standardized HTML email system that cut production time",
+                  "Increased lead form submissions through targeted layout and UX improvements",
                   "Data-informed design via Google Analytics & Hotjar",
-                  "UX improvements to lead capture flows",
                   "Mentored junior developers and designers",
+                ],
+              },
+              {
+                company: "AMA Fight Club",
+                role: "Front-End Developer & Digital Integration Specialist",
+                period: "Jan 2025 – Present",
+                highlights: [
+                  "Responsive site redesign in Wix CMS",
+                  "Zen Planner API integration for lead capture & CRM sync",
                 ],
               },
               {
@@ -292,7 +289,7 @@ export default function About() {
                   Let's work together.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  Currently open to full-time UX Engineer and front-end roles. I'm looking for teams building products where accessibility, performance, and design craft actually matter.
+                  Currently open to full-time front-end roles. I'm looking for teams building products where accessibility, performance, and design craft actually matter.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">
