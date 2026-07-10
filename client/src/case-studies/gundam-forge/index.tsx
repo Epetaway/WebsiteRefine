@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { PremiumCaseStudyTemplate } from "@/components/case-study/PremiumCaseStudyTemplate";
+import { DesignDocCaseStudyTemplate } from "@/components/case-study/DesignDocCaseStudyTemplate";
 import { useTheme } from "@/contexts/ThemeContext";
-import { gundamForgePremiumData } from "./data";
+import { gundamForgeDesignDocData } from "./data";
 
 export default function GundamForgeCaseStudy() {
   const { setPageChrome } = useTheme();
@@ -21,7 +21,7 @@ export default function GundamForgeCaseStudy() {
           content="Case study for Gundam Forge: a competitive TCG deck-building platform for the Gundam Card Game with live meta data, rules-accurate game engine, and 471+ card browser. Built with Next.js 14, TypeScript, and shipped as static export to GitHub Pages."
         />
       </Helmet>
-      <PremiumCaseStudyTemplate data={gundamForgePremiumData} />
+      <DesignDocCaseStudyTemplate data={gundamForgeDesignDocData} />
     </>
   );
 }
