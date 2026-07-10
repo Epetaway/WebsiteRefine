@@ -1,4 +1,5 @@
-import { CheckCircle2 } from "lucide-react";
+import type { ReactNode } from "react";
+import { CheckCircle2, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { LearningItem } from "./types";
 
@@ -7,6 +8,7 @@ type CaseStudyLearningsProps = {
   id?: string;
   eyebrow?: string;
   heading?: string;
+  children?: ReactNode;
 };
 
 const FADE_UP = {
@@ -19,6 +21,7 @@ export function CaseStudyLearnings({
   id = "learnings",
   eyebrow = "09 What I Learned",
   heading = "Key takeaways",
+  children,
 }: CaseStudyLearningsProps) {
   return (
     <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
@@ -52,20 +55,26 @@ export function CaseStudyLearnings({
         variants={{ visible: { transition: { staggerChildren: 0.06 } } }}
         className="space-y-3"
       >
-        {items.map((item, idx) => (
-          <motion.li
-            key={idx}
-            variants={FADE_UP}
-            className="flex items-start gap-3 text-sm text-[var(--cs-text-secondary)] leading-relaxed"
-          >
-            <CheckCircle2
-              className="w-4 h-4 mt-0.5 flex-none"
-              style={{ color: "var(--case-accent)" }}
-            />
-            <span>{item.text}</span>
-          </motion.li>
-        ))}
+        {items.map((item, idx) => {
+          const isOpen = item.type === "open";
+          const Icon = isOpen ? ArrowRight : CheckCircle2;
+          return (
+            <motion.li
+              key={idx}
+              variants={FADE_UP}
+              className="flex items-start gap-3 text-sm text-[var(--cs-text-secondary)] leading-relaxed"
+            >
+              <Icon
+                className="w-4 h-4 mt-0.5 flex-none"
+                style={{ color: isOpen ? "#F6C63F" : "var(--case-accent)" }}
+              />
+              <span>{item.text}</span>
+            </motion.li>
+          );
+        })}
       </motion.ul>
+
+      {children && <div className="mt-6">{children}</div>}
     </section>
   );
 }

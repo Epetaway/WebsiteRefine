@@ -32,6 +32,7 @@ export { DesignDocCaseStudyTemplate } from "./DesignDocCaseStudyTemplate";
 export { CaseStudyProse } from "./CaseStudyProse";
 export { CaseStudyResearch } from "./CaseStudyResearch";
 export { CaseStudyInformationArchitecture } from "./CaseStudyInformationArchitecture";
+export { CaseStudyCallout } from "./CaseStudyCallout";
 
 // ── Types ─────────────────────────────────────────────────────────────────────
 export type {
@@ -56,4 +57,5 @@ export type {
   ProseSectionData,
   ResearchData,
   IAColumn,
+  CalloutNote,
 } from "./types";

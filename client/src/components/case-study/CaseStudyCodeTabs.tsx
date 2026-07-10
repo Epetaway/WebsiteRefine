@@ -6,6 +6,11 @@ import { CodeTab } from "./types";
 
 type CaseStudyCodeTabsProps = {
   tabs: CodeTab[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  /** When true, renders as subordinate content within an existing section — no top border, no eyebrow, smaller heading. */
+  nested?: boolean;
 };
 
 const FADE_UP = {
@@ -70,22 +75,33 @@ function CodePanel({ tab }: { tab: CodeTab }) {
   );
 }
 
-export function CaseStudyCodeTabs({ tabs }: CaseStudyCodeTabsProps) {
+export function CaseStudyCodeTabs({
+  tabs,
+  id = "code",
+  eyebrow = "07 Code Highlights",
+  heading = "Code in action",
+  nested = false,
+}: CaseStudyCodeTabsProps) {
   if (tabs.length === 0) return null;
 
   return (
-    <section id="code" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
-      <motion.p
-        variants={FADE_UP}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.35 }}
-        className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
-        style={{ color: "var(--case-accent)" }}
-      >
-        07 Code Highlights
-      </motion.p>
+    <section
+      id={id}
+      className={nested ? "scroll-mt-24 pt-8" : "scroll-mt-24 py-12 border-t border-[var(--cs-border)]"}
+    >
+      {!nested && (
+        <motion.p
+          variants={FADE_UP}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.35 }}
+          className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
+          style={{ color: "var(--case-accent)" }}
+        >
+          {eyebrow}
+        </motion.p>
+      )}
 
       <motion.h2
         variants={FADE_UP}
@@ -93,9 +109,13 @@ export function CaseStudyCodeTabs({ tabs }: CaseStudyCodeTabsProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
+        className={
+          nested
+            ? "text-[17px] font-semibold text-[var(--cs-text-primary)] mb-2"
+            : "font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-2"
+        }
       >
-        Code in action
+        {heading}
       </motion.h2>
 
       <motion.p

@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 import { FutureItem } from "./types";
 
@@ -7,6 +8,7 @@ type CaseStudyFutureProps = {
   eyebrow?: string;
   heading?: string;
   intro?: string;
+  children?: ReactNode;
 };
 
 const FADE_UP = {
@@ -20,6 +22,7 @@ export function CaseStudyFuture({
   eyebrow = "10 What's Next",
   heading = "Future improvements",
   intro = "Planned features, enhancements, or areas for future iteration.",
+  children,
 }: CaseStudyFutureProps) {
   return (
     <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
@@ -75,6 +78,8 @@ export function CaseStudyFuture({
           </motion.div>
         ))}
       </motion.div>
+
+      {children && <div className="mt-6">{children}</div>}
     </section>
   );
 }

@@ -1,5 +1,7 @@
 import { Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { CalloutNote } from "./types";
+import { CaseStudyCallout } from "./CaseStudyCallout";
 
 type CaseStudyResearchProps = {
   id: string;
@@ -10,6 +12,7 @@ type CaseStudyResearchProps = {
   competitiveIntro: string;
   competitors: string[];
   observations: string[];
+  notes?: CalloutNote[];
 };
 
 const FADE_UP = {
@@ -30,6 +33,7 @@ export function CaseStudyResearch({
   competitiveIntro,
   competitors,
   observations,
+  notes,
 }: CaseStudyResearchProps) {
   return (
     <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
@@ -113,6 +117,14 @@ export function CaseStudyResearch({
           </ul>
         </div>
       </div>
+
+      {notes && notes.length > 0 && (
+        <div className="flex flex-col gap-3 mt-8">
+          {notes.map((note, idx) => (
+            <CaseStudyCallout key={idx} {...note} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }

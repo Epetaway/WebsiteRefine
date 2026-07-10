@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { motion } from "framer-motion";
 
 type CaseStudyProseProps = {
@@ -6,6 +7,7 @@ type CaseStudyProseProps = {
   heading: string;
   paragraphs: string[];
   tags?: string[];
+  children?: ReactNode;
 };
 
 const FADE_UP = {
@@ -18,7 +20,7 @@ const FADE_UP = {
  * parts of a design-doc case study (Opportunity, Visual Design, Challenges,
  * Outcomes, Reflection, etc.) so each doesn't need a bespoke component.
  */
-export function CaseStudyProse({ id, eyebrow, heading, paragraphs, tags }: CaseStudyProseProps) {
+export function CaseStudyProse({ id, eyebrow, heading, paragraphs, tags, children }: CaseStudyProseProps) {
   return (
     <section id={id} className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
       <motion.p
@@ -79,6 +81,8 @@ export function CaseStudyProse({ id, eyebrow, heading, paragraphs, tags }: CaseS
           ))}
         </motion.div>
       )}
+
+      {children && <div className="mt-6 max-w-2xl">{children}</div>}
     </section>
   );
 }

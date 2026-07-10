@@ -3,6 +3,11 @@ import { MetricItem } from "./types";
 
 type CaseStudyMetricsRowProps = {
   metrics: MetricItem[];
+  id?: string;
+  eyebrow?: string;
+  heading?: string;
+  /** When true, renders as subordinate content within an existing section — no top border, no eyebrow, smaller heading. */
+  nested?: boolean;
 };
 
 const FADE_UP = {
@@ -10,22 +15,33 @@ const FADE_UP = {
   visible: { opacity: 1, y: 0 },
 };
 
-export function CaseStudyMetricsRow({ metrics }: CaseStudyMetricsRowProps) {
+export function CaseStudyMetricsRow({
+  metrics,
+  id = "impact",
+  eyebrow = "08 Impact & Results",
+  heading = "The impact",
+  nested = false,
+}: CaseStudyMetricsRowProps) {
   if (metrics.length === 0) return null;
 
   return (
-    <section id="impact" className="scroll-mt-24 py-12 border-t border-[var(--cs-border)]">
-      <motion.p
-        variants={FADE_UP}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.35 }}
-        className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
-        style={{ color: "var(--case-accent)" }}
-      >
-        08 Impact &amp; Results
-      </motion.p>
+    <section
+      id={id}
+      className={nested ? "scroll-mt-24 pt-8" : "scroll-mt-24 py-12 border-t border-[var(--cs-border)]"}
+    >
+      {!nested && (
+        <motion.p
+          variants={FADE_UP}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.35 }}
+          className="text-xs font-semibold uppercase tracking-[0.18em] mb-2"
+          style={{ color: "var(--case-accent)" }}
+        >
+          {eyebrow}
+        </motion.p>
+      )}
 
       <motion.h2
         variants={FADE_UP}
@@ -33,9 +49,13 @@ export function CaseStudyMetricsRow({ metrics }: CaseStudyMetricsRowProps) {
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.4, delay: 0.04 }}
-        className="font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
+        className={
+          nested
+            ? "text-[17px] font-semibold text-[var(--cs-text-primary)] mb-4"
+            : "font-['Space_Grotesk'] text-2xl sm:text-3xl font-bold text-[var(--cs-text-primary)] mb-6"
+        }
       >
-        The impact
+        {heading}
       </motion.h2>
 
       <motion.div

@@ -13,9 +13,12 @@ import { CaseStudyProcess } from "./CaseStudyProcess";
 import { CaseStudyInformationArchitecture } from "./CaseStudyInformationArchitecture";
 import { CaseStudyFeatureCarousel } from "./CaseStudyFeatureCarousel";
 import { CaseStudyTechStack } from "./CaseStudyTechStack";
+import { CaseStudyCodeTabs } from "./CaseStudyCodeTabs";
+import { CaseStudyMetricsRow } from "./CaseStudyMetricsRow";
 import { CaseStudyLearnings } from "./CaseStudyLearnings";
 import { CaseStudyFuture } from "./CaseStudyFuture";
 import { CaseStudyBottomCTA } from "./CaseStudyBottomCTA";
+import { CaseStudyCallout } from "./CaseStudyCallout";
 
 // Canonical, numbered section order. A project's prototype link (if any)
 // renders as a password-gated CTA button in the hero, not a numbered
@@ -28,7 +31,7 @@ const TOC_SECTIONS: TocSection[] = [
   { id: "research", label: "Research" },
   { id: "design-principles", label: "Design Principles" },
   { id: "information-architecture", label: "Information Architecture" },
-  { id: "features", label: "Key Features" },
+  { id: "key-features", label: "Key Features" },
   { id: "visual-design", label: "Visual Design" },
   { id: "technical-architecture", label: "Technical Architecture" },
   { id: "design-system", label: "Design System" },
@@ -120,6 +123,7 @@ export function DesignDocCaseStudyTemplate({ data }: Props) {
               competitiveIntro={data.research.competitiveIntro}
               competitors={data.research.competitors}
               observations={data.research.observations}
+              notes={data.research.notes}
             />
 
             <CaseStudyProcess
@@ -139,8 +143,8 @@ export function DesignDocCaseStudyTemplate({ data }: Props) {
             />
 
             <CaseStudyFeatureCarousel
-              id="features"
-              eyebrow={eyebrowFor("features", "Key Features")}
+              id="key-features"
+              eyebrow={eyebrowFor("key-features", "Key Features")}
               heading="Core features and functionality"
               intro="What visitors and trainers can actually do with the product."
               features={data.features}
@@ -162,6 +166,14 @@ export function DesignDocCaseStudyTemplate({ data }: Props) {
               stack={data.techStack}
             />
 
+            {data.codeTabs && data.codeTabs.length > 0 && (
+              <CaseStudyCodeTabs
+                tabs={data.codeTabs}
+                heading="Code worth showing"
+                nested
+              />
+            )}
+
             <CaseStudyTechStack
               id="design-system"
               eyebrow={eyebrowFor("design-system", "Design System")}
@@ -175,21 +187,31 @@ export function DesignDocCaseStudyTemplate({ data }: Props) {
               eyebrow={eyebrowFor("accessibility", "Accessibility")}
               heading="Built in, not bolted on"
               items={data.accessibility}
-            />
+            >
+              {data.accessibilityValidation && (
+                <CaseStudyCallout {...data.accessibilityValidation} />
+              )}
+            </CaseStudyLearnings>
 
             <CaseStudyProse
               id="challenges"
               eyebrow={eyebrowFor("challenges", "Challenges")}
               heading={data.challenges.heading}
               paragraphs={data.challenges.paragraphs}
-            />
+            >
+              {data.challengesTradeoff && <CaseStudyCallout {...data.challengesTradeoff} />}
+            </CaseStudyProse>
 
             <CaseStudyProse
               id="outcomes"
               eyebrow={eyebrowFor("outcomes", "Outcomes")}
               heading={data.outcomes.heading}
               paragraphs={data.outcomes.paragraphs}
-            />
+            >
+              {data.metrics && data.metrics.length > 0 && (
+                <CaseStudyMetricsRow metrics={data.metrics} heading="The impact, in numbers" nested />
+              )}
+            </CaseStudyProse>
 
             <CaseStudyProse
               id="reflection"
@@ -204,7 +226,9 @@ export function DesignDocCaseStudyTemplate({ data }: Props) {
               heading="Future improvements"
               intro="The MVP intentionally excluded these to keep scope focused on immediate value."
               items={data.nextSteps}
-            />
+            >
+              {data.futureValidation && <CaseStudyCallout {...data.futureValidation} />}
+            </CaseStudyFuture>
           </main>
 
           <aside className="hidden lg:block">

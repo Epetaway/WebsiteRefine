@@ -72,6 +72,8 @@ export type MetricItem = {
 
 export type LearningItem = {
   text: string;
+  /** "confirmed" (default) renders a teal check; "open" renders an amber arrow for a self-critical/next-step item. */
+  type?: "confirmed" | "open";
 };
 
 export type FutureItem = {
@@ -167,11 +169,20 @@ export type ResearchData = {
   competitiveIntro: string;
   competitors: string[];
   observations: string[];
+  /** Evidence/assumption/constraint callouts — omit or pass [] if none apply. */
+  notes?: CalloutNote[];
 };
 
 export type IAColumn = {
   title: string;
   items: string[];
+};
+
+/** Flagged-content note rendered by CaseStudyCallout — evidence, an unvalidated assumption, a constraint, or a tradeoff. */
+export type CalloutNote = {
+  tone: "evidence" | "assumption" | "constraint" | "tradeoff";
+  label: string;
+  text: string;
 };
 
 export type DesignDocCaseStudyData = {
@@ -208,15 +219,25 @@ export type DesignDocCaseStudyData = {
   visualDesign: ProseSectionData;
   techStack: string[];
   technicalArchitectureIntro?: string;
+  /** Nested inside Technical Architecture, behind progressive disclosure — no TOC entry of its own. */
+  codeTabs?: CodeTab[];
   designSystem: {
     intro: string;
     components: string[];
   };
   accessibility: LearningItem[];
+  /** Nested "Validation status" callout inside Accessibility. */
+  accessibilityValidation?: CalloutNote;
   challenges: ProseSectionData;
+  /** Nested "Tradeoff" callout inside Challenges. */
+  challengesTradeoff?: CalloutNote;
   outcomes: ProseSectionData;
+  /** Nested inside Outcomes, no TOC entry of its own. */
+  metrics?: MetricItem[];
   reflection: ProseSectionData;
   nextSteps: FutureItem[];
+  /** Nested "Future validation" callout inside Next Steps. */
+  futureValidation?: CalloutNote;
   /** Password-gated link, rendered as a CTA button in the hero (see ProtectedPrototypeButton). */
   prototype?: {
     url: string;
