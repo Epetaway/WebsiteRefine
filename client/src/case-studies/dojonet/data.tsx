@@ -11,9 +11,9 @@ import {
   Database,
   Video,
 } from "lucide-react";
-import type { PremiumCaseStudyData } from "@/components/case-study/types";
+import type { DesignDocCaseStudyData } from "@/components/case-study/types";
 
-export const dojonetPremiumData: PremiumCaseStudyData = {
+export const dojonetDesignDocData: DesignDocCaseStudyData = {
   slug: "dojonet",
   title: "DojoNet",
   category: "Martial Arts Social Platform",
@@ -44,7 +44,7 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     image: "/images/dojonet/dojonet_overview.png",
   },
 
-  challenge: {
+  problem: {
     description:
       "The application had to prove that a martial arts community product could feel social, expressive, and production-ready without relying on a required backend, while still reflecting discipline-specific workflows and safety constraints.",
     problems: [
@@ -52,6 +52,14 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
       "Finding training partners requires stronger safety controls, especially around age-gating, moderation, and verification.",
       "Practitioners need one place for journals, events, feed activity, messaging, and discussion instead of fragmented tools.",
       "The prototype needed rich interaction design and persistence while remaining runnable locally with no backend dependency.",
+    ],
+  },
+
+  opportunity: {
+    heading: "Why a local-first prototype was the right bet",
+    paragraphs: [
+      "Building a full backend before validating the product surface would have meant months of infrastructure work before knowing whether the core idea — belt rank and gym affiliation as real product inputs, not profile trivia — actually held together as a product.",
+      "A local-first prototype let the entire feed, journal, partner-matching, and profile-customization surface get built and demoed end-to-end, with the backend architecture (Express/Prisma/PostgreSQL/Redis) designed but not required to prove the concept.",
     ],
   },
 
@@ -76,32 +84,62 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     },
   ],
 
-  process: [
+  research: {
+    interviewIntro:
+      "No formal user interviews were conducted. The feature set — belt rank and gym affiliation as identity, safety-gated partner matching, training journals — was reasoned from general knowledge of martial arts communities and generic social-product patterns, not from talking to practitioners directly.",
+    quotes: [],
+    competitiveIntro: "No formal competitive audit of martial-arts-specific platforms was conducted.",
+    competitors: [],
+    observations: [],
+    notes: [
+      {
+        tone: "assumption",
+        label: "Assumption — needs validation",
+        text: "The core identity bet — that belt rank, discipline, and gym affiliation matter more to this audience than generic social features — hasn't been tested with real practitioners.",
+      },
+      {
+        tone: "constraint",
+        label: "Constraint",
+        text: "Built solo as a local-first prototype with no backend budget — the optional Express/Prisma/PostgreSQL/Redis path is designed but not required or deployed.",
+      },
+    ],
+  },
+
+  designPrinciples: [
     {
-      number: "① Research",
-      title: "Research",
+      number: "01",
+      title: "Identity Over Generic Social Features",
       description:
-        "Define the product around real martial arts community needs: training logs, rank-based identity, event discovery, safer partner finding, and lightweight verification rather than generic social scaffolding.",
+        "MySpace-style personalization (theme presets, profile music, Top 8-style Dojo Circle) exists to make belt rank, discipline, and gym affiliation feel like real identity — not to copy a nostalgia trend for its own sake.",
     },
     {
-      number: "② Design",
-      title: "Design",
+      number: "02",
+      title: "Bold but Practical UI",
       description:
-        "Establish a bold but practical UI system using Dojo Red accents, Bebas Neue display type, Inter body text, soft-elevated cards, dark-mode support, and reusable atoms for buttons, badges, modals, and cards.",
+        "Dojo Red accents, Bebas Neue display type, Inter body text, soft-elevated cards, and full dark-mode support — expressive without sacrificing legibility or the reusable-atom discipline the rest of the product depends on.",
     },
     {
-      number: "③ Build",
-      title: "Build",
+      number: "03",
+      title: "One Consistent Component Layer",
       description:
-        "Implement the experience in React, Vite, Tailwind, and Zustand with routed pages for home, search, journals, profiles, dashboard, notifications, events, messages, forums, and partner matchmaking.",
+        "Every routed page — home, search, journals, profiles, dashboard, notifications, events, messages, forums, matchmaking — draws from the same buttons, badges, modals, and card atoms, with no page-specific one-offs.",
     },
     {
-      number: "④ Test & Ship",
-      title: "Test & Ship",
+      number: "04",
+      title: "Safety Isn't Optional Copy",
       description:
-        "Validate core behavior with Vitest smoke coverage, persisted local demo data, seeded bot users, reduced-motion support, and an optional Express/Prisma backend path for future expansion.",
+        "Partner matching enforces age-gating and moderation in the filtering logic itself, not just in interface copy or a terms-of-service line nobody reads.",
     },
   ],
+
+  informationArchitecture: {
+    intro: "A single responsive app spans discovery, personal training tools, and social/safety surfaces.",
+    columns: [
+      { title: "Discovery", items: ["Home / hero search", "Explore", "Event discovery & detail"] },
+      { title: "Training", items: ["Training journal (entries, techniques, progress, goals)", "Dashboard"] },
+      { title: "Social & Safety", items: ["Profiles & Dojo Circle", "Partner matchmaking", "Messages", "Notifications", "Forums"] },
+    ],
+  },
 
   features: [
     {
@@ -148,6 +186,14 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     },
   ],
 
+  visualDesign: {
+    heading: "Nostalgic personalization, current-generation execution",
+    paragraphs: [
+      "Dojo Red is the single accent that carries brand weight; Bebas Neue gives headlines the poster-like authority of a gym flyer, while Inter keeps body text and dense UI legible. Soft-elevated cards and full dark-mode support keep the MySpace-style personalization — theme presets, profile music, Top 8 connections — reading as intentional rather than dated.",
+    ],
+    tags: ["Dojo Red accent #B71C1C", "Bebas Neue display type", "Inter body type", "4 theme presets", "Full dark-mode support"],
+  },
+
   techStack: [
     "React",
     "Vite",
@@ -162,6 +208,8 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     "BullMQ",
     "Socket.IO",
   ],
+  technicalArchitectureIntro:
+    "React + Vite + Tailwind + Zustand on the client, with an optional Express/Prisma/PostgreSQL/Redis/BullMQ/Socket.IO backend path designed for real-time chat and multi-device sync — not required to run the current local-first prototype.",
 
   codeTabs: [
     {
@@ -277,40 +325,51 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     },
   ],
 
+  designSystem: {
+    intro:
+      "A small set of reusable atoms — buttons, badges, modals, cards — plus CSS custom-property tokens for color and elevation keep light mode, dark mode, and four personalized profile themes visually consistent without per-page overrides.",
+    components: ["Buttons", "Badges", "Modals", "Cards", "Theme presets (Default, Tatami, Iron, Neon)"],
+  },
+
+  accessibility: [
+    { text: "Interactive card components use explicit role, tabIndex, and keyboard handlers (see the Event Card code tab) rather than relying on div-as-button patterns." },
+    { text: "Reduced-motion support is built into the animation layer." },
+  ],
+  accessibilityValidation: {
+    tone: "assumption",
+    label: "Validation status",
+    text: "No formal accessibility audit or screen-reader testing has been run — the patterns shown are good practice, not a verified WCAG AA pass.",
+  },
+
+  challenges: {
+    heading: "Making safety enforcement real, not cosmetic",
+    paragraphs: [
+      "Partner matchmaking is the one feature where a UX mistake has real-world safety consequences, not just a bad review. Age-gating and moderation had to be enforced in the actual filtering logic — not left as copy on a warning modal a determined user could route around.",
+      "Balancing that safety requirement against the swipe-style, low-friction interaction the feature needed to feel usable — rather than like a compliance form — took more iteration than any other single feature.",
+    ],
+  },
+  challengesTradeoff: {
+    tone: "tradeoff",
+    label: "Tradeoff",
+    text: "Hard age-gating in the matching logic means some edge cases — like a gym's own verified minors-only program — aren't well served by the current model. A deliberate narrowing of scope to keep the safety guarantee simple and enforceable rather than configurable and leaky.",
+  },
+
+  outcomes: {
+    heading: "What's built, demo-ready today",
+    paragraphs: [
+      "The prototype runs entirely local-first with persisted demo data — no backend deployment required to explore the full feature surface.",
+    ],
+  },
   metrics: [
-    {
-      value: "11",
-      label: "Seeded demo users",
-      description: "Interconnected bot community with varied ranks, themes, gyms, and friend graphs.",
-    },
-    {
-      value: "4",
-      label: "Profile theme presets",
-      description: "Default, Tatami, Iron, and Neon themes with dynamic gradients and pattern overlays.",
-    },
-    {
-      value: "7",
-      label: "Dashboard widgets",
-      description: "Milestones, events, partners, drafts, journals, and quick actions in the right rail.",
-    },
-    {
-      value: "6",
-      label: "Onboarding steps",
-      description: "Welcome, profile basics, interests, practice claims, theme selection, and review.",
-    },
-    {
-      value: "6",
-      label: "Notification types",
-      description: "Likes, comments, follows, messages, event shares, and system updates.",
-    },
-    {
-      value: "4",
-      label: "Journal tabs",
-      description: "Training Journal organized into Entries, Techniques, Progress, and Goals.",
-    },
+    { value: "11", label: "Seeded demo users", description: "Interconnected bot community with varied ranks, themes, gyms, and friend graphs." },
+    { value: "4", label: "Profile theme presets", description: "Default, Tatami, Iron, and Neon themes with dynamic gradients and pattern overlays." },
+    { value: "7", label: "Dashboard widgets", description: "Milestones, events, partners, drafts, journals, and quick actions in the right rail." },
+    { value: "6", label: "Onboarding steps", description: "Welcome, profile basics, interests, practice claims, theme selection, and review." },
+    { value: "6", label: "Notification types", description: "Likes, comments, follows, messages, event shares, and system updates." },
+    { value: "4", label: "Journal tabs", description: "Training Journal organized into Entries, Techniques, Progress, and Goals." },
   ],
 
-  learnings: [
+  reflection: [
     {
       text: "Local-first persistence made it possible to validate a broad social product surface without blocking on backend infrastructure.",
     },
@@ -320,14 +379,25 @@ export const dojonetPremiumData: PremiumCaseStudyData = {
     {
       text: "Design tokens and reusable UI atoms were critical for keeping light mode, dark mode, and personalized profile themes visually consistent.",
     },
+    {
+      text: "The core bet — that belt rank and gym affiliation matter enough to justify a dedicated platform rather than a generic social app — hasn't been tested with real practitioners yet. That's the first thing worth validating before investing in the backend.",
+      type: "open",
+    },
   ],
 
-  futureItems: [
+  nextSteps: [
     { icon: <Smartphone size={14} />, label: "Parent dashboard and approval flows for minor accounts" },
     { icon: <Zap size={14} />, label: "Real-time chat and live activity via WebSockets" },
     { icon: <Database size={14} />, label: "Backend-backed persistence with Prisma, PostgreSQL, and Redis" },
     { icon: <Video size={14} />, label: "Media uploads for posts, messages, and richer training content" },
   ],
+  futureValidation: {
+    tone: "evidence",
+    label: "Future validation",
+    text: "Run a small closed beta with practitioners from 2-3 real gyms to see whether belt-rank/gym-affiliation identity and safety-gated matchmaking actually drive engagement, before building out the optional backend.",
+  },
+
+  prevProject: { slug: "gundam-forge", title: "Gundam Forge" },
 
   theme: {
     accent: "#B71C1C",
