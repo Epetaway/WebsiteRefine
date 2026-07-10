@@ -60,23 +60,23 @@ Message: ${formData.project || 'Not specified'}`;
   return (
     <div>
       <Helmet>
-        <title>Contact — Earl Hickson Jr. | UX Engineer | React · TypeScript · NJ</title>
+        <title>Contact — Earl Hickson Jr. | Front-End Engineer | React · TypeScript · NJ</title>
         <meta
           name="description"
-          content="Reach out to Earl Hickson Jr. — UX Engineer in Parsippany, NJ with 10+ years in React, TypeScript, and WCAG 2.1 AA. Currently open to full-time roles."
+          content="Reach out to Earl Hickson Jr. — Front-End Engineer in Parsippany, NJ with 6+ years in React, TypeScript, and WCAG 2.1 AA. Currently open to full-time roles."
         />
         <link rel="canonical" href="https://ehicksonjr.com/contact" />
-        <meta property="og:title" content="Contact — Earl Hickson Jr. | UX Engineer" />
+        <meta property="og:title" content="Contact — Earl Hickson Jr. | Front-End Engineer" />
         <meta
           property="og:description"
-          content="Reach out to Earl Hickson Jr. — UX Engineer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA, BFA in Graphic Design. Open to full-time roles."
+          content="Reach out to Earl Hickson Jr. — Front-End Engineer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA, BFA in Graphic Design. Open to full-time roles."
         />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://ehicksonjr.com/contact" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Contact — Earl Hickson Jr. | UX Engineer" />
-        <meta name="twitter:description" content="Reach out to Earl Hickson Jr. — UX Engineer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA. Open to full-time roles." />
+        <meta name="twitter:title" content="Contact — Earl Hickson Jr. | Front-End Engineer" />
+        <meta name="twitter:description" content="Reach out to Earl Hickson Jr. — Front-End Engineer in Parsippany, NJ. React, TypeScript, WCAG 2.1 AA. Open to full-time roles." />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
 
@@ -89,7 +89,7 @@ Message: ${formData.project || 'Not specified'}`;
               Let's build something that actually works.
             </h1>
             <p className="text-xl text-[#B7B7B7] leading-relaxed">
-              Currently open to full-time UX Engineer and front-end roles. If you're hiring or want to collaborate on a product that takes accessibility and design craft seriously, reach out.
+              Currently open to full-time front-end roles. If you're hiring or want to collaborate on a product that takes accessibility and design craft seriously, reach out.
             </p>
           </ScrollReveal>
         </div>

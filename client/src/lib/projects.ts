@@ -35,9 +35,9 @@ export type Project = {
  * These serve as the primary data source for projects
  */
 export const pinnedRepoSlugs: string[] = [
+  "WithYou",
   "Gundam-Forge",
   "DojoNet-Prototype-MAX",
-  "WithYou",
 ];
 
 /**
@@ -46,11 +46,27 @@ export const pinnedRepoSlugs: string[] = [
  */
 export const pinnedProjects: Project[] = [
   {
+    slug: "WithYou",
+    name: "WithYou",
+    displayTitle: "WithYou – Relationship Wellness App",
+    description: "A privacy-first relationship app that encourages meaningful connection through intentional communication.",
+    longDescription: "Can two people stay honestly connected without a product quietly optimizing for their attention instead? WithYou is a privacy-first app for couples that treats consent and low-pressure signaling as core product requirements, not settings — consent-based pairing, private-by-default check-ins, and shared planning.",
+    techStack: ["React Native", "Node.js", "PostgreSQL", "TypeScript"],
+    repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
+    role: "Front-End Developer",
+    tags: ["React Native", "Privacy", "Behavioral UX"],
+    image: "/images/withyou/withyou_card.png",
+    shortTitle: "WithYou",
+    subtitle: "Relationship Wellness App",
+    featured: true,
+    pinned: true,
+  },
+  {
     slug: "Gundam-Forge",
     name: "Gundam-Forge",
     displayTitle: "Gundam Forge – Deck Builder & Meta Analysis Tool",
-    description: "A competitive deck-building and meta-analysis tool for the Gundam Card Game — live card data via external API, advanced card search and filtering, deck construction and management, local saves, and a working play tester with an active player community.",
-    longDescription: "A real product with architectural depth: component-driven React application with API integration, client-side state management, and UX thinking applied to an active competitive card game community. Features a split-panel deck builder, synergy-scoring card browser, rules-accurate playtest simulator, and live meta dashboard pulled from tournament data.",
+    description: "A competitive deck-building and meta-analysis tool for the Gundam Card Game — live card data via external API, advanced card search and filtering, deck construction and management, local saves, and a working play tester.",
+    longDescription: "Competitive players were building decks in spreadsheets and testing rules by hand. Gundam Forge gives them a live meta dashboard, a rules-accurate simulator, and a fast deck builder — free. Component-driven React application with external API integration and client-side state management.",
     techStack: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Vitest"],
     repoUrl: `https://github.com/${GITHUB_USER}/Gundam-Forge`,
     liveUrl: "https://epetaway.github.io/Gundam-Forge/",
@@ -67,7 +83,7 @@ export const pinnedProjects: Project[] = [
     name: "DojoNet-Prototype-MAX",
     displayTitle: "DojoNet Martial Arts Portal Prototype",
     description: "A prototype membership and class scheduling system for martial arts schools, focused on UX clarity and clean front-end patterns.",
-    longDescription: "A modern membership and scheduling portal for martial arts communities, featuring dynamic forms, event flows, and clean front-end architecture.",
+    longDescription: "A prototype exploring what a martial-arts community platform could look like if it treated belt rank, gym affiliation, and training identity as real product inputs, not afterthoughts — dynamic forms, event flows, and clean front-end architecture throughout.",
     techStack: ["React", "TypeScript", "Tailwind CSS", "Vite"],
     repoUrl: `https://github.com/${GITHUB_USER}/DojoNet-Prototype-MAX`,
     liveUrl: "https://epetaway.github.io/DojoNet-Prototype-MAX/#/dashboard",
@@ -76,22 +92,6 @@ export const pinnedProjects: Project[] = [
     subtitle: "Martial Arts Portal",
     role: "Lead Front-End Developer & UI/UX Designer",
     tags: ["React", "TypeScript", "Tailwind CSS"],
-    featured: true,
-    pinned: true,
-  },
-  {
-    slug: "WithYou",
-    name: "WithYou",
-    displayTitle: "WithYou – Relationship Wellness App",
-    description: "A privacy-first relationship app that encourages meaningful connection through intentional communication.",
-    longDescription: "Full-stack mobile app for couples with behavioral UX design, structured check-ins, shared plans, and real-time sync—prioritizing connection without surveillance.",
-    techStack: ["React Native", "Node.js", "PostgreSQL", "TypeScript"],
-    repoUrl: `https://github.com/${GITHUB_USER}/WithYou`,
-    role: "Front-End Developer",
-    tags: ["React Native", "Privacy", "Behavioral UX"],
-    image: "/images/withyou/withyou_card.png",
-    shortTitle: "WithYou",
-    subtitle: "Relationship Wellness App",
     featured: true,
     pinned: true,
   },

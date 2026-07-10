@@ -28,7 +28,6 @@ function toCardData(p: ReturnType<typeof getPinnedProjects>[number]) {
 }
 
 const METRICS: Record<string, { metric: string; metricLabel: string }> = {
-  "WithYou": { metric: "+100%", metricLabel: "privacy-first — zero tracking" },
   "Gundam-Forge": { metric: "3000+", metricLabel: "lines of shared TypeScript" },
 };
 
@@ -50,17 +49,35 @@ export default function Projects() {
   return (
     <>
       <Helmet>
-        <title>Work — Earl Hickson Jr. | React · TypeScript · UX Engineering</title>
-        <meta name="description" content="UX engineering work by Earl Hickson Jr. — React, TypeScript, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations across 10+ years." />
+        <title>Work — Earl Hickson Jr. | Human-Centered Products</title>
+        <meta name="description" content="Selected work by Earl Hickson Jr. — products built around real human problems: consent-first design, competitive decision-making, and accessible community tools. React, TypeScript, WCAG 2.1 AA." />
         <link rel="canonical" href="https://ehicksonjr.com/projects" />
-        <meta property="og:title" content="Work — Earl Hickson Jr. | UX Engineering" />
-        <meta property="og:description" content="UX engineering work by Earl Hickson Jr. — React, TypeScript, healthcare portals, WCAG 2.1 AA accessibility, and REST API integrations across 10+ years." />
+        <meta property="og:title" content="Work — Earl Hickson Jr. | Human-Centered Products" />
+        <meta property="og:description" content="Selected work by Earl Hickson Jr. — products built around real human problems: consent-first design, competitive decision-making, and accessible community tools." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://ehicksonjr.com/projects" />
         <meta property="og:image" content="/assets/og/og-image.jpg" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content="/assets/og/og-image.jpg" />
       </Helmet>
+
+      {/* ── WORK HERO ────────────────────────────────────────────────────── */}
+      <section className="bg-[#0D0D0D] pt-16 pb-12 md:pt-24 md:pb-16">
+        <div className="mx-auto max-w-[1120px] w-full px-5">
+          <ScrollReveal animation="slide-up">
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Selected Work</p>
+            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.05] max-w-3xl mb-6">
+              Three products.<br />Three human problems.
+            </h1>
+            <p className="text-lg text-[#B7B7B7] leading-relaxed max-w-2xl">
+              Together they support one thesis: I design and engineer human-centered products that help people{" "}
+              <strong className="text-white font-semibold">connect</strong> more intentionally, make better{" "}
+              <strong className="text-white font-semibold">decisions</strong>, and develop meaningful{" "}
+              <strong className="text-white font-semibold">skills</strong>.
+            </p>
+          </ScrollReveal>
+        </div>
+      </section>
 
       {/* ── FEATURED PROJECT — full-width bg-image hero ───────────────────── */}
       <ScrollReveal animation="fade">
@@ -99,7 +116,7 @@ export default function Projects() {
                   Let's build something together.
                 </h2>
                 <p className="text-[#B7B7B7] text-lg leading-relaxed">
-                  Currently open to full-time UX Engineer and front-end roles. If your team builds products where accessibility, performance, and design craft matter, let's talk.
+                  Currently open to full-time front-end roles. If your team builds products where accessibility, performance, and design craft matter, let's talk.
                 </p>
               </div>
               <div className="flex flex-wrap gap-4 lg:justify-end">
