@@ -294,13 +294,18 @@ export const trainerLaunchDesignDocData: DesignDocCaseStudyData = {
     ],
   },
 
-  reflection: {
-    heading: "Designing around workflows, not screens",
-    paragraphs: [
-      "This project reinforced the importance of designing around user workflows rather than individual pages. Building for a real client revealed practical constraints that don't appear in fictional portfolio projects, including ease of maintenance, simplicity for non-technical users, and the need for a sustainable architecture.",
-      "More importantly, it demonstrated the value of treating every project as a product rather than a collection of screens. By approaching TrainerLaunch as a reusable platform, I was able to make design and engineering decisions that prioritize scalability, maintainability, and long-term business value.",
-    ],
-  },
+  reflection: [
+    {
+      text: "Designing around user workflows rather than individual pages mattered more than expected — building for a real client revealed constraints that don't appear in fictional portfolio projects, including ease of maintenance and simplicity for non-technical users.",
+    },
+    {
+      text: "Treating every project as a product rather than a collection of screens paid off. Approaching TrainerLaunch as a reusable platform pushed design and engineering decisions toward scalability and long-term business value.",
+    },
+    {
+      text: "The public site and trainer dashboard were designed and built without usability testing with real trainers beyond the original client. Next time, I'd validate the dashboard's information architecture with 2-3 other trainers before finalizing it.",
+      type: "open",
+    },
+  ],
 
   nextSteps: [
     { icon: <Calendar size={14} />, label: "Appointment scheduling" },

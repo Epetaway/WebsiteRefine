@@ -213,11 +213,11 @@ export function DesignDocCaseStudyTemplate({ data }: Props) {
               )}
             </CaseStudyProse>
 
-            <CaseStudyProse
+            <CaseStudyLearnings
               id="reflection"
               eyebrow={eyebrowFor("reflection", "Reflection")}
-              heading={data.reflection.heading}
-              paragraphs={data.reflection.paragraphs}
+              heading="What I'd defend, what I'd change"
+              items={data.reflection}
             />
 
             <CaseStudyFuture

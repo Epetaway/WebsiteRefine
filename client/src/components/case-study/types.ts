@@ -234,7 +234,8 @@ export type DesignDocCaseStudyData = {
   outcomes: ProseSectionData;
   /** Nested inside Outcomes, no TOC entry of its own. */
   metrics?: MetricItem[];
-  reflection: ProseSectionData;
+  /** Checklist with a confirmed/open split — teal check for settled takeaways, amber arrow for self-critical next steps. */
+  reflection: LearningItem[];
   nextSteps: FutureItem[];
   /** Nested "Future validation" callout inside Next Steps. */
   futureValidation?: CalloutNote;
