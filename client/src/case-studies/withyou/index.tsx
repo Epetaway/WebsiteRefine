@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Helmet } from "react-helmet-async";
-import { PremiumCaseStudyTemplate } from "@/components/case-study/PremiumCaseStudyTemplate";
+import { DesignDocCaseStudyTemplate } from "@/components/case-study/DesignDocCaseStudyTemplate";
 import { useTheme } from "@/contexts/ThemeContext";
-import { withYouPremiumData } from "./data";
+import { withYouDesignDocData } from "./data";
 
 export default function WithYouCaseStudy() {
   const { setPageChrome } = useTheme();
@@ -21,7 +21,7 @@ export default function WithYouCaseStudy() {
           content="Case study for WithYou: a privacy-first couples app with consent-based pairing, mood check-ins, and activity planning. Built with Expo React Native, Express, Prisma, and PostgreSQL."
         />
       </Helmet>
-      <PremiumCaseStudyTemplate data={withYouPremiumData} />
+      <DesignDocCaseStudyTemplate data={withYouDesignDocData} />
     </>
   );
 }

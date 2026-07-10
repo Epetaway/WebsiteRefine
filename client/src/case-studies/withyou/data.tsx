@@ -1,7 +1,7 @@
 import { Heart, Zap, Layers, Bell, MapPin, Moon, Camera, Calendar, Target, Clock, Users, Smartphone, Code2 } from "lucide-react";
-import type { PremiumCaseStudyData } from "@/components/case-study/types";
+import type { DesignDocCaseStudyData } from "@/components/case-study/types";
 
-export const withYouPremiumData: PremiumCaseStudyData = {
+export const withYouDesignDocData: DesignDocCaseStudyData = {
   slug: "withyou",
   title: "WithYou",
   category: "Relationship Communication & Planning App",
@@ -14,7 +14,7 @@ export const withYouPremiumData: PremiumCaseStudyData = {
 
   meta: [
     { icon: <Target size={16} />, label: "Role", value: "Lead Developer — Earl Hickson" },
-    { icon: <Clock size={16} />, label: "Duration", value: "~4 hours initial build + iterative v1.1 expansion" },
+    { icon: <Clock size={16} />, label: "Duration", value: "Initial build + iterative v1.1 expansion" },
     { icon: <Users size={16} />, label: "Team", value: "Solo (1 developer)" },
     { icon: <Smartphone size={16} />, label: "Platform", value: "iOS & Android mobile app + REST API backend" },
     { icon: <Code2 size={16} />, label: "Tech Stack", value: "Expo React Native, TypeScript, Express, Prisma, PostgreSQL, Zod, JWT" },
@@ -31,7 +31,7 @@ export const withYouPremiumData: PremiumCaseStudyData = {
     image: "/images/withyou/withyou_dashboard.png",
   },
 
-  challenge: {
+  problem: {
     description:
       "The product needed to support emotionally sensitive couple interactions while avoiding surveillance patterns, coercive UX, or accidental oversharing.",
     problems: [
@@ -39,6 +39,14 @@ export const withYouPremiumData: PremiumCaseStudyData = {
       "Pairing needed strict mutual consent and one-active-relationship integrity",
       "Check-ins needed explicit privacy controls — share optional, not default",
       "Generated ideas had to feel actionable, not generic lists",
+    ],
+  },
+
+  opportunity: {
+    heading: "Why consent-first mattered enough to build",
+    paragraphs: [
+      "Most relationship and habit-tracking apps default to maximum visibility — read receipts, streaks, shared locations — because that's what drives engagement metrics. WithYou bets the opposite: that couples want a tool that respects boundaries by default, even if that means fewer visible signals.",
+      "The opportunity wasn't a new UI pattern — it was proving that a consent-first architecture (explicit opt-in sharing, no partner surveillance, one active relationship enforced at the API level) could still deliver a full, usable product: pairing, check-ins, activity ideas, and shared planning.",
     ],
   },
 
@@ -51,7 +59,7 @@ export const withYouPremiumData: PremiumCaseStudyData = {
     },
     {
       icon: <Zap size={18} />,
-      title: "Ship a full beta-ready stack quickly",
+      title: "Ship a full beta-ready stack",
       description:
         "Deliver auth, pairing, dashboard, check-ins, preferences, ideas, docs, and CI with strict typing and validation.",
     },
@@ -63,32 +71,62 @@ export const withYouPremiumData: PremiumCaseStudyData = {
     },
   ],
 
-  process: [
+  research: {
+    interviewIntro:
+      "No formal user interviews were conducted before this build. Privacy and consent decisions came from reasoning about known failure modes in relationship-tracking products — read receipts, streaks, and shared-location features that quietly pressure users into performing engagement — not from field research.",
+    quotes: [],
+    competitiveIntro: "No formal competitive audit was conducted either — this was a solo build under real time constraints.",
+    competitors: [],
+    observations: [],
+    notes: [
+      {
+        tone: "assumption",
+        label: "Assumption — needs validation",
+        text: "Defaulting check-in sharing to off is assumed to read as \"more in control\" to users. That's untested — the first thing worth validating with real couples.",
+      },
+      {
+        tone: "constraint",
+        label: "Constraint",
+        text: "Built solo, without a design or research budget — scope and process decisions reflect that.",
+      },
+    ],
+  },
+
+  designPrinciples: [
     {
-      number: "① Research",
-      title: "Research",
+      number: "01",
+      title: "Consent by Default",
       description:
-        "Defined privacy and consent principles for couple workflows, including explicit share controls and no partner surveillance behaviors.",
+        "Defined privacy and consent principles for couple workflows before writing code — explicit share controls, no partner surveillance, one active relationship enforced at the API level.",
     },
     {
-      number: "② Design",
-      title: "Design",
+      number: "02",
+      title: "Consistent by System, Not by Habit",
       description:
-        "Implemented a tokenized visual system — color, spacing, typography, radius, elevation — and reusable components for consistent mobile UI across all screens.",
+        "A tokenized visual system — color, spacing, typography, radius, elevation — and reusable components kept every screen consistent without re-deciding style choices screen by screen.",
     },
     {
-      number: "③ Build",
-      title: "Build",
+      number: "03",
+      title: "Ship a Real Foundation, Not a Demo",
       description:
-        "Built monorepo workspaces for API/mobile/shared, implemented all core endpoints and screens in a single focused session, then expanded with v1.1 Mood Ring v2 and plans/calendar export.",
+        "Monorepo workspaces for API/mobile/shared with all core endpoints and screens fully implemented — not stubbed — so v1.1 features (Mood Ring v2, plans/calendar) could build on working infrastructure.",
     },
     {
-      number: "④ Test & Ship",
-      title: "Test & Ship",
+      number: "04",
+      title: "Ship Nothing Unvalidated",
       description:
-        "Completed lint and type checks, E2E bash test scripts, manual QA documentation with 5 seeded test accounts, and a full beta readiness checklist with deployment guidance.",
+        "Every endpoint has a Zod schema and passes lint/type checks; manual QA against seeded test accounts and a full beta-readiness checklist gated what counted as done.",
     },
   ],
+
+  informationArchitecture: {
+    intro: "The mobile app groups into onboarding/pairing flows, the paired daily experience, and account settings.",
+    columns: [
+      { title: "Getting Paired", items: ["Auth (sign up / log in)", "Invite code generation", "Pairing acceptance"] },
+      { title: "Paired Experience", items: ["Dashboard", "Mood check-ins", "Mood Ring v2 reveal", "Activity ideas", "Plans & calendar export"] },
+      { title: "Settings", items: ["Preferences", "Privacy & sharing controls"] },
+    ],
+  },
 
   features: [
     {
@@ -135,6 +173,15 @@ export const withYouPremiumData: PremiumCaseStudyData = {
     },
   ],
 
+  visualDesign: {
+    heading: "A tokenized visual system built for calm, not urgency",
+    paragraphs: [
+      "The palette leans warm and soft — coral primary, violet accent, muted secondary blue — deliberately avoiding the high-saturation reds and greens that read as alerts or gamified streaks elsewhere in the relationship-app category.",
+      "Every color, radius, and type size is a named token (see the Theme Tokens tab under Technical Architecture), not a one-off value, so the mobile app and any future web surface stay visually consistent by construction.",
+    ],
+    tags: ["Coral primary #FF686B", "Violet accent #A78BFA", "Inter typeface", "Soft 10–12px radii"],
+  },
+
   prototype: {
     url: "/prototypes/withyou-maestro/Prototype.dc.html",
     label: "Maestro Prototype",
@@ -155,6 +202,8 @@ export const withYouPremiumData: PremiumCaseStudyData = {
     "LinearGradient (expo-linear-gradient)",
     "Inter font (via @expo-google-fonts)",
   ],
+  technicalArchitectureIntro:
+    "TypeScript monorepo — Expo React Native mobile app, Express API, Prisma/PostgreSQL, shared Zod schemas and types across both.",
 
   codeTabs: [
     {
@@ -254,16 +303,51 @@ const lastSharedCheckIn = await prisma.checkin.findFirst({
     },
   ],
 
+  designSystem: {
+    intro:
+      "A small, focused design-system layer sits on top of the Expo/React Native primitives: shared theme tokens, reusable themed components, and secure local storage patterns — not a sprawling component library, since the product is 10 screens, not 100.",
+    components: [
+      "Themed components (ThemedCard, ThemedText)",
+      "Expo SecureStore auth pattern",
+      "LinearGradient mood visualizations",
+      "Inter font system",
+    ],
+  },
+
+  accessibility: [
+    { text: "Semantic component structure via ThemedText/ThemedCard, not raw styled Views, throughout the mobile app." },
+  ],
+  accessibilityValidation: {
+    tone: "assumption",
+    label: "Validation status",
+    text: "No formal accessibility audit or screen-reader testing has been run. This is real, unaddressed future work — not yet a WCAG-level claim this project can make.",
+  },
+
+  challenges: {
+    heading: "Privacy rules that don't feel like friction",
+    paragraphs: [
+      "The hardest design tension was enforcing real privacy guarantees — sharing off by default, private check-ins genuinely unreadable by a partner — without the app feeling cold or transactional. A relationship app that feels like a permissions dialog defeats its own purpose.",
+      "The Mood Ring reveal logic (mutual check-in required before either partner sees the blended result) took several passes to get the partial-state messaging right: what a user sees while waiting on their partner, and whether it reads as anticipation or as being left on read.",
+    ],
+  },
+  challengesTradeoff: {
+    tone: "tradeoff",
+    label: "Tradeoff",
+    text: "Requiring mutual check-in before revealing the Mood Ring blend adds a real wait state to the core loop, in exchange for never letting one partner's mood become surveillance data the other can check unilaterally. Worth it for the trust model; it costs some of the daily-engagement stickiness a simpler design would have.",
+  },
+
+  outcomes: {
+    heading: "What's actually built, and what isn't proven yet",
+    paragraphs: [
+      "The beta-scope feature set is complete and internally QA'd: auth, pairing, dashboard, check-ins, preferences, ideas, plans, and calendar export, all backed by a typed API and Zod-validated contracts end to end.",
+      "What hasn't happened yet is real users. Every number below is about what was built and verified internally — not about how couples actually experience it.",
+    ],
+  },
   metrics: [
     {
       value: "16",
       label: "Core tasks completed at beta",
       description: "Fully documented in BETA_CHECKLIST.md",
-    },
-    {
-      value: "~3,000",
-      label: "Lines of code",
-      description: "Across frontend, backend, and shared packages",
     },
     {
       value: "10+",
@@ -275,17 +359,9 @@ const lastSharedCheckIn = await prisma.checkin.findFirst({
       label: "Primary mobile screens",
       description: "Auth, unpaired, paired, and settings flows fully implemented",
     },
-    {
-      value: "4",
-      label: "Phase commits in initial build session",
-      description: "Monorepo setup → API → Mobile → Docs, all in ~4 hours",
-    },
   ],
 
-  learnings: [
-    {
-      text: "Defaulting check-in sharing to OFF materially supports trust — users opt in, not out.",
-    },
+  reflection: [
     {
       text: "Shared Zod schemas across API and mobile prevented contract drift while moving fast as a solo developer.",
     },
@@ -295,18 +371,26 @@ const lastSharedCheckIn = await prisma.checkin.findFirst({
     {
       text: "A modular v1 foundation made the v1.1 Mood Ring and plan features additive rather than disruptive.",
     },
+    {
+      text: "Defaulting sharing to off encodes a consent-first product principle. Whether it actually reads as \"more in control\" to real users is untested — that's the first thing I'd validate with usability testing.",
+      type: "open",
+    },
   ],
 
-  futureItems: [
+  nextSteps: [
     { icon: <Bell size={14} />, label: "Push notifications for partner activity and daily check-in reminders" },
     { icon: <MapPin size={14} />, label: "Nearby discovery mode with Google Places integration and map/filter UI" },
     { icon: <Moon size={14} />, label: "Dark mode hardening and full theme-system centralization" },
     { icon: <Camera size={14} />, label: "Avatar and media sharing support" },
     { icon: <Calendar size={14} />, label: "Native iOS/Android calendar API integration" },
   ],
+  futureValidation: {
+    tone: "evidence",
+    label: "Future validation",
+    text: "Run moderated usability sessions with 4-6 real couples on the check-in sharing default and the Mood Ring reveal wait state — the two places this case study flags as unvalidated assumptions.",
+  },
 
-  prevProject: undefined,
-  nextProject: undefined,
+  nextProject: { slug: "gundam-forge", title: "Gundam Forge" },
 
   theme: {
     accent: "#FF686B",
