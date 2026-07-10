@@ -91,7 +91,7 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
         },
         {
           title: 'Privacy by Design',
-          description: 'No tracking pixels, analytics cookies, or monetization logic. Data is encrypted in transit and at rest. Each relationship exists in isolated database contexts.',
+          description: 'No tracking pixels, analytics cookies, or monetization logic. Passwords are hashed with bcrypt and auth uses signed JWTs. Each relationship exists in an isolated database context.',
         },
         {
           title: 'Behavioral UX Systems',
@@ -101,9 +101,9 @@ export const caseStudyData: Record<string, ProjectCaseStudy> = {
     },
     outcomes: [
       {
-        metric: '100%',
-        label: 'Privacy First',
-        description: 'Zero tracking, zero monetization',
+        metric: 'Zero',
+        label: 'Tracking Scripts',
+        description: 'No analytics cookies, no monetization logic',
         color: 'blue',
       },
       {
