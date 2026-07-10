@@ -68,10 +68,10 @@ export default function About() {
                   Download Resume <ArrowRight className="w-4 h-4" />
                 </a>
                 <Link
-                  to="/approach"
+                  to="/how-i-think"
                   className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium text-sm transition-colors"
                 >
-                  My Approach <ArrowRight className="w-4 h-4" />
+                  How I Think <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </ScrollReveal>

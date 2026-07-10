@@ -3,28 +3,28 @@ import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ui/ScrollReveal";
 import { Brain, Eye, Layers, ArrowRight, Search, Lightbulb, Hammer, RefreshCw } from "lucide-react";
 
-export default function Approach() {
+export default function HowIThink() {
   return (
     <>
       <Helmet>
-        <title>Approach | Earl Hickson Jr. — UX Engineer</title>
+        <title>How I Think | Earl Hickson Jr. — Human-Centered Front-End Engineer</title>
         <meta
           name="description"
-          content="How Earl Hickson Jr. thinks about users, systems, and interfaces. A UX Engineer's approach to building products that are technically sound and human-centered."
+          content="How Earl Hickson Jr. thinks about users, systems, and interfaces — modes of work, not a fixed process, for building human-centered products."
         />
-        <link rel="canonical" href="https://ehicksonjr.com/approach" />
+        <link rel="canonical" href="https://ehicksonjr.com/how-i-think" />
       </Helmet>
 
       {/* ── PAGE HERO ────────────────────────────────────────────────────── */}
       <section className="bg-[#0D0D0D] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
           <ScrollReveal animation="slide-up">
-            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">My Approach</p>
+            <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">How I Think</p>
             <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold text-white -tracking-[0.03em] leading-[1.1] max-w-3xl mb-6">
               Designing for people, not just screens.
             </h1>
             <p className="text-xl text-[#B7B7B7] max-w-2xl leading-relaxed">
-              I'm a UX Engineer with a BFA in Graphic Design. I work at the intersection of design thinking and front-end engineering — focused on why the interface exists, who it's for, and how it shapes behavior.
+              I don't just translate designs into code — I think about why the interface exists, who it's for, and how it shapes behavior.
             </p>
           </ScrollReveal>
         </div>
@@ -114,11 +114,11 @@ export default function Approach() {
               {[
                 {
                   company: "Asembia — Healthcare UX",
-                  detail: "Audited a fragmented enterprise codebase across HIPAA-compliant healthcare platforms, established a design system, migrated Bootstrap 3 to 5, and got a new component architecture adopted across the team — starting with a direct conversation with the CEO about why it mattered.",
+                  detail: "Audited a fragmented enterprise codebase across HIPAA-compliant healthcare platforms, established a design system, migrated Bootstrap 3 to 5, and got a new component architecture adopted across the team.",
                 },
                 {
                   company: "BroadcastMed — Marketing Systems",
-                  detail: "Built healthcare marketing microsites and a standardized HTML email system that brought consistency to multi-client production. Applied Google Analytics and Hotjar data to drive layout and UX decisions on lead capture flows — bringing measurable rigor to design choices.",
+                  detail: "Built healthcare marketing microsites and a standardized HTML email system that cut production time. Increased lead form submissions through targeted layout and UX improvements — decisions informed by Google Analytics and Hotjar data, not guesswork.",
                 },
               ].map(({ company, detail }, idx) => (
                 <ScrollReveal key={idx} animation="slide-up" delay={idx * 60}>
@@ -134,14 +134,17 @@ export default function Approach() {
         </div>
       </section>
 
-      {/* ── PROCESS ──────────────────────────────────────────────────────── */}
+      {/* ── HOW I WORK ───────────────────────────────────────────────────── */}
       <section className="bg-[#0D0D0D] py-16 md:py-24">
         <div className="mx-auto max-w-[1120px] w-full px-5">
         <ScrollReveal animation="slide-up">
-          <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">Process</p>
-          <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-10 max-w-xl">
-            How I move from problem to product
+          <p className="text-xs tracking-widest uppercase text-violet-400 font-medium mb-4">How I Work</p>
+          <h2 className="font-display text-4xl font-bold text-white -tracking-[0.03em] leading-[1.1] mb-4 max-w-xl">
+            Four modes, not a pipeline.
           </h2>
+          <p className="text-[#7A7A7A] leading-relaxed max-w-xl mb-10">
+            These are modes of work, not a guaranteed sequence — real projects loop through them in whatever order the evidence demands.
+          </p>
         </ScrollReveal>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -150,7 +153,7 @@ export default function Approach() {
               icon: Search,
               step: "01",
               title: "Understand",
-              desc: "I research users, contexts, and behaviors to uncover real problems — not assumed ones.",
+              desc: "I start from the evidence available — user feedback, stakeholder context, analytics, existing workflows, domain knowledge — and name the assumptions that still need validation.",
             },
             {
               icon: Lightbulb,

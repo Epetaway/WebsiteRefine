@@ -6,7 +6,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const nav = [
   { to: "/projects", label: "Work" },
-  { to: "/approach", label: "Approach" },
+  { to: "/how-i-think", label: "How I Think" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];
@@ -68,7 +68,7 @@ export default function Header() {
                 className="text-xs -tracking-[0.02em] leading-[16px]"
                 style={{ color: isLight ? "#6B7280" : "#94A3B8" }}
               >
-                UX Engineer
+                Front-End Engineer
               </p>
             </div>
           </Link>

@@ -20,7 +20,7 @@ export default function Footer() {
             Earl Hickson Jr.
           </div>
           <p className="text-sm mb-1" style={{ color: isLight ? "#6B7280" : "#7A7A7A" }}>
-            UX Engineer
+            Front-End Engineer
           </p>
           <p className="text-sm" style={{ color: isLight ? "#6B7280" : "#7A7A7A" }}>
             React · TypeScript · Accessible UI
@@ -30,7 +30,7 @@ export default function Footer() {
         <nav className="grid gap-2 text-sm">
           {[
             { to: "/projects", label: "Work" },
-            { to: "/approach", label: "Approach" },
+            { to: "/how-i-think", label: "How I Think" },
             { to: "/about", label: "About" },
             { to: "/contact", label: "Contact" },
           ].map(({ to, label }) => (

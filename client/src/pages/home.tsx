@@ -110,10 +110,10 @@ export default function Home() {
                 View My Work <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                to="/approach"
+                to="/how-i-think"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-[#363C42] hover:border-violet-500/60 text-[#B7B7B7] hover:text-white font-medium smooth-btn"
               >
-                My Approach <ArrowRight className="w-4 h-4" />
+                How I Think <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/contact"

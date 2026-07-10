@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -20,7 +20,7 @@ import Blog from "@/pages/blog";
 import BlogPost from "@/pages/blog-post";
 import EarldKaiju from "@/pages/earldkaiju";
 import Article from "@/pages/article";
-import Approach from "@/pages/approach";
+import HowIThink from "@/pages/how-i-think";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
 import CaseStudyPreview from "@/pages/case-study-preview";
@@ -46,7 +46,8 @@ function AppShell() {
           <Route path="/projects" element={<Projects />} />
           <Route path="/projects/:slug" element={<CaseStudy />} />
           <Route path="/projects/:slug/dev" element={<DeveloperView />} />
-          <Route path="/approach" element={<Approach />} />
+          <Route path="/how-i-think" element={<HowIThink />} />
+          <Route path="/approach" element={<Navigate to="/how-i-think" replace />} />
           <Route path="/about" element={<About />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
