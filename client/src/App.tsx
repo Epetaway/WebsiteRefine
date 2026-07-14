@@ -1,87 +1,80 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import { queryClient } from "./lib/queryClient";
-import { QueryClientProvider } from "@tanstack/react-query";
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { useEffect } from "react";
+import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
-import { ThemeProvider, useTheme } from "@/contexts/ThemeContext";
-
 import Header from "@/components/layout/header";
-import ScrollReveal from '@/components/ui/ScrollReveal';
 import Footer from "@/components/layout/footer";
 import Home from "@/pages/home";
-import Projects from "@/pages/projects";
-import CaseStudy from "@/pages/case-study";
-import DeveloperView from "@/pages/developer-view";
+import Work from "@/pages/work";
+import InvestigationPage from "@/pages/investigation";
+import Research from "@/pages/research";
+import FieldNotes from "@/pages/field-notes";
+import FieldNotePage from "@/pages/field-note";
 import About from "@/pages/about";
-import Blog from "@/pages/blog";
-import BlogPost from "@/pages/blog-post";
-import EarldKaiju from "@/pages/earldkaiju";
-import Article from "@/pages/article";
-import HowIThink from "@/pages/how-i-think";
+import Resume from "@/pages/resume";
 import Contact from "@/pages/contact";
 import NotFound from "@/pages/not-found";
-import CaseStudyPreview from "@/pages/case-study-preview";
+import { getFieldNote } from "@/data/fieldNotes";
 
-function AppShell() {
-  useAnalytics();
-  const { pageChrome } = useTheme();
-  const isLight = pageChrome === "light";
+const legacyProjects: Record<string, string> = {
+  withyou: "/work/withyou",
+  "dojonet-prototype-max": "/work/dojonet",
+  dojonet: "/work/dojonet",
+  "gundam-forge": "/work/gundam-forge",
+};
 
-  return (
-    <div
-      className="min-h-screen flex flex-col font-body"
-      style={{
-        backgroundColor: isLight ? "#F7F7FB" : "#0D0D0D",
-        color: isLight ? "#111827" : "#F5F5F5",
-      }}
-    >
-      <Header />
-      <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/case-studies" element={<Projects />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/projects/:slug" element={<CaseStudy />} />
-          <Route path="/projects/:slug/dev" element={<DeveloperView />} />
-          <Route path="/how-i-think" element={<HowIThink />} />
-          <Route path="/approach" element={<Navigate to="/how-i-think" replace />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/:slug" element={<BlogPost />} />
-          <Route path="/earldkaiju" element={<EarldKaiju />} />
-          <Route path="/articles/:slug" element={<Article />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/case-study-preview" element={<CaseStudyPreview />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </main>
-      <ScrollReveal animation="slide-up" threshold={0.05} once>
-        <Footer />
-      </ScrollReveal>
-    </div>
-  );
+function LegacyProjectRedirect() {
+  const { slug = "" } = useParams();
+  return <Navigate to={legacyProjects[slug.toLowerCase()] ?? "/work"} replace />;
+}
+
+function LegacyBlogRedirect() {
+  const { slug } = useParams();
+  return <Navigate to={getFieldNote(slug) ? `/field-notes/${slug}` : "/field-notes"} replace />;
+}
+
+function ScrollManager() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "auto" }); }, [pathname]);
+  return null;
 }
 
 export default function App() {
+  useAnalytics();
   useEffect(() => {
-    if (!import.meta.env.VITE_GA_MEASUREMENT_ID) {
-      console.warn("Missing required Google Analytics key: VITE_GA_MEASUREMENT_ID");
-    } else {
-      initGA();
-    }
+    if (import.meta.env.VITE_GA_MEASUREMENT_ID) initGA();
   }, []);
 
   return (
-    <QueryClientProvider client={queryClient}>
-        <ThemeProvider>
-      <TooltipProvider>
-        <AppShell />
-        <Toaster />
-      </TooltipProvider>
-      </ThemeProvider>
-    </QueryClientProvider>
+    <div className="site-shell">
+      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <ScrollManager />
+      <Header />
+      <main id="main-content" tabIndex={-1}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/work/:slug" element={<InvestigationPage />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/field-notes" element={<FieldNotes />} />
+          <Route path="/field-notes/:slug" element={<FieldNotePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/contact" element={<Contact />} />
+
+          <Route path="/projects" element={<Navigate to="/work" replace />} />
+          <Route path="/case-studies" element={<Navigate to="/work" replace />} />
+          <Route path="/projects/:slug" element={<LegacyProjectRedirect />} />
+          <Route path="/projects/:slug/dev" element={<LegacyProjectRedirect />} />
+          <Route path="/how-i-think" element={<Navigate to="/research" replace />} />
+          <Route path="/approach" element={<Navigate to="/research" replace />} />
+          <Route path="/blog" element={<Navigate to="/field-notes" replace />} />
+          <Route path="/blog/:slug" element={<LegacyBlogRedirect />} />
+          <Route path="/case-study-preview" element={<Navigate to="/work" replace />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer />
+    </div>
   );
 }

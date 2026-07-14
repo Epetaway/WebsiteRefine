@@ -1,0 +1,26 @@
+import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
+import { describe, expect, it } from "vitest";
+import Header from "@/components/layout/header";
+
+describe("site navigation", () => {
+  it("exposes the canonical desktop links and active route", () => {
+    render(<MemoryRouter initialEntries={["/research"]}><Header /></MemoryRouter>);
+    expect(screen.getByRole("navigation", { name: "Primary navigation" })).toBeInTheDocument();
+    expect(screen.getAllByRole("link", { name: "Work" })[0]).toHaveAttribute("href", "/work");
+    expect(screen.getAllByRole("link", { name: "Research" })[0]).toHaveClass("is-active");
+    expect(screen.getAllByRole("link", { name: "Resume" })[0]).toHaveAttribute("href", "/resume");
+  });
+
+  it("opens the mobile dialog, closes with Escape, and returns focus", async () => {
+    const user = userEvent.setup();
+    render(<MemoryRouter><Header /></MemoryRouter>);
+    const trigger = screen.getByRole("button", { name: "Menu" });
+    await user.click(trigger);
+    expect(screen.getByRole("dialog", { name: "Site navigation" })).toBeInTheDocument();
+    await user.keyboard("{Escape}");
+    expect(screen.queryByRole("dialog", { name: "Site navigation" })).not.toBeInTheDocument();
+    expect(trigger).toHaveFocus();
+  });
+});

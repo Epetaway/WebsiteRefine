@@ -6,6 +6,22 @@ import { insertContactSchema, insertBjjBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import sgMail from '@sendgrid/mail';
 
+const contactAttempts = new Map<string, { count: number; resetAt: number }>();
+const CONTACT_WINDOW_MS = 10 * 60 * 1000;
+const CONTACT_WINDOW_LIMIT = 5;
+
+function contactRequestAllowed(ip: string): boolean {
+  const now = Date.now();
+  const current = contactAttempts.get(ip);
+  if (!current || current.resetAt <= now) {
+    contactAttempts.set(ip, { count: 1, resetAt: now + CONTACT_WINDOW_MS });
+    return true;
+  }
+  if (current.count >= CONTACT_WINDOW_LIMIT) return false;
+  current.count += 1;
+  return true;
+}
+
 // HTML escape function to prevent XSS in emails
 function escapeHtml(text: string | null | undefined): string {
   if (!text) return '';
@@ -129,6 +145,13 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Contact form submission
   app.post("/api/contact", async (req, res) => {
     try {
+      // Honeypot: real visitors never interact with this visually hidden field.
+      if (typeof req.body.website === "string" && req.body.website.trim()) {
+        return res.json({ message: "Contact form submitted successfully" });
+      }
+      if (!contactRequestAllowed(req.ip || "unknown")) {
+        return res.status(429).json({ message: "Too many messages. Please wait a few minutes or email directly." });
+      }
       const validatedData = insertContactSchema.parse(req.body);
       const contact = await storage.createContact(validatedData);
       

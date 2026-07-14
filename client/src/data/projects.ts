@@ -25,8 +25,9 @@ export interface Project {
   image?: string;
 }
 
-// Resume file path constant for consistency
-export const RESUME_PATH = "/assets/Earl_Hickson_Jr_UX_Engineer_Resume.docx";
+// Canonical public resume path. Legacy pages retain this constant while the
+// active portfolio routes use the same PDF directly.
+export const RESUME_PATH = "/assets/Earl-Hickson-Jr-Resume.pdf";
 
 // Only these four projects are highlighted site-wide.
 // All other work is available at https://github.com/Epetaway

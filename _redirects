@@ -1,2 +1,11 @@
+/projects/WithYou /work/withyou 301
+/projects/DojoNet-Prototype-MAX /work/dojonet 301
+/projects/Gundam-Forge /work/gundam-forge 301
+/projects/* /work 301
+/projects /work 301
+/case-studies /work 301
+/how-i-think /research 301
+/approach /research 301
+/blog /field-notes 301
 /api/* /.netlify/functions/server/:splat 200
 /* /index.html 200

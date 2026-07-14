@@ -1,60 +1,81 @@
-# Earl Hickson Jr. — Portfolio
+# Earl Hickson Jr. — UX Engineer Portfolio
 
-UX Engineer and Front-End Developer with 10+ years building accessible, human-centered digital products across healthcare, media, and enterprise. Source for [ehicksonjr.com](https://ehicksonjr.com/).
+Canonical source for [ehicksonjr.com](https://ehicksonjr.com).
 
-## 🚀 Quick Start
+The site presents one professional identity, one public resume, three independent product investigations, a research direction, and an editorial Field Notes system. The HCEPS archive informed the design/evidence system; it is not a second public portfolio or a second application in this repository.
+
+## Product architecture
+
+- React 18 + TypeScript + Vite
+- React Router
+- Tailwind CSS plus a custom editorial/technology token layer
+- Express backend for contact delivery and retained legacy service routes
+- SendGrid notification path when configured
+- React Helmet metadata and Google Analytics initialization
+
+## Canonical routes
+
+```text
+/
+/work
+/work/withyou
+/work/dojonet
+/work/gundam-forge
+/research
+/field-notes
+/field-notes/:slug
+/about
+/resume
+/contact
+```
+
+Legacy project, Blog, How I Think, and Approach routes redirect into this structure.
+
+## Local development
 
 ```bash
 npm install
 npm run dev
 ```
 
-Visit http://localhost:5000
+The Express/Vite development server defaults to `http://127.0.0.1:3000`.
 
-## 🏗️ Architecture
-
-- **Frontend**: React 18 + TypeScript + Tailwind CSS
-- **Backend**: Express.js + TypeScript  
-- **Database**: PostgreSQL with Drizzle ORM
-- **Build**: Vite + ESBuild
-- **Deployment**: Vercel ready
-
-## 📦 Production Build
+## Quality commands
 
 ```bash
+npm run check
+npm run lint
+npm test
 npm run build
-npm start
 ```
 
-## 🚢 Deployment
+## Environment variables
 
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Add environment variables in Vercel dashboard
-3. Deploy automatically on push to main
-
-### Environment Variables Required:
-```
-DATABASE_URL=your_postgresql_url
-SENDGRID_API_KEY=your_sendgrid_key
-YOUTUBE_API_KEY=your_youtube_api_key
-VITE_GA_MEASUREMENT_ID=your_google_analytics_id
+```text
+SENDGRID_API_KEY=
+VITE_GA_MEASUREMENT_ID=
 ```
 
-## 🎯 Features
+Additional legacy integrations have their own optional variables in `server/routes.ts`. Contact submissions use in-memory storage; SendGrid email is the durable notification path when configured.
 
-- ✅ UX Engineer portfolio — case studies, featured work, approach
-- ✅ YouTube integration for training videos
-- ✅ Contact forms with SendGrid integration
-- ✅ Google Analytics tracking
-- ✅ Mobile-responsive design
-- ✅ SEO optimized
+## Public resume
 
-## 🔧 Development
+The only public download is:
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run type-check` - TypeScript validation
-- `npm run db:push` - Push database schema
+```text
+/assets/Earl-Hickson-Jr-Resume.pdf
+```
 
-Built with ❤️ by Earl Hickson Jr.
+Regenerate it with:
+
+```bash
+tmp/pdf-venv/bin/python scripts/generate_resume_pdf.py
+```
+
+The generated delivery copy is written to `output/pdf/` and the public asset directory.
+
+## Evidence policy
+
+The public portfolio distinguishes implemented behavior, integrated behavior, design work, partial work, known gaps, and development-stage evidence. Working software is not presented as proof of human outcomes, peer-reviewed research, or verified public deployment.
+
+See [docs/HCEPS-INTEGRATION-PLAN.md](docs/HCEPS-INTEGRATION-PLAN.md), [docs/CLAIM-AUDIT.md](docs/CLAIM-AUDIT.md), and [docs/KNOWN-LIMITATIONS.md](docs/KNOWN-LIMITATIONS.md).

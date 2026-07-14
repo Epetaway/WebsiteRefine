@@ -1,0 +1,18 @@
+import { Link, Navigate, useParams } from "react-router-dom";
+import SEO from "@/components/seo";
+import { getFieldNote } from "@/data/fieldNotes";
+
+export default function FieldNotePage() {
+  const { slug } = useParams();
+  const note = getFieldNote(slug);
+  if (!note) return <Navigate to="/field-notes" replace />;
+  const path = `/field-notes/${note.slug}`;
+  return (
+    <article className="field-note-page" style={{ "--note-accent": note.themeColor } as React.CSSProperties}>
+      <SEO title={`${note.title} — Earl Hickson Jr.`} description={note.summary} path={path} type="article" image={`/assets/field-notes/og-${note.slug}.svg`} jsonLd={{ "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.summary, datePublished: "2026-07-14", author: { "@type": "Person", name: "Earl Hickson Jr." }, mainEntityOfPage: `https://ehicksonjr.com${path}` }} />
+      <header className="field-note-hero"><Link to="/field-notes" className="text-link">← All Field Notes</Link><p className="eyebrow">{note.number} / {note.theme}</p><h1>{note.title}</h1><blockquote>{note.claim}</blockquote><div><span>{note.date}</span><span>{note.readingTime} read</span><span>Personal reflection + product inquiry</span></div></header>
+      <div className="field-note-layout"><aside><span>Evidence note</span><p>Project facts are labeled as implementation. Interpretations remain Earl's reflections. Proposed studies are not presented as completed research.</p></aside><div className="field-note-body">{note.sections.map((section, index) => <section key={section.heading ?? index}>{section.heading && <h2>{section.heading}</h2>}{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.points && <ul>{section.points.map((point) => <li key={point}>{point}</li>)}</ul>}</section>)}</div></div>
+      <footer className="field-note-footer"><span>Continue the inquiry</span><h2>See how this argument appears in a working system.</h2><Link className="button button--light" to={note.theme === "Learning" ? "/work/dojonet" : note.theme === "Relationships" ? "/work/withyou" : "/work/gundam-forge"}>View the related investigation</Link></footer>
+    </article>
+  );
+}
