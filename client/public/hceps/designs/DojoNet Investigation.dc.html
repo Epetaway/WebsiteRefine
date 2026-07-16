@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(22,184,137,0.3)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes gridDrift{from{background-position:0 0,0 0}to{background-position:56px 56px,56px 56px}}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+    [data-r="ch"]{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}
+    [data-r="chhead"]{flex-direction:row !important;align-items:baseline !important;gap:16px !important}
+    [data-r="chrule"]{display:none !important}
+    [data-r="chamber-grid"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="journalwrap"]{border-right:none !important;border-bottom:1px solid rgba(184,190,202,0.18)}
+  }
+  @media (max-width:760px){
+    [data-r="dec-row"]{grid-template-columns:minmax(0,1fr) !important;gap:5px !important}
+    [data-r="chamber-head"]{flex-direction:column !important;align-items:flex-start !important;gap:10px !important}
+    [data-r="journalwrap"]{padding:24px 12px !important}
+    [data-r="stats"]{flex-direction:column !important;gap:22px !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+    [data-r="nextstrip"]{flex-direction:column !important;align-items:flex-start !important;gap:14px !important}
+  }
+</style>
+</helmet>
+
+<div id="dn-root" style="background:#10131B;color:#F2EDE3;min-height:100vh">
+
+  <dc-import name="Site Header" active="investigations" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div id="top" data-screen-label="Hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,1fr) minmax(380px,520px);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(56px,7vw,88px);align-items:stretch">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">02 / LEARNING</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#16B889"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,26px);padding-top:6px;min-width:0">
+      <a href="Investigations.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.5);width:fit-content;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#0F8A66">← ALL INVESTIGATIONS</a>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#0F8A66">INVESTIGATION 02 — DOJONET</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,47px);line-height:1.16;letter-spacing:-0.01em;color:#F2EDE3;max-width:640px;text-wrap:pretty">Can technology help people see their training without pretending it can replace the teacher?</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.65;color:rgba(205,208,218,0.66);max-width:540px">A martial arts training and social platform — a feed for training partners, a profile system, and a Training Journal that tracks technique proficiency without flattening it into a checklist or a percentage bar.</p>
+      <div style="display:flex;flex-direction:column;margin-top:8px;max-width:560px">
+        <div style="display:grid;grid-template-columns:minmax(78px,110px) 1fr;gap:16px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">ROLE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Sole designer and developer — practitioner and instructor in the domain</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(78px,110px) 1fr;gap:16px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">STACK</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#F2EDE3">React 19 + Vite + Zustand · Express (aux) · Prisma/PostgreSQL modeled, not wired</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(78px,110px) 1fr;gap:16px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14);border-bottom:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">EVIDENCE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Working feed, profiles + theming, Training Journal with proficiency tracking — demo-seeded, localStorage-persisted</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- runtime truth panel -->
+    <div style="position:relative;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden;min-width:0;display:flex;flex-direction:column">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(184,190,202,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(184,190,202,0.05) 1px,transparent 1px);background-size:28px 28px"></div>
+      <div style="position:relative;display:flex;justify-content:space-between;padding:16px 20px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:rgba(184,190,202,0.55)">RUNTIME TRUTH</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:#E4AE3A">FIG. 01</span>
+      </div>
+      <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;gap:1px;padding:18px 20px 22px">
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);padding:16px 18px">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#16B889"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#16B889">LOCALSTORAGE — ACTIVE</span></span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">Everything the running app persists lives with the practitioner, in the browser.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);border-top:none;padding:16px 18px">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#7957E8"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#A78BF6">EXPRESS SERVER — BUILT, NOT CALLED</span></span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">Forums run end-to-end on the server; a hardcoded frontend flag never lets the app ask.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);border-top:none;padding:16px 18px">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#7957E8"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#A78BF6">PRISMA SCHEMA — MODELED, NOT WIRED</span></span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">A full PostgreSQL schema, including instructor roles, that no route queries yet.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);border-top:none;padding:16px 18px">
+          <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#C66043"></span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#E08A6D">INSTRUCTOR VIEW — DOES NOT EXIST</span></span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">The coaching loop the project is ultimately about is not built. Stated, not hidden.</span>
+        </div>
+      </div>
+      <div style="position:relative;border-top:1px solid rgba(184,190,202,0.16);padding:13px 20px;background:rgba(11,13,18,0.85)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;line-height:1.6;color:rgba(184,190,202,0.75);display:block">THE APP AS IT RUNS TODAY — DORMANT CODE IS LABELED, NOT CLAIMED.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ch 01 human context -->
+  <div data-screen-label="Human context" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,700px) minmax(220px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(56px,8vw,96px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">01</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">HUMAN CONTEXT</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#16B889;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+      <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.3;color:#F2EDE3">The shape of learning doesn't compress into one number.</h2>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Progression in martial arts is not linear, not binary, and not a checklist. Someone can perform a technique correctly in drilling and still fail to recognize the same opportunity live. Someone can plateau for weeks and then have something click all at once.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">A single progress bar or completion percentage misrepresents that — not because the data is wrong, but because the <em>shape</em> of learning doesn't compress into one number.</p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">I came to this as both the confused student and the instructor explaining the same idea six different ways.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">WHY A BAR LIES</span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Correct in drilling ≠ recognized live.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Weeks of plateau, then it clicks all at once.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Techniques don't finish. "Done" is the wrong claim.</p>
+    </div>
+  </div>
+
+  <!-- interactive chamber -->
+  <div data-screen-label="Proficiency chamber" style="background:#0B0D12;padding:clamp(48px,7vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:22px">
+    <div data-r="chamber-head" style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#E4AE3A">INTERACTIVE EVIDENCE</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;line-height:1.7;color:rgba(184,190,202,0.5)">TRY IT — SET A STAGE PER TECHNIQUE, THEN RENDER THE SAME DATA AS A PERCENTAGE</span>
+    </div>
+    <div style="border:1px solid rgba(184,190,202,0.22);display:flex;flex-direction:column">
+      <div data-r="chamber-head" style="display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px clamp(16px,2vw,26px);border-bottom:1px solid rgba(184,190,202,0.18);flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;line-height:1.7;color:#F2EDE3">INVESTIGATION 02 — DOJONET · PROFICIENCY MODEL</span>
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(184,190,202,0.55)">GUIDED PROTOTYPE · 4 STAGES, 0 PERCENTAGES</span>
+          <button onClick="{{ dReset }}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#E4AE3A;background:none;border:1px solid rgba(228,174,58,0.4);padding:8px 14px;cursor:pointer;min-height:34px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="border-color:#E4AE3A;background:rgba(228,174,58,0.08)">RESET ⟲</button>
+        </div>
+      </div>
+      <div data-r="chamber-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,384px)">
+        <div data-r="journalwrap" style="position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(32px,4vw,48px) clamp(16px,3.4vw,44px);border-right:1px solid rgba(184,190,202,0.18);background-color:#0E1118;background-image:linear-gradient(rgba(184,190,202,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(184,190,202,0.045) 1px,transparent 1px);background-size:28px 28px;animation:gridDrift 90s linear infinite">
+          <span style="position:absolute;top:14px;left:16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:rgba(184,190,202,0.45)">SURFACE — DOJONET TRAINING JOURNAL</span>
+          <span style="position:absolute;top:14px;right:16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#E4AE3A">{{ dModeLabel }}</span>
+
+          <!-- journal card -->
+          <div style="width:min(520px,100%);flex:0 0 auto;border:1px solid rgba(22,184,137,0.4);background:#fafaf8;box-shadow:0 0 90px rgba(22,184,137,0.12),0 28px 60px rgba(0,0,0,0.5);margin-top:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #e3e1da;flex-wrap:wrap">
+              <div style="display:flex;flex-direction:column;gap:1px">
+                <span style="font-family:Georgia,serif;font-size:17px;color:#0f0f0f">Training Journal</span>
+                <span style="font-family:Inter,sans-serif;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#33322f">Technique proficiency</span>
+              </div>
+              <span style="font-family:Inter,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#4A6B57;border:1px solid #4A6B57;background:#eef2ee;border-radius:999px;padding:3px 10px;white-space:nowrap">Local-only · demo data</span>
+            </div>
+            <div style="display:flex;flex-direction:column;padding:12px 14px 14px;gap:9px">
+              <sc-for list="{{ dTechs }}" as="t" hint-placeholder-count="3">
+                <div onClick="{{ t.select }}" style="{{ t.rowStyle }}">
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+                    <span style="font-family:Inter,sans-serif;font-size:13.5px;font-weight:600;color:#0f0f0f">{{ t.label }}</span>
+                    <span style="{{ t.chipStyle }}">{{ t.stageName }}</span>
+                  </div>
+                  <sc-if value="{{ t.pctOn }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;align-items:center;gap:10px">
+                      <span style="flex:1;height:6px;background:#e3e1da;border-radius:999px;overflow:hidden;display:block"><span style="{{ t.barStyle }}"></span></span>
+                      <span style="font-family:Inter,sans-serif;font-size:11px;font-weight:600;color:#8a4a3b;white-space:nowrap">{{ t.pctLabel }}</span>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ t.sel }}" hint-placeholder-val="{{ false }}">
+                    <div style="display:flex;flex-direction:column;gap:8px;animation:fadeUp 0.22s ease both">
+                      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px">
+                        <button onClick="{{ t.set1 }}" style="{{ t.seg1 }}">Learning</button>
+                        <button onClick="{{ t.set2 }}" style="{{ t.seg2 }}">Practicing</button>
+                        <button onClick="{{ t.set3 }}" style="{{ t.seg3 }}">Comfortable</button>
+                        <button onClick="{{ t.set4 }}" style="{{ t.seg4 }}">Mastered</button>
+                      </div>
+                      <span style="font-family:Inter,sans-serif;font-size:11.5px;line-height:1.55;color:#33322f">{{ t.note }}</span>
+                    </div>
+                  </sc-if>
+                </div>
+              </sc-for>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;border:1px solid #c9c6bb;background:#f2f1ec;padding:11px 13px;margin-top:3px">
+                <span style="font-family:Inter,sans-serif;font-size:12px;font-weight:600;color:#0f0f0f;line-height:1.45">Render the same data as a percentage?</span>
+                <button role="switch" aria-checked="{{ dPct }}" onClick="{{ dTogglePct }}" style="{{ dPctToggleStyle }}"><span style="{{ dPctKnobStyle }}"></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- reveals panel -->
+        <div style="display:flex;flex-direction:column;background:#151923;min-width:0">
+          <div style="padding:24px clamp(18px,2vw,26px) 20px;border-bottom:1px solid rgba(184,190,202,0.14)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.24em;color:#E4AE3A">WHAT THIS REVEALS</span>
+          </div>
+          <div style="padding:24px clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:18px;flex:1">
+            <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:#F2EDE3;text-wrap:pretty">{{ dExplanation }}</p>
+            <p style="margin:0;font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.7;color:#B8BECA">{{ dRevealNote }}</p>
+            <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;padding-top:12px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(184,190,202,0.5)">SYSTEM TRACE</span>
+              <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:{{ dTraceColor }};overflow-wrap:break-word;white-space:pre-line">{{ dTrace }}</p>
+            </div>
+          </div>
+          <div style="padding:18px clamp(18px,2vw,26px);border-top:1px solid rgba(184,190,202,0.14);display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;align-items:center;gap:8px">
+              <span style="width:8px;height:8px;background:#16B889"></span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#16B889">IMPLEMENTED + INTEGRATED</span>
+            </span>
+            <p style="margin:0;font-family:Manrope,sans-serif;font-size:12px;line-height:1.65;color:rgba(184,190,202,0.75)">Mirrors the real Training Journal model — four qualitative stages per technique, persisted to localStorage, with no server sync and no coach-facing read path.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin:2px 0 0;font-family:Manrope,sans-serif;font-size:12px;font-style:italic;line-height:1.6;color:rgba(184,190,202,0.55);max-width:760px">Guided product prototype — fictional demonstration data. The percentage view is deliberately included as a counter-example; the shipping journal never renders one. Formal evaluation of student and instructor comprehension remains future work.</p>
+  </div>
+
+  <!-- ch 02 three decisions -->
+  <div data-screen-label="Three decisions" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,420px) minmax(0,1fr);gap:clamp(28px,4vw,56px);padding:clamp(56px,8vw,96px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">02</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">DESIGN DECISIONS</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#E4AE3A;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+      <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.3;color:#F2EDE3">Three decisions that came directly out of building it.</h2>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Each one is a refusal — of a percentage, of default cloud sync, of automated advice. The system's restraint is the design.</p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">Even the four-stage model is a simplification I'm not fully at peace with — an approximation, not a solved representation of mastery.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(205,208,218,0.2);min-width:0">
+      <div data-r="dec-row" style="display:grid;grid-template-columns:44px 190px 1fr;gap:14px;padding:15px 12px;border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;cursor:default;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #0F8A66">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#0F8A66;padding-top:2px">D·01</span>
+        <span style="font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:#F2EDE3">Qualitative stages</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;color:rgba(205,208,218,0.66)">Proficiency is tracked in four stages — learning, practicing, comfortable, mastered — per technique, not a single percentage.</span>
+      </div>
+      <div data-r="dec-row" style="display:grid;grid-template-columns:44px 190px 1fr;gap:14px;padding:15px 12px;border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;cursor:default;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #0F8A66">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#0F8A66;padding-top:2px">D·02</span>
+        <span style="font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:#F2EDE3">Data stays local</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;color:rgba(205,208,218,0.66)">Journal entries, technique notes, and sparring logs live with the practitioner by default — not synced to any server, not visible to anyone else. Right now, no sharing mechanism exists at all.</span>
+      </div>
+      <div data-r="dec-row" style="display:grid;grid-template-columns:44px 190px 1fr;gap:14px;padding:15px 12px;border-bottom:1px solid rgba(205,208,218,0.2);border-left:2px solid transparent;cursor:default;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #0F8A66">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#0F8A66;padding-top:2px">D·03</span>
+        <span style="font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:#F2EDE3">Description, not prescription</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;color:rgba(205,208,218,0.66)">The system surfaces training hours, session vitals, and per-session-type breakdowns. It does not interpret them or say what to do next — that's a coaching judgment it doesn't attempt, and currently has no interface for a coach to make either.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- field evidence -->
+  <div data-screen-label="Field evidence" style="border-top:1px solid rgba(205,208,218,0.14);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#E4AE3A">FIELD EVIDENCE — PRODUCTION SCREENS</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.45)">FIG. E</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(184,190,202,0.16);border:1px solid rgba(184,190,202,0.16)">
+      <figure style="margin:0;background:#0B0D12;display:flex;flex-direction:column">
+        <span style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden"><img src="images/dojonet-hero.png" alt="DojoNet public landing" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <figcaption style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">MARKETING — DESKTOP + MOBILE</figcaption>
+      </figure>
+      <figure style="margin:0;background:#0B0D12;display:flex;flex-direction:column">
+        <span style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden"><img src="images/dojonet-overview.png" alt="DojoNet member dashboard" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <figcaption style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">CASE GRAPHIC — RENZO GRACIE ACADEMY</figcaption>
+      </figure>
+      <figure style="margin:0;background:#0B0D12;display:flex;flex-direction:column">
+        <span style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden"><img src="images/dojonet-journal.png" alt="DojoNet training journal" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <figcaption style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">TRAINING JOURNAL — SESSION LOG</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ch 03 implementation status -->
+  <div data-screen-label="Implementation status" style="background:#151923;padding:clamp(48px,7vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:clamp(26px,3vw,36px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:22px">
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(30px,3vw,40px);line-height:1;color:#F2EDE3">03</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:#B8BECA">IMPLEMENTATION STATUS</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#E4AE3A">EVIDENCE BEFORE CLAIM</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:rgba(184,190,202,0.16);border:1px solid rgba(184,190,202,0.16)">
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#16B889"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#16B889">IMPLEMENTED + INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Training Journal</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Technique proficiency in four stages, sparring logs, and session-by-session progress analytics — demo-seeded, persisted to localStorage.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#16B889"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#16B889">IMPLEMENTED + INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Feed, profiles, theming</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">A working social feed for training partners and a profile system with real customization — all against local storage.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#16B889"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#16B889">IMPLEMENTED + INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Partner matchmaking</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Built and functioning in working software — including its age-gating logic.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#7957E8"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#A78BF6">IMPLEMENTED, NOT INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Forums + threaded discussion</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Fully implemented on the Express server — but a hardcoded flag keeps the frontend from calling it. Posting a thread in the app as it runs today doesn't actually persist.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#7957E8"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#A78BF6">IMPLEMENTED, NOT INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Instructor Insights component</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Exists in the codebase; never imported or rendered anywhere reachable in the app. Dormant code, not a shipped feature.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#C66043"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#E08A6D">KNOWN GAP</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">No coaching loop</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">The schema defines STUDENT / INSTRUCTOR / PROFESSOR / ADMIN roles and one journal type carries a coach-feedback field — nothing reads either of them. No instructor-facing view exists at all.</span>
+      </div>
+    </div>
+    <div data-r="stats" style="display:flex;gap:clamp(32px,4.5vw,64px);align-items:baseline;border-top:1px solid rgba(184,190,202,0.16);padding-top:26px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(34px,3.4vw,44px);color:#F2EDE3">4</span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:#B8BECA">QUALITATIVE STAGES · NO PERCENTAGES</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(34px,3.4vw,44px);color:#F2EDE3">0</span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:#B8BECA">BACKEND ROUTES THE RUNNING APP QUERIES</span></div>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:#B8BECA;max-width:520px">The login screen is a local stand-in, not real authentication. That is stated on the record here rather than implied away — <em style="color:#F2EDE3">evidence before claim</em> applies to gaps too.</p>
+    </div>
+  </div>
+
+  <!-- ch 04 reflection -->
+  <div data-screen-label="Reflection" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,700px) minmax(220px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(64px,8vw,110px) clamp(20px,6vw,88px) clamp(56px,7vw,96px)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">04</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">REFLECTION</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#C66043;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:26px;min-width:0">
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(23px,2.4vw,30px);line-height:1.45;color:#F2EDE3;text-wrap:pretty">Representing progress can change how people understand progress — measurement itself is a <em style="color:#C66043">design decision</em>, not a neutral act of showing data.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.8;color:rgba(205,208,218,0.72)">DojoNet is closer to its product direction than its final implementation — and it is, honestly, an active design investigation rather than a finished product.</p>
+      <div style="border:1px solid rgba(205,208,218,0.2);background:#171D2A;padding:20px 24px;display:flex;gap:14px;align-items:flex-start;margin-top:6px">
+        <span style="width:9px;height:9px;border:1.5px solid #E4AE3A;flex:0 0 auto;margin-top:5px"></span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.75)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#E4AE3A">PRELIMINARY — </span>The training-journal features described here are real and working; the coaching loop the project is ultimately about is not built yet. Student and instructor comprehension, learning outcomes, and long-term motivation effects are all unvalidated.</p>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">OPEN QUESTIONS</span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">What kinds of progress can software represent responsibly?</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">How would instructors and students interpret the same data differently?</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">When does tracking motivate training, and when does it distort it?</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">What should simply stay dependent on a human paying attention?</p>
+    </div>
+  </div>
+
+  <!-- next / prev -->
+  <div data-r="nextstrip" style="border-top:1px solid rgba(205,208,218,0.14);display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <a href="WithYou%20Investigation%20-%20Responsive.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.6);transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">← 01 WITHYOU</a>
+    <a href="Investigations.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.45);transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">INDEX</a>
+    <a href="Gundam%20Forge%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.6);transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#6E8CFF">03 GUNDAM FORGE →</a>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}, &quot;motion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Chamber&quot;}}">
+class Component extends DCLogic {
+  state = { sel: "armbar", stages: { armbar: 2, ogoshi: 1, kick: 3 }, pct: false };
+
+  techs() {
+    return [
+      { id: "armbar", label: "Armbar from guard", note: "Drills cleanly; rarely appears in live rounds yet." },
+      { id: "ogoshi", label: "O-goshi (hip throw)", note: "New this cycle — entries still feel mechanical." },
+      { id: "kick", label: "Round kick", note: "Comfortable in drills and sparring both." },
+    ];
+  }
+
+  componentDidMount() { this.syncMotion(); }
+  componentDidUpdate() { this.syncMotion(); }
+  syncMotion() {
+    const off = (this.props.motion ?? true) === false;
+    let el = document.getElementById("dn-motion-off");
+    if (off && !el) {
+      el = document.createElement("style");
+      el.id = "dn-motion-off";
+      el.textContent = "#dn-root *{animation:none !important;transition:none !important}";
+      document.head.appendChild(el);
+    } else if (!off && el) {
+      el.remove();
+    }
+  }
+
+  renderVals() {
+    const s = this.state;
+    const stageNames = ["Learning", "Practicing", "Comfortable", "Mastered"];
+    const set = (patch) => this.setState(patch);
+    const setStage = (id, n) => this.setState((prev) => ({ stages: Object.assign({}, prev.stages, { [id]: n }) }));
+
+    const segOn = "min-height:34px;padding:6px 4px;border:1px solid #4A6B57;background:#4A6B57;color:#fafaf8;font-family:Inter,sans-serif;font-size:10.5px;font-weight:600;cursor:pointer";
+    const segOff = "min-height:34px;padding:6px 4px;border:1px solid #c9c6bb;background:#fafaf8;color:#33322f;font-family:Inter,sans-serif;font-size:10.5px;font-weight:600;cursor:pointer";
+    const rowOn = "display:flex;flex-direction:column;gap:9px;border:1px solid #4A6B57;background:#eef2ee;padding:12px 13px;cursor:pointer";
+    const rowOff = "display:flex;flex-direction:column;gap:9px;border:1px solid #e3e1da;background:#fafaf8;padding:12px 13px;cursor:pointer";
+
+    const dTechs = this.techs().map((t) => {
+      const st = s.stages[t.id];
+      const seg = [1, 2, 3, 4].map((n) => (n === st ? segOn : segOff));
+      return {
+        label: t.label,
+        note: t.note,
+        sel: s.sel === t.id,
+        select: () => set({ sel: t.id }),
+        rowStyle: s.sel === t.id ? rowOn : rowOff,
+        stageName: stageNames[st - 1],
+        chipStyle: "font-family:Inter,sans-serif;font-size:9.5px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border-radius:999px;padding:2px 9px;border:1px solid " + (st >= 3 ? "#4A6B57;background:#eef2ee;color:#4A6B57" : "#c9c6bb;background:#fafaf8;color:#33322f"),
+        pctOn: s.pct,
+        pctLabel: st * 25 + "% complete",
+        barStyle: "display:block;height:100%;width:" + st * 25 + "%;background:#8a4a3b;transition:width 0.25s ease",
+        set1: () => setStage(t.id, 1),
+        set2: () => setStage(t.id, 2),
+        set3: () => setStage(t.id, 3),
+        set4: () => setStage(t.id, 4),
+        seg1: seg[0], seg2: seg[1], seg3: seg[2], seg4: seg[3],
+      };
+    });
+
+    const st = s.stages[s.sel];
+    const selTech = this.techs().find((t) => t.id === s.sel);
+    const explanations = [
+      "Being shown the shape of it. The honest data point is \u201cthis exists in my training\u201d — nothing more is claimable yet.",
+      "It works when a partner sets up the conditions. A checklist would already call this \u201cdone drilling\u201d — the model refuses to.",
+      "It shows up uninvited in live rounds — sometimes. There is no number between \u201csometimes\u201d and \u201creliably.\u201d",
+      "Even this label is provisional. Four stages is itself a simplification — an approximation, not a solved representation of mastery.",
+    ];
+    const notes = [
+      "The stage is a claim the practitioner makes about themselves, in their own journal. Nothing here scores them.",
+      "Stages move in both directions. Getting demoted by your own honesty is a feature a percentage bar can't express.",
+      "This is where a bar lies hardest — 75% would imply three quarters of something finishable.",
+      "A mastered technique still degrades without training. \u201cComplete\u201d is the wrong ontology for a living skill.",
+    ];
+    const pctExplanation = "The bar is not wrong — it's misleading. It answers \u201chow done is this technique?\u201d, a question mastery never answers.";
+    const pctNote = "Same stored data, different claim. This render is included as a counter-example; the shipping journal never draws it.";
+
+    return {
+      dTechs: dTechs,
+      dModeLabel: s.pct ? "RENDER — PERCENTAGE (COUNTER-EXAMPLE)" : "RENDER — QUALITATIVE STAGES",
+      dPct: s.pct,
+      dTogglePct: () => set({ pct: !s.pct }),
+      dPctToggleStyle: "position:relative;width:44px;height:24px;flex:0 0 auto;border-radius:999px;border:none;cursor:pointer;transition:background 0.15s;background:" + (s.pct ? "#8a4a3b" : "#c9c6bb"),
+      dPctKnobStyle: "position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fafaf8;transition:transform 0.15s;transform:translateX(" + (s.pct ? "20px" : "0") + ")",
+      dExplanation: s.pct ? pctExplanation : explanations[st - 1],
+      dRevealNote: s.pct ? pctNote : notes[st - 1],
+      dTrace: s.pct
+        ? "render: stage / 4 → " + st * 25 + "%\nsame data, different claim\nshipping UI: this code path does not exist"
+        : "journal.techniques[\"" + s.sel + "\"].stage = \"" + stageNames[st - 1].toLowerCase() + "\"\npersist → localStorage only — no server sync\ncoach read path: none exists — " + selTech.label.toLowerCase() + " stays yours",
+      dTraceColor: s.pct ? "#E08A6D" : "#7FD9BC",
+      dReset: () => set({ sel: "armbar", stages: { armbar: 2, ogoshi: 1, kick: 3 }, pct: false }),
+    };
+  }
+}
+</script>
+</body>
+</html>

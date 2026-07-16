@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.35)}
+  @media (max-width:760px){
+    [data-r="notenav"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="writing" hint-size="100%,84px"></dc-import>
+
+  <!-- note hero -->
+  <div data-screen-label="Note hero" style="padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(36px,4.5vw,56px)">
+    <div style="max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(16px,2vw,22px)">
+      <a href="Writing.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(205,208,218,0.55);width:fit-content;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">← ALL FIELD NOTES</a>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">N·05 · 2025-09-06 · <span style="color:#6E8CFF">DEVELOPMENT</span> · 7 MIN</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.18;letter-spacing:-0.01em;color:#F2EDE3;text-wrap:pretty">After the Pledges: DEI Rollbacks and the Black Tech Job Hunt (My 8-Month Search)</h1>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16.5px,1.6vw,20px);line-height:1.6;color:rgba(205,208,218,0.85);max-width:820px">Eight months without a dev role has forced me to confront a harsh reality: post-2020 diversity pledges have faded, and the rollback of DEI is changing how Black technologists navigate the job market.</p>
+    </div>
+  </div>
+
+  <!-- note body -->
+  <div data-screen-label="Note body" style="flex:1;padding:clamp(36px,4.5vw,56px) clamp(20px,6vw,88px) clamp(56px,7vw,88px)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Context:</strong> I’ve been <strong style="color:#F2EDE3;font-weight:700">unemployed for 8 months</strong> as a front-end developer. I’ve kept coding, shipping small projects, and staying sharp—yet the market feels different than any time in my career.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">In 2020, tech promised change. Leaders made bold commitments to hire, retain, and promote underrepresented talent. I remember thinking, <em>“Maybe this is the turning point.”</em> Today, it doesn’t feel that way on the ground.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">What Changed Since 2020</h2>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Public pledges were followed by hiring sprints—then <strong style="color:#F2EDE3;font-weight:700">layoffs, budget cuts, and a political/legal backlash</strong> that put diversity efforts under a microscope.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Many companies <strong style="color:#F2EDE3;font-weight:700">reframed or reduced</strong> internal programs (mentorship, ERGs, targeted internships) that helped candidates like me get seen and supported.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">In recruiting conversations, I now hear less about inclusion and more about “strict merit” without acknowledgment of <strong style="color:#F2EDE3;font-weight:700">unequal starting lines</strong>.</li>
+        </ul>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">What I’m Seeing First-Hand</h2>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Fewer warm intros & targeted early-career channels.</strong> Mentorship and fellowship pipelines that used to look for Black/Latine talent are quieter.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Longer hiring cycles.</strong> More take-homes, more panel loops, fewer decision makers willing to sponsor non-traditional profiles.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Silence after final rounds.</strong> When feedback does arrive, it’s often about “fit” rather than skills I can tangibly improve.</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">This isn’t a complaint; it’s a pattern I’m documenting so other devs don’t feel gaslit by the shift.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">What the Research Says (Quick Hits)</h2>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Representation remains low in tech & engineering roles</strong> relative to the overall U.S. workforce.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Diverse teams outperform.</strong> Multiple analyses over the last decade associate racial/ethnic diversity with stronger financial and innovation outcomes.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Layoff dynamics can erode recent gains.</strong> “Last-in, first-out” and recruiting slowdowns tend to hit newer hires and non-traditional candidates first.</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">I’m not dropping a wall of stats here—my goal is clarity, not overwhelm. If you want a source pack, I’ll publish a resource list in a follow-up post.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">My Plan to Keep Moving</h2>
+        <ol style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Portfolio sprints:</strong> ship small, real artifacts (perf budgets, a11y audits, reusable UI kits).</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Story-driven case studies:</strong> not <em>what</em> I built, but <em>why</em> the choices mattered (business + user impact).</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Targeted networking:</strong> managers and ICs who <em>own</em> front-end craft (not just generic “apply online”).</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Proof over promise:</strong> quick screencasts, PRs, and live sandboxes that showcase the work.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Boundaries & health:</strong> Jiu-Jitsu mindset—breathe, position before submission, and reset when needed.</li>
+        </ol>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">If You’re Hiring (or Know Someone Who Is)</h2>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">I specialize in <strong style="color:#F2EDE3;font-weight:700">modern front-end</strong> (Angular/React/TypeScript), <strong style="color:#F2EDE3;font-weight:700">accessibility (WCAG)</strong>, <strong style="color:#F2EDE3;font-weight:700">performance</strong>, and <strong style="color:#F2EDE3;font-weight:700">design-to-component systems</strong>.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">I’ve led <strong style="color:#F2EDE3;font-weight:700">UI refactors</strong>, accessibility rollout, and <strong style="color:#F2EDE3;font-weight:700">DX improvements</strong> that reduced ticket volume and improved Lighthouse scores.</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">I’m based in <strong style="color:#F2EDE3;font-weight:700">Parsippany, NJ</strong>—open to hybrid/onsite in North Jersey/NYC or remote.</li>
+        </ul>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h3 style="margin:22px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(18px,1.7vw,22px);line-height:1.4;color:#F2EDE3">Final Thought</h3>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">I’m staying in this field because I love the craft and the impact. But I’m also going to keep telling the truth: <strong style="color:#F2EDE3;font-weight:700">without consistent, accountable inclusion, great talent gets filtered out before it’s seen.</strong> My ask is simple—judge me by the work and keep the door genuinely open.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><em>If you’ve felt these headwinds too, you’re not alone. DM me—we can compare notes, share leads, and keep each other moving.</em></p>
+    </div>
+  </div>
+
+  <!-- prev / next -->
+  <div data-screen-label="Note navigation" style="border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="notenav" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(205,208,218,0.14)">
+      <span style="display:flex;background:#10131B"><span style="padding:22px clamp(20px,3vw,32px)"></span></span>
+      <span style="display:flex;justify-content:stretch;background:#10131B"><a href="Note%20-%20AI%20and%20Developer%20Anxiety.dc.html" style="display:flex;flex-direction:column;gap:6px;padding:22px clamp(20px,3vw,32px);min-width:0;text-align:right;color:inherit;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(205,208,218,0.45)">OLDER NOTE →</span><span style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;line-height:1.4;color:#F2EDE3">How I Use AI to Ease Developer Anxiety (Without Replacing My …</span></a></span>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;border-top:1px solid rgba(205,208,218,0.1);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

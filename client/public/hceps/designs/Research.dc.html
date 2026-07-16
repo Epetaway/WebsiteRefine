@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.3)}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+    [data-r="hero-aside"]{max-width:560px}
+    [data-r="ch"]{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}
+    [data-r="chhead"]{flex-direction:row !important;align-items:baseline !important;gap:16px !important}
+    [data-r="chrule"]{display:none !important}
+    [data-r="built-grid"]{grid-template-columns:minmax(0,1fr) !important}
+  }
+  @media (max-width:760px){
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh">
+
+  <dc-import name="Site Header" active="research" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div data-screen-label="Research hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,720px) minmax(220px,1fr);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(48px,6vw,72px)">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">RESEARCH / STATEMENT</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#E4AE3A"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px);padding-top:6px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#C65788">RESEARCH</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,47px);line-height:1.16;letter-spacing:-0.01em;color:#F2EDE3;text-wrap:pretty">My career began with how something should look. It became how something should work.</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.7;color:rgba(205,208,218,0.66);max-width:600px">Today, the question I care most about is what that technology helps a person become capable of doing.</p>
+    </div>
+    <div data-r="hero-aside" style="display:flex;flex-direction:column;margin-top:8px;min-width:0;padding-top:6px">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5);padding-bottom:12px">CURRENT SITUATION</span>
+      <div style="display:grid;grid-template-columns:minmax(78px,100px) 1fr;gap:14px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">NOW</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Working independently across the full product stack</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(78px,100px) 1fr;gap:14px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">SEEKING</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Full-time UX engineering / human-centered product engineering</span>
+      </div>
+      <div style="display:grid;grid-template-columns:minmax(78px,100px) 1fr;gap:14px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14);border-bottom:1px solid rgba(205,208,218,0.14)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">WEIGHING</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Graduate study in HCI — methods and an intellectual foundation</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ch 01 why hci -->
+  <div data-screen-label="Why HCI" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,700px) minmax(220px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(56px,8vw,96px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">01</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">WHY HCI</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#E4AE3A;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">I started with a BFA in Graphic Design. Early in my career, the work was visual communication — hierarchy, typography, composition, branding. I still think of it as a form of art, but art that has to do something.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Over time, I became increasingly unsatisfied stopping at the mockup. I wanted to understand what happened after handoff — why interfaces behaved the way they did, how accessibility shaped the experience, how technical constraints altered the final product.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">That curiosity pulled me into the frontend. HTML and CSS felt like composition; JavaScript introduced behavior; React introduced systems; APIs helped me understand what sat underneath the interface. Over time, design and engineering stopped feeling like opposites.</p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#F2EDE3;border-left:2px solid #E4AE3A;padding-left:18px">What is this supposed to help someone do, and how should the entire system support that purpose?</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5);padding-bottom:12px">THE QUESTION, EXPANDING</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding:10px 0">HOW SHOULD IT LOOK?</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding:10px 0">HOW SHOULD IT WORK?</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#C65788;border-top:1px solid rgba(205,208,218,0.16);border-bottom:1px solid rgba(205,208,218,0.16);padding:10px 0">WHAT DOES IT MAKE SOMEONE CAPABLE OF?</span>
+    </div>
+  </div>
+
+  <!-- ch 02 current interests -->
+  <div data-screen-label="Current interests" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(28px,4vw,56px);padding:clamp(56px,8vw,96px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">02</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">CURRENT INTERESTS</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#C65788;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(205,208,218,0.2);min-width:0;max-width:820px">
+      <div style="display:flex;flex-direction:column;gap:12px;padding:26px 12px;border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#C65788">R·01</span>
+          <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(21px,2vw,26px);color:#F2EDE3">Relationships</h2>
+        </div>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14px,1.2vw,15.5px);line-height:1.75;color:rgba(205,208,218,0.72)">WithYou and DojoNet are both, in different ways, about intentional connection — WithYou between partners, DojoNet between training partners and a coaching community. The design question is the same in both cases: how do you build a shared space that supports the connection without replacing the conversation that's actually happening.</p>
+        <span style="display:flex;gap:22px;flex-wrap:wrap"><a href="WithYou%20Investigation%20-%20Responsive.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#E4AE3A">WITHYOU →</a><a href="DojoNet%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#E4AE3A">DOJONET →</a></span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:26px 12px;border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #0F8A66">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#0F8A66">R·02</span>
+          <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(21px,2vw,26px);color:#F2EDE3">Learning</h2>
+        </div>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14px,1.2vw,15.5px);line-height:1.75;color:rgba(205,208,218,0.72)">The question here is how a digital tool represents progression — how it can support coaching and mastery without reducing what someone is learning to a checklist of completed items.</p>
+        <a href="DojoNet%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#0F8A66;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#E4AE3A">DOJONET →</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;padding:26px 12px;border-bottom:1px solid rgba(205,208,218,0.2);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #315CFF">
+        <div style="display:flex;align-items:baseline;gap:14px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6E8CFF">R·03</span>
+          <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(21px,2vw,26px);color:#F2EDE3">Decision Support</h2>
+        </div>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14px,1.2vw,15.5px);line-height:1.75;color:rgba(205,208,218,0.72)">This one started with frustration: the sheer amount of information a player has to hold in their head in a complex card game.</p>
+        <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">Having access to information is not the same as being able to make sense of it.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14px,1.2vw,15.5px);line-height:1.75;color:rgba(205,208,218,0.72)">Closing that gap is what Gundam Forge is trying to do.</p>
+        <a href="Gundam%20Forge%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6E8CFF;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#E4AE3A">GUNDAM FORGE →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ch 03 built vs proven (dark) -->
+  <div data-screen-label="Built vs proven" style="background:#151923;padding:clamp(48px,7vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:clamp(26px,3vw,36px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:22px">
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(30px,3vw,40px);line-height:1;color:#F2EDE3">03</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:#B8BECA">BUILT VS PROVEN</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#E4AE3A">EVIDENCE BEFORE CLAIM</span>
+    </div>
+    <div data-r="built-grid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(184,190,202,0.16);border:1px solid rgba(184,190,202,0.16)">
+      <div style="background:#151923;padding:24px;display:flex;flex-direction:column;gap:12px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#6E8CFF">GUNDAM FORGE</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#16B889">FURTHEST ALONG</span>
+        </span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:#B8BECA">A functional, beta-oriented implementation in Next.js 14 and TypeScript. Card browsing and filtering, deck construction and validation, and persistent local deck state are built and functioning — alongside a gameplay simulation with battlefield interactions and two playtesting modes: solo goldfish practice and an AI opponent.</p>
+        <a href="Gundam%20Forge%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#6E8CFF;margin-top:auto;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">THE STUDY →</a>
+      </div>
+      <div style="background:#151923;padding:24px;display:flex;flex-direction:column;gap:12px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#C65788">WITHYOU</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#16B889">BUILT + RUNNING</span>
+        </span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:#B8BECA">Consent-based pairing and private-by-default check-ins work today, enforced at the query layer and covered by integration tests against real Postgres. Field-level sharing controls have been designed; parts of their implementation are still being confirmed against the running system.</p>
+        <a href="WithYou%20Investigation%20-%20Responsive.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#C65788;margin-top:auto;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">THE STUDY →</a>
+      </div>
+      <div style="background:#151923;padding:24px;display:flex;flex-direction:column;gap:12px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:#16B889">DOJONET</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:0.14em;color:#E4AE3A">GROUNDWORK LAID</span>
+        </span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:#B8BECA">A React + Vite SPA with more backend groundwork than the other two — a working Express server and a fully modeled PostgreSQL schema in Prisma that no route queries yet. The running app persists everything to localStorage; login is a local stand-in. Forums are fully implemented server-side, but a hardcoded flag keeps the frontend from calling them.</p>
+        <a href="DojoNet%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#16B889;margin-top:auto;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">THE STUDY →</a>
+      </div>
+    </div>
+    <div style="border:1px solid rgba(228,174,58,0.35);background:rgba(228,174,58,0.06);padding:18px 22px;display:flex;gap:14px;align-items:flex-start">
+      <span style="width:9px;height:9px;border:1.5px solid #E4AE3A;flex:0 0 auto;margin-top:5px"></span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:#B8BECA"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#E4AE3A">PRELIMINARY — </span>None of these projects have been formally evaluated. What's described here is the state of the software, not a research finding — the difference between what's built and what's proven to work is still wide open.</p>
+    </div>
+  </div>
+
+  <!-- ch 04 direction -->
+  <div data-screen-label="Direction" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,700px) minmax(220px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(64px,8vw,110px) clamp(20px,6vw,88px) clamp(56px,7vw,96px)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">04</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">DIRECTION</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#C66043;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">For this period, I've been working independently across the full product stack — product design, frontend architecture, backend APIs, mobile development, accessibility, testing, and deployment — while actively looking to return to full-time work in technology.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Graduate study in HCI is a serious possibility — not an escape from the job market, but a genuine question about which path gets me closer to the work I actually want to do. I'm open to either: the right full-time role as a UX engineer or human-centered product engineer, or graduate education that provides research methods and an intellectual foundation.</p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(17px,1.5vw,20px);line-height:1.55;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">The portfolio exists partly because I need to make that direction clearer — to employers, to graduate programs, and to myself.</p>
+      <a href="Contact.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#C65788;width:fit-content;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#E4AE3A">START A CONVERSATION →</a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">TWO OPEN PATHS</span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">A full-time role — UX engineer or human-centered product engineer.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Graduate study in HCI — research methods and an intellectual foundation.</p>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

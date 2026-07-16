@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.3)}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+    [data-r="ch"]{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}
+  }
+  @media (max-width:760px){
+    [data-r="mailcard"]{flex-direction:column !important;align-items:stretch !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="contact" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div data-screen-label="Contact hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(40px,5vw,64px)">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">CONTACT / OPEN</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#E4AE3A"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px);padding-top:6px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#C65788">CONTACT</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,58px);line-height:1.12;letter-spacing:-0.01em;color:#F2EDE3;max-width:800px;text-wrap:pretty">The fastest way to reach me is by email.</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.7;color:rgba(205,208,218,0.66);max-width:620px">Open to full-time UX engineering and human-centered product engineering roles, graduate-program conversations, and questions about any of the investigations.</p>
+    </div>
+  </div>
+
+  <!-- email card -->
+  <div data-screen-label="Email card" data-r="ch" style="flex:1;display:grid;grid-template-columns:minmax(0,700px) minmax(260px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <div data-r="mailcard" style="display:flex;align-items:center;justify-content:space-between;gap:18px;border:1px solid rgba(205,208,218,0.25);background:#171D2A;padding:clamp(22px,3vw,34px);flex-wrap:wrap">
+        <div style="display:flex;flex-direction:column;gap:6px;min-width:0">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.24em;color:rgba(205,208,218,0.45)">EMAIL</span>
+          <a href="mailto:e@ehicksonjr.com" style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(22px,2.6vw,34px);color:#F2EDE3;overflow-wrap:anywhere;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">e@ehicksonjr.com</a>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a href="mailto:e@ehicksonjr.com" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:#0B0D12;background:#F2EDE3;border:1px solid #F2EDE3;padding:14px 20px;display:inline-flex;align-items:center;min-height:18px;font-weight:600;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#E4AE3A;border-color:#E4AE3A">WRITE →</a>
+          <button onClick="{{ copyEmail }}" style="{{ copyStyle }}">{{ copyLabel }}</button>
+        </div>
+      </div>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.55)">No forms, no scheduling widgets — a reply from a person. Code is public on <a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener">GitHub</a>.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">GOOD REASONS TO WRITE</span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">A role where design judgment and engineering execution are the same job.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">HCI graduate study — methods, mentorship, and where this work fits.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Pushback on any claim in the investigations — evidence welcome.</p>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="mailto:e@ehicksonjr.com" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">e@ehicksonjr.com</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}">
+class Component extends DCLogic {
+  state = { copied: false };
+  renderVals() {
+    const copied = this.state.copied;
+    return {
+      copyLabel: copied ? "COPIED ✓" : "COPY ADDRESS",
+      copyStyle: "font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;padding:14px 20px;cursor:pointer;min-height:44px;transition:all 0.15s;background:none;" + (copied
+        ? "color:#0F8A66;border:1px solid #0F8A66"
+        : "color:#F2EDE3;border:1px solid rgba(205,208,218,0.35)"),
+      copyEmail: () => {
+        const done = () => {
+          this.setState({ copied: true });
+          clearTimeout(this._t);
+          this._t = setTimeout(() => this.setState({ copied: false }), 2000);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText("e@ehicksonjr.com").then(done, done);
+        } else {
+          done();
+        }
+      },
+    };
+  }
+  componentWillUnmount() { clearTimeout(this._t); }
+}
+</script>
+</body>
+</html>

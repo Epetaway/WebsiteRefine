@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.35)}
+  @media (max-width:760px){
+    [data-r="notenav"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="writing" hint-size="100%,84px"></dc-import>
+
+  <!-- note hero -->
+  <div data-screen-label="Note hero" style="padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(36px,4.5vw,56px)">
+    <div style="max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(16px,2vw,22px)">
+      <a href="Writing.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(205,208,218,0.55);width:fit-content;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">← ALL FIELD NOTES</a>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">N·04 · 2025-07-22 · <span style="color:#6E8CFF">DEVELOPMENT</span> · 6 MIN</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.18;letter-spacing:-0.01em;color:#F2EDE3;text-wrap:pretty">How I Use AI to Ease Developer Anxiety (Without Replacing My Skills)</h1>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16.5px,1.6vw,20px);line-height:1.6;color:rgba(205,208,218,0.85);max-width:820px">AI tools like ChatGPT and GitHub Copilot aren't here to replace developers—they're here to reduce cognitive load, speed up routine tasks, and help us focus on creative problem-solving.</p>
+    </div>
+  </div>
+
+  <div data-screen-label="Cover" style="padding:0 clamp(20px,6vw,88px)">
+    <div style="position:relative;max-width:980px;margin:0 auto;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+      <span style="position:relative;display:block;aspect-ratio:21/9;overflow:hidden"><img src="images/note-ai-calm.png" alt="Notes on calmer AI-assisted development" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></span>
+      <div style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 16px;display:flex;justify-content:space-between;gap:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">NOTES ON CALMER AI-ASSISTED DEVELOPMENT</span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:#E4AE3A">N·04</span></div>
+    </div>
+  </div>
+  <!-- note body -->
+  <div data-screen-label="Note body" style="flex:1;padding:clamp(36px,4.5vw,56px) clamp(20px,6vw,88px) clamp(56px,7vw,88px)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Let's be real: developer anxiety is real.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Whether it's imposter syndrome, the pressure to keep up with every new framework, or the fear of breaking production, the mental load of modern software development can be overwhelming.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">And then AI tools came along, and the narrative became: "AI is going to replace developers."</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">But here's what I've learned after using AI tools like ChatGPT and GitHub Copilot for the past year:</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">AI doesn't replace your skills. It amplifies them.</strong></p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">What AI Actually Does for Me</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">1. Reduces Decision Fatigue</strong></p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">When I'm deep in a problem, the last thing I want to do is Google "how to center a div in CSS" for the thousandth time.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">AI tools help me skip the mental overhead of routine tasks:</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Writing boilerplate code</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Remembering syntax for libraries I don't use often</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Generating test cases</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Drafting documentation</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">This frees up mental energy for the hard problems—architecture decisions, performance optimization, and user experience.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">2. Speeds Up Learning</strong></p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Instead of reading through 10 Stack Overflow threads to understand a concept, I can ask AI to explain it in plain English, give me examples, and adapt to my learning style.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">For example:</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">"Explain React useCallback in the context of preventing unnecessary re-renders"</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">"Show me three ways to implement authentication in Next.js"</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">"What's the difference between debounce and throttle, and when should I use each?"</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">It's like having a patient mentor available 24/7.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">3. Helps Me Get Unstuck</strong></p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">We've all been there: staring at the same bug for hours, feeling frustrated and stuck.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">AI can offer a fresh perspective:</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">"Here's my code and the error message—what am I missing?"</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">"Suggest alternative approaches to this problem"</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">"Help me refactor this function for better readability"</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Sometimes I don't even use the suggestions. Just explaining the problem to AI helps me think through it differently.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">4. Reduces Imposter Syndrome</strong></p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">One of the biggest sources of anxiety for developers is feeling like you should already know something.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">AI removes that shame. You can ask "basic" questions without judgment. You can explore unfamiliar territory without feeling exposed.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">That psychological safety is huge.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">What AI Doesn't Do</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Let me be clear: AI isn't magic, and it has limits.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">It doesn't:</strong></p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Understand business context</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Make architectural decisions</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Handle edge cases without guidance</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Write production-ready code without review</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Replace critical thinking</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">You still need to:</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Know what problem you're solving</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Evaluate code quality</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Test thoroughly</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Understand security implications</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Make tradeoffs based on real-world constraints</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">AI is a tool. You're still the engineer.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">How to Use AI Without Becoming Dependent</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Here's my framework:</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">1. Use AI for speed, not as a crutch</strong></p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Let AI generate boilerplate</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">But write the complex logic yourself</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">2. Always review and understand what AI generates</strong></p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Don't copy-paste blindly</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Ask "why" if something looks unfamiliar</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">3. Test everything</strong></p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">AI-generated code isn't guaranteed to work</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Write tests to verify behavior</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">4. Keep learning fundamentals</strong></p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">AI helps you go faster, but you still need to know where you're going</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Study core concepts, design patterns, and best practices</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">5. Use AI to learn, not just to do</strong></p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Ask for explanations, not just answers</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Experiment with different approaches</li>
+        </ul>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">The Real Benefit: Less Anxiety, More Flow</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">The best thing AI has done for me isn't making me faster—it's making me calmer.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">I'm less anxious about:</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Forgetting syntax</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Making "dumb" mistakes</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Getting stuck on routine problems</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Not knowing something I "should" know</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">That mental space is where creativity happens. Where I solve the interesting problems. Where I do my best work.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h3 style="margin:22px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(18px,1.7vw,22px);line-height:1.4;color:#F2EDE3">Final Thought</h3>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">AI isn't here to replace developers. It's here to reduce the cognitive load so we can focus on what matters: solving real problems for real people.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">If you're not using AI tools yet, you're not behind—but you might be working harder than you need to.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Give it a try. Use it as a collaborator, not a replacement. And see how much more energy you have for the work that actually matters.</p>
+    </div>
+  </div>
+
+  <!-- prev / next -->
+  <div data-screen-label="Note navigation" style="border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="notenav" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(205,208,218,0.14)">
+      <span style="display:flex;background:#10131B"><a href="Note%20-%20After%20the%20Pledges.dc.html" style="display:flex;flex-direction:column;gap:6px;padding:22px clamp(20px,3vw,32px);min-width:0;text-align:left;color:inherit;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(205,208,218,0.45)">← NEWER NOTE</span><span style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;line-height:1.4;color:#F2EDE3">After the Pledges: DEI Rollbacks and the Black Tech Job Hunt …</span></a></span>
+      <span style="display:flex;justify-content:stretch;background:#10131B"><a href="Note%20-%20Five%20Jiu-Jitsu%20Habits.dc.html" style="display:flex;flex-direction:column;gap:6px;padding:22px clamp(20px,3vw,32px);min-width:0;text-align:right;color:inherit;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(205,208,218,0.45)">OLDER NOTE →</span><span style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;line-height:1.4;color:#F2EDE3">5 Jiu-Jitsu Habits That Made Me a Better Front-End Engineer</span></a></span>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;border-top:1px solid rgba(205,208,218,0.1);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

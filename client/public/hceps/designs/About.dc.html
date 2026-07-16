@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.35)}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+    [data-r="bio"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="biofig"]{height:520px !important}
+    [data-r="ch"]{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}
+    [data-r="chhead"]{flex-direction:row !important;align-items:baseline !important;gap:16px !important}
+    [data-r="chrule"]{display:none !important}
+    [data-r="edugrid"]{grid-template-columns:minmax(0,1fr) !important}
+  }
+  @media (max-width:760px){
+    [data-r="congrid"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="about" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div data-screen-label="About hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(40px,5vw,64px)">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">ABOUT / PRACTITIONER</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#E4AE3A"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px);padding-top:6px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#C65788">ABOUT</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,58px);line-height:1.12;letter-spacing:-0.01em;color:#F2EDE3;max-width:800px;text-wrap:pretty">Code, culture, and discipline.</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,17px);line-height:1.8;color:rgba(205,208,218,0.72);max-width:720px">I began in graphic design, where I learned to organize information and communicate visually. Front-end engineering taught me how those ideas become working systems. Accessibility taught me that every technical decision shapes who can participate. Teaching Brazilian Jiu-Jitsu showed me how people learn — through feedback, repetition, trust, and progressive challenge. <span style="color:#F2EDE3;font-weight:600">Human-computer interaction is where those experiences meet.</span></p>
+    </div>
+  </div>
+
+  <!-- bio + figure -->
+  <div data-screen-label="Background" data-r="bio" style="display:grid;grid-template-columns:minmax(0,700px) minmax(340px,460px);gap:clamp(28px,4vw,64px);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+      <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(24px,2.6vw,32px);line-height:1.3;color:#F2EDE3">Designer turned engineer, always a student.</h2>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">I graduated from Kean University with a BFA in Graphic Design, then built on that foundation with an IBM Full Stack Software Developer Professional Certificate. That combination shapes how I work — I think about layout, hierarchy, and visual weight the same way I think about component structure and state management.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">The career has spanned media marketing platforms, financial services, nonprofit campaigns, and healthcare portals — but the discipline is the same everywhere: understand who's using the thing before deciding how it should work.</p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.65;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">Brazilian Jiu-Jitsu trained me in a different kind of precision — discipline, patience, refinement under pressure. Teaching it showed me how people actually learn, which is the same lens I bring to interface design.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:4px">
+        <a href="documents/Earl-Hickson-Jr-Resume.pdf" target="_blank" rel="noreferrer noopener" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;background:#F2EDE3;color:#0B0D12;padding:14px 22px;font-weight:600;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#E4AE3A;color:#0B0D12;transform:translateY(-2px)">DOWNLOAD RESUME ↓</a>
+        <a href="Research.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;border:1px solid rgba(205,208,218,0.3);color:#F2EDE3;padding:13px 22px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="border-color:#C65788;color:#C65788;transform:translateY(-2px)">HOW I THINK →</a>
+      </div>
+    </div>
+    <div data-r="biofig" style="position:relative;height:600px;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden;min-width:0">
+      <img src="images/blkbelt.png" alt="Earl Hickson Jr. training Brazilian Jiu-Jitsu" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(11,13,18,0.92) 0%,rgba(11,13,18,0.2) 38%,rgba(11,13,18,0) 60%)"></div>
+      <div style="position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;padding:16px 20px;pointer-events:none">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:rgba(242,237,227,0.85);background:rgba(11,13,18,0.55);padding:2px 8px">FIELDWORK</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:#E4AE3A;background:rgba(11,13,18,0.55);padding:2px 8px">FIG. A</span>
+      </div>
+      <div style="position:absolute;left:0;right:0;bottom:0;border-top:1px solid rgba(184,190,202,0.16);padding:14px 20px;background:rgba(11,13,18,0.82);display:flex;flex-direction:column;gap:5px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.6;color:#F2EDE3">BLACK BELT — BRAZILIAN JIU-JITSU</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.12em;line-height:1.6;color:rgba(184,190,202,0.7)">DISCIPLINE IN TRAINING · PRECISION IN CODE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- education -->
+  <div data-screen-label="Education" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(28px,4vw,56px);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">A</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">FOUNDATION</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#E4AE3A;margin-top:6px"></span>
+    </div>
+    <div data-r="edugrid" style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:rgba(205,208,218,0.14);border:1px solid rgba(205,208,218,0.14)">
+      <div style="background:#10131B;padding:clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:#E4AE3A">BFA · 2015</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;color:#F2EDE3">Bachelor of Fine Arts, Graphic Design</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;color:rgba(205,208,218,0.6)">Kean University — Union, NJ</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.66)">Formal design training that informs every layout, component, and system I build.</span>
+      </div>
+      <div style="background:#10131B;padding:clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:#E4AE3A">CERTIFICATE · DEC 2025</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:19px;color:#F2EDE3">IBM Full Stack Software Developer</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;color:rgba(205,208,218,0.6)">Coursera — verified</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.66)">15 courses across cloud-native full-stack development, containerization, microservices, and DevOps.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- connect -->
+  <div data-screen-label="Connect" data-r="ch" style="flex:1;display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(28px,4vw,56px);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">B</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">COORDINATES</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#C65788;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+      <div style="display:flex;flex-direction:column">
+        <div style="display:grid;grid-template-columns:minmax(90px,130px) 1fr;gap:16px;padding:12px 0;border-top:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45);padding-top:2px">EMAIL</span>
+          <a href="mailto:e@ehicksonjr.com" style="font-family:'Source Serif 4',Georgia,serif;font-size:18px;color:#F2EDE3;overflow-wrap:anywhere;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">e@ehicksonjr.com</a>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(90px,130px) 1fr;gap:16px;padding:12px 0;border-top:1px solid rgba(205,208,218,0.14);border-bottom:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45);padding-top:2px">BASE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:14.5px;color:rgba(205,208,218,0.8)">Parsippany, New Jersey — open to remote and NYC-metro</span>
+        </div>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">FIND ME ONLINE</span>
+      <div data-r="congrid" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:rgba(205,208,218,0.14);border:1px solid rgba(205,208,218,0.14)">
+        <a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="background:#10131B;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-size:13.5px;color:#F2EDE3;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;color:#C65788"><span>GitHub</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C65788">↗</span></a>
+        <a href="https://www.linkedin.com/in/earlhicksonjr" target="_blank" rel="noreferrer noopener" style="background:#10131B;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-size:13.5px;color:#F2EDE3;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;color:#C65788"><span>LinkedIn</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C65788">↗</span></a>
+        <a href="https://twitter.com/epetaway" target="_blank" rel="noreferrer noopener" style="background:#10131B;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-size:13.5px;color:#F2EDE3;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;color:#C65788"><span>X (Twitter)</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C65788">↗</span></a>
+        <a href="https://instagram.com/earld.kaiju" target="_blank" rel="noreferrer noopener" style="background:#10131B;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-size:13.5px;color:#F2EDE3;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;color:#C65788"><span>Instagram</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C65788">↗</span></a>
+        <a href="https://youtube.com/@earldkaiju" target="_blank" rel="noreferrer noopener" style="background:#10131B;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-size:13.5px;color:#F2EDE3;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;color:#C65788"><span>YouTube</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C65788">↗</span></a>
+        <a href="https://dribbble.com/earldkaiju" target="_blank" rel="noreferrer noopener" style="background:#10131B;padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-family:Manrope,sans-serif;font-size:13.5px;color:#F2EDE3;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;color:#C65788"><span>Dribbble</span><span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#C65788">↗</span></a>
+      </div>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;border-top:1px solid rgba(205,208,218,0.1);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

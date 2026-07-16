@@ -1,5 +1,6 @@
 module.exports = {
   root: true,
+  ignorePatterns: ["next-env.d.ts"],
   env: {
     browser: true,
     es2022: true,

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.35)}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+  }
+  @media (max-width:760px){
+    [data-r="note"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="notethumb"]{height:180px !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="writing" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div data-screen-label="Writing hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(40px,5vw,64px)">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">FIELD NOTES</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#E4AE3A"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px);padding-top:6px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#C65788">WRITING</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,58px);line-height:1.12;letter-spacing:-0.01em;color:#F2EDE3;max-width:800px;text-wrap:pretty">Field notes and shorter essays.</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.7;color:rgba(205,208,218,0.66);max-width:620px">The working notebook alongside the longer investigations — on engineering, learning, and the mat. Five notes, published in full below.</p>
+    </div>
+  </div>
+
+  <!-- notes -->
+  <div data-screen-label="Notes index" style="flex:1;display:flex;flex-direction:column;border-top:1px solid rgba(205,208,218,0.14)">
+
+    <a href="Note%20-%20After%20the%20Pledges.dc.html" data-r="note" style="display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(22px,3vw,40px);padding:clamp(26px,3.4vw,40px) clamp(20px,6vw,88px);border-bottom:1px solid rgba(205,208,218,0.14);color:inherit;align-items:stretch;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+      <span data-r="notethumb" style="position:relative;display:flex;align-items:center;justify-content:center;min-height:140px;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:64px;line-height:1;color:rgba(198,87,136,0.55)">"</span>
+        <span style="position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.18em;color:rgba(184,190,202,0.6)">N·05</span>
+      </span>
+      <span style="display:flex;flex-direction:column;gap:10px;min-width:0;justify-content:center">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">2025-09-06 · <span style="color:#6E8CFF">DEVELOPMENT</span> · 7 MIN</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(20px,2vw,26px);line-height:1.35;color:#F2EDE3;text-wrap:pretty">After the Pledges: DEI Rollbacks and the Black Tech Job Hunt (My 8-Month Search)</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788">READ THE NOTE →</span>
+      </span>
+    </a>
+
+    <a href="Note%20-%20AI%20and%20Developer%20Anxiety.dc.html" data-r="note" style="display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(22px,3vw,40px);padding:clamp(26px,3.4vw,40px) clamp(20px,6vw,88px);border-bottom:1px solid rgba(205,208,218,0.14);color:inherit;align-items:stretch;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+      <span data-r="notethumb" style="position:relative;display:block;min-height:140px;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+        <img src="images/note-ai-calm.png" alt="AI-assisted calm" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <span style="position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.18em;color:rgba(242,237,227,0.9);background:rgba(11,13,18,0.75);padding:2px 6px">N·04</span>
+      </span>
+      <span style="display:flex;flex-direction:column;gap:10px;min-width:0;justify-content:center">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">2025-07-22 · <span style="color:#6E8CFF">DEVELOPMENT</span> · 6 MIN</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(20px,2vw,26px);line-height:1.35;color:#F2EDE3;text-wrap:pretty">How I Use AI to Ease Developer Anxiety (Without Replacing My Skills)</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788">READ THE NOTE →</span>
+      </span>
+    </a>
+
+    <a href="Note%20-%20Five%20Jiu-Jitsu%20Habits.dc.html" data-r="note" style="display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(22px,3vw,40px);padding:clamp(26px,3.4vw,40px) clamp(20px,6vw,88px);border-bottom:1px solid rgba(205,208,218,0.14);color:inherit;align-items:stretch;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+      <span data-r="notethumb" style="position:relative;display:block;min-height:140px;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+        <img src="images/note-bjj-habits.png" alt="Jiu-Jitsu habits" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <span style="position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.18em;color:rgba(242,237,227,0.9);background:rgba(11,13,18,0.75);padding:2px 6px">N·03</span>
+      </span>
+      <span style="display:flex;flex-direction:column;gap:10px;min-width:0;justify-content:center">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">2025-05-18 · <span style="color:#6E8CFF">DEVELOPMENT</span> · 7 MIN</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(20px,2vw,26px);line-height:1.35;color:#F2EDE3;text-wrap:pretty">5 Jiu-Jitsu Habits That Made Me a Better Front-End Engineer</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788">READ THE NOTE →</span>
+      </span>
+    </a>
+
+    <a href="Note%20-%20Fighting%20Through%20the%20Fog.dc.html" data-r="note" style="display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(22px,3vw,40px);padding:clamp(26px,3.4vw,40px) clamp(20px,6vw,88px);border-bottom:1px solid rgba(205,208,218,0.14);color:inherit;align-items:stretch;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+      <span data-r="notethumb" style="position:relative;display:block;min-height:140px;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+        <img src="images/note-white-to-black.png" alt="From white belt to black belt" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <span style="position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.18em;color:rgba(242,237,227,0.9);background:rgba(11,13,18,0.75);padding:2px 6px">N·02</span>
+      </span>
+      <span style="display:flex;flex-direction:column;gap:10px;min-width:0;justify-content:center">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">2025-03-15 · <span style="color:#E4AE3A">GENERAL</span> · 8 MIN</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(20px,2vw,26px);line-height:1.35;color:#F2EDE3;text-wrap:pretty">Fighting Through the Fog: Rebuilding My Confidence as a Developer, a Father, and a Black Man in Tech</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788">READ THE NOTE →</span>
+      </span>
+    </a>
+
+    <a href="Note%20-%20Why%20Jiu-Jitsu.dc.html" data-r="note" style="display:grid;grid-template-columns:230px minmax(0,1fr);gap:clamp(22px,3vw,40px);padding:clamp(26px,3.4vw,40px) clamp(20px,6vw,88px);border-bottom:1px solid rgba(205,208,218,0.14);color:inherit;align-items:stretch;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923;transform:translateY(-2px)">
+      <span data-r="notethumb" style="position:relative;display:block;min-height:140px;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+        <img src="images/note-why-bjj.png" alt="Why I started Jiu-Jitsu" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">
+        <span style="position:absolute;left:10px;bottom:8px;font-family:'JetBrains Mono',monospace;font-size:8.5px;letter-spacing:0.18em;color:rgba(242,237,227,0.9);background:rgba(11,13,18,0.75);padding:2px 6px">N·01</span>
+      </span>
+      <span style="display:flex;flex-direction:column;gap:10px;min-width:0;justify-content:center">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">2025-01-20 · <span style="color:#C65788">BJJ</span> · 6 MIN</span>
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(20px,2vw,26px);line-height:1.35;color:#F2EDE3;text-wrap:pretty">Why I Started Training Jiu-Jitsu</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#C65788">READ THE NOTE →</span>
+      </span>
+    </a>
+
+    <div style="padding:clamp(40px,5vw,64px) clamp(20px,6vw,88px)">
+      <div style="border:1px solid rgba(205,208,218,0.2);background:#171D2A;padding:20px 24px;display:flex;gap:14px;align-items:flex-start;max-width:900px">
+        <span style="width:9px;height:9px;border:1.5px solid #E4AE3A;flex:0 0 auto;margin-top:5px"></span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.75)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#E4AE3A">METHOD — </span>Notes are personal essays; claims about products and systems live in the evidence-first <a href="Investigations.dc.html">investigations</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;border-top:1px solid rgba(205,208,218,0.1);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

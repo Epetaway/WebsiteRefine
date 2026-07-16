@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(49,92,255,0.25)}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes gridDrift{from{background-position:0 0,0 0}to{background-position:56px 56px,56px 56px}}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+    [data-r="ch"]{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}
+    [data-r="chhead"]{flex-direction:row !important;align-items:baseline !important;gap:16px !important}
+    [data-r="chrule"]{display:none !important}
+    [data-r="chamber-grid"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="benchwrap"]{border-right:none !important;border-bottom:1px solid rgba(184,190,202,0.18)}
+  }
+  @media (max-width:760px){
+    [data-r="dec-row"]{grid-template-columns:minmax(0,1fr) !important;gap:5px !important}
+    [data-r="chamber-head"]{flex-direction:column !important;align-items:flex-start !important;gap:10px !important}
+    [data-r="benchwrap"]{padding:24px 12px !important}
+    [data-r="stats"]{flex-direction:column !important;gap:22px !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+    [data-r="nextstrip"]{flex-direction:column !important;align-items:flex-start !important;gap:14px !important}
+    [data-r="cardname"]{display:none !important}
+  }
+</style>
+</helmet>
+
+<div id="gf-root" style="background:#10131B;color:#F2EDE3;min-height:100vh">
+
+  <dc-import name="Site Header" active="investigations" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div id="top" data-screen-label="Hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,1fr) minmax(380px,520px);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(56px,7vw,88px);align-items:stretch">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">03 / DECISIONS</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#315CFF"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,26px);padding-top:6px;min-width:0">
+      <a href="Investigations.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.5);width:fit-content;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#6E8CFF">← ALL INVESTIGATIONS</a>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#6E8CFF">INVESTIGATION 03 — GUNDAM FORGE</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(30px,3.4vw,47px);line-height:1.16;letter-spacing:-0.01em;color:#F2EDE3;max-width:640px;text-wrap:pretty">Does more information actually help a player decide — or just give them more to assemble themselves?</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.65;color:rgba(205,208,218,0.66);max-width:540px">A beta deck-builder and playtest simulator for the Gundam Trading Card Game: a 623-card catalog, a building workbench with live validation, and a heuristic AI opponent.</p>
+      <div style="display:flex;flex-direction:column;margin-top:8px;max-width:560px">
+        <div style="display:grid;grid-template-columns:minmax(78px,110px) 1fr;gap:16px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">ROLE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Sole designer and developer — catalog, workbench, validation engine, playtest simulator</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(78px,110px) 1fr;gap:16px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">STACK</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.6;color:#F2EDE3">Next.js 14 App Router · React 18 · TypeScript · Tailwind · npm workspaces · Vitest</span>
+        </div>
+        <div style="display:grid;grid-template-columns:minmax(78px,110px) 1fr;gap:16px;padding:11px 0;border-top:1px solid rgba(205,208,218,0.14);border-bottom:1px solid rgba(205,208,218,0.14)">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(205,208,218,0.45)">EVIDENCE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.55;color:#F2EDE3">Real card data, a real validation engine, 248 passing tests · two playtest modes</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- fragmentation panel -->
+    <div style="position:relative;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden;min-width:0;display:flex;flex-direction:column">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(184,190,202,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(184,190,202,0.05) 1px,transparent 1px);background-size:28px 28px"></div>
+      <div style="position:relative;display:flex;justify-content:space-between;padding:16px 20px">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:rgba(184,190,202,0.55)">WHERE THE INFORMATION LIVES</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:#E4AE3A">FIG. 01</span>
+      </div>
+      <div style="position:relative;flex:1;display:flex;flex-direction:column;justify-content:center;gap:1px;padding:18px 20px 22px">
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);padding:16px 18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#B8BECA">01 — THE RULEBOOK</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">Deck legality, restrictions, timing rules — authoritative, and nowhere near the table.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);border-top:none;padding:16px 18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#B8BECA">02 — THE CARD DATABASE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">Text, costs, effects for 623 cards — searchable, but one card at a time.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(184,190,202,0.14);border-top:none;padding:16px 18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#B8BECA">03 — THE PLAYER'S HEAD</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">Synergies, ratios, half-remembered restrictions — assembled under pressure.</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;background:rgba(21,25,35,0.85);border:1px solid rgba(49,92,255,0.5);border-top:none;padding:16px 18px">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#6E8CFF">→ FORGE — THE MOMENT OF DECISION</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:#B8BECA">Constraints and relationships surface exactly when they become relevant — and only then.</span>
+        </div>
+      </div>
+      <div style="position:relative;border-top:1px solid rgba(184,190,202,0.16);padding:13px 20px;background:rgba(11,13,18,0.85)">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.1em;line-height:1.6;color:rgba(184,190,202,0.75);display:block">HAVING ACCESS TO INFORMATION ≠ BEING ABLE TO MAKE SENSE OF IT.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ch 01 human context -->
+  <div data-screen-label="Human context" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,700px) minmax(220px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(56px,8vw,96px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">01</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">HUMAN CONTEXT</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#315CFF;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:20px;min-width:0">
+      <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.3;color:#F2EDE3">Information about a trading card game is fragmented by nature.</h2>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Card text, cost, effects, restrictions, synergies with other cards, deck legality — all of it is technically available somewhere, usually spread across a rulebook, a card database, and whatever a player can hold in their head.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Most deck-building tools respond by adding more panels, more stats, more visible data. Gundam Forge tests a narrower premise instead — <em>more information does not automatically create better decisions.</em></p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">The interface should surface relationships and constraints — not make the strategic choice for the player.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">THE PREMISE, NARROWED</span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Not more panels — fewer, better-placed facts.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Constraints appear at the moment they're relevant.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">The system never says which card to play.</p>
+    </div>
+  </div>
+
+  <!-- interactive chamber -->
+  <div data-screen-label="Validation chamber" style="background:#0B0D12;padding:clamp(48px,7vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:22px">
+    <div data-r="chamber-head" style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#E4AE3A">INTERACTIVE EVIDENCE</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;line-height:1.7;color:rgba(184,190,202,0.5)">TRY IT — EDIT THE DECK, BREAK A RULE, REACH 50/50. THE BAR NEVER WAITS TO BE ASKED</span>
+    </div>
+    <div style="border:1px solid rgba(184,190,202,0.22);display:flex;flex-direction:column">
+      <div data-r="chamber-head" style="display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px clamp(16px,2vw,26px);border-bottom:1px solid rgba(184,190,202,0.18);flex-wrap:wrap">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;line-height:1.7;color:#F2EDE3">INVESTIGATION 03 — GUNDAM FORGE · VALIDATION INSIDE THE WORKFLOW</span>
+        <div style="display:flex;align-items:center;gap:22px;flex-wrap:wrap">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:rgba(184,190,202,0.55)">GUIDED PROTOTYPE · LIVE RULES ENGINE</span>
+          <button onClick="{{ gReset }}" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#E4AE3A;background:none;border:1px solid rgba(228,174,58,0.4);padding:8px 14px;cursor:pointer;min-height:34px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="border-color:#E4AE3A;background:rgba(228,174,58,0.08)">RESET ⟲</button>
+        </div>
+      </div>
+      <div data-r="chamber-grid" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(340px,384px)">
+        <div data-r="benchwrap" style="position:relative;display:flex;align-items:center;justify-content:center;padding:clamp(32px,4vw,48px) clamp(16px,3.4vw,44px);border-right:1px solid rgba(184,190,202,0.18);background-color:#0E1118;background-image:linear-gradient(rgba(184,190,202,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(184,190,202,0.045) 1px,transparent 1px);background-size:28px 28px;animation:gridDrift 90s linear infinite">
+          <span style="position:absolute;top:14px;left:16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:rgba(184,190,202,0.45)">SURFACE — DECK WORKBENCH (DEMO SLICE)</span>
+          <span style="position:absolute;top:14px;right:16px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#E4AE3A">EDITS — {{ gEdits }}</span>
+
+          <!-- workbench card -->
+          <div style="width:min(560px,100%);flex:0 0 auto;border:1px solid rgba(49,92,255,0.45);background:#fafaf8;box-shadow:0 0 90px rgba(49,92,255,0.14),0 28px 60px rgba(0,0,0,0.5);margin-top:16px">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid #e3e1da;flex-wrap:wrap">
+              <div style="display:flex;flex-direction:column;gap:1px">
+                <span style="font-family:Georgia,serif;font-size:17px;color:#0f0f0f">Deck Workbench</span>
+                <span style="font-family:Inter,sans-serif;font-size:10px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:#33322f">Live validation · no art shown</span>
+              </div>
+              <span style="{{ gOverallChip }}">{{ gOverallLabel }}</span>
+            </div>
+            <!-- persistent status bar -->
+            <div style="display:flex;gap:7px;flex-wrap:wrap;padding:11px 14px;border-bottom:1px solid #e3e1da;background:#f2f1ec">
+              <span style="{{ gSizeChip }}">{{ gSizeLabel }}</span>
+              <span style="{{ gCopiesChip }}">{{ gCopiesLabel }}</span>
+              <span style="{{ gColorsChip }}">{{ gColorsLabel }}</span>
+            </div>
+            <div style="display:flex;flex-direction:column;padding:10px 14px 14px;gap:7px">
+              <sc-for list="{{ gCards }}" as="c" hint-placeholder-count="6">
+                <div style="{{ c.rowStyle }}">
+                  <span style="width:34px;height:46px;flex:0 0 auto;background:repeating-linear-gradient(135deg,#e8e6df,#e8e6df 4px,#dedbd2 4px,#dedbd2 8px);border:1px solid #c9c6bb;display:flex;align-items:center;justify-content:center"><span style="writing-mode:vertical-rl;font-family:Inter,sans-serif;font-size:6.5px;letter-spacing:0.14em;color:#8b887d">ART REDACTED</span></span>
+                  <div data-r="cardinfo" style="display:flex;flex-direction:column;gap:3px;min-width:0;flex:1">
+                    <span style="font-family:'JetBrains Mono',monospace;font-size:11.5px;font-weight:600;color:#0f0f0f">{{ c.name }}</span>
+                    <span style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+                      <span style="{{ c.dotStyle }}"></span>
+                      <span style="font-family:Inter,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;color:#33322f">{{ c.meta }}</span>
+                    </span>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:8px;flex:0 0 auto">
+                    <button onClick="{{ c.dec }}" aria-label="Remove one" style="width:34px;height:34px;border:1px solid #c9c6bb;background:#fafaf8;color:#33322f;font-family:Inter,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="border-color:#0f0f0f;color:#0f0f0f">−</button>
+                    <span style="{{ c.countStyle }}">{{ c.count }}</span>
+                    <button onClick="{{ c.inc }}" aria-label="Add one" style="width:34px;height:34px;border:1px solid #c9c6bb;background:#fafaf8;color:#33322f;font-family:Inter,sans-serif;font-size:15px;font-weight:600;cursor:pointer;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="border-color:#0f0f0f;color:#0f0f0f">+</button>
+                  </div>
+                </div>
+              </sc-for>
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px dashed #c9c6bb;background:#f7f6f1;padding:10px 13px">
+                <span style="font-family:Inter,sans-serif;font-size:11.5px;color:#33322f">+ 35 other cards in this deck <span style="color:#8b887d">(Blue / White, all within limits)</span></span>
+                <span style="font-family:Inter,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#8b887d">Fixed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- reveals panel -->
+        <div style="display:flex;flex-direction:column;background:#151923;min-width:0">
+          <div style="padding:24px clamp(18px,2vw,26px) 20px;border-bottom:1px solid rgba(184,190,202,0.14)">
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.24em;color:#E4AE3A">WHAT THIS REVEALS</span>
+          </div>
+          <div style="padding:24px clamp(18px,2vw,26px);display:flex;flex-direction:column;gap:18px;flex:1">
+            <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(18px,1.6vw,21px);line-height:1.5;color:#F2EDE3;text-wrap:pretty">{{ gExplanation }}</p>
+            <p style="margin:0;font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.7;color:#B8BECA">{{ gRevealNote }}</p>
+            <div style="margin-top:auto;display:flex;flex-direction:column;gap:10px;padding-top:12px">
+              <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(184,190,202,0.5)">SYSTEM TRACE</span>
+              <p style="margin:0;font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.7;color:{{ gTraceColor }};overflow-wrap:break-word;white-space:pre-line">{{ gTrace }}</p>
+            </div>
+          </div>
+          <div style="padding:18px clamp(18px,2vw,26px);border-top:1px solid rgba(184,190,202,0.14);display:flex;flex-direction:column;gap:6px">
+            <span style="display:flex;align-items:center;gap:8px">
+              <span style="width:8px;height:8px;background:#16B889"></span>
+              <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#16B889">IMPLEMENTED + INTEGRATED</span>
+            </span>
+            <p style="margin:0;font-family:Manrope,sans-serif;font-size:12px;line-height:1.65;color:rgba(184,190,202,0.75)">Mirrors the real workbench: legality recomputed on every edit, shown in a persistent status bar — flagged, never blocked. There is no separate "check my deck" step.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p style="margin:2px 0 0;font-family:Manrope,sans-serif;font-size:12px;font-style:italic;line-height:1.6;color:rgba(184,190,202,0.55);max-width:760px">Guided product prototype — a six-card demo slice of the 623-card catalog, with card art redacted throughout. Decision-quality claims are design hypotheses, not tested findings.</p>
+  </div>
+
+  <!-- ch 02 three decisions -->
+  <div data-screen-label="Three decisions" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,420px) minmax(0,1fr);gap:clamp(28px,4vw,56px);padding:clamp(56px,8vw,96px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">02</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">DESIGN DECISIONS</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#E4AE3A;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+      <h2 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(26px,2.6vw,34px);line-height:1.3;color:#F2EDE3">Three decisions carried the most weight.</h2>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.72)">Each moves information to the moment of decision — and stops short of making the decision itself.</p>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16px,1.4vw,18px);line-height:1.6;color:#F2EDE3;border-left:2px solid #C66043;padding-left:18px">Decision support is less about adding information than deciding what should become visible at the moment a decision is being made.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid rgba(205,208,218,0.2);min-width:0">
+      <div data-r="dec-row" style="display:grid;grid-template-columns:44px 190px 1fr;gap:14px;padding:15px 12px;border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;cursor:default;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #315CFF">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6E8CFF;padding-top:2px">D·01</span>
+        <span style="font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:#F2EDE3">Validation inside the workflow</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;color:rgba(205,208,218,0.66)">The deck-builder recomputes legality on every edit and shows it in a persistent status bar — there is no separate "check my deck" step, and never a blocked edit.</span>
+      </div>
+      <div data-r="dec-row" style="display:grid;grid-template-columns:44px 190px 1fr;gap:14px;padding:15px 12px;border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;cursor:default;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #315CFF">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6E8CFF;padding-top:2px">D·02</span>
+        <span style="font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:#F2EDE3">Surface, don't decide</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;color:rgba(205,208,218,0.66)">Constraints and relationships are shown at the moment they're relevant. The system never tells a player which card to play — or which three cards would complete the deck.</span>
+      </div>
+      <div data-r="dec-row" style="display:grid;grid-template-columns:44px 190px 1fr;gap:14px;padding:15px 12px;border-bottom:1px solid rgba(205,208,218,0.2);border-left:2px solid transparent;cursor:default;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #315CFF">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;color:#6E8CFF;padding-top:2px">D·03</span>
+        <span style="font-family:Manrope,sans-serif;font-size:14px;font-weight:700;color:#F2EDE3">Local-first, grown carefully</span>
+        <span style="font-family:Manrope,sans-serif;font-size:13px;line-height:1.6;color:rgba(205,208,218,0.66)">The architecture grew from client-only toward Supabase-backed services as real requirements (auth, cross-device sync) appeared — while the deck builder itself stayed fully local-only, by design, the whole way through.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- field evidence -->
+  <div data-screen-label="Field evidence" style="border-top:1px solid rgba(205,208,218,0.14);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:22px">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.24em;color:#E4AE3A">FIELD EVIDENCE — PRODUCTION SCREENS</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.45)">FIG. E</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:rgba(184,190,202,0.16);border:1px solid rgba(184,190,202,0.16)">
+      <figure style="margin:0;background:#0B0D12;display:flex;flex-direction:column">
+        <span style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden"><img src="images/gundam-hero.png" alt="Gundam Forge meta dashboard" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <figcaption style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">META DASHBOARD</figcaption>
+      </figure>
+      <figure style="margin:0;background:#0B0D12;display:flex;flex-direction:column">
+        <span style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden"><img src="images/gundam-builder.png" alt="Gundam Forge deck builder" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <figcaption style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">DECK BUILDER — LIVE VALIDATION</figcaption>
+      </figure>
+      <figure style="margin:0;background:#0B0D12;display:flex;flex-direction:column">
+        <span style="position:relative;display:block;aspect-ratio:16/10;overflow:hidden"><img src="images/gundam-simulator.png" alt="Gundam Forge playtest simulator" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top"></span>
+        <figcaption style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 14px;font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">PLAYTEST SIMULATOR</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <!-- ch 03 implementation status -->
+  <div data-screen-label="Implementation status" style="background:#151923;padding:clamp(48px,7vw,80px) clamp(20px,6vw,88px);display:flex;flex-direction:column;gap:clamp(26px,3vw,36px)">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap">
+      <div style="display:flex;align-items:baseline;gap:22px">
+        <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(30px,3vw,40px);line-height:1;color:#F2EDE3">03</span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:#B8BECA">IMPLEMENTATION STATUS</span>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.18em;color:#E4AE3A">EVIDENCE BEFORE CLAIM</span>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1px;background:rgba(184,190,202,0.16);border:1px solid rgba(184,190,202,0.16)">
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#16B889"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#16B889">IMPLEMENTED + INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Catalog + workbench</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Card browsing and filtering across 623 official cards; deck construction with real-time validation and persistent deck state — localStorage locally, Supabase-backed in production.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#16B889"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#16B889">IMPLEMENTED + INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Two playtest modes</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Goldfish solitaire practice and a heuristic AI opponent, with battlefield interactions in a working gameplay simulation.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#7957E8"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#A78BF6">IMPLEMENTED, NOT INTEGRATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Second AI opponent</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">A simpler AI-opponent implementation exists in the codebase but is dead code — only the more advanced heuristic opponent is wired to the UI.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#C66043"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#E08A6D">KNOWN GAP</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Ban / restricted enforcement</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">The type layer anticipates it, but nothing reads it yet — and no card in the database has a populated legality value.</span>
+      </div>
+      <div style="background:#151923;padding:22px 24px;display:flex;flex-direction:column;gap:9px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#1A2030;transform:translateY(-2px)">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:8px;height:8px;background:#E4AE3A"></span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:#E4AE3A">NOT YET VALIDATED</span></span>
+        <span style="font-family:Manrope,sans-serif;font-size:14.5px;font-weight:700;color:#F2EDE3">Decision-quality outcomes</span>
+        <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.65;color:#B8BECA">Usability metrics, comprehensive rules coverage, and formal accessibility conformance — all future work, stated as such.</span>
+      </div>
+    </div>
+    <div data-r="stats" style="display:flex;gap:clamp(32px,4.5vw,64px);align-items:baseline;border-top:1px solid rgba(184,190,202,0.16);padding-top:26px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(34px,3.4vw,44px);color:#F2EDE3">623</span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:#B8BECA">OFFICIAL CARDS IN THE CATALOG</span></div>
+      <div style="display:flex;flex-direction:column;gap:4px"><span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(34px,3.4vw,44px);color:#F2EDE3">248</span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:#B8BECA">PASSING TESTS · VITEST</span></div>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:#B8BECA;max-width:520px">The validation engine is tested code, not UI decoration — the same rules the status bar reports are the ones the test suite asserts.</p>
+    </div>
+  </div>
+
+  <!-- ch 04 reflection -->
+  <div data-screen-label="Reflection" data-r="ch" style="display:grid;grid-template-columns:200px minmax(0,700px) minmax(220px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(64px,8vw,110px) clamp(20px,6vw,88px) clamp(56px,7vw,96px)">
+    <div data-r="chhead" style="display:flex;flex-direction:column;gap:12px">
+      <span style="font-family:'Source Serif 4',Georgia,serif;font-size:clamp(40px,4.6vw,64px);line-height:1;color:#F2EDE3">04</span>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.24em;color:rgba(205,208,218,0.5)">REFLECTION</span>
+      <span data-r="chrule" style="width:32px;height:1px;background:#C66043;margin-top:6px"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:26px;min-width:0">
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-size:clamp(23px,2.4vw,30px);line-height:1.45;color:#F2EDE3;text-wrap:pretty">Decision support is less about adding information than deciding what should become <em style="color:#C66043">visible</em> at the moment a decision is being made.</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.8;color:rgba(205,208,218,0.72)">Whether the validation I built actually reduces errors without also reducing experimentation — and how a system like this should communicate uncertainty rather than false confidence — remains open.</p>
+      <div style="border:1px solid rgba(205,208,218,0.2);background:#171D2A;padding:20px 24px;display:flex;gap:14px;align-items:flex-start;margin-top:6px">
+        <span style="width:9px;height:9px;border:1.5px solid #E4AE3A;flex:0 0 auto;margin-top:5px"></span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.75)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#E4AE3A">PRELIMINARY — </span>Gundam Forge is a working beta built and tested by one person. Its decision-support claims are design hypotheses — they have not been tested against real players making real deck-building decisions.</p>
+      </div>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:12px;font-style:italic;line-height:1.7;color:rgba(205,208,218,0.55)">The Gundam Card Game is the intellectual property of Bandai Namco. Gundam Forge is an independent, non-commercial fan and educational project, not an official product. No Gundam artwork or card imagery appears in this portfolio.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:18px;padding-top:6px;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5)">OPEN QUESTIONS</span>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">Does validation reduce errors without also reducing experimentation?</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">How much assistance is too much?</p>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.72);border-top:1px solid rgba(205,208,218,0.16);padding-top:12px">How should a system communicate uncertainty rather than false confidence?</p>
+    </div>
+  </div>
+
+  <!-- next / prev -->
+  <div data-r="nextstrip" style="border-top:1px solid rgba(205,208,218,0.14);display:flex;justify-content:space-between;align-items:center;gap:16px;padding:26px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <a href="DojoNet%20Investigation.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.6);transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#0F8A66">← 02 DOJONET</a>
+    <a href="Investigations.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.45);transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">INDEX</a>
+    <a href="WithYou%20Investigation%20-%20Responsive.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;color:rgba(205,208,218,0.6);transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">01 WITHYOU →</a>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}, &quot;motion&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Chamber&quot;}}">
+class Component extends DCLogic {
+  state = { counts: { c047: 2, c112: 4, c205: 1, c331: 0, c078: 3, c150: 2 }, edits: 0 };
+
+  cards() {
+    return [
+      { id: "c047", name: "CARD #047 — UNIT", color: "BLUE", cost: 3 },
+      { id: "c112", name: "CARD #112 — PILOT", color: "BLUE", cost: 1 },
+      { id: "c205", name: "CARD #205 — COMMAND", color: "WHITE", cost: 2 },
+      { id: "c078", name: "CARD #078 — UNIT", color: "WHITE", cost: 5 },
+      { id: "c150", name: "CARD #150 — BASE", color: "BLUE", cost: 2 },
+      { id: "c331", name: "CARD #331 — UNIT", color: "GREEN", cost: 4 },
+    ];
+  }
+
+  componentDidMount() { this.syncMotion(); }
+  componentDidUpdate() { this.syncMotion(); }
+  syncMotion() {
+    const off = (this.props.motion ?? true) === false;
+    let el = document.getElementById("gf-motion-off");
+    if (off && !el) {
+      el = document.createElement("style");
+      el.id = "gf-motion-off";
+      el.textContent = "#gf-root *{animation:none !important;transition:none !important}";
+      document.head.appendChild(el);
+    } else if (!off && el) {
+      el.remove();
+    }
+  }
+
+  renderVals() {
+    const s = this.state;
+    const CARDS = this.cards();
+    const dotColors = { BLUE: "#315CFF", WHITE: "#b0aa98", GREEN: "#2E8B57" };
+    const bump = (id, d) => this.setState((prev) => {
+      const next = Math.min(6, Math.max(0, prev.counts[id] + d));
+      if (next === prev.counts[id]) return null;
+      return { counts: Object.assign({}, prev.counts, { [id]: next }), edits: prev.edits + 1 };
+    });
+
+    const total = 35 + CARDS.reduce((sum, c) => sum + s.counts[c.id], 0);
+    const overCopies = CARDS.filter((c) => s.counts[c.id] > 4);
+    const colors = ["BLUE", "WHITE"];
+    CARDS.forEach((c) => { if (s.counts[c.id] > 0 && colors.indexOf(c.color) === -1) colors.push(c.color); });
+    const sizeOk = total === 50;
+    const copiesOk = overCopies.length === 0;
+    const colorsOk = colors.length <= 2;
+    const valid = sizeOk && copiesOk && colorsOk;
+
+    const chipBase = "font-family:Inter,sans-serif;font-size:10px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;border:1px solid ";
+    const okChip = chipBase + "#c9c6bb;background:#fafaf8;color:#33322f";
+    const goodChip = chipBase + "#2E8B57;background:#eaf3ec;color:#2E8B57";
+    const badChip = chipBase + "#8a4a3b;background:#f5ece9;color:#8a4a3b";
+
+    const gCards = CARDS.map((c) => {
+      const n = s.counts[c.id];
+      const over = n > 4;
+      const newColor = n > 0 && c.color === "GREEN" && !colorsOk;
+      return {
+        name: c.name,
+        meta: c.color + " · COST " + c.cost + " · MAX 4 COPIES",
+        dotStyle: "width:9px;height:9px;flex:0 0 auto;border-radius:50%;background:" + dotColors[c.color] + (c.color === "WHITE" ? ";border:1px solid #8b887d" : ""),
+        count: String(n),
+        countStyle: "min-width:26px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:600;color:" + (over || newColor ? "#8a4a3b" : "#0f0f0f"),
+        rowStyle: "display:flex;align-items:center;gap:12px;border:1px solid " + (over || newColor ? "#8a4a3b;background:#f5ece9" : "#e3e1da;background:#fafaf8") + ";padding:9px 12px;transition:border-color 0.15s,background 0.15s",
+        inc: () => bump(c.id, 1),
+        dec: () => bump(c.id, -1),
+      };
+    });
+
+    let explanation, note;
+    if (!copiesOk) {
+      const c = overCopies[0];
+      explanation = "The " + s.counts[c.id] + "th copy was legal to try. The bar flagged it instantly — but nothing blocked the edit or removed the card.";
+      note = "Enforcement happens where the temptation happens — at the + button — but as information, not prevention. Surfacing, not deciding.";
+    } else if (!colorsOk) {
+      explanation = "A third color is legal to explore, and its cost is immediately visible. The constraint is named at the moment it becomes relevant.";
+      note = "Most tools respond to complexity with more panels. This is the narrower premise: fewer, better-placed facts.";
+    } else if (!sizeOk) {
+      explanation = total < 50
+        ? "The status bar isn't a report you request at the end — it recomputes on every edit, so the gap to 50 is always visible, never a save-time surprise."
+        : "Over 50 is flagged the same instant it happens. Trim anywhere you like — the system won't pick the cut for you.";
+      note = total < 50
+        ? "Add any " + (50 - total) + " card" + (50 - total === 1 ? "" : "s") + " to reach 50 — the workbench will not recommend which. That refusal is the design decision under test."
+        : "Remove " + (total - 50) + " card" + (total - 50 === 1 ? "" : "s") + ". Which ones is a strategic judgment the interface deliberately leaves alone.";
+    } else {
+      explanation = "50 of 50, every card within four copies, two colors. The bar went green the moment the last edit satisfied the rules.";
+      note = "The system told you the deck was short; which cards closed the gap was always your decision. That division of labor is the whole thesis.";
+    }
+
+    return {
+      gCards: gCards,
+      gEdits: String(s.edits).padStart(2, "0"),
+      gOverallLabel: valid ? "Deck legal" : "Attention",
+      gOverallChip: valid ? goodChip : badChip,
+      gSizeLabel: "Size " + total + "/50" + (sizeOk ? "" : total < 50 ? " — " + (50 - total) + " short" : " — " + (total - 50) + " over"),
+      gSizeChip: sizeOk ? goodChip : total > 50 ? badChip : okChip,
+      gCopiesLabel: copiesOk ? "Copies ≤ 4 ✓" : "#" + overCopies[0].name.slice(6, 9) + " over limit " + s.counts[overCopies[0].id] + "/4",
+      gCopiesChip: copiesOk ? goodChip : badChip,
+      gColorsLabel: colorsOk ? "Colors " + colors.join(" + ") + " ✓" : colors.length + " colors — limit 2",
+      gColorsChip: colorsOk ? goodChip : badChip,
+      gExplanation: explanation,
+      gRevealNote: note,
+      gTrace: "validateDeck(deck) — edit #" + s.edits + "\n→ size: " + total + "/50 · copies: " + (copiesOk ? "ok" : "violation") + " · colors: [" + colors.join(", ") + "]\nresult: " + (valid ? "LEGAL — no action required" : "flagged — edits never blocked"),
+      gTraceColor: valid ? "#7FD9BC" : "#E08A6D",
+      gReset: () => this.setState({ counts: { c047: 2, c112: 4, c205: 1, c331: 0, c078: 3, c150: 2 }, edits: 0 }),
+    };
+  }
+}
+</script>
+</body>
+</html>

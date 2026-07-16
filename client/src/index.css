@@ -48,6 +48,28 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .site-shell { min-height: 100vh; display: flex; flex-direction: column; overflow: clip; }
 #main-content { flex: 1; }
 
+/* The dark-fusion handoff is a complete document system with its own page
+   chrome and interaction runtime. The host deliberately contributes no layout
+   so every routed document receives the exact viewport used by the handoff. */
+.handoff-app,
+.handoff-app #main-content,
+.handoff-shell {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 0;
+  overflow: hidden;
+  background: #10131b;
+}
+
+.handoff-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #10131b;
+}
+
 .eyebrow { display: flex; align-items: center; gap: 12px; font-family: var(--font-mono); font-size: 10px; font-weight: 500; line-height: 1.5; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(21,21,21,.58); }
 .eyebrow > span { width: 30px; height: 1px; background: var(--gold); }
 .eyebrow--light { color: rgba(242,237,227,.62); }

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.35)}
+  @media (max-width:1180px){
+    [data-r="hero"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="hero-rail"]{display:none !important}
+    [data-r="ch"]{grid-template-columns:minmax(0,1fr) !important;gap:28px !important}
+  }
+  @media (max-width:760px){
+    [data-r="xp-row"]{grid-template-columns:minmax(0,1fr) !important;gap:8px !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="resume" hint-size="100%,84px"></dc-import>
+
+  <!-- hero -->
+  <div data-screen-label="Resume hero" data-r="hero" style="display:grid;grid-template-columns:56px minmax(0,1fr);gap:clamp(28px,3.5vw,44px);padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(40px,5vw,64px)">
+    <div data-r="hero-rail" style="display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:8px">
+      <span style="writing-mode:vertical-rl;transform:rotate(180deg);font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.32em;color:rgba(205,208,218,0.45)">RESUME / RECORD</span>
+      <span style="flex:1;width:1px;background:rgba(205,208,218,0.16)"></span>
+      <span style="width:7px;height:7px;border-radius:50%;background:#E4AE3A"></span>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(18px,2.4vw,24px);padding-top:6px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.22em;color:#C65788">RESUME</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(34px,4vw,58px);line-height:1.12;letter-spacing:-0.01em;color:#F2EDE3;max-width:800px;text-wrap:pretty">The structured work history.</h1>
+      <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.7;color:rgba(205,208,218,0.66);max-width:620px">Ten years of design and engineering practice across healthcare, media, enterprise, and consumer products — the employment record behind the investigations.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:2px">
+        <a href="documents/Earl-Hickson-Jr-Resume.pdf" target="_blank" rel="noreferrer noopener" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;background:#F2EDE3;color:#0B0D12;padding:14px 22px;font-weight:600;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#E4AE3A;color:#0B0D12;transform:translateY(-2px)">DOWNLOAD PDF ↓</a>
+        <a href="Contact.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:0.18em;border:1px solid rgba(205,208,218,0.3);color:#F2EDE3;padding:13px 22px;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="border-color:#C65788;color:#C65788;transform:translateY(-2px)">REQUEST A TAILORED VARIANT →</a>
+      </div>
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(205,208,218,0.45)">MAINTAINED IN TWO VARIANTS — UX ENGINEER · FRONT-END ENGINEER</span>
+    </div>
+  </div>
+
+  <!-- body -->
+  <div data-screen-label="Employment record" data-r="ch" style="flex:1;display:grid;grid-template-columns:minmax(0,760px) minmax(260px,1fr);gap:clamp(28px,4vw,56px);padding:clamp(48px,6vw,80px) clamp(20px,6vw,88px);border-top:1px solid rgba(205,208,218,0.14)">
+    <div style="display:flex;flex-direction:column;min-width:0">
+      <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5);padding-bottom:14px">EMPLOYMENT</span>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:#E4AE3A">JAN 2025 — PRESENT</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">AMA Fight Club</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">FRONT-END DEVELOPER · DIGITAL INTEGRATION SPECIALIST</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">End-to-end responsive redesign of the club's public site; Zen Planner API integration for lead capture and CRM sync; ZipRecruiter hiring pipeline; branded print, social, and QR campaigns. Sole technical advisor to ownership.</span>
+        </span>
+      </div>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:#E4AE3A">OCT 2025 · CONTRACT</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">Tabby's Place — A Cat Sanctuary</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">FRONTEND DEVELOPER</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">Custom WordPress donation and campaign plugin built from scratch — dynamic donation tracking, adoptable-animal listings, and an admin interface requiring no technical knowledge — delivered from design to deployment on a compressed timeline, accessible throughout.</span>
+        </span>
+      </div>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:#E4AE3A">DEC 2023 — OCT 2024</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">Asembia</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">FRONT-END DEVELOPER</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">Audited a fragmented HIPAA-regulated codebase and led a Bootstrap 3→5 migration into a reusable component library — 150+ UI issues resolved, responsiveness up 20%, new-feature time down 20%. WCAG 2.1 AA across clinical portals, REST integrations against .NET, Lighthouse scores up 18%. Presented the architecture to the CEO to secure cross-team adoption.</span>
+        </span>
+      </div>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:#E4AE3A">FEB — NOV 2023</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">Independent Product Development</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">SELF-DIRECTED R&amp;D</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">The gap between roles treated as R&amp;D, not downtime — early foundations of WithYou and DojoNet, exploratory Gundam Forge work, open-source contributions, and portfolio case studies.</span>
+        </span>
+      </div>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:#E4AE3A">NOV 2021 — MAR 2023</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">BroadcastMed</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">LEAD DESIGNER &amp; FRONT-END DEVELOPER</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">Directed design and front-end of healthcare marketing microsites for pharma and medical-device clients; shipped a standardized HTML email system that cut production 25%; used Google Analytics and Hotjar to redesign lead-capture flows, contributing to an 18% lift in submissions. Mentored juniors and established code review.</span>
+        </span>
+      </div>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:#E4AE3A">APR — SEP 2021</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">Prosek Partners</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">FRONT-END DEVELOPER</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">Responsive landing pages and campaign interfaces in React and Vue for enterprise clients — including the Verizon Motorola Droid launch — with SEO and analytics work contributing to a 12% reduction in bounce rates.</span>
+        </span>
+      </div>
+
+      <div data-r="xp-row" style="display:grid;grid-template-columns:150px minmax(0,1fr);gap:18px;padding:20px 12px;border-top:1px solid rgba(205,208,218,0.14);border-bottom:1px solid rgba(205,208,218,0.14);border-left:2px solid transparent;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#171D2A;border-left:2px solid #C65788">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.14em;line-height:1.7;color:rgba(205,208,218,0.5)">2013 — 2020</span>
+        <span style="display:flex;flex-direction:column;gap:7px;min-width:0">
+          <span style="font-family:'Source Serif 4',Georgia,serif;font-size:20px;color:#F2EDE3">Earlier record</span>
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;line-height:1.75;color:rgba(205,208,218,0.66)">William R. Seide Agency (2020) · Merck, freelance (2019) · Merkle (2018–19) · Second Melody (2016–17) · Verizon Wireless (2015–16) · KBS+P internships (2013–15) — mobile-first client sites, pharma email systems, and agency front-end work.</span>
+        </span>
+      </div>
+
+      <div style="border:1px solid rgba(205,208,218,0.2);background:#171D2A;padding:20px 24px;display:flex;gap:14px;align-items:flex-start;margin-top:26px">
+        <span style="width:9px;height:9px;border:1.5px solid #E4AE3A;flex:0 0 auto;margin-top:5px"></span>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:13px;line-height:1.7;color:rgba(205,208,218,0.75)"><span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:#E4AE3A">THE LIVING RESUME — </span>The <a href="Investigations.dc.html">investigations</a> are the working evidence of current capability. Every screen, schema, and test in them is solo work.</p>
+      </div>
+    </div>
+
+    <!-- side column -->
+    <div style="display:flex;flex-direction:column;gap:30px;padding-top:6px;min-width:0">
+      <div style="display:flex;flex-direction:column">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5);padding-bottom:12px">EDUCATION &amp; CREDENTIALS</span>
+        <div style="display:flex;flex-direction:column;gap:5px;border-top:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;font-weight:700;color:#F2EDE3">BFA, Graphic Design</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:rgba(205,208,218,0.6)">Kean University — Union, NJ · 2015</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;border-top:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;font-weight:700;color:#F2EDE3">IBM Full Stack Software Developer</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:rgba(205,208,218,0.6)">Professional Certificate · Coursera, verified · Dec 2025</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:5px;border-top:1px solid rgba(205,208,218,0.16);border-bottom:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:Manrope,sans-serif;font-size:13.5px;font-weight:700;color:#F2EDE3">HCI — Graduate Study</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.6;color:rgba(205,208,218,0.6)">Applications in progress</span>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.22em;color:rgba(205,208,218,0.5);padding-bottom:12px">TOOLKIT</span>
+        <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">FRONTEND</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.7;color:rgba(205,208,218,0.66)">React 18 · TypeScript · Next.js · React Native (Expo) · Tailwind CSS · HTML5 / CSS3</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">BACKEND / APIS</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.7;color:rgba(205,208,218,0.66)">Node.js · Express · REST · PostgreSQL · Prisma · Drizzle · JWT auth · .NET integration</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">TESTING &amp; PERFORMANCE</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.7;color:rgba(205,208,218,0.66)">Vitest · Jest · Playwright · Maestro E2E · Lighthouse · CI/CD</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:4px;border-top:1px solid rgba(205,208,218,0.16);border-bottom:1px solid rgba(205,208,218,0.16);padding:12px 0">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.18em;color:#C65788">DESIGN</span>
+          <span style="font-family:Manrope,sans-serif;font-size:12.5px;line-height:1.7;color:rgba(205,208,218,0.66)">Figma · design systems &amp; tokens · information architecture · WCAG 2.1 AA practice</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;border-top:1px solid rgba(205,208,218,0.1);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1),border-color 220ms cubic-bezier(0.19,1,0.22,1),color 220ms cubic-bezier(0.19,1,0.22,1),opacity 220ms cubic-bezier(0.19,1,0.22,1),transform 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

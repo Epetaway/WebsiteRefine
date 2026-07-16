@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:smooth}
+  body{margin:0;background:#10131B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  a{color:#C65788;text-decoration:none}
+  a:hover{color:#E4AE3A}
+  ::selection{background:rgba(198,87,136,0.35)}
+  @media (max-width:760px){
+    [data-r="notenav"]{grid-template-columns:minmax(0,1fr) !important}
+    [data-r="foot"]{flex-direction:column !important;gap:12px !important;align-items:flex-start !important}
+  }
+</style>
+</helmet>
+
+<div id="top" style="background:#10131B;color:#F2EDE3;min-height:100vh;display:flex;flex-direction:column">
+
+  <dc-import name="Site Header" active="writing" hint-size="100%,84px"></dc-import>
+
+  <!-- note hero -->
+  <div data-screen-label="Note hero" style="padding:clamp(40px,5.5vw,64px) clamp(20px,6vw,88px) clamp(36px,4.5vw,56px)">
+    <div style="max-width:980px;margin:0 auto;display:flex;flex-direction:column;gap:clamp(16px,2vw,22px)">
+      <a href="Writing.dc.html" style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.2em;color:rgba(205,208,218,0.55);width:fit-content;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#C65788">← ALL FIELD NOTES</a>
+      <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap">
+        <span style="width:32px;height:1px;background:#E4AE3A"></span>
+        <span style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:0.16em;color:rgba(205,208,218,0.45)">N·03 · 2025-05-18 · <span style="color:#6E8CFF">DEVELOPMENT</span> · 7 MIN</span>
+      </div>
+      <h1 style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.18;letter-spacing:-0.01em;color:#F2EDE3;text-wrap:pretty">5 Jiu-Jitsu Habits That Made Me a Better Front-End Engineer</h1>
+      <p style="margin:0;font-family:'Source Serif 4',Georgia,serif;font-style:italic;font-size:clamp(16.5px,1.6vw,20px);line-height:1.6;color:rgba(205,208,218,0.85);max-width:820px">The discipline, patience, and problem-solving mindset I developed on the mats transformed how I write code, debug issues, and approach complex engineering challenges.</p>
+    </div>
+  </div>
+
+  <div data-screen-label="Cover" style="padding:0 clamp(20px,6vw,88px)">
+    <div style="position:relative;max-width:980px;margin:0 auto;background:#0B0D12;border:1px solid rgba(184,190,202,0.18);overflow:hidden">
+      <span style="position:relative;display:block;aspect-ratio:21/9;overflow:hidden"><img src="images/note-bjj-habits.png" alt="Jiu-Jitsu habits on the mat" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover"></span>
+      <div style="border-top:1px solid rgba(184,190,202,0.16);padding:10px 16px;display:flex;justify-content:space-between;gap:12px"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.16em;color:rgba(184,190,202,0.7)">JIU-JITSU HABITS ON THE MAT</span><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.24em;color:#E4AE3A">N·03</span></div>
+    </div>
+  </div>
+  <!-- note body -->
+  <div data-screen-label="Note body" style="flex:1;padding:clamp(36px,4.5vw,56px) clamp(20px,6vw,88px) clamp(56px,7vw,88px)">
+    <div style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px">
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">After ten years of training Brazilian Jiu-Jitsu and several years working as a front-end engineer, I've noticed something interesting: the habits that make you successful on the mats are the same ones that make you successful in software development.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Here are five lessons from Jiu-Jitsu that transformed how I approach engineering.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">1. Position Before Submission (Foundation Before Features)</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">In Jiu-Jitsu, there's a fundamental principle: establish a strong position before attempting a submission. If you go for a flashy finish from a weak position, you'll fail—and probably end up in a worse spot.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">In development:</strong> Build a solid foundation before adding features.</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Clean, maintainable code architecture</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Proper TypeScript types</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Accessible HTML structure</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Performance budgets</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Testing infrastructure</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Rushing to add features without a strong foundation leads to technical debt, bugs, and eventual refactoring pain.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">2. Tap Early, Tap Often (Fail Fast, Learn Faster)</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">When you're caught in a submission, tapping out isn't defeat—it's learning. The goal is to recognize when you're stuck, reset, and try again with new knowledge.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">In development:</strong> Embrace failure as a learning tool.</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Write tests that fail first (TDD)</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Deploy to staging early to catch issues</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Ask for code reviews before you're "done"</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Prototype and iterate rather than building the "perfect" solution</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">The faster you fail, the faster you learn what works.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">3. Drilling Fundamentals (Master the Basics)</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Advanced techniques look impressive, but they're built on fundamentals. In Jiu-Jitsu, we drill basic movements thousands of times because when pressure hits, you fall back to what you've practiced most.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">In development:</strong> Master core concepts before chasing trends.</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Semantic HTML</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">CSS fundamentals (box model, flexbox, grid)</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">JavaScript core (closures, promises, event loop)</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Web accessibility (ARIA, keyboard navigation)</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Performance basics (lazy loading, code splitting)</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Every framework or library is just an abstraction over these fundamentals. Know them cold.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">4. Flow Rolling (Collaborative Problem Solving)</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Flow rolling is training at a relaxed pace, focusing on technique rather than winning. It's collaborative—you and your partner help each other learn by creating realistic but manageable pressure.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">In development:</strong> Pair programming and collaborative debugging.</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Work through problems together</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Share knowledge freely</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Create space for others to learn</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Focus on understanding, not just shipping</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">The best code comes from collaboration, not competition.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">5. Breathe Under Pressure (Stay Calm When Things Break)</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">When someone has you in a tight position, panic makes everything worse. Breathing and staying calm lets you think clearly, find escapes, and work the problem.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">In development:</strong> Production bugs happen. Stay calm.</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Take a breath before diving into the console</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Systematically isolate the problem</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Reproduce the bug reliably</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Fix the root cause, not just the symptom</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)">Document what you learned</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Panic leads to rushed fixes that create new bugs. Calm leads to solutions.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h2 style="margin:30px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(22px,2.1vw,28px);line-height:1.35;color:#F2EDE3">The Mindset Matters</h2>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Jiu-Jitsu didn't just teach me techniques. It taught me how to:</p>
+        <ul style="margin:4px 0 0;padding-left:24px">
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Be patient</strong> with the learning process</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Stay humble</strong> when I don't know something</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Be persistent</strong> when things get hard</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Help others</strong> grow alongside me</li>
+        <li style="margin:0 0 9px;font-family:Manrope,sans-serif;font-size:clamp(14.5px,1.25vw,16px);line-height:1.8;color:rgba(205,208,218,0.78)"><strong style="color:#F2EDE3;font-weight:700">Respect the craft</strong> and the people who practice it</li>
+        </ul>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">These aren't just Jiu-Jitsu values. They're the values of every great engineer I've worked with.</p>
+        <div style="height:1px;background:rgba(205,208,218,0.14);margin:24px 0 4px"></div>
+        <h3 style="margin:22px 0 0;font-family:'Source Serif 4',Georgia,serif;font-weight:400;font-size:clamp(18px,1.7vw,22px);line-height:1.4;color:#F2EDE3">Final Thought</h3>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Whether you train Jiu-Jitsu or not, the lesson is the same: the habits you build in one area of life will show up everywhere else.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">Discipline, patience, collaboration, and respect aren't just martial arts principles—they're engineering principles.</p>
+        <p style="margin:0;font-family:Manrope,sans-serif;font-size:clamp(15px,1.3vw,16.5px);line-height:1.85;color:rgba(205,208,218,0.78)">And they'll make you better at both.</p>
+    </div>
+  </div>
+
+  <!-- prev / next -->
+  <div data-screen-label="Note navigation" style="border-top:1px solid rgba(205,208,218,0.14)">
+    <div data-r="notenav" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(205,208,218,0.14)">
+      <span style="display:flex;background:#10131B"><a href="Note%20-%20AI%20and%20Developer%20Anxiety.dc.html" style="display:flex;flex-direction:column;gap:6px;padding:22px clamp(20px,3vw,32px);min-width:0;text-align:left;color:inherit;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(205,208,218,0.45)">← NEWER NOTE</span><span style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;line-height:1.4;color:#F2EDE3">How I Use AI to Ease Developer Anxiety (Without Replacing My …</span></a></span>
+      <span style="display:flex;justify-content:stretch;background:#10131B"><a href="Note%20-%20Fighting%20Through%20the%20Fog.dc.html" style="display:flex;flex-direction:column;gap:6px;padding:22px clamp(20px,3vw,32px);min-width:0;text-align:right;color:inherit;transition:background-color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="background:#151923"><span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.2em;color:rgba(205,208,218,0.45)">OLDER NOTE →</span><span style="font-family:'Source Serif 4',Georgia,serif;font-size:15.5px;line-height:1.4;color:#F2EDE3">Fighting Through the Fog: Rebuilding My Confidence as a Devel…</span></a></span>
+    </div>
+  </div>
+
+  <footer data-r="foot" style="background:#0B0D12;border-top:1px solid rgba(205,208,218,0.1);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:30px clamp(20px,6vw,88px);flex-wrap:wrap">
+    <span style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA">© 2026 Earl Hickson Jr. · HCEPS. All rights reserved.</span>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:9.5px;letter-spacing:0.26em;color:rgba(184,190,202,0.45)">HUMAN CAPABILITY EDITORIAL SYSTEM</span>
+    <span style="display:flex;gap:26px"><a href="https://github.com/Epetaway" target="_blank" rel="noreferrer noopener" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">GitHub</a><a href="Contact.dc.html" style="font-family:Manrope,sans-serif;font-size:13px;color:#B8BECA;transition:color 220ms cubic-bezier(0.19,1,0.22,1)" style-hover="color:#F2EDE3">Contact</a></span>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: &quot;100%&quot;, &quot;height&quot;: &quot;100%&quot;}}"></script>
+</body>
+</html>

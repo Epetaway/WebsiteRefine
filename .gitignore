@@ -9,6 +9,7 @@ package-lock.json
 /dist
 /build
 /.next
+next-env.d.ts
 
 # Environment variables
 .env
