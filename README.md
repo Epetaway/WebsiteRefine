@@ -1,81 +1,136 @@
 # Earl Hickson Jr. — UX Engineer Portfolio
 
-Canonical source for [ehicksonjr.com](https://ehicksonjr.com).
+Canonical source for [ehicksonjr.com](https://ehicksonjr.com): one professional identity, one public résumé, three independent product investigations, a research direction, Field Notes, and an intentional graduate-review path.
 
-The site presents one professional identity, one public resume, three independent product investigations, a research direction, and an editorial Field Notes system. The HCEPS archive informed the design/evidence system; it is not a second public portfolio or a second application in this repository.
+HCEPS remains the internal editorial, evidence-governance, and design-language reference. It is not a second public portfolio or runtime application.
 
-## Product architecture
+## Architecture
 
-- React 18 + TypeScript + Vite
-- React Router
-- Tailwind CSS plus a custom editorial/technology token layer
-- Express backend for contact delivery and retained legacy service routes
-- SendGrid notification path when configured
-- React Helmet metadata and Google Analytics initialization
+- React 18, TypeScript, Vite, and React Router.
+- Native semantic React pages; canonical routes contain no iframe or `.dc.html` runtime.
+- Custom editorial/technology CSS with self-hosted Manrope, Source Serif 4, and JetBrains Mono.
+- Route-based code splitting and focused interactive prototypes.
+- React Helmet route metadata and JSON-LD.
+- Vite static output for Vercel/Netlify; Express production server for local verification.
 
-## Canonical routes
+## Route map
 
 ```text
-/
-/work
-/work/withyou
-/work/dojonet
-/work/gundam-forge
-/research
-/field-notes
-/field-notes/:slug
-/about
-/resume
-/contact
+/                                      Home
+/work                                  Work
+/work/withyou                          WithYou investigation
+/work/dojonet                          DojoNet investigation
+/work/gundam-forge                     Gundam Forge investigation
+/research                              Research direction
+/field-notes                           Field Notes
+/field-notes/:slug                     Field Note
+/about                                 About
+/resume                                Public professional record
+/contact                               Direct contact paths
+/graduate-review                       Five-minute HCI admissions review
 ```
 
-Legacy project, Blog, How I Think, and Approach routes redirect into this structure.
+Legacy Projects, Case Studies, Investigations, Blog, Writing, How I Think, and Approach paths redirect to canonical routes. Unknown paths render a real 404 view.
 
-## Local development
+## Design system
+
+The active system uses deep obsidian technology sections, warm editorial surfaces, restrained orchid/green/blue accents, large Source Serif headings, Manrope body copy, JetBrains Mono metadata, generous whitespace, and explicit evidence/status labels. Accessibility-adjusted accent pairs preserve the visual character on both light and dark surfaces.
+
+## Canonical professional data
+
+`client/src/data/professional/` owns identity, links, experience, education, certification, capabilities, teaching, research, project statuses, and fact state. Routed pages read this source directly.
+
+`npm run content:export` generates `resume/content.json`; the PDF generator consumes that file. Do not hand-edit generated career content or add a second résumé data source.
+
+Fact states are `verified`, `requires-confirmation`, `private`, and `exclude`. Production publication is limited to verified facts. See `docs/FACTS-REQUIRING-CONFIRMATION.md` and `docs/EMPLOYMENT-RECONCILIATION.md`.
+
+## Claim governance
+
+Claims use a typed vocabulary: verified fact, implementation evidence, design rationale, personal reflection, research claim, known gap, planned work, and proposed research. Built software is not described as a proven human outcome, peer-reviewed research, or verified public deployment.
+
+Source and built output are scanned for banned metrics, stale identities, unsafe status language, and iframe architecture. See `docs/CLAIM-AUDIT.md` and `docs/METRIC-EVIDENCE.md`.
+
+## Local setup
 
 ```bash
 npm install
 npm run dev
 ```
 
-The Express/Vite development server defaults to `http://127.0.0.1:3000`.
+Development defaults to `http://127.0.0.1:3000`.
+
+Optional environment variables:
+
+```text
+VITE_GA_MEASUREMENT_ID=
+SENDGRID_API_KEY=             # retained server integration; not used by the public Contact UI
+```
+
+The Contact page uses robust direct email, LinkedIn, and GitHub links because production form delivery is not verified.
 
 ## Quality commands
 
 ```bash
-npm run check
 npm run lint
+npm run check
+npm run typecheck
 npm test
+npm run validate:content
+npm run validate:pdf
 npm run build
+npm run qa:browser
+npm run qa
 ```
 
-## Environment variables
+`qa:browser` requires Chrome or `CHROME_BIN` and tests canonical routes, expanded investigations, redirects, PDFs, metadata, images, keyboard focus, axe accessibility, required viewports, mobile landscape, zoom-equivalent reflow, reduced motion, and primary target size.
 
-```text
-SENDGRID_API_KEY=
-VITE_GA_MEASUREMENT_ID=
+Lighthouse CI:
+
+```bash
+npx @lhci/cli autorun
 ```
 
-Additional legacy integrations have their own optional variables in `server/routes.ts`. Contact submissions use in-memory storage; SendGrid email is the durable notification path when configured.
+The final review record is in `docs/PRODUCTION-READINESS.md`.
 
-## Public resume
+## Documents
 
-The only public download is:
+Canonical public résumé:
 
 ```text
 /assets/Earl-Hickson-Jr-Resume.pdf
 ```
 
-Regenerate it with:
+Application-specific graduate CV:
 
-```bash
-tmp/pdf-venv/bin/python scripts/generate_resume_pdf.py
+```text
+/assets/application/Earl-Hickson-Jr-HCI-Graduate-CV.pdf
 ```
 
-The generated delivery copy is written to `output/pdf/` and the public asset directory.
+Generate and validate both:
 
-## Evidence policy
+```bash
+npm run content:export
+npm run documents:generate
+npm run validate:pdf
+```
 
-The public portfolio distinguishes implemented behavior, integrated behavior, design work, partial work, known gaps, and development-stage evidence. Working software is not presented as proof of human outcomes, peer-reviewed research, or verified public deployment.
+The graduate CV is intentionally linked from `/graduate-review`; it is not promoted as an alternative employment résumé. Generation details are in `resume/README.md`.
 
-See [docs/HCEPS-INTEGRATION-PLAN.md](docs/HCEPS-INTEGRATION-PLAN.md), [docs/CLAIM-AUDIT.md](docs/CLAIM-AUDIT.md), and [docs/KNOWN-LIMITATIONS.md](docs/KNOWN-LIMITATIONS.md).
+## Accessibility approach
+
+The implementation includes skip navigation, semantic landmarks/headings, visible focus, an accessible mobile dialog, focus containment/return, reduced-motion handling, meaningful image alternatives, live prototype announcements, sufficient contrast, 320 px reflow, and 44 px primary controls. Automation supports—but does not replace—physical assistive-technology testing. See `docs/ACCESSIBILITY-REVIEW.md`.
+
+## Project statuses
+
+- WithYou — functional beta-oriented implementation; legacy sharing inconsistency documented.
+- DojoNet — active development; instructor workflow and outcomes not claimed.
+- Gundam Forge — functional beta-oriented implementation; heuristic opponent, incomplete competitive restriction coverage, and unverified public hosting.
+
+## Build and deployment
+
+```bash
+npm run build
+PORT=3000 npm start
+```
+
+Vercel and Netlify publish `dist/public` and apply canonical redirects plus the SPA fallback. The live site must be checked after the exact merged commit deploys; follow `docs/SEO-REINDEXING-CHECKLIST.md`. The current live domain remains on the prior release at the time of this branch review.
