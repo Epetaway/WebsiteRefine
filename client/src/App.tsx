@@ -1,9 +1,22 @@
-import { useEffect } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
-import HandoffFrame from "@/components/handoff/HandoffFrame";
-import NotFound from "@/pages/not-found";
+import Header from "@/components/layout/header";
+import Footer from "@/components/layout/footer";
+import { fieldNoteSlugs } from "@/data/publishedRoutes";
+
+const Home = lazy(() => import("@/pages/home"));
+const Work = lazy(() => import("@/pages/work"));
+const InvestigationPage = lazy(() => import("@/pages/investigation"));
+const Research = lazy(() => import("@/pages/research"));
+const FieldNotes = lazy(() => import("@/pages/field-notes"));
+const FieldNotePage = lazy(() => import("@/pages/field-note"));
+const About = lazy(() => import("@/pages/about"));
+const Resume = lazy(() => import("@/pages/resume"));
+const Contact = lazy(() => import("@/pages/contact"));
+const GraduateReview = lazy(() => import("@/pages/graduate-review"));
+const NotFound = lazy(() => import("@/pages/not-found"));
 
 const legacyProjects: Record<string, string> = {
   withyou: "/work/withyou",
@@ -12,13 +25,7 @@ const legacyProjects: Record<string, string> = {
   "gundam-forge": "/work/gundam-forge",
 };
 
-const publishedWritingSlugs = new Set([
-  "dei-rollbacks-black-tech-job-hunt",
-  "ai-ease-developer-anxiety",
-  "bjj-habits-better-front-end-engineer",
-  "fighting-through-the-fog",
-  "why-i-started-training-jiu-jitsu",
-]);
+const publishedWritingSlugs = new Set<string>(fieldNoteSlugs);
 
 function LegacyProjectRedirect() {
   const { slug = "" } = useParams();
@@ -43,19 +50,23 @@ export default function App() {
   }, []);
 
   return (
-    <div className="site-shell handoff-app">
+    <div className="site-shell">
       <ScrollManager />
+      <a className="skip-link" href="#main-content">Skip to main content</a>
+      <Header />
       <main id="main-content">
-        <Routes>
-          <Route path="/" element={<HandoffFrame />} />
-          <Route path="/work" element={<HandoffFrame />} />
-          <Route path="/work/:slug" element={<HandoffFrame />} />
-          <Route path="/research" element={<HandoffFrame />} />
-          <Route path="/field-notes" element={<HandoffFrame />} />
-          <Route path="/field-notes/:slug" element={<HandoffFrame />} />
-          <Route path="/about" element={<HandoffFrame />} />
-          <Route path="/resume" element={<HandoffFrame />} />
-          <Route path="/contact" element={<HandoffFrame />} />
+        <Suspense fallback={<p className="route-loading" role="status">Loading page…</p>}>
+          <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/work" element={<Work />} />
+          <Route path="/work/:slug" element={<InvestigationPage />} />
+          <Route path="/research" element={<Research />} />
+          <Route path="/field-notes" element={<FieldNotes />} />
+          <Route path="/field-notes/:slug" element={<FieldNotePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/resume" element={<Resume />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/graduate-review" element={<GraduateReview />} />
 
           <Route path="/projects" element={<Navigate to="/work" replace />} />
           <Route path="/investigations" element={<Navigate to="/work" replace />} />
@@ -70,8 +81,10 @@ export default function App() {
           <Route path="/writing/:slug" element={<LegacyBlogRedirect />} />
           <Route path="/case-study-preview" element={<Navigate to="/work" replace />} />
           <Route path="*" element={<NotFound />} />
-        </Routes>
+          </Routes>
+        </Suspense>
       </main>
+      <Footer />
     </div>
   );
 }

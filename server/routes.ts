@@ -153,14 +153,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(429).json({ message: "Too many messages. Please wait a few minutes or email directly." });
       }
       const validatedData = insertContactSchema.parse(req.body);
+      if (!process.env.SENDGRID_API_KEY) {
+        return res.status(503).json({ message: "Message delivery is temporarily unavailable. Please email e@ehicksonjr.com directly." });
+      }
       const contact = await storage.createContact(validatedData);
       
-      // Send email notification if SendGrid is configured
-      if (process.env.SENDGRID_API_KEY) {
-        try {
+      // Send email notification and only report success after provider acceptance.
+      try {
           const msg = {
             to: 'e@ehicksonjr.com',
-            from: 'e@ehicksonjr.com', // Must be verified sender in SendGrid
+            from: process.env.SENDGRID_FROM_EMAIL || 'e@ehicksonjr.com',
+            replyTo: validatedData.email,
             subject: `New Contact Form Submission from ${validatedData.name}`,
             text: `
 New contact form submission received:
@@ -191,10 +194,9 @@ Please follow up soon.
           };
           
           await sgMail.send(msg);
-        } catch (emailError) {
-          // Failed to send contact notification email but don't fail the submission
-          console.error("Failed to send contact email notification:", emailError);
-        }
+      } catch (emailError) {
+        console.error("Failed to send contact email notification:", emailError);
+        return res.status(503).json({ message: "Message delivery is temporarily unavailable. Please email e@ehicksonjr.com directly." });
       }
       
       res.json({ message: "Contact form submitted successfully", id: contact.id });

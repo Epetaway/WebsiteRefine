@@ -2,17 +2,18 @@ import type { ReactNode } from "react";
 
 type Props = {
   label: string;
+  railLabel?: string;
   title: ReactNode;
   lead: ReactNode;
   aside?: ReactNode;
   dark?: boolean;
 };
 
-export function PageIntro({ label, title, lead, aside, dark = false }: Props) {
+export function PageIntro({ label, railLabel = label, title, lead, aside, dark = false }: Props) {
   return (
     <section className={`page-intro${dark ? " page-intro--dark" : ""}`}>
       <div className="page-intro__rail" aria-hidden="true">
-        <span>{label}</span><i />
+        <span>{railLabel}</span><i />
       </div>
       <div className="page-intro__content">
         <p className="eyebrow">{label}</p>

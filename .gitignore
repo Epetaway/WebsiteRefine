@@ -3,12 +3,12 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-package-lock.json
 
 # Production builds
 /dist
 /build
 /.next
+/.netlify
 next-env.d.ts
 
 # Environment variables
@@ -50,6 +50,7 @@ temp/
 
 # Coverage directory used by tools like istanbul
 coverage/
+/output/visual-qa/
 
 # Dependency directories
 jspm_packages/

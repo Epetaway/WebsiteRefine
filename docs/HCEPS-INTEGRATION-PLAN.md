@@ -68,7 +68,7 @@ Unrelated legacy experiments remain unlinked while source files are retained for
 ## Risk areas
 
 - Existing public claims conflict with the archive audit and must not remain on canonical pages.
-- Contact submissions are retained only in process memory; SendGrid delivery depends on environment configuration. A honeypot and basic in-process rate limit are present, but provider-level protection remains deployment work.
+- The completed public Contact page uses direct email and a copy-address action. The retained server endpoint still has a honeypot and basic in-process rate limit, but it is not part of the public interaction and requires SendGrid only if reintroduced.
 - The archive resume has a visible ampersand encoding defect and needs regeneration.
 - Several legacy employer metrics and role-date variants conflict; canonical pages use the conservative archive history.
 - Static hosts require SPA fallbacks plus client redirects; direct HTTP 301/308 rules remain deployment-specific.

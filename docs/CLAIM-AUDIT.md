@@ -1,6 +1,6 @@
 # Claim Audit
 
-Audit date: 2026-07-14
+Audit date: 2026-07-16
 
 ## Classification standard
 
@@ -8,6 +8,9 @@ Audit date: 2026-07-14
 - **Implementation evidence:** demonstrable working behavior, not proof of public deployment or user outcomes.
 - **Design rationale/reflection:** Earl's stated reasoning.
 - **Known gap/planned/open question:** explicitly incomplete or untested.
+- **Proposed research:** a future evaluation method, never represented as completed work.
+- **Conceptual editorial illustration:** visual framing, not implementation evidence.
+- **Implementation capture:** a development screenshot, not proof of public deployment or human outcome.
 
 ## Canonical corrections
 
@@ -33,3 +36,14 @@ Audit date: 2026-07-14
 - AMA Fight Club is shown conservatively as `Jan 2025 - 2025` until its end month is confirmed.
 - The current non-technology employer, official title, and exact start date are not published because they are unconfirmed.
 - Independent investigation outcomes are not presented as peer-reviewed research or measured user outcomes.
+
+## Enforcement
+
+- Canonical application routes import `client/src/data/investigations.ts` and
+  `professionalFacts.json`.
+- Archived `.dc.html` documents are excluded from the React runtime, disallowed
+  in `robots.txt`, and served with `X-Robots-Tag: noindex, nofollow` on Netlify.
+- Route behavior tests assert that canonical paths do not render iframes.
+- `docs/METRIC-EVIDENCE.md` is the allow/deny record for numerical claims.
+- Generated documents fail validation when required text, metadata, filenames,
+  or page-count limits change.

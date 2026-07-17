@@ -5,6 +5,8 @@ import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { CapabilityNetwork } from "@/components/editorial/CapabilityNetwork";
 import { researchThemes } from "@/data/researchThemes";
 import { investigations } from "@/data/investigations";
+import { researchPreparation } from "@/data/researchInterests";
+import { professionalProfile } from "@/data/professionalProfile";
 
 const principles = [
   ["Capability over convenience", "Ask what someone becomes able to do, not only what the tool does for them."],
@@ -15,13 +17,14 @@ const principles = [
 
 export default function Research() {
   return (
-    <div className="portfolio-page">
+    <div className="portfolio-page research-page">
       <SEO title="Research — Earl Hickson Jr." description="Independent human-centered product inquiry across relationships, learning, and decision support." path="/research" image="/assets/brand/social/og-research.svg" />
-      <PageIntro label="Research / Direction" title={<>I design and build technology that helps people become <em>more capable.</em></>} lead={<p>Building software pushed my questions beyond how an interface should look or work. I became increasingly interested in what the whole system helps a person understand, decide, learn, create, and do.</p>} aside={<div className="research-aside"><span>Working distinction</span><p>Software can function correctly without producing the human outcome its designer hoped for.</p></div>} />
+      <PageIntro label="Research" railLabel="Research / statement" title={<>My career began with how something should look. It became how something should work.</>} lead={<p>Today, the question I care most about is what that technology helps a person become capable of doing.</p>} aside={<div className="research-situation"><span>Current situation</span><dl className="page-facts"><div><dt>Now</dt><dd>Working independently across the full product stack</dd></div><div><dt>Seeking</dt><dd>{professionalProfile.focus.slice(0, 2).join(" / ")}</dd></div><div><dt>Weighing</dt><dd>Graduate study in HCI—methods and an intellectual foundation</dd></div></dl></div>} />
 
-      <section className="section-shell research-origin">
-        <SectionHeader number="01" label="Why HCI" title="The question expanded with the medium." />
-        <div className="research-origin__grid"><div><p>My formal training is a BFA in Graphic Design: typography, hierarchy, composition, and the visual grammar of communication. Interaction design moved the work into behavior. Frontend engineering made the behavior real. Full-stack development exposed the system beneath the interface.</p><p>Building the whole stack answered whether I could make something work. It did not answer whether the product made a person more capable. That gap is why human-computer interaction interests me: it supplies methods for testing the human consequence instead of treating intention as evidence.</p></div><ol><li>How should it look?</li><li>How should it work?</li><li className="is-current">What does it make someone capable of?</li></ol></div>
+      <section className="reference-chapter research-origin">
+        <div className="reference-chapter__index"><strong>01</strong><span>Why HCI</span><i /></div>
+        <div className="reference-chapter__body"><p>I started with a BFA in Graphic Design. Early in my career, the work was visual communication—hierarchy, typography, composition, branding. I still think of it as a form of art, but art that has to do something.</p><p>Over time, I became increasingly unsatisfied stopping at the mockup. I wanted to understand what happened after handoff—why interfaces behaved the way they did, how accessibility shaped the experience, and how technical constraints altered the final product.</p><p>That curiosity pulled me into the frontend. HTML and CSS felt like composition; JavaScript introduced behavior; React introduced systems; APIs helped me understand what sat underneath the interface.</p><blockquote>What is this supposed to help someone do, and how should the entire system support that purpose?</blockquote></div>
+        <aside className="reference-chapter__aside"><span>The question, expanding</span><ol><li>How should it look?</li><li>How should it work?</li><li>What does it make someone capable of?</li></ol></aside>
       </section>
 
       <section className="technology-section section-shell">
@@ -38,6 +41,15 @@ export default function Research() {
       <section className="section-shell research-principles">
         <SectionHeader number="04" label="Working principles" title="A current operating position, open to revision." />
         <div>{principles.map(([title, detail], index) => <article key={title}><span>P·{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{detail}</p></article>)}</div>
+      </section>
+
+      <section className="section-shell research-preparation">
+        <SectionHeader number="05" label="Research preparation" title="Current practice and formal training goals are different evidence categories." />
+        <div className="method-columns">
+          <article><span>Methods I have used</span><ul>{researchPreparation.used.map((method) => <li key={method}>{method}</li>)}</ul></article>
+          <article><span>Methods I am seeking formal training in</span><ul>{researchPreparation.seeking.map((method) => <li key={method}>{method}</li>)}</ul></article>
+        </div>
+        <p className="methods-boundary">The second column describes proposed learning and evaluation directions. It is not presented as completed research experience.</p>
       </section>
 
       <section className="research-direction"><p className="eyebrow eyebrow--light">Future direction</p><h2>Methods strong enough to test the human question.</h2><p>Future work includes scope-comprehension testing for WithYou, diary and observational studies for DojoNet, and comparative decision tasks for Gundam Forge. These are proposed directions—not completed studies.</p><div className="button-row"><Link to="/work" className="button button--light">View the investigations</Link><Link to="/contact" className="button button--outline-light">Discuss the work</Link></div></section>

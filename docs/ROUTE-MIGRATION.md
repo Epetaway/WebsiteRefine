@@ -14,6 +14,10 @@ Canonical domain: `https://ehicksonjr.com`
 | `/field-notes/:slug` | Individual note |
 | `/about` | Practitioner trajectory and current direction |
 | `/resume` | One public online resume and one PDF download |
-| `/contact` | Direct contact methods and retained contact form |
+| `/contact` | Direct email, copy-address action, and reasons to write |
+| `/graduate-review` | Focused, no-index admissions review path and graduate CV |
 
-Legacy React routes use `<Navigate replace>` and static host configuration continues to send requests to the SPA entry point. This preserves destinations without creating loops. Server-level permanent redirects can be added at the hosting layer after deployment ownership is verified.
+Legacy React routes use `<Navigate replace>`, and Netlify permanent redirects
+send known legacy paths directly to canonical destinations. Remaining route
+requests use the SPA fallback. This preserves destinations without redirect
+loops while keeping only canonical routes in the sitemap.

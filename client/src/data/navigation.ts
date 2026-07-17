@@ -1,6 +1,6 @@
 export const navigation = [
-  { to: "/work", label: "Work" },
   { to: "/research", label: "Research" },
+  { to: "/work", label: "Investigations" },
   { to: "/field-notes", label: "Field Notes" },
   { to: "/about", label: "About" },
   { to: "/resume", label: "Resume" },
