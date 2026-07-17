@@ -6,16 +6,16 @@ import Header from "@/components/layout/header";
 
 describe("site navigation", () => {
   it("exposes the canonical desktop links and active route", () => {
-    render(<MemoryRouter initialEntries={["/research"]}><Header /></MemoryRouter>);
+    render(<MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }} initialEntries={["/research"]}><Header /></MemoryRouter>);
     expect(screen.getByRole("navigation", { name: "Primary navigation" })).toBeInTheDocument();
-    expect(screen.getAllByRole("link", { name: "Work" })[0]).toHaveAttribute("href", "/work");
+    expect(screen.getAllByRole("link", { name: "Investigations" })[0]).toHaveAttribute("href", "/work");
     expect(screen.getAllByRole("link", { name: "Research" })[0]).toHaveClass("is-active");
     expect(screen.getAllByRole("link", { name: "Resume" })[0]).toHaveAttribute("href", "/resume");
   });
 
   it("opens the mobile dialog, closes with Escape, and returns focus", async () => {
     const user = userEvent.setup();
-    render(<MemoryRouter><Header /></MemoryRouter>);
+    render(<MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><Header /></MemoryRouter>);
     const trigger = screen.getByRole("button", { name: "Menu" });
     await user.click(trigger);
     expect(screen.getByRole("dialog", { name: "Site navigation" })).toBeInTheDocument();

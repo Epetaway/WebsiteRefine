@@ -1,5 +1,6 @@
-const serverless = require('serverless-http');
-const express = require('express');
+import serverless from 'serverless-http';
+import express from 'express';
+import sgMail from '@sendgrid/mail';
 
 // Simple serverless handler without ES modules
 const app = express();
@@ -114,9 +115,52 @@ app.get('/api/social-media', async (req, res) => {
   }
 });
 
-// Contact form endpoint
-app.post('/api/contact', (req, res) => {
-  res.json({ message: 'Contact form received successfully' });
+const contactAttempts = new Map();
+const contactWindowMs = 10 * 60 * 1000;
+const contactWindowLimit = 5;
+
+function contactRequestAllowed(ip) {
+  const now = Date.now();
+  const current = contactAttempts.get(ip);
+  if (!current || current.resetAt <= now) {
+    contactAttempts.set(ip, { count: 1, resetAt: now + contactWindowMs });
+    return true;
+  }
+  if (current.count >= contactWindowLimit) return false;
+  current.count += 1;
+  return true;
+}
+
+// Contact form endpoint. Delivery is only reported as successful after the
+// configured notification path accepts the message.
+app.post('/api/contact', async (req, res) => {
+  const { name, email, message, website } = req.body || {};
+  if (typeof website === 'string' && website.trim()) {
+    return res.json({ message: 'Contact form submitted successfully' });
+  }
+  if (!contactRequestAllowed(req.ip || 'unknown')) {
+    return res.status(429).json({ message: 'Too many messages. Please wait a few minutes or email directly.' });
+  }
+  if (typeof name !== 'string' || !name.trim() || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) || typeof message !== 'string' || message.trim().length < 20) {
+    return res.status(400).json({ message: 'Please provide a valid name, email address, and message.' });
+  }
+  if (!process.env.SENDGRID_API_KEY) {
+    return res.status(503).json({ message: 'Message delivery is temporarily unavailable. Please email e@ehicksonjr.com directly.' });
+  }
+  try {
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    await sgMail.send({
+      to: 'e@ehicksonjr.com',
+      from: process.env.SENDGRID_FROM_EMAIL || 'e@ehicksonjr.com',
+      replyTo: email.trim(),
+      subject: `Portfolio contact from ${name.trim()}`,
+      text: `Name: ${name.trim()}\nEmail: ${email.trim()}\n\n${message.trim()}`,
+    });
+    return res.json({ message: 'Contact form submitted successfully' });
+  } catch (error) {
+    console.error('Contact delivery failed:', error);
+    return res.status(503).json({ message: 'Message delivery is temporarily unavailable. Please email e@ehicksonjr.com directly.' });
+  }
 });
 
 // BJJ booking endpoint
@@ -124,15 +168,15 @@ app.post('/api/bjj-booking', (req, res) => {
   res.json({ message: 'BJJ booking received successfully' });
 });
 
-// Serve static assets (resume download)
+// Preserve the former resume URL while enforcing one canonical public file.
 app.get('/assets/*', (req, res) => {
   const filePath = req.params[0];
-  if (filePath === 'Earl_Hickson_-_Front-End__UX_Engineer.pdf') {
-    res.redirect('https://github.com/ehicksonjr/portfolio/raw/main/client/public/assets/Earl_Hickson_-_Front-End__UX_Engineer.pdf');
+  if (filePath === 'Earl_Hickson_-_Front-End__UX_Engineer.pdf' || filePath === 'Earl_Hickson_Jr_Resume.docx') {
+    res.redirect(301, '/assets/Earl-Hickson-Jr-Resume.pdf');
   } else {
     res.status(404).json({ message: 'File not found' });
   }
 });
 
-// Export the handler
-module.exports.handler = serverless(app);
+// Export the Netlify function using the repository's native ESM format.
+export const handler = serverless(app);

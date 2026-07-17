@@ -5,7 +5,9 @@ export type EvidenceStatus =
   | "DESIGNED"
   | "PLANNED"
   | "KNOWN GAP"
+  | "VERIFIED LIVE"
   | "DEVELOPMENT-STAGE IMPLEMENTATION"
+  | "CONCEPTUAL EDITORIAL ILLUSTRATION"
   | "IMPLEMENTATION CAPTURE";
 
 export type Investigation = {
@@ -39,6 +41,7 @@ export type Investigation = {
   evidence: string[];
   limitations: string[];
   openQuestions: string[];
+  proposedMethods: string[];
   stack: string[];
   captures: { src: string; alt: string; caption: string; label: EvidenceStatus }[];
 };
@@ -53,15 +56,15 @@ export const investigations: Investigation[] = [
     name: "WithYou",
     theme: "Relationships",
     question:
-      "How should shared technology support connection without assuming unrestricted access?",
+      "How might a shared digital space support intentional connection without replacing the conversations that matter?",
     status: "Beta-oriented implementation",
     role: "Solo product design, UX engineering, and full-stack development",
     context: "Private relationship application",
     accent: "#C65788",
     accentSecondary: "#C66043",
     surface: "#F2EDE3",
-    previewImage: "/assets/projects/withyou/preview.webp",
-    previewAlt: "Original WithYou project card artwork",
+    previewImage: "/assets/projects/withyou/home-exhibit.webp",
+    previewAlt: "WithYou product screens displayed on two mobile devices",
     abstract: {
       product:
         "A private relationship application exploring intentional connection, pairing, and field-level information visibility.",
@@ -101,6 +104,11 @@ export const investigations: Investigation[] = [
       "Implementation captures show active application surfaces; the portfolio prototype demonstrates the interaction argument using fictional data.",
       "Evidence supports implemented behavior, not therapeutic benefit or improved relationship outcomes.",
     ],
+    proposedMethods: [
+      "Scope-comprehension testing",
+      "Scenario-based usability evaluation",
+      "Interviews about privacy expectations",
+    ],
     limitations: [
       "The legacy sharing path weakens otherwise more granular privacy controls.",
       "Implemented-but-unintegrated screens are not complete user workflows.",
@@ -124,15 +132,15 @@ export const investigations: Investigation[] = [
     name: "DojoNet",
     theme: "Learning",
     question:
-      "How can digital systems support progression without reducing learning to completion?",
+      "Can technology help people see their training without pretending it can replace the teacher?",
     status: "Active development",
     role: "Solo product design and frontend product development",
     context: "Martial arts learning system",
     accent: "#16B889",
     accentSecondary: "#E4AE3A",
     surface: "#E5DDCF",
-    previewImage: "/assets/projects/dojonet/preview.webp",
-    previewAlt: "Original DojoNet project card artwork",
+    previewImage: "/assets/projects/dojonet/home-exhibit.webp",
+    previewAlt: "DojoNet desktop dashboard and mobile application screens",
     abstract: {
       product:
         "A martial arts training journal and community product centered on practice history, reflection, and qualitative progression.",
@@ -171,6 +179,12 @@ export const investigations: Investigation[] = [
       "The prototype demonstrates the difference between qualitative stage history and percentage completion.",
       "The work does not establish that the model improves learning outcomes.",
     ],
+    proposedMethods: [
+      "Diary study",
+      "Training-session observation",
+      "Instructor interviews",
+      "Comparative evaluation of completion versus qualitative progression",
+    ],
     limitations: [
       "Instructor workflows require further design and implementation verification.",
       "The current demo persistence model is not a production learning record.",
@@ -194,22 +208,22 @@ export const investigations: Investigation[] = [
     name: "Gundam Forge",
     theme: "Decision Support",
     question:
-      "How can interfaces help people navigate complexity without making the decision for them?",
+      "Does more information actually help a player decide—or just give them more to assemble themselves?",
     status: "Functional beta-oriented implementation",
     role: "Solo product design and full-stack product development",
     context: "Unofficial trading-card-game toolkit",
     accent: "#315CFF",
     accentSecondary: "#7957E8",
     surface: "#E4AE3A",
-    previewImage: "/assets/projects/gundam-forge/preview.webp",
-    previewAlt: "Original Gundam Forge project card artwork",
+    previewImage: "/assets/projects/gundam-forge/home-exhibit.webp",
+    previewAlt: "Gundam Forge playtesting interface",
     abstract: {
       product:
         "An independent, unofficial deck-building and playtesting application for the Gundam Card Game.",
       problem:
         "Large catalogs and rules documents provide information, but they do not necessarily help a player understand a decision while constructing a deck.",
       built:
-        "A typed web application with a 623-record catalog, deck construction, continuous validation, deployment-dependent persistence, and a heuristic automated opponent.",
+        "A typed web application with a searchable card catalog, deck construction, continuous validation, deployment-dependent persistence, and a heuristic automated opponent.",
       insight:
         "Decision support should surface constraints during the decision, explain the consequence, and preserve the player's ability to choose a recovery.",
       remember: "More information does not automatically create better decisions.",
@@ -241,6 +255,11 @@ export const investigations: Investigation[] = [
       "Repository and capture evidence support the working deck, validation, and heuristic playtest behaviors.",
       "The portfolio prototype demonstrates warning, explanation, replacement, and recovery using fictional card data.",
       "The implementation does not establish competitive quality, official rules endorsement, or user outcome improvement.",
+    ],
+    proposedMethods: [
+      "Comparative decision-task evaluation",
+      "Think-aloud usability testing",
+      "Interviews about warning comprehension and decision confidence",
     ],
     limitations: [
       "Official competitive ban/restriction coverage is incomplete.",

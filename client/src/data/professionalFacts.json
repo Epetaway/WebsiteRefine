@@ -1,0 +1,191 @@
+{
+  "profile": {
+    "name": "Earl Hickson Jr.",
+    "title": "UX Engineer",
+    "tagline": "Designing and building human-centered systems that help people become more capable.",
+    "descriptor": "I work across interaction design, frontend engineering, and full-stack product development.",
+    "summary": "UX Engineer whose practice has progressed from graphic design to interaction design, frontend engineering, and human-centered product development. Experienced in accessibility-focused interfaces, reusable component systems, API-integrated products, and independent full-stack investigations.",
+    "careerContext": "Currently working outside technology while pursuing a return to full-time product work; current employer details are withheld until confirmed.",
+    "thesis": "I design and build technology that helps people become more capable.",
+    "belief": "Technology should support human capability without unnecessarily replacing human agency.",
+    "availability": "Open to full-time opportunities",
+    "location": "Parsippany, New Jersey · Open to remote and hybrid opportunities",
+    "focus": [
+      "UX Engineering",
+      "Design Engineering",
+      "Product Engineering",
+      "Frontend Product Development"
+    ],
+    "links": {
+      "website": "https://ehicksonjr.com",
+      "linkedin": "https://linkedin.com/in/earlhicksonjr",
+      "github": "https://github.com/Epetaway",
+      "email": "e@ehicksonjr.com",
+      "resume": "/assets/Earl-Hickson-Jr-Resume.pdf",
+      "graduateCv": "/assets/application/Earl-Hickson-Jr-HCI-Graduate-CV.pdf"
+    }
+  },
+  "professionalExperience": [
+    {
+      "id": "ama-fight-club",
+      "company": "AMA Fight Club",
+      "role": "Front-End Developer & Digital Integration Specialist",
+      "start": "Jan 2025",
+      "end": "2025",
+      "dates": "Jan 2025 - 2025",
+      "endKnown": false,
+      "area": "Fitness / Operations",
+      "summary": "Responsive web experience and digital integrations supporting prospective members, operations, and recruiting.",
+      "bullets": [
+        "Redesigned the responsive website and improved mobile usability.",
+        "Integrated Zen Planner lead capture and CRM workflows, recruiting forms, and QR campaigns.",
+        "Evaluated platforms and digital tools supporting operations and marketing."
+      ]
+    },
+    {
+      "id": "asembia",
+      "company": "Asembia",
+      "role": "Front-End Developer",
+      "start": "Dec 2023",
+      "end": "Oct 2024",
+      "dates": "Dec 2023 - Oct 2024",
+      "endKnown": true,
+      "area": "Healthcare / Enterprise",
+      "summary": "Reusable component architecture, accessibility practices, and information design across healthcare platforms.",
+      "bullets": [
+        "Developed reusable component and design-system patterns across healthcare platforms.",
+        "Migrated Bootstrap 3 interfaces to Bootstrap 5 and improved prescriber-portal information layouts.",
+        "Integrated REST APIs in a .NET environment and applied accessibility-focused implementation practices."
+      ]
+    },
+    {
+      "id": "broadcastmed",
+      "company": "BroadcastMed",
+      "role": "Lead Designer & Front-End Developer",
+      "start": "Nov 2021",
+      "end": "Mar 2023",
+      "dates": "Nov 2021 - Mar 2023",
+      "endKnown": true,
+      "area": "Healthcare / Media",
+      "summary": "Design and frontend delivery for healthcare marketing experiences within a proprietary CMS.",
+      "bullets": [
+        "Designed and developed healthcare microsites and landing experiences.",
+        "Created a standardized HTML email system and used analytics and Hotjar findings to guide UX work.",
+        "Mentored teammates and strengthened code-review and QA practices."
+      ]
+    },
+    {
+      "id": "merck",
+      "company": "Merck",
+      "role": "Freelance Front-End Developer",
+      "start": "2019",
+      "end": "2019",
+      "dates": "2019",
+      "endKnown": true,
+      "area": "Healthcare / Communications",
+      "summary": "Frontend development supporting digital marketing and communications initiatives.",
+      "bullets": []
+    },
+    {
+      "id": "verizon-wireless",
+      "company": "Verizon Wireless",
+      "role": "Front-End Developer",
+      "start": "2015",
+      "end": "2016",
+      "dates": "2015 - 2016",
+      "endKnown": true,
+      "area": "Telecommunications",
+      "summary": "Consumer-facing digital interfaces and internal tools.",
+      "bullets": []
+    },
+    {
+      "id": "kbsp",
+      "company": "KBS&P",
+      "role": "Digital Designer & Front-End Developer",
+      "start": "2014",
+      "end": "2015",
+      "dates": "2014 - 2015",
+      "endKnown": true,
+      "area": "Advertising / Enterprise",
+      "summary": "Digital design and frontend development for enterprise clients at a New York advertising agency.",
+      "bullets": []
+    }
+  ],
+  "education": [
+    {
+      "degree": "Bachelor of Fine Arts in Graphic Design",
+      "institution": "Kean University",
+      "location": "Union, New Jersey",
+      "date": "2015"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "IBM Full Stack Software Developer Professional Certificate",
+      "issuer": "IBM / Coursera",
+      "date": "December 2025",
+      "verificationUrl": "https://coursera.org/verify/professional-cert/ZD6SUR06VY2K"
+    }
+  ],
+  "researchInterests": [
+    "Human-computer interaction",
+    "Learning technologies",
+    "Privacy and consent",
+    "Decision support",
+    "Information architecture",
+    "Accessibility",
+    "Human agency and automation"
+  ],
+  "researchPreparation": {
+    "used": [
+      "Analytics review",
+      "Hotjar-informed evaluation",
+      "Accessibility audits",
+      "Interaction prototyping",
+      "Implementation analysis",
+      "Design-system evaluation",
+      "Technical usability review"
+    ],
+    "seeking": [
+      "Semi-structured interviews",
+      "Usability testing",
+      "Diary studies",
+      "Contextual inquiry",
+      "Observational research",
+      "Qualitative coding",
+      "Experimental design",
+      "Research ethics",
+      "Mixed-method evaluation"
+    ]
+  },
+  "teachingPerspective": {
+    "title": "Martial arts teaching perspective",
+    "summary": "Teaching martial arts has shaped how I think about progressive instruction, feedback, observation, trust, adaptation, reflection, different learning styles, and capability under pressure.",
+    "publicRecordStatus": "Academy and dates require confirmation before publication as a formal experience entry."
+  },
+  "capabilities": [
+    {
+      "group": "Interaction & product",
+      "items": "User flows, information architecture, interaction design, prototyping, responsive design, design systems, accessibility"
+    },
+    {
+      "group": "Frontend engineering",
+      "items": "React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS, component architecture, state management"
+    },
+    {
+      "group": "Backend & data",
+      "items": "Node.js, Express, REST APIs, PostgreSQL, Prisma, Supabase, authentication, real-time systems"
+    },
+    {
+      "group": "Quality & delivery",
+      "items": "Behavior testing, Testing Library, Git/GitHub, CI/CD, Vite, deployment workflows"
+    }
+  ],
+  "unresolvedProfessionalFacts": [
+    "AMA Fight Club end month/year",
+    "Current flagger employer",
+    "Current flagger official title",
+    "Current flagger start month/year",
+    "Whether the flagger role should appear on the public resume"
+  ]
+}

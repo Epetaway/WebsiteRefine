@@ -1,15 +1,21 @@
-# Resume system
+# Professional document system
 
-The portfolio publishes one canonical resume:
+The former multi-variant resume data and Markdown outputs were removed because
+they conflicted with the site's one-public-resume policy.
 
-`client/public/assets/Earl-Hickson-Jr-Resume.pdf`
+Canonical professional facts live in
+`client/src/data/professionalFacts.json`. Generate the public resume and the
+application-specific graduate CV with:
 
-Generate it with `scripts/generate_resume_pdf.py`. The script writes the same
-artifact to `output/pdf/` for review and to `client/public/assets/` for the
-website. Setup and regeneration commands are documented in the root
-`README.md`.
+```bash
+npm run documents:generate
+```
 
-The files in this directory preserve the earlier multi-variant Markdown source
-for reference. They are not published by the current portfolio. Any resume
-claim should remain traceable to verified work history; do not add unsupported
-metrics, certifications, deployment claims, or outcomes.
+Validate filenames, page counts, metadata, and expected selectable text with:
+
+```bash
+npm run documents:validate
+```
+
+Only `client/public/assets/Earl-Hickson-Jr-Resume.pdf` is a public resume. The
+graduate CV is linked only from the no-index graduate-review path.

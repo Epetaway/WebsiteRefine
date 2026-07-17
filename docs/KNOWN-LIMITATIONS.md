@@ -1,25 +1,52 @@
 # Known Limitations
 
-## Deployment and services
-
-- DNS, HTTPS, deployment aliases, and the currently live production build require verification in their provider dashboards.
-- Google Analytics and SendGrid depend on deployment environment variables.
-- Contact records use in-memory storage and are lost when the server process restarts. Email notification is the durable path when SendGrid is configured.
-- The contact endpoint includes a honeypot and basic in-process rate limiting. It does not include CAPTCHA or a shared/distributed rate-limit store.
+Updated: 2026-07-16
 
 ## Professional record
 
-- AMA Fight Club's exact end month is not confirmed; the site uses `Jan 2025 - 2025`.
-- The current non-technology employer/title/start date are intentionally omitted because they are unconfirmed.
+- AMA Fight Club's end month/year is unconfirmed; the public record uses the
+  conservative `Jan 2025 - 2025` range.
+- Current flagger employer, title, start date, and resume-publication choice are
+  unconfirmed and unpublished.
+- Several legacy-only employers are withheld pending primary evidence.
 
-## Investigations
+## Investigations and research
 
-- No investigation claims validated human outcomes or peer-reviewed research status.
-- WithYou retains a documented legacy privacy inconsistency and screens that are implemented but not integrated.
+- The independent investigations are not peer-reviewed research and do not prove
+  relationship, learning, or decision-quality outcomes.
+- Proposed interviews, usability tests, diary studies, observations, and
+  experiments have not been conducted.
+- WithYou retains a documented legacy privacy inconsistency and screens that are
+  implemented but not integrated.
 - DojoNet's instructor workflow is not represented as implemented.
-- Gundam Forge's competitive restriction coverage and public production hosting are not verified.
+- Gundam Forge's competitive restriction coverage and public product hosting are
+  not verified.
+- Martial arts academy and teaching dates are not published as a formal entry.
 
-## QA boundary
+## Platform and operations
 
-- Automated type, lint, build, behavior, and browser checks cover the integrated repository.
-- Physical-device screen-reader tests, network throttling, provider-side email delivery, and independent recruiter review remain follow-up activities.
+- The external Vercel Git integration must be disconnected in its dashboard to
+  fully stop duplicate deployments; repository-triggered Vercel deployment has
+  been removed.
+- The public Contact page uses direct email and has no delivery service to
+  verify. The retained, currently unused server endpoint still depends on
+  SendGrid configuration; its rate limiting is per server/function instance.
+- The application is a client-rendered React experience; static per-route shells
+  cover metadata, not full server-rendered page content.
+- Google Analytics depends on its deployment environment variable.
+- `npm audit --omit=dev` reports zero production vulnerabilities. The full audit
+  reports four moderate development-tool findings in the legacy `drizzle-kit`
+  dependency chain; the suggested automatic resolution is a breaking downgrade,
+  so it was not applied during this release.
+- Archived HCEPS files remain in the repository for visual comparison. The build
+  removes them and the standalone prototype exports from production output; their
+  superseded copy exists only as source history.
+
+## Accessibility and QA
+
+- Accessibility practices are applied, but no formal conformance or independent
+  assistive-technology audit exists.
+- Generated PDFs are selectable and ATS-oriented but are not tagged PDFs.
+- Physical-device screen-reader testing, network throttling, and independent
+  admissions/recruiter review remain external checks. Serverless email delivery
+  only becomes a release check if that endpoint is reintroduced into the UI.

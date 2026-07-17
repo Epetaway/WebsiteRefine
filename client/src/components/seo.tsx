@@ -9,6 +9,7 @@ type Props = {
   image?: string;
   type?: "website" | "article";
   jsonLd?: Record<string, unknown>;
+  noIndex?: boolean;
 };
 
 export default function SEO({
@@ -18,6 +19,7 @@ export default function SEO({
   image = "/assets/brand/social/og-home.svg",
   type = "website",
   jsonLd,
+  noIndex = false,
 }: Props) {
   const canonical = new URL(path, siteUrl).toString();
   const imageUrl = new URL(image, siteUrl).toString();
@@ -27,6 +29,7 @@ export default function SEO({
       <title>{title}</title>
       <meta name="description" content={description} />
       <link rel="canonical" href={canonical} />
+      <meta name="robots" content={noIndex ? "noindex,nofollow" : "index,follow"} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:url" content={canonical} />
