@@ -1,19 +1,19 @@
 import { useEffect, useRef } from 'react';
-import { useLocation } from 'wouter';
+import { useLocation } from 'react-router-dom';
 import { trackPageView } from '../lib/analytics';
 
 export const useAnalytics = () => {
-  const [location] = useLocation();
-  const prevLocationRef = useRef<string>(location);
+  const { pathname } = useLocation();
+  const prevLocationRef = useRef<string>(pathname);
   
   useEffect(() => {
-    if (location !== prevLocationRef.current) {
+    if (pathname !== prevLocationRef.current) {
       // Scroll to top on route change
       window.scrollTo(0, 0);
       
       // Track page view
-      trackPageView(location);
-      prevLocationRef.current = location;
+      trackPageView(pathname);
+      prevLocationRef.current = pathname;
     }
-  }, [location]);
+  }, [pathname]);
 };

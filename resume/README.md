@@ -1,15 +1,26 @@
-# Resume system
+# Canonical document data
 
-The portfolio publishes one canonical resume:
+`content.json` is generated from `client/src/data/professional` and the
+canonical investigation and Field Note records. Do not edit it manually.
 
-`client/public/assets/Earl-Hickson-Jr-Resume.pdf`
+Generate the public employment resume and the application-specific graduate CV:
 
-Generate it with `scripts/generate_resume_pdf.py`. The script writes the same
-artifact to `output/pdf/` for review and to `client/public/assets/` for the
-website. Setup and regeneration commands are documented in the root
-`README.md`.
+```bash
+python3 -m venv tmp/pdf-venv
+tmp/pdf-venv/bin/pip install reportlab pdfplumber pypdf
+npm run documents:generate
+```
 
-The files in this directory preserve the earlier multi-variant Markdown source
-for reference. They are not published by the current portfolio. Any resume
-claim should remain traceable to verified work history; do not add unsupported
-metrics, certifications, deployment claims, or outcomes.
+The command refreshes `resume/content.json`, creates stable delivery copies in
+`output/pdf/`, and copies the public files to:
+
+```text
+client/public/assets/Earl-Hickson-Jr-Resume.pdf
+client/public/assets/application/Earl-Hickson-Jr-HCI-Graduate-CV.pdf
+```
+
+Validate text, metadata, page count, link annotations, and minimum font size:
+
+```bash
+npm run validate:pdf
+```

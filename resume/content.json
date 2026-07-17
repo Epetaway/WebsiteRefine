@@ -1,217 +1,387 @@
 {
-  "person": {
+  "schemaVersion": 1,
+  "profile": {
     "name": "Earl Hickson Jr.",
-    "location": "Parsippany, NJ",
-    "email": "e@ehicksonjr.com",
-    "site": "ehicksonjr.com",
-    "github": "github.com/Epetaway",
-    "linkedin": "linkedin.com/in/earlhicksonjr"
-  },
-
-  "variants": {
-    "ux": {
-      "resumeTitle": "UX Engineer",
-      "fileBaseName": "Earl_Hickson_Jr_UX_Engineer_Resume",
-      "summary": [
-        "UX Engineer with a foundation in graphic design and front-end engineering, focused on designing digital products that help people communicate, learn, and make better decisions.",
-        "My work combines interaction design, accessibility, design systems, and full-stack engineering to reduce complexity and create experiences people can use with confidence. I enjoy solving problems at the intersection of human behavior and technology, from relationship-focused mobile applications to learning platforms and decision-support tools.",
-        "Currently preparing for graduate study in Human–Computer Interaction while pursuing UX Engineering and Product Engineering opportunities."
-      ]
-    },
-    "fe": {
-      "resumeTitle": "Front-End Engineer",
-      "fileBaseName": "Earl_Hickson_Jr_Front_End_Engineer",
-      "summary": [
-        "Front-End Engineer with 10+ years building accessible, high-performance React applications across healthcare, media, enterprise, and consumer products.",
-        "My background in graphic design and interaction design shapes how I architect UI systems — component libraries, design tokens, and API-driven front ends that stay maintainable as products scale. I focus on the engineering side of good products: clean architecture, measurable performance, and testing that lets teams ship with confidence."
-      ]
-    }
-  },
-
-  "skills": {
-    "ux": [
+    "publicTitle": "UX Engineer",
+    "eyebrow": "EARL HICKSON JR. — UX ENGINEER",
+    "headline": "Designing and building human-centered systems that help people become more capable.",
+    "thesis": "I design and build technology that helps people become more capable.",
+    "belief": "Technology should support human capability without unnecessarily replacing human agency.",
+    "summary": "UX Engineer whose practice connects interaction design, frontend engineering, accessibility, and full-stack product development to create systems that strengthen human capability.",
+    "graduateSummary": "UX Engineer and independent HCI practitioner with a background in graphic design, frontend engineering, and full-stack product development. My work explores how interactive systems can strengthen human capability across relationships, learning, privacy, and complex decision-making without unnecessarily replacing human agency.",
+    "availability": "Open to full-time opportunities",
+    "focusRoles": [
+      "UX Engineering",
+      "Design Engineering",
+      "Product Engineering",
+      "Frontend Product Development"
+    ],
+    "location": "Parsippany, New Jersey",
+    "trajectory": [
       {
-        "group": "Interaction Engineering",
-        "items": ["React 18", "React Native (Expo)", "TypeScript", "Next.js", "Accessibility (WCAG 2.1 AA)", "Responsive Design", "Animation (Framer Motion)"]
+        "discipline": "Graphic design",
+        "consequence": "communication"
       },
       {
-        "group": "Human-Centered Design",
-        "items": ["Information Architecture", "Design Systems", "Interaction Design", "Component Libraries", "Visual Design (Figma)", "BFA, Graphic Design"]
+        "discipline": "Interaction design",
+        "consequence": "behavior"
       },
       {
-        "group": "Product Engineering",
-        "items": ["Node.js", "Express.js", "REST APIs", "Prisma", "Drizzle ORM", "PostgreSQL", "JWT Auth", "CI/CD"]
+        "discipline": "Frontend engineering",
+        "consequence": "implementation"
       },
       {
-        "group": "Research & Evaluation",
-        "items": ["Google Analytics", "Hotjar", "Performance Auditing (Lighthouse)", "Accessibility Audits"]
+        "discipline": "Full-stack engineering",
+        "consequence": "systems"
+      },
+      {
+        "discipline": "Human-computer interaction",
+        "consequence": "human consequences"
       }
     ],
-    "fe": [
-      {
-        "group": "Frontend",
-        "items": ["React 18", "TypeScript", "JavaScript (ES2022+)", "HTML5", "CSS3", "Tailwind CSS", "Next.js", "React Native (Expo)"]
-      },
-      {
-        "group": "Backend / APIs",
-        "items": ["Node.js", "Express.js", "REST APIs", "PostgreSQL", "Prisma", "Drizzle ORM", "JWT Auth", ".NET integration"]
-      },
-      {
-        "group": "Testing & Performance",
-        "items": ["Vitest", "Jest", "Playwright", "Maestro E2E", "Lighthouse / performance optimization", "CI/CD"]
-      },
-      {
-        "group": "Tooling & Platforms",
-        "items": ["Vite", "Git", "Figma", "Wix CMS", "Bootstrap 5", "Radix UI", "Framer Motion", "Zen Planner API", "Google Analytics", "Hotjar", "SendGrid"]
-      }
-    ]
+    "importantPhrase": "Engineering became another creative material."
   },
-
+  "links": {
+    "website": "https://ehicksonjr.com",
+    "email": "e@ehicksonjr.com",
+    "linkedin": "https://www.linkedin.com/in/earlhicksonjr",
+    "github": "https://github.com/Epetaway",
+    "publicResume": "/assets/Earl-Hickson-Jr-Resume.pdf",
+    "graduateCv": "/assets/application/Earl-Hickson-Jr-HCI-Graduate-CV.pdf"
+  },
   "experience": [
     {
-      "company": "AMA Fight Club",
-      "title": "Front-End Developer & Digital Integration Specialist",
-      "start": "Jan 2025",
-      "end": "Present",
-      "bullets": {
-        "ux": [
-          "Owned the end-to-end responsive redesign of the gym's public site in Wix, restructuring navigation and layout hierarchy to fix a mobile experience that was losing prospective members before they reached a signup form.",
-          "Connected the marketing site to Zen Planner's API for lead capture and CRM sync, removing a manual re-entry step that was delaying member follow-up.",
-          "Built ZipRecruiter form integrations to give ownership a faster, more reliable staff recruitment pipeline.",
-          "Design and produce branded marketing assets and QR-driven campaigns, keeping visual identity consistent across print, social, and digital touchpoints.",
-          "Act as the owner's go-to advisor on platform and tooling decisions, translating business goals into pragmatic technical direction for a small team with no other engineer."
-        ],
-        "fe": [
-          "Led a responsive redesign of the organization's Wix-based site, rebuilding navigation and layout to fix mobile usability issues that were costing sign-ups.",
-          "Integrated the Zen Planner API for lead capture and CRM sync, eliminating manual data entry between the marketing site and back-office systems.",
-          "Built ZipRecruiter form integrations to streamline the staff hiring pipeline.",
-          "Produced branded marketing assets and QR-code campaigns for print, social, and digital channels.",
-          "Serve as the sole technical advisor to ownership on platform, tooling, and vendor decisions."
-        ]
-      }
+      "id": "ama-fight-club",
+      "employer": "AMA Fight Club",
+      "role": "Front-End Developer & Digital Integration Specialist",
+      "start": "January 2025",
+      "end": "2025",
+      "dates": "Jan 2025 — 2025",
+      "area": "Fitness / Operations",
+      "summary": "Responsive web experience and digital integrations supporting prospective members, operations, and recruiting.",
+      "responsibilities": [
+        "Redesigned the responsive website and improved its mobile experience.",
+        "Integrated Zen Planner lead-capture and CRM workflows, recruiting forms, and QR campaigns.",
+        "Evaluated platforms and digital tools supporting operations and marketing."
+      ],
+      "factStatus": "verified"
     },
     {
-      "company": "Asembia",
-      "title": "Front-End Developer",
-      "start": "Dec 2023",
-      "end": "Oct 2024",
-      "bullets": {
-        "ux": [
-          "Audited a fragmented, HIPAA-regulated enterprise codebase spanning patient and provider portals, then led a Bootstrap 3 → 5 migration into a single reusable component library — resolving 150+ inconsistent UI patterns and improving responsiveness by 20%.",
-          "Redesigned information-dense prescriber portal layouts, restructuring hierarchy and standardizing components so clinical users could navigate complex workflows with less cognitive effort; the resulting component library cut new-feature development time by 20% for the rest of the team.",
-          "Established WCAG 2.1 AA accessibility standards across regulated healthcare interfaces and implemented REST API integrations against a .NET backend.",
-          "Optimized rendering and asset delivery, lifting Lighthouse performance scores by 18% across key portal pages.",
-          "Presented the new component architecture directly to the CEO, securing executive buy-in and cross-team adoption."
-        ],
-        "fe": [
-          "Audited a fragmented HIPAA-compliant enterprise codebase and led a Bootstrap 3 → 5 migration into a shared component library, resolving 150+ UI/UX issues and improving responsiveness by 20%.",
-          "Built the reusable component library adopted platform-wide, cutting new feature development time by 20%.",
-          "Improved Lighthouse performance scores by 18% through rendering and asset-delivery optimization.",
-          "Implemented REST API integrations against a .NET backend and led WCAG 2.1 AA accessibility implementation for regulated healthcare workflows.",
-          "Presented the new component architecture to the CEO to secure cross-team adoption."
-        ]
-      }
+      "id": "asembia",
+      "employer": "Asembia",
+      "role": "Front-End Developer",
+      "start": "December 2023",
+      "end": "October 2024",
+      "dates": "Dec 2023 — Oct 2024",
+      "area": "Healthcare / Enterprise",
+      "summary": "Reusable component architecture, accessibility practices, and information design across healthcare platforms.",
+      "responsibilities": [
+        "Developed reusable component and design-system patterns across healthcare platforms.",
+        "Migrated Bootstrap 3 interfaces to Bootstrap 5 and improved prescriber-portal information layouts.",
+        "Integrated REST APIs in a .NET environment and applied accessibility practices to regulated workflows.",
+        "Presented component architecture and product value to executive leadership."
+      ],
+      "factStatus": "verified"
     },
     {
-      "company": "Independent Product Development",
-      "title": null,
-      "start": "Feb 2023",
-      "end": "Nov 2023",
-      "note": "Between full-time roles — self-directed product design and engineering.",
-      "bullets": {
-        "ux": [
-          "Designed and built independent products between full-time roles — early foundations of WithYou and DojoNet, exploratory work on Gundam Forge, open-source contributions, and portfolio case studies — treating the gap as self-directed R&D in interaction design and full-stack engineering rather than downtime."
-        ],
-        "fe": [
-          "Used time between roles to design and build independent products (WithYou, DojoNet, Gundam Forge), contribute to open source, and expand full-stack engineering skills through self-directed projects and portfolio work."
-        ]
-      }
+      "id": "broadcastmed",
+      "employer": "BroadcastMed",
+      "role": "Lead Designer & Front-End Developer",
+      "start": "November 2021",
+      "end": "March 2023",
+      "dates": "Nov 2021 — Mar 2023",
+      "area": "Healthcare / Media",
+      "summary": "Design and frontend delivery for healthcare marketing experiences within a proprietary CMS.",
+      "responsibilities": [
+        "Designed and developed healthcare microsites and responsive landing experiences.",
+        "Created a standardized HTML email system and used Analytics and Hotjar findings to guide UX work.",
+        "Mentored teammates and strengthened code-review and QA practices."
+      ],
+      "factStatus": "verified"
     },
     {
-      "company": "BroadcastMed",
-      "title": "Lead Designer & Front-End Developer",
-      "start": "Nov 2021",
-      "end": "Mar 2023",
-      "bullets": {
-        "ux": [
-          "Directed design and front-end development of healthcare marketing microsites in a proprietary CMS for pharma and medical device clients, building pixel-perfect responsive pages that cut QA turnaround.",
-          "Designed and shipped a standardized HTML email system that replaced inconsistent one-off builds across clients, cutting production timelines by 25%.",
-          "Used Google Analytics and Hotjar to diagnose drop-off in lead-capture flows and redesign around it, contributing to an 18% increase in lead submissions and reduced bounce rates.",
-          "Mentored junior designers and developers and established code review and QA practices for the team."
-        ],
-        "fe": [
-          "Directed development of healthcare marketing microsites in a proprietary CMS, building pixel-perfect responsive pages that reduced QA issues.",
-          "Designed and shipped a standardized HTML email system, cutting production timelines by 25% across multi-client workflows.",
-          "Used Google Analytics and Hotjar to optimize lead-capture flows, contributing to an 18% increase in lead submissions and reduced bounce rates.",
-          "Mentored junior developers and designers and established code review practices."
-        ]
-      }
-    },
-    {
-      "company": "Merck",
-      "title": "Freelance Front-End Developer",
+      "id": "merck",
+      "employer": "Merck",
+      "role": "Freelance Front-End Developer",
       "start": "2019",
       "end": "2019",
-      "bullets": {
-        "ux": ["Provided front-end development support for digital marketing and communications initiatives."],
-        "fe": ["Provided front-end development support for digital marketing and communications initiatives."]
-      }
+      "dates": "2019",
+      "area": "Healthcare / Communications",
+      "summary": "Frontend development supporting digital marketing and communications initiatives.",
+      "responsibilities": [],
+      "factStatus": "verified"
     },
     {
-      "company": "Verizon Wireless",
-      "title": "Front-End Developer",
+      "id": "verizon-wireless",
+      "employer": "Verizon Wireless",
+      "role": "Front-End Developer",
       "start": "2015",
       "end": "2016",
-      "bullets": {
-        "ux": ["Built front-end interfaces for consumer-facing digital products and internal tooling."],
-        "fe": ["Built front-end interfaces for consumer-facing digital products and internal tooling."]
-      }
-    },
-    {
-      "company": "KBS&P",
-      "title": "Digital Designer & Front-End Developer",
-      "start": "2014",
-      "end": "2015",
-      "bullets": {
-        "ux": ["Design and front-end development at a NYC-based advertising agency serving enterprise clients."],
-        "fe": ["Design and front-end development at a NYC-based advertising agency serving enterprise clients."]
-      }
+      "dates": "2015 — 2016",
+      "area": "Telecommunications",
+      "summary": "Consumer-facing digital interfaces and internal tools.",
+      "responsibilities": [],
+      "factStatus": "verified"
     }
   ],
-
-  "education": {
-    "ux": [
-      { "degree": "Bachelor of Fine Arts in Graphic Design", "org": "Kean University — Union, NJ", "date": "2015", "note": "Formal design training informing every layout, component, and system I build." },
-      { "degree": "IBM Full Stack Software Developer Professional Certificate", "org": "Coursera — Verified", "date": "Dec 2025", "note": "15-course certificate covering cloud-native full-stack development, containerization, microservices, and DevOps. Verify: coursera.org/verify/professional-cert/ZD6SUR06VY2K" },
-      { "degree": "Human–Computer Interaction — Graduate Study (Planned)", "org": "Application in progress", "date": "", "note": "Actively identifying and applying to HCI programs; will update on enrollment." }
+  "education": [
+    {
+      "credential": "Bachelor of Fine Arts in Graphic Design",
+      "institution": "Kean University",
+      "location": "Union, New Jersey",
+      "completed": "2015",
+      "factStatus": "verified"
+    }
+  ],
+  "certifications": [
+    {
+      "credential": "IBM Full Stack Software Developer Professional Certificate",
+      "issuer": "IBM / Coursera",
+      "completed": "December 2025",
+      "verificationUrl": "https://www.coursera.org/verify/professional-cert/ZD6SUR06VY2K",
+      "factStatus": "verified"
+    }
+  ],
+  "capabilities": [
+    {
+      "label": "Interaction & product",
+      "items": [
+        "User flows",
+        "Information architecture",
+        "Interaction design",
+        "Prototyping",
+        "Responsive design",
+        "Design systems",
+        "Accessibility"
+      ]
+    },
+    {
+      "label": "Frontend engineering",
+      "items": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Tailwind CSS",
+        "Component architecture",
+        "State management"
+      ]
+    },
+    {
+      "label": "Backend & data",
+      "items": [
+        "Node.js",
+        "Express",
+        "REST APIs",
+        "PostgreSQL",
+        "Prisma",
+        "Supabase",
+        "Authentication",
+        "Real-time systems"
+      ]
+    },
+    {
+      "label": "Quality & delivery",
+      "items": [
+        "Behavior testing",
+        "Testing Library",
+        "Accessibility auditing",
+        "Git and GitHub",
+        "CI/CD",
+        "Vite",
+        "Deployment workflows"
+      ]
+    }
+  ],
+  "teaching": {
+    "heading": "Martial arts teaching and leadership",
+    "summary": "Teaching Brazilian Jiu-Jitsu informs Earl's approach to progressive instruction, observation, feedback, adaptation, trust, reflection, and capability development.",
+    "evidenceBoundary": "No academy title or teaching date range is published until those details are confirmed.",
+    "practices": [
+      "Progressive instruction",
+      "Observation",
+      "Feedback and adaptation",
+      "Trust and learning under pressure",
+      "Supporting different learning styles",
+      "Reflection and capability development"
     ],
-    "fe": [
-      { "degree": "Bachelor of Fine Arts in Graphic Design", "org": "Kean University — Union, NJ", "date": "2015", "note": null },
-      { "degree": "IBM Full Stack Software Developer Professional Certificate", "org": "Coursera — Verified", "date": "Dec 2025", "note": "15-course certificate covering cloud-native full-stack development, containerization, microservices, and DevOps. Verify: coursera.org/verify/professional-cert/ZD6SUR06VY2K" }
-    ]
+    "factStatus": "verified"
   },
-
-  "projects": {
-    "ux": [
-      { "name": "WithYou", "stack": "React Native (Expo) · Express · PostgreSQL · Prisma", "description": "Designed and engineered a privacy-first relationship platform exploring how technology can encourage intentional communication through consent-based interactions, emotional check-ins, and shared planning workflows." },
-      { "name": "Gundam Forge", "stack": "React · TypeScript · Next.js · Tailwind CSS", "description": "Designed a decision-support platform that helps competitive trading card players discover, organize, and evaluate complex deck-building strategies through information architecture and search." },
-      { "name": "DojoNet", "stack": "React · TypeScript · Tailwind CSS · Vite", "description": "Designed a community platform exploring how digital products can extend coaching, skill development, and learning beyond the physical martial arts academy." },
-      { "name": "TrainerLaunch", "stack": "Next.js 16 · TypeScript · Tailwind v4 · Prisma · PostgreSQL", "description": "Designed and engineered a multi-tenant SaaS platform that helps independent fitness coaches turn their expertise into a professional online presence — booking, lead capture, and client communication in one workflow." }
+  "research": {
+    "interests": [
+      "Human-computer interaction",
+      "Learning technologies",
+      "Privacy and consent",
+      "Decision support",
+      "Information architecture",
+      "Accessibility",
+      "Human agency and automation"
     ],
-    "fe": [
-      { "name": "WithYou", "stack": "React Native (Expo) · Express · PostgreSQL · Prisma", "description": "Privacy-first relationship app with real-time sync, pairing, check-ins, and shared plans; Maestro E2E tested." },
-      { "name": "TrainerLaunch", "stack": "Next.js 16 · TypeScript · Tailwind v4 · Prisma · PostgreSQL", "description": "Multi-tenant SaaS for fitness coaches with hand-rolled JWT auth, lead-capture CRM, and dynamic [trainerSlug] routing." },
-      { "name": "DojoNet", "stack": "React · TypeScript · Tailwind CSS · Vite", "description": "Community platform for martial arts gyms: scheduling, match recording, belt progression tracking." },
-      { "name": "Gundam Forge", "stack": "React · TypeScript · Next.js · Tailwind CSS · Vitest", "description": "Deck-building and meta-analysis tool for a competitive card game; live API data, rules-accurate play tester, static export." }
-    ]
+    "methodsUsed": [
+      "Analytics review",
+      "Hotjar-informed evaluation",
+      "Accessibility auditing",
+      "Interaction prototyping",
+      "Design-system evaluation",
+      "Implementation analysis",
+      "Technical usability review"
+    ],
+    "methodsSought": [
+      "Semi-structured interviews",
+      "Usability testing",
+      "Diary studies",
+      "Contextual inquiry",
+      "Observation",
+      "Qualitative coding",
+      "Experimental design",
+      "Mixed methods",
+      "Research ethics"
+    ],
+    "selectedWriting": [
+      {
+        "title": "Teaching Jiu-Jitsu Changed the Way I Think About UX",
+        "path": "/field-notes/teaching-jiu-jitsu-and-ux"
+      },
+      {
+        "title": "Designing Consent Into Digital Products",
+        "path": "/field-notes/designing-consent"
+      },
+      {
+        "title": "What Trading Card Games Teach Us About Information Architecture",
+        "path": "/field-notes/information-architecture-and-card-games"
+      }
+    ],
+    "projects": {
+      "withyou": {
+        "status": "Functional beta-oriented implementation",
+        "claimType": "implementation-evidence"
+      },
+      "dojonet": {
+        "status": "Active development",
+        "claimType": "implementation-evidence"
+      },
+      "gundam-forge": {
+        "status": "Functional beta-oriented implementation",
+        "claimType": "implementation-evidence"
+      }
+    }
   },
-
-  "areasOfInterest": {
-    "ux": ["Human–Computer Interaction", "Accessibility", "Information Architecture", "Interaction Design", "Learning Technologies", "Product Engineering", "Design Systems"]
-  },
-
-  "footer": {
-    "ux": "Portfolio & case studies: ehicksonjr.com",
-    "fe": "Portfolio & case studies: ehicksonjr.com"
-  }
+  "investigations": [
+    {
+      "slug": "withyou",
+      "name": "WithYou",
+      "theme": "Relationships",
+      "question": "How should shared technology support connection without assuming unrestricted access?",
+      "status": "Functional beta-oriented implementation",
+      "role": "Solo product design, UX engineering, and full-stack development",
+      "product": "A private relationship application exploring intentional connection, pairing, and field-level information visibility.",
+      "stack": [
+        "React Native",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "PostgreSQL",
+        "Prisma"
+      ],
+      "evidence": [
+        "Repository structure and integration behavior demonstrate a working mobile/backend beta.",
+        "Implementation captures show active application surfaces; the portfolio prototype demonstrates the interaction argument using fictional data.",
+        "Evidence supports implemented behavior, not therapeutic benefit or improved relationship outcomes."
+      ],
+      "limitations": [
+        "The legacy sharing path weakens otherwise more granular privacy controls.",
+        "Implemented-but-unintegrated screens are not complete user workflows.",
+        "No relationship outcome has been validated with a formal study."
+      ],
+      "proposedMethods": [
+        "Scope-comprehension testing",
+        "Scenario-based usability testing",
+        "Interviews about privacy expectations"
+      ]
+    },
+    {
+      "slug": "dojonet",
+      "name": "DojoNet",
+      "theme": "Learning",
+      "question": "How can digital systems support progression without reducing learning to completion?",
+      "status": "Active development",
+      "role": "Solo product design and frontend product development",
+      "product": "A martial arts training journal and community product centered on practice history, reflection, and qualitative progression.",
+      "stack": [
+        "React",
+        "Vite",
+        "TypeScript",
+        "Tailwind CSS",
+        "Browser-local persistence"
+      ],
+      "evidence": [
+        "Development captures show a working React application and its student-facing journal surfaces.",
+        "The prototype demonstrates the difference between qualitative stage history and percentage completion.",
+        "The work does not establish that the model improves learning outcomes."
+      ],
+      "limitations": [
+        "Instructor workflows require further design and implementation verification.",
+        "The current demo persistence model is not a production learning record.",
+        "Qualitative stages still require careful language to avoid becoming another hidden ranking system."
+      ],
+      "proposedMethods": [
+        "Diary study",
+        "Training observation",
+        "Instructor interviews",
+        "Comparative completion-versus-progression study"
+      ]
+    },
+    {
+      "slug": "gundam-forge",
+      "name": "Gundam Forge",
+      "theme": "Decision Support",
+      "question": "How can interfaces help people navigate complexity without making the decision for them?",
+      "status": "Functional beta-oriented implementation",
+      "role": "Solo product design and full-stack product development",
+      "product": "An independent, unofficial deck-building and playtesting application for the Gundam Card Game.",
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Supabase",
+        "Vitest"
+      ],
+      "evidence": [
+        "Repository and capture evidence support the working deck, validation, and heuristic playtest behaviors.",
+        "The portfolio prototype demonstrates warning, explanation, replacement, and recovery using fictional card data.",
+        "The implementation does not establish competitive quality, official rules endorsement, or user outcome improvement."
+      ],
+      "limitations": [
+        "Official competitive ban/restriction coverage is incomplete.",
+        "Public production hosting has not been verified.",
+        "The heuristic opponent is a test partner, not generative AI or sophisticated competitive intelligence."
+      ],
+      "proposedMethods": [
+        "Scenario-based usability testing",
+        "Comparative completion tasks with and without continuous validation",
+        "Think-aloud interviews about warning comprehension"
+      ]
+    }
+  ],
+  "selectedWriting": [
+    {
+      "title": "Teaching Jiu-Jitsu Changed the Way I Think About UX",
+      "path": "/field-notes/teaching-jiu-jitsu-and-ux",
+      "theme": "Learning",
+      "date": "July 14, 2026"
+    },
+    {
+      "title": "Designing Consent Into Digital Products",
+      "path": "/field-notes/designing-consent",
+      "theme": "Relationships",
+      "date": "July 14, 2026"
+    },
+    {
+      "title": "What Trading Card Games Teach Us About Information Architecture",
+      "path": "/field-notes/information-architecture-and-card-games",
+      "theme": "Decision Support",
+      "date": "July 14, 2026"
+    }
+  ]
 }

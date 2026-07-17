@@ -1,24 +1,64 @@
 [build]
-  command = "./build.sh"
-  functions = "netlify/functions"
+  command = "npm run build"
   publish = "dist/public"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 [[redirects]]
-  from = "/api/*"
-  to = "/.netlify/functions/server"
-  status = 200
+  from = "/projects/withyou"
+  to = "/work/withyou"
+  status = 301
+
+[[redirects]]
+  from = "/projects/dojonet"
+  to = "/work/dojonet"
+  status = 301
+
+[[redirects]]
+  from = "/projects/gundam-forge"
+  to = "/work/gundam-forge"
+  status = 301
+
+[[redirects]]
+  from = "/projects"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/case-studies"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/investigations"
+  to = "/work"
+  status = 301
+
+[[redirects]]
+  from = "/how-i-think"
+  to = "/research"
+  status = 301
+
+[[redirects]]
+  from = "/approach"
+  to = "/research"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/field-notes"
+  status = 301
+
+[[redirects]]
+  from = "/writing"
+  to = "/field-notes"
+  status = 301
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[functions]
-  node_bundler = "esbuild"
-  external_node_modules = ["express", "serverless-http", "@neondatabase/serverless", "@sendgrid/mail", "drizzle-orm"]
 
 [[headers]]
   for = "/*"

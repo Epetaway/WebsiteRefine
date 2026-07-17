@@ -5,6 +5,7 @@ import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { CapabilityNetwork } from "@/components/editorial/CapabilityNetwork";
 import { researchThemes } from "@/data/researchThemes";
 import { investigations } from "@/data/investigations";
+import { research } from "@/data/professional";
 
 const principles = [
   ["Capability over convenience", "Ask what someone becomes able to do, not only what the tool does for them."],
@@ -38,6 +39,23 @@ export default function Research() {
       <section className="section-shell research-principles">
         <SectionHeader number="04" label="Working principles" title="A current operating position, open to revision." />
         <div>{principles.map(([title, detail], index) => <article key={title}><span>P·{String(index + 1).padStart(2, "0")}</span><h3>{title}</h3><p>{detail}</p></article>)}</div>
+      </section>
+
+      <section className="section-shell research-preparation">
+        <SectionHeader number="05" label="Research preparation" title="Methods used and methods sought are different evidence categories." />
+        <div className="research-methods">
+          <article>
+            <span>Methods used in professional or independent practice</span>
+            <h3>Applied preparation</h3>
+            <ul>{research.methodsUsed.map((method) => <li key={method}>{method}</li>)}</ul>
+          </article>
+          <article>
+            <span>Methods sought through graduate study</span>
+            <h3>Proposed learning direction</h3>
+            <ul>{research.methodsSought.map((method) => <li key={method}>{method}</li>)}</ul>
+          </article>
+        </div>
+        <p className="research-preparation__boundary">The methods in the second column are not presented as completed research experience. They are the methodological preparation I am seeking in order to evaluate whether technology helps people become more capable.</p>
       </section>
 
       <section className="research-direction"><p className="eyebrow eyebrow--light">Future direction</p><h2>Methods strong enough to test the human question.</h2><p>Future work includes scope-comprehension testing for WithYou, diary and observational studies for DojoNet, and comparative decision tasks for Gundam Forge. These are proposed directions—not completed studies.</p><div className="button-row"><Link to="/work" className="button button--light">View the investigations</Link><Link to="/contact" className="button button--outline-light">Discuss the work</Link></div></section>

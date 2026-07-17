@@ -13,7 +13,9 @@ export type FieldNote = {
   claim: string;
   summary: string;
   date: string;
+  datePublished: string;
   readingTime: string;
+  evidenceTypes: ClaimType[];
   sections: FieldNoteSection[];
 };
 
@@ -23,12 +25,19 @@ export const fieldNotes: FieldNote[] = [
     number: "01",
     title: "Teaching Jiu-Jitsu Changed the Way I Think About UX",
     theme: "Learning",
-    themeColor: "#16B889",
+    themeColor: "#076B50",
     claim: "Learning is not information transfer.",
     summary:
       "How teaching martial arts changed the way I understand feedback, progression, and what it means to help someone build a capability.",
     date: "July 14, 2026",
+    datePublished: "2026-07-14",
     readingTime: "8 min",
+    evidenceTypes: [
+      "personal-reflection",
+      "implementation-evidence",
+      "known-gap",
+      "proposed-research",
+    ],
     sections: [
       {
         paragraphs: [
@@ -77,12 +86,19 @@ export const fieldNotes: FieldNote[] = [
     number: "02",
     title: "Designing Consent Into Digital Products",
     theme: "Relationships",
-    themeColor: "#C65788",
+    themeColor: "#8F2E54",
     claim: "Consent should be part of the interaction model, not a paragraph in the privacy policy.",
     summary:
       "What building a relationship-centered application taught me about the difference between a privacy promise and a privacy architecture.",
     date: "July 14, 2026",
+    datePublished: "2026-07-14",
     readingTime: "10 min",
+    evidenceTypes: [
+      "personal-reflection",
+      "implementation-evidence",
+      "known-gap",
+      "proposed-research",
+    ],
     sections: [
       {
         paragraphs: [
@@ -125,12 +141,19 @@ export const fieldNotes: FieldNote[] = [
     number: "03",
     title: "What Trading Card Games Teach Us About Information Architecture",
     theme: "Decision Support",
-    themeColor: "#315CFF",
+    themeColor: "#244BCF",
     claim: "More information does not necessarily create more understanding.",
     summary:
       "Why access to information is not the same as being able to use it—and what a physical card table reveals about how people think.",
     date: "July 14, 2026",
+    datePublished: "2026-07-14",
     readingTime: "9 min",
+    evidenceTypes: [
+      "personal-reflection",
+      "implementation-evidence",
+      "design-rationale",
+      "known-gap",
+    ],
     sections: [
       {
         paragraphs: [
@@ -172,3 +195,4 @@ export const fieldNotes: FieldNote[] = [
 
 export const getFieldNote = (slug?: string) =>
   fieldNotes.find((note) => note.slug === slug);
+import type { ClaimType } from "./professional";

@@ -2,6 +2,19 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
+  "redirects": [
+    { "source": "/projects", "destination": "/work", "permanent": true },
+    { "source": "/case-studies", "destination": "/work", "permanent": true },
+    { "source": "/investigations", "destination": "/work", "permanent": true },
+    { "source": "/projects/withyou", "destination": "/work/withyou", "permanent": true },
+    { "source": "/projects/dojonet", "destination": "/work/dojonet", "permanent": true },
+    { "source": "/projects/dojonet-prototype-max", "destination": "/work/dojonet", "permanent": true },
+    { "source": "/projects/gundam-forge", "destination": "/work/gundam-forge", "permanent": true },
+    { "source": "/how-i-think", "destination": "/research", "permanent": true },
+    { "source": "/approach", "destination": "/research", "permanent": true },
+    { "source": "/blog", "destination": "/field-notes", "permanent": true },
+    { "source": "/writing", "destination": "/field-notes", "permanent": true }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",

@@ -2,13 +2,14 @@
   "ci": {
     "collect": {
       "numberOfRuns": 3,
-      "startServerCommand": "npm start",
+      "startServerCommand": "PORT=3002 npm start",
       "startServerReadyPattern": "serving on port",
       "url": [
-        "http://localhost:5000",
-        "http://localhost:5000/about",
-        "http://localhost:5000/case-studies",
-        "http://localhost:5000/earldkaiju"
+        "http://127.0.0.1:3002/",
+        "http://127.0.0.1:3002/work",
+        "http://127.0.0.1:3002/work/withyou",
+        "http://127.0.0.1:3002/research",
+        "http://127.0.0.1:3002/graduate-review"
       ]
     },
     "assert": {
@@ -20,7 +21,8 @@
       }
     },
     "upload": {
-      "target": "temporary-public-storage"
+      "target": "filesystem",
+      "outputDir": "tmp/lighthouse"
     }
   }
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { SectionHeader } from "@/components/editorial/SectionHeader";
-import { professionalProfile } from "@/data/professionalProfile";
+import { profile, teaching } from "@/data/professional";
 
 const trajectory = [
   ["Art", "How do I express an idea?", "Drawing and visual thinking taught me to see before learning to communicate."],
@@ -25,9 +25,9 @@ export default function About() {
 
       <section className="section-shell transition-section"><SectionHeader number="02" label="Current transition" title="The work continues between formal roles." /><div><p>I am currently in a professional transition, working outside technology while actively pursuing a return to full-time product work. That gap has not stopped the work. I have continued building independent products across mobile, frontend, backend, accessibility, real-time systems, and product design.</p><p>I describe that period directly because evidence matters more than a seamless career story. The products and this portfolio show the work I have continued to do.</p></div></section>
 
-      <section className="section-shell teaching-section"><SectionHeader number="03" label="Martial arts and teaching" title="Feedback, discipline, and capability are part of the practice." /><div><blockquote>Teaching made one thing unmistakable: understanding a description is not the same as being able to act.</blockquote><p>Brazilian Jiu-Jitsu is not only a hobby in this story. Coaching requires progressive disclosure, observation, correction, trust, and respect for what a person is ready to attempt. Those same concerns shape how I think about onboarding, feedback loops, learning histories, and the difference between information and understanding.</p><Link to="/field-notes/teaching-jiu-jitsu-and-ux" className="text-link">Read the Field Note <span aria-hidden="true">→</span></Link></div></section>
+      <section className="section-shell teaching-section"><SectionHeader number="03" label="Martial arts and teaching" title="Feedback, discipline, and capability are part of the practice." /><div><blockquote>Teaching made one thing unmistakable: understanding a description is not the same as being able to act.</blockquote><p>{teaching.summary}</p><p>{teaching.evidenceBoundary}</p><Link to="/field-notes/teaching-jiu-jitsu-and-ux" className="text-link">Read the Field Note <span aria-hidden="true">→</span></Link></div></section>
 
-      <section className="about-seeking"><p className="eyebrow eyebrow--light">What I am looking for</p><h2>I am looking for full-time work where design and engineering are treated as connected disciplines.</h2><p>{professionalProfile.focus.join(" · ")}</p><div className="button-row"><Link className="button button--light" to="/resume">View resume</Link><Link className="button button--outline-light" to="/contact">Contact me</Link></div></section>
+      <section className="about-seeking"><p className="eyebrow eyebrow--light">What I am looking for</p><h2>I am looking for full-time work where design and engineering are treated as connected disciplines.</h2><p>{profile.focusRoles.join(" · ")}</p><div className="button-row"><Link className="button button--light" to="/resume">View resume</Link><Link className="button button--outline-light" to="/contact">Contact me</Link></div></section>
     </div>
   );
 }

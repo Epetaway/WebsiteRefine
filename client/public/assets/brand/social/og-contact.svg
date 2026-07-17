@@ -2,7 +2,7 @@
   <rect width="1200" height="630" fill="#F2EDE3" />
   <rect x="0" y="0" width="8" height="630" fill="#C65788" />
 
-  <text x="64" y="88" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="0.24em" fill="rgba(21,21,21,0.4)">HCEPS</text>
+  <text x="64" y="88" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="0.18em" fill="rgba(21,21,21,0.4)">EARL HICKSON JR. · UX ENGINEER</text>
 
   <text x="64" y="256" font-family="'Source Serif 4',Georgia,'Times New Roman',serif" font-size="54" font-weight="400" fill="#151515">Contact Earl Hickson Jr.</text>
 
