@@ -2,10 +2,10 @@
 
 ## Deployment and services
 
-- DNS, HTTPS, deployment aliases, and the currently live production build require verification in their provider dashboards.
-- Google Analytics and SendGrid depend on deployment environment variables.
-- Contact records use in-memory storage and are lost when the server process restarts. Email notification is the durable path when SendGrid is configured.
-- The contact endpoint includes a honeypot and basic in-process rate limiting. It does not include CAPTCHA or a shared/distributed rate-limit store.
+- The current live domain is on the previous release. This branch’s graduate CV, graduate-review sitemap entry, font optimization, and final QA fixes require merge and production deployment.
+- Provider-dashboard ownership, deployment alias, and post-merge commit identity must be verified by the release owner.
+- Google Analytics initializes only when its deployment environment variable is present; analytics delivery was not tested with a production property.
+- The public Contact page intentionally uses direct email, LinkedIn, and GitHub links. No unverified form-delivery promise is made.
 
 ## Professional record
 
@@ -21,5 +21,6 @@
 
 ## QA boundary
 
-- Automated type, lint, build, behavior, and browser checks cover the integrated repository.
-- Physical-device screen-reader tests, network throttling, provider-side email delivery, and independent recruiter review remain follow-up activities.
+- Automated type, lint, build, behavior, axe, responsive-browser, metadata, PDF, and Lighthouse checks cover the integrated repository.
+- Physical-device screen-reader tests, mobile-browser chrome, provider analytics, real-user Core Web Vitals, and independent recruiter/admissions review remain follow-up activities.
+- The HCEPS and `.dc.html` materials remain archived and blocked from canonical indexing; they are not deleted because they retain design provenance.

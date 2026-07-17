@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import { navigation } from "@/data/navigation";
-import { professionalProfile } from "@/data/professionalProfile";
+import { professionalLinks, profile } from "@/data/professional";
 
 export default function Footer() {
-  const { links } = professionalProfile;
   return (
     <footer className="site-footer">
       <div className="site-footer__grid">
@@ -17,13 +16,14 @@ export default function Footer() {
           ))}
         </nav>
         <div className="site-footer__contact">
-          <a href={`mailto:${links.email}`}>{links.email}</a>
-          <a href={links.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-          <a href={links.github} target="_blank" rel="noreferrer">GitHub</a>
+          <Link to="/graduate-review">Graduate review</Link>
+          <a href={`mailto:${professionalLinks.email}`}>{professionalLinks.email}</a>
+          <a href={professionalLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href={professionalLinks.github} target="_blank" rel="noreferrer">GitHub</a>
         </div>
       </div>
       <div className="site-footer__base">
-        <span>© {new Date().getFullYear()} Earl Hickson Jr.</span>
+        <span>© {new Date().getFullYear()} {profile.name}</span>
         <span>Built on an evolving system for documenting design, engineering, and inquiry.</span>
       </div>
     </footer>

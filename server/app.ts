@@ -1,4 +1,5 @@
 import "dotenv/config";
+import compression from "compression";
 import express, { type Request, Response, NextFunction } from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -10,6 +11,7 @@ const __dirname = path.dirname(__filename);
 
 export async function createApp() {
   const app = express();
+  app.use(compression());
   app.use(express.json());
   app.use(express.urlencoded({ extended: false }));
 

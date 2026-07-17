@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { navigation } from "@/data/navigation";
-import { professionalProfile } from "@/data/professionalProfile";
+import { profile } from "@/data/professional";
 
 const focusableSelector =
   'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -50,8 +50,8 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link to="/" className="site-identity" aria-label="Earl Hickson Jr., home">
-          <span className="site-identity__name">{professionalProfile.name}</span>
-          <span className="site-identity__title">{professionalProfile.title}</span>
+          <span className="site-identity__name">{profile.name}</span>
+          <span className="site-identity__title">{profile.publicTitle}</span>
         </Link>
 
         <nav className="site-nav" aria-label="Primary navigation">
@@ -111,7 +111,7 @@ export default function Header() {
                 </NavLink>
               ))}
             </nav>
-            <p className="mobile-nav__availability">{professionalProfile.availability}</p>
+            <p className="mobile-nav__availability">{profile.availability}</p>
           </div>
         </div>
       )}

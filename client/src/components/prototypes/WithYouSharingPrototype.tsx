@@ -17,7 +17,7 @@ export function WithYouSharingPrototype() {
   ][stage];
 
   return (
-    <PrototypeFrame label="withyou" title="Private entry to partner result" argument="Pairing creates connection. It does not automatically create permission." step={stage + 1} totalSteps={4} announcement={announcement} onReset={reset} accent="#C65788">
+    <PrototypeFrame label="withyou" title="Private entry to partner result" argument="Pairing creates connection. It does not automatically create permission." step={stage + 1} totalSteps={4} announcement={announcement} onReset={reset} accent="var(--project-accent)">
       <PrototypeStage title={["Private entry", "Sharing decision", "Review", "Partner result"][stage]}>
         {stage === 0 && <label className="prototype-field">Fictional private reflection<textarea value={entry} onChange={(event) => setEntry(event.target.value)} rows={4} /><small>Stored only in this component until reset or page exit.</small></label>}
         {stage === 1 && <fieldset className="prototype-options"><legend>What should a partner receive?</legend><label><input type="radio" name="sharing" checked={sharing === "private"} onChange={() => setSharing("private")} /><span><strong>Keep private</strong><small>No partner result is created.</small></span></label><label><input type="radio" name="sharing" checked={sharing === "summary"} onChange={() => setSharing("summary")} /><span><strong>Share a safe summary</strong><small>The raw note remains private.</small></span></label></fieldset>}

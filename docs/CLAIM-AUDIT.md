@@ -1,6 +1,6 @@
 # Claim Audit
 
-Audit date: 2026-07-14
+Audit date: 2026-07-17
 
 ## Classification standard
 
@@ -33,3 +33,25 @@ Audit date: 2026-07-14
 - AMA Fight Club is shown conservatively as `Jan 2025 - 2025` until its end month is confirmed.
 - The current non-technology employer, official title, and exact start date are not published because they are unconfirmed.
 - Independent investigation outcomes are not presented as peer-reviewed research or measured user outcomes.
+
+## Automated enforcement
+
+- The exact `ClaimType` union lives in `client/src/data/professional/types.ts`.
+- Project implementation statements carry claim types in `client/src/data/investigations.ts`.
+- `scripts/validate-content.ts` scans both source and built output for banned metrics, conflicting identity language, unsafe status claims, stale route architecture, and unverified `Present` language.
+- `client/src/test/content-governance.test.ts` prevents unsupported claims and non-canonical career sources from re-entering routed content.
+- `scripts/validate_pdfs.py` applies the same banned-claim boundary to both generated PDFs.
+
+## Publication-safe replacements
+
+| Removed formulation | Published formulation |
+| --- | --- |
+| Three shipped/production-ready products | Three independent product investigations at different implementation stages |
+| Years-of-experience totals | Specific verified roles and date ranges |
+| Numeric efficiency or conversion improvements | Qualitative responsibility and implementation evidence |
+| Rules-accurate AI simulator | Functional playtesting with heuristic opponent behavior |
+| WCAG compliant | Accessibility-focused implementation / accessibility practices applied |
+| Research study or experiment | Independent HCI investigation / proposed research |
+| Mutual approval after invite code | Deliberate participation in invite-code pairing |
+
+The build currently passes source and built-output claim validation.

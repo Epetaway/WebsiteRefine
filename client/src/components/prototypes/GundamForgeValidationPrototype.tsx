@@ -20,7 +20,7 @@ export function GundamForgeValidationPrototype() {
   const replace = () => { setCards((current) => current.map((card) => card.name === "Aerial Unit" ? { ...card, count: card.limit } : card.name === "Tactical Relay" ? { ...card, count: card.count + 1 } : card)); setInspected(false); };
 
   return (
-    <PrototypeFrame label="gundam-forge" title="Constraint, explanation, recovery" argument="Decision support should surface a constraint while preserving the player's decision." step={step} totalSteps={4} announcement={warning ? `Warning: Aerial Unit count ${aerial.count} exceeds the fictional limit of ${aerial.limit}.` : `Deck has ${total} cards and no count warning.`} onReset={reset} accent="#315CFF">
+    <PrototypeFrame label="gundam-forge" title="Constraint, explanation, recovery" argument="Decision support should surface a constraint while preserving the player's decision." step={step} totalSteps={4} announcement={warning ? `Warning: Aerial Unit count ${aerial.count} exceeds the fictional limit of ${aerial.limit}.` : `Deck has ${total} cards and no count warning.`} onReset={reset} accent="var(--project-accent)">
       <PrototypeStage title={warning ? "Validation needs attention" : cards === initialCards ? "Add a card" : "Validation recovered"}>
         <div className="deck-status" data-warning={warning}><span>DECK COUNT</span><strong>{total}</strong><span>COUNT VALIDATION</span><strong>{warning ? "1 warning" : "Clear"}</strong></div>
         <ul className="deck-list">{cards.map((card) => <li key={card.name} data-warning={card.count > card.limit}><div><strong>{card.name}</strong><small>Fictional prototype card · limit {card.limit}</small></div><span aria-label={`${card.count} copies`}>{card.count}×</span></li>)}</ul>

@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /hceps/
+Disallow: /prototypes/
 
 Sitemap: https://ehicksonjr.com/sitemap.xml

@@ -12,7 +12,7 @@ export function DojoNetProgressPrototype() {
   const reset = () => { setStep(0); setTechnique(techniques[0]); setProgress(stages[1]); setReflection("I found the angle during drills, but lost the grip when resistance increased."); };
 
   return (
-    <PrototypeFrame label="dojonet" title="Record a learning history" argument="Progression is practice, feedback, and capability—not a completion percentage." step={step + 1} totalSteps={4} announcement={`Step ${step + 1}. ${["Choose a technique", "Choose a qualitative stage", "Add a reflection", "Learning history recorded"][step]}.`} onReset={reset} accent="#16B889">
+    <PrototypeFrame label="dojonet" title="Record a learning history" argument="Progression is practice, feedback, and capability—not a completion percentage." step={step + 1} totalSteps={4} announcement={`Step ${step + 1}. ${["Choose a technique", "Choose a qualitative stage", "Add a reflection", "Learning history recorded"][step]}.`} onReset={reset} accent="var(--project-accent)">
       <PrototypeStage title={["Choose a technique", "Select a qualitative stage", "Add reflection", "Learning history"][step]}>
         {step === 0 && <div className="prototype-choice-grid" role="group" aria-label="Technique">{techniques.map((item) => <button type="button" key={item} aria-pressed={technique === item} onClick={() => setTechnique(item)}>{item}</button>)}</div>}
         {step === 1 && <div className="prototype-choice-grid" role="group" aria-label="Learning stage">{stages.map((item, index) => <button type="button" key={item} aria-pressed={progress === item} onClick={() => setProgress(item)}><span>{String(index + 1).padStart(2, "0")}</span>{item}</button>)}</div>}
