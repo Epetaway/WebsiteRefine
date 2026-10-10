@@ -5,6 +5,9 @@
 [build.environment]
   NODE_VERSION = "22"
   NPM_FLAGS = "--include=dev"
+  # Google Analytics measurement IDs are public browser configuration.
+  # Keep secret scanning enabled, but do not treat this Vite-exposed value as a secret.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_GA_MEASUREMENT_ID"
 
 [[redirects]]
   from = "/projects/withyou"
