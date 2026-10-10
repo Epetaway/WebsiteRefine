@@ -6,11 +6,12 @@ type Props = {
   lead: ReactNode;
   aside?: ReactNode;
   dark?: boolean;
+  compact?: boolean;
 };
 
-export function PageIntro({ label, title, lead, aside, dark = false }: Props) {
+export function PageIntro({ label, title, lead, aside, dark = false, compact = false }: Props) {
   return (
-    <section className={`page-intro${dark ? " page-intro--dark" : ""}`}>
+    <section className={`page-intro${dark ? " page-intro--dark" : ""}${compact ? " page-intro--compact" : ""}`}>
       <div className="page-intro__rail" aria-hidden="true">
         <span>{label}</span><i />
       </div>

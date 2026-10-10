@@ -50,8 +50,8 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link to="/" className="site-identity" aria-label="Earl Hickson Jr., home">
-          <span className="site-identity__name">{profile.name}</span>
-          <span className="site-identity__title">{profile.publicTitle}</span>
+          <span className="site-identity__mark" aria-hidden="true">EH</span>
+          <span><span className="site-identity__name">{profile.name}</span><span className="site-identity__title">{profile.publicTitle}</span></span>
         </Link>
 
         <nav className="site-nav" aria-label="Primary navigation">

@@ -1,124 +1,160 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
-import { CapabilityNetwork } from "@/components/editorial/CapabilityNetwork";
-import { SectionHeader } from "@/components/editorial/SectionHeader";
+import { Reveal } from "@/components/motion/Reveal";
 import { investigations } from "@/data/investigations";
 import { fieldNotes } from "@/data/fieldNotes";
-import { experience, profile } from "@/data/professional";
-import portrait from "@/images/me.webp";
+import { experience, profile, teaching } from "@/data/professional";
+import { getCaseStudyView } from "@/lib/caseStudyView";
+import portrait from "@/images/earl-bjj-photo.png";
+import trainingPhoto from "@/images/BLKBELT.png";
+
+const practice = [
+  ["01", "Frame", "Turn an ambiguous product problem into a clear interaction and system boundary."],
+  ["02", "Design", "Shape flows, information, states, and accessible interface behavior."],
+  ["03", "Build", "Translate the design into resilient components, data, and working product code."],
+  ["04", "Verify", "Test the behavior, name the gaps, and separate implementation from outcome claims."],
+] as const;
 
 export default function Home() {
   return (
-    <div className="portfolio-page">
+    <div className="portfolio-home">
       <SEO
         title="Earl Hickson Jr. — UX Engineer"
-        description="UX Engineer designing and building human-centered systems across interaction design, frontend engineering, and full-stack product development."
+        description="UX Engineer who connects visual design, interaction thinking, and production implementation to build thoughtful digital products."
       />
 
-      <section className="professional-hero">
-        <div className="professional-hero__rail" aria-hidden="true"><span>PORTFOLIO / 2026</span><i /></div>
-        <div className="professional-hero__copy">
-          <p className="eyebrow"><span /> {profile.eyebrow}</p>
-          <p className="professional-hero__role">Interaction design · Frontend engineering · Product systems</p>
-          <h1>{profile.headline}</h1>
-          <p className="professional-hero__lead">
-            I work across interaction design, frontend engineering, and full-stack product development. My practice began in graphic design and expanded into engineering as I became increasingly interested not only in how technology looks, but how it behaves and what it enables people to do.
+      <section className="home-hero" aria-labelledby="home-title">
+        <div className="home-hero__grid" aria-hidden="true" />
+        <Reveal className="home-hero__copy">
+          <p className="signal-label"><span /> Earl Hickson Jr. / UX Engineer</p>
+          <h1 id="home-title">I design and build digital products from <em>interface</em> to implementation.</h1>
+          <p className="home-hero__lead">
+            A graphic-design foundation, production frontend experience, and full-stack product practice—brought together to make complex systems useful, legible, and human.
           </p>
-          <div className="button-row">
-            <Link className="button button--primary" to="/work">View my work</Link>
-            <Link className="button button--secondary" to="/resume">View resume</Link>
-            <Link className="text-link" to="/research">Research direction <span aria-hidden="true">→</span></Link>
-            <Link className="text-link" to="/graduate-review">Graduate review <span aria-hidden="true">→</span></Link>
-            <Link className="text-link" to="/contact">Contact <span aria-hidden="true">↗</span></Link>
+          <div className="home-hero__actions">
+            <Link className="button button--accent" to="/work">View case studies <span aria-hidden="true">↗</span></Link>
+            <a className="button button--ghost" href="/assets/Earl-Hickson-Jr-Resume.pdf" download>Download résumé</a>
           </div>
-          <div className="hero-proof">
-            <div><span>Practice</span><p>Design + engineering + product reasoning</p></div>
-            <div><span>Direction</span><p>{profile.availability}</p></div>
+          <dl className="home-hero__status">
+            <div><dt>Current</dt><dd>{profile.availability}</dd></div>
+            <div><dt>Focus</dt><dd>UX engineering · Design systems · Frontend product work</dd></div>
+          </dl>
+        </Reveal>
+
+        <Reveal className="home-hero__portrait" delay={0.08}>
+          <div className="home-hero__portrait-frame">
+            <img src={portrait} alt="Earl Hickson Jr. smiling against a yellow background" width="1536" height="1024" />
+            <span aria-hidden="true">EH / 2026</span>
           </div>
-        </div>
-        <figure className="professional-hero__portrait">
-          <img src={portrait} alt="Portrait of Earl Hickson Jr." width="533" height="667" />
-          <figcaption><span>01 / PROFILE</span><p>Graphic-design foundation. Product-engineering practice. Human-centered direction.</p></figcaption>
-        </figure>
+          <p>Designer by foundation. Engineer by practice. Teacher by discipline.</p>
+        </Reveal>
+
+        <p className="home-hero__scroll" aria-hidden="true">Selected work ↓</p>
       </section>
 
-      <section className="selected-work section-shell">
-        <SectionHeader number="01" label="Selected investigations" title="Working systems, human questions." />
-        <div className="investigation-list">
-          {investigations.map((project) => (
-            <article key={project.slug} className="investigation-row" style={{ "--project-accent": project.accent } as React.CSSProperties}>
-              <div className="investigation-row__number">{project.number}</div>
-              <div className="investigation-row__visual">
-                <img
-                  src={project.previewImage}
-                  srcSet={project.previewSrcSet}
-                  sizes="(max-width: 600px) calc(100vw - 44px), (max-width: 820px) calc(100vw - 110px), 38vw"
-                  alt={project.previewAlt}
-                  loading="lazy"
-                  width="1200"
-                  height="900"
-                />
-                <span>Original project artwork</span>
-              </div>
-              <div className="investigation-row__body">
-                <div className="investigation-row__meta"><span>{project.theme}</span><span>{project.status}</span></div>
-                <h3>{project.name}</h3>
-                <blockquote>{project.question}</blockquote>
-                <dl><div><dt>Role</dt><dd>{project.role}</dd></div><div><dt>Context</dt><dd>{project.stack.slice(0, 4).join(" / ")}</dd></div></dl>
-                <p className="investigation-row__evidence"><strong>Evidence:</strong> {project.evidence[0]}</p>
-                <Link to={`/work/${project.slug}`} className="text-link">Read the investigation <span aria-hidden="true">→</span></Link>
-              </div>
+      <section className="home-work" aria-labelledby="selected-work-heading">
+        <header className="home-section-heading">
+          <p className="signal-label"><span /> 01 / Selected case studies</p>
+          <h2 id="selected-work-heading">Product thinking made tangible.</h2>
+          <p>Independent products showing how I move between interaction decisions, implementation constraints, and working interfaces.</p>
+        </header>
+
+        <div className="home-case-list">
+          {investigations.map((project, index) => {
+            const view = getCaseStudyView(project);
+            return (
+              <Reveal key={project.slug} className="home-case" delay={index * 0.04}>
+                <article style={{ "--project-accent": project.accent } as React.CSSProperties}>
+                  <Link className={`home-case__media home-case__media--${view.heroMedia.presentation}`} to={`/work/${project.slug}`} aria-label={`View ${project.name} case study`}>
+                    <span>{project.number} / {project.status}</span>
+                    <img src={view.heroMedia.src} alt={view.heroMedia.alt} loading={index === 0 ? "eager" : "lazy"} />
+                  </Link>
+                  <div className="home-case__content">
+                    <div className="home-case__meta"><span>{project.theme}</span><span>{project.stack.slice(0, 3).join(" · ")}</span></div>
+                    <h3>{project.name}</h3>
+                    <p className="home-case__question">{project.question}</p>
+                    <p>{project.abstract.product}</p>
+                    <dl><div><dt>My role</dt><dd>{project.role}</dd></div><div><dt>Built</dt><dd>{project.abstract.built}</dd></div></dl>
+                    <Link className="case-link" to={`/work/${project.slug}`}>Read case study <span aria-hidden="true">↗</span></Link>
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
+        </div>
+        <Link className="button button--dark" to="/work">See all work and experience</Link>
+      </section>
+
+      <section className="home-experience" aria-labelledby="experience-heading">
+        <header className="home-section-heading home-section-heading--dark">
+          <p className="signal-label"><span /> 02 / Professional practice</p>
+          <h2 id="experience-heading">Production work across complex organizations.</h2>
+          <p>Frontend delivery, reusable systems, accessibility, and information design across healthcare, media, enterprise, and operations.</p>
+        </header>
+        <div className="experience-ledger">
+          {experience.map((item, index) => (
+            <Reveal key={item.id} delay={index * 0.03}>
+              <article>
+                <span>{item.dates}</span>
+                <div><h3>{item.employer}</h3><p>{item.role}</p></div>
+                <p>{item.summary}</p>
+                <span>{item.area}</span>
+              </article>
+            </Reveal>
+          ))}
+        </div>
+        <Link className="case-link case-link--light" to="/resume">Open the full professional record <span aria-hidden="true">↗</span></Link>
+      </section>
+
+      <section className="home-practice" aria-labelledby="practice-heading">
+        <header className="home-section-heading">
+          <p className="signal-label"><span /> 03 / How I work</p>
+          <h2 id="practice-heading">Design and engineering are one continuous practice.</h2>
+          <p>Each phase changes the others. Implementation exposes design assumptions; testing exposes what the implementation still does not prove.</p>
+        </header>
+        <ol className="practice-sequence">
+          {practice.map(([number, title, detail]) => (
+            <li key={title}><span>{number}</span><h3>{title}</h3><p>{detail}</p></li>
+          ))}
+        </ol>
+      </section>
+
+      <section className="home-discipline" aria-labelledby="discipline-heading">
+        <Reveal className="home-discipline__image">
+          <img src={trainingPhoto} alt="Earl teaching a young Brazilian Jiu-Jitsu student" loading="lazy" width="4032" height="2268" />
+          <span>Practice / feedback / adaptation</span>
+        </Reveal>
+        <Reveal className="home-discipline__copy" delay={0.06}>
+          <p className="signal-label"><span /> 04 / Beyond the screen</p>
+          <h2 id="discipline-heading">The work is shaped by teaching, repetition, and learning under pressure.</h2>
+          <p>{teaching.summary}</p>
+          <blockquote>“Understanding a description is not the same as being able to act.”</blockquote>
+          <div><Link className="case-link case-link--light" to="/about">More about my path <span aria-hidden="true">↗</span></Link><Link className="case-link case-link--light" to="/research">Research direction <span aria-hidden="true">↗</span></Link></div>
+        </Reveal>
+      </section>
+
+      <section className="home-notes" aria-labelledby="notes-heading">
+        <header className="home-section-heading">
+          <p className="signal-label"><span /> 05 / Notes</p>
+          <h2 id="notes-heading">Ideas from the workbench.</h2>
+        </header>
+        <div className="home-note-list">
+          {fieldNotes.slice(0, 3).map((note) => (
+            <article key={note.slug}>
+              <span>{note.number} / {note.readingTime}</span>
+              <h3><Link to={`/field-notes/${note.slug}`}>{note.title}</Link></h3>
+              <p>{note.summary}</p>
+              <Link className="case-link" to={`/field-notes/${note.slug}`}>Read note <span aria-hidden="true">↗</span></Link>
             </article>
           ))}
         </div>
       </section>
 
-      <section className="technology-section section-shell">
-        <SectionHeader number="02" label="Human capability system" title="Different domains. One recurring question." light />
-        <CapabilityNetwork />
-      </section>
-
-      <section className="trajectory-section section-shell">
-        <SectionHeader number="03" label="Practice trajectory" title="The medium expanded. So did the question." />
-        <div className="trajectory-grid">
-          <blockquote>“{profile.importantPhrase}”</blockquote>
-          <ol>{profile.trajectory.map((item, index) => <li key={item.discipline}><span>{String(index + 1).padStart(2, "0")}</span><strong>{item.discipline}</strong><i aria-hidden="true">→</i><em>{item.consequence}</em></li>)}</ol>
-        </div>
-        <Link className="text-link" to="/about">Read the full trajectory <span aria-hidden="true">→</span></Link>
-      </section>
-
-      <section className="practice-section section-shell">
-        <SectionHeader number="04" label="Professional practice" title="Product work across healthcare, media, and enterprise systems." />
-        <p className="section-lead">Professional practice spanning design systems, frontend architecture, accessibility, and product engineering.</p>
-        <div className="practice-grid">
-          {experience.slice(0, 3).map((item) => (
-            <article key={item.id}><span>{item.dates}</span><h3>{item.employer}</h3><p className="practice-grid__role">{item.role}</p><p>{item.summary}</p></article>
-          ))}
-        </div>
-        <Link className="text-link" to="/work#professional-practice">View professional practice <span aria-hidden="true">→</span></Link>
-      </section>
-
-      <section className="notes-section section-shell">
-        <SectionHeader number="05" label="Field notes" title="Thinking carefully in public." />
-        <div className="notes-grid">
-          {fieldNotes.map((note) => <article key={note.slug} style={{ "--note-accent": note.themeColor } as React.CSSProperties}><div><span>{note.number}</span><span>{note.theme}</span></div><h3><Link to={`/field-notes/${note.slug}`}>{note.title}</Link></h3><blockquote>{note.claim}</blockquote><p>{note.summary}</p><Link className="text-link" to={`/field-notes/${note.slug}`}>Read note <span aria-hidden="true">→</span></Link></article>)}
-        </div>
-      </section>
-
-      <section className="graduate-direction section-shell">
-        <SectionHeader number="06" label="Graduate-study direction" title="Building the system is where the research question begins." />
-        <div>
-          <p>Implementation analysis can expose constraints, inconsistencies, and interaction consequences. Graduate study would add the research methods needed to evaluate how people actually understand and use those systems.</p>
-          <Link className="button button--secondary" to="/graduate-review">Open the five-minute graduate review</Link>
-        </div>
-      </section>
-
-      <section className="career-cta">
-        <p className="eyebrow eyebrow--light">Current direction</p>
-        <h2>{profile.availability}.</h2>
-        <p>I am looking for work where design and engineering are treated as connected disciplines.</p>
-        <ul>{profile.focusRoles.map((focus) => <li key={focus}>{focus}</li>)}</ul>
-        <div className="button-row"><Link className="button button--light" to="/resume">View resume</Link><Link className="button button--outline-light" to="/contact">Contact me</Link></div>
+      <section className="home-contact">
+        <p className="signal-label"><span /> Available for the right team</p>
+        <h2>Looking for someone who can design the experience and help ship it?</h2>
+        <p>I’m open to full-time UX Engineering, Design Engineering, Product Engineering, and frontend product roles.</p>
+        <div><Link className="button button--accent" to="/contact">Start a conversation <span aria-hidden="true">↗</span></Link><Link className="button button--ghost" to="/resume">View résumé</Link></div>
       </section>
     </div>
   );

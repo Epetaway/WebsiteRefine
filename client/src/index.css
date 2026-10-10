@@ -406,7 +406,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .built-proven__statement { display: grid; gap: 10px; }
 .built-proven__statement blockquote { padding: 18px; border-left: 3px solid var(--orchid); background: var(--sand); font-family: var(--font-serif); font-size: 20px; font-style: italic; }
 .built-proven__grid > div:last-child p { margin-bottom: 22px; font-size: 16px; line-height: 1.85; }
-.research-principles > div { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin-top: 50px; background: var(--line); border: 1px solid var(--line); }
+.research-principles__grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 1px; margin-top: 50px; background: var(--line); border: 1px solid var(--line); }
 .research-principles article { min-height: 220px; padding: 28px; background: var(--bone); }
 .research-principles article > span { font-family: var(--font-mono); font-size: 9px; color: var(--orchid); }
 .research-principles h3 { margin: 35px 0 10px; font-family: var(--font-serif); font-size: 27px; font-weight: 400; }
@@ -645,7 +645,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .online-resume { margin: 24px 10px 60px; }
   .online-resume__header, .resume-experience header { flex-direction: column; }
   .online-resume__header address { justify-items: start; }
-  .capabilities-grid, .education-grid, .form-grid, .research-principles > div { grid-template-columns: 1fr; }
+  .capabilities-grid, .education-grid, .form-grid, .research-principles__grid { grid-template-columns: 1fr; }
   .research-methods ul, .review-preparation-grid ul { columns: 1; }
   .review-jump-nav { position: static; padding-top: 8px; padding-bottom: 8px; }
   .review-jump-nav a { flex: 1 1 150px; border: 1px solid var(--line); }

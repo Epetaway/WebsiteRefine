@@ -8,7 +8,8 @@ export default function Footer() {
       <div className="site-footer__grid">
         <div>
           <p className="eyebrow eyebrow--light">Earl Hickson Jr. / UX Engineer</p>
-          <p className="site-footer__thesis">Technology should leave people more capable.</p>
+          <p className="site-footer__thesis">Design the experience. Build the behavior.</p>
+          <p className="site-footer__availability"><span /> {profile.availability}</p>
         </div>
         <nav aria-label="Footer navigation" className="site-footer__nav">
           {navigation.map((item) => (
@@ -16,6 +17,7 @@ export default function Footer() {
           ))}
         </nav>
         <div className="site-footer__contact">
+          <Link to="/research">Research direction</Link>
           <Link to="/graduate-review">Graduate review</Link>
           <a href={`mailto:${professionalLinks.email}`}>{professionalLinks.email}</a>
           <a href={professionalLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
@@ -24,7 +26,7 @@ export default function Footer() {
       </div>
       <div className="site-footer__base">
         <span>© {new Date().getFullYear()} {profile.name}</span>
-        <span>Built on an evolving system for documenting design, engineering, and inquiry.</span>
+        <span>Designed and built from interface to implementation.</span>
       </div>
     </footer>
   );

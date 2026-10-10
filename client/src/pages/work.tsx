@@ -1,33 +1,75 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
-import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { investigations } from "@/data/investigations";
 import { experience } from "@/data/professional";
+import { getCaseStudyView } from "@/lib/caseStudyView";
 
 export default function Work() {
   return (
-    <div className="portfolio-page">
-      <SEO title="Work — Earl Hickson Jr." description="Selected human-centered product investigations and professional UX engineering practice by Earl Hickson Jr." path="/work" image="/assets/brand/social/og-investigations.svg" />
-      <PageIntro label="Work / Evidence" title={<>Selected design investigations <em>and</em> professional practice.</>} lead={<p>These are different evidence types. The investigations show independent product reasoning and implementation. Professional history shows how that practice has operated inside healthcare, media, and enterprise teams.</p>} aside={<dl className="page-facts"><div><dt>Flagship work</dt><dd>3 investigations</dd></div><div><dt>Reading modes</dt><dd>Abstract + full study</dd></div><div><dt>Evidence policy</dt><dd>Built ≠ proven</dd></div></dl>} />
+    <div className="portfolio-page work-page">
+      <SEO
+        title="Work — Earl Hickson Jr."
+        description="UX engineering case studies and professional frontend product work by Earl Hickson Jr."
+        path="/work"
+        image="/assets/brand/social/og-investigations.svg"
+      />
+      <PageIntro
+        dark
+        label="Work / Case studies"
+        title={<>Design decisions. Working interfaces. <em>Clear evidence.</em></>}
+        lead={<p>Three independent products show how I frame interaction problems, make system decisions, and build the resulting experience. Professional history shows where that practice has shipped inside teams.</p>}
+        aside={<dl className="page-facts"><div><dt>Case studies</dt><dd>3 product systems</dd></div><div><dt>Practice</dt><dd>Design through implementation</dd></div><div><dt>Evidence</dt><dd>Built does not mean proven</dd></div></dl>}
+      />
 
-      <section className="section-shell work-investigations">
-        <SectionHeader number="01" label="Selected design investigations" title="Three independent product investigations at different stages of implementation." />
-        {investigations.map((project) => (
-          <article className="work-entry" key={project.slug} style={{ "--project-accent": project.accent } as React.CSSProperties}>
-            <div className="work-entry__index"><span>{project.number}</span><i /></div>
-            <div className="work-entry__image"><img src={project.previewImage} srcSet={project.previewSrcSet} sizes="(max-width: 600px) calc(100vw - 44px), (max-width: 820px) calc(100vw - 110px), 38vw" alt={project.previewAlt} loading="lazy" width="1200" height="900" /><span>Original project artwork</span></div>
-            <div className="work-entry__content"><p className="eyebrow">{project.theme}</p><h2>{project.name}</h2><blockquote>{project.question}</blockquote><p>{project.abstract.product}</p><dl><div><dt>Current maturity</dt><dd>{project.status}</dd></div><div><dt>Exact role</dt><dd>{project.role}</dd></div><div><dt>Verified stack</dt><dd>{project.stack.join(" · ")}</dd></div><div><dt>Key design decision</dt><dd>{project.interactionDecision}</dd></div><div><dt>Known limitation</dt><dd>{project.limitations[0]}</dd></div></dl><Link className="button button--project" to={`/work/${project.slug}`}>Open investigation</Link></div>
-          </article>
-        ))}
+      <section className="work-case-studies" aria-label="Selected case studies">
+        {investigations.map((project, index) => {
+          const view = getCaseStudyView(project);
+          return (
+            <Reveal key={project.slug}>
+              <article className="work-case" style={{ "--project-accent": project.accent } as React.CSSProperties}>
+                <div className="work-case__number"><span>{project.number}</span><i /></div>
+                <div className={`work-case__visual work-case__visual--${view.heroMedia.presentation}`}>
+                  <span>{project.status}</span>
+                  <img src={view.heroMedia.src} alt={view.heroMedia.alt} loading={index === 0 ? "eager" : "lazy"} />
+                </div>
+                <div className="work-case__body">
+                  <p className="signal-label"><span /> {project.theme}</p>
+                  <h2>{project.name}</h2>
+                  <p className="work-case__question">{project.question}</p>
+                  <p>{project.abstract.product}</p>
+                  <dl>
+                    <div><dt>My role</dt><dd>{project.role}</dd></div>
+                    <div><dt>Principal decision</dt><dd>{project.interactionDecision}</dd></div>
+                    <div><dt>Implementation</dt><dd>{project.abstract.built}</dd></div>
+                    <div><dt>Stack</dt><dd>{project.stack.join(" · ")}</dd></div>
+                  </dl>
+                  <Link className="button button--project" to={`/work/${project.slug}`}>Open case study <span aria-hidden="true">↗</span></Link>
+                </div>
+              </article>
+            </Reveal>
+          );
+        })}
       </section>
 
-      <section id="professional-practice" className="section-shell professional-history">
-        <SectionHeader number="02" label="Professional practice" title="Verified work without invented public case studies." />
-        <p className="section-lead">Public descriptions stay compact to protect confidential employer material while preserving the scope of the work.</p>
-        <div className="professional-history__list">
-          {experience.map((item) => <article key={item.id}><div><span>{item.dates}</span><span>{item.area}</span></div><h3>{item.employer}</h3><p className="professional-history__role">{item.role}</p><p>{item.summary}</p></article>)}
+      <section id="professional-practice" className="work-history" aria-labelledby="work-history-title">
+        <header className="home-section-heading home-section-heading--dark">
+          <p className="signal-label"><span /> Professional experience</p>
+          <h2 id="work-history-title">The independent work sits on a production foundation.</h2>
+          <p>Public descriptions remain concise to protect confidential employer material while showing the scope of the work.</p>
+        </header>
+        <div className="experience-ledger">
+          {experience.map((item) => (
+            <article key={item.id}>
+              <span>{item.dates}</span>
+              <div><h3>{item.employer}</h3><p>{item.role}</p></div>
+              <p>{item.summary}</p>
+              <span>{item.area}</span>
+            </article>
+          ))}
         </div>
+        <Link className="button button--accent" to="/resume">View résumé</Link>
       </section>
     </div>
   );

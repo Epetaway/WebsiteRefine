@@ -1,6 +1,6 @@
 # Earl Hickson Jr. — UX Engineer Portfolio
 
-Canonical source for [ehicksonjr.com](https://ehicksonjr.com): one professional identity, one public résumé, three independent product investigations, a research direction, Field Notes, and an intentional graduate-review path.
+Canonical source for [ehicksonjr.com](https://ehicksonjr.com): one professional identity, one public résumé, three independent product case studies, a research direction, Field Notes, and an intentional graduate-review path.
 
 HCEPS remains the internal editorial, evidence-governance, and design-language reference. It is not a second public portfolio or runtime application.
 
@@ -8,7 +8,7 @@ HCEPS remains the internal editorial, evidence-governance, and design-language r
 
 - React 18, TypeScript, Vite, and React Router.
 - Native semantic React pages; canonical routes contain no iframe or `.dc.html` runtime.
-- Custom editorial/technology CSS with self-hosted Manrope, Source Serif 4, and JetBrains Mono.
+- Custom creative-technologist CSS with self-hosted Manrope and JetBrains Mono.
 - Route-based code splitting and focused interactive prototypes.
 - React Helmet route metadata and JSON-LD.
 - Vite static output for Vercel/Netlify; Express production server for local verification.
@@ -18,9 +18,9 @@ HCEPS remains the internal editorial, evidence-governance, and design-language r
 ```text
 /                                      Home
 /work                                  Work
-/work/withyou                          WithYou investigation
-/work/dojonet                          DojoNet investigation
-/work/gundam-forge                     Gundam Forge investigation
+/work/withyou                          WithYou case study
+/work/dojonet                          DojoNet case study
+/work/gundam-forge                     Gundam Forge case study
 /research                              Research direction
 /field-notes                           Field Notes
 /field-notes/:slug                     Field Note
@@ -34,7 +34,7 @@ Legacy Projects, Case Studies, Investigations, Blog, Writing, How I Think, and A
 
 ## Design system
 
-The active system uses deep obsidian technology sections, warm editorial surfaces, restrained orchid/green/blue accents, large Source Serif headings, Manrope body copy, JetBrains Mono metadata, generous whitespace, and explicit evidence/status labels. Accessibility-adjusted accent pairs preserve the visual character on both light and dark surfaces.
+The active system uses dark product surfaces, warm reading areas, saffron brand accents, project-specific rose/green/cobalt accents, large Manrope headings, JetBrains Mono metadata, a wide twelve-column rhythm, and explicit evidence/status labels. Long-form case-study material sits behind accessible technical deep-dive disclosures while recruiter summaries remain permanently visible.
 
 ## Canonical professional data
 
@@ -82,7 +82,7 @@ npm run qa:browser
 npm run qa
 ```
 
-`qa:browser` requires Chrome or `CHROME_BIN` and tests canonical routes, expanded investigations, redirects, PDFs, metadata, images, keyboard focus, axe accessibility, required viewports, mobile landscape, zoom-equivalent reflow, reduced motion, and primary target size.
+`qa:browser` requires Chrome or `CHROME_BIN` and tests canonical routes, expanded case-study disclosures, redirects, PDFs, metadata, images, keyboard focus, axe accessibility, required viewports, mobile landscape, zoom-equivalent reflow, reduced motion, primary target size, and regenerated route screenshots.
 
 Lighthouse CI:
 

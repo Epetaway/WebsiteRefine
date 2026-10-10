@@ -3,7 +3,8 @@
   publish = "dist/public"
 
 [build.environment]
-  NODE_VERSION = "20"
+  NODE_VERSION = "22"
+  NPM_FLAGS = "--include=dev"
 
 [[redirects]]
   from = "/projects/withyou"
