@@ -4,6 +4,12 @@ import { chromium } from "playwright-core";
 import AxeBuilder from "@axe-core/playwright";
 
 const baseUrl = process.env.QA_BASE_URL ?? "http://127.0.0.1:3000";
+const basePath = new URL(baseUrl).pathname.replace(/\/$/, "");
+const routePath = (url) => {
+  const pathname = new URL(url).pathname;
+  if (!basePath || !pathname.startsWith(basePath)) return pathname;
+  return pathname.slice(basePath.length) || "/";
+};
 const chromePath =
   process.env.CHROME_BIN ??
   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -213,13 +219,13 @@ try {
     redirects.push({
       legacy,
       expected,
-      actual: new URL(page.url()).pathname,
+      actual: routePath(page.url()),
     });
   }
 
   await page.goto(`${baseUrl}/not-a-real-route`, { waitUntil: "networkidle" });
   const notFound = {
-    path: new URL(page.url()).pathname,
+    path: routePath(page.url()),
     heading: await page.locator("h1").innerText(),
   };
 

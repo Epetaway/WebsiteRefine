@@ -1,4 +1,5 @@
 import type { Investigation } from "@/data/investigations";
+import { publicPath } from "@/lib/publicPath";
 
 type HeroMedia = {
   src: string;
@@ -26,7 +27,10 @@ const heroMedia: Record<Investigation["slug"], HeroMedia> = {
 
 export function getCaseStudyView(project: Investigation) {
   return {
-    heroMedia: heroMedia[project.slug],
+    heroMedia: {
+      ...heroMedia[project.slug],
+      src: publicPath(heroMedia[project.slug].src),
+    },
     challenge: project.abstract.problem,
     contribution: project.role,
     implementation: project.abstract.built,

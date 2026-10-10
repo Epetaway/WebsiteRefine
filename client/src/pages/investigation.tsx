@@ -7,6 +7,7 @@ import { DojoNetProgressPrototype } from "@/components/prototypes/DojoNetProgres
 import { GundamForgeValidationPrototype } from "@/components/prototypes/GundamForgeValidationPrototype";
 import { getInvestigation, investigations } from "@/data/investigations";
 import { getCaseStudyView } from "@/lib/caseStudyView";
+import { publicPath } from "@/lib/publicPath";
 import NotFound from "@/pages/not-found";
 
 export default function InvestigationPage() {
@@ -71,7 +72,7 @@ export default function InvestigationPage() {
         <div className="case-proof__captures">
           {investigation.captures.slice(0, 3).map((capture) => (
             <figure key={capture.src}>
-              <img src={capture.src} alt={capture.alt} loading="lazy" width="1280" height="800" />
+              <img src={publicPath(capture.src)} alt={capture.alt} loading="lazy" width="1280" height="800" />
               <figcaption><EvidenceBadge status={capture.label} /><span>{capture.caption}</span></figcaption>
             </figure>
           ))}
@@ -90,7 +91,7 @@ export default function InvestigationPage() {
           <section className="study-section section-shell"><SectionHeader number="04" label="Workflow and design evolution" title="A product argument expressed as behavior." /><div className="decision-grid"><div><span>Core workflow</span><ol>{investigation.coreWorkflow.map((item) => <li key={item}>{item}</li>)}</ol></div><div><span>Design evolution</span><p>{investigation.designEvolution}</p></div><div><span>Interaction decision</span><p>{investigation.interactionDecision}</p></div><div><span>Technical consequence</span><p>{investigation.technicalConsequence}</p></div></div></section>
           <section className="prototype-section section-shell"><SectionHeader number="05" label="Interactive evidence" title="One focused prototype, not an embedded application." light /><Prototype /></section>
           <section className="study-section section-shell"><SectionHeader number="06" label="Implementation and evidence" title="What exists, what is partial, and what remains uncertain." /><div className="evidence-list">{investigation.implementation.map((item) => <div key={item.claim}><EvidenceBadge status={item.status} /><p>{item.claim}</p></div>)}</div><div className="evidence-boundary"><span>Evidence boundary</span>{investigation.evidence.map((item) => <p key={item}>{item}</p>)}</div><div className="testing-evidence"><span>Testing evidence</span><ul>{investigation.testingEvidence.map((item) => <li key={item}>{item}</li>)}</ul></div></section>
-          <section className="capture-section section-shell"><SectionHeader number="07" label="Implementation captures" title="Screens from the current development-stage work." light /><div className="capture-grid">{investigation.captures.map((capture) => <figure key={capture.src}><img src={capture.src} alt={capture.alt} loading="lazy" width="1280" height="800" /><figcaption><EvidenceBadge status={capture.label} /><span>{capture.caption}</span></figcaption></figure>)}</div></section>
+          <section className="capture-section section-shell"><SectionHeader number="07" label="Implementation captures" title="Screens from the current development-stage work." light /><div className="capture-grid">{investigation.captures.map((capture) => <figure key={capture.src}><img src={publicPath(capture.src)} alt={capture.alt} loading="lazy" width="1280" height="800" /><figcaption><EvidenceBadge status={capture.label} /><span>{capture.caption}</span></figcaption></figure>)}</div></section>
           <section className="study-section section-shell"><SectionHeader number="08" label="Limitations and open questions" title="Working software is not a validated outcome." /><div className="limitations-grid"><div><span>Known limitations</span><ul>{investigation.limitations.map((item) => <li key={item}>{item}</li>)}</ul></div><div><span>Open research questions</span><ol>{investigation.openQuestions.map((item) => <li key={item}>{item}</li>)}</ol></div></div></section>
           <section className="study-section section-shell investigation-reflection"><SectionHeader number="09" label="Proposed evaluation and reflection" title="The next evidence requires people, methods, and research ethics." /><div className="limitations-grid"><div><span>Proposed methods</span><ul>{investigation.proposedMethods.map((item) => <li key={item}>{item}</li>)}</ul><small>Proposed research—not completed testing.</small></div><div><span>Reflection</span><p>{investigation.reflection}</p><Link className="case-link" to={investigation.relatedFieldNote.path}>Related note: {investigation.relatedFieldNote.title} <span aria-hidden="true">↗</span></Link></div></div></section>
         </div>
