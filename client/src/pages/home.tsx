@@ -5,6 +5,7 @@ import { investigations } from "@/data/investigations";
 import { fieldNotes } from "@/data/fieldNotes";
 import { experience, profile, teaching } from "@/data/professional";
 import { getCaseStudyView } from "@/lib/caseStudyView";
+import { publicPath } from "@/lib/publicPath";
 import portrait from "@/images/earl-bjj-photo.png";
 import trainingPhoto from "@/images/BLKBELT.png";
 
@@ -33,7 +34,7 @@ export default function Home() {
           </p>
           <div className="home-hero__actions">
             <Link className="button button--accent" to="/work">View case studies <span aria-hidden="true">↗</span></Link>
-            <a className="button button--ghost" href="/assets/Earl-Hickson-Jr-Resume.pdf" download>Download résumé</a>
+            <a className="button button--ghost" href={publicPath("/assets/Earl-Hickson-Jr-Resume.pdf")} download>Download résumé</a>
           </div>
           <dl className="home-hero__status">
             <div><dt>Current</dt><dd>{profile.availability}</dd></div>

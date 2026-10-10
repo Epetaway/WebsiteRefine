@@ -12,6 +12,7 @@ import {
   research,
   teaching,
 } from "@/data/professional";
+import { publicPath } from "@/lib/publicPath";
 
 export default function GraduateReview() {
   return (
@@ -29,7 +30,7 @@ export default function GraduateReview() {
         aside={
           <div className="graduate-review__quick-links">
             <span>Application document</span>
-            <a href={professionalLinks.graduateCv}>Open graduate CV</a>
+            <a href={publicPath(professionalLinks.graduateCv)}>Open graduate CV</a>
             <small>Two-page, application-specific PDF</small>
           </div>
         }
@@ -136,7 +137,7 @@ export default function GraduateReview() {
         <h2>Continue with the evidence most useful to your review.</h2>
         <p>The graduate CV is an application-specific document, not an alternative employment résumé.</p>
         <div className="button-row">
-          <a className="button button--light" href={professionalLinks.graduateCv}>Graduate CV</a>
+          <a className="button button--light" href={publicPath(professionalLinks.graduateCv)}>Graduate CV</a>
           <Link className="button button--outline-light" to="/research">Research direction</Link>
           <a className="button button--outline-light" href={professionalLinks.github} target="_blank" rel="noreferrer">GitHub</a>
           <Link className="button button--outline-light" to="/contact">Contact</Link>

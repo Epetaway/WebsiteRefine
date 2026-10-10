@@ -8,10 +8,11 @@ const __dirname = path.dirname(__filename);
 
 export default defineConfig(async () => {
   const plugins = [react()];
+  const base = process.env.VITE_BASE_PATH || "/";
 
   return {
-    // Since we're using a custom domain (ehicksonjr.com), base is always "/"
-    base: "/",
+    // Root for the custom domain and Vercel; repository path for GitHub Pages.
+    base,
     plugins,
     resolve: {
       dedupe: ["react", "react-dom"],

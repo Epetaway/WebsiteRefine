@@ -12,12 +12,13 @@ import {
   profile,
   teaching,
 } from "@/data/professional";
+import { publicPath } from "@/lib/publicPath";
 
 export default function Resume() {
   return (
     <div className="portfolio-page resume-page">
       <SEO title="Resume — Earl Hickson Jr., UX Engineer" description="Earl Hickson Jr. — UX Engineer working across design, frontend engineering, accessibility, and full-stack product development." path="/resume" image="/assets/brand/social/og-resume.svg" />
-      <PageIntro compact label="Resume / Professional record" title={<>One public resume. One professional <em>identity.</em></>} lead={<p>A publication-safe professional record spanning visual design, frontend development, UX engineering, and independent product systems.</p>} aside={<a className="resume-download" href={professionalLinks.publicResume} download><span>PDF / ATS-friendly</span><strong>Download resume</strong><small>Earl-Hickson-Jr-Resume.pdf</small></a>} />
+      <PageIntro compact label="Resume / Professional record" title={<>One public resume. One professional <em>identity.</em></>} lead={<p>A publication-safe professional record spanning visual design, frontend development, UX engineering, and independent product systems.</p>} aside={<a className="resume-download" href={publicPath(professionalLinks.publicResume)} download><span>PDF / ATS-friendly</span><strong>Download resume</strong><small>Earl-Hickson-Jr-Resume.pdf</small></a>} />
 
       <article className="online-resume">
         <header className="online-resume__header"><div><h2>{profile.name}</h2><p>{profile.publicTitle}</p></div><address><a href={`mailto:${professionalLinks.email}`}>{professionalLinks.email}</a><a href={professionalLinks.linkedin}>linkedin.com/in/earlhicksonjr</a><a href={professionalLinks.github}>github.com/Epetaway</a></address></header>
