@@ -32,7 +32,7 @@ export const RESUME_PATH = professionalLinks.publicResume;
 
 /**
  * Compatibility export for archived project components.
- * Canonical Work and Investigation routes consume `data/investigations`.
+ * Canonical Work and case-study routes consume `data/investigations`.
  */
 export const projects: Project[] = investigations.map((investigation) => ({
   id: investigation.slug,
@@ -46,7 +46,7 @@ export const projects: Project[] = investigations.map((investigation) => ({
   solution: investigation.interactionDecision,
   result: investigation.evidence[0],
   stack: investigation.stack,
-  tags: [investigation.theme, "UX Engineering", "Independent investigation"],
+  tags: [investigation.theme, "UX Engineering", "Independent case study"],
   devNotes: `${investigation.status}. ${investigation.limitations[0]}`,
   features: investigation.implementation.map((item) => item.claim),
   links: {},

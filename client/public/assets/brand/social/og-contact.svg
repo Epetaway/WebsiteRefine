@@ -1,17 +1,17 @@
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#F2EDE3" />
-  <rect x="0" y="0" width="8" height="630" fill="#C65788" />
+  <rect width="1200" height="630" fill="#0B0D12" />
+  <rect x="0" y="0" width="8" height="630" fill="#F6B51D" />
 
-  <text x="64" y="88" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="0.18em" fill="rgba(21,21,21,0.4)">EARL HICKSON JR. · UX ENGINEER</text>
+  <text x="64" y="88" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="13" letter-spacing="0.18em" fill="#AEB4BF">EARL HICKSON JR. · UX ENGINEER</text>
 
-  <text x="64" y="256" font-family="'Source Serif 4',Georgia,'Times New Roman',serif" font-size="54" font-weight="400" fill="#151515">Contact Earl Hickson Jr.</text>
+  <text x="64" y="256" font-family="Manrope,Inter,Arial,sans-serif" font-size="54" font-weight="700" fill="#F7F3EB">Contact Earl Hickson Jr.</text>
 
-  <text x="64" y="334" font-family="'Source Serif 4',Georgia,'Times New Roman',serif" font-size="22" font-style="italic" fill="rgba(21,21,21,0.6)">Open to full-time UX Engineering and product roles.</text>
+  <text x="64" y="334" font-family="Manrope,Inter,Arial,sans-serif" font-size="22" fill="#AEB4BF">Open to full-time UX Engineering and product roles.</text>
 
-  <text x="64" y="420" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="16" letter-spacing="0.12em" fill="#C65788">e@ehicksonjr.com</text>
+  <text x="64" y="420" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="16" letter-spacing="0.12em" fill="#F6B51D">e@ehicksonjr.com</text>
 
-  <text x="64" y="574" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" letter-spacing="0.14em" fill="rgba(21,21,21,0.4)">ehicksonjr.com/contact</text>
+  <text x="64" y="574" font-family="'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace" font-size="11" letter-spacing="0.14em" fill="#AEB4BF">ehicksonjr.com/contact</text>
 
-  <circle cx="1140" cy="568" r="8" fill="none" stroke="#C65788" stroke-opacity="0.35" stroke-width="8" />
-  <circle cx="1140" cy="568" r="5" fill="#C65788" />
+  <circle cx="1140" cy="568" r="8" fill="none" stroke="#F6B51D" stroke-opacity="0.35" stroke-width="8" />
+  <circle cx="1140" cy="568" r="5" fill="#F6B51D" />
 </svg>

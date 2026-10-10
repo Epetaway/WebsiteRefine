@@ -4,7 +4,7 @@ export function CapabilityNetwork() {
   return (
     <figure className="capability-network" aria-labelledby="capability-network-title">
       <svg viewBox="0 0 760 480" role="img" aria-labelledby="capability-network-title capability-network-description">
-        <title id="capability-network-title">Human capability investigation network</title>
+        <title id="capability-network-title">Human capability case-study network</title>
         <desc id="capability-network-description">
           Relationships, learning, and decision support connect to a central human capability question.
         </desc>
@@ -34,7 +34,7 @@ export function CapabilityNetwork() {
           </g>
         ))}
       </svg>
-      <figcaption>Three independent investigations, one recurring human question.</figcaption>
+      <figcaption>Three independent case studies, one recurring human question.</figcaption>
     </figure>
   );
 }

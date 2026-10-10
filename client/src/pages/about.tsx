@@ -1,33 +1,77 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
-import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { profile, teaching } from "@/data/professional";
+import portrait from "@/images/me.webp";
+import trainingPhoto from "@/images/BLKBELT.png";
 
 const trajectory = [
-  ["Art", "How do I express an idea?", "Drawing and visual thinking taught me to see before learning to communicate."],
-  ["Graphic design", "How do I communicate an idea?", "A BFA at Kean University established typography, hierarchy, composition, and purpose."],
-  ["Interaction design", "How does someone experience the idea?", "The static frame became a sequence of choices and responses."],
-  ["Frontend engineering", "How does the experience behave?", "HTML and CSS became composition; JavaScript became behavior; React became systems."],
-  ["Full-stack development", "What makes that behavior possible?", "APIs, schemas, authentication, real-time state, and deployment expanded the design material."],
-  ["HCI", "What are the consequences?", "The current direction asks how to evaluate what technology makes people capable of."],
-];
+  ["01", "Graphic design", "Typography, hierarchy, composition, and purposeful visual communication."],
+  ["02", "Interaction design", "The static frame became a sequence of choices, feedback, and response."],
+  ["03", "Frontend engineering", "Code became a way to shape behavior—not merely reproduce a comp."],
+  ["04", "Product systems", "APIs, schemas, accessibility, state, and deployment expanded the design material."],
+  ["05", "Human-centered inquiry", "The question became what the entire system enables a person to understand and do."],
+] as const;
 
 export default function About() {
   return (
-    <div className="portfolio-page">
-      <SEO title="About — Earl Hickson Jr." description="How Earl Hickson Jr. moved from visual communication to UX engineering and human-centered product inquiry." path="/about" image="/assets/brand/social/og-about.svg" />
-      <PageIntro label="About / Trajectory" title={<>I began with visual communication. Engineering expanded the medium. HCI expanded the <em>question.</em></>} lead={<p>I am a UX Engineer with a graphic-design foundation, a product-engineering practice, and a continuing interest in how systems shape human capability.</p>} aside={<dl className="page-facts"><div><dt>Foundation</dt><dd>BFA, Graphic Design</dd></div><div><dt>Practice</dt><dd>Design + engineering</dd></div><div><dt>Direction</dt><dd>Human-centered technology</dd></div></dl>} />
+    <div className="portfolio-page about-page">
+      <SEO title="About — Earl Hickson Jr." description="Earl Hickson Jr. is a UX Engineer connecting graphic design, interaction thinking, frontend engineering, and human-centered product work." path="/about" image="/assets/brand/social/og-about.svg" />
+      <PageIntro
+        dark
+        label="About / Practice"
+        title={<>I learned to design the message. Then I learned to build the <em>behavior.</em></>}
+        lead={<p>I’m a UX Engineer with a graphic-design foundation and a product-engineering practice. I work where interface craft, system behavior, and implementation meet.</p>}
+        aside={<figure className="about-portrait"><img src={portrait} alt="Portrait of Earl Hickson Jr." width="533" height="667" /><figcaption>Earl Hickson Jr. / UX Engineer</figcaption></figure>}
+      />
 
-      <section className="section-shell about-trajectory"><SectionHeader number="01" label="Career and intellectual progression" title="A sequence of expanding questions." /><div className="about-trajectory__list">{trajectory.map(([stage, question, detail], index) => <article key={stage}><span>{String(index + 1).padStart(2, "0")}</span><h3>{stage}</h3><blockquote>{question}</blockquote><p>{detail}</p></article>)}</div></section>
+      <section className="about-story" aria-labelledby="about-story-title">
+        <header className="home-section-heading">
+          <p className="signal-label"><span /> 01 / An expanding medium</p>
+          <h2 id="about-story-title">Every step added another layer of responsibility.</h2>
+          <p>The throughline is not a series of career pivots. It is a steadily expanding understanding of what design includes.</p>
+        </header>
+        <ol className="about-timeline">
+          {trajectory.map(([number, stage, detail]) => (
+            <li key={stage}><span>{number}</span><h3>{stage}</h3><p>{detail}</p></li>
+          ))}
+        </ol>
+        <blockquote className="about-statement">Engineering became another creative material.</blockquote>
+      </section>
 
-      <section className="creative-material"><p className="eyebrow eyebrow--light">A turning point</p><blockquote>“Engineering became another creative material.”</blockquote><div><p>Design and engineering are not separate creative identities in my practice. Code lets an idea behave. Architecture changes which experiences are possible. A schema can protect—or undermine—the consent promised by an interface.</p><p>The closer I moved to the full system, the harder it became to treat design as a visual layer placed on top of technology.</p></div></section>
+      <section className="about-craft" aria-labelledby="about-craft-title">
+        <Reveal className="about-craft__copy">
+          <p className="signal-label"><span /> 02 / Current practice</p>
+          <h2 id="about-craft-title">The interface and the system behind it have to agree.</h2>
+          <p>A clear screen can still hide a broken rule. A clean component can still create an inaccessible workflow. That is why I move between visual hierarchy, interaction states, component architecture, APIs, and testing instead of treating design and engineering as separate handoffs.</p>
+          <p>I’m currently open to full-time product work and continue to build independent systems while pursuing that next team.</p>
+          <Link className="case-link case-link--light" to="/work">See the case studies <span aria-hidden="true">↗</span></Link>
+        </Reveal>
+        <div className="about-craft__principles">
+          <div><span>01</span><h3>Make the behavior legible</h3><p>People should understand what happened, what changed, and what they can do next.</p></div>
+          <div><span>02</span><h3>Build the real constraint</h3><p>Implementation reveals the states, data rules, and edge cases that static frames cannot.</p></div>
+          <div><span>03</span><h3>Name the evidence</h3><p>Working software demonstrates implementation; human outcomes require evaluation.</p></div>
+        </div>
+      </section>
 
-      <section className="section-shell transition-section"><SectionHeader number="02" label="Current transition" title="The work continues between formal roles." /><div><p>I am currently in a professional transition, working outside technology while actively pursuing a return to full-time product work. That gap has not stopped the work. I have continued building independent products across mobile, frontend, backend, accessibility, real-time systems, and product design.</p><p>I describe that period directly because evidence matters more than a seamless career story. The products and this portfolio show the work I have continued to do.</p></div></section>
+      <section className="about-discipline" aria-labelledby="about-discipline-title">
+        <Reveal className="about-discipline__visual"><img src={trainingPhoto} alt="Earl teaching a young Brazilian Jiu-Jitsu student" loading="lazy" width="4032" height="2268" /><span>Teaching / observation / feedback</span></Reveal>
+        <Reveal className="about-discipline__body" delay={0.05}>
+          <p className="signal-label"><span /> 03 / Practice beyond technology</p>
+          <h2 id="about-discipline-title">Teaching changed how I think about capability.</h2>
+          <p>{teaching.summary}</p>
+          <p>On the mat, a technically correct explanation is only the start. You observe, adapt the instruction, and help someone act under pressure. Product work asks for the same humility: what I intended is not the same as what another person can actually do.</p>
+          <Link className="case-link" to="/field-notes/teaching-jiu-jitsu-and-ux">Read the related note <span aria-hidden="true">↗</span></Link>
+        </Reveal>
+      </section>
 
-      <section className="section-shell teaching-section"><SectionHeader number="03" label="Martial arts and teaching" title="Feedback, discipline, and capability are part of the practice." /><div><blockquote>Teaching made one thing unmistakable: understanding a description is not the same as being able to act.</blockquote><p>{teaching.summary}</p><p>{teaching.evidenceBoundary}</p><Link to="/field-notes/teaching-jiu-jitsu-and-ux" className="text-link">Read the Field Note <span aria-hidden="true">→</span></Link></div></section>
-
-      <section className="about-seeking"><p className="eyebrow eyebrow--light">What I am looking for</p><h2>I am looking for full-time work where design and engineering are treated as connected disciplines.</h2><p>{profile.focusRoles.join(" · ")}</p><div className="button-row"><Link className="button button--light" to="/resume">View resume</Link><Link className="button button--outline-light" to="/contact">Contact me</Link></div></section>
+      <section className="about-direction">
+        <p className="signal-label"><span /> Human-centered direction</p>
+        <h2>Building the system is where the next question begins.</h2>
+        <p>{profile.belief} My HCI direction develops the methods needed to evaluate that belief rather than treating it as a product claim.</p>
+        <div><Link className="button button--accent" to="/research">Explore the research direction</Link><Link className="button button--ghost" to="/contact">Contact me</Link></div>
+      </section>
     </div>
   );
 }

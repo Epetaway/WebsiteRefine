@@ -14,6 +14,7 @@ export default defineConfig(async () => {
     base: "/",
     plugins,
     resolve: {
+      dedupe: ["react", "react-dom"],
       alias: {
         "@": path.resolve(__dirname, "client", "src"),
         "@shared": path.resolve(__dirname, "shared"),

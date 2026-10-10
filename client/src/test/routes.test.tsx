@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { HelmetProvider } from "react-helmet-async";
 import { MemoryRouter } from "react-router-dom";
 import { describe, expect, it } from "vitest";
@@ -19,17 +19,17 @@ function renderRoute(path: string) {
 
 describe("canonical route architecture", () => {
   it.each([
-    ["/", /Designing and building human-centered systems/i],
-    ["/work", /Selected design investigations/i],
+    ["/", /I design and build digital products/i],
+    ["/work", /Design decisions/i],
     ["/work/withyou", "WithYou"],
     ["/work/dojonet", "DojoNet"],
     ["/work/gundam-forge", "Gundam Forge"],
     ["/research", /I design and build technology/i],
     ["/field-notes", /thinking carefully in public/i],
     ["/field-notes/designing-consent", /Designing Consent Into Digital Products/i],
-    ["/about", /I began with visual communication/i],
+    ["/about", /I learned to design the message/i],
     ["/resume", /One public resume/i],
-    ["/contact", /Let’s build technology/i],
+    ["/contact", /Let’s build a product/i],
     ["/graduate-review", /Design preparation/i],
   ])("renders %s as a native page", async (path, heading) => {
     const { container } = renderRoute(path);
@@ -42,9 +42,9 @@ describe("canonical route architecture", () => {
   });
 
   it.each([
-    ["/projects", /Selected design investigations/i],
-    ["/case-studies", /Selected design investigations/i],
-    ["/investigations", /Selected design investigations/i],
+    ["/projects", /Design decisions/i],
+    ["/case-studies", /Design decisions/i],
+    ["/investigations", /Design decisions/i],
     ["/projects/withyou", "WithYou"],
     ["/projects/dojonet", "DojoNet"],
     ["/projects/gundam-forge", "Gundam Forge"],
@@ -63,5 +63,23 @@ describe("canonical route architecture", () => {
     first.unmount();
     renderRoute("/work/not-a-project");
     expect(await screen.findByRole("heading", { name: /This path is no longer/i })).toBeInTheDocument();
+  });
+
+  it("keeps the recruiter summary visible and exposes a semantic technical deep dive", async () => {
+    const { container } = renderRoute("/work/withyou");
+    expect(await screen.findByRole("heading", { name: /The case in five minutes/i })).toBeInTheDocument();
+    const disclosure = container.querySelector("details#deep-dive");
+    expect(disclosure).toBeInTheDocument();
+    const summary = screen.getByText(/Open the full design and implementation record/i);
+    expect(summary).toBeInTheDocument();
+    fireEvent.click(summary);
+    expect(disclosure).toHaveAttribute("open");
+  });
+
+  it("moves between case studies through the project navigation", async () => {
+    renderRoute("/work/withyou");
+    const nextCaseStudy = await screen.findByRole("link", { name: /Read DojoNet/i });
+    fireEvent.click(nextCaseStudy);
+    expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" })).toBeInTheDocument();
   });
 });

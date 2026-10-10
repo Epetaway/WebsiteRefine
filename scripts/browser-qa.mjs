@@ -32,10 +32,10 @@ const widths = process.env.QA_WIDTHS
   : [320, 375, 390, 430, 768, 1024, 1280, 1440, 1920];
 const screenshotTargets = new Set([
   "320:/",
-  "375:/work",
+  ...canonicalRoutes.map((route) => `375:${route}`),
   "768:/work/withyou",
   "1024:/graduate-review",
-  "1440:/",
+  ...canonicalRoutes.map((route) => `1440:${route}`),
 ]);
 
 await fs.mkdir(outputDirectory, { recursive: true });
@@ -128,7 +128,9 @@ try {
       results.push(entry);
 
       if (/^\/work\/(withyou|dojonet|gundam-forge)$/.test(route)) {
-        await page.getByRole("button", { name: /Full study/ }).click();
+        const deepDiveSummary = page.locator(".case-deep-dive > summary");
+        await deepDiveSummary.focus();
+        await page.keyboard.press("Enter");
         await page.locator(".prototype-frame").waitFor({ state: "visible" });
         await page.locator("img").evaluateAll(async (images) => {
           for (const image of images) image.loading = "eager";
@@ -272,7 +274,7 @@ try {
   const undersizedPrimaryTargets = await page.evaluate(() =>
     Array.from(
       document.querySelectorAll(
-        ".button, .site-menu-button, .mobile-nav__link, .reading-mode button, .review-jump-nav a, .prototype-button",
+        ".button, .site-menu-button, .mobile-nav__link, .case-deep-dive > summary, .review-jump-nav a, .prototype-button",
       ),
     )
       .filter((element) => {

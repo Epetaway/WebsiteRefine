@@ -18,7 +18,7 @@ export default function GraduateReview() {
     <div className="portfolio-page graduate-review-page">
       <SEO
         title="Graduate Review — Earl Hickson Jr., UX Engineer"
-        description="A five-minute HCI admissions review of Earl Hickson Jr.'s preparation, independent investigations, research interests, writing, and graduate CV."
+        description="A five-minute HCI admissions review of Earl Hickson Jr.'s preparation, independent case studies, research interests, writing, and graduate CV."
         path="/graduate-review"
         image="/assets/brand/social/og-graduate-review.svg"
       />
@@ -38,7 +38,7 @@ export default function GraduateReview() {
       <nav className="review-jump-nav" aria-label="Graduate review sections">
         <a href="#research-direction">Research direction</a>
         <a href="#preparation">Preparation</a>
-        <a href="#investigations">Investigations</a>
+        <a href="#investigations">Case studies</a>
         <a href="#teaching-writing">Teaching and writing</a>
         <a href="#application-documents">Documents and contact</a>
       </nav>
@@ -89,7 +89,7 @@ export default function GraduateReview() {
       </section>
 
       <section id="investigations" className="section-shell review-investigations">
-        <SectionHeader number="03" label="Independent HCI investigations" title="What I built, what the evidence supports, and what remains unknown." />
+        <SectionHeader number="03" label="Independent HCI case studies" title="What I built, what the evidence supports, and what remains unknown." />
         <div className="review-investigations__list">
           {investigations.map((investigation) => (
             <article key={investigation.slug} style={{ "--project-accent": investigation.accent } as React.CSSProperties}>
