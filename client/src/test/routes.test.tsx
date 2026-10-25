@@ -24,6 +24,7 @@ describe("canonical route architecture", () => {
     ["/work/withyou", "WithYou"],
     ["/work/dojonet", "DojoNet"],
     ["/work/gundam-forge", "Gundam Forge"],
+    ["/work/earl-the-kaiju", /Earl the Kaiju — Building an identity into a working ecosystem/i],
     ["/research", /I design and build technology/i],
     ["/field-notes", /thinking carefully in public/i],
     ["/field-notes/designing-consent", /Designing Consent Into Digital Products/i],
@@ -33,7 +34,8 @@ describe("canonical route architecture", () => {
     ["/graduate-review", /Design preparation/i],
   ])("renders %s as a native page", async (path, heading) => {
     const { container } = renderRoute(path);
-    expect(await screen.findByRole("heading", { level: 1, name: heading })).toBeInTheDocument();
+    // Route chunks load lazily; the larger case-study chunk can take over a second under jsdom.
+    expect(await screen.findByRole("heading", { level: 1, name: heading }, { timeout: 5000 })).toBeInTheDocument();
     expect(container.querySelector("iframe")).not.toBeInTheDocument();
     expect(container.textContent).not.toContain(".dc.html");
     expect(container.querySelector(".site-header")).toBeInTheDocument();
@@ -52,9 +54,14 @@ describe("canonical route architecture", () => {
     ["/approach", /I design and build technology/i],
     ["/blog", /thinking carefully in public/i],
     ["/writing", /thinking carefully in public/i],
+    ["/earldkaiju", /Building an identity into a working ecosystem/i],
+    ["/EarldKaiju", /Building an identity into a working ecosystem/i],
+    ["/earl-the-kaiju", /Building an identity into a working ecosystem/i],
+    ["/projects/earl-the-kaiju", /Building an identity into a working ecosystem/i],
+    ["/projects/earldkaiju", /Building an identity into a working ecosystem/i],
   ])("redirects legacy route %s", async (path, heading) => {
     renderRoute(path);
-    expect(await screen.findByRole("heading", { level: 1, name: heading })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: heading }, { timeout: 5000 })).toBeInTheDocument();
   });
 
   it("renders the 404 for an unknown route and an unknown project slug", async () => {
@@ -76,8 +83,20 @@ describe("canonical route architecture", () => {
     expect(disclosure).toHaveAttribute("open");
   });
 
-  it("moves between case studies through the project navigation", async () => {
+  it("follows the case-study order WithYou → Earl the Kaiju → Gundam Forge → DojoNet → WithYou", async () => {
     renderRoute("/work/withyou");
+    fireEvent.click(await screen.findByRole("link", { name: /Read Earl the Kaiju/i }));
+    expect(await screen.findByRole("heading", { level: 1, name: /Earl the Kaiju/i }, { timeout: 5000 })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("link", { name: /Read Gundam Forge/i }));
+    expect(await screen.findByRole("heading", { level: 1, name: "Gundam Forge" }, { timeout: 5000 })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("link", { name: /Read DojoNet/i }));
+    expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" }, { timeout: 5000 })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("link", { name: /Read WithYou/i }));
+    expect(await screen.findByRole("heading", { level: 1, name: "WithYou" }, { timeout: 5000 })).toBeInTheDocument();
+  });
+
+  it("moves between case studies through the project navigation", async () => {
+    renderRoute("/work/gundam-forge");
     const nextCaseStudy = await screen.findByRole("link", { name: /Read DojoNet/i });
     fireEvent.click(nextCaseStudy);
     expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" })).toBeInTheDocument();

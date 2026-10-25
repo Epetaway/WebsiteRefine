@@ -175,117 +175,6 @@ export const investigations: Investigation[] = [
     ],
   },
   {
-    slug: "dojonet",
-    number: "02",
-    name: "DojoNet",
-    theme: "Learning",
-    question:
-      "How can digital systems support progression without reducing learning to completion?",
-    status: research.projects.dojonet.status,
-    role: "Solo product design and frontend product development",
-    context: "Martial arts learning system",
-    accent: "#076B50",
-    accentSecondary: "#E4AE3A",
-    surface: "#E5DDCF",
-    previewImage: "/assets/projects/dojonet/preview.webp",
-    previewSrcSet:
-      "/assets/projects/dojonet/preview-480.webp 480w, /assets/projects/dojonet/preview-800.webp 800w, /assets/projects/dojonet/preview.webp 1067w",
-    previewAlt: "Original DojoNet project card artwork",
-    abstract: {
-      product:
-        "A martial arts training journal and community product centered on practice history, reflection, and qualitative progression.",
-      problem:
-        "Completion counters can make learning look precise while hiding correction, consistency, context, and application under pressure.",
-      built:
-        "A React application with a training journal, technique history, reflection surfaces, and a portfolio prototype for recording a session.",
-      insight:
-        "Progression is a history of learning, practice, feedback, and increasing capability—not simply a list of completed items.",
-      remember: "Progress is not the same thing as completion.",
-    },
-    argument: "Progress is not the same thing as completion.",
-    changedMind:
-      "I began by looking for a clean progress metric. Teaching made the flaw obvious: a student can repeat a technique many times without understanding when, why, or against whom it works.",
-    humanContext: [
-      "Learning in martial arts is embodied, social, and situational. Understanding purpose, receiving correction, building consistency, connecting movements, and applying them under pressure are different kinds of progress.",
-      "A journal can support reflection and coaching, but only if the model resists turning a living practice into a checklist.",
-    ],
-    tension: [
-      { label: "Motivation", detail: "Progress should be visible enough to sustain practice." },
-      { label: "Honesty", detail: "The interface should not imply mastery from activity count alone." },
-      { label: "Coaching", detail: "Student reflection should create a useful starting point for feedback." },
-    ],
-    interactionDecision:
-      "A training entry records the technique, a qualitative stage, and a reflection. The resulting history shows change over time without calculating a false mastery percentage.",
-    technicalConsequence:
-      "The data model needs event history and context, not only a mutable completion field. Qualitative stages must remain understandable as states, not covertly become a score.",
-    responsibilities: [
-      "Learning-model framing and interaction design",
-      "Practitioner-facing frontend implementation",
-      "Qualitative progression and journal prototyping",
-      "Implementation analysis and evidence documentation",
-    ],
-    constraints: [
-      "Progress should remain motivating without becoming a false mastery score.",
-      "Student reflection and instructor coaching are distinct information contexts.",
-      "Embodied, situational learning cannot be inferred from activity count alone.",
-    ],
-    systemDescription:
-      "A React and TypeScript application models practice events, qualitative stages, and reflections as a learning history. Current demo evidence is student-facing and browser-local.",
-    coreWorkflow: [
-      "Record a training session",
-      "Select a technique",
-      "Choose a qualitative stage",
-      "Add a reflection",
-      "Review the learning history",
-    ],
-    designEvolution:
-      "The concept moved away from a completion percentage after teaching experience showed that repetition count can hide understanding, correction, and application under pressure.",
-    implementation: [
-      { status: "DEVELOPMENT-STAGE IMPLEMENTATION", claim: "Practitioner-facing journal, profile, feed, and technique surfaces exist in the current application.", claimType: "implementation-evidence" },
-      { status: "IMPLEMENTED + INTEGRATED", claim: "The portfolio prototype records a fictional session, stage, and reflection locally.", claimType: "implementation-evidence" },
-      { status: "KNOWN GAP", claim: "Instructor coaching is separate from student reflection and is not represented as a complete workflow.", claimType: "known-gap" },
-      { status: "PARTIAL", claim: "The current demo relies on browser-local persistence and demo-seeded data.", claimType: "known-gap" },
-    ],
-    evidence: [
-      "Development captures show a working React application and its student-facing journal surfaces.",
-      "The prototype demonstrates the difference between qualitative stage history and percentage completion.",
-      "The work does not establish that the model improves learning outcomes.",
-    ],
-    testingEvidence: [
-      "Deterministic portfolio interaction test covering session, technique, stage, reflection, history, and reset.",
-      "Development captures of practitioner-facing surfaces.",
-      "No persistent coaching system, deployment, or validated learning outcome is claimed.",
-    ],
-    limitations: [
-      "Instructor workflows require further design and implementation verification.",
-      "The current demo persistence model is not a production learning record.",
-      "Qualitative stages still require careful language to avoid becoming another hidden ranking system.",
-    ],
-    openQuestions: [
-      "How should an instructor disagree with a learner's self-assessment without overwriting it?",
-      "What belongs in a private training reflection versus a coach-visible note?",
-      "Can progression be summarized without losing the learning history that gives it meaning?",
-    ],
-    proposedMethods: [
-      "Diary study",
-      "Training observation",
-      "Instructor interviews",
-      "Comparative completion-versus-progression study",
-    ],
-    reflection:
-      "Representing progress is not a neutral reporting choice; the model can change what learners believe counts as learning.",
-    relatedFieldNote: {
-      title: "Teaching Jiu-Jitsu Changed the Way I Think About UX",
-      path: "/field-notes/teaching-jiu-jitsu-and-ux",
-    },
-    stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Browser-local persistence"],
-    captures: [
-      { src: asset("dojonet", "progression.png"), alt: "DojoNet qualitative technique progression screen", caption: "Four qualitative stages — no mastery percentage", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("dojonet", "technique-detail.png"), alt: "DojoNet technique detail with notes and stage", caption: "Technique history and reflection", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("dojonet", "student-view.png"), alt: "DojoNet student journal view", caption: "Student view; instructor complement remains a gap", label: "IMPLEMENTATION CAPTURE" },
-    ],
-  },
-  {
     slug: "gundam-forge",
     number: "03",
     name: "Gundam Forge",
@@ -395,6 +284,117 @@ export const investigations: Investigation[] = [
       { src: asset("gundam-forge", "deck-builder.png"), alt: "Gundam Forge deck builder and legality status", caption: "Deck construction with persistent validation status", label: "IMPLEMENTATION CAPTURE" },
       { src: asset("gundam-forge", "validation.png"), alt: "Gundam Forge constraint warning detail", caption: "Constraint detail at the moment of decision", label: "IMPLEMENTATION CAPTURE" },
       { src: asset("gundam-forge", "battlefield.png"), alt: "Gundam Forge playtesting battlefield", caption: "Development-stage playtesting surface", label: "IMPLEMENTATION CAPTURE" },
+    ],
+  },
+  {
+    slug: "dojonet",
+    number: "04",
+    name: "DojoNet",
+    theme: "Learning",
+    question:
+      "How can digital systems support progression without reducing learning to completion?",
+    status: research.projects.dojonet.status,
+    role: "Solo product design and frontend product development",
+    context: "Martial arts learning system",
+    accent: "#076B50",
+    accentSecondary: "#E4AE3A",
+    surface: "#E5DDCF",
+    previewImage: "/assets/projects/dojonet/preview.webp",
+    previewSrcSet:
+      "/assets/projects/dojonet/preview-480.webp 480w, /assets/projects/dojonet/preview-800.webp 800w, /assets/projects/dojonet/preview.webp 1067w",
+    previewAlt: "Original DojoNet project card artwork",
+    abstract: {
+      product:
+        "A martial arts training journal and community product centered on practice history, reflection, and qualitative progression.",
+      problem:
+        "Completion counters can make learning look precise while hiding correction, consistency, context, and application under pressure.",
+      built:
+        "A React application with a training journal, technique history, reflection surfaces, and a portfolio prototype for recording a session.",
+      insight:
+        "Progression is a history of learning, practice, feedback, and increasing capability—not simply a list of completed items.",
+      remember: "Progress is not the same thing as completion.",
+    },
+    argument: "Progress is not the same thing as completion.",
+    changedMind:
+      "I began by looking for a clean progress metric. Teaching made the flaw obvious: a student can repeat a technique many times without understanding when, why, or against whom it works.",
+    humanContext: [
+      "Learning in martial arts is embodied, social, and situational. Understanding purpose, receiving correction, building consistency, connecting movements, and applying them under pressure are different kinds of progress.",
+      "A journal can support reflection and coaching, but only if the model resists turning a living practice into a checklist.",
+    ],
+    tension: [
+      { label: "Motivation", detail: "Progress should be visible enough to sustain practice." },
+      { label: "Honesty", detail: "The interface should not imply mastery from activity count alone." },
+      { label: "Coaching", detail: "Student reflection should create a useful starting point for feedback." },
+    ],
+    interactionDecision:
+      "A training entry records the technique, a qualitative stage, and a reflection. The resulting history shows change over time without calculating a false mastery percentage.",
+    technicalConsequence:
+      "The data model needs event history and context, not only a mutable completion field. Qualitative stages must remain understandable as states, not covertly become a score.",
+    responsibilities: [
+      "Learning-model framing and interaction design",
+      "Practitioner-facing frontend implementation",
+      "Qualitative progression and journal prototyping",
+      "Implementation analysis and evidence documentation",
+    ],
+    constraints: [
+      "Progress should remain motivating without becoming a false mastery score.",
+      "Student reflection and instructor coaching are distinct information contexts.",
+      "Embodied, situational learning cannot be inferred from activity count alone.",
+    ],
+    systemDescription:
+      "A React and TypeScript application models practice events, qualitative stages, and reflections as a learning history. Current demo evidence is student-facing and browser-local.",
+    coreWorkflow: [
+      "Record a training session",
+      "Select a technique",
+      "Choose a qualitative stage",
+      "Add a reflection",
+      "Review the learning history",
+    ],
+    designEvolution:
+      "The concept moved away from a completion percentage after teaching experience showed that repetition count can hide understanding, correction, and application under pressure.",
+    implementation: [
+      { status: "DEVELOPMENT-STAGE IMPLEMENTATION", claim: "Practitioner-facing journal, profile, feed, and technique surfaces exist in the current application.", claimType: "implementation-evidence" },
+      { status: "IMPLEMENTED + INTEGRATED", claim: "The portfolio prototype records a fictional session, stage, and reflection locally.", claimType: "implementation-evidence" },
+      { status: "KNOWN GAP", claim: "Instructor coaching is separate from student reflection and is not represented as a complete workflow.", claimType: "known-gap" },
+      { status: "PARTIAL", claim: "The current demo relies on browser-local persistence and demo-seeded data.", claimType: "known-gap" },
+    ],
+    evidence: [
+      "Development captures show a working React application and its student-facing journal surfaces.",
+      "The prototype demonstrates the difference between qualitative stage history and percentage completion.",
+      "The work does not establish that the model improves learning outcomes.",
+    ],
+    testingEvidence: [
+      "Deterministic portfolio interaction test covering session, technique, stage, reflection, history, and reset.",
+      "Development captures of practitioner-facing surfaces.",
+      "No persistent coaching system, deployment, or validated learning outcome is claimed.",
+    ],
+    limitations: [
+      "Instructor workflows require further design and implementation verification.",
+      "The current demo persistence model is not a production learning record.",
+      "Qualitative stages still require careful language to avoid becoming another hidden ranking system.",
+    ],
+    openQuestions: [
+      "How should an instructor disagree with a learner's self-assessment without overwriting it?",
+      "What belongs in a private training reflection versus a coach-visible note?",
+      "Can progression be summarized without losing the learning history that gives it meaning?",
+    ],
+    proposedMethods: [
+      "Diary study",
+      "Training observation",
+      "Instructor interviews",
+      "Comparative completion-versus-progression study",
+    ],
+    reflection:
+      "Representing progress is not a neutral reporting choice; the model can change what learners believe counts as learning.",
+    relatedFieldNote: {
+      title: "Teaching Jiu-Jitsu Changed the Way I Think About UX",
+      path: "/field-notes/teaching-jiu-jitsu-and-ux",
+    },
+    stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Browser-local persistence"],
+    captures: [
+      { src: asset("dojonet", "progression.png"), alt: "DojoNet qualitative technique progression screen", caption: "Four qualitative stages — no mastery percentage", label: "IMPLEMENTATION CAPTURE" },
+      { src: asset("dojonet", "technique-detail.png"), alt: "DojoNet technique detail with notes and stage", caption: "Technique history and reflection", label: "IMPLEMENTATION CAPTURE" },
+      { src: asset("dojonet", "student-view.png"), alt: "DojoNet student journal view", caption: "Student view; instructor complement remains a gap", label: "IMPLEMENTATION CAPTURE" },
     ],
   },
 ];

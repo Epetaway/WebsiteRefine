@@ -24,6 +24,10 @@ The production data model publishes only `verified` facts. Values marked `requir
 | Numerical professional outcome metrics | No source/method/permission package supplied | Exclude | Remove and block | Source record, measurement method, date, contribution, and permission for each metric |
 | Public test-count claims | Repository test totals are mutable and are not product outcomes | Exclude from portfolio claims | Report only in dated QA documentation | Only publish externally if a durable release record makes the number meaningful |
 | Product deployment claims | Configuration exists, but public URLs for the independent products are not all verified | Requires confirmation | Use `development-stage`, `deployable`, or `not verified publicly` | Verified production URL, owner, release date, and current availability |
+| Earl the Kaiju coaching-site URL | `docs/LAUNCH.md` in the website repo: not deployed, no domain | Requires confirmation | `coachingSite.liveUrl = null`; no "Visit" link is rendered | The live https URL and launch date |
+| Earl the Kaiju AI-assistance wording | Proofs, PR descriptions and app logs show AI-assisted production under Earl's direction | Requires confirmation | Disclosed on the page in Earl's voice | Earl's approval of the exact wording |
+| Earl the Kaiju concept-board provenance | Approval proof 3 calls it an AI render | Requires confirmation | Captioned "made to my direction with AI image tools" and labeled SOURCE REFERENCE | Earl's confirmation |
+| Earl the Kaiju test counts | Dated project logs and CI run 40146198369 | Verified with date and source | Published only with their date and source | — |
 
 ## Confirmation workflow
 

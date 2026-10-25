@@ -1,0 +1,569 @@
+/* Earl the Kaiju — flagship case study.
+   Scoped to .etk-case so the portfolio's own identity is untouched. The palette and
+   contrast pairs come from the Earl the Kaiju brand package v1.5 (08-reports/contrast-table.md). */
+
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/assets/fonts/barlow-condensed-latin-600.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/barlow-condensed-latin-700.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Barlow Condensed";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/assets/fonts/barlow-condensed-latin-800.woff2") format("woff2");
+}
+
+.etk-case {
+  --etk-shadow: #0b0f0e;
+  --etk-raised: #121916;
+  --etk-raised-2: #17211d;
+  --etk-facet: #1e2523;
+  --etk-line: rgba(244, 241, 233, 0.14);
+  --etk-line-strong: rgba(244, 241, 233, 0.28);
+  --etk-emerald: #0b7a62;
+  --etk-deep: #0f5b4b;
+  --etk-spectral: #17d190;
+  --etk-gold: #d4af37;
+  --etk-ivory: #f4f1e9;
+  --etk-paper-2: #e8e4d9;
+  --etk-muted: #a3b0a9;
+  --etk-accent: #27a58b;
+  --etk-gold-ink: #7e6127;
+  --etk-signal: #f0775a;
+  --etk-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --etk-head: 140px;
+  background: var(--etk-shadow);
+  color: var(--etk-ivory);
+  overflow-x: clip;
+}
+
+.etk-case section[id],
+.etk-case [id].etk-chapter { scroll-margin-top: var(--etk-head); }
+
+.etk-case h1,
+.etk-case h2 { font-family: var(--etk-display); font-weight: 800; text-transform: uppercase; letter-spacing: 0.005em; }
+.etk-case h3 { font-family: var(--font-sans); font-weight: 700; letter-spacing: -0.015em; }
+.etk-case p { line-height: 1.65; }
+.etk-case :focus-visible { outline: 2px solid var(--etk-spectral); outline-offset: 2px; }
+
+/* Paper (ivory) sections */
+.etk-overview,
+.etk-why,
+.etk-reasoning,
+.etk-engineering,
+.etk-evidence { background: var(--etk-ivory); color: var(--etk-shadow); }
+.etk-why { background: var(--etk-paper-2); }
+.etk-overview :focus-visible,
+.etk-why :focus-visible,
+.etk-reasoning :focus-visible,
+.etk-engineering :focus-visible,
+.etk-evidence :focus-visible { outline-color: var(--etk-deep); }
+
+/* ------------------------------------------------------------ Shared pieces */
+.etk-eyebrow { display: flex; align-items: center; gap: 12px; margin: 0; color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+.etk-eyebrow > span { color: inherit; }
+.etk-eyebrow > span::after { content: ""; display: inline-block; width: 26px; height: 2px; margin-left: 12px; vertical-align: middle; background: currentColor; }
+.etk-overview .etk-eyebrow,
+.etk-why .etk-eyebrow,
+.etk-reasoning .etk-eyebrow,
+.etk-engineering .etk-eyebrow,
+.etk-evidence .etk-eyebrow { color: var(--etk-gold-ink); }
+
+.etk-section-head { display: grid; grid-template-columns: minmax(200px, 0.55fr) minmax(0, 1.2fr); gap: 18px 64px; max-width: var(--content); margin: 0 auto clamp(40px, 6vw, 72px); }
+.etk-section-head .etk-eyebrow { grid-row: 1 / span 2; align-self: start; padding-top: 14px; }
+.etk-section-head h2 { font-size: clamp(42px, 6vw, 84px); line-height: 0.92; }
+.etk-section-head > p { max-width: 720px; color: rgba(11, 15, 14, 0.74); font-size: clamp(16px, 1.3vw, 19px); }
+.etk-section-head--dark > p { color: var(--etk-muted); }
+
+.etk-small { color: inherit; opacity: 0.82; font-size: 13px; line-height: 1.6; }
+.etk-subhead { max-width: var(--content); margin: clamp(56px, 7vw, 96px) auto 24px; color: var(--etk-gold); font-family: var(--font-mono) !important; font-size: 12px; font-weight: 600 !important; letter-spacing: 0.16em !important; text-transform: uppercase; }
+
+.etk-status { display: inline-flex; align-items: center; width: fit-content; padding: 5px 8px; border: 1px solid currentColor; font-family: var(--font-mono); font-size: 10px; font-weight: 600; line-height: 1.2; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+.etk-status--evidence { color: var(--etk-spectral); }
+.etk-status--pending { color: var(--etk-gold); }
+.etk-status--planned { color: var(--etk-muted); border-style: dashed; }
+.etk-status--reference { color: var(--etk-ivory); border-style: dashed; }
+.etk-status--gap { color: var(--etk-signal); }
+.etk-overview .etk-status--evidence, .etk-why .etk-status--evidence, .etk-reasoning .etk-status--evidence, .etk-engineering .etk-status--evidence, .etk-evidence .etk-status--evidence { color: var(--etk-deep); }
+.etk-overview .etk-status--pending, .etk-engineering .etk-status--pending, .etk-evidence .etk-status--pending { color: var(--etk-gold-ink); }
+.etk-overview .etk-status--planned, .etk-engineering .etk-status--planned, .etk-evidence .etk-status--planned { color: #46514c; }
+.etk-overview .etk-status--reference, .etk-engineering .etk-status--reference, .etk-evidence .etk-status--reference { color: var(--etk-shadow); }
+.etk-overview .etk-status--gap, .etk-engineering .etk-status--gap, .etk-evidence .etk-status--gap { color: #9a3519; }
+
+.etk-button { background: var(--etk-emerald); border-color: var(--etk-emerald); color: var(--etk-ivory); }
+.etk-button:hover { background: var(--etk-deep); border-color: var(--etk-deep); color: var(--etk-ivory); }
+.etk-case .button--ghost { border-color: var(--etk-line-strong); color: var(--etk-ivory); }
+.etk-case .button--ghost:hover { background: var(--etk-ivory); color: var(--etk-shadow); }
+.etk-case .case-link--light { color: var(--etk-ivory); }
+.etk-case .case-link--light:hover { color: var(--etk-gold); }
+
+.etk-site-note { max-width: 520px; margin-top: 18px; padding-left: 14px; border-left: 2px solid var(--etk-gold); color: var(--etk-muted); font-size: 14px; }
+
+/* Figures and device frames */
+.etk-figure { margin: 0; }
+.etk-figure__media { position: relative; overflow: hidden; background: var(--etk-raised-2); border: 1px solid var(--etk-line); }
+.etk-figure__media img { display: block; width: 100%; height: auto; }
+.etk-figure figcaption { display: grid; gap: 10px; margin-top: 14px; color: var(--etk-muted); font-size: 14px; line-height: 1.55; }
+.etk-figure__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.etk-figure__zoom { color: var(--etk-accent); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.etk-figure__zoom:hover { color: var(--etk-ivory); }
+.etk-figure__meta small { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; opacity: 0.9; }
+.etk-figure--browser .etk-figure__media { background: #101614; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.45); }
+.etk-browser-bar { display: flex; gap: 7px; padding: 10px 14px; border-bottom: 1px solid var(--etk-line); background: #121a17; }
+.etk-browser-bar b { width: 9px; height: 9px; border-radius: 50%; background: rgba(244, 241, 233, 0.22); }
+.etk-figure--phone .etk-figure__media,
+.etk-figure--phone-landscape .etk-figure__media { border: 8px solid #1a2220; border-radius: 28px; background: #000; box-shadow: 0 26px 50px rgba(0, 0, 0, 0.45); }
+.etk-figure--phone-landscape .etk-figure__media { border-radius: 24px; }
+
+/* ------------------------------------------------------------ Hero */
+.etk-hero { position: relative; display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: 0 clamp(24px, 4vw, 64px); padding: clamp(36px, 5vw, 72px) var(--page-gutter) 0; background: radial-gradient(80% 70% at 78% 30%, rgba(11, 122, 98, 0.22), transparent 70%), var(--etk-shadow); }
+.etk-hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(212, 175, 55, 0.05) 1px, transparent 1px); background-size: 72px 72px; pointer-events: none; mask-image: linear-gradient(to bottom, black 60%, transparent); }
+.etk-hero > * { position: relative; }
+.etk-hero__copy { display: flex; flex-direction: column; justify-content: center; padding-bottom: clamp(40px, 5vw, 72px); }
+.etk-hero .case-back { margin-bottom: clamp(28px, 4vw, 56px); }
+.etk-kicker { color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+.etk-hero__lockup { width: min(460px, 82%); height: auto; margin-top: 26px; }
+.etk-hero h1 { max-width: 720px; margin-top: clamp(26px, 3.4vw, 44px); font-size: clamp(44px, 5.6vw, 88px); line-height: 0.92; }
+.etk-hero__lead { max-width: 620px; margin-top: 24px; color: var(--etk-muted); font-size: clamp(17px, 1.45vw, 21px); }
+.etk-hero__meta { display: grid; gap: 0; max-width: 640px; margin-top: 30px; border-top: 1px solid var(--etk-line); }
+.etk-hero__meta div { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--etk-line); }
+.etk-hero__meta dt { color: var(--etk-gold); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; padding-top: 3px; }
+.etk-hero__meta dd { font-size: 14.5px; line-height: 1.5; }
+.etk-hero__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 30px; }
+
+.etk-hero__stage { position: relative; min-height: 600px; align-self: center; }
+.etk-hero__crest { position: absolute; z-index: 1; left: -4%; bottom: 6%; width: 46%; height: auto; filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.5)); }
+.etk-device { position: absolute; overflow: hidden; }
+.etk-device img { display: block; width: 100%; height: auto; }
+.etk-device--browser { top: 8%; right: 0; width: 88%; border: 1px solid var(--etk-line-strong); background: #101614; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.55); }
+.etk-device--phone { z-index: 2; right: 4%; bottom: 0; width: 30%; border: 8px solid #1a2220; border-radius: 28px; background: #000; box-shadow: 0 40px 70px rgba(0, 0, 0, 0.6); }
+
+.etk-ledger { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: clamp(24px, 3vw, 40px) calc(var(--page-gutter) * -1) 0; padding: 0 var(--page-gutter); border-top: 1px solid var(--etk-line); list-style: none; }
+.etk-ledger li { display: grid; gap: 8px; align-content: start; padding: 22px 24px 26px 0; }
+.etk-ledger li + li { padding-left: 24px; border-left: 1px solid var(--etk-line); }
+.etk-ledger span { color: var(--etk-muted); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+.etk-ledger strong { font-size: 15px; font-weight: 600; line-height: 1.4; }
+
+/* Section nav */
+.etk-subnav { position: sticky; top: 79px; z-index: 40; background: rgba(18, 25, 22, 0.96); border-top: 1px solid var(--etk-line); border-bottom: 1px solid var(--etk-line); backdrop-filter: blur(14px); }
+.etk-subnav ol { display: flex; gap: 4px; max-width: 1480px; margin: 0 auto; padding: 0 var(--page-gutter); overflow-x: auto; list-style: none; scrollbar-width: none; }
+.etk-subnav ol::-webkit-scrollbar { display: none; }
+.etk-subnav a { display: inline-flex; align-items: center; min-height: 48px; padding: 0 14px; color: var(--etk-muted); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+.etk-subnav a:hover { color: var(--etk-ivory); box-shadow: inset 0 -2px 0 var(--etk-gold); }
+
+/* ------------------------------------------------------------ Overview */
+.etk-overview { padding: clamp(80px, 10vw, 140px) var(--page-gutter); }
+.etk-overview__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: var(--content); margin: 0 auto; border-top: 1px solid rgba(11, 15, 14, 0.18); border-left: 1px solid rgba(11, 15, 14, 0.18); }
+.etk-overview__grid article { padding: clamp(22px, 3vw, 34px); border-right: 1px solid rgba(11, 15, 14, 0.18); border-bottom: 1px solid rgba(11, 15, 14, 0.18); }
+.etk-overview__grid h3 { color: var(--etk-deep); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.etk-overview__grid p { margin-top: 26px; font-size: clamp(17px, 1.5vw, 21px); font-weight: 500; line-height: 1.5; }
+.etk-overview__grid article:last-child { background: rgba(11, 122, 98, 0.07); }
+.etk-chapter-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; max-width: var(--content); margin: 56px auto 0; list-style: none; }
+.etk-chapter-strip li { display: grid; gap: 14px; align-content: space-between; padding: 22px 22px 22px 0; border-top: 3px solid var(--etk-shadow); }
+.etk-chapter-strip li + li { padding-left: 22px; }
+.etk-chapter-strip a { display: grid; gap: 8px; color: inherit; text-decoration: none; }
+.etk-chapter-strip a span { font-family: var(--etk-display); font-size: 44px; font-weight: 800; line-height: 1; color: var(--etk-deep); }
+.etk-chapter-strip a strong { font-size: 19px; line-height: 1.25; }
+.etk-chapter-strip a small { color: rgba(11, 15, 14, 0.72); font-size: 14px; line-height: 1.5; }
+.etk-chapter-strip a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+
+/* ------------------------------------------------------------ Why */
+.etk-why { display: grid; grid-template-columns: minmax(180px, 0.42fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); padding: clamp(80px, 10vw, 140px) var(--page-gutter); }
+.etk-why__rail { display: flex; flex-direction: column; gap: 40px; align-items: flex-start; }
+.etk-why__kanji { width: clamp(64px, 7vw, 104px); height: auto; filter: brightness(0.62) saturate(1.1); }
+.etk-why__body { max-width: 760px; }
+.etk-why__body h2 { margin-bottom: 30px; font-size: clamp(44px, 6.4vw, 92px); line-height: 0.9; }
+.etk-why__body p { margin-top: 20px; font-size: clamp(17px, 1.4vw, 20px); line-height: 1.75; }
+
+/* ------------------------------------------------------------ Chapter openers */
+.etk-chapter { position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: end; gap: clamp(20px, 4vw, 64px); padding: clamp(80px, 11vw, 160px) var(--page-gutter) clamp(48px, 6vw, 84px); overflow: hidden; background: linear-gradient(180deg, var(--etk-shadow), var(--etk-raised)); border-top: 1px solid var(--etk-line); }
+.etk-chapter__number { color: transparent; font-family: var(--etk-display); font-size: clamp(140px, 22vw, 340px); font-weight: 800; line-height: 0.74; -webkit-text-stroke: 2px var(--etk-gold); opacity: 0.9; }
+.etk-chapter__copy { display: grid; gap: 18px; justify-items: start; max-width: 760px; }
+.etk-chapter__copy h2 { font-size: clamp(46px, 7vw, 108px); line-height: 0.88; }
+.etk-chapter__copy p { color: var(--etk-muted); font-size: clamp(17px, 1.5vw, 21px); }
+.etk-chapter__mark { width: clamp(56px, 6vw, 88px); height: auto; opacity: 0.85; }
+
+/* ------------------------------------------------------------ Strategy */
+.etk-strategy, .etk-system, .etk-web, .etk-coach, .etk-ecosystem, .etk-reflection { padding: clamp(72px, 9vw, 130px) var(--page-gutter); }
+.etk-idea { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); align-items: center; max-width: var(--content); margin: 0 auto; padding: clamp(32px, 4vw, 56px) 0; border-top: 1px solid var(--etk-line); border-bottom: 1px solid var(--etk-line); }
+.etk-idea blockquote p { color: var(--etk-gold); font-family: var(--etk-display); font-size: clamp(54px, 8vw, 128px); font-weight: 800; line-height: 0.86; text-transform: uppercase; }
+.etk-idea div p { font-size: clamp(17px, 1.4vw, 20px); }
+.etk-idea div p + p { margin-top: 18px; color: var(--etk-muted); }
+.etk-strategy__grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 80px); max-width: var(--content); margin: clamp(48px, 6vw, 80px) auto 0; }
+.etk-strategy__grid h3, .etk-system-need h3, .etk-web__intro h3, .etk-coach__notes h3, .etk-sizes h3 { margin-bottom: 18px; font-size: 20px; }
+.etk-rule-list { list-style: none; border-top: 1px solid var(--etk-line); }
+.etk-rule-list li { display: grid; gap: 6px; padding: 16px 0; border-bottom: 1px solid var(--etk-line); }
+.etk-rule-list strong { font-size: 16px; }
+.etk-rule-list span { color: var(--etk-muted); font-size: 15px; line-height: 1.55; }
+
+.etk-table-wrap { max-width: 100%; overflow-x: auto; }
+.etk-table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.5; }
+.etk-table caption { padding-bottom: 14px; color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-align: left; text-transform: uppercase; }
+.etk-table th, .etk-table td { padding: 13px 14px 13px 0; border-bottom: 1px solid currentColor; border-bottom-color: rgba(127, 140, 134, 0.35); text-align: left; vertical-align: top; }
+.etk-table thead th { color: var(--etk-gold); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.etk-table tbody th { font-weight: 700; white-space: nowrap; }
+.etk-strategy .etk-table td { color: var(--etk-muted); }
+.etk-evidence .etk-table thead th, .etk-engineering .etk-table thead th { color: var(--etk-gold-ink); }
+
+.etk-system-need { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 80px); max-width: var(--content); margin: clamp(56px, 7vw, 96px) auto 0; padding: clamp(28px, 4vw, 48px); background: var(--etk-raised-2); border: 1px solid var(--etk-line); }
+.etk-system-need p { color: var(--etk-muted); font-size: 16px; }
+.etk-system-need ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 28px; list-style: none; counter-reset: req; }
+.etk-system-need li { position: relative; padding: 12px 0 12px 34px; border-bottom: 1px solid var(--etk-line); font-size: 14.5px; line-height: 1.5; counter-increment: req; }
+.etk-system-need li::before { content: counter(req, decimal-leading-zero); position: absolute; left: 0; top: 13px; color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; }
+
+.etk-tagline { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 32px; align-items: center; max-width: var(--content); margin: clamp(48px, 6vw, 80px) auto 0; }
+.etk-tagline__art { width: 100%; max-width: 640px; height: auto; }
+.etk-tagline p { color: var(--etk-muted); font-size: 15px; }
+
+/* ------------------------------------------------------------ Process */
+.etk-process { padding: clamp(72px, 9vw, 130px) var(--page-gutter); background: var(--etk-raised); }
+.etk-timeline { max-width: var(--content); margin: 0 auto clamp(48px, 6vw, 80px); }
+.etk-timeline ol { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); list-style: none; border-top: 2px solid var(--etk-gold); }
+.etk-timeline li { position: relative; display: grid; gap: 6px; align-content: start; padding: 22px 14px 10px 0; }
+.etk-timeline li::before { content: ""; position: absolute; top: -8px; left: 0; width: 12px; height: 12px; background: var(--etk-shadow); border: 2px solid var(--etk-gold); transform: rotate(45deg); }
+.etk-timeline li:nth-child(4)::before { background: var(--etk-emerald); border-color: var(--etk-spectral); }
+.etk-timeline__version { font-family: var(--etk-display); font-size: 30px; font-weight: 800; line-height: 1; }
+.etk-timeline small { color: var(--etk-gold); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; }
+.etk-timeline strong { font-size: 14.5px; }
+.etk-timeline p { color: var(--etk-muted); font-size: 13.5px; line-height: 1.5; }
+.etk-timeline figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 18px; color: var(--etk-muted); font-size: 13.5px; }
+
+.etk-process__grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: clamp(36px, 4vw, 56px) clamp(20px, 3vw, 40px); max-width: var(--content); margin: 0 auto; }
+.etk-process__item--lead { grid-column: 1 / span 12; }
+.etk-process__item--lead .etk-figure { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.5fr); gap: 28px; align-items: end; }
+.etk-process__item--lead figcaption { font-size: 16px; }
+.etk-process__item--half { grid-column: span 6; }
+.etk-process__item--wide { grid-column: 1 / span 12; }
+
+/* ------------------------------------------------------------ Reasoning */
+.etk-reasoning { padding: clamp(80px, 10vw, 140px) var(--page-gutter); }
+.etk-reasoning__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 clamp(32px, 5vw, 80px); max-width: var(--content); margin: 0 auto; list-style: none; }
+.etk-reasoning__list li { display: grid; grid-template-columns: 54px minmax(0, 1fr); gap: 4px 0; padding: 28px 0; border-top: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-reasoning__list span { grid-row: span 2; color: var(--etk-gold-ink); font-family: var(--font-mono); font-size: 12px; font-weight: 600; padding-top: 6px; }
+.etk-reasoning__list h3 { font-family: var(--etk-display); font-size: 30px; font-weight: 800; letter-spacing: 0.005em; text-transform: uppercase; }
+.etk-reasoning__list p { margin-top: 8px; color: rgba(11, 15, 14, 0.8); font-size: 16px; }
+
+/* ------------------------------------------------------------ System */
+.etk-ground { display: grid; place-items: center; gap: 16px; margin: 0; padding: clamp(22px, 3vw, 40px); border: 1px solid var(--etk-line); }
+.etk-ground img { width: 100%; height: auto; }
+.etk-ground figcaption { justify-self: start; color: var(--etk-muted); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; }
+.etk-ground--shadow { background: var(--etk-shadow); }
+.etk-ground--ivory { background: var(--etk-ivory); }
+.etk-ground--ivory figcaption { color: #46514c; }
+.etk-crests { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: var(--content); margin: 0 auto; }
+.etk-crests .etk-ground img { max-width: 260px; }
+.etk-small-marks { display: flex; align-items: flex-end; justify-content: center; gap: 22px; width: 100%; }
+.etk-small-marks img:first-child { width: 56%; }
+.etk-small-marks img:last-child { width: 22%; }
+.etk-lockups { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 12px; max-width: var(--content); margin: 12px auto 0; }
+.etk-lockups__stacked { grid-column: span 4; }
+.etk-lockups__stacked img { max-width: 300px; }
+.etk-lockups__horizontal { grid-column: span 8; }
+.etk-lockups__horizontal img { max-width: 620px; }
+.etk-lockups__ceremonial { grid-column: span 5; }
+.etk-lockups__ceremonial img { max-width: 300px; }
+.etk-lockups__companions { grid-column: span 7; }
+.etk-lockups__companions > div { display: flex; align-items: center; justify-content: center; gap: clamp(24px, 4vw, 56px); width: 100%; }
+.etk-lockups__companions img:first-child { width: min(380px, 62%); }
+.etk-lockups__companions img:last-child { width: min(90px, 16%); }
+
+.etk-type { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 12px; max-width: var(--content); margin: 12px auto 0; }
+.etk-type > div { padding: clamp(24px, 3vw, 44px); border: 1px solid var(--etk-line); background: var(--etk-raised-2); }
+.etk-type span { color: var(--etk-gold); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase; }
+.etk-type__display p { margin-top: 18px; font-family: var(--etk-display); font-size: clamp(44px, 6vw, 92px); font-weight: 800; line-height: 0.9; text-transform: uppercase; }
+.etk-type__text p { margin-top: 18px; font-size: clamp(20px, 2vw, 28px); font-weight: 500; line-height: 1.35; }
+.etk-type__text small { display: block; margin-top: 20px; color: var(--etk-muted); font-size: 13px; line-height: 1.55; }
+
+.etk-palette { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; max-width: var(--content); margin: 12px auto 0; list-style: none; }
+.etk-swatch { display: grid; gap: 6px; align-content: start; padding: 0 0 18px; border: 1px solid var(--etk-line); background: var(--etk-raised-2); }
+.etk-swatch__chip { display: block; height: 110px; margin-bottom: 10px; background: var(--swatch); border-bottom: 1px solid var(--etk-line); }
+.etk-swatch > :not(.etk-swatch__chip) { padding: 0 14px; }
+.etk-swatch strong { font-size: 15px; }
+.etk-swatch code { color: var(--etk-gold); font-family: var(--font-mono); font-size: 12px; }
+.etk-swatch span:not(.etk-swatch__chip) { color: var(--etk-muted); font-size: 13px; line-height: 1.45; }
+.etk-swatch small { color: var(--etk-ivory); font-size: 12px; opacity: 0.85; }
+
+.etk-sizes { max-width: var(--content); margin: clamp(48px, 6vw, 80px) auto 0; }
+.etk-sizes .etk-small { max-width: 860px; margin-top: 14px; color: var(--etk-muted); opacity: 1; }
+.etk-table--dark td { color: var(--etk-muted); }
+
+.etk-guides { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 3vw, 40px) clamp(16px, 2vw, 28px); max-width: var(--content); margin: 0 auto; }
+.etk-applications { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 24px 16px; max-width: var(--content); margin: 0 auto; align-items: start; }
+.etk-applications .etk-figure { grid-column: span 2; }
+.etk-applications .etk-figure:first-child .etk-figure__media { display: grid; place-items: center; aspect-ratio: 16 / 10; padding: 8%; background: var(--etk-shadow); }
+.etk-applications .etk-figure:first-child .etk-figure__media img { width: auto; height: 100%; }
+
+/* ------------------------------------------------------------ Website */
+.etk-problem { max-width: var(--content); margin: 0 auto clamp(48px, 6vw, 80px); padding-left: clamp(18px, 3vw, 40px); border-left: 3px solid var(--etk-gold); }
+.etk-problem p { max-width: 980px; font-size: clamp(22px, 2.6vw, 38px); font-weight: 600; line-height: 1.3; letter-spacing: -0.02em; }
+.etk-web__intro { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 80px); max-width: var(--content); margin: 0 auto clamp(56px, 7vw, 96px); }
+.etk-sitemap { margin: 0; padding: clamp(22px, 3vw, 36px); background: var(--etk-raised-2); border: 1px solid var(--etk-line); }
+.etk-sitemap ol { display: grid; gap: 8px; list-style: none; counter-reset: page; }
+.etk-sitemap li { display: grid; grid-template-columns: 34px minmax(140px, 0.6fr) minmax(0, 1fr); gap: 12px; align-items: baseline; padding: 12px 14px; border: 1px solid var(--etk-line); background: var(--etk-shadow); counter-increment: page; }
+.etk-sitemap li::before { content: counter(page, decimal-leading-zero); color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; }
+.etk-sitemap li strong { font-size: 15px; }
+.etk-sitemap li span { color: var(--etk-muted); font-size: 13.5px; line-height: 1.45; }
+.etk-sitemap li.is-cta { border-color: var(--etk-emerald); background: rgba(11, 122, 98, 0.18); }
+.etk-sitemap__after { margin-top: 10px; color: var(--etk-muted); font-family: var(--font-mono); font-size: 11.5px; }
+.etk-sitemap figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 18px; color: var(--etk-muted); font-size: 13.5px; }
+
+.etk-screens { display: grid; grid-template-columns: minmax(0, 2.4fr) minmax(0, 1fr); gap: clamp(36px, 4vw, 56px) clamp(24px, 4vw, 56px); align-items: center; max-width: var(--content); margin: 0 auto; }
+.etk-screens__phone { max-width: 320px; justify-self: center; }
+.etk-screens--form { margin-top: clamp(48px, 6vw, 80px); }
+.etk-capture-note { max-width: var(--content); margin: 28px auto 0; color: var(--etk-muted); opacity: 1; }
+
+.etk-decisions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); max-width: var(--content); margin: clamp(56px, 7vw, 96px) auto 0; list-style: none; }
+.etk-decisions li { display: grid; gap: 10px; align-content: start; padding: 26px 0; border-top: 1px solid var(--etk-line-strong); }
+.etk-decisions span { color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+.etk-decisions h3 { font-size: 20px; }
+.etk-decisions p { color: var(--etk-muted); font-size: 15px; }
+
+/* ------------------------------------------------------------ Engineering (paper) */
+.etk-engineering { padding: clamp(80px, 10vw, 140px) var(--page-gutter); }
+.etk-pipeline { max-width: var(--content); margin: 0 auto clamp(56px, 7vw, 88px); }
+.etk-pipeline ol { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); list-style: none; border: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-pipeline li { position: relative; display: grid; gap: 6px; align-content: start; padding: 18px 14px; border-right: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-pipeline li:last-child { border-right: 0; background: rgba(11, 122, 98, 0.08); }
+.etk-pipeline li:nth-child(3) { background: rgba(212, 175, 55, 0.14); }
+.etk-pipeline span { color: var(--etk-gold-ink); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; }
+.etk-pipeline strong { font-size: 15px; }
+.etk-pipeline small { color: rgba(11, 15, 14, 0.72); font-size: 13px; line-height: 1.45; }
+.etk-pipeline figcaption { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 16px; color: rgba(11, 15, 14, 0.72); font-size: 13.5px; }
+
+.etk-code-list { display: grid; gap: clamp(56px, 7vw, 88px); max-width: var(--content); margin: 0 auto; }
+.etk-code-card { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: 20px clamp(28px, 4vw, 56px); align-items: start; padding-top: 28px; border-top: 3px solid var(--etk-shadow); }
+.etk-code-card > header { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 0 12px; }
+.etk-code-card__index { color: var(--etk-deep); font-family: var(--etk-display); font-size: 40px; font-weight: 800; line-height: 1; }
+.etk-code-card h4 { font-family: var(--etk-display); font-size: clamp(28px, 3vw, 40px); font-weight: 800; line-height: 0.95; text-transform: uppercase; }
+.etk-code-card__problem { margin-top: 12px; color: rgba(11, 15, 14, 0.8); font-size: 16px; }
+.etk-code-card__source { grid-column: 1; display: grid; gap: 0; border-top: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-code-card__source div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; padding: 9px 0; border-bottom: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-code-card__source dt { color: var(--etk-gold-ink); font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 2px; }
+.etk-code-card__source dd { font-size: 13.5px; overflow-wrap: anywhere; }
+.etk-code-card__source code { font-family: var(--font-mono); font-size: 12.5px; }
+.etk-code-card .etk-code { grid-column: 2; grid-row: 1 / span 4; }
+.etk-code-card__note { grid-column: 1; color: rgba(11, 15, 14, 0.72); font-size: 13.5px; }
+.etk-code-card__note a { color: var(--etk-deep); font-weight: 600; }
+.etk-code-card .etk-deep { grid-column: 1 / -1; }
+
+.etk-code { margin: 0; max-width: 100%; overflow-x: auto; padding: 22px 22px 24px; background: var(--etk-shadow); color: #e8e4d9; border-left: 3px solid var(--etk-emerald); font-family: var(--font-mono); font-size: 13px; line-height: 1.65; tab-size: 2; white-space: pre; }
+.etk-code code { font-family: inherit; font-variant-ligatures: none; }
+.etk-code .tok-comment { color: #8f9b94; font-style: italic; }
+.etk-code .tok-string { color: #e3c565; }
+.etk-code .tok-keyword { color: #4fd1a8; font-weight: 600; }
+.etk-code .tok-number { color: #f2a37c; }
+.etk-code .tok-tag { color: #4fd1a8; }
+.etk-code .tok-attr { color: #e3c565; }
+.etk-code:focus-visible { outline: 2px solid var(--etk-deep); outline-offset: 3px; }
+
+.etk-deep { border-top: 1px solid rgba(11, 15, 14, 0.2); border-bottom: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-deep > summary { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 52px; cursor: pointer; list-style: none; font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.etk-deep > summary::-webkit-details-marker { display: none; }
+.etk-deep > summary i { font-style: normal; font-size: 20px; transition: transform 180ms ease; }
+.etk-deep[open] > summary i { transform: rotate(45deg); }
+.etk-pdite { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; padding-bottom: 22px; }
+.etk-pdite div { padding: 14px 16px 0 0; }
+.etk-pdite div + div { padding-left: 16px; border-left: 1px solid rgba(11, 15, 14, 0.16); }
+.etk-pdite dt { color: var(--etk-deep); font-family: var(--font-mono); font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.etk-pdite dd { margin-top: 8px; font-size: 14px; line-height: 1.55; }
+
+/* ------------------------------------------------------------ Coach */
+.etk-moments { max-width: var(--content); margin: 0 auto; }
+.etk-coach > .etk-table-wrap { max-width: var(--content); margin: 0 auto clamp(56px, 7vw, 88px); }
+.etk-phones { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(28px, 3vw, 44px) clamp(14px, 2vw, 26px); max-width: var(--content); margin: 0 auto; align-items: start; }
+.etk-phones .etk-figure figcaption { font-size: 13.5px; }
+.etk-landscape { max-width: 760px; margin: clamp(40px, 5vw, 64px) auto 0; }
+.etk-coach .etk-capture-note { text-align: left; }
+.etk-coach__notes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 5vw, 80px); max-width: var(--content); margin: clamp(56px, 7vw, 96px) auto 0; }
+.etk-check-list { list-style: none; border-top: 1px solid var(--etk-line); }
+.etk-check-list li { position: relative; padding: 14px 0 14px 30px; border-bottom: 1px solid var(--etk-line); color: var(--etk-muted); font-size: 15px; line-height: 1.55; }
+.etk-check-list li::before { content: ""; position: absolute; left: 4px; top: 21px; width: 9px; height: 9px; background: var(--etk-spectral); transform: rotate(45deg); }
+.etk-check-list--light { border-color: rgba(11, 15, 14, 0.2); }
+.etk-check-list--light li { color: rgba(11, 15, 14, 0.82); border-color: rgba(11, 15, 14, 0.2); }
+.etk-check-list--light li::before { background: var(--etk-deep); }
+.etk-status-matrix { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; max-width: var(--content); margin: clamp(48px, 6vw, 80px) auto 0; }
+.etk-status-matrix > div { display: grid; gap: 16px; align-content: start; padding: 22px; border: 1px solid var(--etk-line); background: var(--etk-raised-2); }
+.etk-status-matrix ul { display: grid; gap: 9px; list-style: none; }
+.etk-status-matrix li { color: var(--etk-ivory); font-size: 14px; line-height: 1.45; }
+.etk-status-matrix > div:nth-child(n + 3) { border-style: dashed; background: transparent; }
+
+.etk-ladder { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: var(--content); margin: 0 auto clamp(56px, 7vw, 88px); list-style: none; }
+.etk-ladder li { display: grid; gap: 10px; align-content: start; padding: 22px 22px 22px 0; border-top: 3px solid var(--etk-shadow); }
+.etk-ladder li + li { padding-left: 22px; }
+.etk-ladder li:nth-child(2) { border-top-color: var(--etk-deep); }
+.etk-ladder li:nth-child(3) { border-top-color: var(--etk-gold); }
+.etk-ladder span { font-family: var(--etk-display); font-size: 36px; font-weight: 800; line-height: 1; }
+.etk-ladder p { font-size: 15.5px; }
+.etk-ladder strong { color: var(--etk-deep); font-size: 14px; }
+
+/* ------------------------------------------------------------ Ecosystem */
+.etk-ecosystem { background: radial-gradient(70% 60% at 50% 40%, rgba(11, 122, 98, 0.16), transparent 70%), var(--etk-shadow); border-top: 1px solid var(--etk-line); }
+.etk-eco { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; max-width: var(--content); margin: 0 auto; }
+.etk-eco__lanes { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+.etk-eco__lanes span { padding: 8px 12px; border-top: 2px solid var(--etk-gold); color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.etk-eco__lanes span:last-child { border-top-color: var(--etk-spectral); color: var(--etk-spectral); }
+.etk-eco__flow { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 28px; list-style: none; }
+.etk-eco__node { position: relative; display: grid; gap: 12px; align-content: start; padding: 22px 20px; border: 1.5px solid var(--etk-line-strong); background: var(--etk-raised-2); }
+.etk-eco__node--shared { border-color: var(--etk-gold); }
+.etk-eco__node--public { border-color: rgba(212, 175, 55, 0.55); }
+.etk-eco__node--private { border-color: rgba(23, 209, 144, 0.55); }
+.etk-eco__node.is-planned { border-style: dashed; background: transparent; }
+.etk-eco__flow > .etk-eco__node:not(:last-child)::after { content: "→"; position: absolute; top: 50%; right: -24px; color: var(--etk-gold); font-family: var(--font-mono); font-size: 18px; transform: translateY(-50%); }
+.etk-eco__step { color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+.etk-eco__node h3 { font-size: 18px; line-height: 1.25; }
+.etk-eco__node p { color: var(--etk-muted); font-size: 14px; line-height: 1.55; }
+.etk-eco__side { display: grid; grid-template-columns: 3fr 2fr; gap: 12px; }
+.etk-eco__side > .etk-eco__node { grid-column: 2; }
+.etk-eco figcaption { display: grid; gap: 10px; max-width: 900px; margin-top: 12px; color: var(--etk-muted); font-size: 14px; }
+.etk-eco__legend { display: inline-flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; }
+.etk-eco__legend i { display: inline-block; width: 28px; height: 14px; border: 1.5px solid var(--etk-line-strong); }
+.etk-eco__legend i.is-planned { border-style: dashed; }
+
+/* ------------------------------------------------------------ Evidence (paper) */
+.etk-evidence { padding: clamp(80px, 10vw, 140px) var(--page-gutter); }
+.etk-evidence__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 5vw, 80px); max-width: var(--content); margin: 0 auto; }
+.etk-evidence__grid + .etk-lighthouse, .etk-lighthouse + .etk-evidence__grid { margin-top: clamp(48px, 6vw, 80px); }
+.etk-evidence h3 { font-size: 20px; }
+.etk-evidence .etk-small { margin-top: 6px; color: rgba(11, 15, 14, 0.74); opacity: 1; }
+.etk-results { margin-top: 18px; border-top: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-results div { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding: 14px 0; border-bottom: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-results dt { font-size: 15px; line-height: 1.5; }
+.etk-results dd { color: var(--etk-deep); font-family: var(--font-mono); font-size: 13px; font-weight: 600; text-align: right; white-space: nowrap; }
+.etk-lighthouse { max-width: var(--content); margin-left: auto; margin-right: auto; }
+.etk-lighthouse .etk-table-wrap { margin-top: 16px; }
+.etk-lighthouse td { font-family: var(--font-mono); font-size: 13px; }
+.etk-gap-list { list-style: none; margin-top: 16px; border-top: 1px solid rgba(11, 15, 14, 0.2); }
+.etk-gap-list li { position: relative; padding: 14px 0 14px 30px; border-bottom: 1px solid rgba(11, 15, 14, 0.2); color: rgba(11, 15, 14, 0.84); font-size: 15px; line-height: 1.55; }
+.etk-gap-list li::before { content: ""; position: absolute; left: 4px; top: 21px; width: 9px; height: 9px; border: 1.5px solid #9a3519; transform: rotate(45deg); }
+.etk-evidence__grid h3 + .etk-check-list, .etk-evidence__grid h3 + .etk-gap-list { margin-top: 16px; }
+
+/* ------------------------------------------------------------ Reflection + close */
+.etk-reflections { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(24px, 3vw, 48px); max-width: var(--content); margin: 0 auto; list-style: none; }
+.etk-reflections li { display: grid; gap: 10px; align-content: start; padding: 26px 0 32px; border-top: 1px solid var(--etk-line-strong); }
+.etk-reflections span { color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; }
+.etk-reflections h3 { font-family: var(--etk-display); font-size: 28px; font-weight: 800; letter-spacing: 0.005em; text-transform: uppercase; }
+.etk-reflections p { color: var(--etk-muted); font-size: 15.5px; }
+.etk-roadmap { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; max-width: var(--content); margin: clamp(48px, 6vw, 80px) auto 0; }
+.etk-roadmap > div { padding: 24px; border: 1px solid var(--etk-line); background: var(--etk-raised-2); }
+.etk-roadmap h3 { color: var(--etk-gold); font-family: var(--font-mono); font-size: 11.5px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+.etk-roadmap ol { display: grid; gap: 10px; margin-top: 16px; padding-left: 20px; }
+.etk-roadmap li { color: var(--etk-ivory); font-size: 14.5px; line-height: 1.5; }
+.etk-roadmap li::marker { color: var(--etk-gold); font-family: var(--font-mono); font-size: 12px; }
+.etk-roadmap__long { max-width: var(--content); margin: 28px auto 0; color: var(--etk-muted); font-size: 15px; }
+
+.etk-close { display: grid; justify-items: center; gap: 26px; padding: clamp(80px, 10vw, 140px) var(--page-gutter); text-align: center; background: radial-gradient(50% 60% at 50% 40%, rgba(11, 122, 98, 0.24), transparent 70%), var(--etk-shadow); border-top: 1px solid var(--etk-line); }
+.etk-close__lockup { width: min(320px, 70vw); height: auto; }
+.etk-close__line { color: var(--etk-gold); font-family: var(--etk-display); font-size: clamp(20px, 2.4vw, 30px); font-weight: 600; letter-spacing: 0.154em; text-transform: uppercase; }
+.etk-close__actions { display: grid; justify-items: center; gap: 16px; }
+.etk-close .etk-site-note { border-left: 0; padding-left: 0; }
+.etk-case .next-investigation { background: var(--etk-deep); }
+.etk-case .next-investigation h2 { font-family: var(--font-sans); font-weight: 650; letter-spacing: -0.06em; text-transform: none; }
+
+/* ------------------------------------------------------------ Responsive */
+@media (max-width: 1180px) {
+  .etk-timeline ol { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 18px; }
+  .etk-pipeline ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .etk-pipeline li:nth-child(4) { border-right: 0; }
+  .etk-pipeline li:nth-child(-n + 4) { border-bottom: 1px solid rgba(11, 15, 14, 0.2); }
+  .etk-eco__flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .etk-eco__flow > .etk-eco__node:nth-child(3)::after { content: none; }
+  .etk-status-matrix { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-phones { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .etk-palette { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@media (max-width: 1050px) {
+  .etk-hero { grid-template-columns: 1fr; }
+  .etk-hero__stage { min-height: 0; aspect-ratio: 16 / 11; margin-bottom: 20px; }
+  .etk-section-head { grid-template-columns: 1fr; }
+  .etk-section-head .etk-eyebrow { grid-row: auto; padding-top: 0; }
+  .etk-idea, .etk-strategy__grid, .etk-system-need, .etk-tagline, .etk-web__intro, .etk-coach__notes, .etk-evidence__grid { grid-template-columns: 1fr; }
+  .etk-code-card { grid-template-columns: 1fr; }
+  .etk-code-card .etk-code, .etk-code-card__source, .etk-code-card__note { grid-column: 1; grid-row: auto; }
+  .etk-pdite { grid-template-columns: 1fr; }
+  .etk-pdite div + div { padding-left: 0; border-left: 0; }
+  .etk-crests { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-lockups__stacked, .etk-lockups__ceremonial { grid-column: span 6; }
+  .etk-lockups__horizontal, .etk-lockups__companions { grid-column: span 12; }
+  .etk-guides { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-reflections, .etk-decisions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-roadmap { grid-template-columns: 1fr; }
+  .etk-process__item--lead .etk-figure { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 820px) {
+  .etk-case { --etk-head: 128px; }
+  .etk-subnav { top: 70px; }
+  .etk-ledger { grid-template-columns: 1fr; }
+  .etk-ledger li + li { padding-left: 0; border-left: 0; border-top: 1px solid var(--etk-line); }
+  .etk-ledger li { padding: 16px 0; }
+  .etk-overview__grid, .etk-reasoning__list, .etk-chapter-strip, .etk-ladder { grid-template-columns: 1fr; }
+  .etk-chapter-strip li + li, .etk-ladder li + li { padding-left: 0; }
+  .etk-why { grid-template-columns: 1fr; }
+  .etk-why__rail { flex-direction: row; align-items: center; justify-content: space-between; }
+  .etk-why__kanji { width: 52px; }
+  .etk-chapter { grid-template-columns: 1fr; }
+  .etk-chapter__number { font-size: 140px; }
+  .etk-chapter__mark { display: none; }
+  .etk-process__item--half { grid-column: 1 / -1; }
+  .etk-screens { grid-template-columns: 1fr; }
+  .etk-screens__phone { max-width: 260px; }
+  .etk-decisions, .etk-reflections { grid-template-columns: 1fr; }
+  .etk-system-need ul { grid-template-columns: 1fr; }
+  .etk-eco__lanes { display: none; }
+  .etk-eco__flow { grid-template-columns: 1fr; gap: 30px; }
+  .etk-eco__flow > .etk-eco__node::after,
+  .etk-eco__flow > .etk-eco__node:nth-child(3)::after { content: "↓"; top: auto; right: auto; bottom: -26px; left: 22px; transform: none; }
+  .etk-eco__flow > .etk-eco__node:last-child::after { content: none; }
+  .etk-eco__side { grid-template-columns: 1fr; }
+  .etk-eco__side > .etk-eco__node { grid-column: 1; }
+  .etk-phones { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .etk-applications { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-applications .etk-figure:nth-child(n) { grid-column: span 1; }
+}
+
+@media (max-width: 600px) {
+  .etk-hero { padding-top: 24px; }
+  .etk-hero__meta div { grid-template-columns: 1fr; gap: 4px; }
+  .etk-hero__stage { aspect-ratio: 4 / 3.4; }
+  .etk-device--phone { width: 34%; border-width: 5px; border-radius: 18px; }
+  .etk-hero__actions .button { width: 100%; }
+  .etk-timeline ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-pipeline ol { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-pipeline li:nth-child(2n) { border-right: 0; }
+  .etk-pipeline li:nth-child(-n + 6) { border-bottom: 1px solid rgba(11, 15, 14, 0.2); }
+  .etk-pipeline li:nth-child(4) { border-right: 0; }
+  .etk-crests, .etk-guides, .etk-status-matrix { grid-template-columns: 1fr; }
+  .etk-palette { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-swatch__chip { height: 72px; }
+  .etk-lockups__stacked, .etk-lockups__ceremonial { grid-column: span 12; }
+  .etk-phones { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .etk-figure--phone .etk-figure__media { border-width: 5px; border-radius: 18px; }
+  .etk-sitemap li { grid-template-columns: 28px minmax(0, 1fr); }
+  .etk-sitemap li span { grid-column: 2; }
+  .etk-type { grid-template-columns: 1fr; }
+  .etk-results div { grid-template-columns: 1fr; gap: 4px; }
+  .etk-results dd { text-align: left; }
+  .etk-table tbody th { white-space: normal; }
+  .etk-code { font-size: 12px; padding: 18px 16px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etk-deep > summary i { transition: none; }
+}
+
+@media print {
+  .etk-subnav { display: none; }
+  .etk-case, .etk-hero, .etk-chapter, .etk-strategy, .etk-process, .etk-system, .etk-web, .etk-coach, .etk-ecosystem, .etk-reflection, .etk-close { background: #fff; color: #000; }
+}

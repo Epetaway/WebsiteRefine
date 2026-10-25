@@ -62,7 +62,11 @@ export default function About() {
           <h2 id="about-discipline-title">Teaching changed how I think about capability.</h2>
           <p>{teaching.summary}</p>
           <p>On the mat, a technically correct explanation is only the start. You observe, adapt the instruction, and help someone act under pressure. Product work asks for the same humility: what I intended is not the same as what another person can actually do.</p>
-          <Link className="case-link" to="/field-notes/teaching-jiu-jitsu-and-ux">Read the related note <span aria-hidden="true">↗</span></Link>
+          <p>I've also built my own Jiu-Jitsu brand around that teaching — an identity, an instructor website and a private Android app for running class.</p>
+          <div className="about-discipline__links">
+            <Link className="case-link" to="/field-notes/teaching-jiu-jitsu-and-ux">Read the related note <span aria-hidden="true">↗</span></Link>
+            <Link className="case-link" to="/work/earl-the-kaiju">See the Earl the Kaiju case study <span aria-hidden="true">↗</span></Link>
+          </div>
         </Reveal>
       </section>
 

@@ -25,6 +25,31 @@
   status = 301
 
 [[redirects]]
+  from = "/projects/earl-the-kaiju"
+  to = "/work/earl-the-kaiju"
+  status = 301
+
+[[redirects]]
+  from = "/projects/earldkaiju"
+  to = "/work/earl-the-kaiju"
+  status = 301
+
+[[redirects]]
+  from = "/earldkaiju"
+  to = "/work/earl-the-kaiju"
+  status = 301
+
+[[redirects]]
+  from = "/EarldKaiju"
+  to = "/work/earl-the-kaiju"
+  status = 301
+
+[[redirects]]
+  from = "/earl-the-kaiju"
+  to = "/work/earl-the-kaiju"
+  status = 301
+
+[[redirects]]
   from = "/projects"
   to = "/work"
   status = 301

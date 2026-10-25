@@ -5,6 +5,17 @@ import { fileURLToPath } from "node:url";
 import { fieldNotes } from "../client/src/data/fieldNotes";
 import { investigations } from "../client/src/data/investigations";
 import {
+  coachingSite,
+  codeHighlights,
+  coachFigures,
+  flagship,
+  guidelineFigures,
+  limitations as flagshipLimitations,
+  processFigures,
+  websiteFigures,
+  applicationFigures,
+} from "../client/src/data/earlTheKaiju";
+import {
   assertPublicationSafe,
   experience,
   professionalLinks,
@@ -30,6 +41,11 @@ const canonicalSourceFiles = [
   "client/src/components/layout/footer.tsx",
   "client/src/data/investigations.ts",
   "client/src/data/fieldNotes.ts",
+  "client/src/pages/earl-the-kaiju.tsx",
+  "client/src/data/earlTheKaiju.ts",
+  "client/src/data/work.ts",
+  "client/src/components/earl-the-kaiju/parts.tsx",
+  "client/src/components/earl-the-kaiju/EcosystemDiagram.tsx",
   "client/index.html",
   "client/public/sitemap.xml",
 ];
@@ -108,6 +124,61 @@ for (const investigation of investigations) {
   }
 }
 
+// Earl the Kaiju flagship case study: evidence rules specific to an in-development product.
+const flagshipUnsupported = [
+  /production-ready/i,
+  /\blive site\b/i,
+  /\bnow live\b/i,
+  /\blaunched\b/i,
+  /booking system/i,
+  /\bbook (a|your) (class|lesson|session) (now|today)\b/i,
+  /\bcertified\b/i,
+  /wcag (2\.\d )?compliant/i,
+  /\b\d+\s*(new )?students (enrolled|signed up)\b/i,
+  /\b(conversion|revenue) (rate|growth|increase)\b/i,
+];
+const flagshipSources = [
+  "client/src/pages/earl-the-kaiju.tsx",
+  "client/src/data/earlTheKaiju.ts",
+  "client/src/components/earl-the-kaiju/parts.tsx",
+  "client/src/components/earl-the-kaiju/EcosystemDiagram.tsx",
+];
+for (const relativePath of flagshipSources) {
+  const content = read(relativePath);
+  for (const pattern of flagshipUnsupported) {
+    if (pattern.test(content)) fail(`${relativePath} makes an unsupported claim: ${pattern}`);
+  }
+}
+if (coachingSite.liveUrl !== null) {
+  let url: URL;
+  try {
+    url = new URL(coachingSite.liveUrl);
+  } catch {
+    fail("The coaching site URL is not a valid URL.");
+  }
+  if (url.protocol !== "https:" || /ehicksonjr\.com$/i.test(url.hostname) || /example|yourdomain|localhost/i.test(url.hostname)) {
+    fail("The coaching site URL must be the verified public https site, not the portfolio or a placeholder.");
+  }
+}
+if (flagship.path !== "/work/earl-the-kaiju") fail("The Earl the Kaiju case study must live at /work/earl-the-kaiju.");
+if (!flagshipLimitations.length) fail("Earl the Kaiju must publish its known limitations.");
+for (const figure of [...processFigures, ...guidelineFigures, ...applicationFigures, ...websiteFigures, ...coachFigures]) {
+  if (figure.alt.trim().length < 12 || !figure.source.trim() || !figure.caption.trim()) {
+    fail(`Earl the Kaiju figure ${figure.media} needs alt text, a caption and a source.`);
+  }
+}
+if (processFigures.some((figure) => figure.media === "source-board" && figure.status !== "SOURCE REFERENCE")) {
+  fail("The raster concept board must stay labeled as a source reference, not approved artwork.");
+}
+for (const item of codeHighlights) {
+  if (!item.path || !item.commit || !item.evidence || !item.tradeoff) {
+    fail(`Code highlight ${item.id} needs a source path, commit, tradeoff and evidence.`);
+  }
+  if (item.repo === "Epetaway/EarltheKaiju" && (item.href || item.code.split("\n").length > 30)) {
+    fail(`Code highlight ${item.id} comes from a private repository: keep it a short excerpt with no link.`);
+  }
+}
+
 if (fieldNotes.length !== 3) {
   fail("Exactly three canonical Field Notes must be published.");
 }
@@ -126,6 +197,7 @@ const expectedRoutes = [
   "/work/withyou",
   "/work/dojonet",
   "/work/gundam-forge",
+  "/work/earl-the-kaiju",
   "/research",
   "/field-notes/teaching-jiu-jitsu-and-ux",
   "/field-notes/designing-consent",

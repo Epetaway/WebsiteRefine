@@ -27,6 +27,8 @@ Audit date: 2026-07-17
 - **DojoNet:** active development. The portfolio prototype demonstrates qualitative progression and reflection; it does not claim instructor workflows or validated learning outcomes.
 - **Gundam Forge:** functional beta-oriented implementation. The automated opponent is heuristic, not generative AI. Competitive restriction coverage and verified production hosting remain incomplete.
 
+- **Earl the Kaiju (added 2026-10-24):** brand identity approved (v1.2–v1.5, dated approval record); instructor website built and tested on a local build, **not deployed**, no domain; Kaiju Coach Sprint 01 MVP tested in CI and on Earl's phone, **not yet used in a real class**. Desktop sync and website-to-app inquiries are designed/planned only; the media library is a labeled concept. The raster concept board is a source reference, not approved art. AI-assisted production is disclosed on the page. No inquiries, students, conversions or revenue are claimed. Full matrix: `docs/EARL-THE-KAIJU-CASE-STUDY.md`.
+
 ## Professional content
 
 - Use `UX Engineer` as the one public title.
@@ -38,7 +40,7 @@ Audit date: 2026-07-17
 
 - The exact `ClaimType` union lives in `client/src/data/professional/types.ts`.
 - Project implementation statements carry claim types in `client/src/data/investigations.ts`.
-- `scripts/validate-content.ts` scans both source and built output for banned metrics, conflicting identity language, unsafe status claims, stale route architecture, and unverified `Present` language.
+- `scripts/validate-content.ts` scans both source and built output for banned metrics, conflicting identity language, unsafe status claims, stale route architecture, and unverified `Present` language. For Earl the Kaiju it also blocks launch/booking/certification/outcome language, rejects a coaching-site link that isn't a verified https URL, keeps the concept board labeled as a source reference, and keeps private-repository code excerpts short and unlinked.
 - `client/src/test/content-governance.test.ts` prevents unsupported claims and non-canonical career sources from re-entering routed content.
 - `scripts/validate_pdfs.py` applies the same banned-claim boundary to both generated PDFs.
 
