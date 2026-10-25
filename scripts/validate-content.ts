@@ -16,6 +16,25 @@ import {
   applicationFigures,
 } from "../client/src/data/earlTheKaiju";
 import {
+  architectureFigure as withYouArchitectureFigure,
+  campaignFigures as withYouCampaignFigures,
+  codeHighlights as withYouCode,
+  comparisons as withYouComparisons,
+  designSystemFigures as withYouDesignSystemFigures,
+  flowFigures as withYouFlowFigures,
+  handoffFigures as withYouHandoffFigures,
+  onboardingBuild as withYouOnboardingBuild,
+  overview as withYouOverview,
+  photoInProduct as withYouPhotoInProduct,
+  photoLibrary as withYouPhotoLibrary,
+  photography as withYouPhotography,
+  platformFigures as withYouPlatformFigures,
+  sharingFigures as withYouSharingFigures,
+  specFigures as withYouSpecFigures,
+  svgErrorFigure as withYouSvgErrorFigure,
+  withYou,
+} from "../client/src/data/withyou";
+import {
   assertPublicationSafe,
   experience,
   professionalLinks,
@@ -46,6 +65,9 @@ const canonicalSourceFiles = [
   "client/src/data/work.ts",
   "client/src/components/earl-the-kaiju/parts.tsx",
   "client/src/components/earl-the-kaiju/EcosystemDiagram.tsx",
+  "client/src/pages/withyou.tsx",
+  "client/src/data/withyou.ts",
+  "client/src/components/withyou/parts.tsx",
   "client/index.html",
   "client/public/sitemap.xml",
 ];
@@ -176,6 +198,58 @@ for (const item of codeHighlights) {
   }
   if (item.repo === "Epetaway/EarltheKaiju" && (item.href || item.code.split("\n").length > 30)) {
     fail(`Code highlight ${item.id} comes from a private repository: keep it a short excerpt with no link.`);
+  }
+}
+
+// WithYou case study: a built, unreleased product. No release, clinical or outcome claims;
+// every figure labeled and sourced; private-repository excerpts short and unlinked.
+const withYouUnsupported = [
+  /production-ready/i,
+  /\blaunched\b/i,
+  /\bin production\b/i,
+  /\bnow live\b/i,
+  /\bHIPAA\b/i,
+  /\b(clinically|scientifically) (proven|validated)\b/i,
+  /\bimproved? relationship outcomes?\b(?! (has|have) (not )?been)/i,
+  /wcag (2\.\d )?compliant/i,
+  /\b\d[\d,]* (users|couples|downloads)\b/i,
+  /★|\b\d(\.\d)? (stars?|star rating)\b/i,
+];
+for (const relativePath of ["client/src/pages/withyou.tsx", "client/src/data/withyou.ts", "client/src/components/withyou/parts.tsx"]) {
+  const content = read(relativePath);
+  for (const pattern of withYouUnsupported) {
+    if (pattern.test(content)) fail(`${relativePath} makes an unsupported claim: ${pattern}`);
+  }
+}
+if (withYou.path !== "/work/withyou") fail("The WithYou case study must live at /work/withyou.");
+for (const figure of [
+  ...withYouDesignSystemFigures,
+  ...withYouFlowFigures,
+  ...withYouComparisons.flatMap((item) => [item.design, ...item.build]),
+  ...withYouSharingFigures,
+  ...withYouPlatformFigures,
+  ...withYouOnboardingBuild,
+  ...withYouHandoffFigures,
+  ...withYouSpecFigures,
+  withYouSvgErrorFigure,
+  withYouArchitectureFigure,
+  ...withYouPhotoInProduct,
+  ...Object.values(withYouCampaignFigures),
+]) {
+  if (figure.alt.trim().length < 12 || !figure.source.trim() || !figure.caption.trim()) {
+    fail(`WithYou figure ${figure.media} needs alt text, a caption and a source.`);
+  }
+}
+// The couple photography is AI-generated stand-in art: it stays labeled as that wherever it appears.
+if (withYouPhotoLibrary.length !== 36 || !/AI-generated/.test(withYouPhotography.placeholder) || !/AI-generated/.test(withYouOverview.boundary)) {
+  fail("The WithYou photo library must show all 36 photos and say plainly that they are AI-generated stand-ins.");
+}
+for (const item of withYouCode) {
+  if (!item.path || !item.commit || !item.evidence || !item.tradeoff) {
+    fail(`WithYou code highlight ${item.id} needs a source path, commit, tradeoff and evidence.`);
+  }
+  if ("href" in item || item.code.split("\n").length > 30) {
+    fail(`WithYou code highlight ${item.id} comes from a private repository: keep it a short excerpt with no link.`);
   }
 }
 

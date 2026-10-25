@@ -77,10 +77,10 @@ export const investigations: Investigation[] = [
     accent: "#8F2E54",
     accentSecondary: "#C66043",
     surface: "#F2EDE3",
-    previewImage: "/assets/projects/withyou/preview.webp",
+    previewImage: "/assets/projects/withyou/media/preview-1440.webp",
     previewSrcSet:
-      "/assets/projects/withyou/preview-480.webp 480w, /assets/projects/withyou/preview-800.webp 800w, /assets/projects/withyou/preview.webp 1150w",
-    previewAlt: "Original WithYou project card artwork",
+      "/assets/projects/withyou/media/preview-480.webp 480w, /assets/projects/withyou/media/preview-800.webp 800w, /assets/projects/withyou/media/preview-1440.webp 1440w",
+    previewAlt: "The WithYou logo beside the app's pairing invite on Android and its home screen on iOS in dark and light mode",
     abstract: {
       product:
         "A private relationship application exploring intentional connection, pairing, and field-level information visibility.",
@@ -128,27 +128,30 @@ export const investigations: Investigation[] = [
       "Confirm a partner-visible result",
     ],
     designEvolution:
-      "The model moved from shared-by-relationship assumptions toward private-by-default entries with field-level visibility. That shift exposed the remaining legacy endpoint as a system-level privacy gap.",
+      "The model moved from shared-by-relationship assumptions toward private-by-default entries with field-level visibility. That shift exposed a legacy partner-profile path as a system-level privacy gap, closed in October 2026 by sending every legacy read through one visibility rule.",
     implementation: [
-      { status: "IMPLEMENTED + INTEGRATED", claim: "Pairing requires deliberate participation from both people through the invite-code exchange.", claimType: "implementation-evidence" },
-      { status: "IMPLEMENTED + INTEGRATED", claim: "Newer check-in paths support field-level visibility controls.", claimType: "implementation-evidence" },
-      { status: "KNOWN GAP", claim: "One legacy endpoint still exposes four fields using earlier unconditional sharing behavior.", claimType: "known-gap" },
-      { status: "IMPLEMENTED, NOT INTEGRATED", claim: "Some screens are designed and implemented as application screens but are not wired into the current navigation flow.", claimType: "known-gap" },
-      { status: "PARTIAL", claim: "The current implementation does not include a separate post-code approval step.", claimType: "known-gap" },
+      { status: "IMPLEMENTED + INTEGRATED", claim: "Pairing requires deliberate participation from both people: an invite code, then an accept-or-decline step with a minimal identity preview (relationship-space rebuild, October 2026).", claimType: "implementation-evidence" },
+      { status: "IMPLEMENTED + INTEGRATED", claim: "Check-in paths and partner-profile reads apply field-level visibility; a profile field with no visibility row is private.", claimType: "implementation-evidence" },
+      { status: "IMPLEMENTED + INTEGRATED", claim: "The legacy partner-profile gap this case study documented is closed: one helper applies the visibility rule to every legacy profile path, with nine regression tests (merged October 12, 2026).", claimType: "implementation-evidence" },
+      { status: "KNOWN GAP", claim: "Legacy profile visibility is per account, not per relationship space: a field shared by someone in two spaces is shared in both.", claimType: "known-gap" },
+      { status: "KNOWN GAP", claim: "Primary buttons set white 15px text on coral at 2.78:1, below WCAG AA for text that size.", claimType: "known-gap" },
+      { status: "PARTIAL", claim: "Device evidence for the rebuilt flows is Android-only so far: iOS, two physical devices, real push taps and screen-reader passes are open.", claimType: "known-gap" },
     ],
     evidence: [
       "Repository structure and integration behavior demonstrate a working mobile/backend beta.",
-      "Implementation captures show active application surfaces; the portfolio prototype demonstrates the interaction argument using fictional data.",
+      "Simulator and emulator captures show the built interface; prototype references and design sources are labeled separately, and the portfolio prototype uses fictional data.",
       "Evidence supports implemented behavior, not therapeutic benefit or improved relationship outcomes.",
     ],
     testingEvidence: [
       "Deterministic portfolio interaction test covering private entry, sharing choice, review, and partner-visible result.",
-      "Repository analysis of pairing and field-visibility implementation paths.",
+      "Nine regression tests for partner-profile visibility in the app repository (partner-profile-visibility.test.ts, merged October 12, 2026).",
+      "Native QA captures on the iOS Simulator and an Android emulator in light and dark mode (May–June 2026).",
       "No partner interviews, pilot study, or relationship-outcome evaluation is claimed.",
     ],
     limitations: [
-      "The legacy sharing path weakens otherwise more granular privacy controls.",
-      "Implemented-but-unintegrated screens are not complete user workflows.",
+      "Legacy profile visibility is per account, not per relationship space.",
+      "Production builds and a two-person real-device test are still open; the app is not released.",
+      "Primary button labels fall below WCAG AA contrast.",
       "No relationship outcome has been validated with a formal study.",
     ],
     openQuestions: [
@@ -169,9 +172,9 @@ export const investigations: Investigation[] = [
     },
     stack: ["React Native", "TypeScript", "Node.js", "Express", "PostgreSQL", "Prisma"],
     captures: [
-      { src: asset("withyou", "check-in.png"), alt: "WithYou development check-in screen with private fields", caption: "Daily check-in — private-by-default fields", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("withyou", "sharing-toggle.png"), alt: "WithYou field sharing control", caption: "Field-level sharing decision", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("withyou", "partner-view.png"), alt: "WithYou partner result screen", caption: "Partner result after an explicit share", label: "IMPLEMENTATION CAPTURE" },
+      { src: "/assets/projects/withyou/media/onb-impl-communication-720.webp", alt: "WithYou onboarding step with free-text answers and a private or shared choice per answer", caption: "Own words first, with a private-or-shared choice per answer", label: "IMPLEMENTATION CAPTURE" },
+      { src: "/assets/projects/withyou/media/onb-impl-privacy-720.webp", alt: "WithYou privacy review step that changes nothing until confirmed", caption: "Field-level sharing decision", label: "IMPLEMENTATION CAPTURE" },
+      { src: "/assets/projects/withyou/media/onb-impl-partner-card-720.webp", alt: "WithYou partner card preview showing only shared parts", caption: "Partner result after an explicit share", label: "IMPLEMENTATION CAPTURE" },
     ],
   },
   {

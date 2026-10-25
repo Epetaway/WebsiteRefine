@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<!--
+  Capture harness for scripts/withyou-design-captures.mjs.
+  The marketing UI kit defines SocialPost in ui_kits/marketing/marketing.jsx but its index page
+  doesn't render it. This page renders the kit's own component, unchanged, at its three sizes.
+  It is served by the capture script with the design export mounted at /design/.
+-->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<base href="/design/">
+<title>SocialPost — capture harness</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  body { margin: 0; padding: 40px; background: var(--bg1); font-family: var(--font-sans); }
+  #posts { display: inline-flex; gap: 24px; align-items: flex-end; padding: 24px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+<script type="text/babel" src="ui_kits/mobile/components.jsx"></script>
+<script type="text/babel" src="ui_kits/mobile/screens.jsx"></script>
+<script type="text/babel" src="ui_kits/marketing/marketing.jsx"></script>
+<script type="text/babel">
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <div id="posts">
+    <SocialPost kind="square"/>
+    <SocialPost kind="vertical"/>
+    <SocialPost kind="landscape"/>
+  </div>
+);
+</script>
+</body>
+</html>

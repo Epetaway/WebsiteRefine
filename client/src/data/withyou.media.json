@@ -1,0 +1,1125 @@
+{
+  "generatedBy": "scripts/withyou-assets.mjs",
+  "appCommit": "612da33",
+  "brand": {
+    "logo-mark": {
+      "src": "/assets/projects/withyou/brand/withyou_logo_mark.svg",
+      "width": 60,
+      "height": 56,
+      "sha256": "d38e3f027ef27c23273494217714b74e742dfb67861663274b459964d94efe8c",
+      "source": "apps/mobile/assets/withyou_logo_mark.svg"
+    },
+    "logo-horizontal": {
+      "src": "/assets/projects/withyou/brand/withyou_logo_horizontal.svg",
+      "width": 240,
+      "height": 56,
+      "sha256": "6b0d5fa6e5d818e08dd1b2a0056db865134acb3f4a566b705cf62afae5872cd7",
+      "source": "apps/mobile/assets/withyou_logo_horizontal.svg"
+    },
+    "logo-mark-light": {
+      "src": "/assets/projects/withyou/brand/withyou-logo-mark-light.svg",
+      "width": 64,
+      "height": 60,
+      "sha256": "a089b2cf445193ec9a5655c2c82d77596ac5cd8190549d8706fb712b1f829cd8",
+      "source": "apps/mobile/assets/brand/withyou-logo-mark-light.svg"
+    },
+    "logo-horizontal-light": {
+      "src": "/assets/projects/withyou/brand/withyou-logo-horizontal-light.svg",
+      "width": 280,
+      "height": 60,
+      "sha256": "2153c35c86bcfa5234136ce168599ccd059a9adb2c169530482766508e634caf",
+      "source": "apps/mobile/assets/brand/withyou-logo-horizontal-light.svg"
+    },
+    "app-icon-source-1024": {
+      "src": "/assets/projects/withyou/brand/withyou-app-icon-source-1024.svg",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "b5b9befbd4a4c24527017d2c80002350376c888460e4f7bab2092e2eabac8eec",
+      "source": "apps/mobile/assets/brand/withyou-app-icon-source-1024.svg"
+    },
+    "mark-refresh-light": {
+      "src": "/assets/projects/withyou/brand/withyou-mark-refresh-light.svg",
+      "width": 60,
+      "height": 56,
+      "sha256": "63d4342a6a4c26012ddf6b27964f1f18353a3f2492f938230bf0d01df80b5b97",
+      "source": "apps/mobile/assets/brand/withyou-mark-refresh-light.svg"
+    },
+    "wordmark-refresh-light": {
+      "src": "/assets/projects/withyou/brand/withyou-wordmark-refresh-light.svg",
+      "width": 280,
+      "height": 60,
+      "sha256": "27558acc15a8b73e9736f4db94cb1c3a556dbdccf82417c433270bf5d28fedf6",
+      "source": "apps/mobile/assets/brand/withyou-wordmark-refresh-light.svg"
+    },
+    "app-icon-refresh-1024": {
+      "src": "/assets/projects/withyou/brand/withyou-app-icon-refresh-1024.svg",
+      "width": 1024,
+      "height": 1024,
+      "sha256": "58064e183dd828953524047ceea3a9440046ccfad080139a62085f0b90b9ab0d",
+      "source": "apps/mobile/assets/brand/withyou-app-icon-refresh-1024.svg"
+    },
+    "notification-icon": {
+      "src": "/assets/projects/withyou/brand/withyou-notification-icon.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "4a54f30327683566727ac7f00bd323913618a534a0662746f1042636bdcc039b",
+      "source": "apps/mobile/assets/brand/withyou-notification-icon.svg"
+    }
+  },
+  "icons": {
+    "nav-home": {
+      "src": "/assets/projects/withyou/icons/nav-home.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "202d9b0cd2b2e4fdde5b7605ff25a3bd760d3a98fdcd5b3df44cc5873911e046",
+      "source": "apps/mobile/assets/icons/navigation/nav-home.svg",
+      "group": "navigation"
+    },
+    "nav-checkin": {
+      "src": "/assets/projects/withyou/icons/nav-checkin.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "47427d3515e2a9fbc29c38015297812811bd70722e832939e3c028d0be6e75b2",
+      "source": "apps/mobile/assets/icons/navigation/nav-checkin.svg",
+      "group": "navigation"
+    },
+    "nav-connect": {
+      "src": "/assets/projects/withyou/icons/nav-connect.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "1af1bcdd934d32332fbb64e76937f0d3ec5199653bf56dbf67d2a5fe02900dca",
+      "source": "apps/mobile/assets/icons/navigation/nav-connect.svg",
+      "group": "navigation"
+    },
+    "nav-profile": {
+      "src": "/assets/projects/withyou/icons/nav-profile.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "0d3d304d6cb41ebe5d66899cf5daf202b4dccc70354cc8421ab122be5aed58c8",
+      "source": "apps/mobile/assets/icons/navigation/nav-profile.svg",
+      "group": "navigation"
+    },
+    "nav-more": {
+      "src": "/assets/projects/withyou/icons/nav-more.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "9bede4cf855b5c77f7b88b96408b2801f79f3a9e387e0fe82c898d6083ad7cd4",
+      "source": "apps/mobile/assets/icons/navigation/nav-more.svg",
+      "group": "navigation"
+    },
+    "action-add": {
+      "src": "/assets/projects/withyou/icons/action-add.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "d90043431f4350c88b440b76666ace9c935664262390dc451072c0c189d0a715",
+      "source": "apps/mobile/assets/icons/actions/action-add.svg",
+      "group": "actions"
+    },
+    "action-back": {
+      "src": "/assets/projects/withyou/icons/action-back.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "f7abf435a9e20d4a1f1e6371699b9b913fbbb5b5cea96c7c74d0db273e286b06",
+      "source": "apps/mobile/assets/icons/actions/action-back.svg",
+      "group": "actions"
+    },
+    "action-calendar": {
+      "src": "/assets/projects/withyou/icons/action-calendar.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "0eb2cc3693ead829bf94b3d5c50b3cd90a4e2513cbfb295596336f09d2866288",
+      "source": "apps/mobile/assets/icons/actions/action-calendar.svg",
+      "group": "actions"
+    },
+    "action-close": {
+      "src": "/assets/projects/withyou/icons/action-close.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "1ca9dd50eeb408d70eba0be7bd54d5a88bc4d6c638a817ba787c16cbc285321a",
+      "source": "apps/mobile/assets/icons/actions/action-close.svg",
+      "group": "actions"
+    },
+    "action-copy": {
+      "src": "/assets/projects/withyou/icons/action-copy.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "daeb93ab4ae0f40f44bebc701042f3f54bce57fb5b3ef81c0f16ecf564696652",
+      "source": "apps/mobile/assets/icons/actions/action-copy.svg",
+      "group": "actions"
+    },
+    "action-edit": {
+      "src": "/assets/projects/withyou/icons/action-edit.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "591a4a91fcd246f2bff3a2ffac784497d669b5ad75fe33624f4564fad764c9ad",
+      "source": "apps/mobile/assets/icons/actions/action-edit.svg",
+      "group": "actions"
+    },
+    "action-filter": {
+      "src": "/assets/projects/withyou/icons/action-filter.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "d06fc79533688bb463662ea73d3338b1646090702e6839be4c9ca2f5589222be",
+      "source": "apps/mobile/assets/icons/actions/action-filter.svg",
+      "group": "actions"
+    },
+    "action-heart": {
+      "src": "/assets/projects/withyou/icons/action-heart.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "33e99be585e394ae09325594cbfad36858f22f449b856eead9b458364edeb601",
+      "source": "apps/mobile/assets/icons/actions/action-heart.svg",
+      "group": "actions"
+    },
+    "action-location": {
+      "src": "/assets/projects/withyou/icons/action-location.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "fbba71e13e9ebd85dfab2c8fadfeef6319c21db6d36ee62d94db3cea63309cfa",
+      "source": "apps/mobile/assets/icons/actions/action-location.svg",
+      "group": "actions"
+    },
+    "action-lock": {
+      "src": "/assets/projects/withyou/icons/action-lock.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "b71c3d5e6adb7a04bd1e87fa36913bbe55487e7e6b1631232dbf6047600d3822",
+      "source": "apps/mobile/assets/icons/actions/action-lock.svg",
+      "group": "actions"
+    },
+    "action-map-pin": {
+      "src": "/assets/projects/withyou/icons/action-map-pin.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "9821e7c3f770e7572341dedf245c186725f510aaebe3e318b915770c8991b092",
+      "source": "apps/mobile/assets/icons/actions/action-map-pin.svg",
+      "group": "actions"
+    },
+    "action-notification": {
+      "src": "/assets/projects/withyou/icons/action-notification.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "d10863fa7753163e776e5df77c32c072e55c37b7d82fe88bcfd61735b022e662",
+      "source": "apps/mobile/assets/icons/actions/action-notification.svg",
+      "group": "actions"
+    },
+    "action-save": {
+      "src": "/assets/projects/withyou/icons/action-save.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "6a29b683bff900b850b702e8b9f6bcf2728808b29b7be2fbf811b6b263e3577d",
+      "source": "apps/mobile/assets/icons/actions/action-save.svg",
+      "group": "actions"
+    },
+    "action-search": {
+      "src": "/assets/projects/withyou/icons/action-search.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "7d9fcd82f6ed35437aea4692095c2f39a1f9afaf3a38504b4900b09626c589f0",
+      "source": "apps/mobile/assets/icons/actions/action-search.svg",
+      "group": "actions"
+    },
+    "action-settings": {
+      "src": "/assets/projects/withyou/icons/action-settings.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "cfd5ea3f86f0ae5f7e4102bc20eebf024a80f4a5d044de6c32955bce69bc5fdc",
+      "source": "apps/mobile/assets/icons/actions/action-settings.svg",
+      "group": "actions"
+    },
+    "action-share": {
+      "src": "/assets/projects/withyou/icons/action-share.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "c8a3fab04d65996d02143f2c75d3a3ce281b34c54a7c8113aa164d848e0b1e13",
+      "source": "apps/mobile/assets/icons/actions/action-share.svg",
+      "group": "actions"
+    },
+    "action-shield": {
+      "src": "/assets/projects/withyou/icons/action-shield.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "383420a162b3a984cffe4c95c23825993e94210efff8c65f7d058578d5d866cf",
+      "source": "apps/mobile/assets/icons/actions/action-shield.svg",
+      "group": "actions"
+    },
+    "feature-checkin": {
+      "src": "/assets/projects/withyou/icons/feature-checkin.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "cd40fc1f38e90e6159fe03b0b3cd47fcd6cf2eab56bee5a6aa240a60bce54e00",
+      "source": "apps/mobile/assets/icons/features/feature-checkin.svg",
+      "group": "features"
+    },
+    "feature-private-note": {
+      "src": "/assets/projects/withyou/icons/feature-private-note.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "42d0e8ead477cbd01772efbc99e830f1db18b8a5f2f5edf59ce049d33e325340",
+      "source": "apps/mobile/assets/icons/features/feature-private-note.svg",
+      "group": "features"
+    },
+    "feature-help-me-say-this": {
+      "src": "/assets/projects/withyou/icons/feature-help-me-say-this.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "7fa8e4abe7e0f54657e248996bae6f3a7424e2c6d0a90221924378cd6ce6caae",
+      "source": "apps/mobile/assets/icons/features/feature-help-me-say-this.svg",
+      "group": "features"
+    },
+    "feature-guided-talk": {
+      "src": "/assets/projects/withyou/icons/feature-guided-talk.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "eb44b88afdbdfb7b71e69d6e2a80a04b7c199c7d48642ff0346f1c754e79f14d",
+      "source": "apps/mobile/assets/icons/features/feature-guided-talk.svg",
+      "group": "features"
+    },
+    "feature-boundaries": {
+      "src": "/assets/projects/withyou/icons/feature-boundaries.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "da7a2fedf9ef23fca90576c18e8beaebf521bfbeb635239855a41d279c795cf6",
+      "source": "apps/mobile/assets/icons/features/feature-boundaries.svg",
+      "group": "features"
+    },
+    "feature-support-preferences": {
+      "src": "/assets/projects/withyou/icons/feature-support-preferences.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "8998a1e5e75dac469d21d20e473a566a54466140e6d8494179d12ea7627001f2",
+      "source": "apps/mobile/assets/icons/features/feature-support-preferences.svg",
+      "group": "features"
+    },
+    "feature-communication-style": {
+      "src": "/assets/projects/withyou/icons/feature-communication-style.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "52906ca40fe95829294eab9926e36d0cfd4f476a52eb886536d1045113ecbf99",
+      "source": "apps/mobile/assets/icons/features/feature-communication-style.svg",
+      "group": "features"
+    },
+    "feature-relationship-goals": {
+      "src": "/assets/projects/withyou/icons/feature-relationship-goals.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "31bc4305d735aa82795d15576fd7562e506b4be8df12e8d2072eb5d13cd1c6f9",
+      "source": "apps/mobile/assets/icons/features/feature-relationship-goals.svg",
+      "group": "features"
+    },
+    "feature-shared-list": {
+      "src": "/assets/projects/withyou/icons/feature-shared-list.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "cda543a0d9974a916184134a37558ed603146fbece48ec938392fbc67d7f6508",
+      "source": "apps/mobile/assets/icons/features/feature-shared-list.svg",
+      "group": "features"
+    },
+    "feature-date-ideas": {
+      "src": "/assets/projects/withyou/icons/feature-date-ideas.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "a627efd18a4016b61fcdf6bfaa7574dbc9156a9bb26795707c424f5253e9055f",
+      "source": "apps/mobile/assets/icons/features/feature-date-ideas.svg",
+      "group": "features"
+    },
+    "feature-nearby": {
+      "src": "/assets/projects/withyou/icons/feature-nearby.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "1f0a268553c2d08ce316397cc4e48f9dc32e14e9d00116f83188e84134e1167b",
+      "source": "apps/mobile/assets/icons/features/feature-nearby.svg",
+      "group": "features"
+    },
+    "feature-notifications": {
+      "src": "/assets/projects/withyou/icons/feature-notifications.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "4b02244cf2ecb30f800504bc3601ae79f274a9d2abf0f6e23448f057085e8742",
+      "source": "apps/mobile/assets/icons/features/feature-notifications.svg",
+      "group": "features"
+    },
+    "feature-privacy-data": {
+      "src": "/assets/projects/withyou/icons/feature-privacy-data.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "1b98e6f2dde23dcdf43cf3844f5cb34a55973c384b04a9ca7115bc3c92d8477e",
+      "source": "apps/mobile/assets/icons/features/feature-privacy-data.svg",
+      "group": "features"
+    },
+    "feature-profile": {
+      "src": "/assets/projects/withyou/icons/feature-profile.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "61729b54ad1e57097c93ab280ee331c6c75a4463a43558cd00b50b077a389121",
+      "source": "apps/mobile/assets/icons/features/feature-profile.svg",
+      "group": "features"
+    },
+    "feature-relationship-settings": {
+      "src": "/assets/projects/withyou/icons/feature-relationship-settings.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "28b32aded111cb7978dc9df2619ed961acc306810fabef39c84b566b96af6d51",
+      "source": "apps/mobile/assets/icons/features/feature-relationship-settings.svg",
+      "group": "features"
+    },
+    "feature-crisis-support": {
+      "src": "/assets/projects/withyou/icons/feature-crisis-support.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "b33df2b22f3cfe01da38be873d64ef504d5c217489b5488b8b6349fc3c889170",
+      "source": "apps/mobile/assets/icons/features/feature-crisis-support.svg",
+      "group": "features"
+    },
+    "feature-insights": {
+      "src": "/assets/projects/withyou/icons/feature-insights.svg",
+      "width": 24,
+      "height": 24,
+      "sha256": "d120f145f6d1fc00dae17d4f979a014cd31dc4e2b635175fe10f7ff4e990b6af",
+      "source": "apps/mobile/assets/icons/features/feature-insights.svg",
+      "group": "features"
+    }
+  },
+  "illustrations": {
+    "illustration-empty-connect": {
+      "src": "/assets/projects/withyou/illustrations/illustration-empty-connect.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "556b7355e3d91dd73dc583ff5ffb26f8a7e017dfcbde523bd81f4b9d1d301e3f",
+      "source": "apps/mobile/assets/illustrations/illustration-empty-connect.svg"
+    },
+    "illustration-invite-expired": {
+      "src": "/assets/projects/withyou/illustrations/illustration-invite-expired.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "7bb94bb23dba7bdb04b09c6335fcd0a5908dca2107bef3b0b0748e5350061cc4",
+      "source": "apps/mobile/assets/illustrations/illustration-invite-expired.svg"
+    },
+    "illustration-partner-removed": {
+      "src": "/assets/projects/withyou/illustrations/illustration-partner-removed.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "d5ab0916b21587a13ec5e75c860203025ce32cc21320e7b02157069e650ef54a",
+      "source": "apps/mobile/assets/illustrations/illustration-partner-removed.svg"
+    },
+    "illustration-offline": {
+      "src": "/assets/projects/withyou/illustrations/illustration-offline.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "742bb04cd23382f96756fd51ad12c36befc391bc91fa6f75bd68b3969822c232",
+      "source": "apps/mobile/assets/illustrations/illustration-offline.svg"
+    },
+    "illustration-session-expired": {
+      "src": "/assets/projects/withyou/illustrations/illustration-session-expired.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "3936b5ddaa8e698435b572f64cf3e19974c3348f6e4f41c8de5620634ca4257a",
+      "source": "apps/mobile/assets/illustrations/illustration-session-expired.svg"
+    },
+    "illustration-notification-denied": {
+      "src": "/assets/projects/withyou/illustrations/illustration-notification-denied.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "f892720c42e3a7df427bdfefbd3f61448b59fa750ff9d9cf34dbfdf416eca4ce",
+      "source": "apps/mobile/assets/illustrations/illustration-notification-denied.svg"
+    },
+    "illustration-permission-denied": {
+      "src": "/assets/projects/withyou/illustrations/illustration-permission-denied.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "2b75d0fc4d512883ca46c65ac4efd8f8ee607ba3497f2ccfab09233582e55398",
+      "source": "apps/mobile/assets/illustrations/illustration-permission-denied.svg"
+    },
+    "illustration-crisis-support": {
+      "src": "/assets/projects/withyou/illustrations/illustration-crisis-support.svg",
+      "width": 320,
+      "height": 200,
+      "sha256": "35a6f7579194b3541f2b930fd7bbde5608a12ff3dfad122d88b188aeb3a29907",
+      "source": "apps/mobile/assets/illustrations/illustration-crisis-support.svg"
+    }
+  },
+  "media": {
+    "photo-a-01": {
+      "width": 600,
+      "height": 495,
+      "avif": "/assets/projects/withyou/media/photo-a-01-240.avif 240w, /assets/projects/withyou/media/photo-a-01-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-a-01-240.webp 240w, /assets/projects/withyou/media/photo-a-01-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-a-01-600.webp",
+      "sourceSha256": "05df9d642c26ddce0235ac2b71cd8c87abf55011d0c7d1ffef4ebc74188cf860"
+    },
+    "photo-a-02": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-02-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-02-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-02-240.webp",
+      "sourceSha256": "134c99fbc923350c4fe18417c8b285610fffc29acb3a55d0559a76e4e8643373"
+    },
+    "photo-a-03": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-03-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-03-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-03-240.webp",
+      "sourceSha256": "4fea5588368ba42a46452292e8c3d70d7e330c0abd2ebba3d4f144d02a0c5419"
+    },
+    "photo-a-04": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-04-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-04-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-04-240.webp",
+      "sourceSha256": "db557f3670e1149717e2ebeae06c17d709e54a7bbd26ff9fe6b7ebd3bec5b806"
+    },
+    "photo-a-05": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-05-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-05-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-05-240.webp",
+      "sourceSha256": "9d3a3594bac1207f96e49dbb78acda91804e73c29aa5b0db831ab869de5bd8c5"
+    },
+    "photo-a-06": {
+      "width": 600,
+      "height": 495,
+      "avif": "/assets/projects/withyou/media/photo-a-06-240.avif 240w, /assets/projects/withyou/media/photo-a-06-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-a-06-240.webp 240w, /assets/projects/withyou/media/photo-a-06-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-a-06-600.webp",
+      "sourceSha256": "c07512ed4053e9538bb7a34c61b254f673f842c05c77a04b62f65f1a83e05af2"
+    },
+    "photo-a-07": {
+      "width": 600,
+      "height": 495,
+      "avif": "/assets/projects/withyou/media/photo-a-07-240.avif 240w, /assets/projects/withyou/media/photo-a-07-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-a-07-240.webp 240w, /assets/projects/withyou/media/photo-a-07-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-a-07-600.webp",
+      "sourceSha256": "e94d740120b44f8f39449b8be4ee1037b3e894edca627450347007dcdfc262ee"
+    },
+    "photo-a-08": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-08-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-08-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-08-240.webp",
+      "sourceSha256": "f5ef928a595be4bb25975e111dcfb742072201c1c53e6ac75733502734c01c64"
+    },
+    "photo-a-09": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-09-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-09-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-09-240.webp",
+      "sourceSha256": "7e7f996de95b0f8b4c59202cbbe4536e65cfaa7e6a585d035b885ad2ad5e7ada"
+    },
+    "photo-a-10": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-10-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-10-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-10-240.webp",
+      "sourceSha256": "f1989cd626f0146742260bbd17ab09999c806487b3bc87783242b1e8b3583f6f"
+    },
+    "photo-a-11": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-11-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-11-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-11-240.webp",
+      "sourceSha256": "b90ec6c03f33fed39729e5d39b1d676451ba7afcefd1da8b3251e7b452bfd680"
+    },
+    "photo-a-12": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-12-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-12-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-12-240.webp",
+      "sourceSha256": "6d0a6e3d0a25d2cd030af55ab050f7cd92e6c92e53438747725c54825dbe879c"
+    },
+    "photo-a-13": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-13-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-13-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-13-240.webp",
+      "sourceSha256": "bcdbb9a2c910e120c1fe2417315c41d47031673ff56a09e92021c99443a78800"
+    },
+    "photo-a-14": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-14-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-14-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-14-240.webp",
+      "sourceSha256": "e8edad67480a39475b04d4c044a818a2eb3ea8cb9f304c776add46a522cc8ebd"
+    },
+    "photo-a-15": {
+      "width": 600,
+      "height": 495,
+      "avif": "/assets/projects/withyou/media/photo-a-15-240.avif 240w, /assets/projects/withyou/media/photo-a-15-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-a-15-240.webp 240w, /assets/projects/withyou/media/photo-a-15-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-a-15-600.webp",
+      "sourceSha256": "5528b459e96ede3ca3c798e5f4892d17133ca355243834e5048fbb43324b4baf"
+    },
+    "photo-a-16": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-16-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-16-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-16-240.webp",
+      "sourceSha256": "14534e6379312bbcdb8591ee3fd17f9932b524b7874cef14b7367df3a5a4bc12"
+    },
+    "photo-a-17": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-17-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-17-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-17-240.webp",
+      "sourceSha256": "3336386111d54f9c00fae8cde1353e83cfec4ad6ca03cc2ee0aec982015f342b"
+    },
+    "photo-a-18": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-18-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-18-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-18-240.webp",
+      "sourceSha256": "5947e714641b6f3d152916ed14ac393099fabaeedbe11f2205cba62c44846845"
+    },
+    "photo-a-19": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-19-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-19-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-19-240.webp",
+      "sourceSha256": "0a5a895376bd66755c7d8cbae6be50fa604cf03fd5616cd4606af33a90c7f46f"
+    },
+    "photo-a-20": {
+      "width": 240,
+      "height": 198,
+      "avif": "/assets/projects/withyou/media/photo-a-20-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-a-20-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-a-20-240.webp",
+      "sourceSha256": "42efa98b5ab79a4aa96d8db84714975e6706919c70ef3321a9c93db857bf3d09"
+    },
+    "photo-b-01": {
+      "width": 600,
+      "height": 391,
+      "avif": "/assets/projects/withyou/media/photo-b-01-240.avif 240w, /assets/projects/withyou/media/photo-b-01-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-b-01-240.webp 240w, /assets/projects/withyou/media/photo-b-01-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-b-01-600.webp",
+      "sourceSha256": "d3bd598ae120f2cc41718590d4846024c587f85c9dd1f0c86fc3c57bc96e6fbf"
+    },
+    "photo-b-02": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-02-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-02-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-02-240.webp",
+      "sourceSha256": "9dd098a3662dd7cdfa15b44157916ca02487a98f92e58a462b59c78242f8a115"
+    },
+    "photo-b-03": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-03-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-03-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-03-240.webp",
+      "sourceSha256": "67bbbb9642a19ffafd8d34587bcac9b6e599b5394f7e08926a984f58a779dcd5"
+    },
+    "photo-b-04": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-04-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-04-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-04-240.webp",
+      "sourceSha256": "25f0330c4becfaf1e7dcecf3b203b4b5a495f7376ce35dd42f5c9a4946334d4a"
+    },
+    "photo-b-05": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-05-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-05-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-05-240.webp",
+      "sourceSha256": "faeef79ec962628d9f5437867ad4f4b944ef05420461c9a70364af7a50142d8d"
+    },
+    "photo-b-06": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-06-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-06-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-06-240.webp",
+      "sourceSha256": "f614626885500c570173d885a8d118ae66af15b961ec3eb0828ab3ac7e1c3d15"
+    },
+    "photo-b-07": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-07-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-07-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-07-240.webp",
+      "sourceSha256": "58c2e533c73174976f75e942c8a331f9c4879d0a005c064df2fbbfab4a53b04a"
+    },
+    "photo-b-08": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-08-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-08-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-08-240.webp",
+      "sourceSha256": "d425bb1eed80fe9d728383f82c2f3f223a297ee82f58cf59c02e448cbe1908e7"
+    },
+    "photo-b-09": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-09-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-09-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-09-240.webp",
+      "sourceSha256": "3e76546dee50482b5cdc195391b8ea5f4d566602d1ad37f0328da4c613072ff9"
+    },
+    "photo-b-10": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-10-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-10-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-10-240.webp",
+      "sourceSha256": "c875c6fcca3bc9fc0520cce9c06f8c2564eb5c51edbf7da50bc232fe5d68e381"
+    },
+    "photo-b-11": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-11-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-11-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-11-240.webp",
+      "sourceSha256": "b91f58e6c12ef21723e525e9c7f3cef0395f9aca74cb743d3be25f3dcc4749ae"
+    },
+    "photo-b-12": {
+      "width": 600,
+      "height": 391,
+      "avif": "/assets/projects/withyou/media/photo-b-12-240.avif 240w, /assets/projects/withyou/media/photo-b-12-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-b-12-240.webp 240w, /assets/projects/withyou/media/photo-b-12-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-b-12-600.webp",
+      "sourceSha256": "90970c3f668e10442cf888cba7c8cb237859ed360f72e8e3a3c048489aa8f13b"
+    },
+    "photo-b-13": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-13-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-13-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-13-240.webp",
+      "sourceSha256": "0c4c7da5a1360d39e2b344e0c02b2fd59cf97da73495822038304af412e22457"
+    },
+    "photo-b-14": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-14-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-14-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-14-240.webp",
+      "sourceSha256": "dc1d62438079cabe19cfb6cb346657ffa5c5c3c106dda091bc5ad301537fec08"
+    },
+    "photo-b-15": {
+      "width": 240,
+      "height": 156,
+      "avif": "/assets/projects/withyou/media/photo-b-15-240.avif 240w",
+      "webp": "/assets/projects/withyou/media/photo-b-15-240.webp 240w",
+      "fallback": "/assets/projects/withyou/media/photo-b-15-240.webp",
+      "sourceSha256": "26021a0b13da7a63de3052315bdfd00bd979a4318a3713167bb6160791e1963e"
+    },
+    "photo-b-16": {
+      "width": 600,
+      "height": 391,
+      "avif": "/assets/projects/withyou/media/photo-b-16-240.avif 240w, /assets/projects/withyou/media/photo-b-16-600.avif 600w",
+      "webp": "/assets/projects/withyou/media/photo-b-16-240.webp 240w, /assets/projects/withyou/media/photo-b-16-600.webp 600w",
+      "fallback": "/assets/projects/withyou/media/photo-b-16-600.webp",
+      "sourceSha256": "bbe86cf06047582355c75eef044c3051339de05b06cc386359c0260ea55e3a6d"
+    },
+    "ios-tour-home": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/ios-tour-home-360.avif 360w, /assets/projects/withyou/media/ios-tour-home-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/ios-tour-home-360.webp 360w, /assets/projects/withyou/media/ios-tour-home-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/ios-tour-home-720.webp",
+      "sourceSha256": "a91c74beed31393e960c4bac24f44ce19d3a5da27c6d59812bc1a54eb65b824d"
+    },
+    "ios-tour-us": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/ios-tour-us-360.avif 360w, /assets/projects/withyou/media/ios-tour-us-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/ios-tour-us-360.webp 360w, /assets/projects/withyou/media/ios-tour-us-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/ios-tour-us-720.webp",
+      "sourceSha256": "80a37ff1440ec8a7023522a8c8f7d2dc1a1f2681083625f33734f57a3334ba83"
+    },
+    "ios-home-light": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/ios-home-light-360.avif 360w, /assets/projects/withyou/media/ios-home-light-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/ios-home-light-360.webp 360w, /assets/projects/withyou/media/ios-home-light-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/ios-home-light-720.webp",
+      "sourceSha256": "2e317dc426a790fb0ca6482931883c77661c157b42ff59d43f64d1c62ecfb6da"
+    },
+    "ios-home-dark": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/ios-home-dark-360.avif 360w, /assets/projects/withyou/media/ios-home-dark-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/ios-home-dark-360.webp 360w, /assets/projects/withyou/media/ios-home-dark-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/ios-home-dark-720.webp",
+      "sourceSha256": "18f02c22355b77099d2d562800d17e94bab67b8afaeffb92e6389266fbb9e8f5"
+    },
+    "android-welcome-light": {
+      "width": 720,
+      "height": 1600,
+      "avif": "/assets/projects/withyou/media/android-welcome-light-360.avif 360w, /assets/projects/withyou/media/android-welcome-light-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/android-welcome-light-360.webp 360w, /assets/projects/withyou/media/android-welcome-light-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/android-welcome-light-720.webp",
+      "sourceSha256": "ae3ef945aef66d5d790055056b92933f09e4a3dde99a984f5d0ef0d5c96f3891"
+    },
+    "android-welcome-dark": {
+      "width": 720,
+      "height": 1600,
+      "avif": "/assets/projects/withyou/media/android-welcome-dark-360.avif 360w, /assets/projects/withyou/media/android-welcome-dark-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/android-welcome-dark-360.webp 360w, /assets/projects/withyou/media/android-welcome-dark-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/android-welcome-dark-720.webp",
+      "sourceSha256": "5484b8a2f9253715bff27db503d42d1028971e45e99671f751041e038889e88f"
+    },
+    "android-pair-invite-light": {
+      "width": 720,
+      "height": 1600,
+      "avif": "/assets/projects/withyou/media/android-pair-invite-light-360.avif 360w, /assets/projects/withyou/media/android-pair-invite-light-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/android-pair-invite-light-360.webp 360w, /assets/projects/withyou/media/android-pair-invite-light-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/android-pair-invite-light-720.webp",
+      "sourceSha256": "78d88a4d8dbc98f6645673890d76ceb3ee3476d9cea713c2fa383fbd097fcf41"
+    },
+    "android-pair-invite-dark": {
+      "width": 720,
+      "height": 1600,
+      "avif": "/assets/projects/withyou/media/android-pair-invite-dark-360.avif 360w, /assets/projects/withyou/media/android-pair-invite-dark-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/android-pair-invite-dark-360.webp 360w, /assets/projects/withyou/media/android-pair-invite-dark-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/android-pair-invite-dark-720.webp",
+      "sourceSha256": "fe14d9c23b49157ef8f5ac2a5c583fa96a1c429d73a79eea93d7f458ea07bcd8"
+    },
+    "ios-svg-bundler-error": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/ios-svg-bundler-error-360.avif 360w, /assets/projects/withyou/media/ios-svg-bundler-error-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/ios-svg-bundler-error-360.webp 360w, /assets/projects/withyou/media/ios-svg-bundler-error-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/ios-svg-bundler-error-720.webp",
+      "sourceSha256": "d5d2c5424b8a17e5d8a660d927a23623002a139f43d90e8a2f0300165ba0a97d"
+    },
+    "onb-impl-basic-profile": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/onb-impl-basic-profile-360.avif 360w, /assets/projects/withyou/media/onb-impl-basic-profile-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/onb-impl-basic-profile-360.webp 360w, /assets/projects/withyou/media/onb-impl-basic-profile-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/onb-impl-basic-profile-720.webp",
+      "sourceSha256": "d481d04ec5dfb9903f1f2df6a40cdb420c8f59e4030d76784aa00a4a8606650f"
+    },
+    "onb-impl-communication": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/onb-impl-communication-360.avif 360w, /assets/projects/withyou/media/onb-impl-communication-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/onb-impl-communication-360.webp 360w, /assets/projects/withyou/media/onb-impl-communication-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/onb-impl-communication-720.webp",
+      "sourceSha256": "a4198d971fce87a212b2053ef790bfc410c11248dce374843166e83185bd9704"
+    },
+    "onb-impl-lens": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/onb-impl-lens-360.avif 360w, /assets/projects/withyou/media/onb-impl-lens-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/onb-impl-lens-360.webp 360w, /assets/projects/withyou/media/onb-impl-lens-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/onb-impl-lens-720.webp",
+      "sourceSha256": "6c0dd67bd42300213f14d891120ed9a4081e942715ee61167e33cdbfa464af4a"
+    },
+    "onb-impl-privacy": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/onb-impl-privacy-360.avif 360w, /assets/projects/withyou/media/onb-impl-privacy-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/onb-impl-privacy-360.webp 360w, /assets/projects/withyou/media/onb-impl-privacy-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/onb-impl-privacy-720.webp",
+      "sourceSha256": "d22a0ace8a49f8904547206d83dc691824c6554929916548b8e70d6052f372aa"
+    },
+    "onb-impl-partner-card": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/onb-impl-partner-card-360.avif 360w, /assets/projects/withyou/media/onb-impl-partner-card-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/onb-impl-partner-card-360.webp 360w, /assets/projects/withyou/media/onb-impl-partner-card-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/onb-impl-partner-card-720.webp",
+      "sourceSha256": "d05d8630e5b2b4d93c4826c3a4e5cb143412a95dec45f84d5d2d492a0b567cb0"
+    },
+    "onb-impl-pairing": {
+      "width": 720,
+      "height": 1565,
+      "avif": "/assets/projects/withyou/media/onb-impl-pairing-360.avif 360w, /assets/projects/withyou/media/onb-impl-pairing-720.avif 720w",
+      "webp": "/assets/projects/withyou/media/onb-impl-pairing-360.webp 360w, /assets/projects/withyou/media/onb-impl-pairing-720.webp 720w",
+      "fallback": "/assets/projects/withyou/media/onb-impl-pairing-720.webp",
+      "sourceSha256": "63288efd49b4cb81f3f29539a826a71112214f48c96debb097b29c3f65e3d940"
+    },
+    "ref-ios-pair-invite": {
+      "width": 708,
+      "height": 1508,
+      "avif": "/assets/projects/withyou/media/ref-ios-pair-invite-360.avif 360w, /assets/projects/withyou/media/ref-ios-pair-invite-708.avif 708w",
+      "webp": "/assets/projects/withyou/media/ref-ios-pair-invite-360.webp 360w, /assets/projects/withyou/media/ref-ios-pair-invite-708.webp 708w",
+      "fallback": "/assets/projects/withyou/media/ref-ios-pair-invite-708.webp",
+      "sourceSha256": "87bb1e2901e55d281bd79be5736a6a79c6beee6da5273aeaf239747cd1f60661",
+      "crop": [
+        826,
+        88,
+        708,
+        1508
+      ]
+    },
+    "ref-ios-home": {
+      "width": 708,
+      "height": 1508,
+      "avif": "/assets/projects/withyou/media/ref-ios-home-360.avif 360w, /assets/projects/withyou/media/ref-ios-home-708.avif 708w",
+      "webp": "/assets/projects/withyou/media/ref-ios-home-360.webp 360w, /assets/projects/withyou/media/ref-ios-home-708.webp 708w",
+      "fallback": "/assets/projects/withyou/media/ref-ios-home-708.webp",
+      "sourceSha256": "a65390af9f2bbf00857e81018af1b7b6aa3f6f86a67073f9b0f117d81a6b631d",
+      "crop": [
+        826,
+        88,
+        708,
+        1508
+      ]
+    },
+    "ref-ios-checkin-review": {
+      "width": 708,
+      "height": 1508,
+      "avif": "/assets/projects/withyou/media/ref-ios-checkin-review-360.avif 360w, /assets/projects/withyou/media/ref-ios-checkin-review-708.avif 708w",
+      "webp": "/assets/projects/withyou/media/ref-ios-checkin-review-360.webp 360w, /assets/projects/withyou/media/ref-ios-checkin-review-708.webp 708w",
+      "fallback": "/assets/projects/withyou/media/ref-ios-checkin-review-708.webp",
+      "sourceSha256": "daa645172a10a02887ed2c24f3572d97a4919960042103894f6c5280052603bf",
+      "crop": [
+        826,
+        88,
+        708,
+        1508
+      ]
+    },
+    "ref-ios-partner-summary": {
+      "width": 708,
+      "height": 1508,
+      "avif": "/assets/projects/withyou/media/ref-ios-partner-summary-360.avif 360w, /assets/projects/withyou/media/ref-ios-partner-summary-708.avif 708w",
+      "webp": "/assets/projects/withyou/media/ref-ios-partner-summary-360.webp 360w, /assets/projects/withyou/media/ref-ios-partner-summary-708.webp 708w",
+      "fallback": "/assets/projects/withyou/media/ref-ios-partner-summary-708.webp",
+      "sourceSha256": "56a2dd747773d5c50c535f5f281b490239815ba572690c475baeffbaf18cf5bb",
+      "crop": [
+        826,
+        88,
+        708,
+        1508
+      ]
+    },
+    "ref-ios-privacy": {
+      "width": 708,
+      "height": 1508,
+      "avif": "/assets/projects/withyou/media/ref-ios-privacy-360.avif 360w, /assets/projects/withyou/media/ref-ios-privacy-708.avif 708w",
+      "webp": "/assets/projects/withyou/media/ref-ios-privacy-360.webp 360w, /assets/projects/withyou/media/ref-ios-privacy-708.webp 708w",
+      "fallback": "/assets/projects/withyou/media/ref-ios-privacy-708.webp",
+      "sourceSha256": "29c6b5de1c26ad330196a56c0f470f483009eafe35fe70afe24dbee90cede331",
+      "crop": [
+        826,
+        88,
+        708,
+        1508
+      ]
+    },
+    "app-icon": {
+      "width": 512,
+      "height": 512,
+      "avif": "/assets/projects/withyou/media/app-icon-256.avif 256w, /assets/projects/withyou/media/app-icon-512.avif 512w",
+      "webp": "/assets/projects/withyou/media/app-icon-256.webp 256w, /assets/projects/withyou/media/app-icon-512.webp 512w",
+      "fallback": "/assets/projects/withyou/media/app-icon-512.webp",
+      "sourceSha256": "8abaaeb946afd5fc41092cd39d75bb2ca6dd8076ac45236501fefc4ddf2ec40b"
+    },
+    "brandkit-identity": {
+      "width": 1600,
+      "height": 2273,
+      "avif": "/assets/projects/withyou/media/brandkit-identity-900.avif 900w, /assets/projects/withyou/media/brandkit-identity-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/brandkit-identity-900.webp 900w, /assets/projects/withyou/media/brandkit-identity-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/brandkit-identity-1600.webp",
+      "sourceSha256": "a30f55f37526be942805aa932be66ab48d869d743975ce6ec752f8183f5450ea"
+    },
+    "brandkit-components": {
+      "width": 1600,
+      "height": 1405,
+      "avif": "/assets/projects/withyou/media/brandkit-components-900.avif 900w, /assets/projects/withyou/media/brandkit-components-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/brandkit-components-900.webp 900w, /assets/projects/withyou/media/brandkit-components-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/brandkit-components-1600.webp",
+      "sourceSha256": "52fb5169a38e4016777473fed8dce73eefea55b8c9faa7afb5b7a13ec0fee6ab"
+    },
+    "brandkit-handoff": {
+      "width": 1600,
+      "height": 755,
+      "avif": "/assets/projects/withyou/media/brandkit-handoff-900.avif 900w, /assets/projects/withyou/media/brandkit-handoff-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/brandkit-handoff-900.webp 900w, /assets/projects/withyou/media/brandkit-handoff-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/brandkit-handoff-1600.webp",
+      "sourceSha256": "d8debc47b9a7b7f0c217f448d034a622f344a0b690aed545a8966d148d9cb6c9"
+    },
+    "ds-platform-ios": {
+      "width": 1600,
+      "height": 1373,
+      "avif": "/assets/projects/withyou/media/ds-platform-ios-900.avif 900w, /assets/projects/withyou/media/ds-platform-ios-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/ds-platform-ios-900.webp 900w, /assets/projects/withyou/media/ds-platform-ios-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/ds-platform-ios-1600.webp",
+      "sourceSha256": "9bbd6fcbdbc201715a451777f6cdea6442241388ceb3c4f4b6c9ef5fb1ba4b5f"
+    },
+    "ds-platform-android": {
+      "width": 1600,
+      "height": 1084,
+      "avif": "/assets/projects/withyou/media/ds-platform-android-900.avif 900w, /assets/projects/withyou/media/ds-platform-android-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/ds-platform-android-900.webp 900w, /assets/projects/withyou/media/ds-platform-android-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/ds-platform-android-1600.webp",
+      "sourceSha256": "bf49362cde69d3c4e4eb8b67f73a700c21efa8222755128afa0e17f19dc2f97d"
+    },
+    "ds-colors-dark-mode": {
+      "width": 1600,
+      "height": 1008,
+      "avif": "/assets/projects/withyou/media/ds-colors-dark-mode-900.avif 900w, /assets/projects/withyou/media/ds-colors-dark-mode-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/ds-colors-dark-mode-900.webp 900w, /assets/projects/withyou/media/ds-colors-dark-mode-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/ds-colors-dark-mode-1600.webp",
+      "sourceSha256": "338b6e93ba0bdbb8bd88e02de28b98e98f3aab6f1ed14b7b983182970034a9d6"
+    },
+    "ds-components-widgets": {
+      "width": 1600,
+      "height": 1619,
+      "avif": "/assets/projects/withyou/media/ds-components-widgets-900.avif 900w, /assets/projects/withyou/media/ds-components-widgets-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/ds-components-widgets-900.webp 900w, /assets/projects/withyou/media/ds-components-widgets-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/ds-components-widgets-1600.webp",
+      "sourceSha256": "11582cffdb3403e965c68d2927cb13d5ec44057110769286c0f9e5bedfeea52a"
+    },
+    "ds-screen-templates": {
+      "width": 1600,
+      "height": 1736,
+      "avif": "/assets/projects/withyou/media/ds-screen-templates-900.avif 900w, /assets/projects/withyou/media/ds-screen-templates-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/ds-screen-templates-900.webp 900w, /assets/projects/withyou/media/ds-screen-templates-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/ds-screen-templates-1600.webp",
+      "sourceSha256": "47d73410c9b0a951641d80a08c0d322a66b3b2742b1a4c6ddc4d619941307516"
+    },
+    "wireframes-canvas": {
+      "width": 1600,
+      "height": 1111,
+      "avif": "/assets/projects/withyou/media/wireframes-canvas-900.avif 900w, /assets/projects/withyou/media/wireframes-canvas-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/wireframes-canvas-900.webp 900w, /assets/projects/withyou/media/wireframes-canvas-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/wireframes-canvas-1600.webp",
+      "sourceSha256": "98718e4697d9dd2b8dd766c166eda9aae87a65f6912f1e860420e636c4464d8b"
+    },
+    "wfmap-title": {
+      "width": 1600,
+      "height": 1239,
+      "avif": "/assets/projects/withyou/media/wfmap-title-900.avif 900w, /assets/projects/withyou/media/wfmap-title-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/wfmap-title-900.webp 900w, /assets/projects/withyou/media/wfmap-title-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/wfmap-title-1600.webp",
+      "sourceSha256": "b65cda4c554ea2d87984eee11d99fcfa380bd8ff3bffc049334ac54e9c0ede41"
+    },
+    "wfmap-user-flow": {
+      "width": 1600,
+      "height": 1436,
+      "avif": "/assets/projects/withyou/media/wfmap-user-flow-900.avif 900w, /assets/projects/withyou/media/wfmap-user-flow-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/wfmap-user-flow-900.webp 900w, /assets/projects/withyou/media/wfmap-user-flow-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/wfmap-user-flow-1600.webp",
+      "sourceSha256": "1b57b23af661bed3d131798a952e0108a196126a81de93da31c47bf391fffd3d"
+    },
+    "flow-graph": {
+      "width": 1600,
+      "height": 1111,
+      "avif": "/assets/projects/withyou/media/flow-graph-900.avif 900w, /assets/projects/withyou/media/flow-graph-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/flow-graph-900.webp 900w, /assets/projects/withyou/media/flow-graph-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/flow-graph-1600.webp",
+      "sourceSha256": "c2c3467fdba3b3b3c91ae78a57aa50852c13d761351ebfd8babeca4c171a4e01"
+    },
+    "hifi-entry": {
+      "width": 1600,
+      "height": 1111,
+      "avif": "/assets/projects/withyou/media/hifi-entry-900.avif 900w, /assets/projects/withyou/media/hifi-entry-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/hifi-entry-900.webp 900w, /assets/projects/withyou/media/hifi-entry-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/hifi-entry-1600.webp",
+      "sourceSha256": "d62461960b676315265d04770f6f968740daa18f51b49aa23694e4825d3372df"
+    },
+    "architecture-doc": {
+      "width": 1600,
+      "height": 867,
+      "avif": "/assets/projects/withyou/media/architecture-doc-900.avif 900w, /assets/projects/withyou/media/architecture-doc-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/architecture-doc-900.webp 900w, /assets/projects/withyou/media/architecture-doc-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/architecture-doc-1600.webp",
+      "sourceSha256": "bc0aeca8a63fa7e3bafb810b9a906b618ff1498923d6358c61500c1b195fb2f6",
+      "crop": [
+        0,
+        0,
+        2880,
+        1560
+      ]
+    },
+    "handoff-ios-light-welcome": {
+      "width": 1600,
+      "height": 1111,
+      "avif": "/assets/projects/withyou/media/handoff-ios-light-welcome-900.avif 900w, /assets/projects/withyou/media/handoff-ios-light-welcome-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/handoff-ios-light-welcome-900.webp 900w, /assets/projects/withyou/media/handoff-ios-light-welcome-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/handoff-ios-light-welcome-1600.webp",
+      "sourceSha256": "3e695eb593f4a039238e25eadf7a2453a01bd308b8a1c0fe5abc90929ccafb03"
+    },
+    "handoff-android-dark-welcome": {
+      "width": 1600,
+      "height": 1111,
+      "avif": "/assets/projects/withyou/media/handoff-android-dark-welcome-900.avif 900w, /assets/projects/withyou/media/handoff-android-dark-welcome-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/handoff-android-dark-welcome-900.webp 900w, /assets/projects/withyou/media/handoff-android-dark-welcome-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/handoff-android-dark-welcome-1600.webp",
+      "sourceSha256": "2ff7c889662c0fb071930a2fa944b2c714d172e1c2dcea6e309a42f931d10aec"
+    },
+    "onbspec-principles": {
+      "width": 1600,
+      "height": 1200,
+      "avif": "/assets/projects/withyou/media/onbspec-principles-900.avif 900w, /assets/projects/withyou/media/onbspec-principles-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/onbspec-principles-900.webp 900w, /assets/projects/withyou/media/onbspec-principles-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/onbspec-principles-1600.webp",
+      "sourceSha256": "46da5dee7ea87b46127a7a8f8414fc8ebf5fe88f8dbe160478e04b69dc05627f"
+    },
+    "onbspec-privacy-screen": {
+      "width": 1600,
+      "height": 2112,
+      "avif": "/assets/projects/withyou/media/onbspec-privacy-screen-900.avif 900w, /assets/projects/withyou/media/onbspec-privacy-screen-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/onbspec-privacy-screen-900.webp 900w, /assets/projects/withyou/media/onbspec-privacy-screen-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/onbspec-privacy-screen-1600.webp",
+      "sourceSha256": "793692c9297f0480dcb2c65ea50c880c720011e2ad1dc3bf37a71be5432cbf4b"
+    },
+    "onbspec-matrix": {
+      "width": 1600,
+      "height": 814,
+      "avif": "/assets/projects/withyou/media/onbspec-matrix-900.avif 900w, /assets/projects/withyou/media/onbspec-matrix-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/onbspec-matrix-900.webp 900w, /assets/projects/withyou/media/onbspec-matrix-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/onbspec-matrix-1600.webp",
+      "sourceSha256": "cb4cd819b7bedafb093ef1e6389c254e82a4581edfa57af6fa80bfff6ba72a0e"
+    },
+    "mk-landing-hero": {
+      "width": 1600,
+      "height": 872,
+      "avif": "/assets/projects/withyou/media/mk-landing-hero-900.avif 900w, /assets/projects/withyou/media/mk-landing-hero-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/mk-landing-hero-900.webp 900w, /assets/projects/withyou/media/mk-landing-hero-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/mk-landing-hero-1600.webp",
+      "sourceSha256": "813bb642337a8bd9aa1755d3dcfd073f2ae0454bc5d3e2982bfd09e100458fcb",
+      "crop": [
+        0,
+        0,
+        2560,
+        1395
+      ]
+    },
+    "mk-appstore-set": {
+      "width": 1600,
+      "height": 1038,
+      "avif": "/assets/projects/withyou/media/mk-appstore-set-900.avif 900w, /assets/projects/withyou/media/mk-appstore-set-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/mk-appstore-set-900.webp 900w, /assets/projects/withyou/media/mk-appstore-set-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/mk-appstore-set-1600.webp",
+      "sourceSha256": "b50de8168c16c0be88e6a193e3744e3eb68e636e6c9e6f2125f29f5fc306f744"
+    },
+    "mk-social-posts": {
+      "width": 1600,
+      "height": 637,
+      "avif": "/assets/projects/withyou/media/mk-social-posts-900.avif 900w, /assets/projects/withyou/media/mk-social-posts-1600.avif 1600w",
+      "webp": "/assets/projects/withyou/media/mk-social-posts-900.webp 900w, /assets/projects/withyou/media/mk-social-posts-1600.webp 1600w",
+      "fallback": "/assets/projects/withyou/media/mk-social-posts-1600.webp",
+      "sourceSha256": "70016c4ca99b89018e89f2512726057aee79617035a0a0bb1b2cd1794eb7ec66"
+    },
+    "preview": {
+      "width": 1440,
+      "height": 1200,
+      "avif": "/assets/projects/withyou/media/preview-480.avif 480w, /assets/projects/withyou/media/preview-800.avif 800w, /assets/projects/withyou/media/preview-1440.avif 1440w",
+      "webp": "/assets/projects/withyou/media/preview-480.webp 480w, /assets/projects/withyou/media/preview-800.webp 800w, /assets/projects/withyou/media/preview-1440.webp 1440w",
+      "fallback": "/assets/projects/withyou/media/preview-1440.webp",
+      "sourceSha256": "23bd1571cadecaaa67452fc994c24f9b337896de54d0ff67884e6b77675bae96"
+    }
+  }
+}

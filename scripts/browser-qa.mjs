@@ -135,11 +135,20 @@ try {
       };
       results.push(entry);
 
-      if (/^\/work\/(withyou|dojonet|gundam-forge)$/.test(route)) {
-        const deepDiveSummary = page.locator(".case-deep-dive > summary");
-        await deepDiveSummary.focus();
-        await page.keyboard.press("Enter");
-        await page.locator(".prototype-frame").waitFor({ state: "visible" });
+      // Investigation pages hide their deep dive behind one summary; the bespoke WithYou page
+      // keeps its code-card details closed. Open them and check the full page too.
+      const investigationDeepDive = /^\/work\/(dojonet|gundam-forge)$/.test(route);
+      if (investigationDeepDive || route === "/work/withyou") {
+        if (investigationDeepDive) {
+          const deepDiveSummary = page.locator(".case-deep-dive > summary");
+          await deepDiveSummary.focus();
+          await page.keyboard.press("Enter");
+          await page.locator(".prototype-frame").waitFor({ state: "visible" });
+        } else {
+          await page.locator("details.wy-deep").evaluateAll((items) => {
+            for (const item of items) item.open = true;
+          });
+        }
         await page.locator("img").evaluateAll(async (images) => {
           for (const image of images) image.loading = "eager";
           await Promise.all(images.map((image) => image.decode().catch(() => undefined)));
@@ -287,7 +296,7 @@ try {
   const undersizedPrimaryTargets = await page.evaluate(() =>
     Array.from(
       document.querySelectorAll(
-        ".button, .site-menu-button, .mobile-nav__link, .case-deep-dive > summary, .review-jump-nav a, .prototype-button, .etk-deep > summary, .etk-subnav a",
+        ".button, .site-menu-button, .mobile-nav__link, .case-deep-dive > summary, .review-jump-nav a, .prototype-button, .etk-deep > summary, .etk-subnav a, .wy-deep > summary, .wy-subnav a",
       ),
     )
       .filter((element) => {

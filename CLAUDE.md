@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Source for Earl Hickson Jr.'s portfolio site (ehicksonjr.com) — a React SPA (case studies, Field Notes, résumé, contact) backed by a single Express server. The old BJJ microsite at `/earldkaiju` is archived; that path now redirects to the Earl the Kaiju case study at `/work/earl-the-kaiju` (`client/src/pages/earl-the-kaiju.tsx`, content in `client/src/data/earlTheKaiju.ts`, record in `docs/EARL-THE-KAIJU-CASE-STUDY.md`). Monorepo with three top-level source trees: `client/` (Vite + React), `server/` (Express API), `shared/` (Drizzle schema + Zod validators consumed by both).
+Source for Earl Hickson Jr.'s portfolio site (ehicksonjr.com) — a React SPA (case studies, Field Notes, résumé, contact) backed by a single Express server. The old BJJ microsite at `/earldkaiju` is archived; that path now redirects to the Earl the Kaiju case study at `/work/earl-the-kaiju` (`client/src/pages/earl-the-kaiju.tsx`, content in `client/src/data/earlTheKaiju.ts`, record in `docs/EARL-THE-KAIJU-CASE-STUDY.md`). WithYou has a bespoke page built the same way at `/work/withyou` (`client/src/pages/withyou.tsx`, `client/src/data/withyou.ts`, `docs/WITHYOU-CASE-STUDY.md`, assets rebuilt by `scripts/withyou-assets.mjs` per `docs/WITHYOU-ASSETS.md`); DojoNet and Gundam Forge still render through the shared investigation page. Monorepo with three top-level source trees: `client/` (Vite + React), `server/` (Express API), `shared/` (Drizzle schema + Zod validators consumed by both).
 
 ## Commands
 

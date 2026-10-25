@@ -23,7 +23,7 @@ Audit date: 2026-07-17
 
 ## Investigation results
 
-- **WithYou:** beta-oriented mobile/backend work. Invite-code pairing is deliberate participation, not a separate post-code approval. Field-level visibility exists alongside a legacy unconditional path. Some screens are implemented but not integrated.
+- **WithYou (rebuilt as a bespoke page 2026-10-25):** beta-oriented mobile/backend work, not released. Pairing is an invite code plus an accept-or-decline step (relationship-space rebuild, Oct 2026). The legacy unconditional partner-profile path was closed on Oct 12, 2026 (SPK-H, #186, nine regression tests); legacy visibility is still per account rather than per relationship space. Primary button labels measure 2.78:1 (known gap). Device evidence for the rebuilt flows is Android-only. The couple photography is labeled as AI-generated stand-in art. AI assistance in development is disclosed as help with gaps and speed, under Earl's direction. Full matrix: `docs/WITHYOU-CASE-STUDY.md`.
 - **DojoNet:** active development. The portfolio prototype demonstrates qualitative progression and reflection; it does not claim instructor workflows or validated learning outcomes.
 - **Gundam Forge:** functional beta-oriented implementation. The automated opponent is heuristic, not generative AI. Competitive restriction coverage and verified production hosting remain incomplete.
 
