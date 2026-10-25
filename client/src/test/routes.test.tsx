@@ -83,16 +83,20 @@ describe("canonical route architecture", () => {
     expect(disclosure).toHaveAttribute("open");
   });
 
-  it("continues from the last investigation to Earl the Kaiju, then back to the first", async () => {
-    renderRoute("/work/gundam-forge");
+  it("follows the case-study order WithYou → Earl the Kaiju → Gundam Forge → DojoNet → WithYou", async () => {
+    renderRoute("/work/withyou");
     fireEvent.click(await screen.findByRole("link", { name: /Read Earl the Kaiju/i }));
     expect(await screen.findByRole("heading", { level: 1, name: /Earl the Kaiju/i }, { timeout: 5000 })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("link", { name: /Read Gundam Forge/i }));
+    expect(await screen.findByRole("heading", { level: 1, name: "Gundam Forge" }, { timeout: 5000 })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("link", { name: /Read DojoNet/i }));
+    expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" }, { timeout: 5000 })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("link", { name: /Read WithYou/i }));
-    expect(await screen.findByRole("heading", { level: 1, name: "WithYou" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: "WithYou" }, { timeout: 5000 })).toBeInTheDocument();
   });
 
   it("moves between case studies through the project navigation", async () => {
-    renderRoute("/work/withyou");
+    renderRoute("/work/gundam-forge");
     const nextCaseStudy = await screen.findByRole("link", { name: /Read DojoNet/i });
     fireEvent.click(nextCaseStudy);
     expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" })).toBeInTheDocument();

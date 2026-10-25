@@ -52,7 +52,7 @@ import {
   websiteTests,
   whyIBuiltIt,
 } from "@/data/earlTheKaiju";
-import { investigations } from "@/data/investigations";
+import { getNextWorkEntry } from "@/data/work";
 import "@/styles/earl-the-kaiju.css";
 
 const wideProcess = new Set(["proof-ceremonial-directions", "proof-patterns-from-references", "proof-horizontal-before-after"]);
@@ -84,7 +84,7 @@ function ChapterOpener({ index }: { index: number }) {
 }
 
 export default function EarlTheKaijuCaseStudy() {
-  const next = investigations[0];
+  const next = getNextWorkEntry(flagship.slug);
   const website = codeHighlights.filter((item) => item.chapter === "website");
   const coach = codeHighlights.filter((item) => item.chapter === "coach");
 
@@ -619,7 +619,7 @@ export default function EarlTheKaijuCaseStudy() {
         <span>Next case study / {next.number}</span>
         <h2>{next.name}</h2>
         <p>{next.question}</p>
-        <Link className="button button--light" to={`/work/${next.slug}`}>Read {next.name}</Link>
+        <Link className="button button--light" to={next.path}>Read {next.name}</Link>
       </aside>
     </div>
   );

@@ -75,7 +75,7 @@ export const repositories = {
 export const flagship = {
   slug: "earl-the-kaiju",
   path: "/work/earl-the-kaiju",
-  number: "04",
+  number: "02",
   name: "Earl the Kaiju",
   theme: "Brand ecosystem",
   question:

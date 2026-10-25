@@ -26,15 +26,20 @@ function renderRoute(path: string) {
 }
 
 describe("Earl the Kaiju case study", () => {
-  it("is added to the work list without changing the three investigations", () => {
-    expect(workEntries.map((entry) => entry.slug)).toEqual(["withyou", "dojonet", "gundam-forge", "earl-the-kaiju"]);
-    expect(workEntries.slice(0, 3).map((entry) => entry.number)).toEqual(investigations.map((item) => item.number));
-    expect(workEntries[3]).toMatchObject({ path: "/work/earl-the-kaiju", number: "04", name: "Earl the Kaiju" });
+  it("lists the case studies in Earl's order, numbered by position", () => {
+    expect(workEntries.map((entry) => entry.slug)).toEqual(["withyou", "earl-the-kaiju", "gundam-forge", "dojonet"]);
+    expect(workEntries.map((entry) => entry.number)).toEqual(["01", "02", "03", "04"]);
+    expect(workEntries[1]).toMatchObject({ path: "/work/earl-the-kaiju", name: "Earl the Kaiju" });
+    for (const item of investigations) {
+      expect(workEntries.find((entry) => entry.slug === item.slug)?.number).toBe(item.number);
+    }
   });
 
   it("appears on the Work index and the homepage's selected work", async () => {
     const work = renderRoute("/work");
     expect(await screen.findByRole("heading", { level: 2, name: "Earl the Kaiju" })).toBeInTheDocument();
+    const titles = screen.getAllByRole("heading", { level: 2 }).map((node) => node.textContent);
+    expect(titles.filter((title) => ["WithYou", "Earl the Kaiju", "Gundam Forge", "DojoNet"].includes(title ?? ""))).toEqual(["WithYou", "Earl the Kaiju", "Gundam Forge", "DojoNet"]);
     expect(screen.getAllByRole("link", { name: /Open case study/i })).toHaveLength(4);
     work.unmount();
     renderRoute("/");

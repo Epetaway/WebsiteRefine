@@ -6,13 +6,15 @@ Audit date: 2026-10-24.
 
 ## Scope
 
-One new flagship case study, added as the fourth entry on Home and Work. The three existing investigations (WithYou, DojoNet, Gundam Forge) keep their data, numbering, pages, prototypes and assets. Shared code changed only where the new entry needed it:
+One new flagship case study. Home and Work list the case studies in Earl's order — **01 WithYou, 02 Earl the Kaiju, 03 Gundam Forge, 04 DojoNet** — and each number matches its position (DojoNet moved from 02 to 04 at Earl's request, 2026-10-25). The three existing investigations keep their content, pages, prototypes and assets. Shared code changed only where the new entry needed it:
 
 | File | Change |
 |---|---|
-| `client/src/data/work.ts` (new) | Ordered list of all four case studies for cards and next-navigation. The investigations map through unchanged. |
+| `client/src/data/work.ts` (new) | The display order (`displayOrder`) for cards and next-navigation. |
+| `client/src/data/investigations.ts` | Array order WithYou, Gundam Forge, DojoNet; DojoNet's number is 04. No content changed. |
+| `netlify/functions/server.js` → `server.cjs` | Netlify's build refused a CommonJS function under `"type": "module"`; this had failed every deploy preview since PR #23. |
 | `client/src/pages/home.tsx`, `work.tsx` | Read `workEntries` instead of `investigations`; same card markup. Work page counts say four projects. Home's "Beyond the screen" section gains one link. |
-| `client/src/pages/investigation.tsx` | Prototype choice is an explicit typed map (no silent Gundam Forge fallback). "Next case study" uses the shared list, so Gundam Forge now continues to Earl the Kaiju. |
+| `client/src/pages/investigation.tsx` | Prototype choice is an explicit typed map (no silent Gundam Forge fallback). "Next case study" follows the shared order: WithYou → Earl the Kaiju → Gundam Forge → DojoNet → WithYou. |
 | `client/src/pages/about.tsx` | One sentence and one link in the teaching section. |
 | `client/src/App.tsx` | The route, plus legacy destinations. |
 | `client/src/redesign.css` | One rule for the About links row. |
@@ -83,5 +85,4 @@ No secrets appear in any excerpt. `validate-content.ts` fails the build if a pri
 1. AI-assistance wording (above) and the concept-board wording.
 2. Meet Earl screenshot with background people and gym signage — OK for the portfolio?
 3. Coaching site URL: when it launches, set `coachingSite.liveUrl` in `earlTheKaiju.ts`. The hero and closing then show **Visit Earl the Kaiju**; validation rejects anything that isn't an https URL on another domain. Decide then whether `/earldkaiju` should keep pointing at the case study (current) or go to the coaching site.
-4. Card order: Earl the Kaiju is the fourth card so the existing projects keep their places. Moving it first is a one-line change in `client/src/data/work.ts`.
-5. Replace local-build captures with live captures after launch, and add real Lighthouse numbers then.
+4. Replace local-build captures with live captures after launch, and add real Lighthouse numbers then.

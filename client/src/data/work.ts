@@ -1,6 +1,7 @@
-// The ordered list of case studies shown on Home, Work and in next/previous navigation.
-// The three product investigations keep their own data model (investigations.ts) and
-// numbering; Earl the Kaiju is a separate flagship case study with its own page.
+// The ordered list of case studies shown on Home, Work and in next-case-study navigation.
+// The three product investigations keep their own data model (investigations.ts);
+// Earl the Kaiju is a separate flagship case study with its own page. Display order is
+// set by `displayOrder` below, and each entry's number matches its position.
 
 import { investigations } from "./investigations";
 import { flagship, media } from "./earlTheKaiju";
@@ -31,7 +32,9 @@ export type WorkEntry = {
 
 const preview = media.preview;
 
-export const workEntries: WorkEntry[] = [
+const displayOrder = ["withyou", "earl-the-kaiju", "gundam-forge", "dojonet"] as const;
+
+const entries: WorkEntry[] = [
   ...investigations.map((project) => {
     const view = getCaseStudyView(project);
     return {
@@ -79,6 +82,12 @@ export const workEntries: WorkEntry[] = [
     },
   },
 ];
+
+export const workEntries: WorkEntry[] = displayOrder.map((slug) => {
+  const entry = entries.find((item) => item.slug === slug);
+  if (!entry) throw new Error(`Unknown case study in displayOrder: ${slug}`);
+  return entry;
+});
 
 export const getNextWorkEntry = (slug: string) => {
   const index = workEntries.findIndex((entry) => entry.slug === slug);

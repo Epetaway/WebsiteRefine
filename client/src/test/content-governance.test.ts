@@ -15,10 +15,10 @@ describe("content governance", () => {
   });
 
   it("uses governed project statuses and evidence boundaries", () => {
-    expect(investigations.map((item) => item.status)).toEqual([
-      "Functional beta-oriented implementation",
-      "Active development",
-      "Functional beta-oriented implementation",
+    expect(investigations.map((item) => [item.slug, item.status])).toEqual([
+      ["withyou", "Functional beta-oriented implementation"],
+      ["gundam-forge", "Functional beta-oriented implementation"],
+      ["dojonet", "Active development"],
     ]);
     for (const investigation of investigations) {
       expect(investigation.limitations.length).toBeGreaterThan(0);
