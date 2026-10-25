@@ -11,6 +11,8 @@ const Work = lazy(() => import("@/pages/work"));
 const InvestigationPage = lazy(() => import("@/pages/investigation"));
 const EarlTheKaiju = lazy(() => import("@/pages/earl-the-kaiju"));
 const WithYou = lazy(() => import("@/pages/withyou"));
+const GundamForge = lazy(() => import("@/pages/gundam-forge"));
+const DojoNet = lazy(() => import("@/pages/dojonet"));
 const Research = lazy(() => import("@/pages/research"));
 const FieldNotes = lazy(() => import("@/pages/field-notes"));
 const FieldNotePage = lazy(() => import("@/pages/field-note"));
@@ -71,6 +73,8 @@ export default function App() {
             <Route path="/work" element={<Work />} />
             <Route path="/work/earl-the-kaiju" element={<EarlTheKaiju />} />
             <Route path="/work/withyou" element={<WithYou />} />
+            <Route path="/work/gundam-forge" element={<GundamForge />} />
+            <Route path="/work/dojonet" element={<DojoNet />} />
             <Route path="/work/:slug" element={<InvestigationPage />} />
             <Route path="/research" element={<Research />} />
             <Route path="/field-notes" element={<FieldNotes />} />

@@ -1,0 +1,166 @@
+{
+  "generatedBy": "scripts/case-study-media.mjs",
+  "appCommit": "Epetaway/Gundam-Forge@50321ed",
+  "og": {
+    "src": "/assets/projects/gundam-forge/social/og.png",
+    "sha256": "8519a9c4c8fa166de284a1646713afbb0429491492c03344f6b7731d1174c66b"
+  },
+  "media": {
+    "forge-draft": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/forge-draft-900.avif 900w, /assets/projects/gundam-forge/media/forge-draft-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/forge-draft-900.webp 900w, /assets/projects/gundam-forge/media/forge-draft-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/forge-draft-1600.webp",
+      "sourceSha256": "2f2d406bc27b3185ab77942b10ad7ed5cc6325f81d8a2c1d694b8e267294f346"
+    },
+    "forge-issues": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/forge-issues-900.avif 900w, /assets/projects/gundam-forge/media/forge-issues-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/forge-issues-900.webp 900w, /assets/projects/gundam-forge/media/forge-issues-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/forge-issues-1600.webp",
+      "sourceSha256": "46d36354445fafa99254014bf868cfd19086cc67017aa8b3d54e11aa73f2cf2f"
+    },
+    "forge-valid": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/forge-valid-900.avif 900w, /assets/projects/gundam-forge/media/forge-valid-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/forge-valid-900.webp 900w, /assets/projects/gundam-forge/media/forge-valid-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/forge-valid-1600.webp",
+      "sourceSha256": "774e9cdfa6077f7d448a98bbba5e3170ffe2f0161303c5ed2fd539195300c4ab"
+    },
+    "forge-create": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/forge-create-900.avif 900w, /assets/projects/gundam-forge/media/forge-create-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/forge-create-900.webp 900w, /assets/projects/gundam-forge/media/forge-create-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/forge-create-1600.webp",
+      "sourceSha256": "a28005d8352ccd98212e328a7fda277577d244a54f6ad4e44ed90dd06fdb0dc2"
+    },
+    "cards": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/cards-900.avif 900w, /assets/projects/gundam-forge/media/cards-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/cards-900.webp 900w, /assets/projects/gundam-forge/media/cards-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/cards-1600.webp",
+      "sourceSha256": "51e138ae9fb85bcf2328bd5a026b894d1120b57bdf99f8f2a86dcd6f1a64285b"
+    },
+    "deck-view": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/deck-view-900.avif 900w, /assets/projects/gundam-forge/media/deck-view-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/deck-view-900.webp 900w, /assets/projects/gundam-forge/media/deck-view-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/deck-view-1600.webp",
+      "sourceSha256": "5bc7970d4e3705d8e0182587681c555127a97925fcbcb0745bdb151a4fe79389"
+    },
+    "home": {
+      "width": 1600,
+      "height": 556,
+      "avif": "/assets/projects/gundam-forge/media/home-900.avif 900w, /assets/projects/gundam-forge/media/home-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/home-900.webp 900w, /assets/projects/gundam-forge/media/home-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/home-1600.webp",
+      "crop": [
+        0,
+        0,
+        2880,
+        1000
+      ],
+      "sourceSha256": "ed22fd61cb0245f143a70a30b1a9c1dfeef00d6d583e73808e8e3eb2822dc78a"
+    },
+    "welcome": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/welcome-900.avif 900w, /assets/projects/gundam-forge/media/welcome-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/welcome-900.webp 900w, /assets/projects/gundam-forge/media/welcome-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/welcome-1600.webp",
+      "sourceSha256": "6ab9fa0869241f305f3a4553727a479b37df7392690888a3e1cdeb3701626044"
+    },
+    "playtest-mulligan": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/playtest-mulligan-900.avif 900w, /assets/projects/gundam-forge/media/playtest-mulligan-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/playtest-mulligan-900.webp 900w, /assets/projects/gundam-forge/media/playtest-mulligan-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/playtest-mulligan-1600.webp",
+      "sourceSha256": "e5861123ed6126dd736f0ff8f7c6f425275aaf2c4b2fb513711a4d43aa98cde3"
+    },
+    "playtest-board": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/playtest-board-900.avif 900w, /assets/projects/gundam-forge/media/playtest-board-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/playtest-board-900.webp 900w, /assets/projects/gundam-forge/media/playtest-board-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/playtest-board-1600.webp",
+      "sourceSha256": "81aa5ecf60152898dad93b761f557ffcf354da13fa920374bbec57b3621cf946"
+    },
+    "playtest-empty": {
+      "width": 900,
+      "height": 278,
+      "avif": "/assets/projects/gundam-forge/media/playtest-empty-900.avif 900w",
+      "webp": "/assets/projects/gundam-forge/media/playtest-empty-900.webp 900w",
+      "fallback": "/assets/projects/gundam-forge/media/playtest-empty-900.webp",
+      "crop": [
+        760,
+        700,
+        1360,
+        420
+      ],
+      "sourceSha256": "098916f39cb3dd07587c833ad001c2e4cc466576e588917d8d180476da18fd30"
+    },
+    "light-forge-draft": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/light-forge-draft-900.avif 900w, /assets/projects/gundam-forge/media/light-forge-draft-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/light-forge-draft-900.webp 900w, /assets/projects/gundam-forge/media/light-forge-draft-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/light-forge-draft-1600.webp",
+      "sourceSha256": "235110d364d83b549e9f683f5cae301ea3d9968336122f835cae1ffe6f83e062"
+    },
+    "light-forge-valid": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/gundam-forge/media/light-forge-valid-900.avif 900w, /assets/projects/gundam-forge/media/light-forge-valid-1600.avif 1600w",
+      "webp": "/assets/projects/gundam-forge/media/light-forge-valid-900.webp 900w, /assets/projects/gundam-forge/media/light-forge-valid-1600.webp 1600w",
+      "fallback": "/assets/projects/gundam-forge/media/light-forge-valid-1600.webp",
+      "sourceSha256": "806337155ff4823b0559113440f1019fc7eb46f5a1e06f5c710208211d2e62c0"
+    },
+    "m-forge-draft": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/gundam-forge/media/m-forge-draft-360.avif 360w, /assets/projects/gundam-forge/media/m-forge-draft-720.avif 720w",
+      "webp": "/assets/projects/gundam-forge/media/m-forge-draft-360.webp 360w, /assets/projects/gundam-forge/media/m-forge-draft-720.webp 720w",
+      "fallback": "/assets/projects/gundam-forge/media/m-forge-draft-720.webp",
+      "sourceSha256": "a17877a98a2ad9e255455a21ed933773132a2533cd301ca33f98444c9b75aacd"
+    },
+    "m-forge-issues": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/gundam-forge/media/m-forge-issues-360.avif 360w, /assets/projects/gundam-forge/media/m-forge-issues-720.avif 720w",
+      "webp": "/assets/projects/gundam-forge/media/m-forge-issues-360.webp 360w, /assets/projects/gundam-forge/media/m-forge-issues-720.webp 720w",
+      "fallback": "/assets/projects/gundam-forge/media/m-forge-issues-720.webp",
+      "sourceSha256": "3904ddfd51d83be333c5f008c76615a9c698c7f73005291e844a9ac68f036277"
+    },
+    "m-cards": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/gundam-forge/media/m-cards-360.avif 360w, /assets/projects/gundam-forge/media/m-cards-720.avif 720w",
+      "webp": "/assets/projects/gundam-forge/media/m-cards-360.webp 360w, /assets/projects/gundam-forge/media/m-cards-720.webp 720w",
+      "fallback": "/assets/projects/gundam-forge/media/m-cards-720.webp",
+      "sourceSha256": "5b4ac639d595c57284178c647aa94964b3e4ae913a2c66c063869d49f345b50e"
+    },
+    "m-light-forge": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/gundam-forge/media/m-light-forge-360.avif 360w, /assets/projects/gundam-forge/media/m-light-forge-720.avif 720w",
+      "webp": "/assets/projects/gundam-forge/media/m-light-forge-360.webp 360w, /assets/projects/gundam-forge/media/m-light-forge-720.webp 720w",
+      "fallback": "/assets/projects/gundam-forge/media/m-light-forge-720.webp",
+      "sourceSha256": "df7850270ba5adf723137dd319bd86c4006057f224aad35f5842409f142f5fad"
+    },
+    "preview": {
+      "width": 1440,
+      "height": 1200,
+      "avif": "/assets/projects/gundam-forge/media/preview-480.avif 480w, /assets/projects/gundam-forge/media/preview-800.avif 800w, /assets/projects/gundam-forge/media/preview-1440.avif 1440w",
+      "webp": "/assets/projects/gundam-forge/media/preview-480.webp 480w, /assets/projects/gundam-forge/media/preview-800.webp 800w, /assets/projects/gundam-forge/media/preview-1440.webp 1440w",
+      "fallback": "/assets/projects/gundam-forge/media/preview-1440.webp",
+      "sourceSha256": "56e5b0e54792bf948af163b54cf6c19157423e9e92fdfe604acd90103e6ad8f3"
+    }
+  }
+}

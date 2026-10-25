@@ -22,8 +22,8 @@ describe("canonical route architecture", () => {
     ["/", /I design and build digital products/i],
     ["/work", /Design decisions/i],
     ["/work/withyou", /^WithYou — Two private rooms with a shared door/],
-    ["/work/dojonet", "DojoNet"],
-    ["/work/gundam-forge", "Gundam Forge"],
+    ["/work/dojonet", /^DojoNet — Progress isn't the same as completion/],
+    ["/work/gundam-forge", /^Gundam Forge — Show the rule while the player is still deciding/],
     ["/work/earl-the-kaiju", /Earl the Kaiju — Building an identity into a working ecosystem/i],
     ["/research", /I design and build technology/i],
     ["/field-notes", /thinking carefully in public/i],
@@ -48,8 +48,8 @@ describe("canonical route architecture", () => {
     ["/case-studies", /Design decisions/i],
     ["/investigations", /Design decisions/i],
     ["/projects/withyou", /^WithYou — Two private rooms with a shared door/],
-    ["/projects/dojonet", "DojoNet"],
-    ["/projects/gundam-forge", "Gundam Forge"],
+    ["/projects/dojonet", /^DojoNet — /],
+    ["/projects/gundam-forge", /^Gundam Forge — /],
     ["/how-i-think", /I design and build technology/i],
     ["/approach", /I design and build technology/i],
     ["/blog", /thinking carefully in public/i],
@@ -72,13 +72,13 @@ describe("canonical route architecture", () => {
     expect(await screen.findByRole("heading", { name: /This path is no longer/i })).toBeInTheDocument();
   });
 
-  it("keeps the recruiter summary visible and exposes a semantic technical deep dive", async () => {
-    const { container } = renderRoute("/work/dojonet");
-    expect(await screen.findByRole("heading", { name: /The case in five minutes/i })).toBeInTheDocument();
-    const disclosure = container.querySelector("details#deep-dive");
+  it.each(["/work/gundam-forge", "/work/dojonet"])("keeps the recruiter summary visible and the code reasoning one disclosure away on %s", async (path) => {
+    const { container } = renderRoute(path);
+    expect(await screen.findByRole("heading", { name: /The case in five minutes/i }, { timeout: 5000 })).toBeInTheDocument();
+    const disclosure = container.querySelector("article[id^='code-'] details");
     expect(disclosure).toBeInTheDocument();
-    const summary = screen.getByText(/Open the full design and implementation record/i);
-    expect(summary).toBeInTheDocument();
+    const summary = disclosure?.querySelector("summary") as HTMLElement;
+    expect(summary).toHaveTextContent(/Problem → Decision → Implementation → Tradeoff → Evidence/);
     fireEvent.click(summary);
     expect(disclosure).toHaveAttribute("open");
   });
@@ -88,17 +88,17 @@ describe("canonical route architecture", () => {
     fireEvent.click(await screen.findByRole("link", { name: /Read Earl the Kaiju/i }));
     expect(await screen.findByRole("heading", { level: 1, name: /Earl the Kaiju/i }, { timeout: 5000 })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("link", { name: /Read Gundam Forge/i }));
-    expect(await screen.findByRole("heading", { level: 1, name: "Gundam Forge" }, { timeout: 5000 })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: /^Gundam Forge — / }, { timeout: 5000 })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("link", { name: /Read DojoNet/i }));
-    expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" }, { timeout: 5000 })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: /^DojoNet — / }, { timeout: 5000 })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("link", { name: /Read WithYou/i }));
     expect(await screen.findByRole("heading", { level: 1, name: /^WithYou — / }, { timeout: 5000 })).toBeInTheDocument();
   });
 
   it("moves between case studies through the project navigation", async () => {
     renderRoute("/work/gundam-forge");
-    const nextCaseStudy = await screen.findByRole("link", { name: /Read DojoNet/i });
+    const nextCaseStudy = await screen.findByRole("link", { name: /Read DojoNet/i }, { timeout: 5000 });
     fireEvent.click(nextCaseStudy);
-    expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: /^DojoNet — / }, { timeout: 5000 })).toBeInTheDocument();
   });
 });

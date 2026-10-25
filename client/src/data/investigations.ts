@@ -60,8 +60,8 @@ export type Investigation = {
   captures: { src: string; alt: string; caption: string; label: EvidenceStatus }[];
 };
 
-const asset = (project: string, file: string) =>
-  `/assets/projects/${project}/implementation/${file}`;
+const media = (project: string, file: string) =>
+  `/assets/projects/${project}/media/${file}`;
 
 export const investigations: Investigation[] = [
   {
@@ -190,8 +190,10 @@ export const investigations: Investigation[] = [
     accent: "#244BCF",
     accentSecondary: "#7957E8",
     surface: "#E4AE3A",
-    previewImage: "/assets/projects/gundam-forge/preview.svg",
-    previewAlt: "Original Gundam Forge project card artwork",
+    previewImage: "/assets/projects/gundam-forge/media/preview-1440.webp",
+    previewSrcSet:
+      "/assets/projects/gundam-forge/media/preview-480.webp 480w, /assets/projects/gundam-forge/media/preview-800.webp 800w, /assets/projects/gundam-forge/media/preview-1440.webp 1440w",
+    previewAlt: "The Gundam Forge lockup above its deck builder on desktop, counting 49 of 50 cards, and the deck issues sheet on a phone",
     abstract: {
       product:
         "An independent, unofficial deck-building and playtesting application for the Gundam Card Game.",
@@ -284,9 +286,9 @@ export const investigations: Investigation[] = [
     },
     stack: ["Next.js", "React", "TypeScript", "Supabase", "Vitest"],
     captures: [
-      { src: asset("gundam-forge", "deck-builder.png"), alt: "Gundam Forge deck builder and legality status", caption: "Deck construction with persistent validation status", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("gundam-forge", "validation.png"), alt: "Gundam Forge constraint warning detail", caption: "Constraint detail at the moment of decision", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("gundam-forge", "battlefield.png"), alt: "Gundam Forge playtesting battlefield", caption: "Development-stage playtesting surface", label: "IMPLEMENTATION CAPTURE" },
+      { src: media("gundam-forge", "forge-draft-1600.webp"), alt: "Gundam Forge deck builder with a draft deck at 49 of 50 cards and an Issues (2) button", caption: "Deck construction with persistent validation status", label: "IMPLEMENTATION CAPTURE" },
+      { src: media("gundam-forge", "forge-issues-1600.webp"), alt: "Gundam Forge's Deck Issues sheet listing one rule error and one piece of advice", caption: "Constraint detail at the moment of decision", label: "IMPLEMENTATION CAPTURE" },
+      { src: media("gundam-forge", "playtest-board-1600.webp"), alt: "Gundam Forge playtesting battlefield on turn one against the heuristic bot", caption: "Development-stage playtesting surface", label: "IMPLEMENTATION CAPTURE" },
     ],
   },
   {
@@ -302,10 +304,10 @@ export const investigations: Investigation[] = [
     accent: "#076B50",
     accentSecondary: "#E4AE3A",
     surface: "#E5DDCF",
-    previewImage: "/assets/projects/dojonet/preview.webp",
+    previewImage: "/assets/projects/dojonet/media/preview-1440.webp",
     previewSrcSet:
-      "/assets/projects/dojonet/preview-480.webp 480w, /assets/projects/dojonet/preview-800.webp 800w, /assets/projects/dojonet/preview.webp 1067w",
-    previewAlt: "Original DojoNet project card artwork",
+      "/assets/projects/dojonet/media/preview-480.webp 480w, /assets/projects/dojonet/media/preview-800.webp 800w, /assets/projects/dojonet/media/preview-1440.webp 1440w",
+    previewAlt: "The DojoNet wordmark above its dashboard on desktop and the belt-chapter journal on a phone",
     abstract: {
       product:
         "A martial arts training journal and community product centered on practice history, reflection, and qualitative progression.",
@@ -356,7 +358,7 @@ export const investigations: Investigation[] = [
     designEvolution:
       "The concept moved away from a completion percentage after teaching experience showed that repetition count can hide understanding, correction, and application under pressure.",
     implementation: [
-      { status: "DEVELOPMENT-STAGE IMPLEMENTATION", claim: "Practitioner-facing journal, profile, feed, and technique surfaces exist in the current application.", claimType: "implementation-evidence" },
+      { status: "DEVELOPMENT-STAGE IMPLEMENTATION", claim: "Practitioner-facing journal, feed, and technique surfaces exist in the current application; the demo account's profile route currently crashes.", claimType: "implementation-evidence" },
       { status: "IMPLEMENTED + INTEGRATED", claim: "The portfolio prototype records a fictional session, stage, and reflection locally.", claimType: "implementation-evidence" },
       { status: "KNOWN GAP", claim: "Instructor coaching is separate from student reflection and is not represented as a complete workflow.", claimType: "known-gap" },
       { status: "PARTIAL", claim: "The current demo relies on browser-local persistence and demo-seeded data.", claimType: "known-gap" },
@@ -395,9 +397,9 @@ export const investigations: Investigation[] = [
     },
     stack: ["React", "Vite", "TypeScript", "Tailwind CSS", "Browser-local persistence"],
     captures: [
-      { src: asset("dojonet", "progression.png"), alt: "DojoNet qualitative technique progression screen", caption: "Four qualitative stages — no mastery percentage", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("dojonet", "technique-detail.png"), alt: "DojoNet technique detail with notes and stage", caption: "Technique history and reflection", label: "IMPLEMENTATION CAPTURE" },
-      { src: asset("dojonet", "student-view.png"), alt: "DojoNet student journal view", caption: "Student view; instructor complement remains a gap", label: "IMPLEMENTATION CAPTURE" },
+      { src: media("dojonet", "techniques-1600.webp"), alt: "DojoNet technique library with four qualitative stages for Hip Escape", caption: "Four qualitative stages — no mastery percentage", label: "IMPLEMENTATION CAPTURE" },
+      { src: media("dojonet", "journal-1600.webp"), alt: "DojoNet's journal filed into belt chapters", caption: "Technique history and reflection, filed by belt", label: "IMPLEMENTATION CAPTURE" },
+      { src: media("dojonet", "dashboard-1600.webp"), alt: "DojoNet student dashboard with the journal composer", caption: "Student view; instructor complement remains a gap", label: "IMPLEMENTATION CAPTURE" },
     ],
   },
 ];

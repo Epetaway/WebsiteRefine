@@ -1,0 +1,158 @@
+{
+  "generatedBy": "scripts/case-study-media.mjs",
+  "appCommit": "Epetaway/DojoNet-Prototype-MAX@be2db53",
+  "og": {
+    "src": "/assets/projects/dojonet/social/og.png",
+    "sha256": "b42f5d406c7efc417ca475b7d144c49d404d6615f9d8d8009050c2b089f1c655"
+  },
+  "media": {
+    "dashboard": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/dashboard-900.avif 900w, /assets/projects/dojonet/media/dashboard-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/dashboard-900.webp 900w, /assets/projects/dojonet/media/dashboard-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/dashboard-1600.webp",
+      "sourceSha256": "d794d4073ee91127893a613a7209fa2bbe1d57594adfad6ed7ac92e60b5facbc"
+    },
+    "composer-journal": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/composer-journal-900.avif 900w, /assets/projects/dojonet/media/composer-journal-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/composer-journal-900.webp 900w, /assets/projects/dojonet/media/composer-journal-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/composer-journal-1600.webp",
+      "sourceSha256": "fca2e8d3e84adc37f527845baf64f1ef89a8f263592945bfbec63ca5966249d7"
+    },
+    "training": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/training-900.avif 900w, /assets/projects/dojonet/media/training-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/training-900.webp 900w, /assets/projects/dojonet/media/training-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/training-1600.webp",
+      "sourceSha256": "13984f1b970f230669e30d8f09581cc37e65dab319693193b878af2232db8427"
+    },
+    "training-fixed": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/training-fixed-900.avif 900w, /assets/projects/dojonet/media/training-fixed-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/training-fixed-900.webp 900w, /assets/projects/dojonet/media/training-fixed-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/training-fixed-1600.webp",
+      "sourceSha256": "03477009e640865f0e0a90f17ddadc9f08e2c708ff8c9be108e3f08e510d0568"
+    },
+    "techniques": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/techniques-900.avif 900w, /assets/projects/dojonet/media/techniques-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/techniques-900.webp 900w, /assets/projects/dojonet/media/techniques-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/techniques-1600.webp",
+      "sourceSha256": "e3570746c962361cfe7554c66d18946ae64f5c48f260a36b75402164df24367d"
+    },
+    "techniques-fixed": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/techniques-fixed-900.avif 900w, /assets/projects/dojonet/media/techniques-fixed-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/techniques-fixed-900.webp 900w, /assets/projects/dojonet/media/techniques-fixed-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/techniques-fixed-1600.webp",
+      "sourceSha256": "8c1658ffee2de0fcd2b359818867d0ce17a9ecc846ac209a9e8dc62399e02e3f"
+    },
+    "progress-fixed": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/progress-fixed-900.avif 900w, /assets/projects/dojonet/media/progress-fixed-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/progress-fixed-900.webp 900w, /assets/projects/dojonet/media/progress-fixed-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/progress-fixed-1600.webp",
+      "sourceSha256": "017a0fc3977658dd656a3ec68de5e28693367907021039ddb4670c775400a2b2"
+    },
+    "journal": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/journal-900.avif 900w, /assets/projects/dojonet/media/journal-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/journal-900.webp 900w, /assets/projects/dojonet/media/journal-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/journal-1600.webp",
+      "sourceSha256": "bc464232da9b7e647a0e8877550a039a528c7cbf37b95c0e1fa0fd2f8780fb01"
+    },
+    "profile-crash": {
+      "width": 1600,
+      "height": 234,
+      "avif": "/assets/projects/dojonet/media/profile-crash-900.avif 900w, /assets/projects/dojonet/media/profile-crash-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/profile-crash-900.webp 900w, /assets/projects/dojonet/media/profile-crash-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/profile-crash-1600.webp",
+      "crop": [
+        0,
+        1560,
+        1640,
+        240
+      ],
+      "sourceSha256": "b3d72b0a8163fb248ead9c906b330fda5914e26b62fa8ef9745dd2009d196718"
+    },
+    "fresh-dashboard": {
+      "width": 1600,
+      "height": 722,
+      "avif": "/assets/projects/dojonet/media/fresh-dashboard-900.avif 900w, /assets/projects/dojonet/media/fresh-dashboard-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/fresh-dashboard-900.webp 900w, /assets/projects/dojonet/media/fresh-dashboard-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/fresh-dashboard-1600.webp",
+      "crop": [
+        0,
+        0,
+        2880,
+        1300
+      ],
+      "sourceSha256": "5584bf76116287f1f74b7d166e1dc0016891947c52b12d0c5a12e126303a8fbe"
+    },
+    "dark-dashboard": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/dark-dashboard-900.avif 900w, /assets/projects/dojonet/media/dark-dashboard-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/dark-dashboard-900.webp 900w, /assets/projects/dojonet/media/dark-dashboard-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/dark-dashboard-1600.webp",
+      "sourceSha256": "7c11a4ba319c7f3c3ab7a2a53f09a01318ac27a384e14dad549433e85ed6e49f"
+    },
+    "dark-techniques": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/dojonet/media/dark-techniques-900.avif 900w, /assets/projects/dojonet/media/dark-techniques-1600.avif 1600w",
+      "webp": "/assets/projects/dojonet/media/dark-techniques-900.webp 900w, /assets/projects/dojonet/media/dark-techniques-1600.webp 1600w",
+      "fallback": "/assets/projects/dojonet/media/dark-techniques-1600.webp",
+      "sourceSha256": "3d0491267252f25bffc501d4012b22bf80f3e0be7547d96bc242807933ee8883"
+    },
+    "m-dashboard": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/dojonet/media/m-dashboard-360.avif 360w, /assets/projects/dojonet/media/m-dashboard-720.avif 720w",
+      "webp": "/assets/projects/dojonet/media/m-dashboard-360.webp 360w, /assets/projects/dojonet/media/m-dashboard-720.webp 720w",
+      "fallback": "/assets/projects/dojonet/media/m-dashboard-720.webp",
+      "sourceSha256": "0569688ee25e56db1e3c6f33bfca694c114a79802ad68c9fbd4ede1d31f1da6b"
+    },
+    "m-techniques": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/dojonet/media/m-techniques-360.avif 360w, /assets/projects/dojonet/media/m-techniques-720.avif 720w",
+      "webp": "/assets/projects/dojonet/media/m-techniques-360.webp 360w, /assets/projects/dojonet/media/m-techniques-720.webp 720w",
+      "fallback": "/assets/projects/dojonet/media/m-techniques-720.webp",
+      "sourceSha256": "47754b013ac5d846ce56358362c488611b91bd5287231747b2ed2766cf919fd1"
+    },
+    "m-techniques-fixed": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/dojonet/media/m-techniques-fixed-360.avif 360w, /assets/projects/dojonet/media/m-techniques-fixed-720.avif 720w",
+      "webp": "/assets/projects/dojonet/media/m-techniques-fixed-360.webp 360w, /assets/projects/dojonet/media/m-techniques-fixed-720.webp 720w",
+      "fallback": "/assets/projects/dojonet/media/m-techniques-fixed-720.webp",
+      "sourceSha256": "0e5ab5ebef9e1a6ccc184147f00325b186a230b0d29bbea0d39b4e6a8ae40946"
+    },
+    "m-journal": {
+      "width": 720,
+      "height": 1558,
+      "avif": "/assets/projects/dojonet/media/m-journal-360.avif 360w, /assets/projects/dojonet/media/m-journal-720.avif 720w",
+      "webp": "/assets/projects/dojonet/media/m-journal-360.webp 360w, /assets/projects/dojonet/media/m-journal-720.webp 720w",
+      "fallback": "/assets/projects/dojonet/media/m-journal-720.webp",
+      "sourceSha256": "cdc346a4f0a40bf8c516f3ef4faa0e0a2bd89b927a79f902440353816c15cd38"
+    },
+    "preview": {
+      "width": 1440,
+      "height": 1200,
+      "avif": "/assets/projects/dojonet/media/preview-480.avif 480w, /assets/projects/dojonet/media/preview-800.avif 800w, /assets/projects/dojonet/media/preview-1440.avif 1440w",
+      "webp": "/assets/projects/dojonet/media/preview-480.webp 480w, /assets/projects/dojonet/media/preview-800.webp 800w, /assets/projects/dojonet/media/preview-1440.webp 1440w",
+      "fallback": "/assets/projects/dojonet/media/preview-1440.webp",
+      "sourceSha256": "bb4cf895c2416147df314dd3938822ba35b30bd0c0a4a394a8e5fa5746865b53"
+    }
+  }
+}
