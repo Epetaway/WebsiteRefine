@@ -35,6 +35,31 @@ import {
   withYou,
 } from "../client/src/data/withyou";
 import {
+  codeHighlights as gundamCode,
+  decisionSequence as gundamDecisionSequence,
+  emptyStateFigure as gundamEmptyStateFigure,
+  gundamForge,
+  overview as gundamOverview,
+  playtestFigures as gundamPlaytestFigures,
+  repository as gundamRepository,
+  responsiveFigures as gundamResponsiveFigures,
+  surfaceFigures as gundamSurfaceFigures,
+  themeFigures as gundamThemeFigures,
+  workflowFigures as gundamWorkflowFigures,
+} from "../client/src/data/gundamForge";
+import {
+  buildFigures as dojonetBuildFigures,
+  codeHighlights as dojonetCode,
+  composerFigure as dojonetComposerFigure,
+  dojonet,
+  fixFigures as dojonetFixFigures,
+  mobileFigures as dojonetMobileFigures,
+  overview as dojonetOverview,
+  parityFigures as dojonetParityFigures,
+  qaFigures as dojonetQaFigures,
+  repository as dojonetRepository,
+} from "../client/src/data/dojonet";
+import {
   assertPublicationSafe,
   experience,
   professionalLinks,
@@ -68,6 +93,13 @@ const canonicalSourceFiles = [
   "client/src/pages/withyou.tsx",
   "client/src/data/withyou.ts",
   "client/src/components/withyou/parts.tsx",
+  "client/src/pages/gundam-forge.tsx",
+  "client/src/data/gundamForge.ts",
+  "client/src/components/gundam-forge/parts.tsx",
+  "client/src/pages/dojonet.tsx",
+  "client/src/data/dojonet.ts",
+  "client/src/components/dojonet/parts.tsx",
+  "client/src/components/case-study-kit/kit.tsx",
   "client/index.html",
   "client/public/sitemap.xml",
 ];
@@ -252,6 +284,106 @@ for (const item of withYouCode) {
     fail(`WithYou code highlight ${item.id} comes from a private repository: keep it a short excerpt with no link.`);
   }
 }
+
+// Gundam Forge and DojoNet case studies: built, unreleased prototypes from public repositories.
+// No release, accuracy or outcome claims; every figure labeled and sourced; excerpts linked to the
+// exact lines at the cited commit.
+type PublicExcerpt = { id: string; path: string; lines: [number, number]; code: string; tradeoff: string; evidence: string };
+function assertPublicExcerpts(label: string, repo: { url: string; commit: string; fullCommit: string }, items: PublicExcerpt[]) {
+  if (!/^[0-9a-f]{40}$/.test(repo.fullCommit) || !repo.fullCommit.startsWith(repo.commit) || !repo.url.startsWith("https://github.com/Epetaway/")) {
+    fail(`${label} must cite a full commit hash in a public Epetaway repository.`);
+  }
+  for (const item of items) {
+    if (!item.path || !item.tradeoff || !item.evidence || !(item.lines[0] > 0 && item.lines[0] < item.lines[1])) {
+      fail(`${label} code highlight ${item.id} needs a source path, a line range, a tradeoff and evidence.`);
+    }
+    if (item.code.split("\n").length > 30) fail(`${label} code highlight ${item.id} is longer than 30 lines.`);
+  }
+}
+function assertFigures(label: string, figures: { media: string; alt: string; caption: string; source: string }[]) {
+  for (const figure of figures) {
+    if (figure.alt.trim().length < 12 || !figure.source.trim() || !figure.caption.trim()) {
+      fail(`${label} figure ${figure.media} needs alt text, a caption and a source.`);
+    }
+  }
+}
+
+const gundamUnsupported = [
+  /production-ready/i,
+  /\blaunched\b/i,
+  /\bnow live\b/i,
+  /\bin production\b/i,
+  /rules-accurate/i,
+  /\bofficial (Bandai )?(app|tool|partner|product)\b/i,
+  /\bAI-powered\b/i,
+  /\b(competitive|tournament)-(ready|grade|winning)\b/i,
+  /wcag (2\.\d )?compliant/i,
+  /\b\d[\d,]* (users|players|downloads)\b/i,
+];
+for (const relativePath of ["client/src/pages/gundam-forge.tsx", "client/src/data/gundamForge.ts", "client/src/components/gundam-forge/parts.tsx"]) {
+  const content = read(relativePath);
+  for (const pattern of gundamUnsupported) {
+    if (pattern.test(content)) fail(`${relativePath} makes an unsupported claim: ${pattern}`);
+  }
+}
+if (gundamForge.path !== "/work/gundam-forge") fail("The Gundam Forge case study must live at /work/gundam-forge.");
+// The fan-project and card-art boundaries stay stated, on the record and on the page.
+if (!/Unofficial and not affiliated with Bandai/.test(gundamOverview.boundary) || !/text proxies/.test(gundamOverview.boundary)) {
+  fail("Gundam Forge must say it is unofficial and that official card art is replaced by text proxies.");
+}
+if (!/Not affiliated with or endorsed by Bandai/.test(read("client/src/pages/gundam-forge.tsx"))) {
+  fail("The Gundam Forge page must close with its unofficial fan-project statement.");
+}
+const gundamFigures = [
+  ...gundamWorkflowFigures,
+  ...gundamDecisionSequence,
+  ...gundamPlaytestFigures,
+  ...gundamSurfaceFigures,
+  gundamEmptyStateFigure,
+  ...gundamResponsiveFigures,
+  ...gundamThemeFigures,
+];
+assertFigures("Gundam Forge", gundamFigures);
+if (gundamFigures.some((figure) => figure.status !== "LOCAL BUILD CAPTURE")) {
+  fail("Every Gundam Forge capture must stay labeled as a local build capture.");
+}
+assertPublicExcerpts("Gundam Forge", gundamRepository, gundamCode);
+
+const dojonetUnsupported = [
+  /production-ready/i,
+  /\blaunched\b/i,
+  /\bnow live\b/i,
+  /\bimproves? (learning|retention|outcomes)\b/i,
+  /\b(proven|validated) (to|learning)\b/i,
+  /wcag (2\.\d )?compliant/i,
+  /\b\d[\d,]* (users|students|members|downloads)\b/i,
+];
+for (const relativePath of ["client/src/pages/dojonet.tsx", "client/src/data/dojonet.ts", "client/src/components/dojonet/parts.tsx"]) {
+  const content = read(relativePath);
+  for (const pattern of dojonetUnsupported) {
+    if (pattern.test(content)) fail(`${relativePath} makes an unsupported claim: ${pattern}`);
+  }
+}
+if (dojonet.path !== "/work/dojonet") fail("The DojoNet case study must live at /work/dojonet.");
+if (!/neutral placeholders/.test(dojonetOverview.boundary)) {
+  fail("DojoNet must say that remote avatars and photos render as neutral placeholders.");
+}
+const dojonetFigures = [
+  ...dojonetFixFigures.flatMap((pair) => [pair.before, pair.after]),
+  dojonetComposerFigure,
+  ...dojonetBuildFigures,
+  ...dojonetParityFigures,
+  ...dojonetMobileFigures,
+  ...dojonetQaFigures,
+];
+assertFigures("DojoNet", dojonetFigures);
+// A capture with the injected token rule is a demonstrated fix, never the app as built — and the reverse.
+for (const figure of dojonetFigures) {
+  if (figure.media.endsWith("-fixed") !== (figure.status === "FIX DEMONSTRATED")) {
+    fail(`DojoNet figure ${figure.media} must be labeled FIX DEMONSTRATED exactly when it carries the injected token rule.`);
+  }
+}
+assertPublicExcerpts("DojoNet", dojonetRepository, dojonetCode);
 
 if (fieldNotes.length !== 3) {
   fail("Exactly three canonical Field Notes must be published.");

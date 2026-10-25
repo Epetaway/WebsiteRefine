@@ -17,13 +17,17 @@ const heroMedia: Record<Investigation["slug"], HeroMedia> = {
     presentation: "desktop",
   },
   dojonet: {
-    src: "/assets/projects/dojonet/implementation/hero.png",
-    alt: "DojoNet training community dashboard",
+    src: "/assets/projects/dojonet/media/preview-1440.webp",
+    srcSet:
+      "/assets/projects/dojonet/media/preview-480.webp 480w, /assets/projects/dojonet/media/preview-800.webp 800w, /assets/projects/dojonet/media/preview-1440.webp 1440w",
+    alt: "The DojoNet wordmark above its dashboard on desktop and the belt-chapter journal on a phone",
     presentation: "desktop",
   },
   "gundam-forge": {
-    src: "/assets/projects/gundam-forge/implementation/hero.png",
-    alt: "Gundam Forge deck-building dashboard",
+    src: "/assets/projects/gundam-forge/media/preview-1440.webp",
+    srcSet:
+      "/assets/projects/gundam-forge/media/preview-480.webp 480w, /assets/projects/gundam-forge/media/preview-800.webp 800w, /assets/projects/gundam-forge/media/preview-1440.webp 1440w",
+    alt: "The Gundam Forge lockup above its deck builder on desktop, counting 49 of 50 cards, and the deck issues sheet on a phone",
     presentation: "desktop",
   },
 };
