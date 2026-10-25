@@ -125,7 +125,7 @@ export default function EarlTheKaijuCaseStudy() {
           <dl className="etk-hero__meta">
             <div><dt>My role</dt><dd>{flagship.role}</dd></div>
             <div><dt>Disciplines</dt><dd>Brand identity · UX and product design · Web front end and back end · Android</dd></div>
-            <div><dt>When</dt><dd>October 2026 — ongoing</dd></div>
+            <div><dt>When</dt><dd>December 2023 — ongoing</dd></div>
           </dl>
           <div className="etk-hero__actions">
             <a className="button etk-button" href="#overview">Read the case study <span aria-hidden="true">↓</span></a>

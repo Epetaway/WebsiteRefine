@@ -46,6 +46,7 @@ The old Earl d. Kaiju microsite stays archived. Its addresses now lead to the ca
 | Passed on Earl's Galaxy Note10+ in 42 s | App `docs/case-study-log.md`, Oct 24 | Dated log record |
 | QA findings (Start class below the fold, etc.) | App `docs/case-study-log.md`, `docs/08-qa-review.md` | Verified |
 | No INTERNET permission; backup off | `android/app/src/main/AndroidManifest.xml` @ 6446efa | Verified (code) |
+| Project timeline starts December 2023, when Earl began teaching as Earl the Kaiju | Earl's statement, Oct 25, 2026 | Verified by Earl |
 | Earl's BJJ dates (started 2015, black belt 2024) and BFA | Earl's statements (project memory) and the website's confirmed content (`docs/content-to-confirm.md`) | Verified by Earl |
 | Long-term academy, name undecided and separate | Earl's statement | Verified by Earl |
 
