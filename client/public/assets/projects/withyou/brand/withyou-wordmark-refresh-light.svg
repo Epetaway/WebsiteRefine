@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" fill="none">
+  <g transform="translate(2 2)">
+  <defs>
+    <clipPath id="cl-FF6B6B-1D2841"><rect x="30" y="0" width="40" height="60"></rect></clipPath>
+  </defs>
+  <g transform="rotate(-10 19 28)">
+    <ellipse cx="19" cy="28" rx="16" ry="22" stroke="#FF6B6B" stroke-width="3.5" fill="none" stroke-linecap="round"></ellipse>
+  </g>
+  <g transform="rotate(10 41 28)">
+    <ellipse cx="41" cy="28" rx="16" ry="22" stroke="#1D2841" stroke-width="3.5" fill="none" stroke-linecap="round"></ellipse>
+  </g>
+  <g transform="rotate(-10 19 28)" clip-path="url(#cl-FF6B6B-1D2841)">
+    <path d="M 35 28 A 16 22 0 0 1 19 50" stroke="#FF6B6B" stroke-width="3.5" fill="none" stroke-linecap="round"></path>
+  </g></g>
+  <text x="80" y="42" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="34" letter-spacing="-1" fill="#1D2841">With<tspan fill="#FF6B6B">You</tspan></text>
+</svg>

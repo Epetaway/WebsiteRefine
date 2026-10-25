@@ -123,7 +123,7 @@ The implementation includes skip navigation, semantic landmarks/headings, visibl
 
 ## Project statuses
 
-- WithYou — functional beta-oriented implementation; legacy sharing inconsistency documented.
+- WithYou — functional beta-oriented implementation, not released; bespoke case study at `/work/withyou` (brand, product, privacy engineering). Legacy profile gap closed Oct 12, 2026; per-space visibility, button contrast and placeholder photography documented. Record: `docs/WITHYOU-CASE-STUDY.md`.
 - DojoNet — active development; instructor workflow and outcomes not claimed.
 - Gundam Forge — functional beta-oriented implementation; heuristic opponent, incomplete competitive restriction coverage, and unverified public hosting.
 

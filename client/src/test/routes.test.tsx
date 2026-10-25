@@ -21,7 +21,7 @@ describe("canonical route architecture", () => {
   it.each([
     ["/", /I design and build digital products/i],
     ["/work", /Design decisions/i],
-    ["/work/withyou", "WithYou"],
+    ["/work/withyou", /^WithYou — Two private rooms with a shared door/],
     ["/work/dojonet", "DojoNet"],
     ["/work/gundam-forge", "Gundam Forge"],
     ["/work/earl-the-kaiju", /Earl the Kaiju — Building an identity into a working ecosystem/i],
@@ -47,7 +47,7 @@ describe("canonical route architecture", () => {
     ["/projects", /Design decisions/i],
     ["/case-studies", /Design decisions/i],
     ["/investigations", /Design decisions/i],
-    ["/projects/withyou", "WithYou"],
+    ["/projects/withyou", /^WithYou — Two private rooms with a shared door/],
     ["/projects/dojonet", "DojoNet"],
     ["/projects/gundam-forge", "Gundam Forge"],
     ["/how-i-think", /I design and build technology/i],
@@ -73,7 +73,7 @@ describe("canonical route architecture", () => {
   });
 
   it("keeps the recruiter summary visible and exposes a semantic technical deep dive", async () => {
-    const { container } = renderRoute("/work/withyou");
+    const { container } = renderRoute("/work/dojonet");
     expect(await screen.findByRole("heading", { name: /The case in five minutes/i })).toBeInTheDocument();
     const disclosure = container.querySelector("details#deep-dive");
     expect(disclosure).toBeInTheDocument();
@@ -92,7 +92,7 @@ describe("canonical route architecture", () => {
     fireEvent.click(screen.getByRole("link", { name: /Read DojoNet/i }));
     expect(await screen.findByRole("heading", { level: 1, name: "DojoNet" }, { timeout: 5000 })).toBeInTheDocument();
     fireEvent.click(screen.getByRole("link", { name: /Read WithYou/i }));
-    expect(await screen.findByRole("heading", { level: 1, name: "WithYou" }, { timeout: 5000 })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { level: 1, name: /^WithYou — / }, { timeout: 5000 })).toBeInTheDocument();
   });
 
   it("moves between case studies through the project navigation", async () => {

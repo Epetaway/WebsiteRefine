@@ -15,7 +15,7 @@
 ## Investigations
 
 - No investigation claims validated human outcomes or peer-reviewed research status.
-- WithYou retains a documented legacy privacy inconsistency and screens that are implemented but not integrated.
+- WithYou: legacy profile visibility is per account, not per relationship space; primary button labels are 2.78:1 on coral; rebuilt flows have Android-only device evidence; the couple photography is a placeholder library pending rights-cleared images.
 - DojoNet's instructor workflow is not represented as implemented.
 - Gundam Forge's competitive restriction coverage and public production hosting are not verified.
 - Earl the Kaiju: the coaching site is not deployed (local-build captures only); Kaiju Coach has not been used in a real class; desktop sync and website-to-app inquiries exist only as designs.

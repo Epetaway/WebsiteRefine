@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="60" viewBox="0 0 64 60" fill="none">
+  <defs>
+    <clipPath id="cl"><rect x="32" y="0" width="40" height="64"></rect></clipPath>
+  </defs>
+  <g transform="rotate(-10 21 30)">
+    <ellipse cx="21" cy="30" rx="17" ry="24" stroke="#3D2342" stroke-width="4" stroke-linecap="round"></ellipse>
+  </g>
+  <g transform="rotate(10 43 30)">
+    <ellipse cx="43" cy="30" rx="17" ry="24" stroke="#FF6B6B" stroke-width="4" stroke-linecap="round"></ellipse>
+  </g>
+  <g transform="rotate(-10 21 30)" clip-path="url(#cl)">
+    <path d="M 38 30 A 17 24 0 0 1 21 54" stroke="#3D2342" stroke-width="4" stroke-linecap="round" fill="none"></path>
+  </g>
+</svg>
