@@ -1097,20 +1097,6 @@
         1395
       ]
     },
-    "mk-privacy-band": {
-      "width": 1600,
-      "height": 510,
-      "avif": "/assets/projects/withyou/media/mk-privacy-band-900.avif 900w, /assets/projects/withyou/media/mk-privacy-band-1600.avif 1600w",
-      "webp": "/assets/projects/withyou/media/mk-privacy-band-900.webp 900w, /assets/projects/withyou/media/mk-privacy-band-1600.webp 1600w",
-      "fallback": "/assets/projects/withyou/media/mk-privacy-band-1600.webp",
-      "sourceSha256": "813bb642337a8bd9aa1755d3dcfd073f2ae0454bc5d3e2982bfd09e100458fcb",
-      "crop": [
-        0,
-        4142,
-        2560,
-        816
-      ]
-    },
     "mk-appstore-set": {
       "width": 1600,
       "height": 1038,

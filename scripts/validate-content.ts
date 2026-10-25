@@ -24,6 +24,7 @@ import {
   flowFigures as withYouFlowFigures,
   handoffFigures as withYouHandoffFigures,
   onboardingBuild as withYouOnboardingBuild,
+  overview as withYouOverview,
   photoInProduct as withYouPhotoInProduct,
   photoLibrary as withYouPhotoLibrary,
   photography as withYouPhotography,
@@ -239,9 +240,9 @@ for (const figure of [
     fail(`WithYou figure ${figure.media} needs alt text, a caption and a source.`);
   }
 }
-// The couple photography is a stand-in library: it stays labeled as one wherever it appears.
-if (withYouPhotoLibrary.length !== 36 || !/placeholder/i.test(withYouPhotography.placeholder)) {
-  fail("The WithYou photo library must show all 36 stand-in photos and keep its placeholder label.");
+// The couple photography is AI-generated stand-in art: it stays labeled as that wherever it appears.
+if (withYouPhotoLibrary.length !== 36 || !/AI-generated/.test(withYouPhotography.placeholder) || !/AI-generated/.test(withYouOverview.boundary)) {
+  fail("The WithYou photo library must show all 36 photos and say plainly that they are AI-generated stand-ins.");
 }
 for (const item of withYouCode) {
   if (!item.path || !item.commit || !item.evidence || !item.tradeoff) {

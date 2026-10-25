@@ -111,7 +111,7 @@ describe("WithYou case study", () => {
     }
   });
 
-  it("labels captures by what they are and keeps the photography flagged as a placeholder", async () => {
+  it("labels captures by what they are and says the photography is AI-generated", async () => {
     for (const figure of [...sharingFigures, ...comparisons.map((item) => item.design)]) {
       expect(figure.status).toBe("PROTOTYPE REFERENCE");
     }
@@ -123,7 +123,8 @@ describe("WithYou case study", () => {
     }
     renderRoute("/work/withyou");
     await screen.findByRole("heading", { level: 1, name: /^WithYou — / }, { timeout: 5000 });
-    expect(screen.getByText(/curated placeholder library/i)).toBeInTheDocument();
+    expect(screen.getByText(/The 36 photos are AI-generated stand-ins/)).toBeInTheDocument();
+    expect(screen.getAllByText("AI-GENERATED PLACEHOLDER").length).toBeGreaterThan(0);
   });
 
   it("shows the whole photo library, built around ids and slots", async () => {
@@ -151,13 +152,6 @@ describe("WithYou case study", () => {
     expect(palette.find((color) => color.name === "Coral")?.contrast).toMatch(/^2\.5:1/);
     // The page's own button: plum on coral.
     expect(contrast("#1A1422", "#FF6B6B")).toBeGreaterThan(4.5);
-    // App Store panels: white headlines on the light end of each gradient, and navy instead.
-    expect(contrast("#FFFFFF", "#FFD8CC")).toBeCloseTo(1.32, 2);
-    expect(contrast("#FFFFFF", "#D9CDF7")).toBeCloseTo(1.5, 2);
-    expect(contrast("#FFFFFF", "#C8E4D2")).toBeCloseTo(1.36, 2);
-    for (const end of ["#FFD8CC", "#D9CDF7", "#C8E4D2"]) {
-      expect(contrast("#1D2841", end)).toBeGreaterThan(9);
-    }
   });
 
   it("keeps private-repository excerpts short and unlinked, and makes no release claims", () => {

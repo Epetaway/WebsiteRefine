@@ -18,7 +18,6 @@ import {
   architectureFigure,
   brandIdea,
   campaignFigures,
-  campaignFindings,
   chapters,
   codeHighlights,
   comparisons,
@@ -484,7 +483,7 @@ export default function WithYouCaseStudy() {
           <div className="wy-library">
             <div className="wy-library__head">
               <h3>Library · v1 <span>36 photos, pulled by id</span></h3>
-              <WyStatusTag status="PLACEHOLDER" />
+              <WyStatusTag status="AI-GENERATED PLACEHOLDER" />
             </div>
             <ul className="wy-library__grid" aria-label="Contact sheet of the 36 library photos">
               {photoLibrary.map((id) => (
@@ -495,7 +494,7 @@ export default function WithYouCaseStudy() {
               ))}
             </ul>
             <div className="wy-callout">
-              <WyStatusTag status="PLACEHOLDER" />
+              <WyStatusTag status="AI-GENERATED PLACEHOLDER" />
               <p>{photography.placeholder}</p>
             </div>
           </div>
@@ -565,7 +564,7 @@ export default function WithYouCaseStudy() {
         <header className="wy-section-head">
           <WyEyebrow number="01.6">Campaign</WyEyebrow>
           <h2 id="wy-campaign-title">The same voice, <em>out in the world.</em></h2>
-          <p>The marketing kit is built from the app&apos;s own parts — the lockup, the library, the gradient, the voice — so a landing page, three store panels and a social post read as one brand. Rendering it for this page also turned up three things to fix.</p>
+          <p>The marketing kit is built from the app&apos;s own parts — the lockup, the library, the gradient, the voice — so a landing page, three store panels and a social post read as one brand.</p>
         </header>
         <Reveal className="wy-campaign__hero">
           <WyFigureView figure={campaignFigures.landing} frame="browser" zoom sizes="(max-width: 1240px) 100vw, 1240px" />
@@ -577,19 +576,6 @@ export default function WithYouCaseStudy() {
           <Reveal>
             <WyFigureView figure={campaignFigures.social} zoom sizes="(max-width: 820px) 100vw, 46vw" />
           </Reveal>
-        </div>
-        <h3 className="wy-subhead wy-subhead--ink">Caught while rendering</h3>
-        <div className="wy-campaign__qa">
-          <WyFigureView figure={campaignFigures.privacyBand} zoom sizes="(max-width: 820px) 100vw, 56vw" />
-          <ol>
-            {campaignFindings.map((item) => (
-              <li key={item.title}>
-                <WyStatusTag status={item.status} />
-                <h4>{item.title}</h4>
-                <p>{item.detail}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 

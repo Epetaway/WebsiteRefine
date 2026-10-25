@@ -97,9 +97,9 @@ const phone = [360, 720];
 const doc = [900, 1600];
 const refCrop = [826, 88, 708, 1508]; // the screen inside the prototype's device frame (2360x1682 canvas)
 
-// The curated photo library: 36 files, 600 px wide at source, served from apps/mobile/assets/images.
-// The design's asset manifest marks it as a stand-in set to be replaced with rights-cleared
-// photography before release. The six image-direction photos and a-01 (the redesign's primary
+// The photo library: 36 AI-generated stand-in photos (Earl, Oct 25, 2026), 600 px wide at source,
+// served from apps/mobile/assets/images. The design's asset manifest marks them for replacement
+// with rights-cleared photography before release. The six image-direction photos and a-01 (the redesign's primary
 // hero) also get a 600 px derivative.
 const libraryIds = [
   ...Array.from({ length: 20 }, (_, i) => `a-${String(i + 1).padStart(2, "0")}`),
@@ -157,10 +157,8 @@ const jobs = [
   { id: "onbspec-principles", src: capture("onbspec-principles.png"), widths: doc },
   { id: "onbspec-privacy-screen", src: capture("onbspec-privacy-screen.png"), widths: doc },
   { id: "onbspec-matrix", src: capture("onbspec-matrix.png"), widths: doc },
-  // Marketing UI kit. The landing hero is cut above the mock-up's star-rating line (there are no
-  // ratings), and the privacy band is kept as rendered — its headline really is invisible.
+  // Marketing UI kit. The landing hero is cut above the mock-up's star-rating line (there are no ratings).
   { id: "mk-landing-hero", src: capture("mk-landing-desktop.png"), crop: [0, 0, 2560, 1395], widths: doc },
-  { id: "mk-privacy-band", src: capture("mk-landing-desktop.png"), crop: [0, 4142, 2560, 816], widths: doc },
   { id: "mk-appstore-set", src: capture("mk-appstore-set.png"), widths: doc },
   { id: "mk-social-posts", src: capture("mk-social-posts.png"), widths: doc },
   ...(compositionsDir

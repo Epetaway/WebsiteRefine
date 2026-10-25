@@ -174,7 +174,7 @@ const toneFor = (status: WyStatus) => {
   if (status === "KNOWN GAP") return "gap";
   if (["DESIGNED", "PLANNED", "PARTIAL", "IMPLEMENTED, NOT INTEGRATED"].includes(status)) return "partial";
   if (["PROTOTYPE REFERENCE", "DESIGN SOURCE", "DOCUMENTED DECISION", "RETROSPECTIVE ILLUSTRATION", "COMPUTED FOR THIS PAGE"].includes(status)) return "reference";
-  if (status === "SUPERSEDED" || status === "PLACEHOLDER") return "superseded";
+  if (status === "SUPERSEDED" || status === "PLACEHOLDER" || status === "AI-GENERATED PLACEHOLDER") return "superseded";
   return "evidence";
 };
 

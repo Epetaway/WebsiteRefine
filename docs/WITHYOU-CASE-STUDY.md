@@ -27,7 +27,7 @@ App repository: `TerrianAi/withyou` (private) at `612da33`. Design export: `Desi
 
 | Claim on the page | Source | State |
 |---|---|---|
-| Project started January 2026 and is ongoing | Earl | **Earl to confirm** |
+| Project started January 2026 and is ongoing | Earl | Accepted by Earl, Oct 25, 2026 |
 | v4.2.1 tokens in code since Jun 18, 2026 | PR #89 "realign v4 design system and QA" (0ba87bb, Jun 18) | Verified (git) |
 | Not publicly released; no users; no measured outcome | `BETA_CHECKLIST.md`; no store listing | Verified |
 | Brand idea, voice rules, "never sound like" lines | Design export `README.md` (content fundamentals); brand kit voice board | Verified (design source) |
@@ -39,11 +39,9 @@ App repository: `TerrianAi/withyou` (private) at `612da33`. Design export: `Desi
 | 39 icons, 8 state illustrations; icon rules (24 grid, 1.8 stroke, active 2.2) | `apps/mobile/assets/icons/`, `illustrations/`; design export README (iconography) | Verified |
 | Photography direction, library of 36 by id, do/don't, treatment values (crop at center 30%, gradient transparent 40% → navy 55%, glass 18% white + 20px blur) | Design export `README.md` (imagery, transparency & blur); `ui_kits/brand/brand.jsx` artboard 03; `ui_kits/mobile/components.jsx` `CoupleImage` | Verified (design source) |
 | Safe-text zones for the five hero slots | App `docs/design/source-asset-manifest.md` §6 | Verified (design source) |
-| Photos are placeholders to be replaced before release | Same manifest §6 and §7 | Verified; shown on the page |
+| Photos are AI-generated stand-ins, to be replaced before release | Earl, Oct 25, 2026; manifest §6 and §7 | Verified by Earl; stated on the page |
 | Hero and date-idea files are copies of six library photos | SHA-256 comparison of `apps/mobile/assets/images/{heroes,date-ideas}/` against the library, Oct 25, 2026 | Computed for this page |
-| Marketing kit: privacy-band headline invisible | `colors_and_type.css` sets `h2 { color: var(--fg1) }`; `marketing.jsx` sets white only on the band container; reproduced in the render | Verified (design source) — **known gap** |
-| App Store headlines 1.32 / 1.50 / 1.36:1; navy > 9:1 | `marketing.jsx` `AppStoreSet` gradients; computed | Computed for this page — **known gap** |
-| Nudge copy "Jordan mentioned a hard week" implies disclosure | `ui_kits/mobile/screens.jsx` `Dashboard`, used in the landing hero | Design observation — **known gap** |
+| Landing hero, App Store set and social posts | `ui_kits/marketing/marketing.jsx` (`LandingDesktop`, `AppStoreSet`, `SocialPost`) | Design source |
 | Navigation history (5 tabs → 4 → Today/Our Focus/Connect/Guidance/Us; Gallery retired Oct 5, Insights Oct 10) | v1.0 prototype; design system v4.2.1; RCH-PR05b (#125, Oct 1) and later PRs | Verified (git) |
 | Visibility layers (storage row per field; one service helper; API projection; AI context; privacy tags) | Prisma `ProfileFieldVisibility`; `partner-legacy-profile.ts`; `docs/architecture/04` §2.3; `ai-architecture` §8.1; `PrivacyTag` | Verified (code/docs); API layer **partial** |
 | Legacy partner-profile gap closed Oct 12, 2026 with nine regression tests | SPK-H, #186; `partner-profile-visibility.test.ts` | Verified (git) |
@@ -54,7 +52,7 @@ App repository: `TerrianAi/withyou` (private) at `612da33`. Design export: `Desi
 
 ## Authorship and AI assistance
 
-The page says Earl set the product direction, built the brand and design system, designed the flows and made the UX calls; most of the code was written with AI coding assistants from his specs and handoffs, and he reviewed the results and tested builds in simulators, emulators and on Android phones. Basis: commit and PR history (agent-authored PR descriptions, Earl's merges), the design handoffs, the QA folders. **Earl should confirm or adjust this wording before merge.**
+The page says Earl set the vision and owned the product end to end — brand, design system, flows, UX and privacy calls, and the build — and that AI coding assistants worked from his specs and design handoffs to fill gaps and speed the work up, with Earl reviewing everything that came back and testing the builds himself. Wording set by Earl on Oct 25, 2026: AI is described as assistance for filling gaps and efficiency, not as the author of the product. Basis: commit and PR history, the design handoffs, the QA folders.
 
 ## Code highlights (3)
 
@@ -68,12 +66,12 @@ No secrets appear in any excerpt.
 
 ## Validation
 
-`scripts/validate-content.ts` fails the build if the WithYou sources make release, clinical, compliance or user-count claims, or carry star-rating text; if any figure lacks alt text, a caption or a source; if a private excerpt grows past 30 lines or gains a link; or if the photo library isn't shown whole with its placeholder label. `client/src/test/withyou.test.tsx` checks the chapters, the prototype, the limitations list, every image's alt, every figure's derivative on disk, the status labels, the photo library and slots, and every contrast ratio the page states.
+`scripts/validate-content.ts` fails the build if the WithYou sources make release, clinical, compliance or user-count claims, or carry star-rating text; if any figure lacks alt text, a caption or a source; if a private excerpt grows past 30 lines or gains a link; or if the photo library isn't shown whole or stops saying the photos are AI-generated. `client/src/test/withyou.test.tsx` checks the chapters, the prototype, the limitations list, every image's alt, every figure's derivative on disk, the status labels, the photo library and slots, and every contrast ratio the page states.
 
-## Pending facts and decisions for Earl
+## Decisions (Earl, Oct 25, 2026)
 
-1. Photography: origin and rights of the 36-photo library (see the assets manifest).
-2. AI-assistance wording (above) and the "January 2026" start date.
-3. Whether to publish the three marketing-kit findings as written.
-4. Reflections 2 and 3 were drafted for his voice — confirm or rewrite.
-5. The Field Note "Designing Consent" and `docs/GRADUATE-APPLICATION-CONTENT.md` still describe the legacy profile gap as open; they were left untouched.
+1. The couple photos are AI-generated stand-ins; the page says so.
+2. AI-assistance wording as above; "January 2026 — ongoing" stands.
+3. Reflections 2 and 3 approved as written.
+4. The marketing kit is shown as designed, without a critique section.
+5. The Field Note "Designing Consent" and `docs/GRADUATE-APPLICATION-CONTENT.md` stay as they are.

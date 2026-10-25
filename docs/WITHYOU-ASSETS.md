@@ -33,7 +33,7 @@ node scripts/withyou-assets.mjs
 - **Simulator / emulator capture** — the running app, on the platform and date given.
 - **Prototype reference** — the clickable v1.0 prototype, not the app.
 - **Design source** — a render of a design file (style guide, workflow map, handoff, marketing kit).
-- **Placeholder** — the couple photography (below).
+- **AI-generated placeholder** — the couple photography (below).
 - **Superseded** — earlier logo and icon files, shown as history.
 - **Retrospective illustration / Computed for this page** — drawn or measured while preparing the page.
 
@@ -56,10 +56,10 @@ The current mark isn't a file: `Logo.tsx` draws it in code. The page's `WyMark` 
 
 | Published files | Source | Status | Section | Notes |
 |---|---|---|---|---|
-| `media/photo-{a-01…a-20,b-01…b-16}-240.*` (36) | `apps/mobile/assets/images/{id}.jpg` (600 px wide at source) | **Placeholder** | 01.5 library contact sheet | Decorative tiles (empty alt; the list is labeled). |
-| `media/photo-{a-01,a-06,a-07,a-15,b-01,b-12,b-16}-600.*` | Same files | **Placeholder** | 01.5 image direction, treatment demo, safe-text zones | Direction labels come from the brand kit's image-direction artboard (`ui_kits/brand/brand.jsx`). |
+| `media/photo-{a-01…a-20,b-01…b-16}-240.*` (36) | `apps/mobile/assets/images/{id}.jpg` (600 px wide at source) | **AI-generated placeholder** | 01.5 library contact sheet | Decorative tiles (empty alt; the list is labeled). |
+| `media/photo-{a-01,a-06,a-07,a-15,b-01,b-12,b-16}-600.*` | Same files | **AI-generated placeholder** | 01.5 image direction, treatment demo, safe-text zones | Direction labels come from the brand kit's image-direction artboard (`ui_kits/brand/brand.jsx`). |
 
-The design's own `docs/design/source-asset-manifest.md` (§6) calls these "curated source photos … placeholders that show the correct treatment" and says to replace them with rights-cleared editorial photography before release. The page says so beside the library. The five hero files and ten date-idea files in the app are byte-identical copies of the six direction photos (hashed for this page), so they aren't published separately.
+Earl confirmed on Oct 25, 2026 that the 36 photos are AI-generated, made to show the art direction in the app and its marketing. The design's own `docs/design/source-asset-manifest.md` (§6) marks them as placeholders to replace with rights-cleared editorial photography before release, and the brand rules say no AI-generated faces in the finished product. The page says all of this plainly: in the overview's boundary statement, on the library's status tag and in the note beside it. `validate-content.ts` fails the build if either statement loses the words "AI-generated". The five hero files and ten date-idea files in the app are byte-identical copies of the six direction photos (hashed for this page), so they aren't published separately.
 
 ### Native captures
 
@@ -92,7 +92,6 @@ All native captures use the QA test accounts (Alex & Jordan, `qa_alex` ↔ `qa_j
 | `handoff-ios-light-welcome`, `handoff-android-dark-welcome` | App repo `docs/design/handoff-2026-06-29/Prototype.dc.html` | Design source | 02.6 |
 | `onbspec-principles`, `onbspec-privacy-screen`, `onbspec-matrix` | App repo `docs/design/onboarding-redesign/WithYou-Onboarding-Handoff.html` | Design source | 02.6 |
 | `mk-landing-hero` | `ui_kits/marketing/index.html`, desktop landing; crop `0,0,2560,1395` | Design source | 01.6 Campaign |
-| `mk-privacy-band` | Same capture; crop `0,4142,2560,816` | Design source | 01.6 (the missing-headline finding) |
 | `mk-appstore-set` | `ui_kits/marketing/index.html`, App Store set | Design source | 01.6 |
 | `mk-social-posts` | `marketing.jsx` `SocialPost` at square, vertical and landscape, via the harness page (rendered Oct 25, 2026) | Design source | 01.6 |
 
@@ -115,14 +114,14 @@ Inter 400/500/600/700 (SIL OFL 1.1) is self-hosted in `client/public/assets/font
 |---|---|---|
 | ChatGPT-generated concept images (`file_0000…png`, "ChatGPT Image May 11 / May 16, 2026") | Earl's uploads | AI-generated mock-ups of screens and a "Stronger together" store hero with App Store and Google Play badges. They could be mistaken for the app or a release. Could appear later as clearly labeled AI explorations if Earl wants. |
 | Pitch-deck slides (`slides/`, `marketing.jsx` `Deck*`) | Design export | Market statistics with no source ("67% of couples…", "$4.2B") and fundraising framing. |
-| Mobile landing page | Marketing kit | Repeats the desktop hero; not needed. |
+| Mobile landing page; the landing page below the hero | Marketing kit | Repeats the desktop hero / not needed for the story. |
 | Maestro `tour-01-connect`, check-in walk and Help Me Say This captures | `.maestro/screenshots/` | The Connect header clips its title in that run; the check-in and AI-rewrite flows are covered elsewhere. The AI capture shows a "Claude is busy" error state — a candidate for a future error-states section. |
 | Android privacy handoff capture | Design handoff Jun 29 | Its copy said "Default ON for mood + prompts", which contradicts private-by-default. |
 | `ios-welcome-light` QA file | App repo QA folder | Misnamed: it's a check-in screen with an Expo debugger toast. |
 | The previous page's images (`design/`, `implementation/`, `supporting/`, `preview*.webp`, `social/og.svg`) | This repository | Replaced by the derivatives above. |
 
-## Open items for Earl
+## Decisions and open items
 
-1. **Photography rights and origin.** The 36 photos are labeled as placeholders on the page, following the design's own manifest. Before this goes public, confirm where they came from and that they may be shown in a portfolio. They look generated; the brand's own rules say "no AI-generated faces" — if they are, the page should say so plainly.
-2. Confirm the three marketing-kit findings should be published as found (privacy band headline, App Store headline contrast, the nudge copy).
-3. When commissioned photography exists, re-run step 2 with it in `apps/mobile/assets/images/` — the ids and slots stay the same.
+- **Oct 25, 2026 (Earl):** the photos are AI-generated stand-ins; publish them labeled as such.
+- **Oct 25, 2026 (Earl):** the marketing kit is shown as designed, without a critique section.
+- When commissioned photography exists, re-run step 2 with it in `apps/mobile/assets/images/` — the ids and slots stay the same — and drop the AI-generated labels.

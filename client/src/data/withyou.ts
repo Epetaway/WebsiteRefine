@@ -19,6 +19,7 @@ export type WyStatus =
   | "RETROSPECTIVE ILLUSTRATION"
   | "SUPERSEDED"
   | "PLACEHOLDER"
+  | "AI-GENERATED PLACEHOLDER"
   | "COMPUTED FOR THIS PAGE";
 
 export type WyMediaId = keyof typeof mediaRecord.media;
@@ -67,7 +68,7 @@ export const withYou = {
   heroLine: "Two private rooms with a shared door.",
   heroLead:
     "A relationship app for two people, designed and built end to end: the brand, the design system, the iOS and Android interface, and the privacy model underneath. Making it feel warm was the easy part. Making sure warmth never meant access was the work.",
-  role: "Product, brand and UX design; full-stack development with AI coding assistants that I directed and reviewed",
+  role: "Product vision, brand, UX design and full-stack development. AI coding assistants helped me fill gaps and move faster; the direction and the decisions were mine.",
   disciplines: "Brand and design system · UX and interaction design · React Native · API and data",
   when: "January 2026 — ongoing",
   stack: base.stack,
@@ -83,11 +84,11 @@ export const overview = {
   problem:
     "Relationship apps tend to treat pairing as permission: once two accounts are linked, everything one person writes can flow to the other. Closeness and privacy aren't opposites, but most shared software is built as if they were.",
   role:
-    "I set the product direction, built the brand and the design system, designed the flows and made the UX calls. Most of the code was written with AI coding assistants working from my specs and design handoffs; I reviewed what came back, rejected what didn't hold up, and checked the builds in simulators, emulators and on Android phones.",
+    "I set the vision and owned the product end to end: the brand, the design system, the flows, the UX and privacy calls, and the build. AI coding assistants worked from my specs and design handoffs to fill gaps and speed the work up. I reviewed everything that came back, threw out what didn't hold up, and tested the builds myself in simulators, emulators and on Android phones.",
   exists:
     "A React Native app for iOS and Android on an Express, PostgreSQL and Prisma API: invite-and-accept pairing, private-by-default check-ins and profile fields with field-level sharing, and a design system that lives in code as tokens.",
   boundary:
-    "Everything on this page is built and tested in development. Nothing here is released: there are no real users and no measured relationship outcome. The captures are dated, and some show screens the product has since retired.",
+    "Everything on this page is built and tested in development. Nothing here is released: there are no real users and no measured relationship outcome. The captures are dated, and some show screens the product has since retired. The couple photos in the app and its marketing are AI-generated stand-ins.",
 };
 
 export const chapters = [
@@ -239,7 +240,7 @@ export const photography = {
   lead:
     "The design system says it plainly: use a real couple photo wherever a stock illustration or a gradient would otherwise go. So the photography got the same treatment as the mark — a direction, a library pulled by id, a fixed treatment so type always reads, and named slots the code depends on.",
   placeholder:
-    "The 36 photos are a curated placeholder library. The design's own asset manifest says they have to be replaced with rights-cleared editorial photography before release — which is why the system was built around ids and slots rather than particular pictures.",
+    "The 36 photos are AI-generated stand-ins, made so the app and its marketing could show the art direction before there's a real shoot. The brand's own rules say no AI faces in the finished product, so the system was built around ids and slots: commissioned, rights-cleared photography replaces them file for file.",
   source: "Design system export · ui_kits/brand, artboard 03 · May 10, 2026",
 };
 
@@ -318,11 +319,11 @@ export const photoInProduct: WyFigure[] = [
   },
 ];
 
-export const campaignFigures: { landing: WyFigure; appStore: WyFigure; social: WyFigure; privacyBand: WyFigure } = {
+export const campaignFigures: { landing: WyFigure; appStore: WyFigure; social: WyFigure } = {
   landing: {
     media: "mk-landing-hero",
     alt: "The WithYou landing page hero: the headline Say what you need. Stay close, always. beside a photo of a couple cooking, with a phone showing the Today screen over it",
-    caption: "The landing hero. The voice carries it; the photo and the phone show it. Cropped above a star-rating line the mock-up carries — WithYou has no ratings, so it stays off this page.",
+    caption: "The landing hero. The voice carries it; the photo and the phone show it.",
     status: "DESIGN SOURCE",
     source: "Design system export · ui_kits/marketing · May 10, 2026",
   },
@@ -340,35 +341,7 @@ export const campaignFigures: { landing: WyFigure; appStore: WyFigure; social: W
     status: "DESIGN SOURCE",
     source: "marketing.jsx SocialPost, rendered for this page · Oct 25, 2026",
   },
-  privacyBand: {
-    media: "mk-privacy-band",
-    alt: "The landing page's navy privacy band: an eyebrow and a paragraph on the left with an empty gap where the headline should be, and four checklist rows on the right",
-    caption: "The privacy band as it renders. The headline — Your relationship is not data. — is there, navy on navy.",
-    status: "DESIGN SOURCE",
-    source: "Design system export · ui_kits/marketing · May 10, 2026",
-  },
 };
-
-export const campaignFindings: { title: string; detail: string; status: WyStatus }[] = [
-  {
-    title: "A headline that isn't there",
-    detail:
-      "The token stylesheet colors every h2 navy. The band sets white on its container, but an element rule beats inheritance, so the band's one headline disappears. Fix: set color on the heading, or scope the h2 rule to light surfaces.",
-    status: "KNOWN GAP",
-  },
-  {
-    title: "Headlines the store can't read",
-    detail:
-      "The App Store panels set white headlines on the light end of each gradient: 1.32:1 on blush, 1.50:1 on lavender, 1.36:1 on sage — computed for this page. Navy would clear 9:1 on all three.",
-    status: "KNOWN GAP",
-  },
-  {
-    title: "Copy has to follow the privacy model too",
-    detail:
-      "The hero's nudge reads “Jordan mentioned a hard week.” Unless Jordan chose to share that, it describes the exact leak the product is built to prevent. The rule the API enforces has to hold in the copy that sells it.",
-    status: "KNOWN GAP",
-  },
-];
 
 export const designSystemFigures: WyFigure[] = [
   {
@@ -830,8 +803,7 @@ export const roadmap: { track: string; items: string[] }[] = [
     items: [
       "Primary button label contrast",
       "Per-space profile visibility",
-      "Replace the placeholder photography with rights-cleared images",
-      "Marketing kit: the privacy band's missing headline and the App Store headline contrast",
+      "Replace the AI-generated stand-in photos with a real, rights-cleared shoot",
     ],
   },
   {
