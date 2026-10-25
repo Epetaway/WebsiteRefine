@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
 import { Reveal } from "@/components/motion/Reveal";
-import { investigations } from "@/data/investigations";
+import { workEntries } from "@/data/work";
 import { fieldNotes } from "@/data/fieldNotes";
 import { experience, profile, teaching } from "@/data/professional";
-import { getCaseStudyView } from "@/lib/caseStudyView";
 import { publicPath } from "@/lib/publicPath";
 import portrait from "@/images/earl-bjj-photo.png";
 import trainingPhoto from "@/images/BLKBELT.png";
@@ -61,27 +60,24 @@ export default function Home() {
         </header>
 
         <div className="home-case-list">
-          {investigations.map((project, index) => {
-            const view = getCaseStudyView(project);
-            return (
-              <Reveal key={project.slug} className="home-case" delay={index * 0.04}>
-                <article style={{ "--project-accent": project.accent } as React.CSSProperties}>
-                  <Link className={`home-case__media home-case__media--${view.heroMedia.presentation}`} to={`/work/${project.slug}`} aria-label={`View ${project.name} case study`}>
-                    <span>{project.number} / {project.status}</span>
-                    <img src={view.heroMedia.src} alt={view.heroMedia.alt} loading={index === 0 ? "eager" : "lazy"} />
-                  </Link>
-                  <div className="home-case__content">
-                    <div className="home-case__meta"><span>{project.theme}</span><span>{project.stack.slice(0, 3).join(" · ")}</span></div>
-                    <h3>{project.name}</h3>
-                    <p className="home-case__question">{project.question}</p>
-                    <p>{project.abstract.product}</p>
-                    <dl><div><dt>My role</dt><dd>{project.role}</dd></div><div><dt>Built</dt><dd>{project.abstract.built}</dd></div></dl>
-                    <Link className="case-link" to={`/work/${project.slug}`}>Read case study <span aria-hidden="true">↗</span></Link>
-                  </div>
-                </article>
-              </Reveal>
-            );
-          })}
+          {workEntries.map((project, index) => (
+            <Reveal key={project.slug} className="home-case" delay={index * 0.04}>
+              <article style={{ "--project-accent": project.accent } as React.CSSProperties}>
+                <Link className={`home-case__media home-case__media--${project.heroMedia.presentation}`} to={project.path} aria-label={`View ${project.name} case study`}>
+                  <span>{project.number} / {project.status}</span>
+                  <img src={project.heroMedia.src} srcSet={project.heroMedia.srcSet} sizes={project.heroMedia.srcSet ? "(max-width: 1050px) 100vw, 45vw" : undefined} alt={project.heroMedia.alt} loading={index === 0 ? "eager" : "lazy"} />
+                </Link>
+                <div className="home-case__content">
+                  <div className="home-case__meta"><span>{project.theme}</span><span>{project.stack.slice(0, 3).join(" · ")}</span></div>
+                  <h3>{project.name}</h3>
+                  <p className="home-case__question">{project.question}</p>
+                  <p>{project.summary}</p>
+                  <dl><div><dt>My role</dt><dd>{project.role}</dd></div><div><dt>Built</dt><dd>{project.built}</dd></div></dl>
+                  <Link className="case-link" to={project.path}>Read case study <span aria-hidden="true">↗</span></Link>
+                </div>
+              </article>
+            </Reveal>
+          ))}
         </div>
         <Link className="button button--dark" to="/work">See all work and experience</Link>
       </section>
@@ -130,7 +126,7 @@ export default function Home() {
           <h2 id="discipline-heading">The work is shaped by teaching, repetition, and learning under pressure.</h2>
           <p>{teaching.summary}</p>
           <blockquote>“Understanding a description is not the same as being able to act.”</blockquote>
-          <div><Link className="case-link case-link--light" to="/about">More about my path <span aria-hidden="true">↗</span></Link><Link className="case-link case-link--light" to="/research">Research direction <span aria-hidden="true">↗</span></Link></div>
+          <div><Link className="case-link case-link--light" to="/about">More about my path <span aria-hidden="true">↗</span></Link><Link className="case-link case-link--light" to="/work/earl-the-kaiju">Earl the Kaiju case study <span aria-hidden="true">↗</span></Link><Link className="case-link case-link--light" to="/research">Research direction <span aria-hidden="true">↗</span></Link></div>
         </Reveal>
       </section>
 

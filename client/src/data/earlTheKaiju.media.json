@@ -1,0 +1,463 @@
+{
+  "generatedBy": "scripts/earl-the-kaiju-assets.mjs",
+  "logos": {
+    "crest-full-color": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-crest-full-color.svg",
+      "width": 1212.5,
+      "height": 953.5,
+      "sha256": "89b1683d1f3323035196574513696da9bbfcc5f15e4a09f58c01d74f07c1f6b8"
+    },
+    "crest-one-color-white": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-crest-one-color-white.svg",
+      "width": 1212.5,
+      "height": 953.5,
+      "sha256": "b9cae17ad7d6a86c1c0514a53533ea5656944048878c9f6640e21f7e8f35f7f6"
+    },
+    "crest-one-color-black": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-crest-one-color-black.svg",
+      "width": 1212.5,
+      "height": 953.5,
+      "sha256": "dfe527dc519955c278c6527f6c8fba16a27feb0cbf5c5acc11151849fe638203"
+    },
+    "crest-simplified-full-color": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-crest-simplified-full-color.svg",
+      "width": 1212.5,
+      "height": 953.5,
+      "sha256": "de7f90ae4455990cb15eaa5e6a3df0727d501f029732808c2ff4bac866f5ebf4"
+    },
+    "eyes-mark-full-color": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-eyes-mark-full-color.svg",
+      "width": 1213.2,
+      "height": 954.1,
+      "sha256": "449d5cede48c411dd46982cbc177d784125cf23eb6313fa1ce525fcc5f47ca49"
+    },
+    "lockup-stacked-full-color": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-lockup-stacked-full-color.svg",
+      "width": 1114.5,
+      "height": 1377.2,
+      "sha256": "f7368a8877a92d38da855595fb641dcb30d8de1be2a865855b4ab3990484aac2"
+    },
+    "lockup-horizontal-full-color": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-lockup-horizontal-full-color.svg",
+      "width": 1724.1,
+      "height": 562.5,
+      "sha256": "b41812b24463a83023755c703bf5167939a15c210f9a1b257b5478b09616eee9"
+    },
+    "ceremonial-lockup-stacked-full-color": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-ceremonial-lockup-stacked-full-color.svg",
+      "width": 689.4,
+      "height": 862.6,
+      "sha256": "320cd6f60672fbfceed5db2c844074b2c6b0fe88b7728ff722806039db553394"
+    },
+    "glyph-set-earl-gold": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-glyph-set-earl-gold.svg",
+      "width": 324,
+      "height": 212,
+      "sha256": "170bf335a20aa38f6358223b46a53c69ee400ce7c4567302910b5b6a671f09e0"
+    },
+    "kanji-kaiju-vertical-gold": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-kanji-kaiju-vertical-gold.svg",
+      "width": 207.649,
+      "height": 402,
+      "sha256": "26dd4a2ecc3e0ca9bff5dd944e44958158fd7e6063c0f9ba76b9d32674e97b72"
+    },
+    "tagline-one-line-gold": {
+      "src": "/assets/projects/earl-the-kaiju/brand/earl-the-kaiju-tagline-one-line-gold.svg",
+      "width": 2116.9,
+      "height": 116,
+      "sha256": "8249201c03cc84a19a33d0d527c6a2ffa6d5599bbb974e8ad11738aa77e61cbc"
+    }
+  },
+  "media": {
+    "source-board": {
+      "width": 1448,
+      "height": 1086,
+      "avif": "/assets/projects/earl-the-kaiju/media/source-board-800.avif 800w, /assets/projects/earl-the-kaiju/media/source-board-1448.avif 1448w",
+      "webp": "/assets/projects/earl-the-kaiju/media/source-board-800.webp 800w, /assets/projects/earl-the-kaiju/media/source-board-1448.webp 1448w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/source-board-1448.webp",
+      "sourceSha256": "b417cbe25e1542049f1257190f49ebcf72ca7aee9631a2772ce63cfdc79f401b"
+    },
+    "proof-frame-straightening": {
+      "width": 1600,
+      "height": 477,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-frame-straightening-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-frame-straightening-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-frame-straightening-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-frame-straightening-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-frame-straightening-1600.webp",
+      "sourceSha256": "97d8092d9dd1d4a9fd4ea7896af0ce69f37ad23a42d3b5c3d36bb2ffffdc5e0a",
+      "crop": [
+        60,
+        1100,
+        1880,
+        560
+      ]
+    },
+    "proof-one-crest-decision": {
+      "width": 1600,
+      "height": 613,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-one-crest-decision-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-one-crest-decision-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-one-crest-decision-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-one-crest-decision-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-one-crest-decision-1600.webp",
+      "sourceSha256": "97d8092d9dd1d4a9fd4ea7896af0ce69f37ad23a42d3b5c3d36bb2ffffdc5e0a",
+      "crop": [
+        60,
+        2280,
+        1880,
+        720
+      ]
+    },
+    "proof-real-size": {
+      "width": 1600,
+      "height": 1345,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-real-size-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-real-size-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-real-size-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-real-size-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-real-size-1600.webp",
+      "sourceSha256": "97d8092d9dd1d4a9fd4ea7896af0ce69f37ad23a42d3b5c3d36bb2ffffdc5e0a",
+      "crop": [
+        60,
+        3020,
+        1880,
+        1580
+      ]
+    },
+    "proof-color-options": {
+      "width": 1600,
+      "height": 608,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-color-options-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-color-options-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-color-options-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-color-options-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-color-options-1600.webp",
+      "sourceSha256": "fffc705f9ea5dd508b26b43c08c2beef44995b402c9c011d580133202537f11a",
+      "crop": [
+        40,
+        1060,
+        1920,
+        730
+      ]
+    },
+    "proof-ceremonial-directions": {
+      "width": 1600,
+      "height": 1032,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-ceremonial-directions-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-ceremonial-directions-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-ceremonial-directions-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-ceremonial-directions-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-ceremonial-directions-1600.webp",
+      "sourceSha256": "bc31e2f6b2152465e2fc966cc7389ad1f18ccbe70ecabea193db50002ff85d69",
+      "crop": [
+        60,
+        70,
+        2280,
+        1470
+      ]
+    },
+    "proof-lettering-fixes": {
+      "width": 1600,
+      "height": 621,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-lettering-fixes-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-lettering-fixes-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-lettering-fixes-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-lettering-fixes-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-lettering-fixes-1600.webp",
+      "sourceSha256": "204baeac1acfb7615b9b940f5dd091d6ad94203de71f710c44375a8eb7c6f8f3",
+      "crop": [
+        60,
+        1220,
+        1880,
+        730
+      ]
+    },
+    "proof-one-crest-everywhere": {
+      "width": 1600,
+      "height": 485,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-one-crest-everywhere-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-one-crest-everywhere-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-one-crest-everywhere-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-one-crest-everywhere-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-one-crest-everywhere-1600.webp",
+      "sourceSha256": "204baeac1acfb7615b9b940f5dd091d6ad94203de71f710c44375a8eb7c6f8f3",
+      "crop": [
+        60,
+        1980,
+        1880,
+        570
+      ]
+    },
+    "proof-patterns-from-references": {
+      "width": 1500,
+      "height": 360,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-patterns-from-references-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-patterns-from-references-1500.avif 1500w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-patterns-from-references-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-patterns-from-references-1500.webp 1500w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-patterns-from-references-1500.webp",
+      "sourceSha256": "9129215a7bb7c9f1521f89635a05746c7914055ed6115b7acef1e8cf6300cb2e",
+      "crop": [
+        50,
+        260,
+        1500,
+        360
+      ]
+    },
+    "proof-horizontal-before-after": {
+      "width": 1500,
+      "height": 425,
+      "avif": "/assets/projects/earl-the-kaiju/media/proof-horizontal-before-after-900.avif 900w, /assets/projects/earl-the-kaiju/media/proof-horizontal-before-after-1500.avif 1500w",
+      "webp": "/assets/projects/earl-the-kaiju/media/proof-horizontal-before-after-900.webp 900w, /assets/projects/earl-the-kaiju/media/proof-horizontal-before-after-1500.webp 1500w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/proof-horizontal-before-after-1500.webp",
+      "sourceSha256": "52d4d8b7b70302ad34816c6e1dafd1b447dd9897de467af332e81e734d381d05",
+      "crop": [
+        50,
+        265,
+        1500,
+        425
+      ]
+    },
+    "guide-crest-anatomy": {
+      "width": 1600,
+      "height": 1237,
+      "avif": "/assets/projects/earl-the-kaiju/media/guide-crest-anatomy-900.avif 900w, /assets/projects/earl-the-kaiju/media/guide-crest-anatomy-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/guide-crest-anatomy-900.webp 900w, /assets/projects/earl-the-kaiju/media/guide-crest-anatomy-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/guide-crest-anatomy-1600.webp",
+      "sourceSha256": "fef734ce8eaf6633fea5cb94ff71bd9b03f52cdc440cc5f8c4a3cb70ff5a7e7f"
+    },
+    "guide-ceremonial-construction": {
+      "width": 1600,
+      "height": 1237,
+      "avif": "/assets/projects/earl-the-kaiju/media/guide-ceremonial-construction-900.avif 900w, /assets/projects/earl-the-kaiju/media/guide-ceremonial-construction-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/guide-ceremonial-construction-900.webp 900w, /assets/projects/earl-the-kaiju/media/guide-ceremonial-construction-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/guide-ceremonial-construction-1600.webp",
+      "sourceSha256": "c6ff06dc664ecfa7ebb4f46b38994e36c490c4b7314b423e098e9f7e674d8d8b"
+    },
+    "guide-clear-space": {
+      "width": 1600,
+      "height": 1237,
+      "avif": "/assets/projects/earl-the-kaiju/media/guide-clear-space-900.avif 900w, /assets/projects/earl-the-kaiju/media/guide-clear-space-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/guide-clear-space-900.webp 900w, /assets/projects/earl-the-kaiju/media/guide-clear-space-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/guide-clear-space-1600.webp",
+      "sourceSha256": "9d04b74b859e2bc18e98e50288c15b2b463a1e05edebf54c9272915696bb092b"
+    },
+    "guide-small-sizes": {
+      "width": 1600,
+      "height": 1237,
+      "avif": "/assets/projects/earl-the-kaiju/media/guide-small-sizes-900.avif 900w, /assets/projects/earl-the-kaiju/media/guide-small-sizes-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/guide-small-sizes-900.webp 900w, /assets/projects/earl-the-kaiju/media/guide-small-sizes-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/guide-small-sizes-1600.webp",
+      "sourceSha256": "b9bdb8d5a22ba224cfd0c14dd2c7a8223a57b418c9349a8bbd519e673b0cc9c0"
+    },
+    "guide-typography": {
+      "width": 1600,
+      "height": 1237,
+      "avif": "/assets/projects/earl-the-kaiju/media/guide-typography-900.avif 900w, /assets/projects/earl-the-kaiju/media/guide-typography-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/guide-typography-900.webp 900w, /assets/projects/earl-the-kaiju/media/guide-typography-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/guide-typography-1600.webp",
+      "sourceSha256": "114ec7615a8558826720117beea43ea6357c9f6fb9f058b4fdd47105942bf362"
+    },
+    "guide-companions": {
+      "width": 1600,
+      "height": 1237,
+      "avif": "/assets/projects/earl-the-kaiju/media/guide-companions-900.avif 900w, /assets/projects/earl-the-kaiju/media/guide-companions-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/guide-companions-900.webp 900w, /assets/projects/earl-the-kaiju/media/guide-companions-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/guide-companions-1600.webp",
+      "sourceSha256": "6b9b6828fa4abb7a7cffddb6d3f4965ed8764f374c0cb5205e9c1a06675d5d7f"
+    },
+    "pattern-lattice": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/earl-the-kaiju/media/pattern-lattice-800.avif 800w, /assets/projects/earl-the-kaiju/media/pattern-lattice-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/pattern-lattice-800.webp 800w, /assets/projects/earl-the-kaiju/media/pattern-lattice-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/pattern-lattice-1600.webp",
+      "sourceSha256": "e3cb86878b396d8f10e33f08bc8935f7d9b550fe4382a8214c03fcd924c29369"
+    },
+    "pattern-den": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/earl-the-kaiju/media/pattern-den-800.avif 800w, /assets/projects/earl-the-kaiju/media/pattern-den-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/pattern-den-800.webp 800w, /assets/projects/earl-the-kaiju/media/pattern-den-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/pattern-den-1600.webp",
+      "sourceSha256": "2677fa2272a86fc59dd9711660a9cf13d070bb54f6a7cd4770a5261bebcb9b6b"
+    },
+    "template-business-card": {
+      "width": 1080,
+      "height": 648,
+      "avif": "/assets/projects/earl-the-kaiju/media/template-business-card-540.avif 540w, /assets/projects/earl-the-kaiju/media/template-business-card-1080.avif 1080w",
+      "webp": "/assets/projects/earl-the-kaiju/media/template-business-card-540.webp 540w, /assets/projects/earl-the-kaiju/media/template-business-card-1080.webp 1080w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/template-business-card-1080.webp",
+      "sourceSha256": "00b43e3c130842adfc3664cb5b7fb1b37fa8fff74b5fc913190af3eeeeeb61f2"
+    },
+    "template-social-post": {
+      "width": 1080,
+      "height": 1350,
+      "avif": "/assets/projects/earl-the-kaiju/media/template-social-post-540.avif 540w, /assets/projects/earl-the-kaiju/media/template-social-post-1080.avif 1080w",
+      "webp": "/assets/projects/earl-the-kaiju/media/template-social-post-540.webp 540w, /assets/projects/earl-the-kaiju/media/template-social-post-1080.webp 1080w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/template-social-post-1080.webp",
+      "sourceSha256": "55f8948aad66fc868acb87932259f0418dfc69e17da05f015ff2ca3a6e7921d7"
+    },
+    "template-tagline-card": {
+      "width": 1080,
+      "height": 1080,
+      "avif": "/assets/projects/earl-the-kaiju/media/template-tagline-card-540.avif 540w, /assets/projects/earl-the-kaiju/media/template-tagline-card-1080.avif 1080w",
+      "webp": "/assets/projects/earl-the-kaiju/media/template-tagline-card-540.webp 540w, /assets/projects/earl-the-kaiju/media/template-tagline-card-1080.webp 1080w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/template-tagline-card-1080.webp",
+      "sourceSha256": "8b137907a407bc313fa7010b35f7408eb470833775f9006de5cb57c9d6e6d385"
+    },
+    "app-icon": {
+      "width": 512,
+      "height": 512,
+      "avif": "/assets/projects/earl-the-kaiju/media/app-icon-256.avif 256w, /assets/projects/earl-the-kaiju/media/app-icon-512.avif 512w",
+      "webp": "/assets/projects/earl-the-kaiju/media/app-icon-256.webp 256w, /assets/projects/earl-the-kaiju/media/app-icon-512.webp 512w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/app-icon-512.webp",
+      "sourceSha256": "e5a3858a946236c86afab55a62eff65ff35aa9b10764785bb4c43aa0206bd236"
+    },
+    "coach-today": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-today-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-today-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-today-618.webp",
+      "sourceSha256": "0b9acdbc62f44c264b9cc3e4eeb5169e3da596fdb0e76f226556e8accb63555d"
+    },
+    "coach-today-font-200": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-today-font-200-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-today-font-200-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-today-font-200-618.webp",
+      "sourceSha256": "f6b12edd32de3118148ac8205b0789e70c78d2acb2ff4621cede9c7323bebe8d"
+    },
+    "coach-planner": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-planner-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-planner-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-planner-618.webp",
+      "sourceSha256": "9834be33fdd813c2c6e0e3502814f6d44ee37b403e812cda9468365fa6a8c9d5"
+    },
+    "coach-lesson-builder": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-lesson-builder-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-lesson-builder-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-lesson-builder-618.webp",
+      "sourceSha256": "ba1a54b4342a2ea058b921fb3cf4a02a0f2f12cda554ae30def78d327854bbde"
+    },
+    "coach-class-mode": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-class-mode-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-class-mode-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-class-mode-618.webp",
+      "sourceSha256": "a462088a48f49dd37cc35bbd9637a95c9455e26251da71965de81a65c42202b9"
+    },
+    "coach-class-mode-landscape": {
+      "width": 1372,
+      "height": 618,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-class-mode-landscape-1372.avif 1372w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-class-mode-landscape-1372.webp 1372w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-class-mode-landscape-1372.webp",
+      "sourceSha256": "6755d20e64f3a7cea74fea45201a1399eabd269363e456dc9571f811839c8aa2"
+    },
+    "coach-post-class": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-post-class-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-post-class-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-post-class-618.webp",
+      "sourceSha256": "e1531cc231eb9da6179cd82916888963f94ed8213391eda102f5b1f932ebb849"
+    },
+    "coach-timer-work": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-timer-work-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-timer-work-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-timer-work-618.webp",
+      "sourceSha256": "812e7580dd6b12e69a47365291a17fe21b20e93724a25f8adc3e86bbba13bf7f"
+    },
+    "coach-students": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-students-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-students-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-students-618.webp",
+      "sourceSha256": "6ff116c24481875b3afa7a947ade95c5a6b65b3c443cbc1acf5950f39e32c587"
+    },
+    "coach-attendance": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-attendance-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-attendance-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-attendance-618.webp",
+      "sourceSha256": "af807e6db34ae36aeabab0aaa89c1b1bee9604040c36712acaed7e9a4689a6bc"
+    },
+    "coach-library-media-concept": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-library-media-concept-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-library-media-concept-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-library-media-concept-618.webp",
+      "sourceSha256": "ef195a6181e0783f3d37ff8e5810c22fef835d2841b7d783d6f37d1a5623cd48"
+    },
+    "coach-settings": {
+      "width": 618,
+      "height": 1372,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-settings-618.avif 618w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-settings-618.webp 618w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-settings-618.webp",
+      "sourceSha256": "e8f0c6fe6820d856a23a43e6d7db9dacc67295712c6b024ebd81f93883524799"
+    },
+    "coach-device-class-mode": {
+      "width": 540,
+      "height": 1200,
+      "avif": "/assets/projects/earl-the-kaiju/media/coach-device-class-mode-540.avif 540w",
+      "webp": "/assets/projects/earl-the-kaiju/media/coach-device-class-mode-540.webp 540w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/coach-device-class-mode-540.webp",
+      "sourceSha256": "dfa6ddfb528695720bf9a15baeb26ffa035f4b9a555a62c16502b0ea653cfd86"
+    },
+    "site-home-desktop": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/earl-the-kaiju/media/site-home-desktop-960.avif 960w, /assets/projects/earl-the-kaiju/media/site-home-desktop-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/site-home-desktop-960.webp 960w, /assets/projects/earl-the-kaiju/media/site-home-desktop-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/site-home-desktop-1600.webp",
+      "sourceSha256": "c4c8f16a85de01ca7f8397fd5c5c94d786e6683e3e084473560512b269ec3e18"
+    },
+    "site-about-desktop": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/earl-the-kaiju/media/site-about-desktop-960.avif 960w, /assets/projects/earl-the-kaiju/media/site-about-desktop-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/site-about-desktop-960.webp 960w, /assets/projects/earl-the-kaiju/media/site-about-desktop-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/site-about-desktop-1600.webp",
+      "sourceSha256": "b396e8b4afc0c257868026ec0cbc085932c7e9ef2650395487d8e485301cba4a"
+    },
+    "site-home-mobile": {
+      "width": 780,
+      "height": 1688,
+      "avif": "/assets/projects/earl-the-kaiju/media/site-home-mobile-390.avif 390w, /assets/projects/earl-the-kaiju/media/site-home-mobile-780.avif 780w",
+      "webp": "/assets/projects/earl-the-kaiju/media/site-home-mobile-390.webp 390w, /assets/projects/earl-the-kaiju/media/site-home-mobile-780.webp 780w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/site-home-mobile-780.webp",
+      "sourceSha256": "e4012415754be0f815114129abb484a16c011fadf2a2c1592acad1c95433a291"
+    },
+    "site-menu-mobile": {
+      "width": 780,
+      "height": 1688,
+      "avif": "/assets/projects/earl-the-kaiju/media/site-menu-mobile-390.avif 390w, /assets/projects/earl-the-kaiju/media/site-menu-mobile-780.avif 780w",
+      "webp": "/assets/projects/earl-the-kaiju/media/site-menu-mobile-390.webp 390w, /assets/projects/earl-the-kaiju/media/site-menu-mobile-780.webp 780w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/site-menu-mobile-780.webp",
+      "sourceSha256": "104cd2f1c350286d577b721d8b346182ed184556e4c3e6da91b450256661ddab"
+    },
+    "site-form-errors-desktop": {
+      "width": 1600,
+      "height": 1000,
+      "avif": "/assets/projects/earl-the-kaiju/media/site-form-errors-desktop-960.avif 960w, /assets/projects/earl-the-kaiju/media/site-form-errors-desktop-1600.avif 1600w",
+      "webp": "/assets/projects/earl-the-kaiju/media/site-form-errors-desktop-960.webp 960w, /assets/projects/earl-the-kaiju/media/site-form-errors-desktop-1600.webp 1600w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/site-form-errors-desktop-1600.webp",
+      "sourceSha256": "71d17a6fe91d14bf8f1e0ec62a398d0b38482b64c78780a77791a8da28ec671d"
+    },
+    "site-form-errors-mobile": {
+      "width": 780,
+      "height": 1688,
+      "avif": "/assets/projects/earl-the-kaiju/media/site-form-errors-mobile-390.avif 390w, /assets/projects/earl-the-kaiju/media/site-form-errors-mobile-780.avif 780w",
+      "webp": "/assets/projects/earl-the-kaiju/media/site-form-errors-mobile-390.webp 390w, /assets/projects/earl-the-kaiju/media/site-form-errors-mobile-780.webp 780w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/site-form-errors-mobile-780.webp",
+      "sourceSha256": "cb0c16c1274c76d0e638df9dcf7a4f42ef72798a19dae1260c3ff7d2c4f102c7"
+    },
+    "preview": {
+      "width": 1440,
+      "height": 1200,
+      "avif": "/assets/projects/earl-the-kaiju/media/preview-480.avif 480w, /assets/projects/earl-the-kaiju/media/preview-800.avif 800w, /assets/projects/earl-the-kaiju/media/preview-1440.avif 1440w",
+      "webp": "/assets/projects/earl-the-kaiju/media/preview-480.webp 480w, /assets/projects/earl-the-kaiju/media/preview-800.webp 800w, /assets/projects/earl-the-kaiju/media/preview-1440.webp 1440w",
+      "fallback": "/assets/projects/earl-the-kaiju/media/preview-1440.webp",
+      "sourceSha256": "782e1fbdc0329978d6fb9d351a2a4aa489534a9fc6c6dad12023c6c84f90390a"
+    }
+  }
+}

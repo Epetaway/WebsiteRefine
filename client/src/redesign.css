@@ -236,6 +236,7 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .about-discipline__body h2 { margin-top: 24px; font-size: clamp(40px,4.8vw,70px); font-weight: 650; line-height: .98; letter-spacing: -.055em; }
 .about-discipline__body > p:not(.signal-label) { margin-top: 22px; color: rgba(18,21,26,.66); line-height: 1.75; }
 .about-discipline__body .case-link { margin-top: 30px; }
+.about-discipline__links { display: flex; flex-wrap: wrap; gap: 0 24px; }
 
 /* Case studies */
 .case-study-page { background: var(--tech-paper); }

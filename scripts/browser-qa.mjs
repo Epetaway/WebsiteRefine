@@ -21,6 +21,7 @@ const canonicalRoutes = [
   "/work/withyou",
   "/work/dojonet",
   "/work/gundam-forge",
+  "/work/earl-the-kaiju",
   "/research",
   "/field-notes",
   "/field-notes/teaching-jiu-jitsu-and-ux",
@@ -40,6 +41,7 @@ const screenshotTargets = new Set([
   "320:/",
   ...canonicalRoutes.map((route) => `375:${route}`),
   "768:/work/withyou",
+  "768:/work/earl-the-kaiju",
   "1024:/graduate-review",
   ...canonicalRoutes.map((route) => `1440:${route}`),
 ]);
@@ -214,6 +216,9 @@ try {
     ["/projects/withyou", "/work/withyou"],
     ["/how-i-think", "/research"],
     ["/blog", "/field-notes"],
+    ["/earldkaiju", "/work/earl-the-kaiju"],
+    ["/EarldKaiju", "/work/earl-the-kaiju"],
+    ["/projects/earl-the-kaiju", "/work/earl-the-kaiju"],
   ]) {
     await page.goto(`${baseUrl}${legacy}`, { waitUntil: "networkidle" });
     redirects.push({
@@ -248,6 +253,8 @@ try {
     ["mobile-landscape", { width: 844, height: 390 }, "/"],
     ["mobile-landscape", { width: 844, height: 390 }, "/work/withyou"],
     ["mobile-landscape", { width: 844, height: 390 }, "/graduate-review"],
+    ["mobile-landscape", { width: 844, height: 390 }, "/work/earl-the-kaiju"],
+    ["200-percent-zoom-equivalent", { width: 640, height: 450 }, "/work/earl-the-kaiju"],
     ["200-percent-zoom-equivalent", { width: 640, height: 450 }, "/"],
     ["200-percent-zoom-equivalent", { width: 640, height: 450 }, "/resume"],
     ["200-percent-zoom-equivalent", { width: 640, height: 450 }, "/graduate-review"],
@@ -280,7 +287,7 @@ try {
   const undersizedPrimaryTargets = await page.evaluate(() =>
     Array.from(
       document.querySelectorAll(
-        ".button, .site-menu-button, .mobile-nav__link, .case-deep-dive > summary, .review-jump-nav a, .prototype-button",
+        ".button, .site-menu-button, .mobile-nav__link, .case-deep-dive > summary, .review-jump-nav a, .prototype-button, .etk-deep > summary, .etk-subnav a",
       ),
     )
       .filter((element) => {

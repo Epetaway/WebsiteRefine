@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-Source for Earl Hickson Jr.'s portfolio site (ehicksonjr.com) — a React SPA (case studies, blog, contact, a BJJ-booking microsite at `/earldkaiju`) backed by a single Express server. Monorepo with three top-level source trees: `client/` (Vite + React), `server/` (Express API), `shared/` (Drizzle schema + Zod validators consumed by both).
+Source for Earl Hickson Jr.'s portfolio site (ehicksonjr.com) — a React SPA (case studies, Field Notes, résumé, contact) backed by a single Express server. The old BJJ microsite at `/earldkaiju` is archived; that path now redirects to the Earl the Kaiju case study at `/work/earl-the-kaiju` (`client/src/pages/earl-the-kaiju.tsx`, content in `client/src/data/earlTheKaiju.ts`, record in `docs/EARL-THE-KAIJU-CASE-STUDY.md`). Monorepo with three top-level source trees: `client/` (Vite + React), `server/` (Express API), `shared/` (Drizzle schema + Zod validators consumed by both).
 
 ## Commands
 

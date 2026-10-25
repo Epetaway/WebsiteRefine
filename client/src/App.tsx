@@ -9,6 +9,7 @@ import { getFieldNote } from "@/data/fieldNotes";
 const Home = lazy(() => import("@/pages/home"));
 const Work = lazy(() => import("@/pages/work"));
 const InvestigationPage = lazy(() => import("@/pages/investigation"));
+const EarlTheKaiju = lazy(() => import("@/pages/earl-the-kaiju"));
 const Research = lazy(() => import("@/pages/research"));
 const FieldNotes = lazy(() => import("@/pages/field-notes"));
 const FieldNotePage = lazy(() => import("@/pages/field-note"));
@@ -23,6 +24,8 @@ const legacyProjects: Record<string, string> = {
   "dojonet-prototype-max": "/work/dojonet",
   dojonet: "/work/dojonet",
   "gundam-forge": "/work/gundam-forge",
+  "earl-the-kaiju": "/work/earl-the-kaiju",
+  earldkaiju: "/work/earl-the-kaiju",
 };
 
 const legacyWriting: Record<string, string> = {
@@ -65,6 +68,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/work" element={<Work />} />
+            <Route path="/work/earl-the-kaiju" element={<EarlTheKaiju />} />
             <Route path="/work/:slug" element={<InvestigationPage />} />
             <Route path="/research" element={<Research />} />
             <Route path="/field-notes" element={<FieldNotes />} />
@@ -86,6 +90,10 @@ export default function App() {
             <Route path="/writing" element={<Navigate to="/field-notes" replace />} />
             <Route path="/writing/:slug" element={<LegacyBlogRedirect />} />
             <Route path="/case-study-preview" element={<Navigate to="/work" replace />} />
+            {/* The archived Earl d. Kaiju microsite stays archived; its old addresses
+                (matched case-insensitively, so /EarldKaiju too) lead to the case study. */}
+            <Route path="/earldkaiju" element={<Navigate to="/work/earl-the-kaiju" replace />} />
+            <Route path="/earl-the-kaiju" element={<Navigate to="/work/earl-the-kaiju" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

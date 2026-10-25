@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import { Link, useParams } from "react-router-dom";
 import SEO from "@/components/seo";
 import { EvidenceBadge } from "@/components/editorial/EvidenceBadge";
@@ -5,10 +6,19 @@ import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { WithYouSharingPrototype } from "@/components/prototypes/WithYouSharingPrototype";
 import { DojoNetProgressPrototype } from "@/components/prototypes/DojoNetProgressPrototype";
 import { GundamForgeValidationPrototype } from "@/components/prototypes/GundamForgeValidationPrototype";
-import { getInvestigation, investigations } from "@/data/investigations";
+import { getInvestigation, type Investigation } from "@/data/investigations";
+import { getNextWorkEntry } from "@/data/work";
 import { getCaseStudyView } from "@/lib/caseStudyView";
 import { publicPath } from "@/lib/publicPath";
 import NotFound from "@/pages/not-found";
+
+// Explicit per-project prototype choice: a slug without an entry here fails to type-check
+// instead of silently falling back to another project's prototype.
+const prototypes: Record<Investigation["slug"], ComponentType> = {
+  withyou: WithYouSharingPrototype,
+  dojonet: DojoNetProgressPrototype,
+  "gundam-forge": GundamForgeValidationPrototype,
+};
 
 export default function InvestigationPage() {
   const { slug } = useParams();
@@ -16,8 +26,8 @@ export default function InvestigationPage() {
   if (!investigation) return <NotFound />;
 
   const view = getCaseStudyView(investigation);
-  const next = investigations[(investigations.indexOf(investigation) + 1) % investigations.length];
-  const Prototype = investigation.slug === "withyou" ? WithYouSharingPrototype : investigation.slug === "dojonet" ? DojoNetProgressPrototype : GundamForgeValidationPrototype;
+  const next = getNextWorkEntry(investigation.slug);
+  const Prototype = prototypes[investigation.slug];
 
   return (
     <div className="investigation-page case-study-page" style={{ "--project-accent": investigation.accent, "--project-secondary": investigation.accentSecondary } as React.CSSProperties}>
@@ -97,7 +107,7 @@ export default function InvestigationPage() {
         </div>
       </details>
 
-      <aside className="next-investigation"><span>Next case study / {next.number}</span><h2>{next.name}</h2><p>{next.question}</p><Link className="button button--light" to={`/work/${next.slug}`}>Read {next.name}</Link></aside>
+      <aside className="next-investigation"><span>Next case study / {next.number}</span><h2>{next.name}</h2><p>{next.question}</p><Link className="button button--light" to={next.path}>Read {next.name}</Link></aside>
     </div>
   );
 }
