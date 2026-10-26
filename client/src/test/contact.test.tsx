@@ -12,9 +12,9 @@ describe("contact page", () => {
       "href",
       expect.stringContaining("mailto:e@ehicksonjr.com?subject="),
     );
-    expect(screen.getByRole("link", { name: /earlhicksonjr/i })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: /earl-hickson-jr/i })).toHaveAttribute(
       "href",
-      "https://www.linkedin.com/in/earlhicksonjr",
+      "https://www.linkedin.com/in/earl-hickson-jr",
     );
   });
 

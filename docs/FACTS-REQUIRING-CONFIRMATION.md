@@ -11,7 +11,7 @@ The production data model publishes only `verified` facts. Values marked `requir
 | Official flagger title | No verified supplied record | Requires confirmation | Omit | Exact payroll/title wording |
 | Flagger start date | No verified supplied record | Requires confirmation | Omit | Start month/year |
 | Flagger placement | No publication decision supplied | Requires confirmation | Omit from both PDFs | Public résumé, graduate CV only, both, or neither |
-| Canonical LinkedIn URL | Earl confirmed `https://www.linkedin.com/in/earlhicksonjr` on 2026-10-25 | Verified | Publish URL | Fix the résumé, which prints `linkedin.com/in/earl-hickson-jr` |
+| Canonical LinkedIn URL | `https://www.linkedin.com/in/earl-hickson-jr`: the live profile, checked signed in on 2026-10-26; `/in/earlhicksonjr` returns LinkedIn's 404. Earl approved the switch on 2026-10-26 | Verified | Publish URL | None. The résumé already prints this URL |
 | Tabby’s Place role/date | Résumé dated 2026-10-24 | Verified | Publish: Front-End Developer, Contract, Oct 2025 | — |
 | Prosek Partners role/date | Résumé dated 2026-10-24 | Verified | Publish: Front-End Developer, Contract, Apr — Sep 2021 | — |
 | William R. Seide Agency role/date | Résumé dated 2026-10-24 | Verified | Publish: Front-End Developer, Contract, Jan — Jun 2020 | — |
