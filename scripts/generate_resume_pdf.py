@@ -103,47 +103,47 @@ styles = {
         leading=12,
         tracking=1.1,
         textColor=ORCHID,
-        spaceBefore=9,
-        spaceAfter=5,
+        spaceBefore=6,
+        spaceAfter=3,
     ),
     "body": ParagraphStyle(
         "Body",
         parent=base["Normal"],
         fontName="Helvetica",
-        fontSize=9.5,
-        leading=12.5,
+        fontSize=9,
+        leading=11,
         textColor=INK,
-        spaceAfter=4,
+        spaceAfter=2.5,
     ),
     "job": ParagraphStyle(
         "Job",
         parent=base["Normal"],
         fontName="Helvetica-Bold",
-        fontSize=10.2,
-        leading=12,
+        fontSize=10,
+        leading=11.8,
         textColor=INK,
-        spaceAfter=1,
+        spaceAfter=0.5,
     ),
     "meta": ParagraphStyle(
         "Meta",
         parent=base["Normal"],
         fontName="Helvetica",
         fontSize=9,
-        leading=11,
+        leading=10.8,
         textColor=MUTED,
-        spaceAfter=3,
+        spaceAfter=2,
     ),
     "bullet": ParagraphStyle(
         "Bullet",
         parent=base["Normal"],
         fontName="Helvetica",
-        fontSize=9.5,
-        leading=12,
-        leftIndent=12,
+        fontSize=9,
+        leading=10.7,
+        leftIndent=11,
         firstLineIndent=-8,
         bulletIndent=0,
         textColor=INK,
-        spaceAfter=2,
+        spaceAfter=1.2,
     ),
     "footer": ParagraphStyle(
         "Footer",
@@ -169,6 +169,23 @@ def bullet(text: str) -> Paragraph:
     return Paragraph(escaped(text), styles["bullet"], bulletText="-")
 
 
+def add_flowing(story: list, block: list, head: int = 3) -> None:
+    """Keep a heading with its first lines, then let the rest break across pages.
+
+    Keeping a whole long role together leaves large gaps at the bottom of a page.
+    """
+    story.append(KeepTogether(block[:head]))
+    story.extend(block[head:])
+
+
+def display_url(url: str) -> str:
+    for prefix in ("https://www.", "http://www.", "https://", "http://"):
+        if url.startswith(prefix):
+            url = url[len(prefix):]
+            break
+    return url.rstrip("/")
+
+
 def add_header(story: list, data: dict, subtitle: str) -> None:
     profile = data["profile"]
     links = data["links"]
@@ -179,10 +196,11 @@ def add_header(story: list, data: dict, subtitle: str) -> None:
             Paragraph(
                 " | ".join(
                     [
+                        escaped(profile["location"]),
                         link(links["email"], f'mailto:{links["email"]}'),
                         link("ehicksonjr.com", links["website"]),
-                        link("linkedin.com/in/earlhicksonjr", links["linkedin"]),
-                        link("github.com/Epetaway", links["github"]),
+                        link(display_url(links["linkedin"]), links["linkedin"]),
+                        link(display_url(links["github"]), links["github"]),
                     ]
                 ),
                 styles["contact"],
@@ -192,7 +210,7 @@ def add_header(story: list, data: dict, subtitle: str) -> None:
     )
 
 
-def add_experience(story: list, data: dict) -> None:
+def add_experience(story: list, data: dict, detailed: bool = True) -> None:
     story.append(heading("Professional experience"))
     for item in data["experience"]:
         block = [
@@ -200,64 +218,88 @@ def add_experience(story: list, data: dict) -> None:
                 f'{escaped(item["role"])} | {escaped(item["employer"])}',
                 styles["job"],
             ),
-            paragraph(f'{item["dates"]} | {item["area"]}', "meta"),
+            paragraph(f'{item["location"]} | {item["dates"]}', "meta"),
         ]
-        responsibilities = item["responsibilities"]
-        if responsibilities:
-            block.extend(bullet(value) for value in responsibilities)
-        else:
+        engagements = item.get("engagements") or []
+        if not detailed:
             block.append(paragraph(item["summary"]))
-        block.append(Spacer(1, 4))
-        story.append(KeepTogether(block))
+        else:
+            block.extend(bullet(value) for value in item["responsibilities"])
+            for engagement in engagements:
+                block.append(
+                    Paragraph(
+                        f'<b>{escaped(engagement["client"])}</b> | '
+                        f'{escaped(engagement["role"])} | {escaped(engagement["dates"])}',
+                        styles["body"],
+                    )
+                )
+                block.extend(bullet(value) for value in engagement["responsibilities"])
+            if not item["responsibilities"] and not engagements:
+                block.append(paragraph(item["summary"]))
+        block.append(Spacer(1, 2))
+        add_flowing(story, block)
+    story.append(paragraph(data["earlierExperience"], "meta"))
 
 
-def add_investigations(story: list, data: dict, graduate: bool = False) -> None:
-    story.append(
-        heading(
-            "Selected independent HCI investigations"
-            if graduate
-            else "Selected product investigations"
+def add_selected_projects(story: list, data: dict) -> None:
+    story.append(heading("Selected projects"))
+    for item in data["selectedProjects"]:
+        meta = [escaped(" | ".join(item["stack"]))]
+        if item["live"]:
+            meta.append(link(item["live"]["label"], item["live"]["url"]))
+        meta.append(
+            link(
+                f'ehicksonjr.com/work/{item["slug"]}',
+                f'https://ehicksonjr.com/work/{item["slug"]}',
+            )
         )
-    )
+        block = [
+            Paragraph(
+                f'{escaped(item["name"])} | {escaped(item["descriptor"])} | '
+                f'{escaped(item["status"])}',
+                styles["job"],
+            ),
+            Paragraph(" | ".join(meta), styles["meta"]),
+        ]
+        block.extend(bullet(value) for value in item["highlights"])
+        block.append(Spacer(1, 2))
+        add_flowing(story, block)
+
+
+def add_investigations(story: list, data: dict) -> None:
+    story.append(heading("Selected independent HCI investigations"))
     for item in data["investigations"]:
-        label = (
-            f'{item["name"]} | Independent HCI investigation'
-            if graduate
-            else f'{item["name"]} | {item["status"]}'
-        )
-        block = [Paragraph(escaped(label), styles["job"])]
-        block.append(paragraph(item["question"], "meta"))
-        if not graduate:
-            block.append(paragraph(item["product"]))
-        block.append(
+        block = [
+            Paragraph(
+                escaped(f'{item["name"]} | Independent HCI investigation'),
+                styles["job"],
+            ),
+            paragraph(item["question"], "meta"),
             paragraph(
                 f'Contribution: {item["role"]}. Evidence boundary: '
                 f'{item["limitations"][0]}'
-            )
-        )
-        if not graduate:
-            block.append(paragraph(f'Stack: {" | ".join(item["stack"])}', "meta"))
-        block.extend(
-            [
-                Paragraph(
-                    link(
-                        f'ehicksonjr.com/work/{item["slug"]}',
-                        f'https://ehicksonjr.com/work/{item["slug"]}',
-                    ),
-                    styles["meta"],
+            ),
+            Paragraph(
+                link(
+                    f'ehicksonjr.com/work/{item["slug"]}',
+                    f'https://ehicksonjr.com/work/{item["slug"]}',
                 ),
-                Spacer(1, 3),
-            ]
-        )
+                styles["meta"],
+            ),
+            Spacer(1, 3),
+        ]
         story.append(KeepTogether(block))
 
 
 def add_capabilities(story: list, data: dict, heading_text: str) -> None:
     story.append(heading(heading_text))
     for group in data["capabilities"]:
+        label = group["label"]
+        if group.get("note"):
+            label = f'{label} ({group["note"][0].lower()}{group["note"][1:]})'
         story.append(
             Paragraph(
-                f'<b>{escaped(group["label"])}:</b> '
+                f'<b>{escaped(label)}:</b> '
                 f'{escaped(", ".join(group["items"]))}',
                 styles["body"],
             )
@@ -265,32 +307,42 @@ def add_capabilities(story: list, data: dict, heading_text: str) -> None:
 
 
 def add_education(story: list, data: dict) -> None:
-    story.append(heading("Education and certification"))
+    story.append(heading("Education and certifications"))
     for item in data["education"]:
         story.append(
             Paragraph(
                 f'<b>{escaped(item["credential"])}</b> | '
-                f'{escaped(item["institution"])} | {escaped(item["completed"])}',
+                f'{escaped(item["institution"])}, {escaped(item["location"])} | '
+                f'{escaped(item["completed"])}',
                 styles["body"],
             )
         )
     for item in data["certifications"]:
+        verify = (
+            f' | {link("Verify", item["verificationUrl"])}'
+            if item.get("verificationUrl")
+            else ""
+        )
         story.append(
             Paragraph(
                 f'<b>{escaped(item["credential"])}</b> | '
-                f'{escaped(item["issuer"])} | {escaped(item["completed"])}',
+                f'{escaped(item["issuer"])} | {escaped(item["completed"])}{verify}',
                 styles["body"],
             )
-        )
-        story.append(
-            Paragraph(link("Verify certificate", item["verificationUrl"]), styles["meta"])
         )
 
 
 def add_teaching(story: list, data: dict) -> None:
-    story.append(heading("Teaching and leadership"))
+    story.append(heading("Coaching and leadership"))
     story.append(paragraph(data["teaching"]["summary"]))
-    story.append(paragraph(data["teaching"]["evidenceBoundary"], "meta"))
+    for position in data["teaching"]["positions"]:
+        story.append(
+            Paragraph(
+                f'<b>{escaped(position["academy"])}</b> | {escaped(position["role"])} | '
+                f'{escaped(position["location"])} | {escaped(position["dates"])}',
+                styles["body"],
+            )
+        )
 
 
 def add_methods(story: list, data: dict) -> None:
@@ -353,10 +405,10 @@ def build_pdf(path: Path, story: list, title: str, document_label: str) -> None:
     doc = SimpleDocTemplate(
         str(path),
         pagesize=letter,
-        rightMargin=0.58 * inch,
-        leftMargin=0.58 * inch,
-        topMargin=0.5 * inch,
-        bottomMargin=0.58 * inch,
+        rightMargin=0.5 * inch,
+        leftMargin=0.5 * inch,
+        topMargin=0.42 * inch,
+        bottomMargin=0.55 * inch,
         title=title,
         author="Earl Hickson Jr.",
         subject=document_label,
@@ -367,31 +419,35 @@ def build_pdf(path: Path, story: list, title: str, document_label: str) -> None:
 
 
 def public_resume_story(data: dict) -> list:
+    profile = data["profile"]
     story = []
-    add_header(story, data, data["profile"]["publicTitle"])
-    story.append(heading("Professional summary"))
-    story.append(paragraph(data["profile"]["summary"]))
+    add_header(
+        story,
+        data,
+        " | ".join([profile["publicTitle"], *profile["specialties"]]),
+    )
+    story.append(heading("Summary"))
+    story.append(paragraph(profile["summary"]))
+    add_capabilities(story, data, "Technical skills")
     add_experience(story, data)
-    add_capabilities(story, data, "Capabilities")
-    story.append(PageBreak())
-    add_investigations(story, data)
-    add_education(story, data)
+    add_selected_projects(story, data)
     add_teaching(story, data)
+    add_education(story, data)
     return story
 
 
 def graduate_cv_story(data: dict) -> list:
     story = []
-    add_header(story, data, "HCI Graduate Applicant | UX Engineer")
+    add_header(story, data, f'HCI Graduate Applicant | {data["profile"]["publicTitle"]}')
     story.append(heading("Applicant summary"))
     story.append(paragraph(data["profile"]["graduateSummary"]))
     story.append(heading("Research interests"))
     story.append(paragraph(" | ".join(data["research"]["interests"])))
     add_education(story, data)
-    add_investigations(story, data, graduate=True)
+    add_investigations(story, data)
     add_capabilities(story, data, "Technical preparation")
     story.append(PageBreak())
-    add_experience(story, data)
+    add_experience(story, data, detailed=False)
     add_teaching(story, data)
     add_methods(story, data)
     add_writing(story, data)
@@ -404,8 +460,8 @@ def main() -> None:
     build_pdf(
         PUBLIC_RESUME,
         public_resume_story(data),
-        "Earl Hickson Jr. - UX Engineer Resume",
-        "Earl Hickson Jr. | UX Engineer Resume",
+        f'Earl Hickson Jr. - {data["profile"]["publicTitle"]} Resume',
+        f'Earl Hickson Jr. | {data["profile"]["publicTitle"]} Resume',
     )
     build_pdf(
         GRADUATE_CV,

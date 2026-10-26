@@ -1,9 +1,28 @@
+// Coaching record from the résumé (Oct 24, 2026): academies, titles and years are confirmed.
 export const teaching = {
-  heading: "Martial arts teaching and leadership",
+  heading: "Coaching and leadership",
   summary:
-    "Teaching Brazilian Jiu-Jitsu informs Earl's approach to progressive instruction, observation, feedback, adaptation, trust, reflection, and capability development.",
-  evidenceBoundary:
-    "No academy title or teaching date range is published until those details are confirmed.",
+    "A Brazilian Jiu-Jitsu black belt, teaching youth and adult students since 2021. That coaching carries straight into mentoring engineers: progressive instruction, close observation, honest feedback, and adapting to how each person learns.",
+  positions: [
+    {
+      academy: "AMA Fight Club",
+      role: "Brazilian Jiu-Jitsu Professor",
+      location: "Cedar Knolls, NJ",
+      dates: "2025 — Present",
+    },
+    {
+      academy: "Colton Brown Training Center",
+      role: "Brazilian Jiu-Jitsu Instructor",
+      location: "Warren, NJ",
+      dates: "2023 — 2024",
+    },
+    {
+      academy: "Pure MMA",
+      role: "Brazilian Jiu-Jitsu Instructor",
+      location: "Rockaway, NJ",
+      dates: "2021 — 2022",
+    },
+  ],
   practices: [
     "Progressive instruction",
     "Observation",

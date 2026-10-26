@@ -61,6 +61,7 @@ import {
 } from "../client/src/data/dojonet";
 import {
   assertPublicationSafe,
+  confirmedCurrentRoles,
   experience,
   professionalLinks,
   profile,
@@ -119,6 +120,9 @@ const bannedPatterns = [
   /verified wcag aa/i,
   /\b531 integration tests\b/i,
   /\b17 e2e flows\b/i,
+  // Chronology replaced by the Oct 24, 2026 résumé; these entries must not come back.
+  /\bMerck\b/,
+  /Verizon Wireless/,
 ];
 
 function fail(message: string): never {
@@ -146,8 +150,9 @@ function collectFiles(directory: string): string[] {
 
 assertPublicationSafe();
 
-if (profile.publicTitle !== "UX Engineer") {
-  fail("The canonical public title must be UX Engineer.");
+// The public title matches the résumé headline (Oct 24, 2026).
+if (profile.publicTitle !== "Lead Front-End Engineer") {
+  fail("The canonical public title must be Lead Front-End Engineer, matching the résumé.");
 }
 
 if (professionalLinks.website !== "https://ehicksonjr.com") {
@@ -158,8 +163,11 @@ for (const item of experience) {
   if (item.factStatus !== "verified") {
     fail(`Professional experience ${item.id} is not publication-safe.`);
   }
-  if (/\bpresent\b/i.test(item.dates)) {
-    fail(`Professional experience ${item.id} uses unverified Present language.`);
+  if (
+    /\bpresent\b/i.test(item.dates) &&
+    !(confirmedCurrentRoles as readonly string[]).includes(item.id)
+  ) {
+    fail(`Professional experience ${item.id} uses Present without a confirmed current role.`);
   }
 }
 

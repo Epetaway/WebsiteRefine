@@ -157,6 +157,7 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .experience-ledger h3 { color: var(--tech-text); font-size: 20px; font-weight: 650; }
 .experience-ledger div p { margin-top: 4px; color: var(--tech-accent); font-size: 11px; line-height: 1.4; }
 .experience-ledger article > p { color: var(--tech-muted); font-size: 13px; line-height: 1.7; }
+.experience-ledger__earlier { max-width: var(--content); margin: -20px auto 44px; color: var(--tech-muted); font-size: 13px; line-height: 1.7; }
 .home-experience > .case-link, .work-history > .button { display: flex; margin: 0 auto; }
 
 .practice-sequence { display: grid; grid-template-columns: repeat(4,1fr); max-width: var(--content); margin: 0 auto; padding: 0; border-top: 1px solid var(--paper-line); border-left: 1px solid var(--paper-line); list-style: none; }

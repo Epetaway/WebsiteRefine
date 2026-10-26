@@ -3,14 +3,14 @@ import SEO from "@/components/seo";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { workEntries } from "@/data/work";
-import { experience } from "@/data/professional";
+import { earlierExperience, experience } from "@/data/professional";
 
 export default function Work() {
   return (
     <div className="portfolio-page work-page">
       <SEO
         title="Work — Earl Hickson Jr."
-        description="UX engineering case studies and professional frontend product work by Earl Hickson Jr."
+        description="Case studies and professional front-end work by Earl Hickson Jr., lead front-end engineer."
         path="/work"
         image="/assets/brand/social/og-investigations.svg"
       />
@@ -65,6 +65,7 @@ export default function Work() {
             </article>
           ))}
         </div>
+        <p className="experience-ledger__earlier">{earlierExperience}</p>
         <Link className="button button--accent" to="/resume">View résumé</Link>
       </section>
     </div>

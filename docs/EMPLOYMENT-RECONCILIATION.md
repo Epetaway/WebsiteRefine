@@ -1,38 +1,38 @@
 # Employment Reconciliation
 
-Audit date: 2026-07-17
+Audit date: 2026-10-25 (supersedes the 2026-07-17 audit)
 
-`client/src/data/professional/experience.ts` is the final public chronology. `resume/content.json` is generated from it, and the PDF generator consumes that JSON. Older `.dc.html` documents are reference archives, not career-data authorities.
+Source of truth: Earl's résumé dated 2026-10-24 ("Lead Front-End Résumé (2026)"). `client/src/data/professional/experience.ts` carries it into the site; `resume/content.json` is generated from that file, and the PDF generator consumes the JSON. Older `.dc.html` documents are reference archives, not career-data authorities.
 
-| Employer | Role | Start | End | Current website | Native React data | Resume JSON | PDF generator | Design document | LinkedIn | Verified final value | Publication decision |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| AMA Fight Club | Front-End Developer & Digital Integration Specialist | Jan 2025 | 2025, month unknown | Same canonical value | Canonical | Generated | Generated | Older values ignored | Update recommended | `Jan 2025 — 2025` pending exact end month | Publish conservatively; no `Present` |
-| Asembia | Front-End Developer | Dec 2023 | Oct 2024 | Same canonical value | Canonical | Generated | Generated | Reference only | Update recommended | `Dec 2023 — Oct 2024` | Publish |
-| BroadcastMed | Lead Designer & Front-End Developer | Nov 2021 | Mar 2023 | Same canonical value | Canonical | Generated | Generated | Reference only | Update recommended | `Nov 2021 — Mar 2023` | Publish |
-| Merck | Freelance Front-End Developer | 2019 | 2019 | Same canonical value | Canonical | Generated | Generated | Reference only | Update recommended | `2019` | Publish year only |
-| Verizon Wireless | Front-End Developer | 2015 | 2016 | Same canonical value | Canonical | Generated | Generated | Reference only | Update recommended | `2015 — 2016` | Publish years only |
-| Current flagger employer | Unknown | Unknown | Unknown/current unknown | Not published | Excluded | Excluded | Excluded | Not authoritative | Confirmation required | No verified value | Omit |
-| Tabby’s Place | Unknown | Unknown | Unknown | Not published | Excluded | Excluded | Excluded | Historical fragment only | Confirmation required | No verified value | Omit |
-| Prosek Partners | Unknown | Unknown | Unknown | Not published | Excluded | Excluded | Excluded | Historical fragment only | Confirmation required | No verified value | Omit |
-| William R. Seide Agency | Unknown | Unknown | Unknown | Not published | Excluded | Excluded | Excluded | Historical fragment only | Confirmation required | No verified value | Omit |
-| Merkle | Unknown | Unknown | Unknown | Not published | Excluded | Excluded | Excluded | Historical fragment only | Confirmation required | No verified value | Omit |
-| Second Melody | Unknown | Unknown | Unknown | Not published | Excluded | Excluded | Excluded | Historical fragment only | Confirmation required | No verified value | Omit |
-| KBS&P | Engagements and internship status unresolved | Unknown | Unknown | Not published | Excluded | Excluded | Excluded | Conflicting archive values | Confirmation required | No verified value | Omit; do not merge engagements |
+| Employer | Role | Location | Dates | Published |
+| --- | --- | --- | --- | --- |
+| AMA Fight Club | Front-End Developer & Brazilian Jiu-Jitsu Professor | Cedar Knolls, NJ | Jan 2025 — Present | Yes; the only role allowed to use `Present` (`confirmedCurrentRoles`) |
+| Freelance and Contract | Independent Front-End Developer | Remote | Nov 2024 — Oct 2025 | Yes, with two engagements below |
+| ↳ Tabby's Place: A Cat Sanctuary | Front-End Developer, Contract | — | Oct 2025 | Yes |
+| ↳ Wealth Creation Innovation | Senior Front-End Developer, Contract | — | Nov — Dec 2024 | Yes |
+| Asembia | Front-End Developer | Florham Park, NJ | Dec 2023 — Oct 2024 | Yes |
+| BroadcastMed / Conexiant | Lead Designer & Front-End Developer | Remote | Aug 2021 — Feb 2023 | Yes (dates corrected from Nov 2021 — Mar 2023) |
+| Prosek Partners | Front-End Developer, Contract | Remote | Apr 2021 — Sep 2021 | Yes (newly published) |
+| William R. Seide Agency LLC | Front-End Developer, Contract | New Jersey | Jan 2020 — Jun 2020 | Yes (newly published) |
+| Merkle | Email Marketing Specialist, Contract | Remote | Nov 2018 — Jul 2019 | Yes (newly published) |
+| Kirshenbaum Bond Senecal + Partners, Second Melody | Front-end and digital design roles | — | 2013–2017 | One "Earlier" line only, as on the résumé |
+| Current flagger employer | — | — | — | Omitted (not on the résumé) |
+
+## Removed
+
+- **Merck, Freelance Front-End Developer, 2019** and **Verizon Wireless, Front-End Developer, 2015–2016** are not on the 2026-10-24 résumé and were removed. `scripts/validate-content.ts` and `scripts/validate_pdfs.py` now block both names so they cannot return by accident.
 
 ## Surface reconciliation
 
-- Homepage and Work read `experience` directly.
-- Resume page reads `experience` directly.
-- About discusses trajectory and transition without duplicating chronology.
-- `resume/content.json` is generated with `npm run content:export`.
-- Public résumé and graduate CV are produced by `scripts/generate_resume_pdf.py`.
-- Person structured data does not duplicate employer chronology.
-- Application forms should copy the values above until a confirmed update is made.
+- Home and Work render the `experience` ledger plus the `earlierExperience` line.
+- The Resume page and the public PDF follow the résumé's section order: Summary, Technical Skills, Professional Experience, Selected Projects, Coaching and Leadership, Education and Certifications.
+- The graduate CV uses each role's one-line summary instead of the full bullets.
+- About discusses trajectory without duplicating the chronology.
+- `resume/content.json` is generated with `npm run content:export`; both PDFs with `npm run documents:generate`.
+- The public PDF leaves out the phone number on the emailed résumé, because the PDF is a public download.
 
-## LinkedIn update recommendations
+## Known differences from the résumé
 
-- Use `UX Engineer` as the headline identity.
-- Match the five published entries and conservative date precision exactly.
-- Do not mark AMA Fight Club current until confirmed.
-- Keep the current non-technology role private or omitted until Earl makes an explicit publication decision.
-- Add omitted historical employers only after separate engagement records are verified.
+- **IBM Full Stack Software Developer Professional Certificate** stays on the site (Earl's decision, 2026-10-25) although the résumé lists only the two Team Treehouse certificates.
+- **Gundam Forge** shows as `Beta` with no live link. The résumé says "Public beta · epetaway.github.io/Gundam-Forge", but that URL returned GitHub Pages' 404 on 2026-10-25.
+- **LinkedIn**: the site uses `linkedin.com/in/earlhicksonjr` (confirmed by Earl, 2026-10-25). The résumé prints `linkedin.com/in/earl-hickson-jr`, which should be corrected on the résumé.

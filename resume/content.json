@@ -2,19 +2,27 @@
   "schemaVersion": 1,
   "profile": {
     "name": "Earl Hickson Jr.",
-    "publicTitle": "UX Engineer",
-    "eyebrow": "EARL HICKSON JR. — UX ENGINEER",
+    "publicTitle": "Lead Front-End Engineer",
+    "specialties": [
+      "Design Systems",
+      "Accessibility",
+      "Healthcare UI"
+    ],
+    "eyebrow": "EARL HICKSON JR. — LEAD FRONT-END ENGINEER",
     "headline": "Designing and building human-centered systems that help people become more capable.",
     "thesis": "I design and build technology that helps people become more capable.",
     "belief": "Technology should support human capability without unnecessarily replacing human agency.",
-    "summary": "UX Engineer whose practice connects interaction design, frontend engineering, accessibility, and full-stack product development to create systems that strengthen human capability.",
-    "graduateSummary": "UX Engineer and independent HCI practitioner with a background in graphic design, frontend engineering, and full-stack product development. My work explores how interactive systems can strengthen human capability across relationships, learning, privacy, and complex decision-making without unnecessarily replacing human agency.",
-    "availability": "Open to full-time opportunities",
+    "summary": "Front-end engineer with a BFA in graphic design and 6+ years building production interfaces for healthcare, financial services, and digital media. At Asembia, took a fragmented set of HIPAA-regulated patient and prescriber portals from Bootstrap 3 to a reusable Bootstrap 5 component system, and got those standards adopted by the dev team. At BroadcastMed, led design and front-end delivery, mentored junior designers and developers, and built the email system that cut production time 25%. Outside client work, ships tested, CI-deployed products in React, Next.js, and TypeScript. Best where design, accessibility, and engineering overlap, and at getting a team to build the same way. A Brazilian Jiu-Jitsu black belt who has taught students of all ages since 2021; that coaching carries straight into mentoring engineers.",
+    "lead": "Front-end engineer with a BFA in graphic design and 6+ years building production interfaces for healthcare, financial services, and digital media. I'm at my best where design, accessibility, and engineering overlap, and at getting a team to build the same way.",
+    "graduateSummary": "Front-end engineer and independent HCI practitioner with a background in graphic design, frontend engineering, and full-stack product development. My work explores how interactive systems can strengthen human capability across relationships, learning, privacy, and complex decision-making without unnecessarily replacing human agency.",
+    "availability": "Open to full-time lead and senior front-end roles",
+    "workPreference": "Remote, or hybrid in New Jersey and New York City",
     "focusRoles": [
-      "UX Engineering",
-      "Design Engineering",
-      "Product Engineering",
-      "Frontend Product Development"
+      "Lead Front-End Engineer",
+      "Front-End Technical Lead",
+      "Senior Front-End Engineer",
+      "Lead UI Engineer",
+      "Design Engineer"
     ],
     "location": "Parsippany, New Jersey",
     "trajectory": [
@@ -53,16 +61,51 @@
     {
       "id": "ama-fight-club",
       "employer": "AMA Fight Club",
-      "role": "Front-End Developer & Digital Integration Specialist",
+      "role": "Front-End Developer & Brazilian Jiu-Jitsu Professor",
+      "location": "Cedar Knolls, NJ",
       "start": "January 2025",
-      "end": "2025",
-      "dates": "Jan 2025 — 2025",
+      "end": "Present",
+      "dates": "Jan 2025 — Present",
       "area": "Fitness / Operations",
-      "summary": "Responsive web experience and digital integrations supporting prospective members, operations, and recruiting.",
+      "summary": "Own the gym's website end to end, including a Zen Planner API integration that syncs web leads to the membership CRM, and lead its Brazilian Jiu-Jitsu program.",
       "responsibilities": [
-        "Redesigned the responsive website and improved its mobile experience.",
-        "Integrated Zen Planner lead-capture and CRM workflows, recruiting forms, and QR campaigns.",
-        "Evaluated platforms and digital tools supporting operations and marketing."
+        "Own the gym's website end to end: rebuilt it in Wix CMS with custom HTML, CSS, and JavaScript, with responsive layouts, simpler navigation, and SEO-ready structure.",
+        "Integrated the Zen Planner API so website leads sync to the gym's membership CRM in real time, working through its authentication and submission requirements.",
+        "Built mobile-first registration and lead forms, plus ZipRecruiter form integrations for recruiting campaigns.",
+        "Lead the school's Brazilian Jiu-Jitsu program as a black-belt professor: teach youth and adult classes and lead the team at tournaments.",
+        "Teach classes built on discipline and determination as much as technique, and push every student toward what they're capable of."
+      ],
+      "factStatus": "verified"
+    },
+    {
+      "id": "independent",
+      "employer": "Freelance and Contract",
+      "role": "Independent Front-End Developer",
+      "location": "Remote",
+      "start": "November 2024",
+      "end": "October 2025",
+      "dates": "Nov 2024 — Oct 2025",
+      "area": "Nonprofit / Financial services",
+      "summary": "A custom WordPress donation-campaign plugin for Tabby's Place, and React and TypeScript dashboard screens for Wealth Creation Innovation.",
+      "responsibilities": [],
+      "engagements": [
+        {
+          "client": "Tabby's Place: A Cat Sanctuary",
+          "role": "Front-End Developer, Contract",
+          "dates": "Oct 2025",
+          "responsibilities": [
+            "Designed and built a custom WordPress plugin from scratch for donation campaigns: live donation tracking, progress indicators, and adoptable-cat listings.",
+            "Gave non-technical staff an admin screen to run campaigns without touching code, and delivered it from design to deployment on a compressed timeline."
+          ]
+        },
+        {
+          "client": "Wealth Creation Innovation",
+          "role": "Senior Front-End Developer, Contract",
+          "dates": "Nov — Dec 2024",
+          "responsibilities": [
+            "Built data-driven dashboard screens and reusable components in React, TypeScript, Tailwind CSS, and Stencil, wired to REST APIs."
+          ]
+        }
       ],
       "factStatus": "verified"
     },
@@ -70,58 +113,150 @@
       "id": "asembia",
       "employer": "Asembia",
       "role": "Front-End Developer",
+      "location": "Florham Park, NJ",
       "start": "December 2023",
       "end": "October 2024",
       "dates": "Dec 2023 — Oct 2024",
       "area": "Healthcare / Enterprise",
-      "summary": "Reusable component architecture, accessibility practices, and information design across healthcare platforms.",
+      "summary": "Set one component and brand-token standard across HIPAA-regulated patient, provider, and prescriber portals, led the Bootstrap 3 to 5 migration, and got the team building to it.",
       "responsibilities": [
-        "Developed reusable component and design-system patterns across healthcare platforms.",
-        "Migrated Bootstrap 3 interfaces to Bootstrap 5 and improved prescriber-portal information layouts.",
-        "Integrated REST APIs in a .NET environment and applied accessibility practices to regulated workflows.",
-        "Presented component architecture and product value to executive leadership."
+        "Took over a front end patched for years across several HIPAA-regulated portals (patient, provider, and a prescriber portal used by healthcare institutions) and set one standard for components, sizing, color, and brand tokens.",
+        "Led the Bootstrap 3 to 5 migration and built a reusable component library during it.",
+        "Presented the modernization approach to the CEO, won buy-in, and got the component standards adopted across the development team.",
+        "Simplified dense prescription data tables for clinical users, which cut clarification requests from partner institutions.",
+        "Integrated REST APIs (GET/POST) with the .NET backend team for prescription tracking and provider workflows, and brought key user journeys to WCAG 2.1 AA.",
+        "Shipped through Bitbucket and CI/CD alongside UX, QA, and backend engineers, and introduced React into parts of the UI as the team moved toward a modern framework."
       ],
       "factStatus": "verified"
     },
     {
       "id": "broadcastmed",
-      "employer": "BroadcastMed",
+      "employer": "BroadcastMed / Conexiant",
       "role": "Lead Designer & Front-End Developer",
-      "start": "November 2021",
-      "end": "March 2023",
-      "dates": "Nov 2021 — Mar 2023",
+      "location": "Remote",
+      "start": "August 2021",
+      "end": "February 2023",
+      "dates": "Aug 2021 — Feb 2023",
       "area": "Healthcare / Media",
-      "summary": "Design and frontend delivery for healthcare marketing experiences within a proprietary CMS.",
+      "summary": "Led design and front-end delivery of healthcare marketing microsites, raised lead-form submissions 18%, and built an email system that cut production time 25%.",
       "responsibilities": [
-        "Designed and developed healthcare microsites and responsive landing experiences.",
-        "Created a standardized HTML email system and used Analytics and Hotjar findings to guide UX work.",
-        "Mentored teammates and strengthened code-review and QA practices."
+        "Led design and front-end development of healthcare marketing microsites and landing pages in a proprietary CMS, turning stakeholder requests into shipped pages across concurrent projects.",
+        "Raised lead-form submissions 18% by reworking layouts, call-to-action placement, and form flow based on Google Analytics and Hotjar data.",
+        "Built a standardized HTML email system with reusable modules and design rules, cutting email production time 25%.",
+        "Mentored junior designers and developers, and kept builds consistent across projects.",
+        "Shipped responsive, cross-device pages inside a locked-down legacy CMS by adapting implementations to its constraints."
       ],
       "factStatus": "verified"
     },
     {
-      "id": "merck",
-      "employer": "Merck",
-      "role": "Freelance Front-End Developer",
-      "start": "2019",
-      "end": "2019",
-      "dates": "2019",
-      "area": "Healthcare / Communications",
-      "summary": "Frontend development supporting digital marketing and communications initiatives.",
-      "responsibilities": [],
+      "id": "prosek-partners",
+      "employer": "Prosek Partners",
+      "role": "Front-End Developer, Contract",
+      "location": "Remote",
+      "start": "April 2021",
+      "end": "September 2021",
+      "dates": "Apr 2021 — Sep 2021",
+      "area": "Communications / Marketing",
+      "summary": "Responsive landing pages and campaign interfaces in React, plus client projects in Vue.js.",
+      "responsibilities": [
+        "Built responsive landing pages and campaign interfaces in React, HTML, CSS, and JavaScript, plus client projects in Vue.js.",
+        "Implemented SEO and analytics tracking with mobile-first, accessible markup, working in Git with designers and account stakeholders."
+      ],
       "factStatus": "verified"
     },
     {
-      "id": "verizon-wireless",
-      "employer": "Verizon Wireless",
-      "role": "Front-End Developer",
-      "start": "2015",
-      "end": "2016",
-      "dates": "2015 — 2016",
-      "area": "Telecommunications",
-      "summary": "Consumer-facing digital interfaces and internal tools.",
-      "responsibilities": [],
+      "id": "william-r-seide-agency",
+      "employer": "William R. Seide Agency LLC",
+      "role": "Front-End Developer, Contract",
+      "location": "New Jersey",
+      "start": "January 2020",
+      "end": "June 2020",
+      "dates": "Jan 2020 — Jun 2020",
+      "area": "Insurance / Financial services",
+      "summary": "Mobile-first sites for insurance and financial-services clients.",
+      "responsibilities": [
+        "Built mobile-first sites for insurance and financial-services clients, improving form completion and cross-browser rendering."
+      ],
       "factStatus": "verified"
+    },
+    {
+      "id": "merkle",
+      "employer": "Merkle",
+      "role": "Email Marketing Specialist, Contract",
+      "location": "Remote",
+      "start": "November 2018",
+      "end": "July 2019",
+      "dates": "Nov 2018 — Jul 2019",
+      "area": "Pharmaceutical marketing",
+      "summary": "Responsive HTML email for pharmaceutical campaigns, tested across email clients.",
+      "responsibilities": [
+        "Coded responsive HTML email for pharmaceutical campaigns, tested it across email clients, and held brand and accessibility standards."
+      ],
+      "factStatus": "verified"
+    }
+  ],
+  "earlierExperience": "Earlier: front-end and digital design roles at Kirshenbaum Bond Senecal + Partners and Second Melody, 2013–2017.",
+  "selectedProjects": [
+    {
+      "slug": "gundam-forge",
+      "name": "Gundam Forge",
+      "descriptor": "Deck Builder and Playtest Simulator",
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Tailwind CSS",
+        "Supabase",
+        "Vitest"
+      ],
+      "status": "Beta",
+      "live": null,
+      "highlights": [
+        "Built as a typed monorepo: a Next.js app plus shared packages for game rules and deck validation, a design system, and card-data sync.",
+        "Maintains a 623-card catalog pulled from the official card site by a Playwright sync script and validated with Zod, with search, filters, and a validation engine that flags deck errors and warnings as you build.",
+        "Playtester with a zone-based battlefield, 100-move undo/redo, keyboard shortcuts, and a computer opponent.",
+        "27 Vitest test files cover the rules engine, filters, API contracts, and replay storage; a GitHub Actions workflow gates every deploy on lint and build."
+      ]
+    },
+    {
+      "slug": "withyou",
+      "name": "WithYou",
+      "descriptor": "Couples Communication App",
+      "stack": [
+        "Expo React Native",
+        "TypeScript",
+        "Node.js",
+        "Express",
+        "PostgreSQL (Prisma)",
+        "Socket.IO"
+      ],
+      "status": "In development",
+      "live": null,
+      "highlights": [
+        "Designed privacy-first: each person owns their profile, invite-code pairing links accounts without merging private data, and sharing is opt-in field by field.",
+        "Private check-ins and real-time messaging over Socket.IO with reconnection handling; sensitive data kept in secure on-device storage.",
+        "Defined the boundary for a planned AI mediator: it works only from privacy-filtered context and never exposes one partner's private data to the other."
+      ]
+    },
+    {
+      "slug": "dojonet",
+      "name": "DojoNet",
+      "descriptor": "Martial Arts Training and Community App",
+      "stack": [
+        "React",
+        "Vite",
+        "Tailwind CSS",
+        "Zustand"
+      ],
+      "status": "Prototype",
+      "live": {
+        "label": "Live demo",
+        "url": "https://epetaway.github.io/DojoNet-Prototype-MAX/"
+      },
+      "highlights": [
+        "Training journal with session logging, technique progression, goals, and sparring stats, plus partner matchmaking with compatibility scoring and age-gated safety rules.",
+        "Runs fully static on GitHub Pages with localStorage demo data; Express, Prisma, and Socket.IO server scaffolded for the full build."
+      ]
     }
   ],
   "education": [
@@ -140,64 +275,121 @@
       "completed": "December 2025",
       "verificationUrl": "https://www.coursera.org/verify/professional-cert/ZD6SUR06VY2K",
       "factStatus": "verified"
+    },
+    {
+      "credential": "Full Stack JavaScript Certificate",
+      "issuer": "Team Treehouse",
+      "completed": "2022",
+      "verificationUrl": null,
+      "factStatus": "verified"
+    },
+    {
+      "credential": "Front-End Web Development Certificate",
+      "issuer": "Team Treehouse",
+      "completed": "2022",
+      "verificationUrl": null,
+      "factStatus": "verified"
     }
   ],
   "capabilities": [
     {
-      "label": "Interaction & product",
+      "label": "Production",
+      "note": "Employer and client work",
       "items": [
-        "User flows",
-        "Information architecture",
-        "Interaction design",
-        "Prototyping",
-        "Responsive design",
-        "Design systems",
-        "Accessibility"
-      ]
-    },
-    {
-      "label": "Frontend engineering",
-      "items": [
+        "JavaScript (ES6+)",
+        "HTML5",
+        "CSS3",
+        "SCSS/Sass",
         "React",
-        "TypeScript",
-        "JavaScript",
-        "HTML",
-        "CSS",
-        "Tailwind CSS",
-        "Component architecture",
-        "State management"
+        "Vue.js",
+        "Bootstrap 3–5",
+        "REST APIs (GET/POST, JSON)",
+        "Responsive and mobile-first UI",
+        "WCAG 2.1 AA",
+        "Cross-browser QA",
+        "Git",
+        "Bitbucket",
+        "CI/CD pipelines",
+        ".NET-hosted front ends",
+        "WordPress (custom PHP plugins)",
+        "Wix CMS",
+        "Responsive HTML email"
       ]
     },
     {
-      "label": "Backend & data",
+      "label": "Shipped in independent products",
+      "note": null,
       "items": [
+        "TypeScript",
+        "Next.js (App Router, static export)",
+        "Tailwind CSS",
+        "Vitest",
+        "React Testing Library",
+        "Zod",
+        "TanStack Query",
+        "Radix UI",
+        "Zustand",
         "Node.js",
         "Express",
-        "REST APIs",
-        "PostgreSQL",
         "Prisma",
+        "PostgreSQL",
         "Supabase",
-        "Authentication",
-        "Real-time systems"
+        "React Native (Expo)",
+        "Socket.IO",
+        "GitHub Actions",
+        "Playwright",
+        "Vite"
       ]
     },
     {
-      "label": "Quality & delivery",
+      "label": "Design and UX",
+      "note": null,
       "items": [
-        "Behavior testing",
-        "Testing Library",
-        "Accessibility auditing",
-        "Git and GitHub",
-        "CI/CD",
-        "Vite",
-        "Deployment workflows"
+        "Figma",
+        "Adobe Creative Suite (Photoshop, Illustrator, InDesign)",
+        "Design tokens and component standards",
+        "Information architecture",
+        "Interaction design",
+        "Design-to-code handoff"
+      ]
+    },
+    {
+      "label": "Measurement and platforms",
+      "note": null,
+      "items": [
+        "Google Analytics",
+        "Hotjar",
+        "Lighthouse",
+        "SEO",
+        "HubSpot",
+        "Salesforce Marketing Cloud",
+        "Zen Planner API"
       ]
     }
   ],
   "teaching": {
-    "heading": "Martial arts teaching and leadership",
-    "summary": "Teaching Brazilian Jiu-Jitsu informs Earl's approach to progressive instruction, observation, feedback, adaptation, trust, reflection, and capability development.",
-    "evidenceBoundary": "No academy title or teaching date range is published until those details are confirmed.",
+    "heading": "Coaching and leadership",
+    "summary": "A Brazilian Jiu-Jitsu black belt, teaching youth and adult students since 2021. That coaching carries straight into mentoring engineers: progressive instruction, close observation, honest feedback, and adapting to how each person learns.",
+    "positions": [
+      {
+        "academy": "AMA Fight Club",
+        "role": "Brazilian Jiu-Jitsu Professor",
+        "location": "Cedar Knolls, NJ",
+        "dates": "2025 — Present"
+      },
+      {
+        "academy": "Colton Brown Training Center",
+        "role": "Brazilian Jiu-Jitsu Instructor",
+        "location": "Warren, NJ",
+        "dates": "2023 — 2024"
+      },
+      {
+        "academy": "Pure MMA",
+        "role": "Brazilian Jiu-Jitsu Instructor",
+        "location": "Rockaway, NJ",
+        "dates": "2021 — 2022"
+      }
+    ],
     "practices": [
       "Progressive instruction",
       "Observation",
@@ -286,18 +478,50 @@
       ],
       "evidence": [
         "Repository structure and integration behavior demonstrate a working mobile/backend beta.",
-        "Implementation captures show active application surfaces; the portfolio prototype demonstrates the interaction argument using fictional data.",
+        "Simulator and emulator captures show the built interface; prototype references and design sources are labeled separately, and the portfolio prototype uses fictional data.",
         "Evidence supports implemented behavior, not therapeutic benefit or improved relationship outcomes."
       ],
       "limitations": [
-        "The legacy sharing path weakens otherwise more granular privacy controls.",
-        "Implemented-but-unintegrated screens are not complete user workflows.",
+        "Legacy profile visibility is per account, not per relationship space.",
+        "Production builds and a two-person real-device test are still open; the app is not released.",
+        "Primary button labels fall below WCAG AA contrast.",
         "No relationship outcome has been validated with a formal study."
       ],
       "proposedMethods": [
         "Scope-comprehension testing",
         "Scenario-based usability testing",
         "Interviews about privacy expectations"
+      ]
+    },
+    {
+      "slug": "gundam-forge",
+      "name": "Gundam Forge",
+      "theme": "Decision Support",
+      "question": "How can interfaces help people navigate complexity without making the decision for them?",
+      "status": "Functional beta-oriented implementation",
+      "role": "Solo product design and full-stack product development",
+      "product": "An independent, unofficial deck-building and playtesting application for the Gundam Card Game.",
+      "stack": [
+        "Next.js",
+        "React",
+        "TypeScript",
+        "Supabase",
+        "Vitest"
+      ],
+      "evidence": [
+        "Repository and capture evidence support the working deck, validation, and heuristic playtest behaviors.",
+        "The portfolio prototype demonstrates warning, explanation, replacement, and recovery using fictional card data.",
+        "The implementation does not establish competitive quality, official rules endorsement, or user outcome improvement."
+      ],
+      "limitations": [
+        "Official competitive ban/restriction coverage is incomplete.",
+        "Public production hosting has not been verified.",
+        "The heuristic opponent is a test partner, not generative AI or sophisticated competitive intelligence."
+      ],
+      "proposedMethods": [
+        "Scenario-based usability testing",
+        "Comparative completion tasks with and without continuous validation",
+        "Think-aloud interviews about warning comprehension"
       ]
     },
     {
@@ -330,37 +554,6 @@
         "Training observation",
         "Instructor interviews",
         "Comparative completion-versus-progression study"
-      ]
-    },
-    {
-      "slug": "gundam-forge",
-      "name": "Gundam Forge",
-      "theme": "Decision Support",
-      "question": "How can interfaces help people navigate complexity without making the decision for them?",
-      "status": "Functional beta-oriented implementation",
-      "role": "Solo product design and full-stack product development",
-      "product": "An independent, unofficial deck-building and playtesting application for the Gundam Card Game.",
-      "stack": [
-        "Next.js",
-        "React",
-        "TypeScript",
-        "Supabase",
-        "Vitest"
-      ],
-      "evidence": [
-        "Repository and capture evidence support the working deck, validation, and heuristic playtest behaviors.",
-        "The portfolio prototype demonstrates warning, explanation, replacement, and recovery using fictional card data.",
-        "The implementation does not establish competitive quality, official rules endorsement, or user outcome improvement."
-      ],
-      "limitations": [
-        "Official competitive ban/restriction coverage is incomplete.",
-        "Public production hosting has not been verified.",
-        "The heuristic opponent is a test partner, not generative AI or sophisticated competitive intelligence."
-      ],
-      "proposedMethods": [
-        "Scenario-based usability testing",
-        "Comparative completion tasks with and without continuous validation",
-        "Think-aloud interviews about warning comprehension"
       ]
     }
   ],

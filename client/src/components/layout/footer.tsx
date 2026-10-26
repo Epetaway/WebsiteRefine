@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className="site-footer">
       <div className="site-footer__grid">
         <div>
-          <p className="eyebrow eyebrow--light">Earl Hickson Jr. / UX Engineer</p>
+          <p className="eyebrow eyebrow--light">Earl Hickson Jr. / {profile.publicTitle}</p>
           <p className="site-footer__thesis">Design the experience. Build the behavior.</p>
           <p className="site-footer__availability"><span /> {profile.availability}</p>
         </div>

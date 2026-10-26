@@ -6,11 +6,13 @@ import { investigations } from "../client/src/data/investigations";
 import {
   capabilities,
   certifications,
+  earlierExperience,
   education,
   experience,
   professionalLinks,
   profile,
   research,
+  selectedProjects,
   teaching,
 } from "../client/src/data/professional";
 
@@ -22,6 +24,8 @@ const documentData = {
   profile,
   links: professionalLinks,
   experience,
+  earlierExperience,
+  selectedProjects,
   education,
   certifications,
   capabilities,

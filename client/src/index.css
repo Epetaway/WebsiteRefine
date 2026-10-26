@@ -457,7 +457,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .resume-investigations article { background: #f8f5ee; padding: 20px; }
 .resume-investigations article > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; }
 .resume-investigations h3 { font-family: var(--font-serif); font-size: 22px; font-weight: 400; }
-.resume-investigations span, .resume-investigations small { font-family: var(--font-mono); font-size: 7px; color: var(--orchid); text-transform: uppercase; }
+.resume-investigations span, .resume-investigations small { font-family: var(--font-mono); font-size: 10px; color: var(--orchid); text-transform: uppercase; }
 .resume-investigations p { margin: 20px 0; font-size: 11px; line-height: 1.6; }
 .resume-investigations a { display: block; margin-top: 10px; font-size: 10px; }
 .capabilities-grid, .education-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 30px; margin-top: 22px; }
@@ -465,6 +465,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .capabilities-grid p, .education-grid p { margin-top: 7px; font-size: 11px; line-height: 1.65; }
 .education-grid > div { padding: 20px; border: 1px solid var(--line); }
 .education-grid span { display: block; margin-bottom: 10px; color: var(--orchid); font-family: var(--font-mono); font-size: 8px; text-transform: uppercase; }
+.online-resume__header address span { color: rgba(21,21,21,.68); }
+.capabilities-grid small { display: block; margin-top: 4px; color: rgba(21,21,21,.68); font-size: 11px; }
+.resume-engagement { margin-top: 16px; }
+.resume-engagement h4 { font-size: 14px; font-weight: 650; }
+.resume-engagement h4 span { display: block; margin-top: 2px; color: rgba(21,21,21,.68); font-size: 12px; font-weight: 400; }
+.resume-engagement ul { margin-top: 8px; }
+.resume-earlier { padding: 18px 0 0; font-size: 12px; line-height: 1.65; color: rgba(21,21,21,.75); }
+.resume-investigations .resume-project__descriptor { margin: 8px 0 12px; font-size: 12px; font-weight: 650; }
+.resume-investigations ul { padding-left: 16px; margin-bottom: 14px; }
+.resume-investigations li { font-size: 11px; line-height: 1.6; margin-bottom: 6px; }
+.resume-coaching { margin-top: 14px; padding-left: 18px; }
+.resume-coaching li { font-size: 12px; line-height: 1.75; }
+.resume-experience ul, .resume-investigations ul, .resume-coaching { list-style: disc; }
+.resume-experience li + li, .resume-investigations li + li { margin-top: 4px; }
+.education-grid a { display: inline-block; margin-top: 8px; font-size: 11px; }
 
 /* Field Notes */
 .field-note-index { padding-top: 32px; }

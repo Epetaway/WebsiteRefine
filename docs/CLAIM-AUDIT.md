@@ -31,16 +31,17 @@ Audit date: 2026-07-17
 
 ## Professional content
 
-- Use `UX Engineer` as the one public title.
-- AMA Fight Club is shown conservatively as `Jan 2025 - 2025` until its end month is confirmed.
-- The current non-technology employer, official title, and exact start date are not published because they are unconfirmed.
+- Use `Lead Front-End Engineer` as the one public title, matching the résumé dated 2026-10-24.
+- The employment chronology, skills, coaching record, and certifications follow that résumé (`docs/EMPLOYMENT-RECONCILIATION.md`); AMA Fight Club is the one confirmed current role.
+- The two BroadcastMed metrics (18%, 25%) are published on Earl's confirmation; every other metric stays excluded (`docs/METRIC-EVIDENCE.md`).
+- The current non-technology employer, official title, and exact start date are not published; that role is not on the résumé.
 - Independent investigation outcomes are not presented as peer-reviewed research or measured user outcomes.
 
 ## Automated enforcement
 
 - The exact `ClaimType` union lives in `client/src/data/professional/types.ts`.
 - Project implementation statements carry claim types in `client/src/data/investigations.ts`.
-- `scripts/validate-content.ts` scans both source and built output for banned metrics, conflicting identity language, unsafe status claims, stale route architecture, and unverified `Present` language. For Earl the Kaiju it also blocks launch/booking/certification/outcome language, rejects a coaching-site link that isn't a verified https URL, keeps the concept board labeled as a source reference, and keeps private-repository code excerpts short and unlinked. For Gundam Forge and DojoNet it blocks release, accuracy and outcome language, requires the unofficial/text-proxy (Gundam Forge) and neutral-placeholder (DojoNet) statements, requires alt text, a caption and a source on every figure, keeps every Gundam Forge capture labeled as a local build capture, ties DojoNet's "Fix demonstrated" label exactly to the captures with the injected token rule, and requires public excerpts to cite a full commit and a line range.
+- `scripts/validate-content.ts` scans both source and built output for banned metrics, conflicting identity language, unsafe status claims, stale route architecture, removed employers (Merck, Verizon Wireless), and `Present` on any role not listed in `confirmedCurrentRoles`. For Earl the Kaiju it also blocks launch/booking/certification/outcome language, rejects a coaching-site link that isn't a verified https URL, keeps the concept board labeled as a source reference, and keeps private-repository code excerpts short and unlinked. For Gundam Forge and DojoNet it blocks release, accuracy and outcome language, requires the unofficial/text-proxy (Gundam Forge) and neutral-placeholder (DojoNet) statements, requires alt text, a caption and a source on every figure, keeps every Gundam Forge capture labeled as a local build capture, ties DojoNet's "Fix demonstrated" label exactly to the captures with the injected token rule, and requires public excerpts to cite a full commit and a line range.
 - `client/src/test/content-governance.test.ts` prevents unsupported claims and non-canonical career sources from re-entering routed content.
 - `scripts/validate_pdfs.py` applies the same banned-claim boundary to both generated PDFs.
 
