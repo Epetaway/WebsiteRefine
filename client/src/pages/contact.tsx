@@ -18,7 +18,7 @@ export default function Contact() {
           <a className="button button--primary" href={`mailto:${professionalLinks.email}?subject=${subject}`}>Email Earl</a>
           <dl>
             <div><dt>Email</dt><dd><a href={`mailto:${professionalLinks.email}`}>{professionalLinks.email}</a></dd></div>
-            <div><dt>LinkedIn</dt><dd><a href={professionalLinks.linkedin} target="_blank" rel="noreferrer">earlhicksonjr ↗</a></dd></div>
+            <div><dt>LinkedIn</dt><dd><a href={professionalLinks.linkedin} target="_blank" rel="noreferrer">earl-hickson-jr ↗</a></dd></div>
             <div><dt>GitHub</dt><dd><a href={professionalLinks.github} target="_blank" rel="noreferrer">Epetaway ↗</a></dd></div>
           </dl>
         </div>

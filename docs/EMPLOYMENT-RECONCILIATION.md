@@ -35,4 +35,4 @@ Source of truth: Earl's résumé dated 2026-10-24 ("Lead Front-End Résumé (202
 
 - **IBM Full Stack Software Developer Professional Certificate** stays on the site (Earl's decision, 2026-10-25) although the résumé lists only the two Team Treehouse certificates.
 - **Gundam Forge** shows as `Beta` with no live link. The résumé says "Public beta · epetaway.github.io/Gundam-Forge", but that URL returned GitHub Pages' 404 on 2026-10-25.
-- **LinkedIn**: the site uses `linkedin.com/in/earlhicksonjr` (confirmed by Earl, 2026-10-25). The résumé prints `linkedin.com/in/earl-hickson-jr`, which should be corrected on the résumé.
+- **LinkedIn**: the site, the résumé and both PDFs use `linkedin.com/in/earl-hickson-jr`, the live profile (checked 2026-10-26). The `earlhicksonjr` URL adopted on 2026-10-25 returns LinkedIn's 404 and was reverted with Earl's approval on 2026-10-26.

@@ -48,7 +48,7 @@ def validate(label: str, path: Path) -> None:
         "Earl Hickson Jr.",
         "Lead Front-End Engineer",
         "e@ehicksonjr.com",
-        "linkedin.com/in/earlhicksonjr",
+        "linkedin.com/in/earl-hickson-jr",
         "github.com/Epetaway",
     ]:
         if expected not in text:

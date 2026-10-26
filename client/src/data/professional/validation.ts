@@ -44,9 +44,9 @@ export const publicationFacts = [
   {
     id: "linkedin-url",
     label: "Canonical LinkedIn URL",
-    value: "https://www.linkedin.com/in/earlhicksonjr",
+    value: "https://www.linkedin.com/in/earl-hickson-jr",
     status: "verified",
-    source: "Earl's confirmation, Oct 25, 2026",
+    source: "Live LinkedIn profile, checked Oct 26, 2026 (/in/earlhicksonjr returns LinkedIn's 404); matches the résumé",
     publish: true,
   },
 ] satisfies readonly PublicationFact<string>[];
