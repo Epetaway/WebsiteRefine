@@ -17,13 +17,13 @@ const trajectory = [
 export default function About() {
   return (
     <div className="portfolio-page about-page">
-      <SEO title="About — Earl Hickson Jr." description="Earl Hickson Jr. is a UX Engineer connecting graphic design, interaction thinking, frontend engineering, and human-centered product work." path="/about" image="/assets/brand/social/og-about.svg" />
+      <SEO title="About — Earl Hickson Jr." description="Earl Hickson Jr. is a lead front-end engineer with a graphic-design foundation, working where design systems, accessibility, and engineering meet." path="/about" image="/assets/brand/social/og-about.svg" />
       <PageIntro
         dark
         label="About / Practice"
         title={<>I learned to design the message. Then I learned to build the <em>behavior.</em></>}
-        lead={<p>I’m a UX Engineer with a graphic-design foundation and a product-engineering practice. I work where interface craft, system behavior, and implementation meet.</p>}
-        aside={<figure className="about-portrait"><img src={portrait} alt="Portrait of Earl Hickson Jr." width="533" height="667" /><figcaption>Earl Hickson Jr. / UX Engineer</figcaption></figure>}
+        lead={<p>I’m a lead front-end engineer with a graphic-design foundation. I work where interface craft, accessibility, and implementation meet, and I’m at my best getting a team to build the same way.</p>}
+        aside={<figure className="about-portrait"><img src={portrait} alt="Portrait of Earl Hickson Jr." width="533" height="667" /><figcaption>Earl Hickson Jr. / {profile.publicTitle}</figcaption></figure>}
       />
 
       <section className="about-story" aria-labelledby="about-story-title">
@@ -45,7 +45,8 @@ export default function About() {
           <p className="signal-label"><span /> 02 / Current practice</p>
           <h2 id="about-craft-title">The interface and the system behind it have to agree.</h2>
           <p>A clear screen can still hide a broken rule. A clean component can still create an inaccessible workflow. That is why I move between visual hierarchy, interaction states, component architecture, APIs, and testing instead of treating design and engineering as separate handoffs.</p>
-          <p>I’m currently open to full-time product work and continue to build independent systems while pursuing that next team.</p>
+          <p>Most of that work has happened inside teams. At BroadcastMed I led design and front-end delivery and mentored junior designers and developers. At Asembia I set one component standard across several healthcare portals and got the development team building to it.</p>
+          <p>I’m open to full-time lead and senior front-end roles, and I keep shipping independent products while I look for that next team.</p>
           <Link className="case-link case-link--light" to="/work">See the case studies <span aria-hidden="true">↗</span></Link>
         </Reveal>
         <div className="about-craft__principles">

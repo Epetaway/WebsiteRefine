@@ -26,9 +26,10 @@ BANNED = [
     "10+ years",
     "150+",
     "20%",
-    "18%",
-    "25%",
     "12%",
+    # Stale chronology replaced by the Oct 24, 2026 resume.
+    "Merck",
+    "Verizon",
     "531 integration tests",
     "17 E2E flows",
 ]
@@ -45,7 +46,7 @@ def validate(label: str, path: Path) -> None:
     text = "\n".join(page.extract_text() or "" for page in reader.pages)
     for expected in [
         "Earl Hickson Jr.",
-        "UX Engineer",
+        "Lead Front-End Engineer",
         "e@ehicksonjr.com",
         "linkedin.com/in/earlhicksonjr",
         "github.com/Epetaway",
@@ -88,6 +89,24 @@ public_text = "\n".join(
 )
 if "Graduate CV" in public_text:
     raise AssertionError("public resume: graduate CV language leaked into employment resume")
+# The public resume carries the resume's full record, including the two confirmed metrics.
+for expected in [
+    "SUMMARY",
+    "TECHNICAL SKILLS",
+    "PROFESSIONAL EXPERIENCE",
+    "SELECTED PROJECTS",
+    "COACHING AND LEADERSHIP",
+    "EDUCATION AND CERTIFICATIONS",
+    "AMA Fight Club",
+    "Asembia",
+    "BroadcastMed",
+    "Prosek Partners",
+    "Merkle",
+    "18%",
+    "25%",
+]:
+    if expected not in public_text:
+        raise AssertionError(f"public resume: missing {expected!r}")
 
 graduate_text = "\n".join(
     page.extract_text() or ""

@@ -3,7 +3,7 @@ import SEO from "@/components/seo";
 import { Reveal } from "@/components/motion/Reveal";
 import { workEntries } from "@/data/work";
 import { fieldNotes } from "@/data/fieldNotes";
-import { experience, profile, teaching } from "@/data/professional";
+import { earlierExperience, experience, profile, teaching } from "@/data/professional";
 import { publicPath } from "@/lib/publicPath";
 import portrait from "@/images/earl-bjj-photo.png";
 import trainingPhoto from "@/images/BLKBELT.png";
@@ -19,25 +19,23 @@ export default function Home() {
   return (
     <div className="portfolio-home">
       <SEO
-        title="Earl Hickson Jr. — UX Engineer"
-        description="UX Engineer who connects visual design, interaction thinking, and production implementation to build thoughtful digital products."
+        title={`Earl Hickson Jr. — ${profile.publicTitle}`}
+        description="Lead front-end engineer with a BFA in graphic design and 6+ years building production interfaces for healthcare, financial services, and digital media."
       />
 
       <section className="home-hero" aria-labelledby="home-title">
         <div className="home-hero__grid" aria-hidden="true" />
         <Reveal className="home-hero__copy">
-          <p className="signal-label"><span /> Earl Hickson Jr. / UX Engineer</p>
+          <p className="signal-label"><span /> Earl Hickson Jr. / {profile.publicTitle}</p>
           <h1 id="home-title">I design and build digital products from <em>interface</em> to implementation.</h1>
-          <p className="home-hero__lead">
-            A graphic-design foundation, production frontend experience, and full-stack product practice—brought together to make complex systems useful, legible, and human.
-          </p>
+          <p className="home-hero__lead">{profile.lead}</p>
           <div className="home-hero__actions">
             <Link className="button button--accent" to="/work">View case studies <span aria-hidden="true">↗</span></Link>
             <a className="button button--ghost" href={publicPath("/assets/Earl-Hickson-Jr-Resume.pdf")} download>Download résumé</a>
           </div>
           <dl className="home-hero__status">
             <div><dt>Current</dt><dd>{profile.availability}</dd></div>
-            <div><dt>Focus</dt><dd>UX engineering · Design systems · Frontend product work</dd></div>
+            <div><dt>Focus</dt><dd>{profile.specialties.join(" · ")}</dd></div>
           </dl>
         </Reveal>
 
@@ -86,7 +84,7 @@ export default function Home() {
         <header className="home-section-heading home-section-heading--dark">
           <p className="signal-label"><span /> 02 / Professional practice</p>
           <h2 id="experience-heading">Production work across complex organizations.</h2>
-          <p>Frontend delivery, reusable systems, accessibility, and information design across healthcare, media, enterprise, and operations.</p>
+          <p>Front-end delivery, component standards, accessibility, and team leadership across healthcare, financial services, digital media, and nonprofit work.</p>
         </header>
         <div className="experience-ledger">
           {experience.map((item, index) => (
@@ -100,6 +98,7 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
+        <p className="experience-ledger__earlier">{earlierExperience}</p>
         <Link className="case-link case-link--light" to="/resume">Open the full professional record <span aria-hidden="true">↗</span></Link>
       </section>
 
@@ -149,8 +148,8 @@ export default function Home() {
 
       <section className="home-contact">
         <p className="signal-label"><span /> Available for the right team</p>
-        <h2>Looking for someone who can design the experience and help ship it?</h2>
-        <p>I’m open to full-time UX Engineering, Design Engineering, Product Engineering, and frontend product roles.</p>
+        <h2>Looking for a front-end lead who can design the experience and get a team shipping it?</h2>
+        <p>I’m open to full-time lead and senior front-end engineering roles. {profile.workPreference}.</p>
         <div><Link className="button button--accent" to="/contact">Start a conversation <span aria-hidden="true">↗</span></Link><Link className="button button--ghost" to="/resume">View résumé</Link></div>
       </section>
     </div>

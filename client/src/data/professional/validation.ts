@@ -12,39 +12,58 @@ export const publicationFacts = [
   {
     id: "identity-title",
     label: "Public title",
-    value: "UX Engineer",
+    value: "Lead Front-End Engineer",
     status: "verified",
-    source: "Portfolio positioning decision",
+    source: "Résumé headline, Oct 24, 2026; Earl's positioning decision, Oct 25, 2026",
     publish: true,
   },
   {
     id: "ama-public-range",
-    label: "AMA Fight Club conservative public date range",
-    value: "Jan 2025 — 2025",
+    label: "AMA Fight Club date range",
+    value: "Jan 2025 — Present",
     status: "verified",
-    source: "Existing professional record; exact end month omitted",
+    source: "Résumé, Oct 24, 2026: the role is current",
+    publish: true,
+  },
+  {
+    id: "broadcastmed-lead-forms",
+    label: "BroadcastMed lead-form submissions",
+    value: "18% increase",
+    status: "verified",
+    source: "Earl's confirmation during the 2026 résumé rebuild; résumé, Oct 24, 2026",
+    publish: true,
+  },
+  {
+    id: "broadcastmed-email-production",
+    label: "BroadcastMed email production time",
+    value: "25% reduction",
+    status: "verified",
+    source: "Earl's confirmation during the 2026 résumé rebuild; résumé, Oct 24, 2026",
+    publish: true,
+  },
+  {
+    id: "linkedin-url",
+    label: "Canonical LinkedIn URL",
+    value: "https://www.linkedin.com/in/earlhicksonjr",
+    status: "verified",
+    source: "Earl's confirmation, Oct 25, 2026",
     publish: true,
   },
 ] satisfies readonly PublicationFact<string>[];
 
+/** Roles Earl has confirmed are current. Only these may use "Present". */
+export const confirmedCurrentRoles = ["ama-fight-club"] as const;
+
 export const factsRequiringConfirmation = [
-  "AMA Fight Club exact end month and year",
-  "Whether AMA Fight Club should still be listed as current",
   "Current flagger employer",
   "Official flagger job title",
   "Flagger start month and year",
   "Whether the flagger position belongs on the public resume",
   "Whether the flagger position belongs only on the graduate CV",
-  "Canonical LinkedIn URL",
-  "Tabby's Place role and date",
-  "Prosek Partners role and date",
-  "William R. Seide Agency role and date",
-  "Merkle role and date",
-  "Second Melody role and date",
-  "Earlier KBS&P dates and whether the roles were internships",
-  "Every numerical professional metric",
-  "Every public test-count claim",
-  "Every deployment-status claim",
+  "Separate KBS&P and Second Melody titles, dates, and internship status (published only as one 2013–2017 line)",
+  "Any numerical professional metric other than the two BroadcastMed figures",
+  "Any test-count claim other than the dated Gundam Forge résumé figure",
+  "Every deployment-status claim not on the résumé",
 ] as const;
 
 export function assertPublicationSafe(

@@ -1,4 +1,4 @@
-# Earl Hickson Jr. — UX Engineer Portfolio
+# Earl Hickson Jr. — Lead Front-End Engineer Portfolio
 
 Canonical source for [ehicksonjr.com](https://ehicksonjr.com): one professional identity, one public résumé, three independent product case studies plus the Earl the Kaiju flagship case study, a research direction, Field Notes, and an intentional graduate-review path.
 

@@ -12,7 +12,7 @@ Prepared: 2026-07-17
 - [x] Sitemap includes `/graduate-review` and the three Field Notes.
 - [x] Robots allows canonical pages and excludes HCEPS/prototype archives.
 - [x] Legacy route rules are permanent redirects.
-- [x] Social images and favicon use Earl Hickson Jr./UX Engineer identity.
+- [x] Social images and favicon use the Earl Hickson Jr. / Lead Front-End Engineer identity (updated 2026-10-25).
 - [x] Metadata does not point to `.dc.html`, iframe content, or stale résumé variants.
 - [x] Browser QA found zero metadata failures across 135 states.
 - [x] Lighthouse SEO scored 100 in all 15 final runs.
@@ -41,5 +41,5 @@ Checked 2026-07-17:
 - [ ] Submit `https://ehicksonjr.com/sitemap.xml` in Google Search Console and Bing Webmaster Tools.
 - [ ] Request reindexing for Home, Work, Research, Resume, Graduate Review, and each investigation.
 - [ ] Inspect old `/projects`, `/case-studies`, `/investigations`, `/blog`, `/writing`, `/how-i-think`, and `/approach` URLs.
-- [ ] Confirm stale Front-End Engineer snippets disappear.
-- [ ] Confirm canonical titles show Earl Hickson Jr. — UX Engineer.
+- [ ] Confirm stale UX Engineer snippets disappear.
+- [ ] Confirm canonical titles show Earl Hickson Jr. — Lead Front-End Engineer.

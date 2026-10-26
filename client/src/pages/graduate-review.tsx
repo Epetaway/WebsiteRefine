@@ -18,7 +18,7 @@ export default function GraduateReview() {
   return (
     <div className="portfolio-page graduate-review-page">
       <SEO
-        title="Graduate Review — Earl Hickson Jr., UX Engineer"
+        title={`Graduate Review — Earl Hickson Jr., ${profile.publicTitle}`}
         description="A five-minute HCI admissions review of Earl Hickson Jr.'s preparation, independent case studies, research interests, writing, and graduate CV."
         path="/graduate-review"
         image="/assets/brand/social/og-graduate-review.svg"
@@ -119,7 +119,7 @@ export default function GraduateReview() {
             <h3>{teaching.heading}</h3>
             <p>{teaching.summary}</p>
             <ul>{teaching.practices.map((practice) => <li key={practice}>{practice}</li>)}</ul>
-            <small>{teaching.evidenceBoundary}</small>
+            <small>{teaching.positions.map((position) => `${position.academy} (${position.dates})`).join(" · ")}</small>
           </article>
           <article>
             <h3>Selected Field Notes</h3>
