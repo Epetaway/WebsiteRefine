@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { researchMeta } from "@/data/routeMeta/pages";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { CapabilityNetwork } from "@/components/editorial/CapabilityNetwork";
@@ -17,7 +18,7 @@ const principles = [
 export default function Research() {
   return (
     <div className="portfolio-page">
-      <SEO title="Research — Earl Hickson Jr." description="Independent human-centered product inquiry across relationships, learning, and decision support." path="/research" image="/assets/brand/social/og-research.svg" />
+      <SEO {...researchMeta} />
       <PageIntro label="Research / Direction" title={<>I design and build technology that helps people become <em>more capable.</em></>} lead={<p>Building software pushed my questions beyond how an interface should look or work. I became increasingly interested in what the whole system helps a person understand, decide, learn, create, and do.</p>} aside={<div className="research-aside"><span>Working distinction</span><p>Software can function correctly without producing the human outcome its designer hoped for.</p></div>} />
 
       <section className="section-shell research-origin">

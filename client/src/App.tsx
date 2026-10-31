@@ -5,6 +5,7 @@ import { useAnalytics } from "./hooks/use-analytics";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { getFieldNote } from "@/data/fieldNotes";
+import { legacyPaths, legacyProjects, legacyWriting } from "@/data/legacyRoutes";
 
 const Home = lazy(() => import("@/pages/home"));
 const Work = lazy(() => import("@/pages/work"));
@@ -21,20 +22,6 @@ const Resume = lazy(() => import("@/pages/resume"));
 const Contact = lazy(() => import("@/pages/contact"));
 const GraduateReview = lazy(() => import("@/pages/graduate-review"));
 const NotFound = lazy(() => import("@/pages/not-found"));
-
-const legacyProjects: Record<string, string> = {
-  withyou: "/work/withyou",
-  "dojonet-prototype-max": "/work/dojonet",
-  dojonet: "/work/dojonet",
-  "gundam-forge": "/work/gundam-forge",
-  "earl-the-kaiju": "/work/earl-the-kaiju",
-  earldkaiju: "/work/earl-the-kaiju",
-};
-
-const legacyWriting: Record<string, string> = {
-  "bjj-habits-better-front-end-engineer":
-    "/field-notes/teaching-jiu-jitsu-and-ux",
-};
 
 function LegacyProjectRedirect() {
   const { slug = "" } = useParams();
@@ -83,23 +70,13 @@ export default function App() {
             <Route path="/resume" element={<Resume />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/graduate-review" element={<GraduateReview />} />
-
-            <Route path="/projects" element={<Navigate to="/work" replace />} />
-            <Route path="/investigations" element={<Navigate to="/work" replace />} />
-            <Route path="/case-studies" element={<Navigate to="/work" replace />} />
+            {legacyPaths.map(({ from, to }) => (
+              <Route key={from} path={from} element={<Navigate to={to} replace />} />
+            ))}
             <Route path="/projects/:slug" element={<LegacyProjectRedirect />} />
             <Route path="/projects/:slug/dev" element={<LegacyProjectRedirect />} />
-            <Route path="/how-i-think" element={<Navigate to="/research" replace />} />
-            <Route path="/approach" element={<Navigate to="/research" replace />} />
-            <Route path="/blog" element={<Navigate to="/field-notes" replace />} />
             <Route path="/blog/:slug" element={<LegacyBlogRedirect />} />
-            <Route path="/writing" element={<Navigate to="/field-notes" replace />} />
             <Route path="/writing/:slug" element={<LegacyBlogRedirect />} />
-            <Route path="/case-study-preview" element={<Navigate to="/work" replace />} />
-            {/* The archived Earl d. Kaiju microsite stays archived; its old addresses
-                (matched case-insensitively, so /EarldKaiju too) lead to the case study. */}
-            <Route path="/earldkaiju" element={<Navigate to="/work/earl-the-kaiju" replace />} />
-            <Route path="/earl-the-kaiju" element={<Navigate to="/work/earl-the-kaiju" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

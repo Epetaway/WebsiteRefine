@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { earlTheKaijuMeta } from "@/data/routeMeta/earlTheKaiju";
 import { Reveal } from "@/components/motion/Reveal";
 import { EcosystemDiagram } from "@/components/earl-the-kaiju/EcosystemDiagram";
 import {
@@ -93,23 +94,7 @@ export default function EarlTheKaijuCaseStudy() {
       className="etk-case case-study-page"
       style={{ "--project-accent": flagship.accent, "--project-secondary": flagship.accentSecondary } as React.CSSProperties}
     >
-      <SEO
-        title="Earl the Kaiju — Brand, Website and Android Case Study"
-        description={flagship.summary}
-        path={flagship.path}
-        image="/assets/projects/earl-the-kaiju/social/og.png"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: flagship.name,
-          description: flagship.summary,
-          url: `https://ehicksonjr.com${flagship.path}`,
-          author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" },
-          genre: "Brand identity, UX and engineering case study",
-          keywords: ["Brand identity", "UX design", "Next.js", "Cloudflare Workers", "Kotlin", "Jetpack Compose", "Brazilian Jiu-Jitsu"],
-          isAccessibleForFree: true,
-        }}
-      />
+      <SEO {...earlTheKaijuMeta} />
 
       {/* ------------------------------------------------------------ Hero */}
       <section className="etk-hero" aria-labelledby="etk-title">

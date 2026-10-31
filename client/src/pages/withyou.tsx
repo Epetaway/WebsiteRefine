@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { withYouMeta } from "@/data/routeMeta/withyou";
 import { Reveal } from "@/components/motion/Reveal";
 import { WithYouSharingPrototype } from "@/components/prototypes/WithYouSharingPrototype";
 import {
@@ -121,23 +122,7 @@ export default function WithYouCaseStudy() {
       className="wy-case case-study-page"
       style={{ "--project-accent": record.accent, "--project-secondary": record.accentSecondary } as React.CSSProperties}
     >
-      <SEO
-        title="WithYou — Brand, Product and Privacy Engineering Case Study"
-        description={record.abstract.product}
-        path={withYou.path}
-        image="/assets/projects/withyou/social/og.png"
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: withYou.name,
-          description: record.abstract.product,
-          url: `https://ehicksonjr.com${withYou.path}`,
-          author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" },
-          genre: "Brand, UX and engineering case study",
-          keywords: ["Brand identity", "Design system", "UX design", "React Native", "Privacy by design", ...withYou.stack],
-          isAccessibleForFree: true,
-        }}
-      />
+      <SEO {...withYouMeta} />
 
       {/* ------------------------------------------------------------ Hero */}
       <section className="wy-hero" aria-labelledby="wy-title">

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { dojonetMeta } from "@/data/routeMeta/dojonet";
 import { Reveal } from "@/components/motion/Reveal";
 import { DojoNetProgressPrototype } from "@/components/prototypes/DojoNetProgressPrototype";
 import { KitCodeCard, KitEyebrow, KitStatusTag } from "@/components/case-study-kit/kit";
@@ -12,7 +13,6 @@ import {
   chapters,
   codeHighlights,
   composerFigure,
-  dnOg,
   dojonet,
   dojonetRecord,
   fixFigures,
@@ -126,23 +126,7 @@ export default function DojoNetCaseStudy() {
 
   return (
     <div className="dn-case case-study-page" style={{ "--project-accent": "#B71C1C" } as React.CSSProperties}>
-      <SEO
-        title="DojoNet — Learning Design, Design System and Front-End Case Study"
-        description={record.abstract.product}
-        path={dojonet.path}
-        image={dnOg}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: dojonet.name,
-          description: record.abstract.product,
-          url: `https://ehicksonjr.com${dojonet.path}`,
-          author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" },
-          genre: "UX and front-end engineering case study",
-          keywords: ["Learning design", "Design system", "Interaction design", "Design tokens", ...dojonet.stack],
-          isAccessibleForFree: true,
-        }}
-      />
+      <SEO {...dojonetMeta} />
 
       {/* ------------------------------------------------------------ Hero */}
       <section className="dn-hero" aria-labelledby="dn-title">

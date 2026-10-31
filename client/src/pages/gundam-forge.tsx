@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { gundamForgeMeta } from "@/data/routeMeta/gundamForge";
 import { Reveal } from "@/components/motion/Reveal";
 import { GundamForgeValidationPrototype } from "@/components/prototypes/GundamForgeValidationPrototype";
 import { KitCodeCard, KitEyebrow, KitStatusTag } from "@/components/case-study-kit/kit";
@@ -15,7 +16,6 @@ import {
   codeHighlights,
   decisionSequence,
   emptyStateFigure,
-  gfOg,
   gundamForge,
   gundamForgeRecord,
   identityTimeline,
@@ -113,23 +113,7 @@ export default function GundamForgeCaseStudy() {
 
   return (
     <div className="gf-case case-study-page" style={{ "--project-accent": "#2563eb" } as React.CSSProperties}>
-      <SEO
-        title="Gundam Forge — Decision Support, Interface System and Rules Engine Case Study"
-        description={record.abstract.product}
-        path={gundamForge.path}
-        image={gfOg}
-        jsonLd={{
-          "@context": "https://schema.org",
-          "@type": "CreativeWork",
-          name: gundamForge.name,
-          description: record.abstract.product,
-          url: `https://ehicksonjr.com${gundamForge.path}`,
-          author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" },
-          genre: "UX and front-end engineering case study",
-          keywords: ["Decision support", "Design system", "Interaction design", "Validation", ...gundamForge.stack],
-          isAccessibleForFree: true,
-        }}
-      />
+      <SEO {...gundamForgeMeta} />
 
       {/* ------------------------------------------------------------ Hero */}
       <section className="gf-hero" aria-labelledby="gf-title">

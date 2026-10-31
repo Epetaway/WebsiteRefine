@@ -1,4 +1,5 @@
 import SEO from "@/components/seo";
+import { contactMeta } from "@/data/routeMeta/pages";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { professionalLinks, profile } from "@/data/professional";
 
@@ -6,7 +7,7 @@ export default function Contact() {
   const subject = encodeURIComponent("Professional inquiry for Earl Hickson Jr.");
   return (
     <div className="portfolio-page">
-      <SEO title="Contact — Earl Hickson Jr." description="Contact Earl Hickson Jr. about full-time lead and senior front-end engineering roles." path="/contact" image="/assets/brand/social/og-contact.svg" />
+      <SEO {...contactMeta} />
       <PageIntro compact label="Contact / Opportunities" title={<>Let’s build a product people can understand—and a system that can <em>ship.</em></>} lead={<p>{profile.availability}. {profile.workPreference}. I am especially interested in teams where product design and implementation inform each other.</p>} aside={<div className="contact-direct"><span>Direct contact</span><a href={`mailto:${professionalLinks.email}`}>{professionalLinks.email}</a><a href={professionalLinks.linkedin} target="_blank" rel="noreferrer">LinkedIn ↗</a><a href={professionalLinks.github} target="_blank" rel="noreferrer">GitHub ↗</a></div>} />
 
       <section className="contact-layout section-shell" aria-labelledby="contact-heading">

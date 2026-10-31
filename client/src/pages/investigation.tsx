@@ -35,7 +35,7 @@ export default function InvestigationPage() {
         title={`${investigation.name} — UX Engineering Case Study`}
         description={investigation.abstract.product}
         path={`/work/${investigation.slug}`}
-        image={`/assets/projects/${investigation.slug}/social/og.svg`}
+        image={`/assets/projects/${investigation.slug}/social/og.png`}
         jsonLd={{ "@context": "https://schema.org", "@type": "CreativeWork", name: investigation.name, description: investigation.abstract.product, url: `https://ehicksonjr.com/work/${investigation.slug}`, author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" }, genre: "UX engineering case study", keywords: [investigation.theme, ...investigation.stack], isAccessibleForFree: true }}
       />
 

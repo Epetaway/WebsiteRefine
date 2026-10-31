@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { workMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { workEntries } from "@/data/work";
@@ -8,12 +9,7 @@ import { earlierExperience, experience } from "@/data/professional";
 export default function Work() {
   return (
     <div className="portfolio-page work-page">
-      <SEO
-        title="Work — Earl Hickson Jr."
-        description="Case studies and professional front-end work by Earl Hickson Jr., lead front-end engineer."
-        path="/work"
-        image="/assets/brand/social/og-investigations.svg"
-      />
+      <SEO {...workMeta} />
       <PageIntro
         dark
         label="Work / Case studies"

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { graduateReviewMeta } from "@/data/routeMeta/pages";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { SectionHeader } from "@/components/editorial/SectionHeader";
 import { investigations } from "@/data/investigations";
@@ -17,12 +18,7 @@ import { publicPath } from "@/lib/publicPath";
 export default function GraduateReview() {
   return (
     <div className="portfolio-page graduate-review-page">
-      <SEO
-        title={`Graduate Review — Earl Hickson Jr., ${profile.publicTitle}`}
-        description="A five-minute HCI admissions review of Earl Hickson Jr.'s preparation, independent case studies, research interests, writing, and graduate CV."
-        path="/graduate-review"
-        image="/assets/brand/social/og-graduate-review.svg"
-      />
+      <SEO {...graduateReviewMeta} />
       <PageIntro
         label="Graduate review / HCI"
         title={<>Design preparation. Engineering preparation. A clear <em>research direction.</em></>}
