@@ -25,4 +25,13 @@ describe("site navigation", () => {
     expect(screen.queryByRole("dialog", { name: "Site navigation" })).not.toBeInTheDocument();
     expect(trigger).toHaveFocus();
   });
+
+  it("renders the mobile dialog outside the header so the header's backdrop-filter can't clip it", async () => {
+    const user = userEvent.setup();
+    render(<MemoryRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}><Header /></MemoryRouter>);
+    await user.click(screen.getByRole("button", { name: "Menu" }));
+    const dialog = screen.getByRole("dialog", { name: "Site navigation" });
+    expect(dialog.closest("header")).toBeNull();
+    expect(dialog.parentElement).toBe(document.body);
+  });
 });
