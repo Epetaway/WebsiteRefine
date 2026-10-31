@@ -60,6 +60,7 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .mobile-nav__panel { background: var(--tech-surface); color: var(--tech-text); }
 .mobile-nav__link, .text-button { color: var(--tech-text); }
 .mobile-nav__link span { color: var(--tech-accent); }
+.mobile-nav__header .eyebrow, .mobile-nav__availability { color: var(--tech-muted); }
 
 .site-footer { background: #080a0e; color: var(--tech-text); border-color: var(--tech-line); }
 .site-footer__grid { max-width: 1480px; margin: 0 auto; }

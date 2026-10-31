@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { navigation } from "@/data/navigation";
 import { profile } from "@/data/professional";
@@ -78,7 +79,9 @@ export default function Header() {
         </button>
       </div>
 
-      {open && (
+      {/* Portalled to <body>: the header's backdrop-filter makes it the containing block for
+          fixed-position children, which clipped the full-screen menu to the header's height. */}
+      {open && createPortal(
         <div className="mobile-nav" role="dialog" aria-modal="true" aria-label="Site navigation">
           <button
             className="mobile-nav__backdrop"
@@ -113,7 +116,8 @@ export default function Header() {
             </nav>
             <p className="mobile-nav__availability">{profile.availability}</p>
           </div>
-        </div>
+        </div>,
+        document.body,
       )}
     </header>
   );
