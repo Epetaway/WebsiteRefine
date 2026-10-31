@@ -2,6 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
+  "cleanUrls": true,
   "redirects": [
     { "source": "/projects", "destination": "/work", "permanent": true },
     { "source": "/case-studies", "destination": "/work", "permanent": true },

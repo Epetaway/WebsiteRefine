@@ -58,4 +58,6 @@ Each project lives under `client/src/case-studies/<slug>/`: `data.tsx` (content,
 
 ### Deployment
 
+Production is GitHub Pages (`.github/workflows/pages.yml`). After `vite build`, `npm run prerender` (`scripts/prerender-route-meta.ts`) writes one HTML file per canonical route (`/about` → `about.html`, `/field-notes/<slug>` → `field-notes/<slug>.html`; GitHub Pages serves `<path>.html` at `/<path>` with a 200, while `<path>/index.html` would 301 to a trailing slash), each with that route's title, description, canonical, Open Graph/Twitter tags and JSON-LD in the raw HTML. It also writes `404.html` (noindex) and a small redirect page per legacy URL. All values come from `client/src/data/routeMeta/`, the same entries each page passes to `<SEO>` — add a route there when you add one to `App.tsx` (a Vitest test enforces it, and `validate:built` checks the files). Share images must be PNG/JPG; the site-page cards are rebuilt with `npm run og:brand`.
+
 Multi-target by design: Netlify (`netlify.toml` + serverless function), Vercel (`vercel.json`), Railway/Replit (`.replit`, `build.sh`). All share the same Express app — see Server section above.

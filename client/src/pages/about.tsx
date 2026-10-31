@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { aboutMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { profile, teaching } from "@/data/professional";
@@ -17,7 +18,7 @@ const trajectory = [
 export default function About() {
   return (
     <div className="portfolio-page about-page">
-      <SEO title="About — Earl Hickson Jr." description="Earl Hickson Jr. is a lead front-end engineer with a graphic-design foundation, working where design systems, accessibility, and engineering meet." path="/about" image="/assets/brand/social/og-about.svg" />
+      <SEO {...aboutMeta} />
       <PageIntro
         dark
         label="About / Practice"

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { homeMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { workEntries } from "@/data/work";
 import { fieldNotes } from "@/data/fieldNotes";
@@ -18,10 +19,7 @@ const practice = [
 export default function Home() {
   return (
     <div className="portfolio-home">
-      <SEO
-        title={`Earl Hickson Jr. — ${profile.publicTitle}`}
-        description="Lead front-end engineer with a BFA in graphic design and 6+ years building production interfaces for healthcare, financial services, and digital media."
-      />
+      <SEO {...homeMeta} />
 
       <section className="home-hero" aria-labelledby="home-title">
         <div className="home-hero__grid" aria-hidden="true" />

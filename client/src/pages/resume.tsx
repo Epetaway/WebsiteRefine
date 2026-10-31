@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/seo";
+import { resumeMeta } from "@/data/routeMeta/pages";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { SectionHeader } from "@/components/editorial/SectionHeader";
 import {
@@ -21,7 +22,7 @@ const displayUrl = (url: string) => url.replace(/^https?:\/\/(www\.)?/, "").repl
 export default function Resume() {
   return (
     <div className="portfolio-page resume-page">
-      <SEO title={`Resume — Earl Hickson Jr., ${profile.publicTitle}`} description="Earl Hickson Jr. — lead front-end engineer: design systems, accessibility, and healthcare UI, with 6+ years of production front-end work." path="/resume" image="/assets/brand/social/og-resume.svg" />
+      <SEO {...resumeMeta} />
       <PageIntro compact label="Resume / Professional record" title={<>One public resume. One professional <em>identity.</em></>} lead={<p>The same record as the PDF: production front-end work in healthcare, financial services, and digital media, and the independent products I build and ship.</p>} aside={<a className="resume-download" href={publicPath(professionalLinks.publicResume)} download><span>PDF / ATS-friendly</span><strong>Download resume</strong><small>Earl-Hickson-Jr-Resume.pdf</small></a>} />
 
       <article className="online-resume">

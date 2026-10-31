@@ -1,52 +1,32 @@
 import { Helmet } from "react-helmet-async";
+import { resolveHead, type RouteMeta } from "@/data/routeMeta/types";
 
-const siteUrl = "https://ehicksonjr.com";
-
-type Props = {
-  title: string;
-  description: string;
-  path?: string;
-  image?: string;
-  type?: "website" | "article";
-  publishedTime?: string;
-  jsonLd?: Record<string, unknown>;
-};
-
-export default function SEO({
-  title,
-  description,
-  path = "/",
-  image = "/assets/brand/social/og-home.svg",
-  type = "website",
-  publishedTime,
-  jsonLd,
-}: Props) {
-  const canonical = new URL(path, siteUrl).toString();
-  const imageUrl = new URL(image, siteUrl).toString();
-  const documentTitle = title.includes("Earl Hickson Jr.")
-    ? title
-    : `${title} — Earl Hickson Jr.`;
+// Pages pass their entry from client/src/data/routeMeta/. The same entries are written into
+// static HTML at build time (scripts/prerender-route-meta.ts), so what crawlers read and what
+// this component renders can't drift apart.
+export default function SEO(meta: RouteMeta) {
+  const head = resolveHead(meta);
 
   return (
     <Helmet>
-      <title>{documentTitle}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={canonical} />
-      <meta property="og:title" content={documentTitle} />
-      <meta property="og:description" content={description} />
-      <meta property="og:url" content={canonical} />
-      <meta property="og:type" content={type} />
-      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      <title>{head.title}</title>
+      <meta name="description" content={head.description} />
+      <link rel="canonical" href={head.canonical} />
+      <meta property="og:title" content={head.title} />
+      <meta property="og:description" content={head.description} />
+      <meta property="og:url" content={head.canonical} />
+      <meta property="og:type" content={head.type} />
+      {head.publishedTime && <meta property="article:published_time" content={head.publishedTime} />}
       <meta property="og:site_name" content="Earl Hickson Jr." />
-      <meta property="og:image" content={imageUrl} />
-      <meta property="og:image:alt" content={documentTitle} />
+      <meta property="og:image" content={head.image} />
+      <meta property="og:image:alt" content={head.imageAlt} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={documentTitle} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={imageUrl} />
-      <meta name="twitter:image:alt" content={documentTitle} />
-      {jsonLd && (
-        <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <meta name="twitter:title" content={head.title} />
+      <meta name="twitter:description" content={head.description} />
+      <meta name="twitter:image" content={head.image} />
+      <meta name="twitter:image:alt" content={head.imageAlt} />
+      {head.jsonLd && (
+        <script type="application/ld+json">{JSON.stringify(head.jsonLd)}</script>
       )}
     </Helmet>
   );

@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync } from "node:fs";
 import path from "node:path";
 import process from "node:process";
 import { fileURLToPath } from "node:url";
@@ -66,6 +66,9 @@ import {
   professionalLinks,
   profile,
 } from "../client/src/data/professional";
+
+import { legacyRedirects, resolveHead, routeMeta } from "../client/src/data/routeMeta";
+import { routeFile } from "./route-files";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const builtMode = process.argv.includes("--built");
@@ -428,6 +431,24 @@ for (const route of expectedRoutes) {
   }
 }
 
+// Route metadata: every canonical route shares a raster image that exists, one URL per route.
+const rasterImage = /\.(?:png|jpe?g)$/i;
+const seenRoutePaths = new Set<string>();
+for (const meta of routeMeta) {
+  if (seenRoutePaths.has(meta.path)) fail(`Route metadata lists ${meta.path} twice.`);
+  seenRoutePaths.add(meta.path);
+  const image = meta.image ?? "";
+  if (!rasterImage.test(image)) {
+    fail(`${meta.path} share image must be PNG or JPG (social platforms don't render SVG): ${image || "(none)"}.`);
+  }
+  if (!existsSync(path.join(root, "client/public", image))) {
+    fail(`${meta.path} share image ${image} is missing from client/public.`);
+  }
+}
+if (/og-[\w-]+\.svg|og:image"[^>]+\.svg/i.test(read("client/index.html"))) {
+  fail("client/index.html still references an SVG share image.");
+}
+
 if (builtMode) {
   const dist = path.join(root, "dist/public");
   const builtFiles = [
@@ -448,6 +469,41 @@ if (builtMode) {
     if (/HandoffFrame|<iframe[^>]+\.dc\.html/i.test(content)) {
       fail(`${relative} contains canonical handoff architecture.`);
     }
+  }
+
+  // Every canonical route has a static file with its own head, so GitHub Pages answers 200 and
+  // crawlers see the right title, canonical and share image without running JavaScript.
+  const attribute = (html: string, pattern: RegExp) => html.match(pattern)?.[1];
+  const homeTitle = resolveHead(routeMeta.find((meta) => meta.path === "/")!).title;
+  for (const meta of routeMeta) {
+    const file = path.join(dist, routeFile(meta.path));
+    if (!existsSync(file)) fail(`${meta.path} has no prerendered file (${path.relative(root, file)}).`);
+    const html = readFileSync(file, "utf8");
+    const expected = resolveHead(meta);
+    const title = attribute(html, /<title>([^<]*)<\/title>/);
+    const canonical = attribute(html, /<link[^>]*rel="canonical"[^>]*href="([^"]+)"/);
+    const ogUrl = attribute(html, /<meta[^>]*property="og:url"[^>]*content="([^"]+)"/);
+    const ogImage = attribute(html, /<meta[^>]*property="og:image"[^>]*content="([^"]+)"/);
+    if (canonical !== expected.canonical) fail(`${meta.path} canonical is ${canonical}, expected ${expected.canonical}.`);
+    if (ogUrl !== expected.canonical) fail(`${meta.path} og:url is ${ogUrl}, expected ${expected.canonical}.`);
+    if (!ogImage || !rasterImage.test(ogImage)) fail(`${meta.path} og:image is not a PNG or JPG: ${ogImage}.`);
+    const imagePath = new URL(ogImage).pathname;
+    if (!existsSync(path.join(dist, imagePath))) fail(`${meta.path} og:image ${imagePath} is missing from dist/public.`);
+    if (!title) fail(`${meta.path} has no <title>.`);
+    if (meta.path !== "/" && title === homeTitle.replace(/&/g, "&amp;")) {
+      fail(`${meta.path} still has the homepage title.`);
+    }
+    if ((html.match(/<title>/g) ?? []).length !== 1) fail(`${meta.path} has more than one <title>.`);
+  }
+
+  const notFoundHtml = readFileSync(path.join(dist, "404.html"), "utf8");
+  if (!/<meta name="robots" content="noindex"/.test(notFoundHtml)) fail("404.html is not marked noindex.");
+  if (/rel="canonical"/.test(notFoundHtml)) fail("404.html must not declare a canonical URL.");
+
+  for (const { from, to } of legacyRedirects) {
+    const file = path.join(dist, routeFile(from));
+    if (!existsSync(file)) fail(`Legacy URL ${from} has no redirect file.`);
+    if (!readFileSync(file, "utf8").includes(`url=${to}"`)) fail(`Legacy URL ${from} doesn't redirect to ${to}.`);
   }
 }
 
