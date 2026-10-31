@@ -338,6 +338,29 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .field-note-body h2 { font-weight: 650; letter-spacing: -.035em; }
 .field-note-body p { color: rgba(18,21,26,.78); }
 .field-note-footer h2 { font-family: var(--font-sans); font-weight: 650; letter-spacing: -.05em; }
+/* Field Note figures: a phone screen in a dark frame beside a numbered caption. Notes without
+   figures keep the plain reading column. */
+.field-note-figure { display: grid; grid-template-columns: 280px minmax(0,1fr); gap: clamp(24px,3.4vw,44px); align-items: end; margin: 44px 0 8px; padding-top: 28px; border-top: 1px solid rgba(18,21,26,.14); }
+.field-note-figure__frame { padding: 14px; border-radius: 22px; background: var(--tech-bg); box-shadow: 0 24px 50px -30px rgba(11,13,18,.7); }
+.field-note-figure__frame img { display: block; width: 100%; height: auto; border-radius: 10px; background: var(--tech-paper-2); }
+.field-note-figure figcaption { display: grid; gap: 14px; padding-bottom: 6px; }
+.field-note-figure__label { display: flex; align-items: center; gap: 12px; color: color-mix(in srgb, var(--note-accent) 82%, black); font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
+.field-note-figure__label::before { content: ""; width: 28px; height: 2px; background: var(--note-accent); }
+.field-note-body .field-note-figure figcaption p { margin: 0; color: var(--tech-ink); font-family: var(--font-sans); font-size: clamp(18px,1.6vw,21px); font-weight: 600; line-height: 1.4; letter-spacing: -.015em; }
+.field-note-figure small { color: rgba(18,21,26,.66); font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; line-height: 1.6; text-transform: uppercase; }
+.field-note-figure a { justify-self: start; color: var(--tech-ink); font-family: var(--font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; text-underline-offset: 4px; }
+.field-note-figure a:focus-visible { outline: 2px solid var(--note-accent); outline-offset: 4px; }
+.field-note-figure-index { margin-top: 22px; padding-top: 14px; border-top: 1px solid rgba(18,21,26,.16); }
+.field-note-figure-index ol { display: grid; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
+.field-note-figure-index a { color: var(--tech-ink); font-size: 12px; line-height: 1.45; text-underline-offset: 3px; }
+.field-note-figure { scroll-margin-top: 110px; }
+/* Stack when the reading column, not the viewport, is too narrow for image + caption. */
+.field-note-body { container-type: inline-size; }
+@container (max-width: 640px) {
+  .field-note-figure { grid-template-columns: 1fr; justify-items: center; }
+  .field-note-figure__frame { width: min(100%, 320px); }
+  .field-note-figure figcaption { justify-self: stretch; }
+}
 
 .online-resume { max-width: var(--content); margin-top: 0; margin-bottom: 0; padding-block: clamp(64px,8vw,110px); border-block: 0; box-shadow: none; }
 .online-resume__header { border-bottom-color: var(--tech-ink); }

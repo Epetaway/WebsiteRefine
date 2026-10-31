@@ -1,7 +1,26 @@
+/**
+ * A screenshot that shows what a section describes. Images come from Earl's screenshot catalog
+ * (scripts/field_note_figures.py, provenance in docs/FIELD-NOTE-FIGURES.md).
+ * `alt` describes what is on screen for someone who can't see it; `caption` says why it matters
+ * to the argument. Neither may claim more than the screen shows.
+ */
+export type FieldNoteFigure = {
+  /** Root-relative path without the width suffix: `${src}-600.webp` and `${src}-1080.webp` exist. */
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+  /** Where the screen came from, e.g. product, platform and data used. */
+  source: string;
+};
+
 export type FieldNoteSection = {
   heading?: string;
   paragraphs: string[];
   points?: string[];
+  /** Shown after the section's text. */
+  figure?: FieldNoteFigure;
 };
 
 export type FieldNote = {
@@ -61,6 +80,14 @@ export const fieldNotes: FieldNote[] = [
           "Everything in a check-in starts out private until you choose to share it. If you share nothing, your partner only sees that you checked in. That alone says something: I'm thinking about us. You decide how far across the bridge you walk on a given day.",
           "I wrote about the engineering behind this in Designing Consent Into Digital Products. The short version is that a privacy promise is only real if the system can't break it.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/a-bridge-you-meet-each-other-on/withyou-today",
+          width: 1080,
+          height: 1860,
+          alt: "WithYou's Today screen on an Android phone. The first card reads “Your weekly check-in is open” with the note “A few quiet minutes to reflect on the week. Sending late is fine.” and a Start weekly check-in link. Below it, “Today's check-in is open” says you answer a few quick questions and choose what to share, and a third card offers to send a quick note you review before it goes.",
+          caption: "The Today screen. The weekly check-in says sending late is fine, and the daily check-in says you choose what to share.",
+          source: "WithYou · Android build · demo account · captured Oct 28, 2026",
+        },
       },
       {
         heading: "An app you're not supposed to live in",
@@ -86,6 +113,14 @@ export const fieldNotes: FieldNote[] = [
           "The one thing it's for is making sure the communication every relationship needs is actually happening. That's it.",
           "It also isn't therapy, and it doesn't pretend to be. Sometimes the bridge leads to your partner, and from there to real help. The app includes safety resources that people choose for their own region; it never guesses their location.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/a-bridge-you-meet-each-other-on/withyou-guidance",
+          width: 1080,
+          height: 1860,
+          alt: "WithYou's Guidance screen on an Android phone, labeled “Only you see this.” The text says it is private to you, your partner can't see anything unless you choose to share it, AI is optional, and this is not therapy. Below, a card to start a private session asks whether it should be just yours or tied to the relationship with Jordan, and says it stays private either way.",
+          caption: "Guidance says what it isn't on the screen itself: private by default, AI optional, not therapy.",
+          source: "WithYou · Android build · demo account · captured Oct 28, 2026",
+        },
       },
       {
         heading: "What I can't promise",
@@ -189,6 +224,14 @@ export const fieldNotes: FieldNote[] = [
           "Many products treat consent as a sentence: a disclosure, a banner, or a toggle buried in settings. But either the system prevents information from crossing a boundary without an explicit scope, or the copy is a promise the code cannot keep.",
           "A check-in can contain a win, something hard, a feeling, and a request for support. Those are emotionally different facts. A single share-with-partner switch collapses differences the product should preserve.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/designing-consent/withyou-quick-note-review",
+          width: 1080,
+          height: 1860,
+          alt: "WithYou's “Review your note” screen on an Android phone. It says “This is exactly what Jordan will see. Nothing is sent until you tap Send.” A preview shows the note's kind, “No kind chosen,” and the note text, “Thinking of you today,” followed by “Written by you. Nothing here was changed or added.” and buttons to Send Quick Note or Edit.",
+          caption: "Before anything crosses to a partner, the person sees exactly what will cross and has to tap Send.",
+          source: "WithYou · Android build · demo account · captured Oct 28, 2026",
+        },
       },
       {
         heading: "Field-level visibility",
@@ -196,6 +239,14 @@ export const fieldNotes: FieldNote[] = [
           "The design direction became field-level visibility. Agreeing to share a mood is not the same as agreeing to share the experience behind it. The schema, service, API, and interface all need to hold that distinction.",
           "This is why trust is an engineering problem. A private field included in a partner response is not repaired by better privacy copy. The implementation path has already broken the promise.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/designing-consent/withyou-weekly-check-in",
+          width: 1080,
+          height: 1860,
+          alt: "WithYou's Weekly check-in screen on an Android phone. A banner says the draft stays only on this phone and that uninstalling the app, clearing its data or losing the phone deletes it. Two questions follow, “What felt good between us this week?” and “What felt difficult?”, and each carries its own “Only you” label above an empty answer field.",
+          caption: "Visibility is labeled on each answer, not once for the whole check-in.",
+          source: "WithYou · Android build · demo account · captured Oct 28, 2026",
+        },
       },
       {
         heading: "What I got wrong",
