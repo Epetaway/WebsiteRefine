@@ -10,7 +10,7 @@ export default function FieldNotePage() {
   const path = `/field-notes/${note.slug}`;
   return (
     <article className="field-note-page" style={{ "--note-accent": note.themeColor } as React.CSSProperties}>
-      <SEO title={`${note.title} — Earl Hickson Jr.`} description={note.summary} path={path} type="article" publishedTime={note.datePublished} image={`/assets/field-notes/og-${note.slug}.svg`} jsonLd={{ "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.summary, datePublished: note.datePublished, author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" }, mainEntityOfPage: `https://ehicksonjr.com${path}`, image: `https://ehicksonjr.com/assets/field-notes/og-${note.slug}.svg` }} />
+      <SEO title={`${note.title} — Earl Hickson Jr.`} description={note.summary} path={path} type="article" publishedTime={note.datePublished} image={`/assets/field-notes/og-${note.slug}.png`} jsonLd={{ "@context": "https://schema.org", "@type": "Article", headline: note.title, description: note.summary, datePublished: note.datePublished, author: { "@type": "Person", name: "Earl Hickson Jr.", url: "https://ehicksonjr.com" }, mainEntityOfPage: `https://ehicksonjr.com${path}`, image: `https://ehicksonjr.com/assets/field-notes/og-${note.slug}.png` }} />
       <section className="field-note-hero">
         <div className="field-note-hero__rail">
           <Link to="/field-notes" className="case-link case-link--light">← All notes</Link>
