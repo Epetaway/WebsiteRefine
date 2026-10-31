@@ -393,8 +393,8 @@ for (const figure of dojonetFigures) {
 }
 assertPublicExcerpts("DojoNet", dojonetRepository, dojonetCode);
 
-if (fieldNotes.length !== 3) {
-  fail("Exactly three canonical Field Notes must be published.");
+if (fieldNotes.length !== 4) {
+  fail("Exactly four canonical Field Notes must be published.");
 }
 
 const appSource = read("client/src/App.tsx");
@@ -413,6 +413,7 @@ const expectedRoutes = [
   "/work/gundam-forge",
   "/work/earl-the-kaiju",
   "/research",
+  "/field-notes/a-bridge-you-meet-each-other-on",
   "/field-notes/teaching-jiu-jitsu-and-ux",
   "/field-notes/designing-consent",
   "/field-notes/information-architecture-and-card-games",
