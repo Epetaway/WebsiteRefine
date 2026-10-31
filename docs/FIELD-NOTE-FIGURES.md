@@ -11,7 +11,7 @@ shows each note's figure count, or "Text" for text-only notes.
 
 ## Brands
 
-A note set `project` in `client/src/data/fieldNotes.ts` takes that project's brand; a note without one
+A note that sets `project` in `client/src/data/fieldNotes.ts` takes that project's brand; a note without one
 uses the portfolio brand. Brands are defined in `client/src/data/noteBrands.ts` and applied by
 `client/src/styles/field-notes.css` through `--nb-*` custom properties.
 
