@@ -21,6 +21,83 @@ export type FieldNote = {
 
 export const fieldNotes: FieldNote[] = [
   {
+    slug: "a-bridge-you-meet-each-other-on",
+    number: "04",
+    title: "A Bridge You Meet Each Other On",
+    theme: "Relationships",
+    themeColor: "#8F2E54",
+    claim: "The hardest conversations aren't missing words. They're missing a safe way to start.",
+    summary:
+      "Why I'm building a relationship app that isn't meant to be lived in, and what it does on the days someone needs their partner most.",
+    date: "October 31, 2026",
+    datePublished: "2026-10-31",
+    readingTime: "6 min",
+    evidenceTypes: [
+      "personal-reflection",
+      "implementation-evidence",
+      "design-rationale",
+      "known-gap",
+    ],
+    sections: [
+      {
+        paragraphs: [
+          "My wife and I have been married for less than five years, and we have a young son. Being newly married doesn't make the hard conversations easier. Sometimes it makes them harder, because you're still learning how the other person carries things. Money, worry about the future, the stress you don't notice you're holding. Everyone is struggling with something, and most of us hide it in our own way.",
+          "I'm building WithYou to make those conversations a little easier to start: a place to say what you're carrying, at your own pace, so the person who matters most can understand it. Not an app you live in. A bridge you meet each other on.",
+        ],
+      },
+      {
+        heading: "What a hard day should feel like",
+        paragraphs: [
+          "When someone opens WithYou on a bad day, I want them to feel safe reaching out in a way they might not feel safe doing face to face yet. Not a vague \"I'm fine.\" A clear flare for help, sent in a way their partner can actually receive.",
+          "Most hard conversations go wrong before anyone says anything difficult. One person hints. The other guesses. Both end up feeling let down, and neither one did anything wrong except fail to read a mind.",
+          "So the daily check-in ends with one question: What would help right now? The answers are plain on purpose. Just listen. Hold me. Give me space. Help me think it through. Patience. A distraction. Celebrate with me. Nothing needed.",
+          "That last one matters as much as the others. Sometimes the most useful thing you can tell the person you love is that you're okay and don't need anything from them today.",
+        ],
+      },
+      {
+        heading: "Sharing at your own pace",
+        paragraphs: [
+          "Saying \"I'm struggling\" is not the same as handing over every detail behind it. A check-in can hold a win, something hard, how you feel, and what would help. Those don't all have to go to your partner at once.",
+          "Everything in a check-in starts out private until you choose to share it. If you share nothing, your partner only sees that you checked in. That alone says something: I'm thinking about us. You decide how far across the bridge you walk on a given day.",
+          "I wrote about the engineering behind this in Designing Consent Into Digital Products. The short version is that a privacy promise is only real if the system can't break it.",
+        ],
+      },
+      {
+        heading: "An app you're not supposed to live in",
+        paragraphs: [
+          "A lot of apps are built to be hard to put down. I didn't want WithYou to work that way. Some of that intent is now written into the project as rules:",
+        ],
+        points: [
+          "No scores, streaks, grades, or shame notifications. Missing a check-in costs you nothing, and your partner doesn't get a report card on you.",
+          "No relationship score, ever. That includes a \"health index\" quietly built by combining other numbers. A relationship isn't a percentage.",
+          "Time in the app isn't the goal. The project's analytics rules say session length and daily-active-user metrics are the wrong way to judge this product. The right question is whether the thing you came to do got done.",
+          "You decide when it talks to you. Notifications have quiet hours, mute, snooze, and per-type switches.",
+        ],
+      },
+      {
+        paragraphs: [
+          "The project's own definition of what WithYou is not says it plainly: not a social feed, not a scoring or streak app, not an always-on chatbot.",
+        ],
+      },
+      {
+        heading: "What the app won't do",
+        paragraphs: [
+          "WithYou isn't here to tell anyone how to have a relationship. If a couple is comfortable sending each other notes from across the room, that's their choice. We're not policing partners or deciding what a healthy relationship looks like for two people we've never met.",
+          "The one thing it's for is making sure the communication every relationship needs is actually happening. That's it.",
+          "It also isn't therapy, and it doesn't pretend to be. Sometimes the bridge leads to your partner, and from there to real help. The app includes safety resources that people choose for their own region; it never guesses their location.",
+        ],
+      },
+      {
+        heading: "What I can't promise",
+        paragraphs: [
+          "I can't promise that your partner will give you what you need. That part belongs to them. What the app can honestly do is make the ask clear and easier to receive, so they don't have to guess.",
+          "I also can't tell you yet whether it works. WithYou hasn't launched, and everything I've tested has used demo accounts. Nothing in the app measures whether couples actually talk more or spend more time together away from their phones. I'm not sure it should, because measuring that well would mean watching people more closely than I'm comfortable with. That's an open question, not a solved one.",
+          "What I can say is what I'm building toward: fewer conversations left sitting for years, and more people who know exactly how to show up for the person they love.",
+        ],
+      },
+    ],
+  },
+  {
     slug: "teaching-jiu-jitsu-and-ux",
     number: "01",
     title: "Teaching Jiu-Jitsu Changed the Way I Think About UX",

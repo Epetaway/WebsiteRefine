@@ -28,6 +28,7 @@ describe("canonical route architecture", () => {
     ["/research", /I design and build technology/i],
     ["/field-notes", /thinking carefully in public/i],
     ["/field-notes/designing-consent", /Designing Consent Into Digital Products/i],
+    ["/field-notes/a-bridge-you-meet-each-other-on", /A Bridge You Meet Each Other On/i],
     ["/about", /I learned to design the message/i],
     ["/resume", /One public resume/i],
     ["/contact", /Let’s build a product/i],
