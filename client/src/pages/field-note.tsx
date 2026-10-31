@@ -4,6 +4,9 @@ import { fieldNoteMeta } from "@/data/routeMeta/fieldNotes";
 import { getFieldNote } from "@/data/fieldNotes";
 import NotFound from "@/pages/not-found";
 import { FieldNoteFigure } from "@/components/field-notes/FieldNoteFigure";
+import { NoteLockup } from "@/components/field-notes/NoteLockup";
+import { noteBrand, noteBrandStyle } from "@/data/noteBrands";
+import "@/styles/field-notes.css";
 
 export default function FieldNotePage() {
   const { slug } = useParams();
@@ -15,13 +18,16 @@ export default function FieldNotePage() {
     section,
     figureNumber: section.figure ? ++figureCount : undefined,
   }));
+  // The project the note discusses colours it; the portfolio supplies everything else.
+  const brand = noteBrand(note.project);
   return (
-    <article className="field-note-page" style={{ "--note-accent": note.themeColor } as React.CSSProperties}>
+    <article className={`field-note-page nb nb--${brand.key}`} style={noteBrandStyle(brand) as React.CSSProperties}>
       <SEO {...fieldNoteMeta(note)} />
       <section className="field-note-hero">
         <div className="field-note-hero__rail">
           <Link to="/field-notes" className="case-link case-link--light">← All notes</Link>
           <span>{note.number} / {note.theme}</span>
+          <NoteLockup brand={brand} number={note.number} />
         </div>
         <div className="field-note-hero__title">
           <p className="signal-label"><span /> Field note / {note.theme}</p>
@@ -59,7 +65,15 @@ export default function FieldNotePage() {
           ))}
         </div>
       </div>
-      <section className="field-note-footer"><span>Continue the inquiry</span><h2>See how this argument appears in a working system.</h2><Link className="button button--light" to={note.theme === "Learning" ? "/work/dojonet" : note.theme === "Relationships" ? "/work/withyou" : "/work/gundam-forge"}>View the related case study</Link></section>
+      <section className="field-note-footer">
+        <span>Continue the inquiry</span>
+        <h2>See how this argument appears in a working system.</h2>
+        {brand.caseStudy ? (
+          <Link className="button nb-button" to={brand.caseStudy}>View the {brand.name} case study</Link>
+        ) : (
+          <Link className="button nb-button" to="/work">View the case studies</Link>
+        )}
+      </section>
     </article>
   );
 }

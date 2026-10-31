@@ -29,6 +29,8 @@ export type FieldNote = {
   title: string;
   theme: "Learning" | "Relationships" | "Decision Support";
   themeColor: string;
+  /** The project the note discusses. Its brand colours the note; omit for the portfolio brand. */
+  project?: Exclude<NoteBrandKey, "portfolio">;
   claim: string;
   summary: string;
   date: string;
@@ -41,6 +43,7 @@ export type FieldNote = {
 export const fieldNotes: FieldNote[] = [
   {
     slug: "a-bridge-you-meet-each-other-on",
+    project: "withyou",
     number: "04",
     title: "A Bridge You Meet Each Other On",
     theme: "Relationships",
@@ -134,6 +137,7 @@ export const fieldNotes: FieldNote[] = [
   },
   {
     slug: "teaching-jiu-jitsu-and-ux",
+    project: "dojonet",
     number: "01",
     title: "Teaching Jiu-Jitsu Changed the Way I Think About UX",
     theme: "Learning",
@@ -195,6 +199,7 @@ export const fieldNotes: FieldNote[] = [
   },
   {
     slug: "designing-consent",
+    project: "withyou",
     number: "02",
     title: "Designing Consent Into Digital Products",
     theme: "Relationships",
@@ -266,6 +271,7 @@ export const fieldNotes: FieldNote[] = [
   },
   {
     slug: "information-architecture-and-card-games",
+    project: "gundam-forge",
     number: "03",
     title: "What Trading Card Games Teach Us About Information Architecture",
     theme: "Decision Support",
@@ -324,3 +330,4 @@ export const fieldNotes: FieldNote[] = [
 export const getFieldNote = (slug?: string) =>
   fieldNotes.find((note) => note.slug === slug);
 import type { ClaimType } from "./professional";
+import type { NoteBrandKey } from "./noteBrands";

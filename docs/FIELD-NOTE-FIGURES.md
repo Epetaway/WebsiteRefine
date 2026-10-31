@@ -1,4 +1,4 @@
-# Field Note figures
+# Field Note design: brands and figures
 
 Field Notes come in two forms and share one page layout (`client/src/pages/field-note.tsx`):
 
@@ -9,7 +9,36 @@ Field Notes come in two forms and share one page layout (`client/src/pages/field
 A figure is an optional `figure` on a section in `client/src/data/fieldNotes.ts`. The Field Notes index
 shows each note's figure count, or "Text" for text-only notes.
 
-## Rules
+## Brands
+
+A note set `project` in `client/src/data/fieldNotes.ts` takes that project's brand; a note without one
+uses the portfolio brand. Brands are defined in `client/src/data/noteBrands.ts` and applied by
+`client/src/styles/field-notes.css` through `--nb-*` custom properties.
+
+| From the portfolio (always) | From the project brand |
+|---|---|
+| Header, grid, reading column, evidence note, figure system | Hero and footer surface with its two glows |
+| Manrope headings and body, JetBrains Mono labels | Accent and secondary accent on the dark surface |
+| The EH monogram | Paper and second paper tone for the reading column |
+| | Ink for rules, labels and links on paper |
+| | Figure-frame surface and corner radius |
+| | Its own lockup, beside the EH monogram ("EH × WithYou") |
+
+Project typefaces (Inter for WithYou, Bebas Neue for DojoNet, Orbitron for Gundam Forge) appear only in
+the lockup. The WithYou mark is the case study's own `WyMark` (`client/src/components/withyou/WyMark.tsx`).
+
+Colours come from each case study's stylesheet. `note-brands.test.tsx` checks every text pairing
+(text, accent, secondary accent and muted on surface; ink on both papers; surface on accent; body ink
+on paper) meets WCAG AA 4.5:1, so a token change that breaks contrast fails the tests.
+
+| Note | Project |
+|---|---|
+| 01 Teaching Jiu-Jitsu Changed the Way I Think About UX | DojoNet |
+| 02 Designing Consent Into Digital Products | WithYou |
+| 03 What Trading Card Games Teach Us About Information Architecture | Gundam Forge |
+| 04 A Bridge You Meet Each Other On | WithYou |
+
+## Figure rules
 
 - **Show only what the section describes.** A figure must show the screen the text is talking about.
   If no real capture shows it, the note stays text-only.
