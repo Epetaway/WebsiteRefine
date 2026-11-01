@@ -35,9 +35,23 @@ describe("Field Note figures", () => {
     expect(within(index).getAllByRole("link")).toHaveLength(data.length);
   });
 
-  it("renders a text-only note without figures or a figure index", () => {
+  it("frames desktop screens as desktop and phone screens as phone, with a srcset from the listed widths", () => {
     const { container } = renderNote("teaching-jiu-jitsu-and-ux");
-    expect(container.querySelector("figure")).toBeNull();
-    expect(screen.queryByRole("navigation", { name: "Figures in this note" })).toBeNull();
+    const figure = figuresOf("teaching-jiu-jitsu-and-ux")[0];
+    const element = container.querySelector("figure.field-note-figure") as HTMLElement;
+    expect(element).toHaveClass("field-note-figure--desktop");
+    expect(within(element).getByRole("img", { name: figure.alt }).getAttribute("srcset")).toBe(
+      figure.widths.map((width) => `${figure.src}-${width}.webp ${width}w`).join(", "),
+    );
+    const phone = renderNote("designing-consent").container.querySelector("figure.field-note-figure");
+    expect(phone).toHaveClass("field-note-figure--phone");
+  });
+
+  it("never lists an image width above its source", () => {
+    for (const note of fieldNotes) {
+      for (const section of note.sections) {
+        if (section.figure) expect(Math.max(...section.figure.widths)).toBeLessThanOrEqual(section.figure.width);
+      }
+    }
   });
 });

@@ -5,10 +5,13 @@
  * to the argument. Neither may claim more than the screen shows.
  */
 export type FieldNoteFigure = {
-  /** Root-relative path without the width suffix: `${src}-600.webp` and `${src}-1080.webp` exist. */
+  /** Root-relative path without the width suffix: `${src}-${w}.webp` exists for each of `widths`. */
   src: string;
+  /** Source dimensions. Wider than tall renders as a desktop screen, otherwise as a phone screen. */
   width: number;
   height: number;
+  /** Encoded widths, smallest first, as printed by scripts/field_note_figures.py. */
+  widths: number[];
   alt: string;
   caption: string;
   /** Where the screen came from, e.g. product, platform and data used. */
@@ -87,6 +90,7 @@ export const fieldNotes: FieldNote[] = [
           src: "/assets/field-notes/figures/a-bridge-you-meet-each-other-on/withyou-today",
           width: 1080,
           height: 1860,
+          widths: [600, 1080],
           alt: "WithYou's Today screen on an Android phone. The first card reads “Your weekly check-in is open” with the note “A few quiet minutes to reflect on the week. Sending late is fine.” and a Start weekly check-in link. Below it, “Today's check-in is open” says you answer a few quick questions and choose what to share, and a third card offers to send a quick note you review before it goes.",
           caption: "The Today screen. The weekly check-in says sending late is fine, and the daily check-in says you choose what to share.",
           source: "WithYou · Android build · demo account · captured Oct 28, 2026",
@@ -120,6 +124,7 @@ export const fieldNotes: FieldNote[] = [
           src: "/assets/field-notes/figures/a-bridge-you-meet-each-other-on/withyou-guidance",
           width: 1080,
           height: 1860,
+          widths: [600, 1080],
           alt: "WithYou's Guidance screen on an Android phone, labeled “Only you see this.” The text says it is private to you, your partner can't see anything unless you choose to share it, AI is optional, and this is not therapy. Below, a card to start a private session asks whether it should be just yours or tied to the relationship with Jordan, and says it stays private either way.",
           caption: "Guidance says what it isn't on the screen itself: private by default, AI optional, not therapy.",
           source: "WithYou · Android build · demo account · captured Oct 28, 2026",
@@ -180,6 +185,15 @@ export const fieldNotes: FieldNote[] = [
           "Recognized — the opening becomes visible under pressure.",
           "Adapted — the principle can transfer to an unfamiliar context.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/teaching-jiu-jitsu-and-ux/dojonet-dashboard",
+          width: 1600,
+          height: 1000,
+          widths: [900, 1600],
+          alt: "DojoNet's dashboard on desktop for the demo user. A left navigation column with a red New Post button sits beside the post composer and feed, and a Your Progress panel on the right shows a 7-day training streak, 24 hours this month, 18 total sessions and White Belt as the last belt change.",
+          caption: "The dashboard's progress panel. Every number on it counts how much training happened; none says what holds up under pressure.",
+          source: "DojoNet · local build · demo account · desktop, 1440 × 900",
+        },
       },
       {
         heading: "The journal came from the mat",
@@ -187,6 +201,15 @@ export const fieldNotes: FieldNote[] = [
           "DojoNet's structured journal came from needing a more honest observation than done or not done. Qualitative stages give a practitioner language for their present understanding without pretending to calculate mastery.",
           "Structure can make reflection possible when energy and vocabulary are limited. Ask how a round went and the answer may be fine. Ask what worked and what was missed, and there is something a coach can use.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/teaching-jiu-jitsu-and-ux/dojonet-journal-composer",
+          width: 1600,
+          height: 1000,
+          widths: [900, 1600],
+          alt: "DojoNet's post composer switched to Journal on desktop. It asks for an entry title and notes, discipline and session type, duration and techniques, how you felt, and energy, intensity and recovery on 1 to 10 sliders, with an Injured checkbox and a visibility menu set to Public. A floating navigation bar overlaps the bottom of the composer.",
+          caption: "The journal composer asks for the session, not just a post: what you trained, for how long, and how your body felt.",
+          source: "DojoNet · local build · demo account · desktop, 1440 × 900",
+        },
       },
       {
         heading: "What remains uncertain",
@@ -233,6 +256,7 @@ export const fieldNotes: FieldNote[] = [
           src: "/assets/field-notes/figures/designing-consent/withyou-quick-note-review",
           width: 1080,
           height: 1860,
+          widths: [600, 1080],
           alt: "WithYou's “Review your note” screen on an Android phone. It says “This is exactly what Jordan will see. Nothing is sent until you tap Send.” A preview shows the note's kind, “No kind chosen,” and the note text, “Thinking of you today,” followed by “Written by you. Nothing here was changed or added.” and buttons to Send Quick Note or Edit.",
           caption: "Before anything crosses to a partner, the person sees exactly what will cross and has to tap Send.",
           source: "WithYou · Android build · demo account · captured Oct 28, 2026",
@@ -248,6 +272,7 @@ export const fieldNotes: FieldNote[] = [
           src: "/assets/field-notes/figures/designing-consent/withyou-weekly-check-in",
           width: 1080,
           height: 1860,
+          widths: [600, 1080],
           alt: "WithYou's Weekly check-in screen on an Android phone. A banner says the draft stays only on this phone and that uninstalling the app, clearing its data or losing the phone deletes it. Two questions follow, “What felt good between us this week?” and “What felt difficult?”, and each carries its own “Only you” label above an empty answer field.",
           caption: "Visibility is labeled on each answer, not once for the whole check-in.",
           source: "WithYou · Android build · demo account · captured Oct 28, 2026",
@@ -308,6 +333,15 @@ export const fieldNotes: FieldNote[] = [
           "Recall asks a player to remember a rule while balancing many other variables. Recognition turns that burden into a visible cue: this card has a warning, this count is too high, this deck is one card short.",
           "Physical arrangements create recognition conditions naturally. A digital tool should study the information architecture players already built before replacing it.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/information-architecture-and-card-games/gundam-forge-one-card-short",
+          width: 720,
+          height: 1558,
+          widths: [600, 720],
+          alt: "Gundam Forge's deck builder on a phone for a draft deck. The main-deck count reads 49/50 in red and resources read 0/10, with an Issues (2) button beside the counts. Deck analytics and a grid of unit cards with add and remove buttons follow below.",
+          caption: "Recognition instead of recall: the deck is one card short, and the count says so in red before the player has to remember the rule.",
+          source: "Gundam Forge · local build · fictional study deck · phone, 390 × 844",
+        },
       },
       {
         heading: "A familiar pattern can still be wrong",
@@ -315,6 +349,15 @@ export const fieldNotes: FieldNote[] = [
           "Early versions borrowed an end-of-process legality check from other card-game tools. It was familiar, but it worked as an audit after a chain of decisions rather than support during those decisions.",
           "Continuous validation replaced that pattern. The player can still explore an invalid idea, but the consequence is visible before another ten decisions depend on it.",
         ],
+        figure: {
+          src: "/assets/field-notes/figures/information-architecture-and-card-games/gundam-forge-issues-sheet",
+          width: 720,
+          height: 1558,
+          widths: [600, 720],
+          alt: "Gundam Forge's Deck Issues sheet open from the bottom of a phone screen over the deck builder. It lists an error, that the main deck must contain exactly 50 cards and currently has 49, and a warning that the deck has no resource cards so the simulator will generate placeholder resources.",
+          caption: "One tap from the count, the reasons: an error for the rule that's broken, and a warning that explains a consequence instead of giving an order.",
+          source: "Gundam Forge · local build · fictional study deck · phone, 390 × 844",
+        },
       },
       {
         heading: "Surface, do not decide",
