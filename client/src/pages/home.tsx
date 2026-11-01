@@ -9,6 +9,7 @@ import { earlierExperience, experience, profile, teaching } from "@/data/profess
 import { publicPath } from "@/lib/publicPath";
 import portrait from "@/images/earl-bjj-photo.png";
 import trainingPhoto from "@/images/BLKBELT.png";
+import { Mark } from "@/components/motion/Mark";
 
 const practice = [
   ["01", "Frame", "Turn an ambiguous product problem into a clear interaction and system boundary."],
@@ -52,7 +53,7 @@ export default function Home() {
       <section className="home-work" aria-labelledby="selected-work-heading">
         <header className="home-section-heading home-section-heading--dark">
           <p className="signal-label"><span /> 01 / Selected case studies</p>
-          <h2 id="selected-work-heading">Product thinking made tangible.</h2>
+          <h2 id="selected-work-heading">Product thinking made <Mark>tangible.</Mark></h2>
           <p>Independent products showing how I move between interaction decisions, implementation constraints, and working interfaces.</p>
         </header>
 
@@ -75,7 +76,7 @@ export default function Home() {
       <section className="home-experience" aria-labelledby="experience-heading">
         <header className="home-section-heading home-section-heading--dark">
           <p className="signal-label"><span /> 02 / Professional practice</p>
-          <h2 id="experience-heading">Production work across complex organizations.</h2>
+          <h2 id="experience-heading">Production work across <Mark>complex organizations.</Mark></h2>
           <p>Front-end delivery, component standards, accessibility, and team leadership across healthcare, financial services, digital media, and nonprofit work.</p>
         </header>
         <div className="experience-ledger">
@@ -97,7 +98,7 @@ export default function Home() {
       <section className="home-practice" aria-labelledby="practice-heading">
         <header className="home-section-heading">
           <p className="signal-label"><span /> 03 / How I work</p>
-          <h2 id="practice-heading">Design and engineering are one continuous practice.</h2>
+          <h2 id="practice-heading">Design and engineering are <Mark>one continuous practice.</Mark></h2>
           <p>Each phase changes the others. Implementation exposes design assumptions; testing exposes what the implementation still does not prove.</p>
         </header>
         <ol className="practice-sequence">
@@ -114,9 +115,9 @@ export default function Home() {
         </Reveal>
         <Reveal className="home-discipline__copy" delay={0.06}>
           <p className="signal-label"><span /> 04 / Beyond the screen</p>
-          <h2 id="discipline-heading">The work is shaped by teaching, repetition, and learning under pressure.</h2>
+          <h2 id="discipline-heading">The work is shaped by teaching, repetition, and <Mark>learning under pressure.</Mark></h2>
           <p>{teaching.summary}</p>
-          <blockquote>“Understanding a description is not the same as being able to act.”</blockquote>
+          <blockquote>“Understanding a description is not the same as <Mark>being able to act.</Mark>”</blockquote>
           <div><Link className="case-link case-link--light" to="/about">More about my path <span aria-hidden="true">↗</span></Link><Link className="case-link case-link--light" to="/work/earl-the-kaiju">Earl the Kaiju case study <span aria-hidden="true">↗</span></Link><Link className="case-link case-link--light" to="/research">Research direction <span aria-hidden="true">↗</span></Link></div>
         </Reveal>
       </section>

@@ -12,6 +12,7 @@ export function Reveal({ children, className, delay = 0 }: Props) {
   return (
     <motion.div
       className={className}
+      data-motion-owned
       initial={reduceMotion ? false : { opacity: 0, y: 18 }}
       whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}

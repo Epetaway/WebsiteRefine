@@ -7,6 +7,7 @@ import { CapabilityNetwork } from "@/components/editorial/CapabilityNetwork";
 import { researchThemes } from "@/data/researchThemes";
 import { investigations } from "@/data/investigations";
 import { research } from "@/data/professional";
+import { Mark } from "@/components/motion/Mark";
 
 const principles = [
   ["Capability over convenience", "Ask what someone becomes able to do, not only what the tool does for them."],
@@ -59,7 +60,7 @@ export default function Research() {
         <p className="research-preparation__boundary">The methods in the second column are not presented as completed research experience. They are the methodological preparation I am seeking in order to evaluate whether technology helps people become more capable.</p>
       </section>
 
-      <section className="research-direction"><p className="eyebrow eyebrow--light">Future direction</p><h2>Methods strong enough to test the human question.</h2><p>Future work includes scope-comprehension testing for WithYou, diary and observational studies for DojoNet, and comparative decision tasks for Gundam Forge. These are proposed directions—not completed studies.</p><div className="button-row"><Link to="/work" className="button button--light">View the case studies</Link><Link to="/contact" className="button button--outline-light">Discuss the work</Link></div></section>
+      <section className="research-direction"><p className="eyebrow eyebrow--light">Future direction</p><h2>Methods strong enough to test <Mark>the human question.</Mark></h2><p>Future work includes scope-comprehension testing for WithYou, diary and observational studies for DojoNet, and comparative decision tasks for Gundam Forge. These are proposed directions—not completed studies.</p><div className="button-row"><Link to="/work" className="button button--light">View the case studies</Link><Link to="/contact" className="button button--outline-light">Discuss the work</Link></div></section>
     </div>
   );
 }

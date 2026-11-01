@@ -1,6 +1,7 @@
 import SEO from "@/components/seo";
 import { contactMeta } from "@/data/routeMeta/pages";
 import { PageIntro } from "@/components/editorial/PageIntro";
+import { Mark } from "@/components/motion/Mark";
 import { professionalLinks, profile } from "@/data/professional";
 
 export default function Contact() {
@@ -14,7 +15,7 @@ export default function Contact() {
         <aside><p className="eyebrow">Primary role areas</p><ul>{profile.focusRoles.map((focus) => <li key={focus}>{focus}</li>)}</ul><p className="contact-layout__note">Email is the dependable contact channel. A web form is intentionally not published because production email delivery is not verified.</p></aside>
         <div className="contact-card">
           <span>Professional inquiry</span>
-          <h2 id="contact-heading">Start a conversation.</h2>
+          <h2 id="contact-heading">Start a <Mark>conversation.</Mark></h2>
           <p>Please include the team, product, role or collaboration, and what you would like to discuss. The button opens your email application so you retain a copy of the message.</p>
           <a className="button button--primary" href={`mailto:${professionalLinks.email}?subject=${subject}`}>Email Earl</a>
           <dl>
