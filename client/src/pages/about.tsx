@@ -6,6 +6,7 @@ import { PageIntro } from "@/components/editorial/PageIntro";
 import { profile, teaching } from "@/data/professional";
 import portrait from "@/images/me.webp";
 import trainingPhoto from "@/images/BLKBELT.png";
+import { Mark } from "@/components/motion/Mark";
 
 const trajectory = [
   ["01", "Graphic design", "Typography, hierarchy, composition, and purposeful visual communication."],
@@ -30,7 +31,7 @@ export default function About() {
       <section className="about-story" aria-labelledby="about-story-title">
         <header className="home-section-heading">
           <p className="signal-label"><span /> 01 / An expanding medium</p>
-          <h2 id="about-story-title">Every step added another layer of responsibility.</h2>
+          <h2 id="about-story-title">Every step added another layer of <Mark>responsibility.</Mark></h2>
           <p>The throughline is not a series of career pivots. It is a steadily expanding understanding of what design includes.</p>
         </header>
         <ol className="about-timeline">
@@ -44,7 +45,7 @@ export default function About() {
       <section className="about-craft" aria-labelledby="about-craft-title">
         <Reveal className="about-craft__copy">
           <p className="signal-label"><span /> 02 / Current practice</p>
-          <h2 id="about-craft-title">The interface and the system behind it have to agree.</h2>
+          <h2 id="about-craft-title">The interface and the system behind it <Mark>have to agree.</Mark></h2>
           <p>A clear screen can still hide a broken rule. A clean component can still create an inaccessible workflow. That is why I move between visual hierarchy, interaction states, component architecture, APIs, and testing instead of treating design and engineering as separate handoffs.</p>
           <p>Most of that work has happened inside teams. At BroadcastMed I led design and front-end delivery and mentored junior designers and developers. At Asembia I set one component standard across several healthcare portals and got the development team building to it.</p>
           <p>I’m open to full-time lead and senior front-end roles, and I keep shipping independent products while I look for that next team.</p>
@@ -61,7 +62,7 @@ export default function About() {
         <Reveal className="about-discipline__visual"><img src={trainingPhoto} alt="Earl teaching a young Brazilian Jiu-Jitsu student" loading="lazy" width="4032" height="2268" /><span>Teaching / observation / feedback</span></Reveal>
         <Reveal className="about-discipline__body" delay={0.05}>
           <p className="signal-label"><span /> 03 / Practice beyond technology</p>
-          <h2 id="about-discipline-title">Teaching changed how I think about capability.</h2>
+          <h2 id="about-discipline-title">Teaching changed how I think about <Mark>capability.</Mark></h2>
           <p>{teaching.summary}</p>
           <p>On the mat, a technically correct explanation is only the start. You observe, adapt the instruction, and help someone act under pressure. Product work asks for the same humility: what I intended is not the same as what another person can actually do.</p>
           <p>I've also built my own Jiu-Jitsu brand around that teaching — an identity, an instructor website and a private Android app for running class.</p>

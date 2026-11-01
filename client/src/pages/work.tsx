@@ -3,6 +3,7 @@ import SEO from "@/components/seo";
 import { workMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
+import { Mark } from "@/components/motion/Mark";
 import { workEntries } from "@/data/work";
 import { WorkCard } from "@/components/editorial/WorkCard";
 import { earlierExperience, experience } from "@/data/professional";
@@ -41,7 +42,7 @@ export default function Work() {
       <section id="professional-practice" className="work-history" aria-labelledby="work-history-title">
         <header className="home-section-heading home-section-heading--dark">
           <p className="signal-label"><span /> Professional experience</p>
-          <h2 id="work-history-title">The independent work sits on a production foundation.</h2>
+          <h2 id="work-history-title">The independent work sits on a <Mark>production foundation.</Mark></h2>
           <p>Public descriptions remain concise to protect confidential employer material while showing the scope of the work.</p>
         </header>
         <div className="experience-ledger">

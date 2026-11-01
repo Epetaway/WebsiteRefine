@@ -1,0 +1,101 @@
+/* ==========================================================================
+   Scroll choreography and touch feedback
+   Driven by hooks/useScrollChoreography.ts. Nothing here hides content unless
+   html.motion-ready is set, which only happens when motion is allowed.
+   ========================================================================== */
+
+:root {
+  --ease-out-expo: cubic-bezier(.22, 1, .36, 1);
+  --mark-band: color-mix(in srgb, var(--tech-accent) 42%, transparent);
+}
+
+/* ---- Block reveal ------------------------------------------------------ */
+.motion-ready [data-reveal] {
+  transition:
+    opacity 620ms var(--ease-out-expo) var(--reveal-delay, 0ms),
+    transform 720ms var(--ease-out-expo) var(--reveal-delay, 0ms);
+}
+.motion-ready [data-reveal="pending"] { opacity: 0; transform: translate3d(0, 18px, 0); }
+.motion-ready [data-reveal="shown"] { opacity: 1; transform: none; }
+
+/* Headings travel a little further so they lead their section. */
+.motion-ready :is(h2, h3)[data-reveal="pending"] { transform: translate3d(0, 26px, 0); }
+
+/* ---- Highlighter (<Mark>) --------------------------------------------- */
+.mark {
+  padding: 0 .08em;
+  margin: 0 -.08em;
+  background-image: linear-gradient(var(--mark-color, var(--mark-band)), var(--mark-color, var(--mark-band)));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% .42em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.motion-ready .mark.mark-ready {
+  background-size: 0% .42em;
+  transition: background-size 900ms var(--ease-out-expo) 160ms;
+}
+.motion-ready .mark.mark-ready.is-drawn { background-size: 100% .42em; }
+
+/* Dark sections: a softer band keeps light text at full contrast. */
+:is(.home-hero, .home-experience, .home-discipline, .home-contact, .case-hero, .case-proof, .research-direction, .field-note-footer) .mark {
+  --mark-band: color-mix(in srgb, var(--tech-accent) 34%, transparent);
+}
+
+/* ---- Accent words in headings (<em>): underline draws in ---------------- */
+:is(h1, h2) em {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 96%;
+  background-size: 100% .06em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.motion-ready :is(h1, h2) em.mark-ready {
+  background-size: 0% .06em;
+  transition: background-size 820ms var(--ease-out-expo) 260ms;
+}
+.motion-ready :is(h1, h2) em.mark-ready.is-drawn { background-size: 100% .06em; }
+
+/* ---- Touch feedback ----------------------------------------------------- */
+a, button, summary, label, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* removes the double-tap-zoom delay */
+}
+
+.button, .case-link, .text-button, .site-menu-button, .site-nav__link,
+.mobile-nav__links a, .case-deep-dive > summary {
+  transition-property: color, background, background-color, border-color, gap, transform, opacity;
+}
+
+.button:active { transform: scale(.965); transition-duration: 90ms; }
+.case-link:active { transform: translateX(3px); gap: 13px; transition-duration: 90ms; }
+.text-button:active, .site-menu-button:active, .site-nav__link:active { transform: scale(.95); transition-duration: 90ms; }
+.mobile-nav__links a:active { transform: translateX(6px); transition-duration: 90ms; }
+.case-deep-dive > summary:active { transform: scale(.99); transition-duration: 90ms; }
+
+/* Whole-card press on touch screens, where there is no hover preview. */
+@media (hover: none) {
+  .home-case__media, .work-case a, .home-note-list article a {
+    transition: transform 160ms var(--ease-out-expo);
+  }
+  .home-case__media:active, .work-case a:active { transform: scale(.985); }
+  .button:active { filter: brightness(.92); }
+}
+
+/* ---- Reduced motion ----------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  .mark, :is(h1, h2) em { background-size: 100% .42em !important; transition: none !important; }
+  :is(h1, h2) em { background-size: 100% .06em !important; }
+  /* Keep press feedback, without movement. */
+  .button:active, .case-link:active, .text-button:active, .site-menu-button:active,
+  .site-nav__link:active, .mobile-nav__links a:active, .case-deep-dive > summary:active,
+  .home-case__media:active, .work-case a:active { transform: none; opacity: .8; }
+}
+
+@media print {
+  [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .mark { background-size: 100% .42em !important; }
+}

@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect } from "react";
 import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
+import { useScrollChoreography, useTouchPressStates } from "./hooks/useScrollChoreography";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
 import { getFieldNote } from "@/data/fieldNotes";
@@ -43,7 +44,10 @@ function ScrollManager() {
 }
 
 export default function App() {
+  const { pathname } = useLocation();
   useAnalytics();
+  useScrollChoreography(pathname);
+  useTouchPressStates();
   useEffect(() => {
     if (import.meta.env.VITE_GA_MEASUREMENT_ID) initGA();
   }, []);

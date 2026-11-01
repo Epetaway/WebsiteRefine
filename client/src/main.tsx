@@ -6,6 +6,7 @@ import App from "./App";
 import { routerBasePath } from "./lib/publicPath";
 import "./index.css";
 import "./redesign.css";
+import "./styles/motion.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
