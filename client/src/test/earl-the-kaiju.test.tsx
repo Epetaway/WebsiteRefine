@@ -45,7 +45,7 @@ describe("Earl the Kaiju case study", () => {
     work.unmount();
     renderRoute("/");
     expect(await screen.findByRole("heading", { level: 3, name: "Earl the Kaiju" })).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /View Earl the Kaiju case study/i })).toHaveAttribute("href", "/work/earl-the-kaiju");
+    expect(screen.getByRole("link", { name: "Earl the Kaiju" })).toHaveAttribute("href", "/work/earl-the-kaiju");
   });
 
   it("links to it from the About page's teaching story", async () => {
