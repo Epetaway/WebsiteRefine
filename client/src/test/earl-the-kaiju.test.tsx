@@ -40,7 +40,8 @@ describe("Earl the Kaiju case study", () => {
     expect(await screen.findByRole("heading", { level: 2, name: "Earl the Kaiju" })).toBeInTheDocument();
     const titles = screen.getAllByRole("heading", { level: 2 }).map((node) => node.textContent);
     expect(titles.filter((title) => ["WithYou", "Earl the Kaiju", "Gundam Forge", "DojoNet"].includes(title ?? ""))).toEqual(["WithYou", "Earl the Kaiju", "Gundam Forge", "DojoNet"]);
-    expect(screen.getAllByRole("link", { name: /Open case study/i })).toHaveLength(4);
+    // Each card is one link named for its project; the whole card is its hit area.
+    expect(screen.getByRole("link", { name: "Earl the Kaiju" })).toHaveAttribute("href", "/work/earl-the-kaiju");
     work.unmount();
     renderRoute("/");
     expect(await screen.findByRole("heading", { level: 3, name: "Earl the Kaiju" })).toBeInTheDocument();
