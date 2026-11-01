@@ -4,6 +4,7 @@ import { workMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { workEntries } from "@/data/work";
+import { WorkCard } from "@/components/editorial/WorkCard";
 import { earlierExperience, experience } from "@/data/professional";
 
 export default function Work() {
@@ -21,26 +22,18 @@ export default function Work() {
       <section className="work-case-studies" aria-label="Selected case studies">
         {workEntries.map((project, index) => (
           <Reveal key={project.slug}>
-            <article className="work-case" style={{ "--project-accent": project.accent } as React.CSSProperties}>
-              <div className="work-case__number"><span>{project.number}</span><i /></div>
-              <div className={`work-case__visual work-case__visual--${project.heroMedia.presentation}`}>
-                <span>{project.status}</span>
-                <img src={project.heroMedia.src} srcSet={project.heroMedia.srcSet} sizes={project.heroMedia.srcSet ? "(max-width: 1050px) 100vw, 40vw" : undefined} alt={project.heroMedia.alt} loading={index === 0 ? "eager" : "lazy"} />
-              </div>
-              <div className="work-case__body">
-                <p className="signal-label"><span /> {project.theme}</p>
-                <h2>{project.name}</h2>
-                <p className="work-case__question">{project.question}</p>
-                <p>{project.summary}</p>
-                <dl>
-                  <div><dt>My role</dt><dd>{project.role}</dd></div>
-                  <div><dt>Principal decision</dt><dd>{project.decision}</dd></div>
-                  <div><dt>Implementation</dt><dd>{project.built}</dd></div>
-                  <div><dt>Stack</dt><dd>{project.stack.join(" · ")}</dd></div>
-                </dl>
-                <Link className="button button--project" to={project.path}>Open case study <span aria-hidden="true">↗</span></Link>
-              </div>
-            </article>
+            <WorkCard
+              project={project}
+              index={index}
+              placement="work"
+              headingLevel="h2"
+              details={[
+                { label: "My role", value: project.role },
+                { label: "Principal decision", value: project.decision },
+                { label: "Implementation", value: project.built },
+                { label: "Stack", value: project.stack.join(" · ") },
+              ]}
+            />
           </Reveal>
         ))}
       </section>

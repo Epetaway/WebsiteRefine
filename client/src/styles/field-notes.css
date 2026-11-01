@@ -56,6 +56,8 @@
   background: radial-gradient(90% 60% at 70% 0%, var(--nb-glow-a), transparent 70%), var(--nb-surface);
 }
 .field-note-page.nb .field-note-figure__frame img { border-radius: max(var(--nb-radius) - 8px, 0px); }
+.field-note-page.nb .field-note-figure--desktop .field-note-figure__frame { border-radius: min(var(--nb-radius), 14px); }
+.field-note-page.nb .field-note-figure--desktop .field-note-figure__frame img { border-radius: min(var(--nb-radius) / 3, 4px); }
 .field-note-page.nb .field-note-figure__label { color: var(--nb-ink); }
 .field-note-page.nb .field-note-figure__label::before { background: var(--nb-ink); }
 .field-note-page.nb .field-note-figure a:focus-visible { outline-color: var(--nb-ink); }

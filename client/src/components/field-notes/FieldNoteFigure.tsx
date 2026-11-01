@@ -4,19 +4,23 @@ import { publicPath } from "@/lib/publicPath";
 type Props = { figure: Figure; number: number };
 
 /**
- * A phone screen beside its caption. The image carries alt text describing what is on screen;
- * the caption, read after it, says why the screen matters. On narrow screens they stack.
+ * A screen with its caption. Phone screens sit beside the caption; desktop screens (wider than
+ * tall) span the reading column with the caption below. The image's alt text describes what is
+ * on screen; the caption, read after it, says why the screen matters.
  */
 export function FieldNoteFigure({ figure, number }: Props) {
   const label = `Figure ${String(number).padStart(2, "0")}`;
-  const full = publicPath(`${figure.src}-1080.webp`);
+  const desktop = figure.width > figure.height;
+  const url = (width: number) => publicPath(`${figure.src}-${width}.webp`);
+  const full = url(figure.widths[figure.widths.length - 1]);
   return (
-    <figure className="field-note-figure" id={`figure-${number}`}>
+    <figure className={`field-note-figure field-note-figure--${desktop ? "desktop" : "phone"}`} id={`figure-${number}`}>
       <div className="field-note-figure__frame">
+        {desktop && <span className="field-note-figure__chrome" aria-hidden="true"><i /><i /><i /></span>}
         <img
-          src={publicPath(`${figure.src}-600.webp`)}
-          srcSet={`${publicPath(`${figure.src}-600.webp`)} 600w, ${full} 1080w`}
-          sizes="(max-width: 700px) min(78vw, 320px), 280px"
+          src={url(figure.widths[0])}
+          srcSet={figure.widths.map((width) => `${url(width)} ${width}w`).join(", ")}
+          sizes={desktop ? "(max-width: 900px) 92vw, 760px" : "(max-width: 700px) min(78vw, 320px), 280px"}
           width={figure.width}
           height={figure.height}
           alt={figure.alt}
