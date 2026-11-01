@@ -3,18 +3,31 @@ import SEO from "@/components/seo";
 import { fieldNoteMeta } from "@/data/routeMeta/fieldNotes";
 import { getFieldNote } from "@/data/fieldNotes";
 import NotFound from "@/pages/not-found";
+import { FieldNoteFigure } from "@/components/field-notes/FieldNoteFigure";
+import { NoteLockup } from "@/components/field-notes/NoteLockup";
+import { noteBrand, noteBrandStyle } from "@/data/noteBrands";
+import "@/styles/field-notes.css";
 
 export default function FieldNotePage() {
   const { slug } = useParams();
   const note = getFieldNote(slug);
   if (!note) return <NotFound />;
+  // Figures are numbered in reading order. A note without figures renders as text only.
+  let figureCount = 0;
+  const numbered = note.sections.map((section) => ({
+    section,
+    figureNumber: section.figure ? ++figureCount : undefined,
+  }));
+  // The project the note discusses colours it; the portfolio supplies everything else.
+  const brand = noteBrand(note.project);
   return (
-    <article className="field-note-page" style={{ "--note-accent": note.themeColor } as React.CSSProperties}>
+    <article className={`field-note-page nb nb--${brand.key}`} style={noteBrandStyle(brand) as React.CSSProperties}>
       <SEO {...fieldNoteMeta(note)} />
       <section className="field-note-hero">
         <div className="field-note-hero__rail">
           <Link to="/field-notes" className="case-link case-link--light">← All notes</Link>
           <span>{note.number} / {note.theme}</span>
+          <NoteLockup brand={brand} number={note.number} />
         </div>
         <div className="field-note-hero__title">
           <p className="signal-label"><span /> Field note / {note.theme}</p>
@@ -25,8 +38,42 @@ export default function FieldNotePage() {
           <div><span>{note.date}</span><span>{note.readingTime} read</span><span>Personal reflection + product inquiry</span></div>
         </aside>
       </section>
-      <div className="field-note-layout"><aside><span>Evidence note</span><p>Project facts are labeled as implementation. Interpretations remain Earl's reflections. Proposed studies are not presented as completed research.</p><ul>{note.evidenceTypes.map((type) => <li key={type}>{type.replaceAll("-", " ")}</li>)}</ul></aside><div className="field-note-body">{note.sections.map((section, index) => <section key={section.heading ?? index}>{section.heading && <h2>{section.heading}</h2>}{section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}{section.points && <ul>{section.points.map((point) => <li key={point}>{point}</li>)}</ul>}</section>)}</div></div>
-      <section className="field-note-footer"><span>Continue the inquiry</span><h2>See how this argument appears in a working system.</h2><Link className="button button--light" to={note.theme === "Learning" ? "/work/dojonet" : note.theme === "Relationships" ? "/work/withyou" : "/work/gundam-forge"}>View the related case study</Link></section>
+      <div className={`field-note-layout${figureCount ? " field-note-layout--figures" : ""}`}>
+        <aside>
+          <span>Evidence note</span>
+          <p>Project facts are labeled as implementation. Interpretations remain Earl's reflections. Proposed studies are not presented as completed research.</p>
+          <ul>{note.evidenceTypes.map((type) => <li key={type}>{type.replaceAll("-", " ")}</li>)}</ul>
+          {figureCount > 0 && (
+            <nav className="field-note-figure-index" aria-label="Figures in this note">
+              <span>{figureCount} {figureCount === 1 ? "figure" : "figures"}</span>
+              <ol>
+                {numbered.filter(({ figureNumber }) => figureNumber).map(({ section, figureNumber }) => (
+                  <li key={figureNumber}><a href={`#figure-${figureNumber}`}>{String(figureNumber).padStart(2, "0")} · {section.heading ?? note.title}</a></li>
+                ))}
+              </ol>
+            </nav>
+          )}
+        </aside>
+        <div className="field-note-body">
+          {numbered.map(({ section, figureNumber }, index) => (
+            <section key={section.heading ?? index}>
+              {section.heading && <h2>{section.heading}</h2>}
+              {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+              {section.points && <ul>{section.points.map((point) => <li key={point}>{point}</li>)}</ul>}
+              {section.figure && figureNumber && <FieldNoteFigure figure={section.figure} number={figureNumber} />}
+            </section>
+          ))}
+        </div>
+      </div>
+      <section className="field-note-footer">
+        <span>Continue the inquiry</span>
+        <h2>See how this argument appears in a working system.</h2>
+        {brand.caseStudy ? (
+          <Link className="button nb-button" to={brand.caseStudy}>View the {brand.name} case study</Link>
+        ) : (
+          <Link className="button nb-button" to="/work">View the case studies</Link>
+        )}
+      </section>
     </article>
   );
 }

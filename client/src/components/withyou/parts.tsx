@@ -1,5 +1,6 @@
-import { useId, type CSSProperties, type ReactNode } from "react";
+import { type CSSProperties, type ReactNode } from "react";
 import { highlight } from "@/components/earl-the-kaiju/highlight";
+import { WyMark } from "./WyMark";
 import {
   wyBrand,
   wyIcons,
@@ -14,6 +15,8 @@ import {
   type WyStatus,
 } from "@/data/withyou";
 import { publicPath } from "@/lib/publicPath";
+
+export { WyMark };
 
 const withBase = (srcSet: string) =>
   srcSet
@@ -90,50 +93,6 @@ export function WyIllustration({ id, alt }: { id: WyIllustrationId; alt: string 
  * The WithYou mark, drawn from the same geometry as the app's Logo.tsx:
  * two 16×22 ellipses tilted ±10° on a 60×56 grid, with a clip so each loop passes in front once.
  */
-export function WyMark({
-  size = 48,
-  coral = "var(--wy-coral)",
-  blush = "var(--wy-blush)",
-  title,
-  className,
-}: {
-  size?: number;
-  coral?: string;
-  blush?: string;
-  title?: string;
-  className?: string;
-}) {
-  const stroke = Math.max(3, size * 0.088) * (60 / size);
-  const clipId = `wy-mark-${useId().replace(/:/g, "")}`;
-  return (
-    <svg
-      className={className}
-      width={size}
-      height={size * 0.93}
-      viewBox="0 0 60 56"
-      role={title ? "img" : undefined}
-      aria-label={title}
-      aria-hidden={title ? undefined : true}
-      focusable="false"
-    >
-      <defs>
-        <clipPath id={clipId}>
-          <rect x="30" y="0" width="30" height="56" />
-        </clipPath>
-      </defs>
-      <g transform="rotate(10 41 28)">
-        <ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke={blush} strokeWidth={stroke} />
-      </g>
-      <g transform="rotate(-10 19 28)">
-        <ellipse cx="19" cy="28" rx="16" ry="22" fill="none" stroke={coral} strokeWidth={stroke} />
-      </g>
-      <g transform="rotate(10 41 28)" clipPath={`url(#${clipId})`}>
-        <ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke={blush} strokeWidth={stroke} />
-      </g>
-    </svg>
-  );
-}
-
 /**
  * Mark + wordmark, set the way Logo.tsx sets it: Inter 700, -0.035em tracking, "You" in coral.
  * The wordmark is SVG text so it behaves as the logotype it is (one image named "WithYou"),

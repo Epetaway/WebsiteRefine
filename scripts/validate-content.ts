@@ -431,6 +431,25 @@ for (const route of expectedRoutes) {
   }
 }
 
+// Field Note figures: every image exists at both widths, and alt text and caption are present and
+// distinct (alt describes the screen; the caption says why it matters).
+for (const note of fieldNotes) {
+  for (const section of note.sections) {
+    const figure = section.figure;
+    if (!figure) continue;
+    const where = `${note.slug} figure ${figure.src}`;
+    for (const width of [600, 1080]) {
+      if (!existsSync(path.join(root, "client/public", `${figure.src}-${width}.webp`))) {
+        fail(`${where} is missing its ${width}px image.`);
+      }
+    }
+    if (figure.alt.trim().length < 40) fail(`${where} needs alt text that describes the screen.`);
+    if (!figure.caption.trim()) fail(`${where} needs a caption.`);
+    if (figure.alt.trim() === figure.caption.trim()) fail(`${where} repeats its caption as alt text.`);
+    if (!figure.source.trim()) fail(`${where} needs a source line.`);
+  }
+}
+
 // Route metadata: every canonical route shares a raster image that exists, one URL per route.
 const rasterImage = /\.(?:png|jpe?g)$/i;
 const seenRoutePaths = new Set<string>();

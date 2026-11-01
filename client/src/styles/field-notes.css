@@ -1,0 +1,74 @@
+/* Field Note brands.
+   The portfolio frame (type, grid, evidence note, figures) stays as redesign.css sets it. A note's
+   brand (client/src/data/noteBrands.ts) recolours it through --nb-* properties set on
+   .field-note-page: the hero and footer take the project's surface and glow, the reading column
+   takes its paper, accents and rules take its ink, and figure frames take its surface and radius.
+   Project typefaces appear only inside the project's lockup. */
+
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 700; font-display: swap; src: url("/assets/fonts/inter-latin-700.woff2") format("woff2"); }
+@font-face { font-family: "Bebas Neue"; font-style: normal; font-weight: 400; font-display: swap; src: url("/assets/fonts/bebas-neue-latin-400.woff2") format("woff2"); }
+@font-face { font-family: "Orbitron"; font-style: normal; font-weight: 600; font-display: swap; src: url("/assets/fonts/orbitron-latin-600.woff2") format("woff2"); }
+
+/* Hero: project surface with its two glows, portfolio typography on top. */
+.field-note-page.nb .field-note-hero {
+  position: relative;
+  background:
+    radial-gradient(58% 70% at 82% 26%, var(--nb-glow-a), transparent 70%),
+    radial-gradient(48% 60% at 60% 100%, var(--nb-glow-b), transparent 72%),
+    var(--nb-surface);
+  color: var(--nb-text);
+}
+.field-note-page.nb .field-note-hero__rail { color: var(--nb-muted); }
+.field-note-page.nb .field-note-hero__rail > span { color: var(--nb-accent-2); }
+.field-note-page.nb .field-note-hero .case-link--light { color: var(--nb-text); }
+.field-note-page.nb .field-note-hero .case-link--light:hover { color: var(--nb-accent); }
+.field-note-page.nb .field-note-hero__title .signal-label { color: var(--nb-accent-2); }
+.field-note-page.nb .field-note-hero__title .signal-label > span { background: var(--nb-accent); }
+.field-note-page.nb .field-note-hero__title h1 { color: var(--nb-text); }
+.field-note-page.nb .field-note-hero__context { border-top-color: var(--nb-accent); }
+.field-note-page.nb .field-note-hero .field-note-hero__context blockquote { color: var(--nb-accent-2); }
+.field-note-page.nb .field-note-hero__context > div { color: var(--nb-muted); }
+.field-note-page.nb :focus-visible { outline-color: var(--nb-accent); }
+
+/* Co-brand lockup: portfolio monogram × project lockup. */
+.nb-lockup { display: flex; align-items: center; gap: 14px; margin: 0; padding-top: 26px; border-top: 1px solid color-mix(in srgb, var(--nb-text) 16%, transparent); color: var(--nb-text); }
+.nb-lockup__eh { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid color-mix(in srgb, var(--nb-text) 34%, transparent); color: var(--nb-accent); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: .04em; }
+.nb-lockup__x { color: var(--nb-muted); font-family: var(--font-mono); font-size: 13px; }
+.nb-mark { display: inline-flex; align-items: center; gap: 9px; color: var(--nb-text); letter-spacing: normal; text-transform: none; white-space: nowrap; }
+.nb-mark--withyou > span { font-family: "Inter", system-ui, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -.035em; }
+.nb-mark--withyou b { color: var(--nb-accent); font-weight: 700; }
+.nb-mark--dojonet { font-family: "Bebas Neue", "Inter", system-ui, sans-serif; font-size: 27px; line-height: .9; letter-spacing: .04em; text-transform: uppercase; }
+.nb-mark--gundam-forge { gap: 8px; font-family: "Orbitron", "Exo 2", system-ui, sans-serif; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.nb-mark__badge { display: inline-grid; place-items: center; width: 24px; height: 24px; border: 1px solid rgba(96,165,250,.7); border-radius: 3px; background: rgba(59,130,246,.25); box-shadow: 0 0 16px rgba(59,130,246,.4); color: #93c5fd; font-family: var(--font-mono); font-size: 9px; font-weight: 700; }
+.nb-mark--earl-the-kaiju { height: 30px; width: auto; }
+
+/* Reading column: project paper, portfolio type. */
+.field-note-page.nb { background: var(--nb-paper); }
+.field-note-page.nb .field-note-layout { background: var(--nb-paper); }
+.field-note-page.nb .field-note-layout > aside { background: var(--nb-paper-2); border-top-color: var(--nb-ink); }
+.field-note-page.nb .field-note-layout > aside > span,
+.field-note-page.nb .field-note-figure-index > span { color: var(--nb-ink); }
+.field-note-page.nb .field-note-body ul { background: var(--nb-paper-2); border-left-color: var(--nb-ink); }
+
+/* Figures: the frame is the project's own dark surface, with its corner radius. */
+.field-note-page.nb .field-note-figure__frame {
+  border-radius: calc(var(--nb-radius) + 6px);
+  background: radial-gradient(90% 60% at 70% 0%, var(--nb-glow-a), transparent 70%), var(--nb-surface);
+}
+.field-note-page.nb .field-note-figure__frame img { border-radius: max(var(--nb-radius) - 8px, 0px); }
+.field-note-page.nb .field-note-figure__label { color: var(--nb-ink); }
+.field-note-page.nb .field-note-figure__label::before { background: var(--nb-ink); }
+.field-note-page.nb .field-note-figure a:focus-visible { outline-color: var(--nb-ink); }
+
+/* Footer: back to the project's surface, leading to its case study. */
+.field-note-page.nb .field-note-footer {
+  background:
+    radial-gradient(55% 90% at 90% 10%, var(--nb-glow-a), transparent 70%),
+    radial-gradient(45% 80% at 10% 100%, var(--nb-glow-b), transparent 70%),
+    var(--nb-surface);
+  color: var(--nb-text);
+}
+.field-note-page.nb .field-note-footer > span { color: var(--nb-accent-2); }
+.nb-button { background: var(--nb-accent); color: var(--nb-surface); }
+.nb-button:hover { background: var(--nb-text); color: var(--nb-surface); }
+.nb-button:focus-visible { outline: 2px solid var(--nb-text); outline-offset: 3px; }
