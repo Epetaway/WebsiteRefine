@@ -3,6 +3,7 @@ import SEO from "@/components/seo";
 import { homeMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { workEntries } from "@/data/work";
+import { WorkCard } from "@/components/editorial/WorkCard";
 import { fieldNotes } from "@/data/fieldNotes";
 import { earlierExperience, experience, profile, teaching } from "@/data/professional";
 import { publicPath } from "@/lib/publicPath";
@@ -49,7 +50,7 @@ export default function Home() {
       </section>
 
       <section className="home-work" aria-labelledby="selected-work-heading">
-        <header className="home-section-heading">
+        <header className="home-section-heading home-section-heading--dark">
           <p className="signal-label"><span /> 01 / Selected case studies</p>
           <h2 id="selected-work-heading">Product thinking made tangible.</h2>
           <p>Independent products showing how I move between interaction decisions, implementation constraints, and working interfaces.</p>
@@ -57,25 +58,18 @@ export default function Home() {
 
         <div className="home-case-list">
           {workEntries.map((project, index) => (
-            <Reveal key={project.slug} className="home-case" delay={index * 0.04}>
-              <article style={{ "--project-accent": project.accent } as React.CSSProperties}>
-                <Link className={`home-case__media home-case__media--${project.heroMedia.presentation}`} to={project.path} aria-label={`View ${project.name} case study`}>
-                  <span>{project.number} / {project.status}</span>
-                  <img src={project.heroMedia.src} srcSet={project.heroMedia.srcSet} sizes={project.heroMedia.srcSet ? "(max-width: 1050px) 100vw, 45vw" : undefined} alt={project.heroMedia.alt} loading={index === 0 ? "eager" : "lazy"} />
-                </Link>
-                <div className="home-case__content">
-                  <div className="home-case__meta"><span>{project.theme}</span><span>{project.stack.slice(0, 3).join(" · ")}</span></div>
-                  <h3>{project.name}</h3>
-                  <p className="home-case__question">{project.question}</p>
-                  <p>{project.summary}</p>
-                  <dl><div><dt>My role</dt><dd>{project.role}</dd></div><div><dt>Built</dt><dd>{project.built}</dd></div></dl>
-                  <Link className="case-link" to={project.path}>Read case study <span aria-hidden="true">↗</span></Link>
-                </div>
-              </article>
+            <Reveal key={project.slug} delay={index * 0.04}>
+              <WorkCard
+                project={project}
+                index={index}
+                placement="home"
+                headingLevel="h3"
+                compact
+              />
             </Reveal>
           ))}
         </div>
-        <Link className="button button--dark" to="/work">See all work and experience</Link>
+        <Link className="button button--accent" to="/work">See all work and experience</Link>
       </section>
 
       <section className="home-experience" aria-labelledby="experience-heading">

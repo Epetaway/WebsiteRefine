@@ -4,8 +4,7 @@ import { workMeta } from "@/data/routeMeta/pages";
 import { Reveal } from "@/components/motion/Reveal";
 import { PageIntro } from "@/components/editorial/PageIntro";
 import { workEntries } from "@/data/work";
-import { getWorkCover, workCoverStyle } from "@/data/workCovers";
-import { KitPicture } from "@/components/case-study-kit/kit";
+import { WorkCard } from "@/components/editorial/WorkCard";
 import { earlierExperience, experience } from "@/data/professional";
 
 export default function Work() {
@@ -21,46 +20,22 @@ export default function Work() {
       />
 
       <section className="work-case-studies" aria-label="Selected case studies">
-        {workEntries.map((project, index) => {
-          const cover = getWorkCover(project.slug);
-          const eager = index === 0;
-          return (
-            <Reveal key={project.slug}>
-              <article
-                className={`work-card work-card--${index % 2 === 0 ? "media-right" : "media-left"}`}
-                style={workCoverStyle(cover) as React.CSSProperties}
-                data-testid={`work-card-${project.slug}`}
-              >
-                <div className="work-card__body">
-                  <p className="work-card__meta">
-                    <span>Case study {project.number}</span>
-                    <span>{project.theme}</span>
-                  </p>
-                  <h2><Link className="work-card__link" to={project.path}>{project.name}</Link></h2>
-                  <p className="work-card__question">{project.question}</p>
-                  <p className="work-card__summary">{project.summary}</p>
-                  <dl>
-                    <div><dt>My role</dt><dd>{project.role}</dd></div>
-                    <div><dt>Principal decision</dt><dd>{project.decision}</dd></div>
-                    <div><dt>Implementation</dt><dd>{project.built}</dd></div>
-                    <div><dt>Stack</dt><dd>{project.stack.join(" · ")}</dd></div>
-                  </dl>
-                  <span className="work-card__cta" aria-hidden="true">Open case study <i>→</i></span>
-                </div>
-                <div className="work-card__stage">
-                  <span className="work-card__status">{project.status}</span>
-                  <div className="work-card__main">
-                    <i className="work-card__bar" aria-hidden="true"><b /><b /><b /></i>
-                    <KitPicture item={cover.main.item} alt={cover.main.alt} sizes="(max-width: 900px) 92vw, 52vw" eager={eager} />
-                  </div>
-                  <div className="work-card__float">
-                    <KitPicture item={cover.float.item} alt={cover.float.alt} sizes="(max-width: 900px) 34vw, 14vw" eager={eager} />
-                  </div>
-                </div>
-              </article>
-            </Reveal>
-          );
-        })}
+        {workEntries.map((project, index) => (
+          <Reveal key={project.slug}>
+            <WorkCard
+              project={project}
+              index={index}
+              placement="work"
+              headingLevel="h2"
+              details={[
+                { label: "My role", value: project.role },
+                { label: "Principal decision", value: project.decision },
+                { label: "Implementation", value: project.built },
+                { label: "Stack", value: project.stack.join(" · ") },
+              ]}
+            />
+          </Reveal>
+        ))}
       </section>
 
       <section id="professional-practice" className="work-history" aria-labelledby="work-history-title">
