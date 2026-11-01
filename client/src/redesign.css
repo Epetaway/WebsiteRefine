@@ -138,6 +138,11 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .home-case__media > span { position: absolute; z-index: 2; top: 14px; left: 14px; padding: 7px 9px; background: var(--tech-bg); color: var(--tech-text); font-family: var(--font-mono); font-size: 7px; letter-spacing: .12em; text-transform: uppercase; }
 .home-case__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 480ms cubic-bezier(.22,1,.36,1); }
 .home-case__media:hover img { transform: scale(1.025); }
+/* Show the whole preview: the image keeps its own proportions instead of being cropped to the
+   tile, and the status tag sits above it rather than over it. */
+.home-case__media--desktop { display: flex; flex-direction: column; align-items: stretch; justify-content: center; gap: 14px; min-height: 0; padding: 14px; }
+.home-case__media--desktop > span { position: static; align-self: flex-start; }
+.home-case__media--desktop img { height: auto; object-fit: contain; }
 .home-case__media--mobile img { width: min(54%, 310px); height: auto; max-height: 540px; object-fit: contain; filter: drop-shadow(0 28px 32px rgba(0,0,0,.28)); }
 .home-case__content { align-self: center; }
 .home-case__meta { display: flex; justify-content: space-between; gap: 18px; color: var(--project-accent); font-family: var(--font-mono); font-size: 8px; letter-spacing: .1em; text-transform: uppercase; }
@@ -408,6 +413,7 @@ body { background: var(--tech-bg); color: var(--tech-text); }
   .home-case article { grid-template-columns: 1fr; }
   .home-case:nth-child(even) .home-case__media { order: 0; }
   .home-case__media { min-height: 540px; }
+  .home-case__media--desktop { min-height: 0; }
   .work-case { grid-template-columns: 36px 1fr; }
   .work-case__visual, .work-case__body { grid-column: 2; }
   .case-hero { grid-template-columns: 1fr; }
@@ -452,6 +458,9 @@ body { background: var(--tech-bg); color: var(--tech-text); }
   .page-intro--compact { min-height: auto; }
   .home-section-heading h2 { font-size: 44px; }
   .home-case__media, .work-case__visual { min-height: 390px; }
+  /* Previews run edge to edge on phones so nothing in them is cut or shrunk to fit the gutter. */
+  .home-case__media--desktop { min-height: 0; margin-inline: calc(var(--page-gutter) * -1); padding: 12px 0 0; gap: 12px; }
+  .home-case__media--desktop > span { margin-left: var(--page-gutter); }
   .home-case__content dl { grid-template-columns: 1fr; }
   .experience-ledger article { grid-template-columns: 1fr; gap: 12px; }
   .experience-ledger article > span:last-child { grid-column: 1; }
