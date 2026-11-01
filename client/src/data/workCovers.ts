@@ -54,8 +54,8 @@ export const workCovers: Record<string, WorkCover> = {
       alt: "The instructor website's home page on desktop: Earl in a black gi, his name in large condensed type and a Register Your Interest button",
     },
     float: {
-      item: pick(kaijuMedia as MediaRecord, "coach-today"),
-      alt: "Kaiju Coach's Today screen on a phone: the next class, Guard Retention at 6:30 PM, and a Start class button",
+      item: pick(kaijuMedia as MediaRecord, "coach-class-mode"),
+      alt: "Kaiju Coach's Class Mode on a phone: segment 2 of 4, Guard Retention Concepts, with 14:20 left, what's next and a Next segment button",
     },
   },
   "gundam-forge": {
