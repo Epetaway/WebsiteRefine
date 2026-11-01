@@ -52,6 +52,25 @@ describe.each(pages)("case-study cards on %s", (placement, route, page, level) =
   });
 });
 
+describe("card copy", () => {
+  it("keeps Home's cards short, with a filled call to action, and /work's cards detailed", () => {
+    const home = renderAt("/", <Home />);
+    for (const entry of workEntries) {
+      const card = screen.getByTestId(`work-card-${entry.slug}`);
+      expect(card).toHaveClass("work-card--compact");
+      expect(card.querySelector("dl")).toBeNull();
+      expect(card).toHaveTextContent("Read the case study");
+    }
+    home.unmount();
+    renderAt("/work", <Work />);
+    for (const entry of workEntries) {
+      const card = screen.getByTestId(`work-card-${entry.slug}`);
+      expect(card).not.toHaveClass("work-card--compact");
+      expect(card.querySelectorAll("dl > div")).toHaveLength(4);
+    }
+  });
+});
+
 describe("work cover images", () => {
   it("use case-study captures that exist on disk, not the composite preview images", () => {
     for (const entry of workEntries) {

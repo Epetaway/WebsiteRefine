@@ -64,10 +64,7 @@ export default function Home() {
                 index={index}
                 placement="home"
                 headingLevel="h3"
-                details={[
-                  { label: "My role", value: project.role },
-                  { label: "Built", value: project.built },
-                ]}
+                compact
               />
             </Reveal>
           ))}

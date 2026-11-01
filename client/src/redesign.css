@@ -177,6 +177,12 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .work-card:hover .work-card__cta { background: var(--wc-accent); color: var(--wc-surface); }
 .work-card:hover .work-card__cta i { transform: translateX(4px); }
 
+/* Home: less copy, a filled call to action */
+.work-card--compact { min-height: clamp(500px,40vw,620px); }
+.work-card--compact .work-card__summary { margin-bottom: 34px; }
+.work-card--compact .work-card__cta { min-height: 54px; padding: 0 24px; background: var(--wc-accent); color: var(--wc-surface); border-color: var(--wc-accent); font-size: 11px; }
+.work-card--compact:hover .work-card__cta { background: var(--wc-text); border-color: var(--wc-text); color: var(--wc-surface); }
+
 .work-card__stage { --stage-pad: clamp(26px,3vw,48px); position: relative; z-index: 1; padding: 0 0 clamp(36px,4vw,64px); }
 .work-card--media-right .work-card__stage { padding-right: var(--stage-pad); }
 .work-card--media-left .work-card__stage { padding-left: var(--stage-pad); }
