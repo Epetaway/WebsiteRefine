@@ -431,14 +431,17 @@ for (const route of expectedRoutes) {
   }
 }
 
-// Field Note figures: every image exists at both widths, and alt text and caption are present and
+// Field Note figures: every image exists at each listed width (never above the source width), and alt text and caption are present and
 // distinct (alt describes the screen; the caption says why it matters).
 for (const note of fieldNotes) {
   for (const section of note.sections) {
     const figure = section.figure;
     if (!figure) continue;
     const where = `${note.slug} figure ${figure.src}`;
-    for (const width of [600, 1080]) {
+    if (!figure.widths.length || figure.widths.some((width) => width > figure.width)) {
+      fail(`${where} lists widths larger than its ${figure.width}px source (images are never upscaled).`);
+    }
+    for (const width of figure.widths) {
       if (!existsSync(path.join(root, "client/public", `${figure.src}-${width}.webp`))) {
         fail(`${where} is missing its ${width}px image.`);
       }

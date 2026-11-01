@@ -3,8 +3,10 @@
 Field Notes come in two forms and share one page layout (`client/src/pages/field-note.tsx`):
 
 - **Text-only notes** render as a reading column with the evidence note beside it.
-- **Notes with figures** add a phone screen after a section's text, with a numbered caption beside it
-  (stacked when the reading column is narrower than 640px), and a figure index in the evidence note.
+- **Notes with figures** add a screen after a section's text, and a figure index in the evidence note.
+  A phone screen sits beside its numbered caption (stacked when the reading column is narrower than
+  640px). A desktop screen (wider than tall) spans the reading column in a browser-style frame with
+  the caption below.
 
 A figure is an optional `figure` on a section in `client/src/data/fieldNotes.ts`. The Field Notes index
 shows each note's figure count, or "Text" for text-only notes.
@@ -55,8 +57,11 @@ characters, a caption or source is empty, or the alt text repeats the caption.
 
 Images come from Earl's shared screenshot catalog at `~/Dev/Screenshots` (that folder's `CLAUDE.md`
 records how each set was captured). `scripts/field_note_figures.py` maps each figure to its source file
-and writes `client/public/assets/field-notes/figures/<note-slug>/<name>-{600,1080}.webp`. Images are only
-resized and re-encoded; metadata is stripped and nothing is cropped or retouched.
+and writes `client/public/assets/field-notes/figures/<note-slug>/<name>-<width>.webp` at a small and a large
+width (600 and up to 1080 for phone screens, 900 and up to 1600 for desktop screens), never above the
+source width. Each figure lists its `widths`; validation fails if a listed file is missing or a width
+exceeds the source. Images are only resized and re-encoded; metadata is stripped and nothing is cropped
+or retouched.
 
 ```bash
 python3 -m pip install pillow   # once
@@ -69,12 +74,23 @@ python3 scripts/field_note_figures.py   # SCREENSHOTS_DIR overrides ~/Dev/Screen
 | A Bridge You Meet Each Other On | 02 Guidance | `WithYou/guidance/01-guidance-overview.png` | same |
 | Designing Consent Into Digital Products | 01 Quick Note review | `WithYou/connect/03-quick-note-review.png` | same |
 | Designing Consent Into Digital Products | 02 Weekly check-in | `WithYou/weekly-check-in/02-weekly-question-form.png` | same |
+| Teaching Jiu-Jitsu Changed the Way I Think About UX | 01 Dashboard progress panel | `DojoNet/dashboard/01-dashboard-progress-panel.png` | Local build, demo account, 1440 × 900 (re-encoded from the case-study media) |
+| Teaching Jiu-Jitsu Changed the Way I Think About UX | 02 Journal composer | `DojoNet/journal/01-journal-composer.png` | same |
+| What Trading Card Games Teach Us About Information Architecture | 01 Draft one card short | `GundamForge/deck-builder/01-draft-one-card-short-mobile.png` | Local build, fictional study deck, 390 × 844 (re-encoded from the case-study media) |
+| What Trading Card Games Teach Us About Information Architecture | 02 Deck Issues sheet | `GundamForge/deck-builder/02-deck-issues-sheet-mobile.png` | same |
 
-## Not used, and why (Oct 31, 2026)
+The DojoNet and Gundam Forge sets were added to the catalog on Oct 31, 2026 from the case studies'
+published media (originally made by `scripts/{dojonet,gundam-forge}-captures.mjs`; provenance in
+`docs/{DOJONET,GUNDAM-FORGE}-ASSETS.md`). They are the as-built app; the case studies' `-fixed`
+captures, which show a demonstrated fix, are not used as product screens.
+
+## Not used, and why (updated Oct 31, 2026)
 
 - `WithYou/spark-profile/…`, `spark-wishlist/…`, `spark-partner-view/…`: they would illustrate
   field-level visibility well, but item names carry developer seed tags (DEVPRIV, JORDANSHARED,
   DEVWISHSHARED). Recapture with clean demo names to use them.
 - `WithYou/weekly-check-in/01-weekly-check-in-intro.png` shows the same screen as `02-`; only one is used.
-- Teaching Jiu-Jitsu (DojoNet) and Trading Card Games (Gundam Forge): the catalog has no captures of
-  either product yet, so both notes stay text-only.
+- DojoNet's technique library (`m-techniques`): it shows the app's own four stages (Learning, Practicing,
+  Comfortable, Mastered), not the note's proposed model (Seen, Practiced, Recognized, Adapted), so as a
+  figure it would contradict the text beside it. It also shows the as-built contrast bug that hides the
+  active tab and add buttons.

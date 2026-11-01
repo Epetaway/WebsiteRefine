@@ -355,12 +355,25 @@ body { background: var(--tech-bg); color: var(--tech-text); }
 .field-note-figure-index ol { display: grid; gap: 8px; margin: 10px 0 0; padding: 0; list-style: none; }
 .field-note-figure-index a { color: var(--tech-ink); font-size: 12px; line-height: 1.45; text-underline-offset: 3px; }
 .field-note-figure { scroll-margin-top: 110px; }
+/* Desktop screens span the reading column in a browser-style frame, caption below. */
+.field-note-figure--desktop { grid-template-columns: minmax(0,1fr); align-items: start; }
+.field-note-figure--desktop .field-note-figure__frame { padding: 0 10px 10px; border-radius: 12px; }
+.field-note-figure__chrome { display: flex; gap: 6px; padding: 11px 4px 10px; }
+.field-note-figure__chrome i { width: 9px; height: 9px; border-radius: 50%; background: rgba(247,243,235,.22); }
+.field-note-figure--desktop .field-note-figure__frame img { border-radius: 4px; }
+.field-note-figure--desktop figcaption { grid-template-columns: minmax(0,1fr) auto; column-gap: 32px; align-items: end; }
+.field-note-figure--desktop figcaption > .field-note-figure__label,
+.field-note-figure--desktop figcaption > p { grid-column: 1 / -1; }
+.field-note-figure--desktop figcaption > a { justify-self: end; }
 /* Stack when the reading column, not the viewport, is too narrow for image + caption. */
 .field-note-body { container-type: inline-size; }
 @container (max-width: 640px) {
   .field-note-figure { grid-template-columns: 1fr; justify-items: center; }
   .field-note-figure__frame { width: min(100%, 320px); }
   .field-note-figure figcaption { justify-self: stretch; }
+  .field-note-figure--desktop .field-note-figure__frame { width: 100%; }
+  .field-note-figure--desktop figcaption { grid-template-columns: minmax(0,1fr); }
+  .field-note-figure--desktop figcaption > a { justify-self: start; }
 }
 
 .online-resume { max-width: var(--content); margin-top: 0; margin-bottom: 0; padding-block: clamp(64px,8vw,110px); border-block: 0; box-shadow: none; }
