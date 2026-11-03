@@ -3,6 +3,7 @@ import { createPortal } from "react-dom";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { navigation } from "@/data/navigation";
 import { profile } from "@/data/professional";
+import LogoMark from "@/components/brand/LogoMark";
 
 const focusableSelector =
   'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
@@ -51,7 +52,7 @@ export default function Header() {
     <header className="site-header">
       <div className="site-header__inner">
         <Link to="/" className="site-identity" aria-label="Earl Hickson Jr., home">
-          <span className="site-identity__mark" aria-hidden="true">EH</span>
+          <LogoMark className="site-identity__mark" />
           <span><span className="site-identity__name">{profile.name}</span><span className="site-identity__title">{profile.publicTitle}</span></span>
         </Link>
 
