@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
 import { navigation } from "@/data/navigation";
 import { professionalLinks, profile } from "@/data/professional";
+import LogoMark from "@/components/brand/LogoMark";
 
 export default function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__grid">
         <div>
+          <LogoMark className="site-footer__mark" />
           <p className="eyebrow eyebrow--light">Earl Hickson Jr. / {profile.publicTitle}</p>
           <p className="site-footer__thesis">Design the experience. Build the behavior.</p>
           <p className="site-footer__availability"><span /> {profile.availability}</p>
