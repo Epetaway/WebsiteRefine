@@ -18,19 +18,38 @@ export type FieldNoteFigure = {
   source: string;
 };
 
+/**
+ * A before/after pair the reader drags between. Both images share one canvas (same width and height)
+ * so the slider only has to clip the top one. `after` is revealed from the left edge. Each image has
+ * its own alt text; `control` names the slider for assistive technology. The images are only resized
+ * and re-encoded: `${src}-${w}.webp` exists for each of `widths`.
+ */
+export type FieldNoteCompare = {
+  before: { src: string; label: string; alt: string };
+  after: { src: string; label: string; alt: string };
+  width: number;
+  height: number;
+  widths: number[];
+  control: string;
+  caption: string;
+  source: string;
+};
+
 export type FieldNoteSection = {
   heading?: string;
   paragraphs: string[];
   points?: string[];
   /** Shown after the section's text. */
   figure?: FieldNoteFigure;
+  /** An interactive before/after slider, shown after the section's text. */
+  compare?: FieldNoteCompare;
 };
 
 export type FieldNote = {
   slug: string;
   number: string;
   title: string;
-  theme: "Learning" | "Relationships" | "Decision Support";
+  theme: "Learning" | "Relationships" | "Decision Support" | "Design";
   themeColor: string;
   /** The project the note discusses. Its brand colours the note; omit for the portfolio brand. */
   project?: Exclude<NoteBrandKey, "portfolio">;
@@ -364,6 +383,76 @@ export const fieldNotes: FieldNote[] = [
         paragraphs: [
           "The tool can know that a card count violates a constraint. It cannot know that a card is strategically right for this person. That judgment belongs to the player.",
           "Whether stack view improves scanning or continuous validation changes deck-building behavior remains untested. The current implementation is evidence of a design argument, not proof of an outcome.",
+        ],
+      },
+    ],
+  },
+  {
+    slug: "same-emblem-new-colors",
+    number: "08",
+    title: "Same Emblem, New Colors",
+    theme: "Design",
+    themeColor: "#6C4700",
+    claim: "The shape has meant the same thing since 2015. Only the colors changed.",
+    summary:
+      "Why I drew my initials inside an upside-down triangle in 2015, and what changed when it replaced the plain text placeholder on this site.",
+    date: "December 3, 2026",
+    datePublished: "2026-12-03",
+    readingTime: "3 min",
+    evidenceTypes: ["personal-reflection", "design-rationale", "implementation-evidence"],
+    sections: [
+      {
+        paragraphs: [
+          "In 2015 I drew an emblem for myself: my initials, an E and a J, inside a triangle turned upside down. On November 3, 2026 it replaced the plain \"EH\" text in this site's header and footer, in new colors.",
+          "Drag the slider to see the two side by side.",
+        ],
+        compare: {
+          before: {
+            src: "/assets/field-notes/same-emblem-new-colors/before",
+            label: "Original",
+            alt: "My original logo on a dark navy background: an upside-down triangle emblem in a cyan-to-blue gradient, with a flat bar and two folded pieces inside it, beside the words EARL HICKSON JR in cyan and GRAPHIC DESIGNER, FRONT-END DEVELOPER in white.",
+          },
+          after: {
+            src: "/assets/field-notes/same-emblem-new-colors/after",
+            label: "Now",
+            alt: "The same upside-down triangle emblem in bone and saffron on a dark ground, beside EARL HICKSON JR. in bone and LEAD FRONT-END ENGINEER in saffron monospaced capitals.",
+          },
+          width: 2666,
+          height: 768,
+          widths: [800, 1600, 2666],
+          control: "Compare the original logo with the current one. Move left to show more of the current logo and right to show more of the original.",
+          caption: "The emblem is the one I drew in 2015. The original lockup is my own file, shown as it is. The current lockup is set in this site's fonts.",
+          source: "Original logo file (Earl Hickson Jr.) · current logo mark from the site's SVG · overlay checked to within a few pixels",
+        },
+      },
+      {
+        heading: "Why a triangle",
+        paragraphs: [
+          "I chose the triangle because it describes me to a tee. I turned it upside down to represent myself as someone who is always balancing. If I ever become unstable, I can learn and find my own balance again.",
+        ],
+      },
+      {
+        heading: "A team, and still myself",
+        paragraphs: [
+          "I fit in with a team and lean on it to strengthen, support and grow toward goals together. I will always be me, unique, and I'll always give my honest perspective.",
+          "That was the meaning when I created it, and it still holds true today.",
+        ],
+      },
+      {
+        heading: "What changed in 2026",
+        paragraphs: [
+          "The original was a gradient of cyan and blue. The version on this site is bone (#F2EDE3) and saffron (#F6B51D) on the site's dark ground, to match everything around it. The change was merged as pull request #40 on November 3, 2026.",
+        ],
+        points: [
+          "The header and footer use an SVG mark instead of the letters \"EH\".",
+          "The favicon, the Apple touch icon and the web app manifest point at the mark.",
+          "The mark's two colors come from CSS variables, so the same shape can sit on a dark or a light surface.",
+        ],
+      },
+      {
+        heading: "What didn't change",
+        paragraphs: [
+          "The geometry. Laid over my 2015 file, the new outline lines up with the original to within a few pixels. I changed the colors and left the shape alone.",
         ],
       },
     ],
