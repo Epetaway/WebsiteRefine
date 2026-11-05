@@ -3,6 +3,7 @@ import SEO from "@/components/seo";
 import { fieldNoteMeta } from "@/data/routeMeta/fieldNotes";
 import { getFieldNote } from "@/data/fieldNotes";
 import NotFound from "@/pages/not-found";
+import { FieldNoteCompare } from "@/components/field-notes/FieldNoteCompare";
 import { FieldNoteFigure } from "@/components/field-notes/FieldNoteFigure";
 import { NoteLockup } from "@/components/field-notes/NoteLockup";
 import { noteBrand, noteBrandStyle } from "@/data/noteBrands";
@@ -16,7 +17,7 @@ export default function FieldNotePage() {
   let figureCount = 0;
   const numbered = note.sections.map((section) => ({
     section,
-    figureNumber: section.figure ? ++figureCount : undefined,
+    figureNumber: section.figure || section.compare ? ++figureCount : undefined,
   }));
   // The project the note discusses colours it; the portfolio supplies everything else.
   const brand = noteBrand(note.project);
@@ -61,6 +62,7 @@ export default function FieldNotePage() {
               {section.paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
               {section.points && <ul>{section.points.map((point) => <li key={point}>{point}</li>)}</ul>}
               {section.figure && figureNumber && <FieldNoteFigure figure={section.figure} number={figureNumber} />}
+              {section.compare && figureNumber && <FieldNoteCompare compare={section.compare} number={figureNumber} />}
             </section>
           ))}
         </div>
