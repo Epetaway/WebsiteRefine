@@ -21,6 +21,12 @@ One new flagship case study. Home and Work list the case studies in Earl's order
 
 The old Earl d. Kaiju microsite stays archived. Its addresses now lead to the case study.
 
+## Page structure
+
+Hero · 00 overview · why I built it · **Chapter 01 Kaiju Coach**: 01.1 product design, 01.2 engineering · **Chapter 02 Website**: 02.1 design, 02.2 engineering · **Chapter 03 Identity**: 03.1 brand strategy (open), then one closed disclosure, `#identity-record`, holding 03.2 graphic design process, 03.3 reasoning, 03.4 the final identity · 04 ecosystem · 05 evidence and limitations · 06 reflection and what's next.
+
+Order changed Nov 11, 2026 (Earl's request, after peer feedback): the two builds come before the identity, and the identity's long visual record is one disclosure away. Nothing was removed. The hero says where the code is: Kaiju Coach's repository is public and linked; the website's is private and the site isn't deployed.
+
 ## Source evidence matrix
 
 | Claim on the page | Source | State |

@@ -19,7 +19,9 @@ The WithYou case study moves from the shared investigation template to a bespoke
 
 ## Page structure
 
-Hero · 00 overview · the human tension · **Chapter 01 Brand**: 01.1 strategy and voice, 01.2 the mark, 01.3 color and type, 01.4 icons and illustration, 01.5 photography, 01.6 campaign, 01.7 the design system · **Chapter 02 Product**: 02.1 principles, 02.2 information architecture, 02.3 design to build, 02.4 the sharing interaction (with the interactive prototype), 02.5 platform and theme parity, 02.6 handoff and spec · **Chapter 03 Engineering**: 03.1 system, 03.2 code, 03.3 what QA caught · 04 evidence and limitations · 05 reflection and what's next.
+Hero · 00 overview · the human tension · **Chapter 01 Engineering**: 01.1 system, 01.2 code, 01.3 what QA caught · **Chapter 02 Product**: 02.1 principles, 02.2 information architecture, 02.3 design to build, 02.4 the sharing interaction (with the interactive prototype), 02.5 platform and theme parity, 02.6 handoff and spec · **Chapter 03 Brand**: 03.1 strategy and voice, 03.2 color and type (open), then one closed disclosure, `#brand-record`, holding 03.3 the mark, 03.4 icons and illustration, 03.5 photography, 03.6 campaign, 03.7 the design system · 04 evidence and limitations · 05 reflection and what's next.
+
+Order changed Nov 11, 2026 (Earl's request, after peer feedback that hiring managers skim and the engineering sat too far down): engineering first, brand last, and the long visual brand record folded behind one disclosure. Nothing was removed. The overview still says the photos are AI-generated, so that disclosure stays visible with the record closed. Links into the record (`#photography` and so on) open it via `useOpenHashTarget`. The hero states where the code and demo are: the repository is private, and the sharing prototype on the page is the demo.
 
 ## Source evidence matrix
 

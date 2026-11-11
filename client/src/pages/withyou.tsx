@@ -68,13 +68,14 @@ import {
   type WyIllustrationId,
 } from "@/data/withyou";
 import { getNextWorkEntry } from "@/data/work";
+import { useOpenHashTarget } from "@/hooks/useOpenHashTarget";
 import "@/styles/withyou.css";
 
 const sections = [
   ["overview", "Overview"],
-  ["brand", "01 Brand"],
+  ["engineering", "01 Engineering"],
   ["product", "02 Product"],
-  ["engineering", "03 Engineering"],
+  ["brand", "03 Brand"],
   ["evidence", "Evidence"],
   ["reflection", "What's next"],
 ] as const;
@@ -116,6 +117,7 @@ function ChapterOpener({ index }: { index: number }) {
 export default function WithYouCaseStudy() {
   const next = getNextWorkEntry(withYou.slug);
   const record = withYouRecord;
+  useOpenHashTarget();
 
   return (
     <div
@@ -128,7 +130,7 @@ export default function WithYouCaseStudy() {
       <section className="wy-hero" aria-labelledby="wy-title">
         <div className="wy-hero__copy">
           <Link className="case-back" to="/work">← All work</Link>
-          <p className="wy-kicker">Case study {withYou.number} / {record.theme} · Brand · Mobile · Privacy</p>
+          <p className="wy-kicker">Case study {withYou.number} / {record.theme} · Mobile · Privacy engineering · Brand</p>
           <WyLockup size={46} className="wy-hero__lockup" decorative />
           <h1 id="wy-title">
             <span className="sr-only">WithYou — </span>
@@ -139,6 +141,10 @@ export default function WithYouCaseStudy() {
             <div><dt>My role</dt><dd>{withYou.role}</dd></div>
             <div><dt>Disciplines</dt><dd>{withYou.disciplines}</dd></div>
             <div><dt>When</dt><dd>{withYou.when}</dd></div>
+            <div>
+              <dt>Code and demo</dt>
+              <dd>{withYou.access} <a href="#prototype">The sharing prototype</a> on this page is a working demo of the core decision.</dd>
+            </div>
           </dl>
           <div className="wy-hero__actions">
             <a className="button wy-button" href="#overview">Read the case study <span aria-hidden="true">↓</span></a>
@@ -223,363 +229,76 @@ export default function WithYouCaseStudy() {
         </div>
       </section>
 
-      {/* ============================================================ Chapter 01 */}
+      {/* ============================================================ Chapter 01 · Engineering */}
       <ChapterOpener index={0} />
 
-      <section className="wy-strategy" aria-labelledby="wy-strategy-title">
-        <header className="wy-section-head wy-section-head--dark">
-          <WyEyebrow number="01.1">Brand strategy and voice</WyEyebrow>
-          <h2 id="wy-strategy-title">A thoughtful friend, not a wellness company.</h2>
-        </header>
-        <div className="wy-idea">
-          <blockquote><p>Stay close, even when <em>life</em> gets busy.</p></blockquote>
-          <div>
-            <p>{brandIdea.explanation}</p>
-            <p>{brandIdea.tension}</p>
-          </div>
-        </div>
-        <ol className="wy-voice" aria-label="Voice principles">
-          {voicePrinciples.map((item, index) => (
-            <li key={item.rule}>
-              <span>{String(index + 1).padStart(2, "0")}</span>
-              <h3>{item.rule}</h3>
-              <p className="wy-voice__yes"><b>We say</b>{item.yes}</p>
-              <p className="wy-voice__no"><b>Not</b>{item.no}</p>
-            </li>
-          ))}
-        </ol>
-        <div className="wy-never">
-          <h3>We never sound like this</h3>
-          <ul>{neverSound.map((line) => <li key={line}>{line}</li>)}</ul>
-          <p className="wy-small">From the design-system voice rules. Sentence case everywhere but the wordmark; no emoji in product UI; the partner's first name, never “your partner,” when it's known.</p>
-        </div>
-      </section>
-
-      <section className="wy-mark-section" id="mark" aria-labelledby="wy-mark-title">
+      <section className="wy-engineering" id="engineering-system" aria-labelledby="wy-eng-title">
         <header className="wy-section-head">
-          <WyEyebrow number="01.2">The mark</WyEyebrow>
-          <h2 id="wy-mark-title">Two loops, each passing in front once.</h2>
-          <p>Two people, joined but still two. The mark's geometry is the one part of the identity that never changed.</p>
+          <WyEyebrow number="01.1">System</WyEyebrow>
+          <h2 id="wy-eng-title">The same promise at every layer.</h2>
+          <p>{record.systemDescription}</p>
         </header>
-
-        <div className="wy-construction">
-          <figure className="wy-construction__drawing" aria-labelledby="wy-construction-caption">
-            <svg viewBox="-6 -6 72 68" role="img" aria-label="Construction drawing of the WithYou mark: two ellipses, each 32 by 44 units, tilted minus and plus ten degrees, with a vertical clip line at x equals 30">
-              <defs>
-                <pattern id="wy-grid" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M4 0H0V4" fill="none" stroke="currentColor" strokeOpacity="0.12" strokeWidth="0.2" /></pattern>
-                <clipPath id="wy-construction-clip"><rect x="30" y="0" width="30" height="56" /></clipPath>
-              </defs>
-              <rect x="0" y="0" width="60" height="56" fill="url(#wy-grid)" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.25" />
-              <line x1="30" y1="-4" x2="30" y2="60" stroke="var(--wy-lavender)" strokeWidth="0.35" strokeDasharray="1.2 1" />
-              <g transform="rotate(10 41 28)"><ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke="var(--wy-blush)" strokeWidth="5.3" /></g>
-              <g transform="rotate(-10 19 28)"><ellipse cx="19" cy="28" rx="16" ry="22" fill="none" stroke="var(--wy-coral)" strokeWidth="5.3" /></g>
-              <g transform="rotate(10 41 28)" clipPath="url(#wy-construction-clip)"><ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke="var(--wy-blush)" strokeWidth="5.3" /></g>
-              <g transform="rotate(-10 19 28)"><ellipse cx="19" cy="28" rx="16" ry="22" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="0.8 0.8" /><line x1="19" y1="2" x2="19" y2="54" stroke="currentColor" strokeWidth="0.3" /></g>
-              <g transform="rotate(10 41 28)"><ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="0.8 0.8" /><line x1="41" y1="2" x2="41" y2="54" stroke="currentColor" strokeWidth="0.3" /></g>
-              <circle cx="19" cy="28" r="0.9" fill="currentColor" /><circle cx="41" cy="28" r="0.9" fill="currentColor" />
-              <text x="19" y="61.5" textAnchor="middle" fontSize="2.6" fill="currentColor">−10°</text>
-              <text x="41" y="61.5" textAnchor="middle" fontSize="2.6" fill="currentColor">+10°</text>
-              <text x="31" y="-2" fontSize="2.4" fill="var(--wy-lavender)">clip x = 30</text>
-            </svg>
-            <figcaption id="wy-construction-caption"><WyStatusTag status="RETROSPECTIVE ILLUSTRATION" /> Drawn for this page from the geometry in <code>Logo.tsx</code>.</figcaption>
-          </figure>
-          <dl className="wy-construction__specs">
-            {markGeometry.map((item) => (
-              <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="wy-grounds">
-          <figure className="wy-ground wy-ground--cream"><WyLockup size={38} /><figcaption>On Cream · light tokens</figcaption></figure>
-          <figure className="wy-ground wy-ground--plum"><WyLockup size={38} /><figcaption>On Plum · dark tokens</figcaption></figure>
-          <figure className="wy-ground wy-ground--cream wy-ground--stacked"><WyLockup size={30} stacked /><figcaption>Stacked</figcaption></figure>
-          <figure className="wy-ground wy-ground--icon">
-            <WyPicture id="app-icon" alt="The shipped app icon" sizes="160px" />
-            <figcaption>App icon · as shipped</figcaption>
-          </figure>
-        </div>
-        <p className="wy-small wy-note">Lockups above are drawn live on this page from the app's geometry and v4.2.1 tokens, so they switch exactly as the app does. The app icon is the shipped PNG.</p>
-
-        <ul className="wy-app-icons" aria-label="App icon files">
-          {iconFiles.map((file) => (
-            <li key={file.id}>
-              <div className={`wy-app-icons__art${file.id === "notification-icon" ? " is-glyph" : ""}`}><WyBrandFile id={file.id} alt={file.alt} /></div>
-              <small>{file.date}</small>
-              <span>{file.caption}</span>
-              <WyStatusTag status={file.status} />
-            </li>
-          ))}
-        </ul>
-
-        <h3 className="wy-subhead">How the mark changed — and what didn't</h3>
-        <ol className="wy-evolution">
-          {markEvolution.map((step) => (
-            <li key={step.date} className={step.files.length ? undefined : "is-current"}>
-              <div className="wy-evolution__art">
-                {step.files.length ? (
-                  step.files.map((file) => <WyBrandFile key={file.id} id={file.id} alt={file.alt} />)
-                ) : (
-                  <WyLockup size={30} />
-                )}
-              </div>
-              <small>{step.date}</small>
-              <strong>{step.title}</strong>
-              <p>{step.detail}</p>
-              <WyStatusTag status={step.status} />
-            </li>
-          ))}
-        </ol>
-        <p className="wy-small wy-note">Every file above is copied byte for byte from <code>apps/mobile/assets</code>; dates are from the repository history.</p>
-      </section>
-
-      <section className="wy-color" id="color" aria-labelledby="wy-color-title">
-        <header className="wy-section-head wy-section-head--dark">
-          <WyEyebrow number="01.3">Color and type</WyEyebrow>
-          <h2 id="wy-color-title">Warm, never bluish. Plum, never black.</h2>
-          <p>v4.2.1 tokens from <code>tokens.ts</code>. Contrast ratios are computed for this page with the WCAG 2.x formula.</p>
-        </header>
-        <ul className="wy-palette" aria-label="Color palette">
-          {palette.map((color) => (
-            <li key={color.name} className={`wy-swatch wy-swatch--${color.ink}`}>
-              <span className="wy-swatch__chip" style={{ "--swatch": color.hex, "--swatch-dark": color.dark ?? color.hex } as React.CSSProperties} aria-hidden="true">
-                {color.dark && <i />}
-              </span>
-              <strong>{color.name}</strong>
-              <code>{color.hex}{color.dark ? ` · dark ${color.dark}` : ""}</code>
-              <span>{color.role}</span>
-              <small>{color.contrast}</small>
-            </li>
-          ))}
-        </ul>
-        <ul className="wy-gradients" aria-label="Signature gradients">
-          {gradients.map((gradient) => (
-            <li key={gradient.name} style={{ "--g1": gradient.stops[0], "--g2": gradient.stops[1] } as React.CSSProperties}>
-              <span aria-hidden="true" />
-              <strong>{gradient.name}</strong>
-              <small>{gradient.stops.join(" → ")} · {gradient.use}</small>
-            </li>
-          ))}
-        </ul>
-
-        <div className="wy-decision">
-          <WyStatusTag status="DOCUMENTED DECISION" />
-          <h3>Coral → plum → coral</h3>
-          <p>The May 12 handoff made plum the primary button color and kept coral for accents. Five weeks later, v4.2.1 put coral back: “Coral is the primary action color. Plum is not a replacement primary; it is the dark-mode foundation.” Plum buttons scored better on contrast — white on plum is 13.8:1 — and that trade is still open below.</p>
-        </div>
-
-        <div className="wy-type">
-          <div className="wy-type__head">
-            <span>Inter · 400 / 500 / 600 / 700</span>
-            <p className="wy-type__aa" aria-hidden="true">Aa</p>
-            <small>Humanist and warm, with tight tracking at display sizes. JetBrains Mono only for short system labels.</small>
-          </div>
-          <dl className="wy-type__scale">
-            {typeScale.map((style) => (
-              <div key={style.name} className={`wy-type__row wy-type__row--${style.className}`}>
-                <dt><strong>{style.name}</strong><small>{style.spec}</small></dt>
-                <dd>{style.sample}</dd>
-              </div>
-            ))}
-          </dl>
-        </div>
-
-        <div className="wy-finding">
-          <WyStatusTag status={contrastFinding.status} />
-          <h3>{contrastFinding.title}</h3>
-          <div className="wy-finding__demo" aria-hidden="true">
-            <ButtonSample ink="#ffffff" ratio="2.78:1" />
-            <ButtonSample ink="#1d2841" ratio="5.28:1" />
-          </div>
-          <p>{contrastFinding.detail}</p>
-        </div>
-      </section>
-
-      <section className="wy-icons-section" id="icons" aria-labelledby="wy-icons-title">
-        <header className="wy-section-head">
-          <WyEyebrow number="01.4">Icons and illustration</WyEyebrow>
-          <h2 id="wy-icons-title">A small, hand-tuned kit. No emoji.</h2>
-          <p>All 39 product icons and the state illustrations, straight from the app's asset folders.</p>
-        </header>
-        <div className="wy-icon-board">
-          {iconGroups.map((group) => (
-            <div key={group} className="wy-icon-group">
-              <h3>{iconGroupLabel[group]}</h3>
-              <ul>
-                {(Object.keys(wyIcons) as WyIconId[])
-                  .filter((id) => wyIcons[id].group === group)
-                  .map((id) => (
-                    <li key={id} title={id}>
-                      <WyIcon id={id} />
-                      <span>{id.replace(/^(nav|action|feature)-/, "").replace(/-/g, " ")}</span>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          ))}
-          <ul className="wy-rule-list wy-icon-rules">{iconRules.map((rule) => <li key={rule}>{rule}</li>)}</ul>
-        </div>
-
-        <h3 className="wy-subhead wy-subhead--ink">Illustration: for the moments that go wrong</h3>
-        <ul className="wy-illustrations">
-          {(Object.keys(wyIllustrations) as WyIllustrationId[]).map((id) => (
-            <li key={id}>
-              <WyIllustration id={id} alt="" />
-              <span>{illustrationCaptions[id]}</span>
-            </li>
-          ))}
-        </ul>
-        <p className="wy-small wy-note">Line illustrations on a 320 × 200 artboard, plum and coral only — empty, error and recovery states are designed states, not leftovers.</p>
-
-      </section>
-
-      <section className="wy-photo" id="photography" aria-labelledby="wy-photo-title">
-        <div className="wy-photo__light">
-          <header className="wy-section-head">
-            <WyEyebrow number="01.5">Photography</WyEyebrow>
-            <h2 id="wy-photo-title">{photography.statement}</h2>
-            <p>{photography.lead}</p>
-          </header>
-
-          <ul className="wy-direction" aria-label="Image direction">
-            {imageDirection.map((item) => (
-              <li key={item.photo}>
-                <WyPicture id={item.photo} alt={item.alt} sizes="(max-width: 600px) 92vw, (max-width: 1050px) 46vw, 31vw" />
-                <div>
-                  <strong>{item.scene}</strong>
-                  <span>{item.direction}</span>
-                </div>
-                <code>{item.photo.replace("photo-", "")}</code>
-              </li>
-            ))}
-          </ul>
-          <div className="wy-dodont">
-            <div>
-              <h3>Do</h3>
-              <ul>{imageryDo.map((rule) => <li key={rule}>{rule}</li>)}</ul>
-            </div>
-            <div>
-              <h3>Don&apos;t</h3>
-              <ul>{imageryDont.map((rule) => <li key={rule}>{rule}</li>)}</ul>
-            </div>
-            <p className="wy-dodont__source"><WyStatusTag status="DESIGN SOURCE" /> <small>{photography.source}</small></p>
-          </div>
-
-          <div className="wy-library">
-            <div className="wy-library__head">
-              <h3>Library · v1 <span>36 photos, pulled by id</span></h3>
-              <WyStatusTag status="AI-GENERATED PLACEHOLDER" />
-            </div>
-            <ul className="wy-library__grid" aria-label="Contact sheet of the 36 library photos">
-              {photoLibrary.map((id) => (
-                <li key={id}>
-                  <WyPicture id={id} alt="" sizes="(max-width: 600px) 30vw, (max-width: 1050px) 16vw, 110px" />
-                  <span>{id.replace("photo-", "")}</span>
-                </li>
-              ))}
-            </ul>
-            <div className="wy-callout">
-              <WyStatusTag status="AI-GENERATED PLACEHOLDER" />
-              <p>{photography.placeholder}</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="wy-photo__dark">
-          <h3 className="wy-subhead">The treatment, layer by layer</h3>
-          <ol className="wy-treatment">
-            {photoTreatment.map((step, index) => (
-              <li key={step.step}>
-                <div className={`wy-photo-frame wy-treatment__frame${index > 0 ? " has-gradient" : ""}`} aria-hidden="true">
-                  <WyPicture id="photo-a-01" alt="" sizes="(max-width: 820px) 60vw, 330px" />
-                  {index === 2 && (
-                    <div className="wy-glass">
-                      <WyLockup size={15} decorative />
-                      <p>Stay close, even when life gets busy.</p>
-                    </div>
-                  )}
-                </div>
-                <span className="wy-treatment__step">{step.step}</span>
-                <h4>{step.title}</h4>
-                <code>{step.spec}</code>
-                <p>{step.note}</p>
+        <figure className="wy-layers" aria-labelledby="wy-layers-caption">
+          <ol>
+            {visibilityLayers.map((layer, index) => (
+              <li key={layer.layer}>
+                <span className="wy-layers__step">{String(index + 1).padStart(2, "0")}</span>
+                <h3>{layer.layer}</h3>
+                <p>{layer.rule}</p>
+                <small>{layer.source}</small>
+                <WyStatusTag status={layer.status} />
               </li>
             ))}
           </ol>
-          <p className="wy-small wy-note wy-note--dark"><WyStatusTag status="RETROSPECTIVE ILLUSTRATION" /> Rebuilt on this page in CSS from the spec values, over a-01 — the photo the asset manifest names as the redesign&apos;s primary hero.</p>
+          <figcaption id="wy-layers-caption"><WyStatusTag status="RETROSPECTIVE ILLUSTRATION" /> Drawn for this page from the architecture documents and the code. A compliant new route doesn't repair a legacy one; one rule shared by every read does.</figcaption>
+        </figure>
+        <WyFigureView figure={architectureFigure} frame="browser" zoom className="wy-architecture" sizes="(max-width: 820px) 100vw, 70vw" />
+        <div className="wy-stack">
+          <div>
+            <h3>Responsibilities</h3>
+            <ul className="wy-rule-list wy-rule-list--ink">{record.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Constraints</h3>
+            <ul className="wy-rule-list wy-rule-list--ink">{record.constraints.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+          <div>
+            <h3>Stack</h3>
+            <ul className="wy-stack__chips">{withYou.stack.map((item) => <li key={item}>{item}</li>)}</ul>
+          </div>
+        </div>
+      </section>
 
-          <h3 className="wy-subhead">Every hero declares where type may go</h3>
-          <ul className="wy-slots">
-            {heroSlots.map((slot) => (
-              <li key={slot.file}>
-                <div className={`wy-photo-frame has-gradient wy-slot wy-slot--${slot.area}`}>
-                  <WyPicture id={slot.photo} alt="" sizes="(max-width: 820px) 40vw, 200px" />
-                  <i aria-hidden="true" />
-                </div>
-                <strong>{slot.screen}</strong>
-                <span>{slot.zone}</span>
-                <code>{slot.file}</code>
+      <section className="wy-code-section" aria-labelledby="wy-code-title">
+        <header className="wy-section-head">
+          <WyEyebrow number="01.2">Design in code</WyEyebrow>
+          <h2 id="wy-code-title">Where the brand and the privacy model live.</h2>
+        </header>
+        <div className="wy-code-list">
+          {codeHighlights.map((item, index) => <WyCodeCard key={item.id} item={item} index={index} repo={repository.name} />)}
+        </div>
+      </section>
+
+      <section className="wy-qa" aria-labelledby="wy-qa-title">
+        <header className="wy-section-head wy-section-head--dark">
+          <WyEyebrow number="01.3">What QA caught</WyEyebrow>
+          <h2 id="wy-qa-title">Found in testing, fixed in the open.</h2>
+        </header>
+        <div className="wy-qa__grid">
+          <WyFigureView figure={svgErrorFigure} frame="phone" sizes="(max-width: 820px) 60vw, 22vw" />
+          <ol className="wy-qa__list">
+            {qaCaught.map((item) => (
+              <li key={`${item.date}-${item.source}`}>
+                <time>{item.date}</time>
+                <p>{item.finding}</p>
+                <small>{item.source}</small>
               </li>
             ))}
-          </ul>
-          <div className="wy-slotnote">
-            <div>
-              <WyStatusTag status={slotFinding.status} />
-              <h4>{slotFinding.title}</h4>
-            </div>
-            <p>{slotFinding.detail}</p>
-          </div>
-
-          <div className="wy-inproduct">
-            <div className="wy-inproduct__intro">
-              <p className="wy-eyebrow">In the product</p>
-              <h3>The rules, running.</h3>
-              <p>Two platforms, two test runs. The glass card carries the welcome headline and Today&apos;s empty state; Us sets display type straight onto the gradient.</p>
-            </div>
-            {photoInProduct.map((figure) => (
-              <Reveal key={figure.media}>
-                <WyFigureView figure={figure} frame="phone" sizes="(max-width: 820px) 70vw, 300px" />
-              </Reveal>
-            ))}
-          </div>
+          </ol>
         </div>
       </section>
 
-      <section className="wy-campaign" id="campaign" aria-labelledby="wy-campaign-title">
-        <header className="wy-section-head">
-          <WyEyebrow number="01.6">Campaign</WyEyebrow>
-          <h2 id="wy-campaign-title">The same voice, <em>out in the world.</em></h2>
-          <p>The marketing kit is built from the app&apos;s own parts — the lockup, the library, the gradient, the voice — so a landing page, three store panels and a social post read as one brand.</p>
-        </header>
-        <Reveal className="wy-campaign__hero">
-          <WyFigureView figure={campaignFigures.landing} frame="browser" zoom sizes="(max-width: 1240px) 100vw, 1240px" />
-        </Reveal>
-        <div className="wy-campaign__pair">
-          <Reveal>
-            <WyFigureView figure={campaignFigures.appStore} zoom sizes="(max-width: 820px) 100vw, 46vw" />
-          </Reveal>
-          <Reveal>
-            <WyFigureView figure={campaignFigures.social} zoom sizes="(max-width: 820px) 100vw, 46vw" />
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="wy-system" id="system" aria-labelledby="wy-system-title">
-        <header className="wy-section-head wy-section-head--dark">
-          <WyEyebrow number="01.7">The design system</WyEyebrow>
-          <h2 id="wy-system-title">One brand, two platforms, two themes.</h2>
-          <p>Rendered from the design-system export. These boards predate v4.2.1, so a few values differ from the tokens above — cream was #FFF9F4 then.</p>
-        </header>
-        <div className="wy-boards">
-          {designSystemFigures.map((figure) => (
-            <Reveal key={figure.media} className="wy-boards__item">
-              <WyFigureView figure={figure} zoom sizes="(max-width: 820px) 100vw, 46vw" />
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      {/* ============================================================ Chapter 02 */}
+      {/* ============================================================ Chapter 02 · Product */}
       <ChapterOpener index={1} />
 
       <section className="wy-principles" aria-labelledby="wy-principles-title">
@@ -710,74 +429,375 @@ export default function WithYouCaseStudy() {
         </div>
       </section>
 
-      {/* ============================================================ Chapter 03 */}
+      {/* ============================================================ Chapter 03 · Brand */}
+      {/* The brand work stays on the page, but after the engineering and the product. Voice and the
+          token/contrast work stay open; the long visual record is one disclosure away. */}
       <ChapterOpener index={2} />
 
-      <section className="wy-engineering" id="engineering-system" aria-labelledby="wy-eng-title">
-        <header className="wy-section-head">
-          <WyEyebrow number="03.1">System</WyEyebrow>
-          <h2 id="wy-eng-title">The same promise at every layer.</h2>
-          <p>{record.systemDescription}</p>
-        </header>
-        <figure className="wy-layers" aria-labelledby="wy-layers-caption">
-          <ol>
-            {visibilityLayers.map((layer, index) => (
-              <li key={layer.layer}>
-                <span className="wy-layers__step">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{layer.layer}</h3>
-                <p>{layer.rule}</p>
-                <small>{layer.source}</small>
-                <WyStatusTag status={layer.status} />
-              </li>
-            ))}
-          </ol>
-          <figcaption id="wy-layers-caption"><WyStatusTag status="RETROSPECTIVE ILLUSTRATION" /> Drawn for this page from the architecture documents and the code. A compliant new route doesn't repair a legacy one; one rule shared by every read does.</figcaption>
-        </figure>
-        <WyFigureView figure={architectureFigure} frame="browser" zoom className="wy-architecture" sizes="(max-width: 820px) 100vw, 70vw" />
-        <div className="wy-stack">
-          <div>
-            <h3>Responsibilities</h3>
-            <ul className="wy-rule-list wy-rule-list--ink">{record.responsibilities.map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
-          <div>
-            <h3>Constraints</h3>
-            <ul className="wy-rule-list wy-rule-list--ink">{record.constraints.map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
-          <div>
-            <h3>Stack</h3>
-            <ul className="wy-stack__chips">{withYou.stack.map((item) => <li key={item}>{item}</li>)}</ul>
-          </div>
-        </div>
-      </section>
-
-      <section className="wy-code-section" aria-labelledby="wy-code-title">
-        <header className="wy-section-head">
-          <WyEyebrow number="03.2">Design in code</WyEyebrow>
-          <h2 id="wy-code-title">Where the brand and the privacy model live.</h2>
-        </header>
-        <div className="wy-code-list">
-          {codeHighlights.map((item, index) => <WyCodeCard key={item.id} item={item} index={index} repo={repository.name} />)}
-        </div>
-      </section>
-
-      <section className="wy-qa" aria-labelledby="wy-qa-title">
+      <section className="wy-strategy" aria-labelledby="wy-strategy-title">
         <header className="wy-section-head wy-section-head--dark">
-          <WyEyebrow number="03.3">What QA caught</WyEyebrow>
-          <h2 id="wy-qa-title">Found in testing, fixed in the open.</h2>
+          <WyEyebrow number="03.1">Brand strategy and voice</WyEyebrow>
+          <h2 id="wy-strategy-title">A thoughtful friend, not a wellness company.</h2>
         </header>
-        <div className="wy-qa__grid">
-          <WyFigureView figure={svgErrorFigure} frame="phone" sizes="(max-width: 820px) 60vw, 22vw" />
-          <ol className="wy-qa__list">
-            {qaCaught.map((item) => (
-              <li key={`${item.date}-${item.source}`}>
-                <time>{item.date}</time>
-                <p>{item.finding}</p>
-                <small>{item.source}</small>
+        <div className="wy-idea">
+          <blockquote><p>Stay close, even when <em>life</em> gets busy.</p></blockquote>
+          <div>
+            <p>{brandIdea.explanation}</p>
+            <p>{brandIdea.tension}</p>
+          </div>
+        </div>
+        <ol className="wy-voice" aria-label="Voice principles">
+          {voicePrinciples.map((item, index) => (
+            <li key={item.rule}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{item.rule}</h3>
+              <p className="wy-voice__yes"><b>We say</b>{item.yes}</p>
+              <p className="wy-voice__no"><b>Not</b>{item.no}</p>
+            </li>
+          ))}
+        </ol>
+        <div className="wy-never">
+          <h3>We never sound like this</h3>
+          <ul>{neverSound.map((line) => <li key={line}>{line}</li>)}</ul>
+          <p className="wy-small">From the design-system voice rules. Sentence case everywhere but the wordmark; no emoji in product UI; the partner's first name, never “your partner,” when it's known.</p>
+        </div>
+      </section>
+
+      <section className="wy-color" id="color" aria-labelledby="wy-color-title">
+        <header className="wy-section-head wy-section-head--dark">
+          <WyEyebrow number="03.2">Color and type</WyEyebrow>
+          <h2 id="wy-color-title">Warm, never bluish. Plum, never black.</h2>
+          <p>v4.2.1 tokens from <code>tokens.ts</code>. Contrast ratios are computed for this page with the WCAG 2.x formula.</p>
+        </header>
+        <ul className="wy-palette" aria-label="Color palette">
+          {palette.map((color) => (
+            <li key={color.name} className={`wy-swatch wy-swatch--${color.ink}`}>
+              <span className="wy-swatch__chip" style={{ "--swatch": color.hex, "--swatch-dark": color.dark ?? color.hex } as React.CSSProperties} aria-hidden="true">
+                {color.dark && <i />}
+              </span>
+              <strong>{color.name}</strong>
+              <code>{color.hex}{color.dark ? ` · dark ${color.dark}` : ""}</code>
+              <span>{color.role}</span>
+              <small>{color.contrast}</small>
+            </li>
+          ))}
+        </ul>
+        <ul className="wy-gradients" aria-label="Signature gradients">
+          {gradients.map((gradient) => (
+            <li key={gradient.name} style={{ "--g1": gradient.stops[0], "--g2": gradient.stops[1] } as React.CSSProperties}>
+              <span aria-hidden="true" />
+              <strong>{gradient.name}</strong>
+              <small>{gradient.stops.join(" → ")} · {gradient.use}</small>
+            </li>
+          ))}
+        </ul>
+
+        <div className="wy-decision">
+          <WyStatusTag status="DOCUMENTED DECISION" />
+          <h3>Coral → plum → coral</h3>
+          <p>The May 12 handoff made plum the primary button color and kept coral for accents. Five weeks later, v4.2.1 put coral back: “Coral is the primary action color. Plum is not a replacement primary; it is the dark-mode foundation.” Plum buttons scored better on contrast — white on plum is 13.8:1 — and that trade is still open below.</p>
+        </div>
+
+        <div className="wy-type">
+          <div className="wy-type__head">
+            <span>Inter · 400 / 500 / 600 / 700</span>
+            <p className="wy-type__aa" aria-hidden="true">Aa</p>
+            <small>Humanist and warm, with tight tracking at display sizes. JetBrains Mono only for short system labels.</small>
+          </div>
+          <dl className="wy-type__scale">
+            {typeScale.map((style) => (
+              <div key={style.name} className={`wy-type__row wy-type__row--${style.className}`}>
+                <dt><strong>{style.name}</strong><small>{style.spec}</small></dt>
+                <dd>{style.sample}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        <div className="wy-finding">
+          <WyStatusTag status={contrastFinding.status} />
+          <h3>{contrastFinding.title}</h3>
+          <div className="wy-finding__demo" aria-hidden="true">
+            <ButtonSample ink="#ffffff" ratio="2.78:1" />
+            <ButtonSample ink="#1d2841" ratio="5.28:1" />
+          </div>
+          <p>{contrastFinding.detail}</p>
+        </div>
+      </section>
+
+      <details className="wy-record" id="brand-record">
+        <summary>
+          <span className="wy-record__bar">
+            <span className="wy-record__copy">
+              <span className="wy-record__eyebrow">03.3 – 03.7 · The full brand record</span>
+              <span className="wy-record__title">Mark, icons, photography, campaign and system boards</span>
+              <span className="wy-record__detail">The mark's construction and history, all 39 icons, the photo direction and its AI-generated stand-in library, the marketing kit and the design-system exports.</span>
+            </span>
+            <i aria-hidden="true">+</i>
+          </span>
+        </summary>
+        <section className="wy-mark-section" id="mark" aria-labelledby="wy-mark-title">
+          <header className="wy-section-head">
+            <WyEyebrow number="03.3">The mark</WyEyebrow>
+            <h2 id="wy-mark-title">Two loops, each passing in front once.</h2>
+            <p>Two people, joined but still two. The mark's geometry is the one part of the identity that never changed.</p>
+          </header>
+
+          <div className="wy-construction">
+            <figure className="wy-construction__drawing" aria-labelledby="wy-construction-caption">
+              <svg viewBox="-6 -6 72 68" role="img" aria-label="Construction drawing of the WithYou mark: two ellipses, each 32 by 44 units, tilted minus and plus ten degrees, with a vertical clip line at x equals 30">
+                <defs>
+                  <pattern id="wy-grid" width="4" height="4" patternUnits="userSpaceOnUse"><path d="M4 0H0V4" fill="none" stroke="currentColor" strokeOpacity="0.12" strokeWidth="0.2" /></pattern>
+                  <clipPath id="wy-construction-clip"><rect x="30" y="0" width="30" height="56" /></clipPath>
+                </defs>
+                <rect x="0" y="0" width="60" height="56" fill="url(#wy-grid)" stroke="currentColor" strokeOpacity="0.3" strokeWidth="0.25" />
+                <line x1="30" y1="-4" x2="30" y2="60" stroke="var(--wy-lavender)" strokeWidth="0.35" strokeDasharray="1.2 1" />
+                <g transform="rotate(10 41 28)"><ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke="var(--wy-blush)" strokeWidth="5.3" /></g>
+                <g transform="rotate(-10 19 28)"><ellipse cx="19" cy="28" rx="16" ry="22" fill="none" stroke="var(--wy-coral)" strokeWidth="5.3" /></g>
+                <g transform="rotate(10 41 28)" clipPath="url(#wy-construction-clip)"><ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke="var(--wy-blush)" strokeWidth="5.3" /></g>
+                <g transform="rotate(-10 19 28)"><ellipse cx="19" cy="28" rx="16" ry="22" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="0.8 0.8" /><line x1="19" y1="2" x2="19" y2="54" stroke="currentColor" strokeWidth="0.3" /></g>
+                <g transform="rotate(10 41 28)"><ellipse cx="41" cy="28" rx="16" ry="22" fill="none" stroke="currentColor" strokeWidth="0.3" strokeDasharray="0.8 0.8" /><line x1="41" y1="2" x2="41" y2="54" stroke="currentColor" strokeWidth="0.3" /></g>
+                <circle cx="19" cy="28" r="0.9" fill="currentColor" /><circle cx="41" cy="28" r="0.9" fill="currentColor" />
+                <text x="19" y="61.5" textAnchor="middle" fontSize="2.6" fill="currentColor">−10°</text>
+                <text x="41" y="61.5" textAnchor="middle" fontSize="2.6" fill="currentColor">+10°</text>
+                <text x="31" y="-2" fontSize="2.4" fill="var(--wy-lavender)">clip x = 30</text>
+              </svg>
+              <figcaption id="wy-construction-caption"><WyStatusTag status="RETROSPECTIVE ILLUSTRATION" /> Drawn for this page from the geometry in <code>Logo.tsx</code>.</figcaption>
+            </figure>
+            <dl className="wy-construction__specs">
+              {markGeometry.map((item) => (
+                <div key={item.label}><dt>{item.label}</dt><dd>{item.value}</dd></div>
+              ))}
+            </dl>
+          </div>
+
+          <div className="wy-grounds">
+            <figure className="wy-ground wy-ground--cream"><WyLockup size={38} /><figcaption>On Cream · light tokens</figcaption></figure>
+            <figure className="wy-ground wy-ground--plum"><WyLockup size={38} /><figcaption>On Plum · dark tokens</figcaption></figure>
+            <figure className="wy-ground wy-ground--cream wy-ground--stacked"><WyLockup size={30} stacked /><figcaption>Stacked</figcaption></figure>
+            <figure className="wy-ground wy-ground--icon">
+              <WyPicture id="app-icon" alt="The shipped app icon" sizes="160px" />
+              <figcaption>App icon · as shipped</figcaption>
+            </figure>
+          </div>
+          <p className="wy-small wy-note">Lockups above are drawn live on this page from the app's geometry and v4.2.1 tokens, so they switch exactly as the app does. The app icon is the shipped PNG.</p>
+
+          <ul className="wy-app-icons" aria-label="App icon files">
+            {iconFiles.map((file) => (
+              <li key={file.id}>
+                <div className={`wy-app-icons__art${file.id === "notification-icon" ? " is-glyph" : ""}`}><WyBrandFile id={file.id} alt={file.alt} /></div>
+                <small>{file.date}</small>
+                <span>{file.caption}</span>
+                <WyStatusTag status={file.status} />
+              </li>
+            ))}
+          </ul>
+
+          <h3 className="wy-subhead">How the mark changed — and what didn't</h3>
+          <ol className="wy-evolution">
+            {markEvolution.map((step) => (
+              <li key={step.date} className={step.files.length ? undefined : "is-current"}>
+                <div className="wy-evolution__art">
+                  {step.files.length ? (
+                    step.files.map((file) => <WyBrandFile key={file.id} id={file.id} alt={file.alt} />)
+                  ) : (
+                    <WyLockup size={30} />
+                  )}
+                </div>
+                <small>{step.date}</small>
+                <strong>{step.title}</strong>
+                <p>{step.detail}</p>
+                <WyStatusTag status={step.status} />
               </li>
             ))}
           </ol>
-        </div>
-      </section>
+          <p className="wy-small wy-note">Every file above is copied byte for byte from <code>apps/mobile/assets</code>; dates are from the repository history.</p>
+        </section>
+
+        <section className="wy-icons-section" id="icons" aria-labelledby="wy-icons-title">
+          <header className="wy-section-head">
+            <WyEyebrow number="03.4">Icons and illustration</WyEyebrow>
+            <h2 id="wy-icons-title">A small, hand-tuned kit. No emoji.</h2>
+            <p>All 39 product icons and the state illustrations, straight from the app's asset folders.</p>
+          </header>
+          <div className="wy-icon-board">
+            {iconGroups.map((group) => (
+              <div key={group} className="wy-icon-group">
+                <h3>{iconGroupLabel[group]}</h3>
+                <ul>
+                  {(Object.keys(wyIcons) as WyIconId[])
+                    .filter((id) => wyIcons[id].group === group)
+                    .map((id) => (
+                      <li key={id} title={id}>
+                        <WyIcon id={id} />
+                        <span>{id.replace(/^(nav|action|feature)-/, "").replace(/-/g, " ")}</span>
+                      </li>
+                    ))}
+                </ul>
+              </div>
+            ))}
+            <ul className="wy-rule-list wy-icon-rules">{iconRules.map((rule) => <li key={rule}>{rule}</li>)}</ul>
+          </div>
+
+          <h3 className="wy-subhead wy-subhead--ink">Illustration: for the moments that go wrong</h3>
+          <ul className="wy-illustrations">
+            {(Object.keys(wyIllustrations) as WyIllustrationId[]).map((id) => (
+              <li key={id}>
+                <WyIllustration id={id} alt="" />
+                <span>{illustrationCaptions[id]}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="wy-small wy-note">Line illustrations on a 320 × 200 artboard, plum and coral only — empty, error and recovery states are designed states, not leftovers.</p>
+
+        </section>
+
+        <section className="wy-photo" id="photography" aria-labelledby="wy-photo-title">
+          <div className="wy-photo__light">
+            <header className="wy-section-head">
+              <WyEyebrow number="03.5">Photography</WyEyebrow>
+              <h2 id="wy-photo-title">{photography.statement}</h2>
+              <p>{photography.lead}</p>
+            </header>
+
+            <ul className="wy-direction" aria-label="Image direction">
+              {imageDirection.map((item) => (
+                <li key={item.photo}>
+                  <WyPicture id={item.photo} alt={item.alt} sizes="(max-width: 600px) 92vw, (max-width: 1050px) 46vw, 31vw" />
+                  <div>
+                    <strong>{item.scene}</strong>
+                    <span>{item.direction}</span>
+                  </div>
+                  <code>{item.photo.replace("photo-", "")}</code>
+                </li>
+              ))}
+            </ul>
+            <div className="wy-dodont">
+              <div>
+                <h3>Do</h3>
+                <ul>{imageryDo.map((rule) => <li key={rule}>{rule}</li>)}</ul>
+              </div>
+              <div>
+                <h3>Don&apos;t</h3>
+                <ul>{imageryDont.map((rule) => <li key={rule}>{rule}</li>)}</ul>
+              </div>
+              <p className="wy-dodont__source"><WyStatusTag status="DESIGN SOURCE" /> <small>{photography.source}</small></p>
+            </div>
+
+            <div className="wy-library">
+              <div className="wy-library__head">
+                <h3>Library · v1 <span>36 photos, pulled by id</span></h3>
+                <WyStatusTag status="AI-GENERATED PLACEHOLDER" />
+              </div>
+              <ul className="wy-library__grid" aria-label="Contact sheet of the 36 library photos">
+                {photoLibrary.map((id) => (
+                  <li key={id}>
+                    <WyPicture id={id} alt="" sizes="(max-width: 600px) 30vw, (max-width: 1050px) 16vw, 110px" />
+                    <span>{id.replace("photo-", "")}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="wy-callout">
+                <WyStatusTag status="AI-GENERATED PLACEHOLDER" />
+                <p>{photography.placeholder}</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="wy-photo__dark">
+            <h3 className="wy-subhead">The treatment, layer by layer</h3>
+            <ol className="wy-treatment">
+              {photoTreatment.map((step, index) => (
+                <li key={step.step}>
+                  <div className={`wy-photo-frame wy-treatment__frame${index > 0 ? " has-gradient" : ""}`} aria-hidden="true">
+                    <WyPicture id="photo-a-01" alt="" sizes="(max-width: 820px) 60vw, 330px" />
+                    {index === 2 && (
+                      <div className="wy-glass">
+                        <WyLockup size={15} decorative />
+                        <p>Stay close, even when life gets busy.</p>
+                      </div>
+                    )}
+                  </div>
+                  <span className="wy-treatment__step">{step.step}</span>
+                  <h4>{step.title}</h4>
+                  <code>{step.spec}</code>
+                  <p>{step.note}</p>
+                </li>
+              ))}
+            </ol>
+            <p className="wy-small wy-note wy-note--dark"><WyStatusTag status="RETROSPECTIVE ILLUSTRATION" /> Rebuilt on this page in CSS from the spec values, over a-01 — the photo the asset manifest names as the redesign&apos;s primary hero.</p>
+
+            <h3 className="wy-subhead">Every hero declares where type may go</h3>
+            <ul className="wy-slots">
+              {heroSlots.map((slot) => (
+                <li key={slot.file}>
+                  <div className={`wy-photo-frame has-gradient wy-slot wy-slot--${slot.area}`}>
+                    <WyPicture id={slot.photo} alt="" sizes="(max-width: 820px) 40vw, 200px" />
+                    <i aria-hidden="true" />
+                  </div>
+                  <strong>{slot.screen}</strong>
+                  <span>{slot.zone}</span>
+                  <code>{slot.file}</code>
+                </li>
+              ))}
+            </ul>
+            <div className="wy-slotnote">
+              <div>
+                <WyStatusTag status={slotFinding.status} />
+                <h4>{slotFinding.title}</h4>
+              </div>
+              <p>{slotFinding.detail}</p>
+            </div>
+
+            <div className="wy-inproduct">
+              <div className="wy-inproduct__intro">
+                <p className="wy-eyebrow">In the product</p>
+                <h3>The rules, running.</h3>
+                <p>Two platforms, two test runs. The glass card carries the welcome headline and Today&apos;s empty state; Us sets display type straight onto the gradient.</p>
+              </div>
+              {photoInProduct.map((figure) => (
+                <Reveal key={figure.media}>
+                  <WyFigureView figure={figure} frame="phone" sizes="(max-width: 820px) 70vw, 300px" />
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="wy-campaign" id="campaign" aria-labelledby="wy-campaign-title">
+          <header className="wy-section-head">
+            <WyEyebrow number="03.6">Campaign</WyEyebrow>
+            <h2 id="wy-campaign-title">The same voice, <em>out in the world.</em></h2>
+            <p>The marketing kit is built from the app&apos;s own parts — the lockup, the library, the gradient, the voice — so a landing page, three store panels and a social post read as one brand.</p>
+          </header>
+          <Reveal className="wy-campaign__hero">
+            <WyFigureView figure={campaignFigures.landing} frame="browser" zoom sizes="(max-width: 1240px) 100vw, 1240px" />
+          </Reveal>
+          <div className="wy-campaign__pair">
+            <Reveal>
+              <WyFigureView figure={campaignFigures.appStore} zoom sizes="(max-width: 820px) 100vw, 46vw" />
+            </Reveal>
+            <Reveal>
+              <WyFigureView figure={campaignFigures.social} zoom sizes="(max-width: 820px) 100vw, 46vw" />
+            </Reveal>
+          </div>
+        </section>
+
+        <section className="wy-system" id="system" aria-labelledby="wy-system-title">
+          <header className="wy-section-head wy-section-head--dark">
+            <WyEyebrow number="03.7">The design system</WyEyebrow>
+            <h2 id="wy-system-title">One brand, two platforms, two themes.</h2>
+            <p>Rendered from the design-system export. These boards predate v4.2.1, so a few values differ from the tokens above — cream was #FFF9F4 then.</p>
+          </header>
+          <div className="wy-boards">
+            {designSystemFigures.map((figure) => (
+              <Reveal key={figure.media} className="wy-boards__item">
+                <WyFigureView figure={figure} zoom sizes="(max-width: 820px) 100vw, 46vw" />
+              </Reveal>
+            ))}
+          </div>
+        </section>
+      </details>
 
       {/* ============================================================ Evidence */}
       <section className="wy-evidence" id="evidence" aria-labelledby="wy-evidence-title">

@@ -61,6 +61,9 @@ export const coachingSite: { liveUrl: string | null; status: string; note: strin
   note: "There's no public link yet. When the site launches, a Visit Earl the Kaiju link will appear here.",
 };
 
+export const codeAccess =
+  "Kaiju Coach's source is public on GitHub (linked below). The website's repository is private and the site isn't deployed yet, so its screens are local production-build captures.";
+
 export const repositories = {
   website: { name: "Epetaway/EarltheKaiju", visibility: "private", commit: "77657a8" },
   coach: {
@@ -116,10 +119,11 @@ export const overview = {
     "Everything here is built and tested. None of it has real users yet: the site isn't public and the app hasn't been used in a class. Those are the next results, and I'll publish them when they're real.",
 };
 
+// The two builds come first; the identity follows them.
 export const chapters = [
-  { number: "01", id: "identity", title: "Building the identity", line: "Strategy, symbol, lettering, color and the rules that hold it together.", status: "APPROVED" as FlagshipStatus },
+  { number: "01", id: "coach", title: "Building the instructor tool", line: "Kaiju Coach: everything I need on the mat, offline, on one phone.", status: "IMPLEMENTED + TESTED" as FlagshipStatus },
   { number: "02", id: "website", title: "Building the business platform", line: "An instructor website that turns real interest into a conversation.", status: "BUILT, NOT DEPLOYED" as FlagshipStatus },
-  { number: "03", id: "coach", title: "Building the instructor tool", line: "Kaiju Coach: everything I need on the mat, offline, on one phone.", status: "IMPLEMENTED + TESTED" as FlagshipStatus },
+  { number: "03", id: "identity", title: "Building the identity", line: "Strategy, symbol, lettering, color and the rules that hold it together.", status: "APPROVED" as FlagshipStatus },
 ];
 
 export const whyIBuiltIt = [

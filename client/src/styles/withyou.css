@@ -605,6 +605,23 @@
 .wy-case .next-investigation { background: #3d2342; }
 
 /* ------------------------------------------------------------ Responsive */
+/* ------------------------------------------------------------ Brand record (one disclosure) */
+.wy-hero__meta a { color: var(--wy-blush-dark); text-decoration: underline; text-underline-offset: 3px; }
+.wy-hero__meta a:hover { color: var(--wy-warm-white); }
+.wy-strategy + .wy-color { border-top: 1px solid var(--wy-line); }
+.wy-record { border-top: 1px solid var(--wy-line); border-bottom: 1px solid var(--wy-line); background: var(--wy-plum-surface); }
+.wy-record > summary { display: block; padding: clamp(32px, 5vw, 56px) var(--page-gutter); cursor: pointer; list-style: none; }
+.wy-record > summary::-webkit-details-marker { display: none; }
+.wy-record__bar { display: flex; align-items: center; justify-content: space-between; gap: clamp(20px, 4vw, 48px); max-width: var(--content); margin: 0 auto; }
+.wy-record__copy { display: grid; gap: 10px; max-width: 760px; }
+.wy-record__eyebrow { color: var(--wy-blush-dark); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+.wy-record__title { font-size: clamp(22px, 2.6vw, 34px); font-weight: 700; line-height: 1.15; letter-spacing: -0.03em; }
+.wy-record__detail { color: var(--wy-muted); font-size: 15px; line-height: 1.55; }
+.wy-record__bar > i { display: grid; place-items: center; flex: none; width: 52px; height: 52px; border: 1px solid var(--wy-line-strong); border-radius: 50%; font-style: normal; font-size: 26px; line-height: 1; transition: transform 180ms ease, background-color 180ms ease; }
+.wy-record > summary:hover .wy-record__bar > i { background: var(--wy-plum-elev); }
+.wy-record[open] > summary .wy-record__bar > i { transform: rotate(45deg); }
+.wy-record > summary:focus-visible { outline-offset: -6px; }
+
 @media (max-width: 1180px) {
   .wy-layers ol { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .wy-layers li:nth-child(3)::after { content: none; }
@@ -708,6 +725,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .wy-record__bar > i { transition: none; }
   .wy-deep > summary i { transition: none; }
 }
 

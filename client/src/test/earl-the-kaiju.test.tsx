@@ -73,6 +73,23 @@ describe("Earl the Kaiju case study", () => {
     expect(within(list).getAllByRole("listitem")).toHaveLength(limitations.length);
   });
 
+  it("puts Kaiju Coach and the website before the identity, with the identity record folded", async () => {
+    renderRoute("/work/earl-the-kaiju");
+    const coach = await screen.findByRole("heading", { level: 2, name: /Building the instructor tool/i }, { timeout: 5000 });
+    const website = screen.getByRole("heading", { level: 2, name: /Building the business platform/i });
+    const identity = screen.getByRole("heading", { level: 2, name: /Building the identity/i });
+    const follows = (a: Node, b: Node) => Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(follows(coach, website)).toBe(true);
+    expect(follows(website, identity)).toBe(true);
+
+    const record = document.getElementById("identity-record") as HTMLDetailsElement;
+    expect(record.tagName).toBe("DETAILS");
+    expect(record.open).toBe(false);
+    expect(record.contains(screen.getByRole("heading", { level: 2, name: /One crest, two letterings, one palette/i }))).toBe(true);
+    expect(record.contains(screen.getByRole("heading", { level: 2, name: /From a personal idea to a formal identity/i }))).toBe(false);
+    expect(screen.getByText(/Kaiju Coach's source is public on GitHub/)).toBeInTheDocument();
+  });
+
   it("labels the concept board as a source reference, not approved art", () => {
     const board = processFigures.find((figure) => figure.media === "source-board");
     expect(board?.status).toBe("SOURCE REFERENCE");
