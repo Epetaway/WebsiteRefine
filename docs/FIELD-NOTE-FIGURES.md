@@ -94,3 +94,12 @@ captures, which show a demonstrated fix, are not used as product screens.
   Comfortable, Mastered), not the note's proposed model (Seen, Practiced, Recognized, Adapted), so as a
   figure it would contradict the text beside it. It also shows the as-built contrast bug that hides the
   active tab and add buttons.
+
+## Before/after slider: Note 08, "Same Emblem, New Colors" (added Nov 4, 2026)
+
+`client/public/assets/field-notes/same-emblem-new-colors/{before,after}-{800,1600,2666}.webp`, both on one 2666 × 768 canvas.
+
+- `before`: Earl's own original logo file (supplied by him Nov 4, 2026), converted to WebP and resized. Not retouched. It contains a thin blue line under "FRONT-END DEVELOPER" that comes from the original file.
+- `after`: the current mark (`client/public/assets/brand/eh-logo.svg`, PR #40) on the site's `#151923` surface, with the name and title set in Manrope and JetBrains Mono at the original lockup's size. It is a composition of the site's current lockup, not a screenshot of the live header.
+- Registration: the new mark was laid over the original emblem at 60% opacity and lines up to within a few pixels (measured bounding boxes: original emblem 592 × 513 px, new mark 1067 × 907 units).
+- Share card: `client/public/assets/field-notes/og-same-emblem-new-colors.png`, 1200 × 630, rendered from the same tokens.

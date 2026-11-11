@@ -396,8 +396,8 @@ for (const figure of dojonetFigures) {
 }
 assertPublicExcerpts("DojoNet", dojonetRepository, dojonetCode);
 
-if (fieldNotes.length !== 4) {
-  fail("Exactly four canonical Field Notes must be published.");
+if (fieldNotes.length !== 5) {
+  fail("Exactly five canonical Field Notes must be published.");
 }
 
 const appSource = read("client/src/App.tsx");
@@ -420,6 +420,7 @@ const expectedRoutes = [
   "/field-notes/teaching-jiu-jitsu-and-ux",
   "/field-notes/designing-consent",
   "/field-notes/information-architecture-and-card-games",
+  "/field-notes/same-emblem-new-colors",
   "/about",
   "/resume",
   "/contact",
@@ -450,6 +451,32 @@ for (const note of fieldNotes) {
     if (!figure.caption.trim()) fail(`${where} needs a caption.`);
     if (figure.alt.trim() === figure.caption.trim()) fail(`${where} repeats its caption as alt text.`);
     if (!figure.source.trim()) fail(`${where} needs a source line.`);
+  }
+}
+
+// Field Note before/after sliders: both images exist at every listed width (never above the source), share one
+// canvas, and have their own alt text; the caption says why the pair matters and is not a repeat of either alt.
+for (const note of fieldNotes) {
+  for (const section of note.sections) {
+    const compare = section.compare;
+    if (!compare) continue;
+    const where = `${note.slug} compare ${compare.before.src}`;
+    if (!compare.widths.length || compare.widths.some((width) => width > compare.width)) {
+      fail(`${where} lists widths larger than its ${compare.width}px source (images are never upscaled).`);
+    }
+    for (const side of [compare.before, compare.after]) {
+      for (const width of compare.widths) {
+        if (!existsSync(path.join(root, "client/public", `${side.src}-${width}.webp`))) {
+          fail(`${where} is missing ${side.src}-${width}.webp.`);
+        }
+      }
+      if (side.alt.trim().length < 40) fail(`${where} needs alt text that describes the ${side.label} image.`);
+      if (!side.label.trim()) fail(`${where} needs a label on each side.`);
+    }
+    if (compare.before.alt.trim() === compare.after.alt.trim()) fail(`${where} gives both sides the same alt text.`);
+    if (compare.control.trim().length < 20) fail(`${where} needs a spoken name for its slider.`);
+    if (!compare.caption.trim()) fail(`${where} needs a caption.`);
+    if (!compare.source.trim()) fail(`${where} needs a source line.`);
   }
 }
 
