@@ -135,17 +135,17 @@ try {
       };
       results.push(entry);
 
-      // Investigation pages hide their deep dive behind one summary; the bespoke WithYou page
-      // keeps its code-card details closed. Open them and check the full page too.
+      // Investigation pages hide their deep dive behind one summary; the bespoke WithYou and Earl the
+      // Kaiju pages keep code-card details and their brand record closed. Open them and check the full page too.
       const investigationDeepDive = /^\/work\/(dojonet|gundam-forge)$/.test(route);
-      if (investigationDeepDive || route === "/work/withyou") {
+      if (investigationDeepDive || route === "/work/withyou" || route === "/work/earl-the-kaiju") {
         if (investigationDeepDive) {
           const deepDiveSummary = page.locator(".case-deep-dive > summary");
           await deepDiveSummary.focus();
           await page.keyboard.press("Enter");
           await page.locator(".prototype-frame").waitFor({ state: "visible" });
         } else {
-          await page.locator("details.wy-deep").evaluateAll((items) => {
+          await page.locator("details.wy-deep, details.wy-record, details.etk-deep, details.etk-record").evaluateAll((items) => {
             for (const item of items) item.open = true;
           });
         }

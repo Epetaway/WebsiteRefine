@@ -89,6 +89,28 @@ describe("WithYou case study", () => {
     expect(within(limitations).getAllByRole("listitem")).toHaveLength(withYouRecord.limitations.length);
   });
 
+  it("puts the engineering first and keeps the long brand record one disclosure away", async () => {
+    renderRoute("/work/withyou");
+    const engineering = await screen.findByRole("heading", { level: 2, name: /Engineering the privacy model/i }, { timeout: 5000 });
+    const product = screen.getByRole("heading", { level: 2, name: /Designing the product/i });
+    const brand = screen.getByRole("heading", { level: 2, name: /Building the brand/i });
+    const follows = (a: Node, b: Node) => Boolean(a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING);
+    expect(follows(engineering, product)).toBe(true);
+    expect(follows(product, brand)).toBe(true);
+
+    const record = document.getElementById("brand-record") as HTMLDetailsElement;
+    expect(record.tagName).toBe("DETAILS");
+    expect(record.open).toBe(false);
+    const photography = screen.getByRole("heading", { level: 2, name: /Photography is the brand's iconography/ });
+    expect(record.contains(photography)).toBe(true);
+    // Voice and the token/contrast work stay open.
+    expect(record.contains(screen.getByRole("heading", { level: 2, name: /Warm, never bluish/ }))).toBe(false);
+    // Say plainly where the code and the demo are.
+    expect(screen.getByText(/The repository is private and the app isn't released/)).toBeInTheDocument();
+    // The AI-generated photography is disclosed outside the closed record too.
+    expect(screen.getByText(/The couple photos in the app and its marketing are AI-generated stand-ins/)).toBeInTheDocument();
+  });
+
   it("gives every image alt text, and every figure a caption, source and real derivative", async () => {
     renderRoute("/work/withyou");
     await screen.findByRole("heading", { level: 1, name: /^WithYou — / }, { timeout: 5000 });

@@ -471,6 +471,20 @@
 .etk-case .next-investigation h2 { font-family: var(--font-sans); font-weight: 650; letter-spacing: -0.06em; text-transform: none; }
 
 /* ------------------------------------------------------------ Responsive */
+/* ------------------------------------------------------------ Identity record (one disclosure) */
+.etk-record { border-top: 1px solid var(--etk-line); border-bottom: 1px solid var(--etk-line); background: var(--etk-raised); }
+.etk-record > summary { display: block; padding: clamp(32px, 5vw, 56px) var(--page-gutter); cursor: pointer; list-style: none; }
+.etk-record > summary::-webkit-details-marker { display: none; }
+.etk-record__bar { display: flex; align-items: center; justify-content: space-between; gap: clamp(20px, 4vw, 48px); max-width: var(--content); margin: 0 auto; }
+.etk-record__copy { display: grid; gap: 10px; max-width: 760px; }
+.etk-record__eyebrow { color: var(--etk-gold); font-family: var(--font-mono); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+.etk-record__title { font-family: var(--etk-display); font-size: clamp(28px, 3.4vw, 44px); font-weight: 800; line-height: 1; text-transform: uppercase; }
+.etk-record__detail { color: var(--etk-muted); font-size: 15px; line-height: 1.55; }
+.etk-record__bar > i { display: grid; place-items: center; flex: none; width: 52px; height: 52px; border: 1px solid var(--etk-line-strong); color: var(--etk-gold); font-style: normal; font-size: 26px; line-height: 1; transition: transform 180ms ease, background-color 180ms ease; }
+.etk-record > summary:hover .etk-record__bar > i { background: var(--etk-facet); }
+.etk-record[open] > summary .etk-record__bar > i { transform: rotate(45deg); }
+.etk-record > summary:focus-visible { outline-offset: -6px; }
+
 @media (max-width: 1180px) {
   .etk-timeline ol { grid-template-columns: repeat(4, minmax(0, 1fr)); row-gap: 18px; }
   .etk-pipeline ol { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -560,6 +574,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .etk-record__bar > i { transition: none; }
   .etk-deep > summary i { transition: none; }
 }
 

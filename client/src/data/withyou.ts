@@ -69,8 +69,9 @@ export const withYou = {
   heroLead:
     "A relationship app for two people, designed and built end to end: the brand, the design system, the iOS and Android interface, and the privacy model underneath. Making it feel warm was the easy part. Making sure warmth never meant access was the work.",
   role: "Product vision, brand, UX design and full-stack development. AI coding assistants helped me fill gaps and move faster; the direction and the decisions were mine.",
-  disciplines: "Brand and design system · UX and interaction design · React Native · API and data",
+  disciplines: "React Native · API and data · UX and interaction design · Brand and design system",
   when: "January 2026 — ongoing",
+  access: "The repository is private and the app isn't released, so there's no public build. Reviewed code excerpts are on this page.",
   stack: base.stack,
 } as const;
 
@@ -91,13 +92,14 @@ export const overview = {
     "Everything on this page is built and tested in development. Nothing here is released: there are no real users and no measured relationship outcome. The captures are dated, and some show screens the product has since retired. The couple photos in the app and its marketing are AI-generated stand-ins.",
 };
 
+// Engineering first: it's the evidence a hiring manager reads for. Brand still has its own chapter.
 export const chapters = [
-  { number: "01", id: "brand", title: "Building the brand", line: "A voice, a mark, a palette and a photo system that stay warm without getting loud.", status: "IMPLEMENTED + INTEGRATED" as WyStatus },
+  { number: "01", id: "engineering", title: "Engineering the privacy model", line: "Privacy as a property of the whole system, not a settings page.", status: "PARTIAL" as WyStatus },
   { number: "02", id: "product", title: "Designing the product", line: "From a workflow map to two platforms and two themes — with the privacy rules drawn into the screens.", status: "DEVELOPMENT-STAGE IMPLEMENTATION" as WyStatus },
-  { number: "03", id: "engineering", title: "Engineering the privacy model", line: "Privacy as a property of the whole system, not a settings page.", status: "PARTIAL" as WyStatus },
+  { number: "03", id: "brand", title: "Building the brand", line: "A voice, a mark, a palette and a photo system that stay warm without getting loud.", status: "IMPLEMENTED + INTEGRATED" as WyStatus },
 ];
 
-// ---------------------------------------------------------------- Chapter 01 · Brand
+// ---------------------------------------------------------------- Chapter 03 · Brand
 
 export const brandIdea = {
   statement: "Stay close, even when life gets busy.",
@@ -631,7 +633,7 @@ export const onboardingBuild: WyFigure[] = [
   { media: "onb-impl-pairing", alt: "Onboarding step 9, Bring your partner in: a six-character invite code with copy and share actions", caption: "Then, and only then, the invite.", status: "SIMULATOR CAPTURE", source: "PR #80 · Jun 17, 2026" },
 ];
 
-// ---------------------------------------------------------------- Chapter 03 · Engineering
+// ---------------------------------------------------------------- Chapter 01 · Engineering
 
 export const visibilityLayers: { layer: string; rule: string; source: string; status: WyStatus }[] = [
   { layer: "Storage", rule: "Each sharable profile field has its own visibility row — shared, suggestions only, or private. No row means private.", source: "ProfileFieldVisibility · Prisma schema", status: "IMPLEMENTED + INTEGRATED" },
