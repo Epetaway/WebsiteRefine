@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, timestamp, boolean, serial } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, timestamp, boolean, serial, integer, index } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -74,3 +74,25 @@ export type BjjBooking = typeof bjjBookings.$inferSelect;
 export type InsertBjjBooking = z.infer<typeof insertBjjBookingSchema>;
 export type SocialMediaPost = typeof socialMediaPosts.$inferSelect;
 export type InsertSocialMediaPost = z.infer<typeof insertSocialMediaPostSchema>;
+
+// Requests to read gated notes (docs/ACCESS-GATE.md). Queried with plain SQL in
+// server/access/store.ts; this definition exists so `npm run db:push` creates the table.
+export const accessRequests = pgTable("access_requests", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  document: text("document").notNull(),
+  name: text("name").notNull(),
+  email: text("email").notNull(),
+  company: text("company"),
+  reason: text("reason"),
+  status: text("status").notNull().default("pending"), // pending | approved | denied | revoked
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  decidedAt: timestamp("decided_at", { withTimezone: true }),
+  passwordHash: text("password_hash"),
+  passwordExpiresAt: timestamp("password_expires_at", { withTimezone: true }),
+  failedLogins: integer("failed_logins").notNull().default(0),
+  lockedUntil: timestamp("locked_until", { withTimezone: true }),
+  lastLoginAt: timestamp("last_login_at", { withTimezone: true }),
+}, (table) => [
+  index("access_requests_email_document_idx").on(table.email, table.document),
+  index("access_requests_created_at_idx").on(table.createdAt),
+]);

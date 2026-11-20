@@ -22,6 +22,7 @@ describe("canonical route architecture", () => {
     ["/", /I design and build digital products/i],
     ["/work", /Design decisions/i],
     ["/work/withyou", /^WithYou — Two private rooms with a shared door/],
+    ["/work/withyou/engineering", /^WithYou — Engineering notes/],
     ["/work/dojonet", /^DojoNet — Progress isn't the same as completion/],
     ["/work/gundam-forge", /^Gundam Forge — Show the rule while the player is still deciding/],
     ["/work/earl-the-kaiju", /Earl the Kaiju — Building an identity into a working ecosystem/i],

@@ -1,0 +1,61 @@
+/* WithYou engineering notes: additions to the Field Note frame (field-notes.css + index.css).
+   Colours come only from the --nb-* brand variables, so every pairing inherits the AA checks
+   documented in data/noteBrands.ts. */
+
+.wye-page .field-note-body h3 { margin: 0 0 8px; font-family: var(--font-sans); font-size: 16px; font-weight: 700; line-height: 1.35; color: #151515; }
+.wye-page .wye-subhead { margin-top: 40px; font-size: 18px; }
+
+/* Sidebar contents list */
+.wye-toc ol { display: grid; gap: 0; margin: 18px 0 0; padding: 0; list-style: none; }
+.wye-toc li { border-top: 1px solid var(--line); }
+.wye-toc a { display: block; padding: 8px 0; color: var(--nb-ink); font-size: 12px; font-weight: 600; text-decoration: none; }
+.wye-toc a:hover { text-decoration: underline; }
+.wye-toc a:focus-visible { outline: 2px solid var(--nb-ink); outline-offset: 2px; }
+
+/* Facts strip and stack chips */
+.wye-facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1px; margin: 0 0 18px; background: var(--line); border: 1px solid var(--line); }
+.wye-facts > div { padding: 16px; background: var(--nb-paper); }
+.wye-facts dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--nb-ink); }
+.wye-facts dd { margin: 6px 0 0; font-size: 18px; font-weight: 700; color: #151515; }
+.wye-page .field-note-body ul.wye-chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; background: none; border: 0; list-style: none; }
+.wye-page .field-note-body .wye-chips li { padding: 6px 12px; border: 1px solid var(--line); border-radius: 999px; font-family: var(--font-mono); font-size: 11px; }
+
+/* Architecture layers */
+.wye-layers, .wye-pipeline, .wye-next { margin: 0 0 28px; padding: 0; list-style: none; }
+.wye-layers li { padding: 18px 20px; border-left: 3px solid var(--nb-ink); background: var(--nb-paper-2); }
+.wye-layers li + li { margin-top: 10px; }
+.wye-page .field-note-body .wye-layers p,
+.wye-page .field-note-body .wye-pipeline p,
+.wye-page .field-note-body .wye-card dd { margin: 0; font-family: var(--font-sans); font-size: 15px; line-height: 1.6; }
+
+.wye-patterns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; }
+.wye-patterns > div { padding: 14px 16px; border: 1px solid var(--line); }
+.wye-patterns dt { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--nb-ink); }
+.wye-patterns dd { margin: 6px 0 0; font-size: 15px; line-height: 1.5; }
+
+/* Safety pipeline */
+.wye-pipeline li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; padding: 16px 0; border-top: 1px solid var(--line); }
+.wye-pipeline li > span { font-family: var(--font-mono); font-size: 13px; color: var(--nb-ink); }
+.wye-pipeline h3 { font-family: var(--font-mono) !important; font-size: 14px !important; }
+
+/* Decision and lesson cards */
+.wye-decisions { display: grid; gap: 16px; }
+.wye-card { padding: 22px; border: 1px solid var(--line); border-top: 3px solid var(--nb-ink); border-radius: 0 0 14px 14px; background: #fff; }
+.wye-card > small { display: block; margin-bottom: 6px; font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--nb-ink); }
+.wye-card dl { display: grid; gap: 12px; margin: 14px 0 0; }
+.wye-card dt { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: #5b5560; }
+.wye-card dd { margin-top: 3px !important; }
+
+/* Quality groups */
+.wye-quality { display: grid; gap: 22px; }
+.wye-quality ul { margin-top: 10px; }
+
+/* Next steps */
+.wye-next { counter-reset: wye-next; }
+.wye-next li { counter-increment: wye-next; position: relative; padding: 12px 0 12px 40px; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.55; }
+.wye-next li::before { content: counter(wye-next, decimal-leading-zero); position: absolute; left: 0; font-family: var(--font-mono); font-size: 13px; color: var(--nb-ink); }
+
+@media (max-width: 600px) {
+  .wye-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .wye-patterns { grid-template-columns: 1fr; }
+}

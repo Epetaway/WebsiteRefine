@@ -267,6 +267,7 @@ export default function WithYouCaseStudy() {
             <ul className="wy-stack__chips">{withYou.stack.map((item) => <li key={item}>{item}</li>)}</ul>
           </div>
         </div>
+        <p className="wy-small wy-note"><Link to="/work/withyou/engineering">Read the engineering notes →</Link> Architecture, the AI safety pipeline, decision records and what testing caught.</p>
       </section>
 
       <section className="wy-code-section" aria-labelledby="wy-code-title">
