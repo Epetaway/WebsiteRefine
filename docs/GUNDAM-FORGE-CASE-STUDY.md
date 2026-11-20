@@ -4,6 +4,8 @@ Route: `/work/gundam-forge` · Content: `client/src/data/gundamForge.ts` (+ the 
 
 Audit date: 2026-10-25.
 
+> **Commit hashes updated 2026-11-20.** Card art and old build output were removed from the Gundam-Forge history with `git filter-repo`, which gave every commit a new hash. The hashes below are the rewritten ones; files and line numbers are unchanged (`50321ed` is now `654e07d`). The pre-rewrite history is kept in a backup bundle.
+
 ## Scope
 
 Gundam Forge moves from the shared investigation template to a bespoke page built the way WithYou and Earl the Kaiju are: its own route, scoped stylesheet in the app's identity, content file, generated media record, capture and asset scripts, provenance docs and tests. The investigation record stays the single source for the abstract, implementation ledger, evidence and limitations; the page reads it. Shared changes:
@@ -24,14 +26,14 @@ Hero · 00 overview · the human tension · **Chapter 01 The interface system**:
 
 ## Source evidence matrix
 
-Repository: `Epetaway/Gundam-Forge` (public) at `50321ed47aedc181296c606682b6c001eaa5c61e`.
+Repository: `Epetaway/Gundam-Forge` (public) at `654e07d3ae2458fda0d225512f51f8318fcb120a`.
 
 | Claim on the page | Source | State |
 |---|---|---|
 | Built Feb 22 – Apr 24, 2026; 308 commits (289 Earl, 10 Copilot agent, 9 Claude) | `git log` | Verified (git) |
 | AI coding assistants helped; direction and decisions Earl's | Co-author trailers on commits; Copilot agent PR #8 | **Earl to confirm wording** |
-| Official-site look replaced with Forge branding the same day (1:28 pm → 6:09 pm) | 07942d4, 23f3bbe | Verified (git) |
-| v2 visual reset Feb 25; token audit Mar 3 (30+ replacements, 10 files); semantic text tokens Mar 4 | 58116cd; f457ea8, b11fe4f; 615cc9c | Verified (git) |
+| Official-site look replaced with Forge branding the same day (1:28 pm → 6:09 pm) | 0ca9e10, dbd6fc2 | Verified (git) |
+| v2 visual reset Feb 25; token audit Mar 3 (30+ replacements, 10 files); semantic text tokens Mar 4 | 75e44a0; 5341506, 8b274a4; fc230da | Verified (git) |
 | Rendered tokens and their values | `apps/web/app/globals.css` | Verified (code) |
 | Package hex tokens differ from the CSS and aren't imported | `packages/design-system/src/tokens.ts`; search for imports | Verified (code) — **known gap** |
 | Orbitron / Exo 2 / JetBrains Mono roles and weights | `app/layout.tsx`; `typography.ts`; `globals.css` | Verified (code) |
@@ -40,13 +42,13 @@ Repository: `Epetaway/Gundam-Forge` (public) at `50321ed47aedc181296c606682b6c00
 | Contrast ratios (tokens) | Computed (WCAG 2.x); checked in `gundam-forge.test.tsx` | Computed for this page |
 | Primary button 3.68:1; cobalt-600 5.17:1 | Computed | **Known gap** |
 | Five rules and three warnings; errors vs warnings; isValid from errors only | `packages/shared/src/validation.ts` | Verified (code) |
-| validateDeck() called by builder, playtester, deck API route and deck loader | Search at 50321ed | Verified (code) |
+| validateDeck() called by builder, playtester, deck API route and deck loader | Search at 654e07d | Verified (code) |
 | Playtest gated on validity; playtester refuses invalid decks with the list | `forge-workbench.tsx` (canPlaytest); `app/playtest/page.tsx` | Verified (code) |
 | Removal undo toast, 5 s | `forge-workbench.tsx` | Verified (code) |
-| 4-copy cap at the click, "rather than relying solely on validation errors" | 34ab631 | Documented decision |
-| Builder changes and dates (Format field, + button, grid, filters, sidebar, modal revert) | ccfb1e7, 0ee8d58, a31bea0, c7288a5, 4e6c20f, f984f2d → 2b7af24 → 542f203 | Verified (git) |
-| getCopyLimit/isLegalInFormat unused | Search at 50321ed | Verified (code) — designed, not enforced |
-| CardArtImage fallback chain; art downloaded at build, served same-origin | `CardArtImage.tsx`; fb994df | Verified (code/git) |
+| 4-copy cap at the click, "rather than relying solely on validation errors" | 9665008 | Documented decision |
+| Builder changes and dates (Format field, + button, grid, filters, sidebar, modal revert) | ebe0950, 054583d, 5ffce42, e55a7dd, 64d4420, 97d7c34 → b4cebd5 → e4a8e43 | Verified (git) |
+| getCopyLimit/isLegalInFormat unused | Search at 654e07d | Verified (code) — designed, not enforced |
+| CardArtImage fallback chain; art downloaded at build, served same-origin | `CardArtImage.tsx`; 258720a | Verified (code/git) |
 | 623-record catalog | `apps/web/public/data/cards.catalog.json` | Verified (data) |
 | Test run: 257 tests, 253 passed, 4 skipped, 27 files; 2 files need jsdom | `npx vitest run`, Oct 25, 2026 (with and without `jsdom`) | Computed for this page |
 | tsc clean; next build succeeds; /forge first-load JS 295 kB | Oct 25, 2026 (capture build, local fonts) | Computed for this page |
@@ -57,11 +59,11 @@ Repository: `Epetaway/Gundam-Forge` (public) at `50321ed47aedc181296c606682b6c00
 | No "unofficial" statement in the UI | Search of `app/` and `components/` | Verified — **known gap** |
 | Home counters hard-coded | `app/page.tsx` | Verified — **known gap** |
 | No verified public URL | `epetaway.github.io/Gundam-Forge/` returned a client error, Oct 25, 2026 | Verified |
-| QA history (rules, hotlinking, playtester a11y, storage notice, svh dialog, classification) | f70a928, fb994df, 8e02fbc, 291a53c, 0ce2b43 (PR #6), PR #8 | Verified (git) |
+| QA history (rules, hotlinking, playtester a11y, storage notice, svh dialog, classification) | 1f88aa2, 258720a, 58e3ef6, da46838, 260138a (PR #6), PR #8 | Verified (git) |
 
 ## Code highlights (4, public, linked)
 
-| # | Path | Lines @ 50321ed |
+| # | Path | Lines @ 654e07d |
 |---|---|---|
 | 1 | `packages/shared/src/validation.ts` | 99–146 |
 | 2 | `apps/web/app/forge/forge-workbench.tsx` | 345–407 |

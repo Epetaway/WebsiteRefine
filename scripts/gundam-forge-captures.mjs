@@ -2,7 +2,7 @@
 // Captures Gundam Forge for /work/gundam-forge (see docs/GUNDAM-FORGE-ASSETS.md).
 //
 // Runs against a local production build of the public repository Epetaway/Gundam-Forge at
-// 50321ed (Apr 24, 2026):
+// 654e07d (Apr 24, 2026):
 //
 //   cd apps/web && npm run build && npx next start -p 3002
 //
