@@ -36,6 +36,8 @@ jobs:
       - name: Build for GitHub Pages
         env:
           VITE_GA_MEASUREMENT_ID: ${{ secrets.VITE_GA_MEASUREMENT_ID }}
+          # Base URL of the access API for gated notes (docs/ACCESS-GATE.md). Repository variable.
+          VITE_ACCESS_API_URL: ${{ vars.VITE_ACCESS_API_URL }}
         # The build writes one HTML file per route (scripts/prerender-route-meta.ts) and its own
         # 404.html fallback, so no copy step is needed here.
         run: npm run build

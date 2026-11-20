@@ -16,7 +16,7 @@ import {
   resumeMeta,
   workMeta,
 } from "./pages";
-import { withYouMeta } from "./withyou";
+import { withYouEngineeringMeta, withYouMeta } from "./withyou";
 import type { RouteMeta } from "./types";
 
 export { notFoundMeta } from "./pages";
@@ -27,6 +27,7 @@ export const routeMeta: RouteMeta[] = [
   homeMeta,
   workMeta,
   withYouMeta,
+  withYouEngineeringMeta,
   earlTheKaijuMeta,
   gundamForgeMeta,
   dojonetMeta,

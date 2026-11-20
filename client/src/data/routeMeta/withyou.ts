@@ -1,4 +1,5 @@
 import { withYou, withYouRecord } from "../withyou";
+import { withYouEngineering } from "../withyouEngineering";
 import { author, siteUrl, type RouteMeta } from "./types";
 
 export const withYouMeta: RouteMeta = {
@@ -15,6 +16,25 @@ export const withYouMeta: RouteMeta = {
     author,
     genre: "Brand, UX and engineering case study",
     keywords: ["Brand identity", "Design system", "UX design", "React Native", "Privacy by design", ...withYou.stack],
+    isAccessibleForFree: true,
+  },
+};
+
+export const withYouEngineeringMeta: RouteMeta = {
+  path: withYouEngineering.path,
+  title: withYouEngineering.title,
+  description:
+    "Architecture, AI safety pipeline, decision records, testing evidence and real bugs behind WithYou, a React Native and Express relationship app.",
+  image: "/assets/projects/withyou/social/og.png",
+  type: "article",
+  jsonLd: {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: withYouEngineering.title,
+    url: `${siteUrl}${withYouEngineering.path}`,
+    author,
+    about: withYou.name,
+    keywords: ["Architecture decision records", "React Native", "Express", "PostgreSQL", "AI safety", "Accessibility testing"],
     isAccessibleForFree: true,
   },
 };

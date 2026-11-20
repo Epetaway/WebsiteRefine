@@ -5,6 +5,7 @@ import { storage } from "./storage";
 import { insertContactSchema, insertBjjBookingSchema } from "@shared/schema";
 import { z } from "zod";
 import sgMail from '@sendgrid/mail';
+import { handleAccess, type AccessRequest } from './access/handler.js';
 
 const contactAttempts = new Map<string, { count: number; resetAt: number }>();
 const CONTACT_WINDOW_MS = 10 * 60 * 1000;
@@ -438,6 +439,11 @@ Please follow up within 24 hours.
   // (PROTOTYPE_ACCESS_PASSWORD) unlocks every prototype on the site for
   // PROTOTYPE_ACCESS_TTL_MINUTES; the client re-checks and re-prompts once
   // that window expires. The password itself never reaches the client bundle.
+  // Gated notes (docs/ACCESS-GATE.md). Same handler as the Vercel function api/access/[action].ts.
+  app.all("/api/access/:action", (req, res) => {
+    void handleAccess(req as unknown as AccessRequest, res, req.params.action);
+  });
+
   app.post("/api/prototype-access", (req, res) => {
     const expected = process.env.PROTOTYPE_ACCESS_PASSWORD;
     if (!expected) {
