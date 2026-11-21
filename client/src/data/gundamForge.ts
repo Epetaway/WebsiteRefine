@@ -2,7 +2,7 @@
 //
 // Every claim traces to a source in docs/GUNDAM-FORGE-CASE-STUDY.md (evidence matrix) and every
 // image to docs/GUNDAM-FORGE-ASSETS.md (provenance). The app repository is public
-// (Epetaway/Gundam-Forge, cited at 50321ed, Apr 24, 2026), so code excerpts link to the exact
+// (Epetaway/Gundam-Forge, cited at 654e07d, Apr 24, 2026), so code excerpts link to the exact
 // lines. Dates come from its commit history. Contrast ratios are computed with the WCAG 2.x
 // formula; "measured" ratios were read from the rendered page (gundam-forge.test.tsx checks the
 // token-level ones). validate-content.ts and client/src/test/gundam-forge.test.tsx check the
@@ -24,8 +24,8 @@ export const gundamForgeRecord = base;
 export const repository: KitRepository = {
   name: "Epetaway/Gundam-Forge",
   url: "https://github.com/Epetaway/Gundam-Forge",
-  commit: "50321ed",
-  fullCommit: "50321ed47aedc181296c606682b6c001eaa5c61e",
+  commit: "654e07d",
+  fullCommit: "654e07d3ae2458fda0d225512f51f8318fcb120a",
 };
 
 export const gundamForge = {
@@ -72,35 +72,35 @@ export const identityTimeline: { date: string; title: string; detail: string; so
     date: "Feb 22, 2026 · 1:28 pm",
     title: "Borrowed",
     detail: "The first pass restyled the app after the official game site's colours and look.",
-    source: "07942d4",
+    source: "0ca9e10",
     status: "SUPERSEDED",
   },
   {
     date: "Feb 22, 2026 · 6:09 pm",
     title: "Owned",
     detail: "Same day, replaced with Gundam Forge's own tokens and navigation. An unofficial tool shouldn't dress like the official one.",
-    source: "23f3bbe",
+    source: "dbd6fc2",
     status: "DOCUMENTED DECISION",
   },
   {
     date: "Feb 25, 2026",
     title: "Industrial command, v2",
     detail: "A visual reset toward the steel-and-cobalt panels the app uses now.",
-    source: "58116cd",
+    source: "75e44a0",
     status: "SUPERSEDED",
   },
   {
     date: "Mar 3, 2026",
     title: "Token audit",
     detail: "Raw Tailwind colours replaced with design tokens: 30-plus replacements across 10 files, then card tiles unified on the same tokens.",
-    source: "f457ea8 · b11fe4f",
+    source: "5341506 · 8b274a4",
     status: "IMPLEMENTED + INTEGRATED",
   },
   {
     date: "Mar 4, 2026",
     title: "Semantic text tokens",
     detail: "Four text levels (primary, secondary, muted, subtle) instead of ad-hoc greys.",
-    source: "615cc9c",
+    source: "fc230da",
     status: "IMPLEMENTED + INTEGRATED",
   },
 ];
@@ -231,19 +231,19 @@ export const principles: { id: string; title: string; body: string; note?: strin
 ];
 
 export const builderChanges: { date: string; change: string; why: string; source: string }[] = [
-  { date: "Feb 26", change: "Create → Build → View workflow; the MTG-style “Format” field removed", why: "A pattern borrowed from Magic deck builders that didn't match how Gundam decks are built.", source: "ccfb1e7" },
-  { date: "Mar 2", change: "Double-click to add → a visible + button on every card", why: "Double-click is invisible and doesn't exist on touch.", source: "0ee8d58" },
-  { date: "Mar 2", change: "Carousel → a scrolling grid in the card panel", why: "Four cards per slide hid the catalog behind pagination.", source: "a31bea0" },
-  { date: "Mar 2", change: "Advanced filters collapsed by default, with an active-count label", why: "Cards visible on load instead of 300 px of filters.", source: "c7288a5" },
-  { date: "Mar 8", change: "Meta-archetype sidebar removed from the Forge", why: "It didn't help build a deck and crowded the one that was being built.", source: "4e6c20f" },
-  { date: "Apr 12", change: "Card-detail redesign shipped, then reverted the same day", why: "The richer version came out the same day; the layout that stayed puts the rules text at full contrast.", source: "f984f2d → 2b7af24 → 542f203" },
+  { date: "Feb 26", change: "Create → Build → View workflow; the MTG-style “Format” field removed", why: "A pattern borrowed from Magic deck builders that didn't match how Gundam decks are built.", source: "ebe0950" },
+  { date: "Mar 2", change: "Double-click to add → a visible + button on every card", why: "Double-click is invisible and doesn't exist on touch.", source: "054583d" },
+  { date: "Mar 2", change: "Carousel → a scrolling grid in the card panel", why: "Four cards per slide hid the catalog behind pagination.", source: "5ffce42" },
+  { date: "Mar 2", change: "Advanced filters collapsed by default, with an active-count label", why: "Cards visible on load instead of 300 px of filters.", source: "e55a7dd" },
+  { date: "Mar 8", change: "Meta-archetype sidebar removed from the Forge", why: "It didn't help build a deck and crowded the one that was being built.", source: "64d4420" },
+  { date: "Apr 12", change: "Card-detail redesign shipped, then reverted the same day", why: "The richer version came out the same day; the layout that stayed puts the rules text at full contrast.", source: "97d7c34 → b4cebd5 → e4a8e43" },
 ];
 
 export const capDecision = {
   status: "DOCUMENTED DECISION" as KitStatus,
   title: "The one rule that's enforced silently",
   detail:
-    "On Mar 1, 2026 the builder started capping each card at four copies at the click, “rather than relying solely on validation errors” (34ab631). It keeps decks legal, but the fifth click does nothing and says nothing. It's the open question from this project in one line of code: when should an interface block, and when should it explain? Next version: allow the click, show the count go red, and say why.",
+    "On Mar 1, 2026 the builder started capping each card at four copies at the click, “rather than relying solely on validation errors” (9665008). It keeps decks legal, but the fifth click does nothing and says nothing. It's the open question from this project in one line of code: when should an interface block, and when should it explain? Next version: allow the click, show the count go red, and say why.",
 };
 
 export const workflowFigures: GfFigure[] = [
@@ -501,7 +501,7 @@ if (resourceDeckCards === 0 && mainDeckCards > 0) {
     decision: "Model legality per card and per format in the shared types first, then wire it into validation once there's a trustworthy source for the lists.",
     implementation: "CardDefinition carries optional legalities; isLegalInFormat() and getCopyLimit() turn them into a yes/no and a number.",
     tradeoff: "Nothing calls these helpers yet. validateDeck() still applies a flat limit of four (validation.ts line 124), so the type model promises more than the product does. The case study says so instead of the feature list.",
-    evidence: "Searched for this page: getCopyLimit and isLegalInFormat have no call sites outside types.ts at 50321ed.",
+    evidence: "Searched for this page: getCopyLimit and isLegalInFormat have no call sites outside types.ts at 654e07d.",
   },
   {
     id: "art",
@@ -530,7 +530,7 @@ if (resourceDeckCards === 0 && mainDeckCards > 0) {
   };`,
     problem: "Card art is someone else's property and hotlinking it fails in the browser. A deck builder full of broken-image icons is unusable.",
     decision: "Keep art out of git, fetch it at build time for the deploy, and fall back in a fixed order: local file, official CDN, the app's own card back, then a generated tile with the card's name.",
-    implementation: "One component owns the chain; every card surface uses it. The CI build downloads art server-side so the static export serves it from its own origin (fb994df, Feb 25, 2026).",
+    implementation: "One component owns the chain; every card surface uses it. The CI build downloads art server-side so the static export serves it from its own origin (258720a, Feb 25, 2026).",
     tradeoff: "Four sources means four ways for an image to look different. The tile always works, but a player can't tell a missing image from a slow one.",
     evidence: "With no network, the local build used for this page fell through to the card back on every card — the chain held. The page's text proxies replace that last step at capture time.",
   },
@@ -545,11 +545,11 @@ export const testRun: { label: string; value: string; status: KitStatus }[] = [
 ];
 
 export const qaHistory: { date: string; finding: string; source: string }[] = [
-  { date: "Feb 24", finding: "Deck rules corrected against the official rules: four copies, not three; the 10-card resource deck made a hard error.", source: "f70a928" },
-  { date: "Feb 25", finding: "Every card image broke in the browser: both art hosts block hotlinking. Art now downloads at build time and ships from the app's own origin.", source: "fb994df" },
-  { date: "Mar 2", finding: "Playtester labels were emoji-only and its error toast pulsed. Real aria-labels, a static role=\"alert\", and a way back to Decks.", source: "8e02fbc" },
-  { date: "Mar 2", finding: "Decks vanish if browser data is cleared. Added the notice that says so where decks are created.", source: "291a53c" },
-  { date: "Mar 3", finding: "On phones the card dialog centred on 100vh and cut off below the browser bar. Re-anchored on svh units.", source: "0ce2b43 · PR #6" },
+  { date: "Feb 24", finding: "Deck rules corrected against the official rules: four copies, not three; the 10-card resource deck made a hard error.", source: "1f88aa2" },
+  { date: "Feb 25", finding: "Every card image broke in the browser: both art hosts block hotlinking. Art now downloads at build time and ships from the app's own origin.", source: "258720a" },
+  { date: "Mar 2", finding: "Playtester labels were emoji-only and its error toast pulsed. Real aria-labels, a static role=\"alert\", and a way back to Decks.", source: "58e3ef6" },
+  { date: "Mar 2", finding: "Decks vanish if browser data is cleared. Added the notice that says so where decks are created.", source: "da46838" },
+  { date: "Mar 3", finding: "On phones the card dialog centred on 100vh and cut off below the browser bar. Re-anchored on svh units.", source: "260138a · PR #6" },
   { date: "Mar 30", finding: "Filters, counts and validation disagreed about which cards were which. One shared card classification for all three.", source: "PR #8" },
 ];
 

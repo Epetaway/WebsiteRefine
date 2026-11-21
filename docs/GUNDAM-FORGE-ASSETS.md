@@ -4,7 +4,7 @@ Audit date: 2026-10-25. Every image on `/work/gundam-forge` is listed here with 
 
 ## How the files were made
 
-- **Source.** The public repository `Epetaway/Gundam-Forge` at `50321ed` (Apr 24, 2026). Earl's local checkout (`Dev/Projects/Gundam-Forge-main`) matches that commit file for file (checked by hash on key files). Read, never modified.
+- **Source.** The public repository `Epetaway/Gundam-Forge` at `654e07d` (Apr 24, 2026). Earl's local checkout (`Dev/Projects/Gundam-Forge-main`) matches that commit file for file (checked by hash on key files). Read, never modified.
 - **Running it.** A local production build (`apps/web`: `npm run build && npx next start -p 3002`). One capture-only change: `next/font/google` can't download Orbitron and Exo 2 without network, so `layout.tsx` and `globals.css` were pointed at the same OFL families from `@fontsource` 5.3.0. The rendered typography is the app's own. Nothing else in the app was changed.
 - **Captures.** `scripts/gundam-forge-captures.mjs` drives the build with Playwright at 2× (1440 × 900 desktop, 390 × 844 phone), `prefers-reduced-motion: reduce`, and these rules:
   - **Official card art is never published.** Every card-image request is answered with a **text proxy** drawn from that card's catalog record — name, colour, type, cost, level, AP/HP and id — in Gundam Forge's own `--color-*` tokens, and labelled `TEXT PROXY` on the card. The repository itself doesn't commit card art (its README says so); this keeps the portfolio the same way.
@@ -41,7 +41,7 @@ PROJECT=gundam-forge SHARP_FROM=/path/to/a/project/with/sharp/package.json node 
 
 ## Status vocabulary (as shown on the page)
 
-- **Local build capture** — the running app, local production build at `50321ed`, with the rules above.
+- **Local build capture** — the running app, local production build at `654e07d`, with the rules above.
 - **Documented decision** — a choice recorded in a commit message, cited by hash.
 - **Retrospective illustration** — drawn for this page from the code.
 - **Computed for this page** — measured or counted while preparing the page (test run, contrast, deck audit).

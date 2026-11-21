@@ -39,7 +39,7 @@ const capture = (id, widths, crop) => ({ id, src: path.join(capturesDir, `${id}.
 
 const projects = {
   "gundam-forge": {
-    appCommit: "Epetaway/Gundam-Forge@50321ed",
+    appCommit: "Epetaway/Gundam-Forge@654e07d",
     jobs: [
       capture("forge-draft", desktop),
       capture("forge-issues", desktop),
