@@ -2,6 +2,8 @@
 
 Canonical source for [ehicksonjr.com](https://ehicksonjr.com): one professional identity, one public résumé, three independent product case studies plus the Earl the Kaiju flagship case study, a research direction, Field Notes, and an intentional graduate-review path.
 
+> **Evaluating how this site is built?** Start with the [project wiki](docs/wiki/README.md): architecture, content governance, key decisions and quality results.
+
 HCEPS remains the internal editorial, evidence-governance, and design-language reference. It is not a second public portfolio or runtime application.
 
 ## Architecture
